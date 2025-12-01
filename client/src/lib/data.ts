@@ -24,10 +24,10 @@ export const INGREDIENTS: Record<string, Ingredient> = {
     "wheat_hard_red": {"category": "grain", "protein": 13.5, "carbs": 71, "fat": 2, "fiber": 3, "notes": "Hard red winter wheat, higher protein"},
     "wheat_soft_red": {"category": "grain", "protein": 10.2, "carbs": 73, "fat": 2, "fiber": 3, "notes": "Soft red winter wheat, lower protein"},
     
-    "corn_yellow": {"category": "grain", "protein": 9, "carbs": 74, "fat": 4.5, "fiber": 2.5, "notes": "Vitamin A source, essential"},
-    "corn_white": {"category": "grain", "protein": 9, "carbs": 74, "fat": 4.5, "fiber": 2.5, "notes": "Avoid - lacks Vitamin A"},
-    "maize": {"category": "grain", "protein": 9, "carbs": 74, "fat": 4.5, "fiber": 2.5, "notes": "Same as corn, prefer yellow"},
-    "popcorn": {"category": "grain", "protein": 13, "carbs": 74, "fat": 4, "fiber": 15, "notes": "High fiber, use sparingly"},
+    "corn_yellow": {"category": "grain", "protein": 9, "carbs": 72, "fat": 4.5, "fiber": 2, "notes": "High energy, rich in Vitamin A"},
+    "corn_white": {"category": "grain", "protein": 9, "carbs": 72, "fat": 4.5, "fiber": 2, "notes": "Standard corn, good energy source"},
+    "corn_red": {"category": "grain", "protein": 9, "carbs": 72, "fat": 4.5, "fiber": 2, "notes": "Red corn variety, similar nutrition to yellow corn"},
+    "maize": {"category": "grain", "protein": 9, "carbs": 72, "fat": 4.5, "fiber": 2, "notes": "Corn variety, high energy"},
     
     "barley": {"category": "grain", "protein": 11, "carbs": 73, "fat": 2, "fiber": 5, "notes": "Easily digestible, good for winter"},
     "barley_pearled": {"category": "grain", "protein": 10, "carbs": 78, "fat": 1, "fiber": 3.5, "notes": "Lower fiber than whole barley"},
@@ -64,7 +64,7 @@ export const INGREDIENTS: Record<string, Ingredient> = {
     "lentils_brown": {"category": "legume", "protein": 25, "carbs": 63, "fat": 1, "fiber": 8, "notes": "Brown lentils"},
     "split_lentils": {"category": "legume", "protein": 25, "carbs": 63, "fat": 1, "fiber": 8, "notes": "Split lentils, quick cooking"},
     
-    "beans": {"category": "legume", "protein": 22, "carbs": 62, "fat": 1, "fiber": 6, "notes": "Must be cooked (except safe varieties)"},
+    "beans": {"category": "legume", "protein": 22, "carbs": 62, "fat": 1, "fiber": 6, "notes": "WARNING: Check bean type - kidney, lima, fava, navy, pinto beans contain hemagglutinin (TOXIC if raw). Only feed if cooked thoroughly. Safe raw: mung, black-eyed peas, chickpeas (cooked)."},
     "mung_beans": {"category": "legume", "protein": 24, "carbs": 63, "fat": 1, "fiber": 7, "notes": "Safe uncooked"},
     "black_eyed_peas": {"category": "legume", "protein": 24, "carbs": 60, "fat": 1, "fiber": 6, "notes": "Safe dry, high protein"},
     "chickpeas": {"category": "legume", "protein": 19, "carbs": 61, "fat": 6, "fiber": 12, "notes": "Must be cooked, high fiber"},
@@ -115,10 +115,10 @@ export const HERBS_SUPPLEMENTS: Record<string, Herb> = {
     // ===== HERBS & SPICES (Health Benefits) =====
     "anise": {
         "category": "herb_seed",
-        "benefits": ["Respiratory health", "Digestion", "Antimicrobial"],
+        "benefits": ["Respiratory health", "Digestion", "Antimicrobial", "Reduces Odor"],
         "dosage_per_kg": "2-5g",
         "frequency": "2-3 times per week",
-        "notes": "Aniseed, good for respiratory system"
+        "notes": "Aniseed, good for respiratory system and reduces dropping odor"
     },
     "fennel": {
         "category": "herb_seed",
@@ -303,7 +303,7 @@ export const HERBS_SUPPLEMENTS: Record<string, Herb> = {
 
 export const HERB_RECOMMENDATIONS: Record<string, { recommended: string[]; notes: string }> = {
     "pet": {
-        "recommended": ["chamomile", "fennel", "aniseed", "oregano", "thyme"],
+        "recommended": ["chamomile", "fennel", "anise", "oregano", "thyme"],
         "notes": "Stress relief, digestive health, odor reduction, general wellness for companion birds"
     },
     "maintenance": {

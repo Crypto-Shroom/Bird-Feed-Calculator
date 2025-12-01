@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
+import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -44,6 +45,7 @@ export default function Home() {
   });
   const [result, setResult] = useState<MixResult | null>(null);
   const [activeTab, setActiveTab] = useState("calculator");
+  const [ingredientSearch, setIngredientSearch] = useState("");
 
   // Calculate mix whenever inputs change
   useEffect(() => {
@@ -69,8 +71,11 @@ export default function Home() {
   };
 
   const sortedIngredients = useMemo(() => {
-    return Object.keys(INGREDIENTS).sort();
-  }, []);
+    const all = Object.keys(INGREDIENTS).sort();
+    if (!ingredientSearch.trim()) return all;
+    const searchLower = ingredientSearch.toLowerCase();
+    return all.filter(ing => ing.toLowerCase().includes(searchLower));
+  }, [ingredientSearch]);
 
   const currentProfile = PROFILES[situation as keyof typeof PROFILES];
 
@@ -171,7 +176,21 @@ export default function Home() {
                     <Wheat className="w-5 h-5 text-secondary-foreground" />
                     Your Inventory
                   </CardTitle>
-                  <Select onValueChange={handleAddIngredient}>
+                </div>
+                <div className="flex gap-2 mt-2">
+                  <div className="flex-1 relative">
+                    <Search className="absolute left-3 top-2.5 w-4 h-4 text-muted-foreground" />
+                    <Input
+                      placeholder="Search ingredients..."
+                      value={ingredientSearch}
+                      onChange={(e) => setIngredientSearch(e.target.value)}
+                      className="h-8 text-xs pl-9"
+                    />
+                  </div>
+                  <Select onValueChange={(value) => {
+                    handleAddIngredient(value);
+                    setIngredientSearch("");
+                  }}>
                     <SelectTrigger className="w-[140px] h-8 text-xs">
                       <Plus className="w-3 h-3 mr-1" /> Add Ingredient
                     </SelectTrigger>
@@ -199,7 +218,12 @@ export default function Home() {
                       <div key={name} className={cn("flex items-center gap-3 group p-3 rounded-lg border", toxicInfo ? "bg-red-50 border-red-300" : "border-transparent")}>
                         <div className="flex-1">
                           <div className="flex justify-between mb-1">
-                            <span className="font-medium capitalize text-sm">{name.replace(/_/g, " ")}</span>
+                            <span className="font-medium capitalize text-sm">
+                              {name.replace(/_/g, " ")}
+                              {getPreparationInstructions(name) && (
+                                <span className="text-xs text-muted-foreground ml-2">({getPreparationInstructions(name)?.preparation})</span>
+                              )}
+                            </span>
                             <span className="text-xs text-muted-foreground">{amount}g</span>
                           </div>
                           {toxicInfo && (
@@ -353,7 +377,6 @@ export default function Home() {
                                 <th className="px-4 py-3 text-right">Amount</th>
                                 <th className="px-4 py-3 text-right">%</th>
                                 <th className="px-4 py-3 text-left pl-8">Category</th>
-                                <th className="px-4 py-3 text-left">Preparation</th>
                               </tr>
                             </thead>
                             <tbody className="divide-y divide-border/50">
@@ -376,14 +399,30 @@ export default function Home() {
                                         {INGREDIENTS[name].category}
                                       </Badge>
                                     </td>
-                                    <td className="px-4 py-3 text-xs text-muted-foreground">
-                                      {getPreparationInstructions(name)?.preparation || 'Feed as is'}
-                                    </td>
                                   </tr>
                                 ))}
                             </tbody>
                           </table>
                         </div>
+
+                        {/* Preparation Notes */}
+                        {Object.keys(result.mix).some(ing => getPreparationInstructions(ing)) && (
+                          <div className="bg-amber-50 dark:bg-amber-950/20 p-4 rounded-lg border border-amber-200 dark:border-amber-900">
+                            <h4 className="font-medium text-amber-900 dark:text-amber-300 mb-2 flex items-center gap-2">
+                              <Info className="w-4 h-4" /> Preparation Instructions
+                            </h4>
+                            <ul className="space-y-2 text-sm text-amber-800 dark:text-amber-400">
+                              {Object.keys(result.mix)
+                                .filter(ing => getPreparationInstructions(ing))
+                                .map(ing => (
+                                  <li key={ing} className="flex gap-2">
+                                    <span className="font-medium capitalize">{ing.replace(/_/g, " ")}:</span>
+                                    <span>{getPreparationInstructions(ing)?.preparation}</span>
+                                  </li>
+                                ))}
+                            </ul>
+                          </div>
+                        )}
 
                         {/* Suggestions */}
                         {result.suggestions.length > 0 && (
@@ -455,29 +494,6 @@ export default function Home() {
 
                     {activeTab === "analysis" && (
                       <div className="space-y-8">
-                        <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900 rounded-lg p-4">
-                          <h3 className="text-lg font-bold mb-2 text-blue-900 dark:text-blue-200">Profile: {currentProfile.name}</h3>
-                          <p className="text-sm text-blue-800 dark:text-blue-300 mb-3">{currentProfile.feeding_notes}</p>
-                          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
-                            <div>
-                              <span className="font-semibold text-blue-900 dark:text-blue-200">Protein Target:</span>
-                              <p className="text-blue-700 dark:text-blue-400">{currentProfile.protein[0]}-{currentProfile.protein[1]}%</p>
-                            </div>
-                            <div>
-                              <span className="font-semibold text-blue-900 dark:text-blue-200">Carbs Target:</span>
-                              <p className="text-blue-700 dark:text-blue-400">{currentProfile.carbs[0]}-{currentProfile.carbs[1]}%</p>
-                            </div>
-                            <div>
-                              <span className="font-semibold text-blue-900 dark:text-blue-200">Fat Target:</span>
-                              <p className="text-blue-700 dark:text-blue-400">{currentProfile.fat[0]}-{currentProfile.fat[1]}%</p>
-                            </div>
-                            <div>
-                              <span className="font-semibold text-blue-900 dark:text-blue-200">Fiber Target:</span>
-                              <p className="text-blue-700 dark:text-blue-400">{currentProfile.fiber[0]}-{currentProfile.fiber[1]}%</p>
-                            </div>
-                          </div>
-                        </div>
-
                         <div>
                           <h3 className="text-lg font-bold mb-4">Category Breakdown</h3>
                           <div className="space-y-4">
@@ -520,6 +536,29 @@ export default function Home() {
                                 <span className="font-medium">3200 kcal/kg</span>
                               </div>
                               <Progress value={70} className="h-2" />
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900 rounded-lg p-4">
+                          <h3 className="text-lg font-bold mb-2 text-blue-900 dark:text-blue-200">Profile: {currentProfile.name}</h3>
+                          <p className="text-sm text-blue-800 dark:text-blue-300 mb-3">{currentProfile.feeding_notes}</p>
+                          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+                            <div>
+                              <span className="font-semibold text-blue-900 dark:text-blue-200">Protein Target:</span>
+                              <p className="text-blue-700 dark:text-blue-400">{currentProfile.protein[0]}-{currentProfile.protein[1]}%</p>
+                            </div>
+                            <div>
+                              <span className="font-semibold text-blue-900 dark:text-blue-200">Carbs Target:</span>
+                              <p className="text-blue-700 dark:text-blue-400">{currentProfile.carbs[0]}-{currentProfile.carbs[1]}%</p>
+                            </div>
+                            <div>
+                              <span className="font-semibold text-blue-900 dark:text-blue-200">Fat Target:</span>
+                              <p className="text-blue-700 dark:text-blue-400">{currentProfile.fat[0]}-{currentProfile.fat[1]}%</p>
+                            </div>
+                            <div>
+                              <span className="font-semibold text-blue-900 dark:text-blue-200">Fiber Target:</span>
+                              <p className="text-blue-700 dark:text-blue-400">{currentProfile.fiber[0]}-{currentProfile.fiber[1]}%</p>
                             </div>
                           </div>
                         </div>
