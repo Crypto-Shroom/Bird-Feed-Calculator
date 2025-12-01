@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import { INGREDIENTS, PROFILES } from "@/lib/data";
 import { PigeonMixCalculator, MixResult } from "@/lib/calculator";
+import { isToxicRaw, grainNeedsPairing, getPreparationInstructions, SAFETY_DISCLAIMER } from "@/lib/safety";
 import { cn } from "@/lib/utils";
 
 export default function Home() {
@@ -477,6 +478,21 @@ export default function Home() {
               </div>
             )}
           </div>
+        </div>
+
+        {/* Safety Disclaimer */}
+        <div className="mt-16 border-t pt-8">
+          <Alert className="bg-amber-50 border-amber-200">
+            <AlertTriangle className="h-4 w-4 text-amber-600" />
+            <AlertTitle className="text-amber-900 font-bold">Important Safety Reminders</AlertTitle>
+            <AlertDescription className="text-amber-800 mt-2 space-y-2 text-sm">
+              <p>Fresh Water: Always provide clean, fresh water available at all times</p>
+              <p>Grit: Pigeons need grit to properly digest seeds and grains</p>
+              <p>Toxic Legumes: Never feed raw kidney beans, lima beans, fava beans, navy beans, or pinto beans</p>
+              <p>Preparation: Follow preparation instructions for each ingredient carefully</p>
+              <p>Veterinary Care: If your pigeon shows signs of illness, contact an avian veterinarian immediately</p>
+            </AlertDescription>
+          </Alert>
         </div>
       </main>
     </div>

@@ -56,13 +56,11 @@ export const INGREDIENTS: Record<string, Ingredient> = {
     "peas_green": {"category": "legume", "protein": 23, "carbs": 60, "fat": 1.5, "fiber": 5, "notes": "Standard green peas"},
     "peas_maple": {"category": "legume", "protein": 25, "carbs": 60, "fat": 1.5, "fiber": 5, "notes": "Maple peas variety"},
     "peas_yellow": {"category": "legume", "protein": 23, "carbs": 60, "fat": 1.5, "fiber": 5, "notes": "Yellow split peas"},
-    "split_peas": {"category": "legume", "protein": 25, "carbs": 63, "fat": 0.4, "fiber": 16, "notes": "Can be fed raw or cooked"},
     
     "lentils": {"category": "legume", "protein": 25, "carbs": 63, "fat": 1, "fiber": 8, "notes": "Very high protein, safe uncooked"},
     "lentils_red": {"category": "legume", "protein": 26, "carbs": 63, "fat": 1, "fiber": 8, "notes": "Red lentils"},
     "lentils_green": {"category": "legume", "protein": 25, "carbs": 63, "fat": 1, "fiber": 8, "notes": "Green lentils"},
     "lentils_brown": {"category": "legume", "protein": 25, "carbs": 63, "fat": 1, "fiber": 8, "notes": "Brown lentils"},
-    "split_lentils": {"category": "legume", "protein": 25, "carbs": 63, "fat": 1, "fiber": 8, "notes": "Split lentils, quick cooking"},
     
     "beans": {"category": "legume", "protein": 22, "carbs": 62, "fat": 1, "fiber": 6, "notes": "Must be cooked (except safe varieties)"},
     "mung_beans": {"category": "legume", "protein": 24, "carbs": 63, "fat": 1, "fiber": 7, "notes": "Safe uncooked"},
@@ -73,8 +71,6 @@ export const INGREDIENTS: Record<string, Ingredient> = {
     "kidney_beans": {"category": "legume", "protein": 24, "carbs": 60, "fat": 1, "fiber": 7, "notes": "Must be cooked, toxic raw"},
     "pinto_beans": {"category": "legume", "protein": 21, "carbs": 63, "fat": 1, "fiber": 9, "notes": "Must be cooked"},
     "adzuki_beans": {"category": "legume", "protein": 20, "carbs": 63, "fat": 0.5, "fiber": 7, "notes": "Small red beans"},
-    "lima_beans": {"category": "legume", "protein": 21, "carbs": 40, "fat": 0.7, "fiber": 7, "notes": "Must be cooked, toxic raw"},
-    "black_beans": {"category": "legume", "protein": 21, "carbs": 62, "fat": 0.9, "fiber": 15, "notes": "Must be cooked, toxic raw"},
     
     "vetch": {"category": "legume", "protein": 24, "carbs": 60, "fat": 1.5, "fiber": 6, "notes": "Common vetch, high protein"},
     "lupins": {"category": "legume", "protein": 36, "carbs": 40, "fat": 9, "fiber": 19, "notes": "Very high protein, high fiber"},
