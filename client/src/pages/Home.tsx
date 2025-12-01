@@ -144,6 +144,23 @@ export default function Home() {
                     className="py-4"
                   />
                 </div>
+
+                <div className="border-t pt-4 space-y-3">
+                  <div className="flex items-start gap-3">
+                    <Droplets className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
+                    <div className="text-sm">
+                      <p className="font-medium text-foreground">Fresh Water</p>
+                      <p className="text-xs text-muted-foreground">Always provide clean, fresh water available at all times</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Scale className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                    <div className="text-sm">
+                      <p className="font-medium text-foreground">Grit</p>
+                      <p className="text-xs text-muted-foreground">Pigeons need grit to properly digest seeds and grains</p>
+                    </div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
@@ -176,13 +193,20 @@ export default function Home() {
               <CardContent className="flex-1 overflow-hidden p-0">
                 <ScrollArea className="h-full px-6 pb-6">
                   <div className="space-y-4 pt-2">
-                    {Object.entries(inventory).map(([name, amount]) => (
-                      <div key={name} className="flex items-center gap-3 group">
+                    {Object.entries(inventory).map(([name, amount]) => {
+                      const toxicInfo = isToxicRaw(name);
+                      return (
+                      <div key={name} className={cn("flex items-center gap-3 group p-3 rounded-lg border", toxicInfo ? "bg-red-50 border-red-300" : "border-transparent")}>
                         <div className="flex-1">
                           <div className="flex justify-between mb-1">
                             <span className="font-medium capitalize text-sm">{name.replace(/_/g, " ")}</span>
                             <span className="text-xs text-muted-foreground">{amount}g</span>
                           </div>
+                          {toxicInfo && (
+                            <div className="mb-2 p-2 bg-red-100 border border-red-300 rounded text-xs text-red-900 font-semibold">
+                              WARNING: {toxicInfo.toxin}. {toxicInfo.message}
+                            </div>
+                          )}
                           <div className="flex items-center gap-2">
                             <Input 
                               type="number" 
@@ -201,7 +225,8 @@ export default function Home() {
                           </div>
                         </div>
                       </div>
-                    ))}
+                    );
+                    })}
                     {Object.keys(inventory).length === 0 && (
                       <div className="text-center py-12 text-muted-foreground">
                         <p>No ingredients added.</p>
@@ -328,6 +353,7 @@ export default function Home() {
                                 <th className="px-4 py-3 text-right">Amount</th>
                                 <th className="px-4 py-3 text-right">%</th>
                                 <th className="px-4 py-3 text-left pl-8">Category</th>
+                                <th className="px-4 py-3 text-left">Preparation</th>
                               </tr>
                             </thead>
                             <tbody className="divide-y divide-border/50">
@@ -349,6 +375,9 @@ export default function Home() {
                                       )}>
                                         {INGREDIENTS[name].category}
                                       </Badge>
+                                    </td>
+                                    <td className="px-4 py-3 text-xs text-muted-foreground">
+                                      {getPreparationInstructions(name)?.preparation || 'Feed as is'}
                                     </td>
                                   </tr>
                                 ))}
@@ -426,6 +455,29 @@ export default function Home() {
 
                     {activeTab === "analysis" && (
                       <div className="space-y-8">
+                        <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900 rounded-lg p-4">
+                          <h3 className="text-lg font-bold mb-2 text-blue-900 dark:text-blue-200">Profile: {currentProfile.name}</h3>
+                          <p className="text-sm text-blue-800 dark:text-blue-300 mb-3">{currentProfile.feeding_notes}</p>
+                          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
+                            <div>
+                              <span className="font-semibold text-blue-900 dark:text-blue-200">Protein Target:</span>
+                              <p className="text-blue-700 dark:text-blue-400">{currentProfile.protein[0]}-{currentProfile.protein[1]}%</p>
+                            </div>
+                            <div>
+                              <span className="font-semibold text-blue-900 dark:text-blue-200">Carbs Target:</span>
+                              <p className="text-blue-700 dark:text-blue-400">{currentProfile.carbs[0]}-{currentProfile.carbs[1]}%</p>
+                            </div>
+                            <div>
+                              <span className="font-semibold text-blue-900 dark:text-blue-200">Fat Target:</span>
+                              <p className="text-blue-700 dark:text-blue-400">{currentProfile.fat[0]}-{currentProfile.fat[1]}%</p>
+                            </div>
+                            <div>
+                              <span className="font-semibold text-blue-900 dark:text-blue-200">Fiber Target:</span>
+                              <p className="text-blue-700 dark:text-blue-400">{currentProfile.fiber[0]}-{currentProfile.fiber[1]}%</p>
+                            </div>
+                          </div>
+                        </div>
+
                         <div>
                           <h3 className="text-lg font-bold mb-4">Category Breakdown</h3>
                           <div className="space-y-4">

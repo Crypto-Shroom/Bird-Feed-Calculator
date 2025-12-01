@@ -302,6 +302,10 @@ export const HERBS_SUPPLEMENTS: Record<string, Herb> = {
 };
 
 export const HERB_RECOMMENDATIONS: Record<string, { recommended: string[]; notes: string }> = {
+    "pet": {
+        "recommended": ["chamomile", "fennel", "aniseed", "oregano", "thyme"],
+        "notes": "Stress relief, digestive health, odor reduction, general wellness for companion birds"
+    },
     "maintenance": {
         "recommended": ["apple_cider_vinegar", "garlic_powder", "oregano"],
         "notes": "Basic immune support and gut health"
