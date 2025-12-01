@@ -155,7 +155,7 @@ export default function Home() {
                   </CardTitle>
                   <Select onValueChange={handleAddIngredient}>
                     <SelectTrigger className="w-[140px] h-8 text-xs">
-                      <Plus className="w-3 h-3 mr-1" /> Add Item
+                      <Plus className="w-3 h-3 mr-1" /> Add Ingredient
                     </SelectTrigger>
                     <SelectContent>
                       <ScrollArea className="h-[300px]">
@@ -169,7 +169,7 @@ export default function Home() {
                   </Select>
                 </div>
                 <CardDescription>
-                  Enter available amounts (g) for each ingredient you have.
+                  Enter available amounts in grams for each ingredient you have on hand.
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex-1 overflow-hidden p-0">
@@ -276,6 +276,31 @@ export default function Home() {
                             <Download className="w-4 h-4" /> Export Recipe
                           </Button>
                         </div>
+
+                        {/* Missing Ingredients Alert */}
+                        {result.missingIngredients && result.missingIngredients.length > 0 && (
+                          <div className="space-y-3 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900 rounded-lg p-4 mb-6">
+                            <div className="flex items-start gap-3">
+                              <AlertTriangle className="w-5 h-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
+                              <div className="flex-1">
+                                <h4 className="font-bold text-red-900 dark:text-red-200 mb-2">Missing Essential Ingredients</h4>
+                                {result.missingIngredients.map((missing, i) => (
+                                  <div key={i} className="mb-3 last:mb-0">
+                                    <p className="text-sm font-medium text-red-800 dark:text-red-300 mb-1">{missing.category}</p>
+                                    <p className="text-sm text-red-700 dark:text-red-400 mb-2">{missing.reason}</p>
+                                    <div className="flex flex-wrap gap-2">
+                                      {missing.recommendations.map((rec, j) => (
+                                        <Badge key={j} variant="outline" className="bg-red-100 dark:bg-red-900 text-red-900 dark:text-red-200 border-red-300 dark:border-red-700">
+                                          {rec}
+                                        </Badge>
+                                      ))}
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        )}
 
                         {/* Warnings */}
                         {result.warnings.length > 0 && (

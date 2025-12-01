@@ -23,6 +23,7 @@ export interface MixResult {
     notes: string;
   }>;
   herbPurpose: string;
+  missingIngredients?: Array<{ category: string; reason: string; recommendations: string[] }>;
 }
 
 export class PigeonMixCalculator {
@@ -110,7 +111,48 @@ export class PigeonMixCalculator {
     );
   }
 
-  public calculate(targetWeight: number = 1000): MixResult {
+  private detectMissingIngredients(available: Array<any>): Array<{ category: string; reason: string; recommendations: string[] }> {
+    const missing: Array<{ category: string; reason: string; recommendations: string[] }> = [];
+    const byCategory: Record<string, number> = { grain: 0, legume: 0, seed: 0 };
+    const categoryRecommendations: Record<string, string[]> = {
+      grain: ["Wheat", "Barley", "Oats", "Corn (yellow)", "Rice"],
+      legume: ["Peas", "Lentils", "Mung beans", "Black-eyed peas"],
+      seed: ["Safflower", "Sunflower", "Hemp", "Flaxseed", "Peanuts"]
+    };
+
+    available.forEach(ing => {
+      byCategory[ing.category] += ing.amount;
+    });
+
+    // Check for critical missing categories
+    if (byCategory.grain === 0) {
+      missing.push({
+        category: "Grains",
+        reason: "No grains available - these are essential for energy and carbohydrates",
+        recommendations: categoryRecommendations.grain
+      });
+    }
+
+    if (byCategory.legume === 0) {
+      missing.push({
+        category: "Legumes",
+        reason: "No legumes available - these are essential for protein and amino acids",
+        recommendations: categoryRecommendations.legume
+      });
+    }
+
+    if (byCategory.seed === 0) {
+      missing.push({
+        category: "Seeds/Oil Sources",
+        reason: "No oil seeds available - important for fat content and feather health",
+        recommendations: categoryRecommendations.seed
+      });
+    }
+
+    return missing;
+  }
+
+    public calculate(targetWeight: number = 1000): MixResult {
     // Simple optimization: try to use available ingredients proportionally first
     // In a real web app, we might want to use a more complex solver or WebAssembly
     // but for this demo, a weighted distribution based on category targets is a good start
@@ -118,6 +160,8 @@ export class PigeonMixCalculator {
     const available = Object.entries(this.inventory)
       .filter(([_, amount]) => amount > 0)
       .map(([name, amount]) => ({ name, amount, ...INGREDIENTS[name] }));
+
+    const missingIngredients = this.detectMissingIngredients(available);
 
     if (available.length === 0) {
       return {
@@ -182,6 +226,17 @@ export class PigeonMixCalculator {
     
     // Generate warnings
     const warnings: Array<{ level: "CRITICAL" | "WARNING"; message: string }> = [];
+    
+    // Add missing ingredient warnings
+    if (missingIngredients.length > 0) {
+      missingIngredients.forEach(missing => {
+        warnings.push({
+          level: "CRITICAL",
+          message: `Missing ${missing.category}: ${missing.reason}`
+        });
+      });
+    }
+    
     if (categories.legume < 5) warnings.push({ level: "CRITICAL", message: "No legumes in mix - essential for protein!" });
     if (categories.grain < 30) warnings.push({ level: "CRITICAL", message: "Insufficient grains - essential for energy!" });
     if (nutrition.protein < 10) warnings.push({ level: "CRITICAL", message: `Protein too low (${nutrition.protein.toFixed(1)}%)` });
@@ -215,7 +270,8 @@ export class PigeonMixCalculator {
       warnings,
       suggestions,
       herbRecommendations: herbList,
-      herbPurpose: herbRecs ? herbRecs.notes : ""
+      herbPurpose: herbRecs ? herbRecs.notes : "",
+      missingIngredients: missingIngredients.length > 0 ? missingIngredients : undefined
     };
   }
 }

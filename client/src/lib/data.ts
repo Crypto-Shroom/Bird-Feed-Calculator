@@ -102,6 +102,9 @@ export const INGREDIENTS: Record<string, Ingredient> = {
     "chia": {"category": "seed", "protein": 17, "carbs": 42, "fat": 31, "fiber": 34, "notes": "Omega-3, very high fiber"},
     "pumpkin_seeds": {"category": "seed", "protein": 30, "carbs": 10, "fat": 49, "fiber": 6, "notes": "Pepitas, high protein"},
     "pepitas": {"category": "seed", "protein": 30, "carbs": 10, "fat": 49, "fiber": 6, "notes": "Pumpkin seeds"},
+    "peanuts": {"category": "seed", "protein": 26, "carbs": 16, "fat": 49, "fiber": 9, "notes": "High protein and fat, good energy source"},
+    "peanuts_raw": {"category": "seed", "protein": 26, "carbs": 16, "fat": 49, "fiber": 9, "notes": "Raw peanuts, unsalted"},
+    "peanuts_roasted": {"category": "seed", "protein": 26, "carbs": 16, "fat": 49, "fiber": 9, "notes": "Roasted unsalted peanuts"},
 };
 
 export const HERBS_SUPPLEMENTS: Record<string, Herb> = {
@@ -317,7 +320,17 @@ export const HERB_RECOMMENDATIONS: Record<string, { recommended: string[]; notes
     }
 };
 
-export const PROFILES = {
+export const PROFILES: Record<string, any> = {
+    "pet": {
+        "name": "Pet/Stay-at-Home",
+        "protein": [12, 14],
+        "carbs": [65, 75],
+        "fat": [2, 4],
+        "fiber": [0, 5],
+        "category_ratios": {"grain": [65, 75], "legume": [15, 20], "seed": [5, 10]},
+        "feeding_notes": "Feed 25-35g per bird per day. Balanced nutrition for sedentary birds. Variety helps prevent boredom.",
+        "description": "For companion pigeons that don't fly or race. Focus on balanced nutrition and variety to maintain health and prevent behavioral issues."
+    },
     "maintenance": {
         "name": "Maintenance/Rest",
         "protein": [13.5, 15],
@@ -325,7 +338,8 @@ export const PROFILES = {
         "fat": [2, 5],
         "fiber": [0, 5],
         "category_ratios": {"grain": [60, 70], "legume": [15, 20], "seed": [10, 15]},
-        "feeding_notes": "Feed 30-40g per bird per day. Light feeding in morning, standard mix in evening."
+        "feeding_notes": "Feed 30-40g per bird per day. Light feeding in morning, standard mix in evening.",
+        "description": "For resting birds between seasons. Balanced nutrition maintains health without excess energy stimulation."
     },
     "racing": {
         "name": "Racing/Performance",
@@ -334,7 +348,8 @@ export const PROFILES = {
         "fat": [2, 5],
         "fiber": [0, 5],
         "category_ratios": {"grain": [40, 50], "legume": [40, 50], "seed": [5, 10]},
-        "feeding_notes": "Feed 40-50g per bird per day. High protein for performance. Increase peas for long races."
+        "feeding_notes": "Feed 40-50g per bird per day. High protein for performance. Increase peas for long races.",
+        "description": "For racing pigeons during training and competition. High protein and legumes build muscle and endurance."
     },
     "breeding": {
         "name": "Breeding/Brooding",
@@ -343,7 +358,8 @@ export const PROFILES = {
         "fat": [3, 6],
         "fiber": [0, 5],
         "category_ratios": {"grain": [60, 65], "legume": [20, 25], "seed": [10, 15]},
-        "feeding_notes": "Feed 35-45g per bird per day. Add flaxseed oil coating. Support egg production and squab growth."
+        "feeding_notes": "Feed 35-45g per bird per day. Add flaxseed oil coating. Support egg production and squab growth.",
+        "description": "For breeding pairs and brooding birds. Supports egg production, fertility, and healthy squab development."
     },
     "molting": {
         "name": "Molting Season",
@@ -352,7 +368,8 @@ export const PROFILES = {
         "fat": [3, 6],
         "fiber": [0, 5],
         "category_ratios": {"grain": [55, 60], "legume": [25, 30], "seed": [10, 15]},
-        "feeding_notes": "Feed 35-45g per bird per day. High protein for feather growth. Add brewer's yeast. Provide bathing 1-2x/week."
+        "feeding_notes": "Feed 35-45g per bird per day. High protein for feather growth. Add brewer's yeast. Provide bathing 1-2x/week.",
+        "description": "For molting birds shedding old feathers. High protein and amino acids support rapid feather regeneration."
     },
     "winter": {
         "name": "Winter Season",
@@ -361,6 +378,7 @@ export const PROFILES = {
         "fat": [5, 8],
         "fiber": [0, 5],
         "category_ratios": {"grain": [70, 75], "legume": [10, 15], "seed": [10, 15]},
-        "feeding_notes": "Feed 30-40g per bird per day, twice daily. High energy for warmth. Add oil seeds (hemp, sunflower) up to 10%."
+        "feeding_notes": "Feed 30-40g per bird per day, twice daily. High energy for warmth. Add oil seeds (hemp, sunflower) up to 10%.",
+        "description": "For cold weather survival. High carbs and fats provide extra calories to maintain body temperature."
     }
 };
