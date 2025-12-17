@@ -1,0 +1,7 @@
+# Local archives and other binary bundles (not tracked)
+archives/
+*.zip
+pigeon-mix-web-multi-bird/client/public/images/hero-pigeon-mix.png
+pigeon-mix-web-multi-bird/client/public/images/ingredients-collage.png
+pigeon-mix-web-multi-bird/client/public/images/pigeon-portrait.png
+pigeon-mix-web-multi-bird/dist/
