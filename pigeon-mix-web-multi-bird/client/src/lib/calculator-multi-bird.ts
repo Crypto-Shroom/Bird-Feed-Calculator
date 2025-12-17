@@ -226,8 +226,9 @@ export class MultibirMixCalculator {
   private optimizeMix(targetWeight: number = 1000): Record<string, number> {
     const mix: Record<string, number> = {};
     const totalInventory = Object.values(this.inventory).reduce((a, b) => a + b, 0);
+    const targetTotal = Math.min(targetWeight, totalInventory);
 
-    if (totalInventory === 0) return mix;
+    if (targetTotal === 0) return mix;
 
     // Score each ingredient based on profile targets
     const scores: Record<string, number> = {};
@@ -273,10 +274,33 @@ export class MultibirMixCalculator {
       return mix;
     }
 
-    for (const [ingredient, score] of Object.entries(scores)) {
-      if (score > 0) {
-        mix[ingredient] = Math.round((score / totalScore) * totalInventory);
+    const availableCapacity = { ...this.inventory };
+    let remainingWeight = targetTotal;
+    let activeIngredients = Object.entries(scores).filter(([ingredient, score]) => score > 0 && availableCapacity[ingredient] > 0);
+
+    while (remainingWeight > 0 && activeIngredients.length > 0) {
+      const activeTotalScore = activeIngredients.reduce((sum, [ingredient]) => sum + scores[ingredient], 0);
+      let allocatedThisRound = 0;
+
+      for (const [ingredient] of activeIngredients) {
+        const proportion = scores[ingredient] / activeTotalScore;
+        const allocation = Math.min(availableCapacity[ingredient], remainingWeight * proportion);
+
+        if (allocation > 0) {
+          mix[ingredient] = (mix[ingredient] || 0) + allocation;
+          availableCapacity[ingredient] -= allocation;
+          allocatedThisRound += allocation;
+        }
       }
+
+      if (allocatedThisRound === 0) break;
+
+      remainingWeight -= allocatedThisRound;
+      activeIngredients = activeIngredients.filter(([ingredient]) => availableCapacity[ingredient] > 0);
+    }
+
+    for (const ingredient of Object.keys(mix)) {
+      mix[ingredient] = Math.round(mix[ingredient]);
     }
 
     return mix;
