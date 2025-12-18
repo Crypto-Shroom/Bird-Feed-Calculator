@@ -1,4 +1,9 @@
-import { INGREDIENTS, PROFILES, HERB_RECOMMENDATIONS, HERBS_SUPPLEMENTS } from "./data";
+import {
+  INGREDIENTS,
+  PROFILES,
+  HERB_RECOMMENDATIONS,
+  HERBS_SUPPLEMENTS,
+} from "./data";
 
 export interface MixResult {
   mix: Record<string, number>;
@@ -23,7 +28,11 @@ export interface MixResult {
     notes: string;
   }>;
   herbPurpose: string;
-  missingIngredients?: Array<{ category: string; reason: string; recommendations: string[] }>;
+  missingIngredients?: Array<{
+    category: string;
+    reason: string;
+    recommendations: string[];
+  }>;
 }
 
 export class PigeonMixCalculator {
@@ -31,10 +40,14 @@ export class PigeonMixCalculator {
   private situation: string;
   private profile: any;
 
-  constructor(inventory: Record<string, number>, situation: string = "maintenance") {
+  constructor(
+    inventory: Record<string, number>,
+    situation: string = "maintenance",
+  ) {
     this.inventory = inventory;
     this.situation = situation;
-    this.profile = PROFILES[situation as keyof typeof PROFILES] || PROFILES["maintenance"];
+    this.profile =
+      PROFILES[situation as keyof typeof PROFILES] || PROFILES["maintenance"];
   }
 
   private calculateNutrition(mix: Record<string, number>) {
@@ -80,47 +93,67 @@ export class PigeonMixCalculator {
     const nutrition = this.calculateNutrition(mix);
     const categories = this.calculateCategoryRatios(mix);
 
-    const targetProtein = (this.profile.protein[0] + this.profile.protein[1]) / 2;
-    const proteinScore = Math.max(0, 1 - Math.abs(nutrition.protein - targetProtein) / targetProtein);
+    const targetProtein =
+      (this.profile.protein[0] + this.profile.protein[1]) / 2;
+    const proteinScore = Math.max(
+      0,
+      1 - Math.abs(nutrition.protein - targetProtein) / targetProtein,
+    );
 
     const targetCarbs = (this.profile.carbs[0] + this.profile.carbs[1]) / 2;
-    const carbsScore = Math.max(0, 1 - Math.abs(nutrition.carbs - targetCarbs) / targetCarbs);
+    const carbsScore = Math.max(
+      0,
+      1 - Math.abs(nutrition.carbs - targetCarbs) / targetCarbs,
+    );
 
     const targetFat = (this.profile.fat[0] + this.profile.fat[1]) / 2;
-    const fatScore = Math.max(0, 1 - Math.abs(nutrition.fat - targetFat) / targetFat);
+    const fatScore = Math.max(
+      0,
+      1 - Math.abs(nutrition.fat - targetFat) / targetFat,
+    );
 
-    const fiberScore = nutrition.fiber < 5 ? 1.0 : Math.max(0, 1 - (nutrition.fiber - 5) / 5);
+    const fiberScore =
+      nutrition.fiber < 5 ? 1.0 : Math.max(0, 1 - (nutrition.fiber - 5) / 5);
 
     let categoryScore = 0;
     for (const [cat, range] of Object.entries(this.profile.category_ratios)) {
       const targetRatio = ((range as number[])[0] + (range as number[])[1]) / 2;
       const actualRatio = categories[cat as keyof typeof categories] || 0;
-      categoryScore += Math.max(0, 1 - Math.abs(actualRatio - targetRatio) / targetRatio);
+      categoryScore += Math.max(
+        0,
+        1 - Math.abs(actualRatio - targetRatio) / targetRatio,
+      );
     }
     categoryScore /= 3;
 
     const diversityScore = Math.min(1.0, Object.keys(mix).length / 5);
 
     return (
-      proteinScore * 0.30 +
+      proteinScore * 0.3 +
       carbsScore * 0.25 +
       fatScore * 0.15 +
-      fiberScore * 0.10 +
+      fiberScore * 0.1 +
       categoryScore * 0.15 +
       diversityScore * 0.05
     );
   }
 
-  private detectMissingIngredients(available: Array<any>): Array<{ category: string; reason: string; recommendations: string[] }> {
-    const missing: Array<{ category: string; reason: string; recommendations: string[] }> = [];
+  private detectMissingIngredients(
+    available: Array<any>,
+  ): Array<{ category: string; reason: string; recommendations: string[] }> {
+    const missing: Array<{
+      category: string;
+      reason: string;
+      recommendations: string[];
+    }> = [];
     const byCategory: Record<string, number> = { grain: 0, legume: 0, seed: 0 };
     const categoryRecommendations: Record<string, string[]> = {
       grain: ["Wheat", "Barley", "Oats", "Corn (yellow)", "Rice"],
       legume: ["Peas", "Lentils", "Mung beans", "Black-eyed peas"],
-      seed: ["Safflower", "Sunflower", "Hemp", "Flaxseed", "Peanuts"]
+      seed: ["Safflower", "Sunflower", "Hemp", "Flaxseed", "Peanuts"],
     };
 
-    available.forEach(ing => {
+    available.forEach((ing) => {
       byCategory[ing.category] += ing.amount;
     });
 
@@ -128,35 +161,38 @@ export class PigeonMixCalculator {
     if (byCategory.grain === 0) {
       missing.push({
         category: "Grains",
-        reason: "No grains available - these are essential for energy and carbohydrates",
-        recommendations: categoryRecommendations.grain
+        reason:
+          "No grains available - these are essential for energy and carbohydrates",
+        recommendations: categoryRecommendations.grain,
       });
     }
 
     if (byCategory.legume === 0) {
       missing.push({
         category: "Legumes",
-        reason: "No legumes available - these are essential for protein and amino acids",
-        recommendations: categoryRecommendations.legume
+        reason:
+          "No legumes available - these are essential for protein and amino acids",
+        recommendations: categoryRecommendations.legume,
       });
     }
 
     if (byCategory.seed === 0) {
       missing.push({
         category: "Seeds/Oil Sources",
-        reason: "No oil seeds available - important for fat content and feather health",
-        recommendations: categoryRecommendations.seed
+        reason:
+          "No oil seeds available - important for fat content and feather health",
+        recommendations: categoryRecommendations.seed,
       });
     }
 
     return missing;
   }
 
-    public calculate(targetWeight: number = 1000): MixResult {
+  public calculate(targetWeight: number = 1000): MixResult {
     // Simple optimization: try to use available ingredients proportionally first
     // In a real web app, we might want to use a more complex solver or WebAssembly
     // but for this demo, a weighted distribution based on category targets is a good start
-    
+
     const available = Object.entries(this.inventory)
       .filter(([_, amount]) => amount > 0)
       .map(([name, amount]) => ({ name, amount, ...INGREDIENTS[name] }));
@@ -171,17 +207,21 @@ export class PigeonMixCalculator {
         warnings: [],
         suggestions: [],
         herbRecommendations: [],
-        herbPurpose: ""
+        herbPurpose: "",
       };
     }
 
     // Heuristic distribution
     let mix: Record<string, number> = {};
     let remainingWeight = targetWeight;
-    
+
     // Group by category
-    const byCategory: Record<string, typeof available> = { grain: [], legume: [], seed: [] };
-    available.forEach(ing => {
+    const byCategory: Record<string, typeof available> = {
+      grain: [],
+      legume: [],
+      seed: [],
+    };
+    available.forEach((ing) => {
       if (byCategory[ing.category]) byCategory[ing.category].push(ing);
     });
 
@@ -189,11 +229,11 @@ export class PigeonMixCalculator {
     for (const [cat, range] of Object.entries(this.profile.category_ratios)) {
       const targetPct = ((range as number[])[0] + (range as number[])[1]) / 2;
       const targetCatWeight = targetWeight * (targetPct / 100);
-      
+
       const catIngredients = byCategory[cat];
       if (catIngredients && catIngredients.length > 0) {
         const weightPerIng = targetCatWeight / catIngredients.length;
-        catIngredients.forEach(ing => {
+        catIngredients.forEach((ing) => {
           // Cap at available amount
           const amount = Math.min(weightPerIng, ing.amount);
           mix[ing.name] = amount;
@@ -213,7 +253,7 @@ export class PigeonMixCalculator {
           break;
         }
       }
-      
+
       if (canScale) {
         for (const name in mix) {
           mix[name] *= scale;
@@ -223,45 +263,71 @@ export class PigeonMixCalculator {
 
     const nutrition = this.calculateNutrition(mix);
     const categories = this.calculateCategoryRatios(mix);
-    
+
     // Generate warnings
-    const warnings: Array<{ level: "CRITICAL" | "WARNING"; message: string }> = [];
-    
+    const warnings: Array<{ level: "CRITICAL" | "WARNING"; message: string }> =
+      [];
+
     // Add missing ingredient warnings
     if (missingIngredients.length > 0) {
-      missingIngredients.forEach(missing => {
+      missingIngredients.forEach((missing) => {
         warnings.push({
           level: "CRITICAL",
-          message: `Missing ${missing.category}: ${missing.reason}`
+          message: `Missing ${missing.category}: ${missing.reason}`,
         });
       });
     }
-    
-    if (categories.legume < 5) warnings.push({ level: "CRITICAL", message: "No legumes in mix - essential for protein!" });
-    if (categories.grain < 30) warnings.push({ level: "CRITICAL", message: "Insufficient grains - essential for energy!" });
-    if (nutrition.protein < 10) warnings.push({ level: "CRITICAL", message: `Protein too low (${nutrition.protein.toFixed(1)}%)` });
-    if (nutrition.fiber > 7) warnings.push({ level: "CRITICAL", message: `Fiber too high (${nutrition.fiber.toFixed(1)}%)` });
-    
-    if (!mix["corn_yellow"] && !mix["maize"]) warnings.push({ level: "WARNING", message: "No yellow corn - risk of Vitamin A deficiency" });
-    
+
+    if (categories.legume < 5)
+      warnings.push({
+        level: "CRITICAL",
+        message: "No legumes in mix - essential for protein!",
+      });
+    if (categories.grain < 30)
+      warnings.push({
+        level: "CRITICAL",
+        message: "Insufficient grains - essential for energy!",
+      });
+    if (nutrition.protein < 10)
+      warnings.push({
+        level: "CRITICAL",
+        message: `Protein too low (${nutrition.protein.toFixed(1)}%)`,
+      });
+    if (nutrition.fiber > 7)
+      warnings.push({
+        level: "CRITICAL",
+        message: `Fiber too high (${nutrition.fiber.toFixed(1)}%)`,
+      });
+
+    if (!mix["corn_yellow"] && !mix["maize"])
+      warnings.push({
+        level: "WARNING",
+        message: "No yellow corn - risk of Vitamin A deficiency",
+      });
+
     // Generate suggestions
     const suggestions: string[] = [];
-    if (categories.legume < 15) suggestions.push("Add more peas or lentils to increase protein");
-    if (this.situation === "winter" && nutrition.fat < 5) suggestions.push("Add hemp or sunflower seeds for winter warmth");
+    if (categories.legume < 15)
+      suggestions.push("Add more peas or lentils to increase protein");
+    if (this.situation === "winter" && nutrition.fat < 5)
+      suggestions.push("Add hemp or sunflower seeds for winter warmth");
     if (!mix["corn_yellow"]) suggestions.push("Add yellow corn for Vitamin A");
 
     // Herb recommendations
-    const herbRecs = HERB_RECOMMENDATIONS[this.situation as keyof typeof HERB_RECOMMENDATIONS];
-    const herbList = herbRecs ? herbRecs.recommended.map(name => {
-      const h = HERBS_SUPPLEMENTS[name];
-      return {
-        name: name.replace(/_/g, " "),
-        benefits: h.benefits,
-        dosage: h.dosage_per_kg,
-        frequency: h.frequency,
-        notes: h.notes
-      };
-    }) : [];
+    const herbRecs =
+      HERB_RECOMMENDATIONS[this.situation as keyof typeof HERB_RECOMMENDATIONS];
+    const herbList = herbRecs
+      ? herbRecs.recommended.map((name) => {
+          const h = HERBS_SUPPLEMENTS[name];
+          return {
+            name: name.replace(/_/g, " "),
+            benefits: h.benefits,
+            dosage: h.dosage_per_kg,
+            frequency: h.frequency,
+            notes: h.notes,
+          };
+        })
+      : [];
 
     return {
       mix,
@@ -271,7 +337,8 @@ export class PigeonMixCalculator {
       suggestions,
       herbRecommendations: herbList,
       herbPurpose: herbRecs ? herbRecs.notes : "",
-      missingIngredients: missingIngredients.length > 0 ? missingIngredients : undefined
+      missingIngredients:
+        missingIngredients.length > 0 ? missingIngredients : undefined,
     };
   }
 }

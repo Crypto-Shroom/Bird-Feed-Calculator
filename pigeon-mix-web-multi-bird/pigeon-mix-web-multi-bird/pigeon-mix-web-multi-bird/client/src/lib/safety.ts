@@ -17,48 +17,52 @@ export interface IngredientPrep {
 
 // Toxic ingredients that should NEVER be fed raw
 export const TOXIC_INGREDIENTS: Record<string, ToxicIngredient> = {
-  "kidney_beans": {
+  kidney_beans: {
     name: "Kidney Beans",
     toxin: "Hemagglutinin (Lectin)",
     severity: "CRITICAL",
-    message: "Raw kidney beans contain hemagglutinin, a deadly toxin. MUST be thoroughly cooked before feeding.",
-    preparation: "Boil for at least 30 minutes until completely soft. Raw = RISK OF DEATH."
+    message:
+      "Raw kidney beans contain hemagglutinin, a deadly toxin. MUST be thoroughly cooked before feeding.",
+    preparation:
+      "Boil for at least 30 minutes until completely soft. Raw = RISK OF DEATH.",
   },
-  "lima_beans": {
+  lima_beans: {
     name: "Lima Beans",
     toxin: "Hemagglutinin (Lectin)",
     severity: "CRITICAL",
-    message: "Raw lima beans are TOXIC to pigeons and can cause severe intestinal damage.",
-    preparation: "Must be thoroughly cooked. Raw = RISK OF DEATH."
+    message:
+      "Raw lima beans are TOXIC to pigeons and can cause severe intestinal damage.",
+    preparation: "Must be thoroughly cooked. Raw = RISK OF DEATH.",
   },
-  "fava_beans": {
+  fava_beans: {
     name: "Fava Beans",
     toxin: "Hemagglutinin (Lectin)",
     severity: "CRITICAL",
-    message: "Raw fava beans contain hemagglutinin. MUST be cooked before feeding.",
-    preparation: "Boil thoroughly. Raw = RISK OF DEATH."
+    message:
+      "Raw fava beans contain hemagglutinin. MUST be cooked before feeding.",
+    preparation: "Boil thoroughly. Raw = RISK OF DEATH.",
   },
-  "navy_beans": {
+  navy_beans: {
     name: "Navy Beans",
     toxin: "Hemagglutinin (Lectin)",
     severity: "CRITICAL",
     message: "Raw navy beans are TOXIC and can be fatal to birds.",
-    preparation: "Must be thoroughly cooked. Raw = RISK OF DEATH."
+    preparation: "Must be thoroughly cooked. Raw = RISK OF DEATH.",
   },
-  "pinto_beans": {
+  pinto_beans: {
     name: "Pinto Beans",
     toxin: "Hemagglutinin (Lectin)",
     severity: "CRITICAL",
     message: "Raw pinto beans contain hemagglutinin toxin. MUST be cooked.",
-    preparation: "Boil thoroughly. Raw = RISK OF DEATH."
+    preparation: "Boil thoroughly. Raw = RISK OF DEATH.",
   },
-  "black_beans": {
+  black_beans: {
     name: "Black Beans",
     toxin: "Hemagglutinin (Lectin)",
     severity: "CRITICAL",
     message: "Raw black beans are TOXIC and can be fatal.",
-    preparation: "Must be thoroughly cooked. Raw = RISK OF DEATH."
-  }
+    preparation: "Must be thoroughly cooked. Raw = RISK OF DEATH.",
+  },
 };
 
 // Safe legumes that can be fed raw
@@ -78,7 +82,7 @@ export const SAFE_RAW_LEGUMES = new Set([
   "mung_beans",
   "black_eyed_peas",
   "chickpeas",
-  "adzuki_beans"
+  "adzuki_beans",
 ]);
 
 // Grains that should not be the only grain in a mix
@@ -89,76 +93,80 @@ export const GRAINS_NEEDING_PAIRING = new Set([
   "popcorn",
   "milo",
   "sorghum",
-  "kaffir_corn"
+  "kaffir_corn",
 ]);
 
 // Recommended grain pairings
 export const GRAIN_PAIRINGS: Record<string, string[]> = {
-  "corn_yellow": ["wheat", "barley", "oats", "rye"],
-  "corn_white": ["wheat", "barley", "oats", "rye"],
-  "maize": ["wheat", "barley", "oats", "rye"],
-  "milo": ["wheat", "barley", "oats", "rye"],
-  "sorghum": ["wheat", "barley", "oats", "rye"],
-  "kaffir_corn": ["wheat", "barley", "oats", "rye"]
+  corn_yellow: ["wheat", "barley", "oats", "rye"],
+  corn_white: ["wheat", "barley", "oats", "rye"],
+  maize: ["wheat", "barley", "oats", "rye"],
+  milo: ["wheat", "barley", "oats", "rye"],
+  sorghum: ["wheat", "barley", "oats", "rye"],
+  kaffir_corn: ["wheat", "barley", "oats", "rye"],
 };
 
 // Ingredient preparation instructions
 export const INGREDIENT_PREP: Record<string, IngredientPrep> = {
-  "peanuts": {
+  peanuts: {
     name: "Peanuts",
     preparation: "Remove shells before feeding",
-    notes: "Feed unsalted, unsweetened peanuts only. High fat content - use sparingly."
+    notes:
+      "Feed unsalted, unsweetened peanuts only. High fat content - use sparingly.",
   },
-  "peanuts_raw": {
+  peanuts_raw: {
     name: "Raw Peanuts",
     preparation: "Remove shells before feeding",
-    notes: "Feed unsalted raw peanuts. High fat content - use sparingly."
+    notes: "Feed unsalted raw peanuts. High fat content - use sparingly.",
   },
-  "peanuts_roasted": {
+  peanuts_roasted: {
     name: "Roasted Peanuts",
     preparation: "Remove shells before feeding",
-    notes: "Feed unsalted, unsweetened roasted peanuts. High fat content - use sparingly."
+    notes:
+      "Feed unsalted, unsweetened roasted peanuts. High fat content - use sparingly.",
   },
-  "sunflower": {
+  sunflower: {
     name: "Sunflower Seeds",
     preparation: "Can feed with or without hulls",
-    notes: "Hulled seeds are easier to eat. With hulls provides more fiber."
+    notes: "Hulled seeds are easier to eat. With hulls provides more fiber.",
   },
-  "safflower": {
+  safflower: {
     name: "Safflower Seeds",
     preparation: "Feed whole with hull intact",
-    notes: "Hull provides important fiber. Pigeons love this seed."
+    notes: "Hull provides important fiber. Pigeons love this seed.",
   },
-  "hemp": {
+  hemp: {
     name: "Hemp Seeds",
     preparation: "Feed whole seeds",
-    notes: "Excellent source of omega-3 and omega-6 for feather health."
+    notes: "Excellent source of omega-3 and omega-6 for feather health.",
   },
-  "flaxseed": {
+  flaxseed: {
     name: "Flaxseed",
     preparation: "Can feed whole or ground",
-    notes: "Ground flaxseed has better absorption but oxidizes quickly - store in cool place."
+    notes:
+      "Ground flaxseed has better absorption but oxidizes quickly - store in cool place.",
   },
-  "sesame": {
+  sesame: {
     name: "Sesame Seeds",
     preparation: "Feed whole with hull",
-    notes: "Excellent calcium and mineral source. Hull provides fiber."
+    notes: "Excellent calcium and mineral source. Hull provides fiber.",
   },
-  "chia": {
+  chia: {
     name: "Chia Seeds",
     preparation: "Feed whole seeds",
-    notes: "Very high fiber - use sparingly to avoid digestive issues."
+    notes: "Very high fiber - use sparingly to avoid digestive issues.",
   },
-  "pumpkin_seeds": {
+  pumpkin_seeds: {
     name: "Pumpkin Seeds",
     preparation: "Feed whole or hulled",
-    notes: "Whole seeds with hull provide maximum fiber. Hulled pepitas also acceptable."
+    notes:
+      "Whole seeds with hull provide maximum fiber. Hulled pepitas also acceptable.",
   },
-  "pepitas": {
+  pepitas: {
     name: "Pepitas (Hulled Pumpkin Seeds)",
     preparation: "Feed as is",
-    notes: "Hulled pumpkin seeds, high protein. Less fiber than whole seeds."
-  }
+    notes: "Hulled pumpkin seeds, high protein. Less fiber than whole seeds.",
+  },
 };
 
 // Disclaimer text
@@ -192,6 +200,8 @@ export function getGrainPairings(grainName: string): string[] {
 }
 
 // Get preparation instructions for an ingredient
-export function getPreparationInstructions(ingredientName: string): IngredientPrep | null {
+export function getPreparationInstructions(
+  ingredientName: string,
+): IngredientPrep | null {
   return INGREDIENT_PREP[ingredientName] || null;
 }

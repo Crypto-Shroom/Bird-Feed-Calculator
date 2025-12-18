@@ -27,7 +27,11 @@ export interface MixResult {
     notes: string;
   }>;
   herbPurpose: string;
-  missingIngredients?: Array<{ category: string; reason: string; recommendations: string[] }>;
+  missingIngredients?: Array<{
+    category: string;
+    reason: string;
+    recommendations: string[];
+  }>;
 }
 
 export class MultibirMixCalculator {
@@ -36,11 +40,15 @@ export class MultibirMixCalculator {
   private bird: BirdType;
   private profile: any;
 
-  constructor(inventory: Record<string, number>, situation: string = "maintenance", bird: BirdType = "pigeon") {
+  constructor(
+    inventory: Record<string, number>,
+    situation: string = "maintenance",
+    bird: BirdType = "pigeon",
+  ) {
     this.inventory = inventory;
     this.situation = situation;
     this.bird = bird;
-    
+
     const birdProfiles = getProfilesForBird(bird);
     this.profile = birdProfiles[situation] || Object.values(birdProfiles)[0];
   }
@@ -92,24 +100,42 @@ export class MultibirMixCalculator {
 
     // Check if only corn is present
     if (grains.length === 1 && grains[0].includes("corn")) {
-      suggestions.push("Corn is the only grain in your mix. Consider adding wheat, barley, or oats for better nutritional balance and essential nutrients.");
+      suggestions.push(
+        "Corn is the only grain in your mix. Consider adding wheat, barley, or oats for better nutritional balance and essential nutrients.",
+      );
     }
 
     return suggestions;
   }
 
   private checkMissingCategories(mix: Record<string, number>) {
-    const hasGrain = Object.keys(mix).some(ing => INGREDIENTS[ing]?.category === "grain");
-    const hasLegume = Object.keys(mix).some(ing => INGREDIENTS[ing]?.category === "legume");
-    const hasSeed = Object.keys(mix).some(ing => INGREDIENTS[ing]?.category === "seed");
+    const hasGrain = Object.keys(mix).some(
+      (ing) => INGREDIENTS[ing]?.category === "grain",
+    );
+    const hasLegume = Object.keys(mix).some(
+      (ing) => INGREDIENTS[ing]?.category === "legume",
+    );
+    const hasSeed = Object.keys(mix).some(
+      (ing) => INGREDIENTS[ing]?.category === "seed",
+    );
 
-    const missing: Array<{ category: string; reason: string; recommendations: string[] }> = [];
+    const missing: Array<{
+      category: string;
+      reason: string;
+      recommendations: string[];
+    }> = [];
 
     if (!hasGrain) {
       missing.push({
         category: "Grains",
         reason: "Grains provide essential carbohydrates and energy",
-        recommendations: ["wheat", "barley", "oats", "corn_yellow", "corn_red"] as string[]
+        recommendations: [
+          "wheat",
+          "barley",
+          "oats",
+          "corn_yellow",
+          "corn_red",
+        ] as string[],
       });
     }
 
@@ -117,7 +143,12 @@ export class MultibirMixCalculator {
       missing.push({
         category: "Legumes",
         reason: "Legumes provide protein and essential amino acids",
-        recommendations: ["peas_green", "lentils", "mung_beans", "chickpeas"] as string[]
+        recommendations: [
+          "peas_green",
+          "lentils",
+          "mung_beans",
+          "chickpeas",
+        ] as string[],
       });
     }
 
@@ -125,15 +156,22 @@ export class MultibirMixCalculator {
       missing.push({
         category: "Seeds",
         reason: "Seeds provide healthy fats and micronutrients",
-        recommendations: ["sunflower_seeds", "safflower_seeds", "hemp_seeds"] as string[]
+        recommendations: [
+          "sunflower_seeds",
+          "safflower_seeds",
+          "hemp_seeds",
+        ] as string[],
       });
     }
 
     return missing;
   }
 
-  private checkBirdCompatibility(mix: Record<string, number>): Array<{ level: "CRITICAL" | "WARNING"; message: string }> {
-    const warnings: Array<{ level: "CRITICAL" | "WARNING"; message: string }> = [];
+  private checkBirdCompatibility(
+    mix: Record<string, number>,
+  ): Array<{ level: "CRITICAL" | "WARNING"; message: string }> {
+    const warnings: Array<{ level: "CRITICAL" | "WARNING"; message: string }> =
+      [];
     const toxics = BIRD_TOXIC_FOODS[this.bird];
 
     for (const ingredient of Object.keys(mix)) {
@@ -142,16 +180,16 @@ export class MultibirMixCalculator {
         const toxic = toxics[ingredient];
         warnings.push({
           level: "WARNING",
-          message: `${toxic.name} contains ${toxic.toxin}. ${toxic.message}`
+          message: `${toxic.name} contains ${toxic.toxin}. ${toxic.message}`,
         });
       }
 
       // Check if ingredient is incompatible with this bird
       if (!isIngredientCompatible(ingredient, this.bird)) {
-      warnings.push({
-        level: "WARNING" as const,
-        message: `${ingredient.replace(/_/g, " ")} is not recommended for ${this.bird}. Consider using compatible alternatives.`
-      });
+        warnings.push({
+          level: "WARNING" as const,
+          message: `${ingredient.replace(/_/g, " ")} is not recommended for ${this.bird}. Consider using compatible alternatives.`,
+        });
       }
     }
 
@@ -169,10 +207,15 @@ export class MultibirMixCalculator {
         mix: {},
         nutrition: { protein: 0, carbs: 0, fat: 0, fiber: 0 },
         categories: { grain: 0, legume: 0, seed: 0 },
-        warnings: [{ level: "WARNING", message: "Add ingredients to your inventory to calculate a mix" }],
+        warnings: [
+          {
+            level: "WARNING",
+            message: "Add ingredients to your inventory to calculate a mix",
+          },
+        ],
         suggestions: [],
         herbRecommendations: [],
-        herbPurpose: ""
+        herbPurpose: "",
       };
     }
 
@@ -190,7 +233,7 @@ export class MultibirMixCalculator {
       for (const missing of missingIngredients) {
         warnings.push({
           level: "WARNING",
-          message: `Missing ${missing.category.toLowerCase()}: ${missing.reason}. Consider adding: ${missing.recommendations.join(", ")}`
+          message: `Missing ${missing.category.toLowerCase()}: ${missing.reason}. Consider adding: ${missing.recommendations.join(", ")}`,
         });
       }
     }
@@ -202,13 +245,17 @@ export class MultibirMixCalculator {
     const [fiberMin, fiberMax] = this.profile.fiber;
 
     if (nutrition.protein < proteinMin) {
-      suggestions.push(`Protein is below target (${nutrition.protein.toFixed(1)}% vs ${proteinMin}% minimum). Add more legumes.`);
+      suggestions.push(
+        `Protein is below target (${nutrition.protein.toFixed(1)}% vs ${proteinMin}% minimum). Add more legumes.`,
+      );
     }
     if (nutrition.carbs < carbsMin) {
       suggestions.push(`Carbs are below target. Add more grains.`);
     }
     if (nutrition.fat > fatMax) {
-      suggestions.push(`Fat is above target (${nutrition.fat.toFixed(1)}% vs ${fatMax}% maximum). Reduce oil seeds.`);
+      suggestions.push(
+        `Fat is above target (${nutrition.fat.toFixed(1)}% vs ${fatMax}% maximum). Reduce oil seeds.`,
+      );
     }
 
     return {
@@ -219,13 +266,17 @@ export class MultibirMixCalculator {
       suggestions,
       herbRecommendations,
       herbPurpose: `Supplements for ${this.profile.name}`,
-      missingIngredients: missingIngredients.length > 0 ? missingIngredients : undefined
+      missingIngredients:
+        missingIngredients.length > 0 ? missingIngredients : undefined,
     };
   }
 
   private optimizeMix(targetWeight: number = 1000): Record<string, number> {
     const mix: Record<string, number> = {};
-    const totalInventory = Object.values(this.inventory).reduce((a, b) => a + b, 0);
+    const totalInventory = Object.values(this.inventory).reduce(
+      (a, b) => a + b,
+      0,
+    );
 
     if (totalInventory === 0) return mix;
 
