@@ -14,7 +14,10 @@ python3 --version
 ### Method 1: Interactive Mode (Recommended for Beginners)
 
 1. Open a terminal/command prompt
-2. Navigate to the folder containing `pigeon_mix_calculator.py`
+2. From the repository root, change to the canonical package folder containing the calculator:
+   ```bash
+   cd pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/python-package/pigeon_mix_calculator
+   ```
 3. Run:
    ```bash
    python3 pigeon_mix_calculator.py
@@ -28,8 +31,9 @@ python3 --version
 
 ### Method 2: Run Test Examples
 
-See the calculator in action with pre-configured scenarios:
+See the calculator in action with pre-configured scenarios (run from package folder):
 ```bash
+cd pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/python-package/pigeon_mix_calculator
 python3 test_calculator.py
 ```
 
