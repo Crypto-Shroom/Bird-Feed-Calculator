@@ -1,0 +1,25 @@
+# Node
+node_modules/
+**/node_modules/
+
+# pnpm store
+.pnpm-store/
+
+# Dist/build output
+dist/
+**/dist/
+
+# Vite
+.vite/
+
+# IDE
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Misc
+.DS_Store
+.env

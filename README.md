@@ -165,3 +165,21 @@ This calculator provides general guidance based on common pigeon nutrition princ
 
 **Version:** 1.0  
 **Created:** December 2025
+
+---
+
+## Repository layout 🔧
+
+- `pigeon-mix-web-multi-bird/` — The multi-bird web app (Vite + React + TypeScript)
+  - `client/` — UI and frontend source
+  - `server/` — small Express server used for production builds
+  - `shared/` — shared types and constants
+  - `dist/` — built artifacts (committed for convenience)
+- `python-package/pigeon_mix_calculator/` — Python CLI tool and test harness
+- `pigeon-mix-web/` — **legacy** pigeon-only web app (placeholder README)
+- `docs/` and research notes — documentation and research
+- `LICENSE` — NC-PUL-1.0 (Non-Commercial — Private Use License)
+
+---
+
+If you'd like, I can add commands and examples for running the web app and the Python CLI in greater detail.
