@@ -17,6 +17,7 @@ A Python-based calculator that optimizes pigeon seed mixes based on available in
 ### Interactive Mode
 
 ```bash
+cd pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/python-package/pigeon_mix_calculator
 python3 pigeon_mix_calculator.py
 ```
 
@@ -99,11 +100,12 @@ CATEGORY BREAKDOWN:
 
 ## Files Included
 
-- **pigeon_mix_calculator.py** - Main calculator program
-- **USER_GUIDE.md** - Comprehensive user documentation
-- **README.md** - This file
-- **pigeon_nutrition_research.md** - Research notes and references
-- **test_calculator.py** - Test scenarios and examples
+- **Canonical Python package (location)**: `pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/python-package/pigeon_mix_calculator/` — contains:
+  - `pigeon_mix_calculator.py` — Main calculator program
+  - `USER_GUIDE.md` — Comprehensive user documentation
+  - `pigeon_nutrition_research.md` — Research notes and references
+  - `test_calculator.py` — Test scenarios and examples
+- **Note:** Small top-level documentation copies were moved to `docs/research/` or archived to `archive-root/` as part of the root tidy to keep the repository root minimal.
 
 ## Requirements
 
@@ -112,9 +114,10 @@ CATEGORY BREAKDOWN:
 
 ## Testing
 
-Run the test suite to see example scenarios:
+Run the test suite (from the Python package directory) to see example scenarios:
 
 ```bash
+cd pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/python-package/pigeon_mix_calculator
 python3 test_calculator.py
 ```
 
