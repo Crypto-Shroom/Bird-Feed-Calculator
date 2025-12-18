@@ -464,7 +464,7 @@ class PigeonMixCalculator:
         card.append("RESEARCH REFERENCES:")
         card.append("─" * 70)
         card.append("  This calculator is based on peer-reviewed research and expert")
-        card.append("  recommendations. See RESEARCH_REFERENCES.md for full citations.")
+        card.append("  recommendations. See docs/research/RESEARCH_REFERENCES.md for full citations.")
         card.append("")
         card.append("═" * 70)
         
