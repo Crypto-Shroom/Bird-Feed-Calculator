@@ -112,7 +112,7 @@ export default function Home() {
   }, [sortedIngredients, selectedBird]);
 
   const birdProfile = BIRD_PROFILES[selectedBird];
-  const currentProfile = birdProfile?.profiles[situation] || PROFILES[situation as keyof typeof PROFILES];
+  const currentProfile = PROFILES[situation as keyof typeof PROFILES];
 
   return (
     <div className="min-h-screen bg-background font-sans">
@@ -120,7 +120,7 @@ export default function Home() {
       <div className="relative h-[400px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-black/40 z-10" />
         <img 
-          src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663234243499/zvVSfnDuxBzqyTwR.png" 
+          src="/images/hero-pigeon-mix.png" 
           alt="Premium Pigeon Mix" 
           className="absolute inset-0 w-full h-full object-cover"
         />
@@ -138,31 +138,6 @@ export default function Home() {
       </div>
 
       <main className="container py-12 -mt-20 relative z-30">
-        {/* Bird Selector */}
-        <div className="mb-8 p-6 bg-card rounded-lg border shadow-md">
-          <h3 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide">Select Your Bird</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
-            {BIRD_TYPES.map((bird) => {
-              const profile = BIRD_PROFILES[bird];
-              return (
-                <button
-                  key={bird}
-                  onClick={() => setSelectedBird(bird)}
-                  className={cn(
-                    "p-4 rounded-lg border-2 transition-all text-center font-medium",
-                    selectedBird === bird
-                      ? "border-2 bg-blue-50 border-blue-500 text-blue-700"
-                      : "border-border bg-muted/30 text-muted-foreground hover:bg-muted/50"
-                  )}
-                >
-                  <div className="text-2xl mb-2">{profile?.icon || "🐦"}</div>
-                  <div className="text-sm capitalize">{bird}</div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
           {/* Left Column: Controls & Inventory */}
@@ -171,10 +146,10 @@ export default function Home() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-2xl">
                   <Bird className="w-6 h-6 text-primary" />
-                  {birdProfile?.name || "Flock"} Profile
+                  Flock Profile
                 </CardTitle>
                 <CardDescription>
-                  Configure your {selectedBird}'s current situation to get optimized targets.
+                  Configure your flock's current situation to get optimized targets.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -185,16 +160,13 @@ export default function Home() {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      {availableSituations.map((sit) => {
-                        const profile = PROFILES[sit as keyof typeof PROFILES];
-                        return (
-                          <SelectItem key={sit} value={sit}>{profile?.name || sit}</SelectItem>
-                        );
-                      })}
+                      {Object.entries(PROFILES).map(([key, profile]) => (
+                        <SelectItem key={key} value={key}>{profile.name}</SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                   <p className="text-sm text-muted-foreground bg-muted/50 p-3 rounded-md border border-border/50">
-                    {currentProfile?.feedingNotes || currentProfile?.feeding_notes || "Configure your flock's nutrition for this situation."}
+                    {currentProfile.feeding_notes}
                   </p>
                 </div>
 
@@ -335,28 +307,28 @@ export default function Home() {
                   <NutritionCard 
                     label="Protein" 
                     value={result.nutrition.protein} 
-                    target={currentProfile?.nutrition?.protein || currentProfile?.protein || [12, 16]} 
+                    target={currentProfile.protein} 
                     unit="%" 
                     color="bg-[var(--chart-1)]"
                   />
                   <NutritionCard 
                     label="Carbs" 
                     value={result.nutrition.carbs} 
-                    target={currentProfile?.nutrition?.carbs || currentProfile?.carbs || [55, 70]} 
+                    target={currentProfile.carbs} 
                     unit="%" 
                     color="bg-[var(--chart-2)]"
                   />
                   <NutritionCard 
                     label="Fat" 
                     value={result.nutrition.fat} 
-                    target={currentProfile?.nutrition?.fat || currentProfile?.fat || [2, 5]} 
+                    target={currentProfile.fat} 
                     unit="%" 
                     color="bg-[var(--chart-3)]"
                   />
                   <NutritionCard 
                     label="Fiber" 
                     value={result.nutrition.fiber} 
-                    target={currentProfile?.nutrition?.fiber || currentProfile?.fiber || [0, 5]} 
+                    target={currentProfile.fiber} 
                     unit="%" 
                     color="bg-[var(--chart-4)]"
                   />
@@ -604,24 +576,24 @@ export default function Home() {
                         </div>
 
                         <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900 rounded-lg p-4">
-                          <h3 className="text-lg font-bold mb-2 text-blue-900 dark:text-blue-200">Profile: {currentProfile?.name}</h3>
-                          <p className="text-sm text-blue-800 dark:text-blue-300 mb-3">{currentProfile?.feedingNotes || currentProfile?.feeding_notes}</p>
+                          <h3 className="text-lg font-bold mb-2 text-blue-900 dark:text-blue-200">Profile: {currentProfile.name}</h3>
+                          <p className="text-sm text-blue-800 dark:text-blue-300 mb-3">{currentProfile.feeding_notes}</p>
                           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
                             <div>
                               <span className="font-semibold text-blue-900 dark:text-blue-200">Protein Target:</span>
-                              <p className="text-blue-700 dark:text-blue-400">{currentProfile?.nutrition?.protein?.[0] || currentProfile?.protein?.[0]}-{currentProfile?.nutrition?.protein?.[1] || currentProfile?.protein?.[1]}%</p>
+                              <p className="text-blue-700 dark:text-blue-400">{currentProfile.protein[0]}-{currentProfile.protein[1]}%</p>
                             </div>
                             <div>
                               <span className="font-semibold text-blue-900 dark:text-blue-200">Carbs Target:</span>
-                              <p className="text-blue-700 dark:text-blue-400">{currentProfile?.nutrition?.carbs?.[0] || currentProfile?.carbs?.[0]}-{currentProfile?.nutrition?.carbs?.[1] || currentProfile?.carbs?.[1]}%</p>
+                              <p className="text-blue-700 dark:text-blue-400">{currentProfile.carbs[0]}-{currentProfile.carbs[1]}%</p>
                             </div>
                             <div>
                               <span className="font-semibold text-blue-900 dark:text-blue-200">Fat Target:</span>
-                              <p className="text-blue-700 dark:text-blue-400">{currentProfile?.nutrition?.fat?.[0] || currentProfile?.fat?.[0]}-{currentProfile?.nutrition?.fat?.[1] || currentProfile?.fat?.[1]}%</p>
+                              <p className="text-blue-700 dark:text-blue-400">{currentProfile.fat[0]}-{currentProfile.fat[1]}%</p>
                             </div>
                             <div>
                               <span className="font-semibold text-blue-900 dark:text-blue-200">Fiber Target:</span>
-                              <p className="text-blue-700 dark:text-blue-400">{currentProfile?.nutrition?.fiber?.[0] || currentProfile?.fiber?.[0]}-{currentProfile?.nutrition?.fiber?.[1] || currentProfile?.fiber?.[1]}%</p>
+                              <p className="text-blue-700 dark:text-blue-400">{currentProfile.fiber[0]}-{currentProfile.fiber[1]}%</p>
                             </div>
                           </div>
                         </div>
