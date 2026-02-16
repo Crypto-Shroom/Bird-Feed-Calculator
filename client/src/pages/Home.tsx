@@ -112,7 +112,25 @@ export default function Home() {
   }, [sortedIngredients, selectedBird]);
 
   const birdProfile = BIRD_PROFILES[selectedBird];
-  const currentProfile = birdProfile?.profiles[situation] || PROFILES[situation as keyof typeof PROFILES];
+  const currentProfile = birdProfile?.profiles[situation] || (PROFILES[situation as keyof typeof PROFILES] as any);
+  
+  // Helper to get nutrition values from either profile type
+  const getNutrition = (key: 'protein' | 'carbs' | 'fat' | 'fiber'): [number, number] => {
+    if (currentProfile?.nutrition?.[key]) {
+      return currentProfile.nutrition[key];
+    }
+    return (currentProfile as any)?.[key] || [0, 0];
+  };
+  
+  // Helper to get category ratios
+  const getCategoryRatios = () => {
+    return (currentProfile as any)?.category_ratios || { grain: [60, 75], legume: [15, 25], seed: [5, 15] };
+  };
+  
+  // Helper to get feeding notes
+  const getFeedingNotes = () => {
+    return currentProfile?.feedingNotes || (currentProfile as any)?.feeding_notes || 'Configure your flock\'s nutrition for this situation.';
+  };
 
   return (
     <div className="min-h-screen bg-background font-sans">
@@ -194,7 +212,7 @@ export default function Home() {
                     </SelectContent>
                   </Select>
                   <p className="text-sm text-muted-foreground bg-muted/50 p-3 rounded-md border border-border/50">
-                    {currentProfile?.feedingNotes || currentProfile?.feeding_notes || "Configure your flock's nutrition for this situation."}
+                    {getFeedingNotes()}
                   </p>
                 </div>
 
@@ -335,28 +353,28 @@ export default function Home() {
                   <NutritionCard 
                     label="Protein" 
                     value={result.nutrition.protein} 
-                    target={currentProfile?.nutrition?.protein || currentProfile?.protein || [12, 16]} 
+                    target={getNutrition('protein')} 
                     unit="%" 
                     color="bg-[var(--chart-1)]"
                   />
                   <NutritionCard 
                     label="Carbs" 
                     value={result.nutrition.carbs} 
-                    target={currentProfile?.nutrition?.carbs || currentProfile?.carbs || [55, 70]} 
+                    target={getNutrition('carbs')} 
                     unit="%" 
                     color="bg-[var(--chart-2)]"
                   />
                   <NutritionCard 
                     label="Fat" 
                     value={result.nutrition.fat} 
-                    target={currentProfile?.nutrition?.fat || currentProfile?.fat || [2, 5]} 
+                    target={getNutrition('fat')} 
                     unit="%" 
                     color="bg-[var(--chart-3)]"
                   />
                   <NutritionCard 
                     label="Fiber" 
                     value={result.nutrition.fiber} 
-                    target={currentProfile?.nutrition?.fiber || currentProfile?.fiber || [0, 5]} 
+                    target={getNutrition('fiber')} 
                     unit="%" 
                     color="bg-[var(--chart-4)]"
                   />
@@ -563,19 +581,19 @@ export default function Home() {
                             <CategoryBar 
                               label="Grains" 
                               value={result.categories.grain} 
-                              target={currentProfile.category_ratios.grain} 
+                              target={getCategoryRatios().grain} 
                               color="bg-amber-400"
                             />
                             <CategoryBar 
                               label="Legumes" 
                               value={result.categories.legume} 
-                              target={currentProfile.category_ratios.legume} 
+                              target={getCategoryRatios().legume} 
                               color="bg-emerald-500"
                             />
                             <CategoryBar 
                               label="Seeds" 
                               value={result.categories.seed} 
-                              target={currentProfile.category_ratios.seed} 
+                              target={getCategoryRatios().seed} 
                               color="bg-stone-500"
                             />
                           </div>
@@ -605,23 +623,23 @@ export default function Home() {
 
                         <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900 rounded-lg p-4">
                           <h3 className="text-lg font-bold mb-2 text-blue-900 dark:text-blue-200">Profile: {currentProfile?.name}</h3>
-                          <p className="text-sm text-blue-800 dark:text-blue-300 mb-3">{currentProfile?.feedingNotes || currentProfile?.feeding_notes}</p>
+                          <p className="text-sm text-blue-800 dark:text-blue-300 mb-3">{getFeedingNotes()}</p>
                           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
                             <div>
                               <span className="font-semibold text-blue-900 dark:text-blue-200">Protein Target:</span>
-                              <p className="text-blue-700 dark:text-blue-400">{currentProfile?.nutrition?.protein?.[0] || currentProfile?.protein?.[0]}-{currentProfile?.nutrition?.protein?.[1] || currentProfile?.protein?.[1]}%</p>
+                              <p className="text-blue-700 dark:text-blue-400">{getNutrition('protein')[0]}-{getNutrition('protein')[1]}%</p>
                             </div>
                             <div>
                               <span className="font-semibold text-blue-900 dark:text-blue-200">Carbs Target:</span>
-                              <p className="text-blue-700 dark:text-blue-400">{currentProfile?.nutrition?.carbs?.[0] || currentProfile?.carbs?.[0]}-{currentProfile?.nutrition?.carbs?.[1] || currentProfile?.carbs?.[1]}%</p>
+                              <p className="text-blue-700 dark:text-blue-400">{getNutrition('carbs')[0]}-{getNutrition('carbs')[1]}%</p>
                             </div>
                             <div>
                               <span className="font-semibold text-blue-900 dark:text-blue-200">Fat Target:</span>
-                              <p className="text-blue-700 dark:text-blue-400">{currentProfile?.nutrition?.fat?.[0] || currentProfile?.fat?.[0]}-{currentProfile?.nutrition?.fat?.[1] || currentProfile?.fat?.[1]}%</p>
+                              <p className="text-blue-700 dark:text-blue-400">{getNutrition('fat')[0]}-{getNutrition('fat')[1]}%</p>
                             </div>
                             <div>
                               <span className="font-semibold text-blue-900 dark:text-blue-200">Fiber Target:</span>
-                              <p className="text-blue-700 dark:text-blue-400">{currentProfile?.nutrition?.fiber?.[0] || currentProfile?.fiber?.[0]}-{currentProfile?.nutrition?.fiber?.[1] || currentProfile?.fiber?.[1]}%</p>
+                              <p className="text-blue-700 dark:text-blue-400">{getNutrition('fiber')[0]}-{getNutrition('fiber')[1]}%</p>
                             </div>
                           </div>
                         </div>
