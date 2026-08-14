@@ -68,6 +68,29 @@ The redesigned interface now uses reader-facing bird names, labelled inputs, `ar
 
 The user experience now prioritizes honest feedback. For example, the default pigeon inventory produces a visible advisory when estimated fiber, grain, or seed ratios are outside the selected profile’s modeled range; it does not mask those misses with “high efficiency” or a fabricated energy-density value.
 
+## Reconciliation with the original requested features
+
+The following table records the effect of the audit on the features you explicitly requested. Most were retained or strengthened. Three areas were deliberately narrowed because the previous wording or behavior could imply a medical or nutritionally complete recommendation beyond what the data can support.
+
+| Original requested feature | Current status | What changed |
+|---|---|---|
+| Six selectable species | Retained | Pigeon, Parrot, African Grey, Budgie, Canary, and Chicken remain selectable. Labels are now reader-facing rather than raw identifiers. |
+| Bird-specific profiles and chicken egg-laying mode | Retained | All situations remain. Fixed daily gram instructions were removed because they were not sourced or individualized. |
+| Compatible-first picker with a separate incompatible section | Strengthened | Search now lives inside the picker. Unsafe, processing-dependent, and species-incompatible options appear in a non-selectable section with a reason. |
+| Toxic legume warnings and preparation guidance | Strengthened | Unsafe inventory remains red and is now excluded from the formula. Raw soybeans and additional processing-dependent legumes are also blocked. |
+| Bird-specific toxicity checks | Retained and strengthened | The picker and optimizer apply the same checks, preventing a manual inventory item from bypassing the UI. |
+| Green/red nutrition status with explanation hints | Retained | In-range estimates are green; out-of-range estimates are red. Info hints describe the displayed estimate range. |
+| Bracketed preparation instructions and detailed list below formula | Retained | Both are present: bracketed preparation notes in inventory and a preparation section under the formula. |
+| Separate water and grit guidance | Retained and corrected | Guidance now changes by bird type. Chicken mode distinguishes insoluble grit from oyster shell. |
+| Herb recommendations by species and situation | **Deliberately removed** | Therapeutic herb, supplement, and water-dosage recommendations were replaced with an enrichment boundary because their claims and doses were not supported by reliable species-specific evidence. |
+| Grain compatibility warning | Retained | The calculator flags a mix with only a grain that should be paired and suggests additional grain diversity. |
+| Detailed analysis below breakdown | Retained and corrected | It now explains the actual deterministic calculation and no longer displays hard-coded “high efficiency” or energy values. |
+| Research citations | Retained and expanded | Cited research notes and this audit report are included in the project documentation. |
+| Original pigeon-only version | Preserved | The older implementation was not deleted; the active interface is simply routed through the multi-bird engine. |
+| Multi-bird preview | Retained | The current active preview is the multi-bird planner. |
+
+Two other behavior changes are important to call out. First, the optimiser no longer includes random scoring, so the same inputs now return the same result every time. Second, chicken egg-laying mode is intentionally treated as a **scratch-supplement** estimate rather than a homemade complete layer-ration formulation; this protects against implying that a four-macronutrient calculation can validate the calcium, phosphorus, vitamin, mineral, amino-acid, and energy needs of a laying flock.
+
 ## Verification performed
 
 | Check | Result |

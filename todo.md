@@ -8,3 +8,7 @@
 - [x] Review accessibility, responsive behavior, and production/deployment readiness.
 - [x] Implement validated corrections and document unresolved veterinary-review boundaries.
 - [x] Retest, save a checkpoint, and deliver the audit results.
+- [x] Clarify the distinction between removed claims and data-provenance improvements.
+- [x] Reconcile every original requested feature against the audited changes.
+- [ ] Prepare the audited project for a dedicated GitHub branch.
+- [ ] Create and verify the GitHub branch containing the audited version.
