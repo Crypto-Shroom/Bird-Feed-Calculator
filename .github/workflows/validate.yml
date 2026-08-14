@@ -3,6 +3,9 @@ name: Validate calculator changes
 
 on:
   pull_request:
+  push:
+    branches:
+      - audit-safety-optimization-2026-08-14
   workflow_dispatch:
 
 permissions:
