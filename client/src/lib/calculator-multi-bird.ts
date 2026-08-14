@@ -161,7 +161,11 @@ export class MultibirMixCalculator {
       .filter((category) => !present.has(category))
       .map((category) => ({
         category: category === "seed" ? "Oil seeds" : `${category[0].toUpperCase()}${category.slice(1)}s`,
-        reason: `No eligible ${category} ingredients are available for this batch estimate.`,
+        reason: category === "grain"
+          ? "No eligible grains are available — grains are essential for energy and carbohydrates."
+          : category === "legume"
+            ? "No eligible legumes are available — legumes are essential for protein and amino acids."
+            : "No eligible oil seeds are available — oil seeds contribute fat and ingredient diversity.",
         recommendations: CATEGORY_RECOMMENDATIONS[category],
       }));
   }

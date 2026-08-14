@@ -20,3 +20,13 @@
 - [ ] Restore the approved herb-benefit, dosage, frequency, and notes display without changing formulations.
 - [ ] Inspect the user-referenced GitHub issue and explain the branch-reconciliation path.
 - [ ] Add the approved pull-request CI check and release-governance documentation.
+- [ ] Restore prior visible titles, subtitles, and daily-feeding copy with smaller contextual notes.
+- [ ] Make multi-bird safety warnings as explicit as the preserved original warning language.
+- [ ] Compare legacy and multi-bird outputs for identical pigeon profile and inventory inputs.
+- [ ] Recheck black-eyed-pea processing and compatibility evidence before altering its safety treatment.
+- [ ] Design an additive source-provenance and user-submission review layer without modifying current records.
+- [ ] Recommend a durable hosting and data-storage path for saved recipes and inventories before Manus migration.
+- [ ] Audit every ingredient restriction introduced by the audit-processing filter against preserved project data and evidence.
+- [ ] Benchmark legacy and multi-bird formula outputs using agreed accuracy criteria and representative inventories.
+- [ ] Remove unsupported audit-introduced ingredient exclusions only after documenting the basis.
+- [ ] Compare current free or low-cost hosting and private-data services for a portable public release.

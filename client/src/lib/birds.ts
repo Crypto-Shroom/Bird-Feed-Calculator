@@ -12,6 +12,7 @@ export interface SituationProfile {
   name: string;
   description: string;
   feedingNotes: string;
+  contextNote?: string;
   nutrition: NutritionTarget;
 }
 
@@ -46,7 +47,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
       maintenance: {
         name: 'Maintenance/Rest',
         description: 'Light feeding for resting periods',
-        feedingNotes: 'Use this planner range only as a seed/grain batch estimate. Adjust the complete diet with an avian professional according to body condition and activity.',
+        feedingNotes: 'Feed 30-40g per bird per day. Light feeding in morning, standard mix in evening.',
+        contextNote: 'Use this planner range only as a seed/grain batch estimate. Adjust the complete diet with an avian professional according to body condition and activity.',
         nutrition: {
           protein: [13.5, 15],
           carbs: [60, 70],
@@ -57,7 +59,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
       racing: {
         name: 'Racing/Competition',
         description: 'High-energy mix for racing and performance',
-        feedingNotes: 'Performance birds have individual energy and recovery needs. Use a veterinarian- or specialist-reviewed performance diet as the foundation.',
+        feedingNotes: 'Feed 40-50g per bird per day. Increase 2 weeks before races. Provide extra water.',
+        contextNote: 'Performance birds have individual energy and recovery needs. Use a veterinarian- or specialist-reviewed performance diet as the foundation.',
         nutrition: {
           protein: [16, 18],
           carbs: [55, 65],
@@ -68,7 +71,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
       breeding: {
         name: 'Breeding',
         description: 'Balanced nutrition for breeding pairs',
-        feedingNotes: 'Breeding birds need individually assessed mineral, energy, and amino-acid support beyond this batch estimate.',
+        feedingNotes: 'Feed 35-45g per bird per day. Ensure consistent feeding schedule.',
+        contextNote: 'Breeding birds need individually assessed mineral, energy, and amino-acid support beyond this batch estimate.',
         nutrition: {
           protein: [14, 16],
           carbs: [58, 68],
@@ -79,7 +83,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
       molting: {
         name: 'Molting Season',
         description: 'High protein for feather growth',
-        feedingNotes: 'Molting support should be based on body condition and a complete diet; this seed/grain estimate does not assess amino-acid adequacy.',
+        feedingNotes: 'Feed 40-50g per bird per day. Increase protein during feather loss.',
+        contextNote: 'Molting support should be based on body condition and a complete diet; this seed/grain estimate does not assess amino-acid adequacy.',
         nutrition: {
           protein: [16, 18],
           carbs: [55, 65],
@@ -90,7 +95,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
       winter: {
         name: 'Winter Season',
         description: 'Higher fat for warmth and energy',
-        feedingNotes: 'Cold-weather feeding needs vary with housing, weather, activity, and body condition. Avoid increasing high-fat seeds without professional guidance.',
+        feedingNotes: 'Feed 40-50g per bird per day. Increase fat content for body warmth.',
+        contextNote: 'Cold-weather feeding needs vary with housing, weather, activity, and body condition. Avoid increasing high-fat seeds without professional guidance.',
         nutrition: {
           protein: [12, 14],
           carbs: [55, 65],
@@ -101,7 +107,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
       pet: {
         name: 'Pet/Companion',
         description: 'Balanced nutrition for indoor companion pigeons',
-        feedingNotes: 'Keep seeds and grains as part of a broader, balanced pigeon diet. Monitor body condition and consult an avian veterinarian for dietary changes.',
+        feedingNotes: 'Feed 25-35g per bird per day. Provide variety and enrichment.',
+        contextNote: 'Keep seeds and grains as part of a broader, balanced pigeon diet. Monitor body condition and consult an avian veterinarian for dietary changes.',
         nutrition: {
           protein: [12, 14],
           carbs: [60, 70],
@@ -120,7 +127,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
       pet: {
         name: 'Pet/Companion',
         description: 'Balanced nutrition for companion parrots',
-        feedingNotes: 'Use a formulated diet as the nutritional base. Treat this mix as limited enrichment rather than a daily complete food.',
+        feedingNotes: 'Feed 30-50g per bird per day. Provide varied diet with fresh foods.',
+        contextNote: 'Use a formulated diet as the nutritional base. Treat this mix as limited enrichment rather than a daily complete food.',
         nutrition: {
           protein: [10, 15],
           carbs: [50, 65],
@@ -131,7 +139,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
       breeding: {
         name: 'Breeding',
         description: 'Enhanced nutrition for breeding pairs',
-        feedingNotes: 'Do not use this planner to set calcium or breeding supplementation. Seek avian-veterinary guidance for breeding birds.',
+        feedingNotes: 'Feed 40-60g per bird per day. Increase calcium and protein during breeding.',
+        contextNote: 'Do not use this planner to set calcium or breeding supplementation. Seek avian-veterinary guidance for breeding birds.',
         nutrition: {
           protein: [12, 16],
           carbs: [48, 62],
@@ -142,7 +151,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
       molting: {
         name: 'Molting Season',
         description: 'High protein for feather regeneration',
-        feedingNotes: 'Maintain a species-appropriate complete diet during molt; this mix cannot validate amino acids, minerals, or vitamins.',
+        feedingNotes: 'Feed 40-60g per bird per day. Support feather growth with protein.',
+        contextNote: 'Maintain a species-appropriate complete diet during molt; this mix cannot validate amino acids, minerals, or vitamins.',
         nutrition: {
           protein: [14, 18],
           carbs: [45, 60],
@@ -202,7 +212,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
       pet: {
         name: 'Pet/Companion',
         description: 'Balanced nutrition for active budgies',
-        feedingNotes: 'Use a species-appropriate formulated diet as the base. Keep this mix limited and provide varied fresh foods as appropriate.',
+        feedingNotes: 'Feed 10-15g per bird per day. Provide fresh vegetables daily.',
+        contextNote: 'Use a species-appropriate formulated diet as the base. Keep this mix limited and provide varied fresh foods as appropriate.',
         nutrition: {
           protein: [12, 14],
           carbs: [55, 70],
@@ -213,7 +224,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
       breeding: {
         name: 'Breeding',
         description: 'Enhanced nutrition for breeding pairs',
-        feedingNotes: 'Breeding budgies need individual veterinary assessment; this mix does not establish mineral or amino-acid adequacy.',
+        feedingNotes: 'Feed 15-20g per bird per day. Increase protein during breeding season.',
+        contextNote: 'Breeding budgies need individual veterinary assessment; this mix does not establish mineral or amino-acid adequacy.',
         nutrition: {
           protein: [14, 16],
           carbs: [50, 65],
@@ -224,7 +236,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
       molting: {
         name: 'Molting Season',
         description: 'High protein for feather growth',
-        feedingNotes: 'Keep a nutritionally complete base diet during molt. This planner does not assess feather-supporting amino acids or micronutrients.',
+        feedingNotes: 'Feed 15-20g per bird per day. Support feather development.',
+        contextNote: 'Keep a nutritionally complete base diet during molt. This planner does not assess feather-supporting amino acids or micronutrients.',
         nutrition: {
           protein: [15, 17],
           carbs: [48, 62],
@@ -243,7 +256,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
       pet: {
         name: 'Pet/Companion',
         description: 'Balanced nutrition for singing canaries',
-        feedingNotes: 'Use a formulated or fortified diet as the base. Treat this mix as limited enrichment, not the sole ration.',
+        feedingNotes: 'Feed 8-12g per bird per day. Provide variety and enrichment.',
+        contextNote: 'Use a formulated or fortified diet as the base. Treat this mix as limited enrichment, not the sole ration.',
         nutrition: {
           protein: [12, 14],
           carbs: [60, 72],
@@ -254,7 +268,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
       breeding: {
         name: 'Breeding',
         description: 'Enhanced nutrition for breeding season',
-        feedingNotes: 'Breeding canaries need individual professional guidance; this mix does not establish egg, mineral, or amino-acid adequacy.',
+        feedingNotes: 'Feed 12-16g per bird per day. Increase protein during breeding.',
+        contextNote: 'Breeding canaries need individual professional guidance; this mix does not establish egg, mineral, or amino-acid adequacy.',
         nutrition: {
           protein: [14, 16],
           carbs: [55, 68],
@@ -265,7 +280,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
       molting: {
         name: 'Molting Season',
         description: 'High protein for feather regeneration',
-        feedingNotes: 'Maintain a complete base diet during molt. Use veterinary guidance for any persistent feather or health issue.',
+        feedingNotes: 'Feed 12-16g per bird per day. Support feather growth.',
+        contextNote: 'Maintain a complete base diet during molt. Use veterinary guidance for any persistent feather or health issue.',
         nutrition: {
           protein: [15, 17],
           carbs: [52, 65],
@@ -284,7 +300,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
       pet: {
         name: 'Pet/Companion',
         description: 'Balanced nutrition for backyard chickens',
-        feedingNotes: 'Use an age-appropriate complete poultry ration as the base. This planner estimates a scratch supplement, not a daily feed allowance.',
+        feedingNotes: 'Feed 100-150g per bird per day. Provide grit and oyster shell.',
+        contextNote: 'Use an age-appropriate complete poultry ration as the base. This planner estimates a scratch supplement, not a daily feed allowance.',
         nutrition: {
           protein: [12, 16],
           carbs: [55, 70],
@@ -295,7 +312,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
       egg_laying: {
         name: 'Egg-laying',
         description: 'High protein for consistent egg production',
-        feedingNotes: 'Laying hens require a validated complete layer ration. This scratch estimate does not assess calcium, phosphorus, vitamins, or energy.',
+        feedingNotes: 'Feed 120-160g per bird per day. Ensure adequate calcium for shells.',
+        contextNote: 'Laying hens require a validated complete layer ration. This scratch estimate does not assess calcium, phosphorus, vitamins, or energy.',
         nutrition: {
           protein: [16, 18],
           carbs: [50, 65],
@@ -306,7 +324,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
       molting: {
         name: 'Molting Season',
         description: 'High protein for feather regeneration',
-        feedingNotes: 'Use a complete poultry ration during molt and seek poultry-nutrition guidance before altering protein or supplement levels.',
+        feedingNotes: 'Feed 120-160g per bird per day. Support feather growth.',
+        contextNote: 'Use a complete poultry ration during molt and seek poultry-nutrition guidance before altering protein or supplement levels.',
         nutrition: {
           protein: [16, 18],
           carbs: [50, 65],

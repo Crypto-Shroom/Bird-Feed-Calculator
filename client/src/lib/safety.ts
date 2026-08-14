@@ -87,7 +87,6 @@ export const INGREDIENTS_REQUIRING_VERIFIED_PROCESSING = new Set([
   "adzuki_beans",
   "beans",
   "black_beans",
-  "black_eyed_peas",
   "chickpeas",
   "fava_beans",
   "kidney_beans",

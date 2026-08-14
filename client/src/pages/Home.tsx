@@ -90,7 +90,7 @@ export default function Home() {
       .filter((name) => !inventory[name])
       .filter((name) => !query || name.replace(/_/g, " ").includes(query))
       .sort()
-      .reduce<{ available: string[]; blocked: Array<{ name: string; reason: string }> }>((groups, name) => {
+      .reduce<{ available: string[]; blocked: Array<{ name: string; reason: string; severity: "critical" | "review" }> }>((groups, name) => {
         const rawSafety = isToxicRaw(name);
         const speciesToxicity = checkBirdToxicity(name, selectedBird);
         const processingWarning = getProcessingWarning(name);
@@ -100,6 +100,7 @@ export default function Home() {
           groups.blocked.push({
             name,
             reason: speciesToxicity?.description || rawSafety?.message || processingWarning || `Not compatible with ${birdProfile.name}.`,
+            severity: rawSafety || speciesToxicity ? "critical" : "review",
           });
         }
         return groups;
@@ -164,11 +165,9 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-stone-950/65" />
         <div className="container relative flex h-full flex-col justify-center text-white">
-          <Badge className="mb-4 w-fit border-none bg-emerald-700/95 px-3 py-1 text-sm text-white">Multi-Bird Mix Planner</Badge>
-          <h1 className="max-w-3xl font-display text-4xl font-bold leading-tight md:text-6xl">Seed and grain mixes with clearer safety boundaries.</h1>
-          <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">
-            Build an ingredient-batch estimate for your bird, then use it alongside a species-appropriate complete diet and professional guidance.
-          </p>
+          <Badge className="mb-4 w-fit border-none bg-emerald-700/95 px-3 py-1 text-sm text-white">v3.0 Multi-Bird Calculator</Badge>
+          <h1 className="max-w-3xl font-display text-4xl font-bold leading-tight md:text-6xl">Precision Nutrition <br />for All Birds</h1>
+          <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">Scientifically optimized seed mixes for pigeons, parrots, budgies, canaries, and more.</p>
         </div>
       </header>
 
@@ -216,7 +215,10 @@ export default function Home() {
                       ))}
                     </SelectContent>
                   </Select>
-                  <p className="rounded-md border bg-muted/40 p-3 text-sm text-muted-foreground">{currentProfile.feedingNotes}</p>
+                  <div className="rounded-md border bg-muted/40 p-3">
+                    <p className="text-sm text-muted-foreground">{currentProfile.feedingNotes}</p>
+                    {currentProfile.contextNote && <p className="mt-2 text-xs leading-relaxed text-muted-foreground/80">{currentProfile.contextNote}</p>}
+                  </div>
                 </div>
 
                 <div className="space-y-2">
@@ -261,8 +263,8 @@ export default function Home() {
                       {ingredientOptions.blocked.length > 0 && <>
                         <Separator className="my-3" />
                         <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Not offered for this bird</p>
-                        {ingredientOptions.blocked.map(({ name, reason }) => (
-                          <div key={name} className="px-2 py-2 text-sm text-muted-foreground"><p className="capitalize line-through">{name.replace(/_/g, " ")}</p><p className="mt-0.5 text-xs">{reason}</p></div>
+                        {ingredientOptions.blocked.map(({ name, reason, severity }) => (
+                          <div key={name} className={cn("mb-1 rounded-md px-2 py-2 text-sm", severity === "critical" ? "border border-red-200 bg-red-50 text-red-950" : "bg-amber-50 text-amber-950")}><p className="capitalize line-through">{name.replace(/_/g, " ")}</p><p className="mt-0.5 text-xs">{reason}</p></div>
                         ))}
                       </>}
                     </ScrollArea>

@@ -23,3 +23,13 @@ Final preview review confirmed the profile copy no longer supplies unsupported f
 ## Product-owner approved restoration
 
 The Herbs/Enrichment tab was re-verified after the product owner approved restoration of the preserved herb information. It now displays the existing recommendation set, benefits, dosage, frequency, and notes—for example apple cider vinegar, garlic powder, and oregano in the maintenance profile—without changing any herb data, formulation, ingredient, or nutrition target.
+
+## Product-owner approved copy and safety review
+
+The live preview confirms the restored hero text, “Precision Nutrition for All Birds,” and the restored pigeon maintenance note, “Feed 30-40g per bird per day. Light feeding in morning, standard mix in evening.” The newer context note remains visibly smaller beneath it.
+
+The ingredient picker now shows hard raw-toxicity exclusions such as black beans in a red treatment with the explicit message, “Raw black beans are TOXIC and can be fatal.” Processing-review exclusions, including black-eyed peas, remain visually separate in amber pending a product-owner-approved species-specific rule.
+
+## Restriction correction
+
+After reviewing the audit filter against the preserved safe-raw list, the black-eyed-pea processing exclusion was removed. The live picker now lists black-eyed peas under compatible choices for pigeon mode. Black beans remain in the hard-safety exclusion group with their explicit fatal-toxicity warning.
