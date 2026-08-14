@@ -1,226 +1,307 @@
-// Multi-bird calculator with bird-specific logic
-import type { BirdType } from './birds';
-import { BIRD_PROFILES, getSituationProfile } from './birds';
-import { checkBirdToxicity, isIngredientCompatible } from './bird-safety';
-import { INGREDIENTS } from './data';
+// Design contract: nutrition is presented as a transparent seed/grain mix estimate, never as a complete veterinary diet.
+import { INGREDIENTS, type Ingredient } from "./data";
+import {
+  BIRD_PROFILES,
+  getCategoryTargets,
+  type BirdType,
+  type NutritionTarget,
+} from "./birds";
+import { checkBirdToxicity, isIngredientCompatible } from "./bird-safety";
+import { getPreparationInstructions, getProcessingWarning, grainNeedsPairing, isToxicRaw, requiresVerifiedProcessing } from "./safety";
 
-export interface InventoryItem {
+export interface MixWarning {
+  level: "CRITICAL" | "WARNING";
+  message: string;
+}
+
+export interface MissingIngredient {
+  category: string;
+  reason: string;
+  recommendations: string[];
+}
+
+export interface HerbRecommendation {
+  name: string;
+  benefits: string[];
+  dosage: string;
+  frequency: string;
+  notes: string;
+}
+
+export interface MixResult {
+  mix: Record<string, number>;
+  nutrition: NutritionSummary;
+  categories: CategorySummary;
+  warnings: MixWarning[];
+  suggestions: string[];
+  herbRecommendations: HerbRecommendation[];
+  herbPurpose: string;
+  missingIngredients?: MissingIngredient[];
+  targetWeight: number;
+}
+
+export interface NutritionSummary {
+  protein: number;
+  carbs: number;
+  fat: number;
+  fiber: number;
+}
+
+export interface CategorySummary {
+  grain: number;
+  legume: number;
+  seed: number;
+}
+
+interface AvailableIngredient extends Ingredient {
   name: string;
   amount: number;
-  category: string;
-  protein: number;
-  carbs: number;
-  fat: number;
-  fiber: number;
 }
 
-export interface MixItem {
-  name: string;
-  amount: number;
-  percentage: number;
-  category: string;
-  protein: number;
-  carbs: number;
-  fat: number;
-  fiber: number;
-  preparation?: string;
-}
+const CATEGORY_RECOMMENDATIONS: Record<Ingredient["category"], string[]> = {
+  grain: ["wheat", "barley", "oats"],
+  legume: ["peas", "lentils", "mung beans"],
+  seed: ["safflower", "sunflower", "flaxseed"],
+};
 
-export interface NutritionAnalysis {
-  protein: number;
-  carbs: number;
-  fat: number;
-  fiber: number;
-}
-
-export interface OptimizedMix {
-  items: MixItem[];
-  totalWeight: number;
-  nutrition: NutritionAnalysis;
-  warnings: string[];
-  missingIngredients: string[];
-}
-
-export interface ToxicInfo {
-  isToxic: boolean;
-  toxin?: string;
-  severity?: string;
-  message?: string;
-}
+const nutritionKeys: Array<keyof NutritionSummary> = ["protein", "carbs", "fat", "fiber"];
+const categoryKeys: Array<keyof CategorySummary> = ["grain", "legume", "seed"];
 
 export class MultibirMixCalculator {
-  private bird: BirdType;
-  private situation: string;
+  constructor(
+    private readonly inventory: Record<string, number>,
+    private readonly bird: BirdType,
+    private readonly situation: string,
+  ) {}
 
-  constructor(bird: BirdType, situation: string) {
-    this.bird = bird;
-    this.situation = situation;
-  }
-
-  setBird(bird: BirdType) {
-    this.bird = bird;
-  }
-
-  setSituation(situation: string) {
-    this.situation = situation;
-  }
-
-  calculateMix(inventory: InventoryItem[], targetWeight: number): OptimizedMix {
-    const profile = getSituationProfile(this.bird, this.situation);
+  calculate(targetWeight: number): MixResult {
+    const profile = BIRD_PROFILES[this.bird].profiles[this.situation];
     if (!profile) {
-      return {
-        items: [],
-        totalWeight: 0,
-        nutrition: { protein: 0, carbs: 0, fat: 0, fiber: 0 },
-        warnings: ['Invalid situation profile'],
-        missingIngredients: [],
-      };
+      return this.emptyResult(targetWeight, [{ level: "CRITICAL", message: "The selected bird situation is not available." }]);
     }
 
-    const warnings: string[] = [];
-    const missingIngredients: string[] = [];
+    const warnings: MixWarning[] = [];
+    const eligible = this.getEligibleIngredients(warnings);
+    const missingIngredients = this.detectMissingCategories(eligible);
 
-    // Check for missing ingredient categories
-    const hasGrains = inventory.some(i => i.category === 'grain');
-    const hasLegumes = inventory.some(i => i.category === 'legume');
-    const hasSeeds = inventory.some(i => i.category === 'seed');
+    missingIngredients.forEach((missing) => {
+      warnings.push({ level: "WARNING", message: `${missing.category}: ${missing.reason}` });
+    });
 
-    if (!hasGrains) {
-      missingIngredients.push('grains');
-      warnings.push(`Missing grains - essential for ${this.bird} nutrition`);
-    }
-    if (!hasLegumes) {
-      missingIngredients.push('legumes');
-      warnings.push(`Missing legumes - essential for ${this.bird} nutrition`);
-    }
-    if (!hasSeeds) {
-      missingIngredients.push('seeds');
-      warnings.push(`Missing seeds - essential for ${this.bird} nutrition`);
+    if (eligible.length === 0) {
+      return this.emptyResult(targetWeight, warnings.length ? warnings : [{ level: "CRITICAL", message: "Add at least one compatible, safely prepared ingredient." }], missingIngredients);
     }
 
-    // Check for corn-only grain
-    const grainTypes = inventory.filter(i => i.category === 'grain').map(i => i.name);
-    if (grainTypes.length === 1 && grainTypes[0] === 'corn_yellow') {
-      warnings.push(`Corn alone doesn't provide complete nutrition for ${this.bird}s - pair with wheat, barley, or oats`);
+    const availableWeight = eligible.reduce((total, ingredient) => total + ingredient.amount, 0);
+    const actualTarget = Math.min(Math.max(0, targetWeight), availableWeight);
+    if (actualTarget < targetWeight) {
+      warnings.push({ level: "WARNING", message: `Only ${Math.round(availableWeight)}g of eligible inventory is available, so the recipe is scaled to that amount.` });
     }
 
-    // Optimize mix using weighted scoring
-    const optimized = this.optimizeMix(inventory, profile.nutrition, targetWeight);
+    const mix = this.optimizeMix(eligible, actualTarget, profile.nutrition);
+    const nutrition = this.calculateNutrition(mix);
+    const categories = this.calculateCategoryRatios(mix);
+    const suggestions = this.buildSuggestions(mix, nutrition, categories, profile.nutrition);
+
+    this.addTargetWarnings(nutrition, categories, profile.nutrition, warnings);
 
     return {
-      items: optimized,
-      totalWeight: optimized.reduce((sum, item) => sum + item.amount, 0),
-      nutrition: this.calculateNutrition(optimized),
+      mix,
+      nutrition,
+      categories,
       warnings,
-      missingIngredients,
+      suggestions,
+      herbRecommendations: [],
+      herbPurpose: "Therapeutic herb dosages are intentionally not provided. Discuss supplements with an avian veterinarian.",
+      missingIngredients: missingIngredients.length ? missingIngredients : undefined,
+      targetWeight: actualTarget,
     };
   }
 
-  private optimizeMix(
-    inventory: InventoryItem[],
-    targetNutrition: any,
-    targetWeight: number
-  ): MixItem[] {
-    const currentNutrition = this.calculateNutrition(inventory);
-    const mix: MixItem[] = [];
-    let totalWeight = 0;
+  private emptyResult(targetWeight: number, warnings: MixWarning[], missingIngredients?: MissingIngredient[]): MixResult {
+    return {
+      mix: {},
+      nutrition: { protein: 0, carbs: 0, fat: 0, fiber: 0 },
+      categories: { grain: 0, legume: 0, seed: 0 },
+      warnings,
+      suggestions: [],
+      herbRecommendations: [],
+      herbPurpose: "Therapeutic herb dosages are intentionally not provided. Discuss supplements with an avian veterinarian.",
+      missingIngredients,
+      targetWeight,
+    };
+  }
 
-    // Score each ingredient based on how well it fills nutritional gaps
-    const scores = inventory.map(item => {
-      const proteinGap = Math.max(0, targetNutrition.protein[1] - currentNutrition.protein);
-      const carbsGap = Math.max(0, targetNutrition.carbs[1] - currentNutrition.carbs);
-      const fatGap = Math.max(0, targetNutrition.fat[1] - currentNutrition.fat);
+  private getEligibleIngredients(warnings: MixWarning[]): AvailableIngredient[] {
+    const eligible: AvailableIngredient[] = [];
 
-      const score =
-        (item.protein * proteinGap * 0.4) +
-        (item.carbs * carbsGap * 0.3) +
-        (item.fat * fatGap * 0.2) +
-        (Math.random() * 0.1); // Diversity factor
+    Object.entries(this.inventory).forEach(([name, amount]) => {
+      const ingredient = INGREDIENTS[name];
+      if (!ingredient || !Number.isFinite(amount) || amount <= 0) return;
 
-      return { item, score };
+      const toxicity = checkBirdToxicity(name, this.bird);
+      const rawToxicity = isToxicRaw(name);
+      const requiresProcessing = requiresVerifiedProcessing(name);
+
+      if (!isIngredientCompatible(name, this.bird) || toxicity || rawToxicity || requiresProcessing) {
+        const reason = toxicity?.description || rawToxicity?.message || getProcessingWarning(name) || "it is not compatible with the selected bird";
+        warnings.push({ level: "CRITICAL", message: `${name.replace(/_/g, " ")} was excluded: ${reason}.` });
+        return;
+      }
+
+      eligible.push({ name, amount, ...ingredient });
     });
 
-    // Sort by score and select items until target weight reached
-    scores
-      .sort((a, b) => b.score - a.score)
-      .forEach(({ item }) => {
-        if (totalWeight < targetWeight) {
-          const amountToAdd = Math.min(item.amount, targetWeight - totalWeight);
-          mix.push({
-            name: item.name,
-            amount: amountToAdd,
-            percentage: (amountToAdd / targetWeight) * 100,
-            category: item.category,
-            protein: item.protein,
-            carbs: item.carbs,
-            fat: item.fat,
-            fiber: item.fiber,
-            preparation: this.getPreparationInstructions(item.name),
-          });
-          totalWeight += amountToAdd;
+    return eligible;
+  }
+
+  private detectMissingCategories(ingredients: AvailableIngredient[]): MissingIngredient[] {
+    const present = new Set(ingredients.map((ingredient) => ingredient.category));
+    return categoryKeys
+      .filter((category) => !present.has(category))
+      .map((category) => ({
+        category: category === "seed" ? "Oil seeds" : `${category[0].toUpperCase()}${category.slice(1)}s`,
+        reason: `No eligible ${category} ingredients are available for this batch estimate.`,
+        recommendations: CATEGORY_RECOMMENDATIONS[category],
+      }));
+  }
+
+  private optimizeMix(
+    ingredients: AvailableIngredient[],
+    targetWeight: number,
+    target: NutritionTarget,
+  ): Record<string, number> {
+    const remaining = new Map(ingredients.map((ingredient) => [ingredient.name, ingredient.amount]));
+    const mix: Record<string, number> = {};
+    const step = targetWeight <= 500 ? 5 : 10;
+    let mixedWeight = 0;
+
+    while (mixedWeight < targetWeight - 0.001) {
+      const amountToAdd = Math.min(step, targetWeight - mixedWeight);
+      let winner: AvailableIngredient | null = null;
+      let bestScore = Number.NEGATIVE_INFINITY;
+
+      ingredients.forEach((ingredient) => {
+        const remainingAmount = remaining.get(ingredient.name) || 0;
+        if (remainingAmount <= 0) return;
+        const addAmount = Math.min(amountToAdd, remainingAmount);
+        const candidate = { ...mix, [ingredient.name]: (mix[ingredient.name] || 0) + addAmount };
+        const score = this.scoreMix(candidate, target);
+
+        if (score > bestScore || (score === bestScore && winner && ingredient.name.localeCompare(winner.name) < 0)) {
+          bestScore = score;
+          winner = ingredient;
         }
       });
+
+      const selected = winner as AvailableIngredient | null;
+      if (!selected) break;
+
+      const addAmount = Math.min(amountToAdd, remaining.get(selected.name) || 0);
+      mix[selected.name] = (mix[selected.name] || 0) + addAmount;
+      remaining.set(selected.name, (remaining.get(selected.name) || 0) - addAmount);
+      mixedWeight += addAmount;
+    }
 
     return mix;
   }
 
-  private calculateNutrition(items: InventoryItem[] | MixItem[]): NutritionAnalysis {
-    const totalWeight = items.reduce((sum, item) => sum + item.amount, 0);
+  private scoreMix(mix: Record<string, number>, target: NutritionTarget): number {
+    const nutrition = this.calculateNutrition(mix);
+    const categories = this.calculateCategoryRatios(mix);
+    const categoryTargets = getCategoryTargets(this.bird);
+    const totalWeight = Object.values(mix).reduce((total, amount) => total + amount, 0);
 
-    if (totalWeight === 0) {
-      return { protein: 0, carbs: 0, fat: 0, fiber: 0 };
-    }
+    const nutritionPenalty = nutritionKeys.reduce((total, key) => {
+      const [min, max] = target[key];
+      const midpoint = (min + max) / 2;
+      const width = Math.max(0.5, max - min);
+      return total + Math.abs(nutrition[key] - midpoint) / width;
+    }, 0);
 
-    const nutrition = items.reduce(
-      (acc, item) => ({
-        protein: acc.protein + (item.protein * item.amount) / 100,
-        carbs: acc.carbs + (item.carbs * item.amount) / 100,
-        fat: acc.fat + (item.fat * item.amount) / 100,
-        fiber: acc.fiber + (item.fiber * item.amount) / 100,
-      }),
-      { protein: 0, carbs: 0, fat: 0, fiber: 0 }
-    );
+    const categoryPenalty = categoryKeys.reduce((total, key) => {
+      const [min, max] = categoryTargets[key];
+      const midpoint = (min + max) / 2;
+      const deficit = totalWeight > 20 && categories[key] < min ? (min - categories[key]) * 0.18 : 0;
+      return total + Math.abs(categories[key] - midpoint) * 0.03 + deficit;
+    }, 0);
 
-    return {
-      protein: (nutrition.protein / totalWeight) * 100,
-      carbs: (nutrition.carbs / totalWeight) * 100,
-      fat: (nutrition.fat / totalWeight) * 100,
-      fiber: (nutrition.fiber / totalWeight) * 100,
-    };
+    const varietyBonus = Math.min(0.25, Object.keys(mix).length * 0.04);
+    return varietyBonus - nutritionPenalty - categoryPenalty;
   }
 
-  checkToxicity(ingredientName: string): ToxicInfo {
-    const toxic = checkBirdToxicity(ingredientName, this.bird);
-    if (toxic) {
-      return {
-        isToxic: true,
-        toxin: toxic.toxin,
-        severity: toxic.severity,
-        message: `WARNING: Contains ${toxic.toxin} is toxic to ${this.bird}s. Severity: ${toxic.severity}. ${toxic.description}`,
-      };
-    }
-    return { isToxic: false };
+  private calculateNutrition(mix: Record<string, number>): NutritionSummary {
+    const totalWeight = Object.values(mix).reduce((total, amount) => total + amount, 0);
+    if (!totalWeight) return { protein: 0, carbs: 0, fat: 0, fiber: 0 };
+
+    return nutritionKeys.reduce((nutrition, key) => {
+      nutrition[key] = Object.entries(mix).reduce((total, [name, amount]) => total + (INGREDIENTS[name]?.[key] || 0) * amount, 0) / totalWeight;
+      return nutrition;
+    }, { protein: 0, carbs: 0, fat: 0, fiber: 0 } as NutritionSummary);
   }
 
-  checkCompatibility(ingredientName: string): boolean {
-    return isIngredientCompatible(ingredientName, this.bird);
+  private calculateCategoryRatios(mix: Record<string, number>): CategorySummary {
+    const totalWeight = Object.values(mix).reduce((total, amount) => total + amount, 0);
+    if (!totalWeight) return { grain: 0, legume: 0, seed: 0 };
+
+    return Object.entries(mix).reduce((categories, [name, amount]) => {
+      const category = INGREDIENTS[name]?.category;
+      if (category) categories[category] += (amount / totalWeight) * 100;
+      return categories;
+    }, { grain: 0, legume: 0, seed: 0 } as CategorySummary);
+  }
+
+  private addTargetWarnings(
+    nutrition: NutritionSummary,
+    categories: CategorySummary,
+    target: NutritionTarget,
+    warnings: MixWarning[],
+  ) {
+    nutritionKeys.forEach((key) => {
+      const [min, max] = target[key];
+      if (nutrition[key] < min || nutrition[key] > max) {
+        warnings.push({
+          level: "WARNING",
+          message: `${key[0].toUpperCase()}${key.slice(1)} is ${nutrition[key].toFixed(1)}% (estimate target: ${min}-${max}%).`,
+        });
+      }
+    });
+
+    const categoryTargets = getCategoryTargets(this.bird);
+    categoryKeys.forEach((key) => {
+      const [min, max] = categoryTargets[key];
+      if (categories[key] < min || categories[key] > max) {
+        warnings.push({
+          level: "WARNING",
+          message: `${key[0].toUpperCase()}${key.slice(1)} ratio is ${categories[key].toFixed(1)}% (estimate range: ${min}-${max}%).`,
+        });
+      }
+    });
+  }
+
+  private buildSuggestions(
+    mix: Record<string, number>,
+    nutrition: NutritionSummary,
+    categories: CategorySummary,
+    target: NutritionTarget,
+  ): string[] {
+    const suggestions = ["Use this as a mix estimate only. A complete diet also requires micronutrient, amino-acid, and energy validation."];
+    const grains = Object.keys(mix).filter((name) => INGREDIENTS[name]?.category === "grain");
+
+    if (grains.length === 1 && grainNeedsPairing(grains[0])) {
+      suggestions.push(`Pair ${grains[0].replace(/_/g, " ")} with another grain such as wheat, barley, or oats for greater ingredient diversity.`);
+    }
+    if (nutrition.protein < target.protein[0] && categories.legume < getCategoryTargets(this.bird).legume[1]) {
+      suggestions.push("Consider a compatible, safely prepared protein ingredient only after confirming its processing and suitability for your bird.");
+    }
+    if (nutrition.fat > target.fat[1]) {
+      suggestions.push("Reduce oil seeds or high-fat ingredients if your avian or poultry professional agrees that the fat estimate is too high.");
+    }
+
+    return suggestions;
   }
 
   getPreparationInstructions(ingredientName: string): string | undefined {
-    const ingredient = INGREDIENTS[ingredientName as keyof typeof INGREDIENTS];
-    if (ingredient && 'preparation' in ingredient) {
-      return (ingredient as any).preparation;
-    }
-    return undefined;
+    return getPreparationInstructions(ingredientName)?.preparation;
   }
-
-  getHerbRecommendations(): any[] {
-    // This would be populated from HERB_RECOMMENDATIONS in data.ts
-    // filtered by bird and situation
-    return [];
-  }
-}
-
-export function createCalculator(bird: BirdType, situation: string): MultibirMixCalculator {
-  return new MultibirMixCalculator(bird, situation);
 }

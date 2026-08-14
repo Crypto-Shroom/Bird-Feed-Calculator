@@ -81,6 +81,24 @@ export const SAFE_RAW_LEGUMES = new Set([
   "adzuki_beans"
 ]);
 
+// These ingredients must not be treated as ready-to-feed on the basis of a name alone.
+// Feed-grade processing, cultivar, and inclusion rate require professional confirmation.
+export const INGREDIENTS_REQUIRING_VERIFIED_PROCESSING = new Set([
+  "adzuki_beans",
+  "beans",
+  "black_beans",
+  "black_eyed_peas",
+  "chickpeas",
+  "fava_beans",
+  "kidney_beans",
+  "lima_beans",
+  "lupins",
+  "navy_beans",
+  "pinto_beans",
+  "soybeans",
+  "vetch",
+]);
+
 // Grains that should not be the only grain in a mix
 export const GRAINS_NEEDING_PAIRING = new Set([
   "corn_yellow",
@@ -179,6 +197,15 @@ export function isToxicRaw(ingredientName: string): ToxicIngredient | null {
 // Check if a legume is safe to feed raw
 export function isSafeRawLegume(ingredientName: string): boolean {
   return SAFE_RAW_LEGUMES.has(ingredientName);
+}
+
+export function requiresVerifiedProcessing(ingredientName: string): boolean {
+  return INGREDIENTS_REQUIRING_VERIFIED_PROCESSING.has(ingredientName);
+}
+
+export function getProcessingWarning(ingredientName: string): string | null {
+  if (!requiresVerifiedProcessing(ingredientName)) return null;
+  return "Excluded until feed-grade processing, cultivar, and safe inclusion guidance are confirmed.";
 }
 
 // Check if a grain needs pairing

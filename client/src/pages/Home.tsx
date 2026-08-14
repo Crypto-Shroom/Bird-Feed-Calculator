@@ -1,729 +1,358 @@
-import { useState, useEffect, useMemo } from "react";
-import { Search } from "lucide-react";
+// Design contract: a warm, editorial feed-workshop interface that communicates scope and safety clearly without overstating nutrition precision.
+import { useEffect, useMemo, useState } from "react";
+import {
+  AlertTriangle,
+  Bird,
+  CheckCircle2,
+  Download,
+  Droplets,
+  Info,
+  Leaf,
+  Plus,
+  Scale,
+  Search,
+  Trash2,
+  Wheat,
+} from "lucide-react";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
-import { Slider } from "@/components/ui/slider";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Progress } from "@/components/ui/progress";
-import { 
-  Bird, 
-  Scale, 
-  AlertTriangle, 
-  CheckCircle2, 
-  Leaf, 
-  Info, 
-  Download, 
-  Plus, 
-  Trash2, 
-  RefreshCw,
-  ChevronRight,
-  Wheat,
-  Sprout,
-  Droplets
-} from "lucide-react";
-import { INGREDIENTS, PROFILES } from "@/lib/data";
-import { PigeonMixCalculator, MixResult } from "@/lib/calculator";
-import { isToxicRaw, grainNeedsPairing, getPreparationInstructions, SAFETY_DISCLAIMER } from "@/lib/safety";
-import { cn } from "@/lib/utils";
-import type { BirdType } from "@/lib/birds";
-import { BIRD_PROFILES, BIRD_TYPES, getAvailableSituations } from "@/lib/birds";
-import { MultibirMixCalculator } from "@/lib/calculator-multi-bird";
+import { Slider } from "@/components/ui/slider";
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { INGREDIENTS } from "@/lib/data";
 import { checkBirdToxicity, isIngredientCompatible } from "@/lib/bird-safety";
+import {
+  BIRD_CARE,
+  BIRD_PROFILES,
+  BIRD_TYPES,
+  getAvailableSituations,
+  getCategoryTargets,
+  type BirdType,
+} from "@/lib/birds";
+import { MultibirMixCalculator, type MixResult } from "@/lib/calculator-multi-bird";
+import { getPreparationInstructions, getProcessingWarning, isToxicRaw } from "@/lib/safety";
+import { cn } from "@/lib/utils";
+
+const defaultInventory: Record<string, number> = {
+  wheat: 5000,
+  corn_yellow: 3000,
+  peas: 2000,
+  lentils: 1000,
+  safflower: 500,
+  barley: 2000,
+};
+
+type NutrientKey = "protein" | "carbs" | "fat" | "fiber";
 
 export default function Home() {
   const [selectedBird, setSelectedBird] = useState<BirdType>("pigeon");
   const [situation, setSituation] = useState("maintenance");
   const [targetWeight, setTargetWeight] = useState(1000);
-  const [inventory, setInventory] = useState<Record<string, number>>({
-    "wheat": 5000,
-    "corn_yellow": 3000,
-    "peas": 2000,
-    "lentils": 1000,
-    "safflower": 500,
-    "barley": 2000
-  });
+  const [inventory, setInventory] = useState<Record<string, number>>(defaultInventory);
   const [result, setResult] = useState<MixResult | null>(null);
   const [activeTab, setActiveTab] = useState("calculator");
   const [ingredientSearch, setIngredientSearch] = useState("");
-  const [confirmedToxics, setConfirmedToxics] = useState<Set<string>>(new Set());
+  const [addOpen, setAddOpen] = useState(false);
 
-  // Get available situations for selected bird
-  const availableSituations = useMemo(() => {
-    return getAvailableSituations(selectedBird);
-  }, [selectedBird]);
-
-  // Reset situation if not available for new bird
-  useEffect(() => {
-    if (!availableSituations.includes(situation)) {
-      setSituation(availableSituations[0] || "maintenance");
-    }
-  }, [selectedBird, availableSituations, situation]);
-
-  // Calculate mix whenever inputs change
-  useEffect(() => {
-    const calculator = new PigeonMixCalculator(inventory, situation);
-    const res = calculator.calculate(targetWeight);
-    setResult(res);
-  }, [inventory, situation, targetWeight]);
-
-  const handleAddIngredient = (name: string) => {
-    if (!inventory[name]) {
-      setInventory(prev => ({ ...prev, [name]: 1000 }));
-    }
-  };
-
-  const handleRemoveIngredient = (name: string) => {
-    const newInv = { ...inventory };
-    delete newInv[name];
-    setInventory(newInv);
-  };
-
-  const handleUpdateAmount = (name: string, amount: number) => {
-    setInventory(prev => ({ ...prev, [name]: amount }));
-  };
-
-  const sortedIngredients = useMemo(() => {
-    const all = Object.keys(INGREDIENTS).sort();
-    if (!ingredientSearch.trim()) return all;
-    const searchLower = ingredientSearch.toLowerCase();
-    return all.filter(ing => ing.toLowerCase().includes(searchLower));
-  }, [ingredientSearch]);
-
-  // Separate compatible and incompatible ingredients
-  const { compatible, incompatible } = useMemo(() => {
-    const compatible: string[] = [];
-    const incompatible: string[] = [];
-    
-    sortedIngredients.forEach(ing => {
-      if (isIngredientCompatible(ing, selectedBird)) {
-        compatible.push(ing);
-      } else {
-        incompatible.push(ing);
-      }
-    });
-    
-    return { compatible, incompatible };
-  }, [sortedIngredients, selectedBird]);
-
+  const availableSituations = useMemo(() => getAvailableSituations(selectedBird), [selectedBird]);
   const birdProfile = BIRD_PROFILES[selectedBird];
-  const currentProfile = birdProfile?.profiles[situation] || (PROFILES[situation as keyof typeof PROFILES] as any);
-  
-  // Helper to get nutrition values from either profile type
-  const getNutrition = (key: 'protein' | 'carbs' | 'fat' | 'fiber'): [number, number] => {
-    if (currentProfile?.nutrition?.[key]) {
-      return currentProfile.nutrition[key];
-    }
-    return (currentProfile as any)?.[key] || [0, 0];
+  const currentProfile = birdProfile.profiles[situation] || birdProfile.profiles[availableSituations[0]];
+  const care = BIRD_CARE[selectedBird];
+
+  useEffect(() => {
+    if (!availableSituations.includes(situation)) setSituation(availableSituations[0]);
+  }, [availableSituations, situation]);
+
+  useEffect(() => {
+    const calculator = new MultibirMixCalculator(inventory, selectedBird, situation);
+    setResult(calculator.calculate(targetWeight));
+  }, [inventory, selectedBird, situation, targetWeight]);
+
+  const ingredientOptions = useMemo(() => {
+    const query = ingredientSearch.trim().toLowerCase();
+    return Object.keys(INGREDIENTS)
+      .filter((name) => !inventory[name])
+      .filter((name) => !query || name.replace(/_/g, " ").includes(query))
+      .sort()
+      .reduce<{ available: string[]; blocked: Array<{ name: string; reason: string }> }>((groups, name) => {
+        const rawSafety = isToxicRaw(name);
+        const speciesToxicity = checkBirdToxicity(name, selectedBird);
+        const processingWarning = getProcessingWarning(name);
+        if (isIngredientCompatible(name, selectedBird) && !rawSafety && !speciesToxicity && !processingWarning) {
+          groups.available.push(name);
+        } else {
+          groups.blocked.push({
+            name,
+            reason: speciesToxicity?.description || rawSafety?.message || processingWarning || `Not compatible with ${birdProfile.name}.`,
+          });
+        }
+        return groups;
+      }, { available: [], blocked: [] });
+  }, [birdProfile.name, ingredientSearch, inventory, selectedBird]);
+
+  const addIngredient = (name: string) => {
+    setInventory((previous) => ({ ...previous, [name]: 1000 }));
+    setIngredientSearch("");
+    setAddOpen(false);
   };
-  
-  // Helper to get category ratios
-  const getCategoryRatios = () => {
-    return (currentProfile as any)?.category_ratios || { grain: [60, 75], legume: [15, 25], seed: [5, 15] };
+
+  const updateAmount = (name: string, amount: number) => {
+    setInventory((previous) => ({ ...previous, [name]: Number.isFinite(amount) ? Math.max(0, amount) : 0 }));
   };
-  
-  // Helper to get feeding notes
-  const getFeedingNotes = () => {
-    return currentProfile?.feedingNotes || (currentProfile as any)?.feeding_notes || 'Configure your flock\'s nutrition for this situation.';
+
+  const removeIngredient = (name: string) => {
+    setInventory((previous) => {
+      const updated = { ...previous };
+      delete updated[name];
+      return updated;
+    });
+  };
+
+  const exportRecipe = () => {
+    if (!result || !Object.keys(result.mix).length) return;
+    const lines = [
+      `${birdProfile.name} — ${currentProfile.name}`,
+      `Batch estimate: ${Math.round(result.targetWeight)}g`,
+      "",
+      "FORMULA",
+      ...Object.entries(result.mix)
+        .sort(([, a], [, b]) => b - a)
+        .map(([name, amount]) => `${name.replace(/_/g, " ")}: ${Math.round(amount)}g`),
+      "",
+      "ESTIMATED NUTRITION",
+      `Protein: ${result.nutrition.protein.toFixed(1)}%`,
+      `Carbohydrates: ${result.nutrition.carbs.toFixed(1)}%`,
+      `Fat: ${result.nutrition.fat.toFixed(1)}%`,
+      `Fiber: ${result.nutrition.fiber.toFixed(1)}%`,
+      "",
+      "SAFETY SCOPE",
+      care.scope,
+      care.baseDiet,
+      ...result.warnings.map((warning) => `${warning.level}: ${warning.message}`),
+    ];
+    const file = new Blob([lines.join("\n")], { type: "text/plain;charset=utf-8" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(file);
+    link.download = `${selectedBird}-${situation}-mix.txt`;
+    link.click();
+    URL.revokeObjectURL(link.href);
   };
 
   return (
     <div className="min-h-screen bg-background font-sans">
-      {/* Hero Section */}
-      <div className="relative h-[400px] w-full overflow-hidden">
-        <div className="absolute inset-0 bg-black/40 z-10" />
-        <img 
-          src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663234243499/zvVSfnDuxBzqyTwR.png" 
-          alt="Premium Pigeon Mix" 
-          className="absolute inset-0 w-full h-full object-cover"
+      <header className="relative h-[360px] overflow-hidden">
+        <img
+          src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663234243499/zvVSfnDuxBzqyTwR.png"
+          alt="Mixed grains and seeds"
+          className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="relative z-20 container h-full flex flex-col justify-center items-start text-white">
-          <Badge className="mb-4 bg-primary/90 hover:bg-primary text-primary-foreground border-none px-3 py-1 text-sm font-medium backdrop-blur-sm">
-            v3.0 Multi-Bird Calculator
-          </Badge>
-          <h1 className="text-5xl md:text-6xl font-display font-bold mb-4 leading-tight">
-            Precision Nutrition <br/>for All Birds
-          </h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-2xl font-light">
-            Scientifically optimized seed mixes for pigeons, parrots, budgies, canaries, and more.
+        <div className="absolute inset-0 bg-stone-950/65" />
+        <div className="container relative flex h-full flex-col justify-center text-white">
+          <Badge className="mb-4 w-fit border-none bg-emerald-700/95 px-3 py-1 text-sm text-white">Multi-Bird Mix Planner</Badge>
+          <h1 className="max-w-3xl font-display text-4xl font-bold leading-tight md:text-6xl">Seed and grain mixes with clearer safety boundaries.</h1>
+          <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">
+            Build an ingredient-batch estimate for your bird, then use it alongside a species-appropriate complete diet and professional guidance.
           </p>
         </div>
-      </div>
+      </header>
 
-      <main className="container py-12 -mt-20 relative z-30">
-        {/* Bird Selector */}
-        <div className="mb-8 p-6 bg-card rounded-lg border shadow-md">
-          <h3 className="text-sm font-semibold text-muted-foreground mb-4 uppercase tracking-wide">Select Your Bird</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+      <main className="container relative z-10 -mt-14 pb-16">
+        <section aria-labelledby="bird-selector-heading" className="mb-8 rounded-xl border bg-card p-5 shadow-lg">
+          <h2 id="bird-selector-heading" className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Choose a bird</h2>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
             {BIRD_TYPES.map((bird) => {
               const profile = BIRD_PROFILES[bird];
+              const selected = bird === selectedBird;
               return (
                 <button
                   key={bird}
+                  type="button"
+                  aria-pressed={selected}
                   onClick={() => setSelectedBird(bird)}
                   className={cn(
-                    "p-4 rounded-lg border-2 transition-all text-center font-medium",
-                    selectedBird === bird
-                      ? "border-2 bg-blue-50 border-blue-500 text-blue-700"
-                      : "border-border bg-muted/30 text-muted-foreground hover:bg-muted/50"
+                    "rounded-lg border-2 p-4 text-center text-sm font-medium transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                    selected ? "border-emerald-600 bg-emerald-50 text-emerald-900" : "border-border bg-muted/20 text-muted-foreground hover:bg-muted/50",
                   )}
                 >
-                  <div className="text-2xl mb-2">{profile?.icon || "🐦"}</div>
-                  <div className="text-sm capitalize">{bird}</div>
+                  <span aria-hidden="true" className="mb-2 block text-2xl">{profile.icon}</span>
+                  {profile.name}
                 </button>
               );
             })}
           </div>
-        </div>
+        </section>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          
-          {/* Left Column: Controls & Inventory */}
-          <div className="lg:col-span-5 space-y-6">
-            <Card className="border-none shadow-xl bg-card/95 backdrop-blur-sm">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+          <aside className="space-y-6 lg:col-span-5">
+            <Card className="border-none shadow-xl">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-2xl">
-                  <Bird className="w-6 h-6 text-primary" />
-                  {birdProfile?.name || "Flock"} Profile
-                </CardTitle>
-                <CardDescription>
-                  Configure your {selectedBird}'s current situation to get optimized targets.
-                </CardDescription>
+                <CardTitle className="flex items-center gap-2 text-2xl"><Bird className="h-6 w-6 text-primary" />{birdProfile.name} profile</CardTitle>
+                <CardDescription>{care.scope}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-muted-foreground">Current Situation</label>
+                  <label htmlFor="situation" className="text-sm font-medium text-muted-foreground">Current situation</label>
                   <Select value={situation} onValueChange={setSituation}>
-                    <SelectTrigger className="h-12 text-lg">
-                      <SelectValue />
-                    </SelectTrigger>
+                    <SelectTrigger id="situation" className="h-12 text-base"><SelectValue /></SelectTrigger>
                     <SelectContent>
-                      {availableSituations.map((sit) => {
-                        const profile = PROFILES[sit as keyof typeof PROFILES];
-                        return (
-                          <SelectItem key={sit} value={sit}>{profile?.name || sit}</SelectItem>
-                        );
-                      })}
+                      {availableSituations.map((value) => (
+                        <SelectItem key={value} value={value}>{birdProfile.profiles[value].name}</SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
-                  <p className="text-sm text-muted-foreground bg-muted/50 p-3 rounded-md border border-border/50">
-                    {getFeedingNotes()}
-                  </p>
+                  <p className="rounded-md border bg-muted/40 p-3 text-sm text-muted-foreground">{currentProfile.feedingNotes}</p>
                 </div>
 
                 <div className="space-y-2">
                   <div className="flex justify-between">
-                    <label className="text-sm font-medium text-muted-foreground">Target Batch Size</label>
+                    <label htmlFor="batch-size" className="text-sm font-medium text-muted-foreground">Target batch size</label>
                     <span className="font-mono font-bold">{targetWeight}g</span>
                   </div>
-                  <Slider 
-                    value={[targetWeight]} 
-                    min={500} 
-                    max={10000} 
-                    step={100} 
-                    onValueChange={(vals) => setTargetWeight(vals[0])}
-                    className="py-4"
-                  />
+                  <Slider id="batch-size" value={[targetWeight]} min={500} max={10000} step={100} onValueChange={(values) => setTargetWeight(values[0])} className="py-4" />
                 </div>
 
-                <div className="border-t pt-4 space-y-3">
-                  <div className="flex items-start gap-3">
-                    <Droplets className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
-                    <div className="text-sm">
-                      <p className="font-medium text-foreground">Fresh Water</p>
-                      <p className="text-xs text-muted-foreground">Always provide clean, fresh water available at all times</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
-                    <Scale className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
-                    <div className="text-sm">
-                      <p className="font-medium text-foreground">Grit</p>
-                      <p className="text-xs text-muted-foreground">Pigeons need grit to properly digest seeds and grains</p>
-                    </div>
-                  </div>
+                <Separator />
+                <div className="space-y-4 text-sm">
+                  <CareNote icon={<Droplets className="h-5 w-5 text-blue-600" />} title="Water" text={care.water} />
+                  <CareNote icon={<Scale className="h-5 w-5 text-amber-700" />} title="Grit" text={care.grit} />
+                  <CareNote icon={<Leaf className="h-5 w-5 text-emerald-700" />} title="Diet foundation" text={care.baseDiet} />
                 </div>
               </CardContent>
             </Card>
 
-            <Card className="border-none shadow-xl bg-card/95 backdrop-blur-sm flex flex-col h-[600px]">
+            <Card className="border-none shadow-xl">
               <CardHeader className="pb-3">
-                <div className="flex justify-between items-center">
-                  <CardTitle className="flex items-center gap-2">
-                    <Wheat className="w-5 h-5 text-secondary-foreground" />
-                    Your Inventory
-                  </CardTitle>
-                </div>
-                <div className="flex gap-2 mt-2">
-                  <div className="flex-1 relative">
-                    <Search className="absolute left-3 top-2.5 w-4 h-4 text-muted-foreground" />
-                    <Input
-                      placeholder="Search ingredients..."
-                      value={ingredientSearch}
-                      onChange={(e) => setIngredientSearch(e.target.value)}
-                      className="h-8 text-xs pl-9"
-                    />
-                  </div>
-                  <Select onValueChange={(value) => {
-                    handleAddIngredient(value);
-                    setIngredientSearch("");
-                  }}>
-                    <SelectTrigger className="w-[140px] h-8 text-xs">
-                      <Plus className="w-3 h-3 mr-1" /> Add Ingredient
-                    </SelectTrigger>
-                    <SelectContent>
-                      <ScrollArea className="h-[300px]">
-                        {sortedIngredients.map(ing => (
-                          <SelectItem key={ing} value={ing} disabled={!!inventory[ing]}>
-                            {ing.replace(/_/g, " ")}
-                          </SelectItem>
-                        ))}
-                      </ScrollArea>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <CardDescription>
-                  Enter available amounts in grams for each ingredient you have on hand.
-                </CardDescription>
+                <CardTitle className="flex items-center gap-2"><Wheat className="h-5 w-5" />Your inventory</CardTitle>
+                <CardDescription>Enter the available amount of each ingredient in grams. Unsafe or incompatible ingredients are not offered for this bird.</CardDescription>
               </CardHeader>
-              <CardContent className="flex-1 overflow-hidden p-0">
-                <ScrollArea className="h-full px-6 pb-6">
-                  <div className="space-y-4 pt-2">
-                    {Object.entries(inventory).map(([name, amount]) => {
-                      const toxicInfo = isToxicRaw(name);
-                      return (
-                      <div key={name} className={cn("flex items-center gap-3 group p-3 rounded-lg border", toxicInfo ? "bg-red-50 border-red-300" : "border-transparent")}>
-                        <div className="flex-1">
-                          <div className="flex justify-between mb-1">
-                            <span className="font-medium capitalize text-sm">
-                              {name.replace(/_/g, " ")}
-                              {getPreparationInstructions(name) && (
-                                <span className="text-xs text-muted-foreground ml-2">({getPreparationInstructions(name)?.preparation})</span>
-                              )}
-                            </span>
-                            <span className="text-xs text-muted-foreground">{amount}g</span>
+              <CardContent className="space-y-4">
+                <Popover open={addOpen} onOpenChange={setAddOpen}>
+                  <PopoverTrigger asChild>
+                    <Button type="button" variant="outline" className="w-full justify-start gap-2"><Plus className="h-4 w-4" />Add compatible ingredient</Button>
+                  </PopoverTrigger>
+                  <PopoverContent align="start" className="w-[min(92vw,380px)] p-3">
+                    <div className="relative mb-3">
+                      <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
+                      <Input autoFocus value={ingredientSearch} onChange={(event) => setIngredientSearch(event.target.value)} placeholder="Search compatible ingredients" className="pl-9" />
+                    </div>
+                    <ScrollArea className="h-72 pr-3">
+                      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-emerald-700">Compatible choices</p>
+                      {ingredientOptions.available.length ? ingredientOptions.available.map((name) => (
+                        <button key={name} type="button" onClick={() => addIngredient(name)} className="flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-sm hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                          <span className="capitalize">{name.replace(/_/g, " ")}</span><Plus className="h-4 w-4 text-emerald-700" />
+                        </button>
+                      )) : <p className="px-2 py-3 text-sm text-muted-foreground">No compatible ingredients match this search.</p>}
+                      {ingredientOptions.blocked.length > 0 && <>
+                        <Separator className="my-3" />
+                        <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Not offered for this bird</p>
+                        {ingredientOptions.blocked.map(({ name, reason }) => (
+                          <div key={name} className="px-2 py-2 text-sm text-muted-foreground"><p className="capitalize line-through">{name.replace(/_/g, " ")}</p><p className="mt-0.5 text-xs">{reason}</p></div>
+                        ))}
+                      </>}
+                    </ScrollArea>
+                  </PopoverContent>
+                </Popover>
+
+                <div className="space-y-3">
+                  {Object.entries(inventory).map(([name, amount]) => {
+                    const rawSafety = isToxicRaw(name);
+                    const speciesToxicity = checkBirdToxicity(name, selectedBird);
+                    const processingWarning = getProcessingWarning(name);
+                    const hasConcern = Boolean(rawSafety || speciesToxicity || processingWarning || !isIngredientCompatible(name, selectedBird));
+                    const preparation = getPreparationInstructions(name)?.preparation;
+                    return (
+                      <div key={name} className={cn("group rounded-lg border p-3", hasConcern ? "border-red-300 bg-red-50" : "bg-card")}>
+                        <div className="mb-2 flex items-start justify-between gap-3">
+                          <div>
+                            <label htmlFor={`amount-${name}`} className="text-sm font-medium capitalize">{name.replace(/_/g, " ")}</label>
+                            {preparation && <p className="mt-0.5 text-xs text-muted-foreground">Preparation: {preparation}</p>}
                           </div>
-                          {toxicInfo && (
-                            <div className="mb-2 p-2 bg-red-100 border border-red-300 rounded text-xs text-red-900 font-semibold">
-                              WARNING: {toxicInfo.toxin}. {toxicInfo.message}
-                            </div>
-                          )}
-                          <div className="flex items-center gap-2">
-                            <Input 
-                              type="number" 
-                              value={amount} 
-                              onChange={(e) => handleUpdateAmount(name, Number(e.target.value))}
-                              className="h-8 text-xs"
-                            />
-                            <Button 
-                              variant="ghost" 
-                              size="icon" 
-                              className="h-8 w-8 text-muted-foreground hover:text-destructive opacity-0 group-hover:opacity-100 transition-opacity"
-                              onClick={() => handleRemoveIngredient(name)}
-                            >
-                              <Trash2 className="w-4 h-4" />
-                            </Button>
-                          </div>
+                          <Button type="button" variant="ghost" size="icon" aria-label={`Remove ${name.replace(/_/g, " ")}`} onClick={() => removeIngredient(name)} className="h-8 w-8 text-muted-foreground hover:text-destructive"><Trash2 className="h-4 w-4" /></Button>
                         </div>
+                        {hasConcern && <p className="mb-2 rounded bg-red-100 p-2 text-xs font-medium text-red-900">Excluded from the formula: {speciesToxicity?.description || rawSafety?.message || processingWarning || `not compatible with ${birdProfile.name}`}.</p>}
+                        <Input id={`amount-${name}`} type="number" min="0" value={amount} onChange={(event) => updateAmount(name, Number(event.target.value))} aria-label={`${name.replace(/_/g, " ")} amount in grams`} />
                       </div>
                     );
-                    })}
-                    {Object.keys(inventory).length === 0 && (
-                      <div className="text-center py-12 text-muted-foreground">
-                        <p>No ingredients added.</p>
-                        <p className="text-sm">Add ingredients to start calculating.</p>
-                      </div>
-                    )}
-                  </div>
-                </ScrollArea>
+                  })}
+                  {!Object.keys(inventory).length && <p className="rounded-md border border-dashed p-6 text-center text-sm text-muted-foreground">Add compatible ingredients to create a batch estimate.</p>}
+                </div>
               </CardContent>
             </Card>
-          </div>
+          </aside>
 
-          {/* Right Column: Results & Analysis */}
-          <div className="lg:col-span-7 space-y-6">
-            {result && (
-              <div className="space-y-6">
-                {/* Top Stats Cards */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  <NutritionCard 
-                    label="Protein" 
-                    value={result.nutrition.protein} 
-                    target={getNutrition('protein')} 
-                    unit="%" 
-                    color="bg-[var(--chart-1)]"
-                  />
-                  <NutritionCard 
-                    label="Carbs" 
-                    value={result.nutrition.carbs} 
-                    target={getNutrition('carbs')} 
-                    unit="%" 
-                    color="bg-[var(--chart-2)]"
-                  />
-                  <NutritionCard 
-                    label="Fat" 
-                    value={result.nutrition.fat} 
-                    target={getNutrition('fat')} 
-                    unit="%" 
-                    color="bg-[var(--chart-3)]"
-                  />
-                  <NutritionCard 
-                    label="Fiber" 
-                    value={result.nutrition.fiber} 
-                    target={getNutrition('fiber')} 
-                    unit="%" 
-                    color="bg-[var(--chart-4)]"
-                  />
-                </div>
-
-                {/* Main Mix Display */}
-                <Card className="border-none shadow-xl overflow-hidden">
-                  <div className="bg-muted/30 border-b border-border/50 p-1">
-                    <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-                      <TabsList className="w-full justify-start bg-transparent p-0 h-12">
-                        <TabsTrigger value="calculator" className="data-[state=active]:bg-white data-[state=active]:shadow-sm rounded-md mx-1 h-10 px-6">
-                          Optimized Mix
-                        </TabsTrigger>
-                        <TabsTrigger value="herbs" className="data-[state=active]:bg-white data-[state=active]:shadow-sm rounded-md mx-1 h-10 px-6">
-                          Herbs & Supplements
-                        </TabsTrigger>
-                        <TabsTrigger value="analysis" className="data-[state=active]:bg-white data-[state=active]:shadow-sm rounded-md mx-1 h-10 px-6">
-                          Detailed Analysis
-                        </TabsTrigger>
-                      </TabsList>
-                    </Tabs>
-                  </div>
-
-                  <CardContent className="p-6 min-h-[500px]">
-                    {activeTab === "calculator" && (
-                      <div className="space-y-6">
-                        <div className="flex justify-between items-center">
-                          <h3 className="text-xl font-display font-bold">Recommended Formula</h3>
-                          <Button variant="outline" size="sm" className="gap-2">
-                            <Download className="w-4 h-4" /> Export Recipe
-                          </Button>
-                        </div>
-
-                        {/* Missing Ingredients Alert */}
-                        {result.missingIngredients && result.missingIngredients.length > 0 && (
-                          <div className="space-y-3 bg-red-50 dark:bg-red-950/20 border border-red-200 dark:border-red-900 rounded-lg p-4 mb-6">
-                            <div className="flex items-start gap-3">
-                              <AlertTriangle className="w-5 h-5 text-red-600 dark:text-red-400 mt-0.5 shrink-0" />
-                              <div className="flex-1">
-                                <h4 className="font-bold text-red-900 dark:text-red-200 mb-2">Missing Essential Ingredients</h4>
-                                {result.missingIngredients.map((missing, i) => (
-                                  <div key={i} className="mb-3 last:mb-0">
-                                    <p className="text-sm font-medium text-red-800 dark:text-red-300 mb-1">{missing.category}</p>
-                                    <p className="text-sm text-red-700 dark:text-red-400 mb-2">{missing.reason}</p>
-                                    <div className="flex flex-wrap gap-2">
-                                      {missing.recommendations.map((rec, j) => (
-                                        <Badge key={j} variant="outline" className="bg-red-100 dark:bg-red-900 text-red-900 dark:text-red-200 border-red-300 dark:border-red-700">
-                                          {rec}
-                                        </Badge>
-                                      ))}
-                                    </div>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-                        )}
-
-                        {/* Warnings */}
-                        {result.warnings.length > 0 && (
-                          <div className="space-y-2">
-                            {result.warnings.map((w, i) => (
-                              <Alert key={i} variant={w.level === "CRITICAL" ? "destructive" : "default"} className={cn(
-                                "border-l-4",
-                                w.level === "CRITICAL" ? "border-l-destructive bg-destructive/5" : "border-l-yellow-500 bg-yellow-500/10 text-yellow-700 dark:text-yellow-400"
-                              )}>
-                                <AlertTriangle className="h-4 w-4" />
-                                <AlertTitle>{w.level === "CRITICAL" ? "Critical Issue" : "Advisory"}</AlertTitle>
-                                <AlertDescription>{w.message}</AlertDescription>
-                              </Alert>
-                            ))}
-                          </div>
-                        )}
-
-                        {/* Mix Table */}
-                        <div className="rounded-lg border border-border overflow-hidden">
-                          <table className="w-full text-sm">
-                            <thead className="bg-muted/50 text-muted-foreground font-medium">
-                              <tr>
-                                <th className="px-4 py-3 text-left">Ingredient</th>
-                                <th className="px-4 py-3 text-right">Amount</th>
-                                <th className="px-4 py-3 text-right">%</th>
-                                <th className="px-4 py-3 text-left pl-8">Category</th>
-                              </tr>
-                            </thead>
-                            <tbody className="divide-y divide-border/50">
-                              {Object.entries(result.mix)
-                                .sort(([, a], [, b]) => b - a)
-                                .map(([name, amount]) => (
-                                  <tr key={name} className="hover:bg-muted/20 transition-colors">
-                                    <td className="px-4 py-3 font-medium capitalize">{name.replace(/_/g, " ")}</td>
-                                    <td className="px-4 py-3 text-right font-mono">{Math.round(amount)}g</td>
-                                    <td className="px-4 py-3 text-right text-muted-foreground">
-                                      {((amount / targetWeight) * 100).toFixed(1)}%
-                                    </td>
-                                    <td className="px-4 py-3 pl-8">
-                                      <Badge variant="secondary" className={cn(
-                                        "capitalize font-normal",
-                                        INGREDIENTS[name].category === "grain" && "bg-amber-100 text-amber-800 hover:bg-amber-200",
-                                        INGREDIENTS[name].category === "legume" && "bg-emerald-100 text-emerald-800 hover:bg-emerald-200",
-                                        INGREDIENTS[name].category === "seed" && "bg-stone-100 text-stone-800 hover:bg-stone-200",
-                                      )}>
-                                        {INGREDIENTS[name].category}
-                                      </Badge>
-                                    </td>
-                                  </tr>
-                                ))}
-                            </tbody>
-                          </table>
-                        </div>
-
-                        {/* Preparation Notes */}
-                        {Object.keys(result.mix).some(ing => getPreparationInstructions(ing)) && (
-                          <div className="bg-amber-50 dark:bg-amber-950/20 p-4 rounded-lg border border-amber-200 dark:border-amber-900">
-                            <h4 className="font-medium text-amber-900 dark:text-amber-300 mb-2 flex items-center gap-2">
-                              <Info className="w-4 h-4" /> Preparation Instructions
-                            </h4>
-                            <ul className="space-y-2 text-sm text-amber-800 dark:text-amber-400">
-                              {Object.keys(result.mix)
-                                .filter(ing => getPreparationInstructions(ing))
-                                .map(ing => (
-                                  <li key={ing} className="flex gap-2">
-                                    <span className="font-medium capitalize">{ing.replace(/_/g, " ")}:</span>
-                                    <span>{getPreparationInstructions(ing)?.preparation}</span>
-                                  </li>
-                                ))}
-                            </ul>
-                          </div>
-                        )}
-
-                        {/* Suggestions */}
-                        {result.suggestions.length > 0 && (
-                          <div className="bg-blue-50 dark:bg-blue-950/30 p-4 rounded-lg border border-blue-100 dark:border-blue-900">
-                            <h4 className="font-medium text-blue-900 dark:text-blue-300 flex items-center gap-2 mb-2">
-                              <Info className="w-4 h-4" /> Optimization Suggestions
-                            </h4>
-                            <ul className="space-y-1">
-                              {result.suggestions.map((s, i) => (
-                                <li key={i} className="text-sm text-blue-800 dark:text-blue-400 flex items-start gap-2">
-                                  <span className="mt-1.5 w-1 h-1 rounded-full bg-blue-400 shrink-0" />
-                                  {s}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        )}
-                      </div>
-                    )}
-
-                    {activeTab === "herbs" && (
-                      <div className="space-y-6">
-                        <div className="flex items-start gap-4 mb-6">
-                          <div className="p-3 bg-green-100 dark:bg-green-900/30 rounded-full">
-                            <Sprout className="w-6 h-6 text-green-700 dark:text-green-400" />
-                          </div>
-                          <div>
-                            <h3 className="text-xl font-display font-bold">Natural Supplements</h3>
-                            <p className="text-muted-foreground">{result.herbPurpose}</p>
-                          </div>
-                        </div>
-
-                        <div className="grid gap-4">
-                          {result.herbRecommendations.map((herb, i) => (
-                            <div key={i} className="flex gap-4 p-4 rounded-lg border border-border hover:border-primary/30 transition-colors bg-card">
-                              <div className="mt-1">
-                                <CheckCircle2 className="w-5 h-5 text-primary" />
-                              </div>
-                              <div className="space-y-1">
-                                <h4 className="font-bold text-lg capitalize">{herb.name}</h4>
-                                <div className="flex flex-wrap gap-2 mb-2">
-                                  {herb.benefits.map(b => (
-                                    <Badge key={b} variant="outline" className="text-xs">{b}</Badge>
-                                  ))}
-                                </div>
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-sm text-muted-foreground mt-2">
-                                  <div className="flex gap-2">
-                                    <span className="font-medium text-foreground">Dosage:</span> {herb.dosage}
-                                  </div>
-                                  <div className="flex gap-2">
-                                    <span className="font-medium text-foreground">Frequency:</span> {herb.frequency}
-                                  </div>
-                                </div>
-                                <p className="text-sm italic mt-2 text-muted-foreground/80 border-l-2 border-primary/20 pl-3">
-                                  {herb.notes}
-                                </p>
-                              </div>
-                            </div>
-                          ))}
-                          
-                          {result.herbRecommendations.length === 0 && (
-                            <div className="text-center py-12 text-muted-foreground">
-                              No specific herb recommendations for this profile.
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    )}
-
-                    {activeTab === "analysis" && (
-                      <div className="space-y-8">
-                        <div>
-                          <h3 className="text-lg font-bold mb-4">Category Breakdown</h3>
-                          <div className="space-y-4">
-                            <CategoryBar 
-                              label="Grains" 
-                              value={result.categories.grain} 
-                              target={getCategoryRatios().grain} 
-                              color="bg-amber-400"
-                            />
-                            <CategoryBar 
-                              label="Legumes" 
-                              value={result.categories.legume} 
-                              target={getCategoryRatios().legume} 
-                              color="bg-emerald-500"
-                            />
-                            <CategoryBar 
-                              label="Seeds" 
-                              value={result.categories.seed} 
-                              target={getCategoryRatios().seed} 
-                              color="bg-stone-500"
-                            />
-                          </div>
-                        </div>
-
-                        <Separator />
-
-                        <div>
-                          <h3 className="text-lg font-bold mb-4">Nutritional Details</h3>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="space-y-2">
-                              <div className="flex justify-between text-sm">
-                                <span className="text-muted-foreground">Protein Source Efficiency</span>
-                                <span className="font-medium">High</span>
-                              </div>
-                              <Progress value={85} className="h-2" />
-                            </div>
-                            <div className="space-y-2">
-                              <div className="flex justify-between text-sm">
-                                <span className="text-muted-foreground">Energy Density</span>
-                                <span className="font-medium">3200 kcal/kg</span>
-                              </div>
-                              <Progress value={70} className="h-2" />
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-900 rounded-lg p-4">
-                          <h3 className="text-lg font-bold mb-2 text-blue-900 dark:text-blue-200">Profile: {currentProfile?.name}</h3>
-                          <p className="text-sm text-blue-800 dark:text-blue-300 mb-3">{getFeedingNotes()}</p>
-                          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs">
-                            <div>
-                              <span className="font-semibold text-blue-900 dark:text-blue-200">Protein Target:</span>
-                              <p className="text-blue-700 dark:text-blue-400">{getNutrition('protein')[0]}-{getNutrition('protein')[1]}%</p>
-                            </div>
-                            <div>
-                              <span className="font-semibold text-blue-900 dark:text-blue-200">Carbs Target:</span>
-                              <p className="text-blue-700 dark:text-blue-400">{getNutrition('carbs')[0]}-{getNutrition('carbs')[1]}%</p>
-                            </div>
-                            <div>
-                              <span className="font-semibold text-blue-900 dark:text-blue-200">Fat Target:</span>
-                              <p className="text-blue-700 dark:text-blue-400">{getNutrition('fat')[0]}-{getNutrition('fat')[1]}%</p>
-                            </div>
-                            <div>
-                              <span className="font-semibold text-blue-900 dark:text-blue-200">Fiber Target:</span>
-                              <p className="text-blue-700 dark:text-blue-400">{getNutrition('fiber')[0]}-{getNutrition('fiber')[1]}%</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </CardContent>
-                </Card>
+          <section className="lg:col-span-7" aria-live="polite">
+            {result && <div className="space-y-6">
+              <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+                <NutritionCard label="Protein" value={result.nutrition.protein} target={currentProfile.nutrition.protein} />
+                <NutritionCard label="Carbohydrates" value={result.nutrition.carbs} target={currentProfile.nutrition.carbs} />
+                <NutritionCard label="Fat" value={result.nutrition.fat} target={currentProfile.nutrition.fat} />
+                <NutritionCard label="Fiber" value={result.nutrition.fiber} target={currentProfile.nutrition.fiber} />
               </div>
-            )}
-          </div>
+
+              <Card className="overflow-hidden border-none shadow-xl">
+                <Tabs value={activeTab} onValueChange={setActiveTab}>
+                  <div className="border-b bg-muted/30 p-2">
+                    <TabsList className="grid h-auto w-full grid-cols-3 bg-transparent">
+                      <TabsTrigger value="calculator">Batch estimate</TabsTrigger>
+                      <TabsTrigger value="herbs">Enrichment</TabsTrigger>
+                      <TabsTrigger value="analysis">Analysis</TabsTrigger>
+                    </TabsList>
+                  </div>
+                </Tabs>
+
+                <CardContent className="min-h-[520px] p-6">
+                  {activeTab === "calculator" && <div className="space-y-6">
+                    <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
+                      <div><h2 className="text-xl font-bold">Recommended batch estimate</h2><p className="text-sm text-muted-foreground">Calculated batch: {Math.round(result.targetWeight)}g</p></div>
+                      <Button type="button" variant="outline" size="sm" className="gap-2" onClick={exportRecipe} disabled={!Object.keys(result.mix).length}><Download className="h-4 w-4" />Export recipe</Button>
+                    </div>
+
+                    {result.warnings.map((warning, index) => <Alert key={`${warning.message}-${index}`} variant={warning.level === "CRITICAL" ? "destructive" : "default"} className={cn(warning.level === "WARNING" && "border-amber-300 bg-amber-50 text-amber-950")}>
+                      <AlertTriangle className="h-4 w-4" /><AlertTitle>{warning.level === "CRITICAL" ? "Blocked ingredient" : "Advisory"}</AlertTitle><AlertDescription>{warning.message}</AlertDescription>
+                    </Alert>)}
+
+                    {result.missingIngredients?.length ? <Alert className="border-amber-300 bg-amber-50 text-amber-950"><Info className="h-4 w-4" /><AlertTitle>Missing ingredient categories</AlertTitle><AlertDescription><div className="mt-2 space-y-2">{result.missingIngredients.map((item) => <div key={item.category}><strong>{item.category}:</strong> {item.reason} Suggested examples: {item.recommendations.join(", ")}.</div>)}</div></AlertDescription></Alert> : null}
+
+                    {Object.keys(result.mix).length ? <div className="overflow-hidden rounded-lg border"><table className="w-full text-sm"><thead className="bg-muted/50 text-muted-foreground"><tr><th className="px-4 py-3 text-left">Ingredient</th><th className="px-4 py-3 text-right">Amount</th><th className="px-4 py-3 text-right">Batch share</th><th className="px-4 py-3 text-left">Category</th></tr></thead><tbody className="divide-y">{Object.entries(result.mix).sort(([, left], [, right]) => right - left).map(([name, amount]) => <tr key={name}><td className="px-4 py-3 font-medium capitalize">{name.replace(/_/g, " ")}</td><td className="px-4 py-3 text-right font-mono">{Math.round(amount)}g</td><td className="px-4 py-3 text-right">{((amount / result.targetWeight) * 100).toFixed(1)}%</td><td className="px-4 py-3"><Badge variant="secondary" className="capitalize">{INGREDIENTS[name].category}</Badge></td></tr>)}</tbody></table></div> : <p className="rounded-lg border border-dashed p-10 text-center text-muted-foreground">There is no safe, compatible ingredient combination to estimate yet.</p>}
+
+                    <div className="rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-950"><h3 className="mb-2 flex items-center gap-2 font-semibold"><Info className="h-4 w-4" />What this result means</h3><p>{care.scope} The percentages are weighted ingredient estimates, not an assessment of calcium, phosphorus, vitamins, minerals, digestible amino acids, or metabolizable energy.</p></div>
+                  </div>}
+
+                  {activeTab === "herbs" && <div className="mx-auto max-w-2xl space-y-5 py-8"><div className="flex gap-4"><div className="rounded-full bg-emerald-100 p-3"><Leaf className="h-6 w-6 text-emerald-700" /></div><div><h2 className="text-xl font-bold">Optional enrichment, not treatment</h2><p className="mt-1 text-muted-foreground">This planner does not prescribe herbs, supplements, medical claims, or water additives.</p></div></div><Alert><Info className="h-4 w-4" /><AlertTitle>Safer supplement boundary</AlertTitle><AlertDescription>{result.herbPurpose} Use enrichment foods only in small amounts as part of the appropriate base diet. Never use this tool to treat illness, breeding problems, seizures, poor laying, or weight change.</AlertDescription></Alert><Card className="border-dashed"><CardContent className="p-5 text-sm text-muted-foreground">For companion birds, work with an avian veterinarian before changing supplements. For chickens, a complete, age- and production-appropriate ration should remain the nutritional base.</CardContent></Card></div>}
+
+                  {activeTab === "analysis" && <div className="space-y-8"><div><h2 className="mb-4 text-lg font-bold">Ingredient category breakdown</h2><div className="space-y-4"><CategoryBar label="Grains" value={result.categories.grain} target={getCategoryTargets(selectedBird).grain} /><CategoryBar label="Legumes" value={result.categories.legume} target={getCategoryTargets(selectedBird).legume} /><CategoryBar label="Oil seeds" value={result.categories.seed} target={getCategoryTargets(selectedBird).seed} /></div></div><Separator /><div><h2 className="mb-3 text-lg font-bold">Detailed analysis</h2><p className="text-sm text-muted-foreground">The optimizer favours the selected profile’s estimated macronutrient and category ranges using the inventory you supplied. It is deterministic: identical inventory and settings produce the same batch estimate.</p><div className="mt-4 grid gap-3 sm:grid-cols-2">{result.suggestions.map((suggestion) => <div key={suggestion} className="rounded-lg border bg-muted/20 p-4 text-sm"><CheckCircle2 className="mb-2 h-4 w-4 text-emerald-700" />{suggestion}</div>)}</div></div><div className="rounded-lg border border-blue-200 bg-blue-50 p-4"><h3 className="font-semibold text-blue-950">Profile: {currentProfile.name}</h3><p className="mt-1 text-sm text-blue-900">{currentProfile.feedingNotes}</p></div></div>}
+                </CardContent>
+              </Card>
+            </div>}
+          </section>
         </div>
 
-        {/* Safety Disclaimer */}
-        <div className="mt-16 border-t pt-8">
-          <Alert className="bg-amber-50 border-amber-200">
-            <AlertTriangle className="h-4 w-4 text-amber-600" />
-            <AlertTitle className="text-amber-900 font-bold">Important Safety Reminders</AlertTitle>
-            <AlertDescription className="text-amber-800 mt-2 space-y-2 text-sm">
-              <p>Fresh Water: Always provide clean, fresh water available at all times</p>
-              <p>Grit: Pigeons need grit to properly digest seeds and grains</p>
-              <p>Toxic Legumes: Never feed raw kidney beans, lima beans, fava beans, navy beans, or pinto beans</p>
-              <p>Preparation: Follow preparation instructions for each ingredient carefully</p>
-              <p>Veterinary Care: If your pigeon shows signs of illness, contact an avian veterinarian immediately</p>
-            </AlertDescription>
-          </Alert>
-        </div>
+        <section className="mt-12" aria-label="Safety scope"><Alert className="border-amber-300 bg-amber-50"><AlertTriangle className="h-4 w-4 text-amber-700" /><AlertTitle className="text-amber-950">Safety scope</AlertTitle><AlertDescription className="space-y-2 text-amber-900"><p>{care.scope}</p><p>Raw beans and soybeans are not offered by the selector and are excluded if already in inventory. If processing status is uncertain, do not use the ingredient.</p><p>Seek avian or poultry-veterinary advice for illness, breeding, rapid weight change, egg problems, seizures, or any medical concern.</p></AlertDescription></Alert></section>
       </main>
     </div>
   );
 }
 
-function NutritionCard({ label, value, target, unit, color }: { label: string, value: number, target: number[], unit: string, color: string }) {
-  const min = target[0];
-  const max = target[1];
-  const isGood = value >= min && value <= max;
-  const isLow = value < min;
-  
-  return (
-    <Card className="border-none shadow-md bg-card">
-      <CardContent className="p-4">
-        <div className="text-sm text-muted-foreground mb-1">{label}</div>
-        <div className="flex items-baseline gap-1 mb-2">
-          <span className={cn("text-2xl font-bold font-mono", !isGood && (isLow ? "text-blue-600" : "text-orange-600"))}>
-            {value.toFixed(1)}
-          </span>
-          <span className="text-xs font-medium text-muted-foreground">{unit}</span>
-        </div>
-        <div className="relative h-1.5 bg-muted rounded-full overflow-hidden">
-          <div 
-            className={cn("absolute top-0 left-0 h-full transition-all duration-500", color)} 
-            style={{ width: `${Math.min(100, (value / (max * 1.5)) * 100)}%` }}
-          />
-        </div>
-        <div className="flex justify-between mt-2 text-[10px] text-muted-foreground">
-          <span>Target:</span>
-          <span className="font-medium">{min}-{max}{unit}</span>
-        </div>
-      </CardContent>
-    </Card>
-  );
+function CareNote({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
+  return <div className="flex items-start gap-3"><div className="mt-0.5 shrink-0">{icon}</div><div><p className="font-medium text-foreground">{title}</p><p className="text-xs leading-relaxed text-muted-foreground">{text}</p></div></div>;
 }
 
-function CategoryBar({ label, value, target, color }: { label: string, value: number, target: number[], color: string }) {
-  const min = target[0];
-  const max = target[1];
-  
-  return (
-    <div className="space-y-1">
-      <div className="flex justify-between text-sm">
-        <span className="font-medium">{label}</span>
-        <span className="text-muted-foreground">{value.toFixed(1)}% <span className="text-xs opacity-70">(Target: {min}-{max}%)</span></span>
-      </div>
-      <div className="relative h-4 bg-muted rounded-full overflow-hidden">
-        {/* Target Range Marker */}
-        <div 
-          className="absolute top-0 h-full bg-black/5 dark:bg-white/10"
-          style={{ left: `${min}%`, width: `${max - min}%` }}
-        />
-        {/* Actual Value Bar */}
-        <div 
-          className={cn("absolute top-0 left-0 h-full transition-all duration-500 opacity-80", color)}
-          style={{ width: `${value}%` }}
-        />
-      </div>
-    </div>
-  );
+function NutritionCard({ label, value, target }: { label: string; value: number; target: [number, number] }) {
+  const [min, max] = target;
+  const isInRange = value >= min && value <= max;
+  const status = isInRange ? "Within estimate range" : value < min ? "Below estimate range" : "Above estimate range";
+  const tone = isInRange ? "text-emerald-700" : "text-red-700";
+  return <Card className="border-none shadow-md"><CardContent className="p-4"><div className="flex items-center justify-between gap-2"><p className="text-sm text-muted-foreground">{label}</p><span title={`${status}. Target range: ${min}-${max}%`}><Info aria-label={`${label}: ${status}. Target range ${min} to ${max} percent.`} className="h-4 w-4 text-muted-foreground" /></span></div><div className="mt-1 flex items-baseline gap-1"><span className={cn("font-mono text-2xl font-bold", tone)}>{value.toFixed(1)}</span><span className="text-xs text-muted-foreground">%</span></div><p className="mt-2 text-[11px] text-muted-foreground">Target estimate: {min}-{max}%</p></CardContent></Card>;
+}
+
+function CategoryBar({ label, value, target }: { label: string; value: number; target: [number, number] }) {
+  const [min, max] = target;
+  const inRange = value >= min && value <= max;
+  return <div><div className="mb-1 flex justify-between gap-3 text-sm"><span className="font-medium">{label}</span><span className={cn(inRange ? "text-emerald-700" : "text-red-700")}>{value.toFixed(1)}% <span className="text-muted-foreground">(estimate: {min}-{max}%)</span></span></div><div className="relative h-3 overflow-hidden rounded-full bg-muted"><div className="absolute inset-y-0 bg-emerald-100" style={{ left: `${min}%`, width: `${max - min}%` }} /><div className={cn("absolute inset-y-0 left-0 opacity-75", inRange ? "bg-emerald-600" : "bg-red-600")} style={{ width: `${Math.min(value, 100)}%` }} /></div></div>;
 }

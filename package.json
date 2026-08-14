@@ -9,6 +9,7 @@
     "start": "NODE_ENV=production node dist/index.js",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
+    "test:calculator": "tsx scripts/verify-calculator.mjs",
     "format": "prettier --write ."
   },
   "dependencies": {
