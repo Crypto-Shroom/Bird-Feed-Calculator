@@ -25,7 +25,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Separator } from "@/components/ui/separator";
 import { Slider } from "@/components/ui/slider";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { INGREDIENTS } from "@/lib/data";
+import { HERB_RECOMMENDATIONS, HERBS_SUPPLEMENTS, INGREDIENTS } from "@/lib/data";
 import { checkBirdToxicity, isIngredientCompatible } from "@/lib/bird-safety";
 import {
   BIRD_CARE,
@@ -64,6 +64,16 @@ export default function Home() {
   const birdProfile = BIRD_PROFILES[selectedBird];
   const currentProfile = birdProfile.profiles[situation] || birdProfile.profiles[availableSituations[0]];
   const care = BIRD_CARE[selectedBird];
+  const herbRecommendation = useMemo(() => {
+    const recommendation = HERB_RECOMMENDATIONS[situation];
+    if (!recommendation) return null;
+    return {
+      notes: recommendation.notes,
+      herbs: recommendation.recommended
+        .map((name) => ({ name, herb: HERBS_SUPPLEMENTS[name] }))
+        .filter((entry): entry is { name: string; herb: NonNullable<typeof entry.herb> } => Boolean(entry.herb)),
+    };
+  }, [situation]);
 
   useEffect(() => {
     if (!availableSituations.includes(situation)) setSituation(availableSituations[0]);
@@ -323,7 +333,7 @@ export default function Home() {
                     <div className="rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-950"><h3 className="mb-2 flex items-center gap-2 font-semibold"><Info className="h-4 w-4" />What this result means</h3><p>{care.scope} The percentages are weighted ingredient estimates, not an assessment of calcium, phosphorus, vitamins, minerals, digestible amino acids, or metabolizable energy.</p></div>
                   </div>}
 
-                  {activeTab === "herbs" && <div className="mx-auto max-w-2xl space-y-5 py-8"><div className="flex gap-4"><div className="rounded-full bg-emerald-100 p-3"><Leaf className="h-6 w-6 text-emerald-700" /></div><div><h2 className="text-xl font-bold">Optional enrichment, not treatment</h2><p className="mt-1 text-muted-foreground">This planner does not prescribe herbs, supplements, medical claims, or water additives.</p></div></div><Alert><Info className="h-4 w-4" /><AlertTitle>Safer supplement boundary</AlertTitle><AlertDescription>{result.herbPurpose} Use enrichment foods only in small amounts as part of the appropriate base diet. Never use this tool to treat illness, breeding problems, seizures, poor laying, or weight change.</AlertDescription></Alert><Card className="border-dashed"><CardContent className="p-5 text-sm text-muted-foreground">For companion birds, work with an avian veterinarian before changing supplements. For chickens, a complete, age- and production-appropriate ration should remain the nutritional base.</CardContent></Card></div>}
+                  {activeTab === "herbs" && <div className="space-y-6"><div className="flex gap-4"><div className="rounded-full bg-emerald-100 p-3"><Leaf className="h-6 w-6 text-emerald-700" /></div><div><h2 className="text-xl font-bold">Natural supplements</h2><p className="mt-1 text-muted-foreground">{herbRecommendation?.notes || "No specific herb recommendations are recorded for this profile."}</p></div></div>{herbRecommendation?.herbs.length ? <div className="grid gap-4 md:grid-cols-2">{herbRecommendation.herbs.map(({ name, herb }) => <Card key={name} className="border-emerald-100"><CardContent className="p-5"><h3 className="text-lg font-bold capitalize">{name.replace(/_/g, " ")}</h3><div className="mt-3 flex flex-wrap gap-2">{herb.benefits.map((benefit) => <Badge key={benefit} variant="secondary">{benefit}</Badge>)}</div><dl className="mt-4 space-y-2 text-sm"><div><dt className="font-medium">Dosage</dt><dd className="text-muted-foreground">{herb.dosage_per_kg}</dd></div><div><dt className="font-medium">Frequency</dt><dd className="text-muted-foreground">{herb.frequency}</dd></div><div><dt className="font-medium">Notes</dt><dd className="text-muted-foreground">{herb.notes}</dd></div></dl></CardContent></Card>)}</div> : <p className="rounded-lg border border-dashed p-8 text-center text-sm text-muted-foreground">No specific herb recommendations are recorded for this profile.</p>}</div>}
 
                   {activeTab === "analysis" && <div className="space-y-8"><div><h2 className="mb-4 text-lg font-bold">Ingredient category breakdown</h2><div className="space-y-4"><CategoryBar label="Grains" value={result.categories.grain} target={getCategoryTargets(selectedBird).grain} /><CategoryBar label="Legumes" value={result.categories.legume} target={getCategoryTargets(selectedBird).legume} /><CategoryBar label="Oil seeds" value={result.categories.seed} target={getCategoryTargets(selectedBird).seed} /></div></div><Separator /><div><h2 className="mb-3 text-lg font-bold">Detailed analysis</h2><p className="text-sm text-muted-foreground">The optimizer favours the selected profile’s estimated macronutrient and category ranges using the inventory you supplied. It is deterministic: identical inventory and settings produce the same batch estimate.</p><div className="mt-4 grid gap-3 sm:grid-cols-2">{result.suggestions.map((suggestion) => <div key={suggestion} className="rounded-lg border bg-muted/20 p-4 text-sm"><CheckCircle2 className="mb-2 h-4 w-4 text-emerald-700" />{suggestion}</div>)}</div></div><div className="rounded-lg border border-blue-200 bg-blue-50 p-4"><h3 className="font-semibold text-blue-950">Profile: {currentProfile.name}</h3><p className="mt-1 text-sm text-blue-900">{currentProfile.feedingNotes}</p></div></div>}
                 </CardContent>

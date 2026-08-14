@@ -19,3 +19,7 @@ Chicken mode now correctly presents a scratch-supplement boundary, chicken-speci
 After centralizing the processing-status rule, the live picker moved raw soybeans, adzuki beans, chickpeas, black-eyed peas, lupins, vetch, and raw beans into the non-selectable section. The optimizer and picker now use the same rule, closing the previously observed inconsistency.
 
 Final preview review confirmed the profile copy no longer supplies unsupported fixed daily quantities or medical claims. The formula continues to show explicit advisory messages for modeled target misses. The export control is enabled and invokes the recipe-download workflow for a non-empty estimate.
+
+## Product-owner approved restoration
+
+The Herbs/Enrichment tab was re-verified after the product owner approved restoration of the preserved herb information. It now displays the existing recommendation set, benefits, dosage, frequency, and notes—for example apple cider vinegar, garlic powder, and oregano in the maintenance profile—without changing any herb data, formulation, ingredient, or nutrition target.
