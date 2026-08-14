@@ -202,7 +202,7 @@ export default function Home() {
             <Card className="border-none shadow-xl">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-2xl"><Bird className="h-6 w-6 text-primary" />{birdProfile.name} profile</CardTitle>
-                <CardDescription>{care.scope}</CardDescription>
+                <CardDescription>Configure your {birdProfile.name.toLowerCase()}'s current situation to get optimized targets.</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-2">
@@ -231,9 +231,8 @@ export default function Home() {
 
                 <Separator />
                 <div className="space-y-4 text-sm">
-                  <CareNote icon={<Droplets className="h-5 w-5 text-blue-600" />} title="Water" text={care.water} />
+                  <CareNote icon={<Droplets className="h-5 w-5 text-blue-600" />} title="Water" text="Always provide clean, fresh water available at all times." />
                   <CareNote icon={<Scale className="h-5 w-5 text-amber-700" />} title="Grit" text={care.grit} />
-                  <CareNote icon={<Leaf className="h-5 w-5 text-emerald-700" />} title="Diet foundation" text={care.baseDiet} />
                 </div>
               </CardContent>
             </Card>
@@ -332,7 +331,7 @@ export default function Home() {
 
                     {Object.keys(result.mix).length ? <><div className="overflow-hidden rounded-lg border"><table className="w-full text-sm"><thead className="bg-muted/50 text-muted-foreground"><tr><th className="px-4 py-3 text-left">Ingredient</th><th className="px-4 py-3 text-right">Amount</th><th className="px-4 py-3 text-right">Batch share</th><th className="px-4 py-3 text-left">Category</th></tr></thead><tbody className="divide-y">{Object.entries(result.mix).sort(([, left], [, right]) => right - left).map(([name, amount]) => <tr key={name}><td className="px-4 py-3 font-medium capitalize">{name.replace(/_/g, " ")}</td><td className="px-4 py-3 text-right font-mono">{Math.round(amount)}g</td><td className="px-4 py-3 text-right">{((amount / result.targetWeight) * 100).toFixed(1)}%</td><td className="px-4 py-3"><Badge variant="secondary" className="capitalize">{INGREDIENTS[name].category}</Badge></td></tr>)}</tbody></table></div>{Object.entries(result.mix).some(([name]) => getPreparationInstructions(name)) && <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><h3 className="mb-2 flex items-center gap-2 font-semibold"><Info className="h-4 w-4" />Preparation instructions</h3><ul className="space-y-1">{Object.keys(result.mix).filter((name) => getPreparationInstructions(name)).map((name) => <li key={name}><strong className="capitalize">{name.replace(/_/g, " ")}:</strong> {getPreparationInstructions(name)?.preparation}</li>)}</ul></div>}</> : <p className="rounded-lg border border-dashed p-10 text-center text-muted-foreground">There is no safe, compatible ingredient combination to estimate yet.</p>}
 
-                    <div className="rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-950"><h3 className="mb-2 flex items-center gap-2 font-semibold"><Info className="h-4 w-4" />What this result means</h3><p>{care.scope} The percentages are weighted ingredient estimates, not an assessment of calcium, phosphorus, vitamins, minerals, digestible amino acids, or metabolizable energy.</p></div>
+                    <div className="rounded-lg border border-blue-200 bg-blue-50 p-4 text-sm text-blue-950"><h3 className="mb-2 flex items-center gap-2 font-semibold"><Info className="h-4 w-4" />What this result means</h3><p>{currentProfile.description}. The percentages are weighted ingredient estimates, not an assessment of calcium, phosphorus, vitamins, minerals, digestible amino acids, or metabolizable energy.</p></div>
                   </div>}
 
                   {activeTab === "herbs" && <div className="space-y-6"><div className="flex gap-4"><div className="rounded-full bg-emerald-100 p-3"><Leaf className="h-6 w-6 text-emerald-700" /></div><div><h2 className="text-xl font-bold">Natural supplements</h2><p className="mt-1 text-muted-foreground">{herbRecommendation?.notes || "No specific herb recommendations are recorded for this profile."}</p></div></div>{herbRecommendation?.herbs.length ? <div className="grid gap-4 md:grid-cols-2">{herbRecommendation.herbs.map(({ name, herb }) => <Card key={name} className="border-emerald-100"><CardContent className="p-5"><h3 className="text-lg font-bold capitalize">{name.replace(/_/g, " ")}</h3><div className="mt-3 flex flex-wrap gap-2">{herb.benefits.map((benefit) => <Badge key={benefit} variant="secondary">{benefit}</Badge>)}</div><dl className="mt-4 space-y-2 text-sm"><div><dt className="font-medium">Dosage</dt><dd className="text-muted-foreground">{herb.dosage_per_kg}</dd></div><div><dt className="font-medium">Frequency</dt><dd className="text-muted-foreground">{herb.frequency}</dd></div><div><dt className="font-medium">Notes</dt><dd className="text-muted-foreground">{herb.notes}</dd></div></dl></CardContent></Card>)}</div> : <p className="rounded-lg border border-dashed p-8 text-center text-sm text-muted-foreground">No specific herb recommendations are recorded for this profile.</p>}</div>}
@@ -344,7 +343,7 @@ export default function Home() {
           </section>
         </div>
 
-        <section className="mt-12" aria-label="Safety scope"><Alert className="border-amber-300 bg-amber-50"><AlertTriangle className="h-4 w-4 text-amber-700" /><AlertTitle className="text-amber-950">Safety scope</AlertTitle><AlertDescription className="space-y-2 text-amber-900"><p>{care.scope}</p><p>Raw beans and soybeans are not offered by the selector and are excluded if already in inventory. If processing status is uncertain, do not use the ingredient.</p><p>Seek avian or poultry-veterinary advice for illness, breeding, rapid weight change, egg problems, seizures, or any medical concern.</p></AlertDescription></Alert></section>
+        <section className="mt-12" aria-label="Safety scope"><Alert className="border-amber-300 bg-amber-50"><AlertTriangle className="h-4 w-4 text-amber-700" /><AlertTitle className="text-amber-950">Safety scope</AlertTitle><AlertDescription className="space-y-2 text-amber-900"><p>Use the selected profile and ingredient warnings to build an estimate from your available inventory.</p><p>Raw beans and soybeans are not offered by the selector and are excluded if already in inventory. If processing status is uncertain, do not use the ingredient.</p><p>Seek advice from an exotics vet for illness, breeding, rapid weight change, egg problems, seizures, or any medical concern.</p></AlertDescription></Alert></section>
       </main>
     </div>
   );

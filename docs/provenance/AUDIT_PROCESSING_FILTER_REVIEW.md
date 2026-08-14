@@ -18,6 +18,17 @@ The audit introduced a global `INGREDIENTS_REQUIRING_VERIFIED_PROCESSING` filter
 | Adzuki beans | Blocked before calculation despite a legacy safe-raw entry. | Needs a source-mapping review; the audit did not document a new toxic basis. |
 | Lupins and vetch | Blocked before calculation. | Review separately. Cultivar and toxin distinctions matter; broad automatic eligibility would be inappropriate without a species/product-form rule. |
 
+## Evidence records added
+
+The remaining review records are now available for product-owner decision. They do not change the live filter.
+
+| Ingredient | Evidence record | Current recommended state pending approval |
+|---|---|---|
+| Chickpeas | [Chickpeas review](./evidence/chickpeas.md) | Keep out of automatic formulas; do not label as a hard raw-toxicity equivalent. |
+| Adzuki beans | [Adzuki-beans review](./evidence/adzuki-beans.md) | Retain processing filter until a species/product-form source is mapped. |
+| Lupins | [Lupins review](./evidence/lupins.md) | Retain generic filter; distinguish identified feed-grade sweet lupin before any future use. |
+| Vetch | [Vetch review](./evidence/vetch.md) | Retain exclusion from automatic formulas; source supports higher-risk handling for generic common vetch. |
+
 ## Correction principle
 
 Only explicit raw-toxicity records should create an automatic red exclusion. Processing, cultivar, or inclusion-rate uncertainty should be displayed as information unless the product owner approves a species-specific exclusion rule supported by documented evidence.

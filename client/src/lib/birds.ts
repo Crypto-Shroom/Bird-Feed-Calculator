@@ -48,7 +48,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         name: 'Maintenance/Rest',
         description: 'Light feeding for resting periods',
         feedingNotes: 'Feed 30-40g per bird per day. Light feeding in morning, standard mix in evening.',
-        contextNote: 'Use this planner range only as a seed/grain batch estimate. Adjust the complete diet with an avian professional according to body condition and activity.',
+        contextNote: 'Use this planner range only as a seed/grain batch estimate. Adjust the complete diet with an exotics vet according to body condition and activity.',
         nutrition: {
           protein: [13.5, 15],
           carbs: [60, 70],
@@ -108,7 +108,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         name: 'Pet/Companion',
         description: 'Balanced nutrition for indoor companion pigeons',
         feedingNotes: 'Feed 25-35g per bird per day. Provide variety and enrichment.',
-        contextNote: 'Keep seeds and grains as part of a broader, balanced pigeon diet. Monitor body condition and consult an avian veterinarian for dietary changes.',
+        contextNote: 'Keep seeds and grains as part of a broader, balanced pigeon diet. Monitor body condition and consult an exotics vet for dietary changes.',
         nutrition: {
           protein: [12, 14],
           carbs: [60, 70],
@@ -140,7 +140,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         name: 'Breeding',
         description: 'Enhanced nutrition for breeding pairs',
         feedingNotes: 'Feed 40-60g per bird per day. Increase calcium and protein during breeding.',
-        contextNote: 'Do not use this planner to set calcium or breeding supplementation. Seek avian-veterinary guidance for breeding birds.',
+        contextNote: 'Do not use this planner to set calcium or breeding supplementation. Seek guidance from an exotics vet for breeding birds.',
         nutrition: {
           protein: [12, 16],
           carbs: [48, 62],
@@ -171,7 +171,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
       pet: {
         name: 'Pet/Companion',
         description: 'Seed and grain enrichment for companion African greys',
-        feedingNotes: 'African greys are prone to calcium-related nutritional problems on seed-heavy diets. Use a formulated base diet and avian-veterinary guidance.',
+        feedingNotes: 'African greys are prone to calcium-related nutritional problems on seed-heavy diets. Use a formulated base diet and guidance from an exotics vet.',
         nutrition: {
           protein: [10, 14],
           carbs: [50, 65],
@@ -193,7 +193,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
       molting: {
         name: 'Molting Season',
         description: 'Seed and grain enrichment during molt',
-        feedingNotes: 'Maintain a formulated base diet through molt and consult an avian veterinarian for feather or health concerns.',
+        feedingNotes: 'Maintain a formulated base diet through molt and consult an exotics vet for feather or health concerns.',
         nutrition: {
           protein: [13, 16],
           carbs: [45, 60],
@@ -225,7 +225,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         name: 'Breeding',
         description: 'Enhanced nutrition for breeding pairs',
         feedingNotes: 'Feed 15-20g per bird per day. Increase protein during breeding season.',
-        contextNote: 'Breeding budgies need individual veterinary assessment; this mix does not establish mineral or amino-acid adequacy.',
+        contextNote: 'Breeding budgies need individual assessment by an exotics vet; this mix does not establish mineral or amino-acid adequacy.',
         nutrition: {
           protein: [14, 16],
           carbs: [50, 65],
@@ -281,7 +281,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         name: 'Molting Season',
         description: 'High protein for feather regeneration',
         feedingNotes: 'Feed 12-16g per bird per day. Support feather growth.',
-        contextNote: 'Maintain a complete base diet during molt. Use veterinary guidance for any persistent feather or health issue.',
+        contextNote: 'Maintain a complete base diet during molt. Consult an exotics vet for any persistent feather or health issue.',
         nutrition: {
           protein: [15, 17],
           carbs: [52, 65],
@@ -351,33 +351,33 @@ export const DEFAULT_CATEGORY_TARGETS: Record<BirdType, CategoryTargets> = {
 export const BIRD_CARE: Record<BirdType, BirdCareGuidance> = {
   pigeon: {
     scope: 'A batch estimate for a pigeon seed and grain mix; it does not assess vitamins, minerals, amino acids, or energy density.',
-    baseDiet: 'Use a balanced pigeon diet with fresh produce and an avian-veterinarian review for performance, breeding, or health concerns.',
-    water: 'Provide clean, fresh water and clean bowls daily.',
-    grit: 'Digestible oyster-shell grit may be offered sparingly; excessive grit can cause gastrointestinal problems.',
+    baseDiet: 'Use a balanced pigeon diet with fresh produce and seek a review from an exotics vet for performance, breeding, or health concerns.',
+    water: 'Always provide clean, fresh water available at all times.',
+    grit: 'Pigeons need grit to properly digest seeds and grains.',
   },
   parrot: {
     scope: 'A seed and grain enrichment mix, not a complete parrot diet.',
     baseDiet: 'Use a species-appropriate formulated diet as the nutritional base, with fresh vegetables and only limited seeds or nuts.',
-    water: 'Provide clean, fresh water and clean bowls daily.',
-    grit: 'Do not routinely add grit for parrots unless an avian veterinarian specifically recommends it.',
+    water: 'Always provide clean, fresh water available at all times.',
+    grit: 'Do not routinely add grit for parrots unless an exotics vet specifically recommends it.',
   },
   african_grey: {
     scope: 'A seed and grain enrichment mix, not a complete African grey diet.',
-    baseDiet: 'Use a species-appropriate formulated diet as the nutritional base. African greys need veterinary guidance for calcium and vitamin D concerns.',
-    water: 'Provide clean, fresh water and clean bowls daily.',
-    grit: 'Do not routinely add grit unless an avian veterinarian specifically recommends it.',
+    baseDiet: 'Use a species-appropriate formulated diet as the nutritional base. African greys need guidance from an exotics vet for calcium and vitamin D concerns.',
+    water: 'Always provide clean, fresh water available at all times.',
+    grit: 'Do not routinely add grit unless an exotics vet specifically recommends it.',
   },
   budgie: {
     scope: 'A seed and grain enrichment mix, not a complete budgie diet.',
     baseDiet: 'Use a species-appropriate formulated diet as the nutritional base, together with fresh vegetables and limited seed.',
-    water: 'Provide clean, fresh water and clean bowls daily.',
-    grit: 'Do not routinely add grit unless an avian veterinarian specifically recommends it.',
+    water: 'Always provide clean, fresh water available at all times.',
+    grit: 'Do not routinely add grit unless an exotics vet specifically recommends it.',
   },
   canary: {
     scope: 'A seed and grain enrichment mix, not a complete canary diet.',
     baseDiet: 'Use a species-appropriate formulated diet or fortified diet as the nutritional base, with fresh food and limited seed.',
-    water: 'Provide clean, fresh water and clean bowls daily.',
-    grit: 'Do not routinely add grit unless an avian veterinarian specifically recommends it.',
+    water: 'Always provide clean, fresh water available at all times.',
+    grit: 'Do not routinely add grit unless an exotics vet specifically recommends it.',
   },
   chicken: {
     scope: 'A scratch-grain supplement mix, not a complete poultry ration. Keep scratch and other treats to a small share of daily intake.',

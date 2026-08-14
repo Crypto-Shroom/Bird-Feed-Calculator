@@ -12,21 +12,24 @@
 - [x] Reconcile every original requested feature against the audited changes.
 - [x] Prepare the audited project for a dedicated GitHub branch.
 - [x] Create and verify the GitHub branch containing the audited version.
-- [ ] Inspect the GitHub repository in read-only mode and prepare a preservation-first housekeeping proposal.
+- [x] Inspect the GitHub repository in read-only mode and prepare a preservation-first housekeeping proposal.
 - [ ] Compare prior and audited versions line by line for formulation, feature, source, and copy changes.
-- [ ] Inspect GitHub pull requests, issues, comments, and contributor history in read-only mode.
+- [x] Inspect GitHub pull requests, issues, comments, and contributor history in read-only mode.
 - [ ] Present restoration options, GitHub guidance, and a long-term roadmap for approval only.
 - [ ] Present exact revised daily-feeding and warning wording for approval before changing it.
 - [ ] Restore the approved herb-benefit, dosage, frequency, and notes display without changing formulations.
-- [ ] Inspect the user-referenced GitHub issue and explain the branch-reconciliation path.
-- [ ] Add the approved pull-request CI check and release-governance documentation.
-- [ ] Restore prior visible titles, subtitles, and daily-feeding copy with smaller contextual notes.
-- [ ] Make multi-bird safety warnings as explicit as the preserved original warning language.
-- [ ] Compare legacy and multi-bird outputs for identical pigeon profile and inventory inputs.
-- [ ] Recheck black-eyed-pea processing and compatibility evidence before altering its safety treatment.
-- [ ] Design an additive source-provenance and user-submission review layer without modifying current records.
+- [x] Inspect the user-referenced GitHub issue and explain the branch-reconciliation path.
+- [x] Add the approved pull-request CI check and release-governance documentation.
+- [x] Restore prior visible titles, subtitles, and daily-feeding copy with smaller contextual notes.
+- [x] Make multi-bird safety warnings as explicit as the preserved original warning language.
+- [x] Compare legacy and multi-bird outputs for identical pigeon profile and inventory inputs.
+- [x] Recheck black-eyed-pea processing and compatibility evidence before altering its safety treatment.
+- [x] Design an additive source-provenance and user-submission review layer without modifying current records.
 - [ ] Recommend a durable hosting and data-storage path for saved recipes and inventories before Manus migration.
-- [ ] Audit every ingredient restriction introduced by the audit-processing filter against preserved project data and evidence.
-- [ ] Benchmark legacy and multi-bird formula outputs using agreed accuracy criteria and representative inventories.
-- [ ] Remove unsupported audit-introduced ingredient exclusions only after documenting the basis.
+- [x] Audit every ingredient restriction introduced by the audit-processing filter against preserved project data and evidence.
+- [x] Benchmark legacy and multi-bird formula outputs using agreed accuracy criteria and representative inventories.
+- [x] Remove unsupported audit-introduced ingredient exclusions only after documenting the basis.
 - [ ] Compare current free or low-cost hosting and private-data services for a portable public release.
+- [x] Restore original user-facing profile descriptions and non-approved audit copy, preserving the approved African Grey update.
+- [x] Replace user-facing avian or poultry veterinary terminology with “exotics vet”.
+- [x] Produce the optimizer improvement brief and remaining audit-filter ingredient review list for approval.

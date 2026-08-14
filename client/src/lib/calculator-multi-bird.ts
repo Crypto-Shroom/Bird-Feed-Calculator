@@ -112,7 +112,7 @@ export class MultibirMixCalculator {
       warnings,
       suggestions,
       herbRecommendations: [],
-      herbPurpose: "Therapeutic herb dosages are intentionally not provided. Discuss supplements with an avian veterinarian.",
+      herbPurpose: "Therapeutic herb dosages are intentionally not provided. Discuss supplements with an exotics vet.",
       missingIngredients: missingIngredients.length ? missingIngredients : undefined,
       targetWeight: actualTarget,
     };
@@ -126,7 +126,7 @@ export class MultibirMixCalculator {
       warnings,
       suggestions: [],
       herbRecommendations: [],
-      herbPurpose: "Therapeutic herb dosages are intentionally not provided. Discuss supplements with an avian veterinarian.",
+      herbPurpose: "Therapeutic herb dosages are intentionally not provided. Discuss supplements with an exotics vet.",
       missingIngredients,
       targetWeight,
     };
@@ -299,7 +299,7 @@ export class MultibirMixCalculator {
       suggestions.push("Consider a compatible, safely prepared protein ingredient only after confirming its processing and suitability for your bird.");
     }
     if (nutrition.fat > target.fat[1]) {
-      suggestions.push("Reduce oil seeds or high-fat ingredients if your avian or poultry professional agrees that the fat estimate is too high.");
+      suggestions.push("Reduce oil seeds or high-fat ingredients if your exotics vet agrees that the fat estimate is too high.");
     }
 
     return suggestions;
