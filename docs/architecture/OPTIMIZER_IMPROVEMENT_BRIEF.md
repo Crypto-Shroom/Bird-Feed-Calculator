@@ -1,12 +1,12 @@
 # Optimizer Improvement Brief
 
-**Status:** Proposal only. **No formulation, ingredient value, target, warning rule, or calculator code is changed by this document.** Product-owner approval is required before implementation.
+**Status:** **Approved and implemented on the audit branch.** The implementation does not change ingredient values, profile targets, feeding recommendations, or the explicit raw-toxicity exclusions.
 
 ## Purpose
 
 The active multi-bird engine is the appropriate base because it preserves inventory limits, applies the ingredient-safety layer, reports shortages, and gives warnings for unmet nutrient and category conditions. Its documented weakness is that the current one-step score gives the selected profile’s macro midpoint more influence than category balance, which can leave a feasible category underrepresented. [1]
 
-> **Decision requested:** Approve or reject a two-stage deterministic optimizer. Approval of this brief would authorize design and test work only; a separate review would be required before changing the live formula output.
+> **Product-owner decision:** Approved. The active engine now uses the two-stage deterministic model described below, with the existing product data preserved.
 
 ## Proposed two-stage model
 
@@ -17,7 +17,7 @@ The active multi-bird engine is the appropriate base because it preserves invent
 
 ## Candidate-ranking objective
 
-The ranking stage would compare candidates with a documented weighted objective, not with an opaque “best” label. The intended components are shown below. Exact weights must be proposed in a pull request and accepted only after fixture testing.
+The ranking stage compares candidates with a documented weighted objective, not with an opaque “best” label. The implemented weights are recorded below and the returned calculation result includes its score components for testing and future presentation work.
 
 | Objective component | Measure | Desired behaviour |
 |---|---|---|
@@ -25,6 +25,8 @@ The ranking stage would compare candidates with a documented weighted objective,
 | **Category distance** | Distance from the selected bird’s grain, legume, and oil-seed ranges. | Prefer a candidate that fulfils the category architecture instead of solving macros by overusing one category. |
 | **Diversity** | Count and proportional use of eligible ingredients, subject to inventory and category constraints. | Reward sensible variety only after safety and target constraints are considered; never force unnecessary ingredients. |
 | **Warning penalty** | Number and severity of unavoidable target-miss or shortage warnings. | Prefer a candidate with fewer or less severe unmet conditions, while still displaying all remaining warnings. |
+
+The implemented objective weights are **55% macro distance, 25% category distance, 10% diversity penalty, and 10% unmet-target count**. Candidate construction is category-feasible first; ingredient selection within each category is then ranked for macro fit and proportional variety. Alphabetical mix signatures break exact ties.
 
 ## Required safeguards
 
@@ -39,9 +41,9 @@ The implementation must preserve the following behaviours. It must not convert a
 | **Pigeon continuity** | Fixed pigeon profile/inventory fixtures are compared against both the present multi-bird engine and the preserved legacy engine before review. |
 | **No unapproved formulation change** | A pull request presents every changed fixture output and is reviewed before merging. |
 
-## Suggested implementation sequence after approval
+## Implemented sequence
 
-First, add fixed fixtures and a score-breakdown type without changing the recommendation. Second, implement feasibility reporting and verify that all current safety and shortage cases behave identically. Third, enable candidate ranking behind fixture comparisons. Finally, present the diff, the fixture table, and any changed pigeon outputs for product-owner acceptance before enabling the new result path.
+The implementation adds a score-breakdown type, creates feasible category plans before candidate ranking, uses stable tie-breaking, and extends the smoke test to verify determinism, inventory ceilings, and feasible pigeon category targets. The calculator path remains inventory-aware and preserves its warning layer.
 
 ## Explicit non-goals
 

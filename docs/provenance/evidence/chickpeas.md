@@ -1,6 +1,10 @@
 # Chickpeas: Evidence Review
 
-**Status:** Evidence recorded; no eligibility, safety rule, nutrient value, profile target, or formula has been changed.
+**Status:** Practical preparation guidance implemented. Chickpeas are eligible in the calculator with their existing cooked-or-properly-processed requirement; nutrition values and profile targets are unchanged.
+
+## Current app guidance
+
+The app labels chickpeas as **cooked or properly processed**. Its preparation panel instructs users to soak, then boil until completely soft, drain, and cool. Pigeons may receive cooked whole or split chickpeas in the usual mix; chickens receive cooked chickpeas as part of a balanced ration; companion parrots receive only plain, soft, cooked chickpeas; and budgies/canaries receive a finely chopped or mashed small-bird portion. This restores a practical preparation message rather than an audit holding message.
 
 ## Existing project record
 

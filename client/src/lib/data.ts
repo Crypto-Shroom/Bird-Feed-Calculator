@@ -67,17 +67,17 @@ export const INGREDIENTS: Record<string, Ingredient> = {
     "beans": {"category": "legume", "protein": 22, "carbs": 62, "fat": 1, "fiber": 6, "notes": "WARNING: Check bean type - kidney, lima, fava, navy, pinto beans contain hemagglutinin (TOXIC if raw). Only feed if cooked thoroughly. Safe raw: mung, black-eyed peas, chickpeas (cooked)."},
     "mung_beans": {"category": "legume", "protein": 24, "carbs": 63, "fat": 1, "fiber": 7, "notes": "Safe uncooked"},
     "black_eyed_peas": {"category": "legume", "protein": 24, "carbs": 60, "fat": 1, "fiber": 6, "notes": "Safe dry, high protein"},
-    "chickpeas": {"category": "legume", "protein": 19, "carbs": 61, "fat": 6, "fiber": 12, "notes": "Must be cooked, high fiber"},
+    "chickpeas": {"category": "legume", "protein": 19, "carbs": 61, "fat": 6, "fiber": 12, "notes": "Cooked or properly processed; high fiber"},
     "fava_beans": {"category": "legume", "protein": 26, "carbs": 58, "fat": 1.5, "fiber": 9, "notes": "Must be cooked"},
     "navy_beans": {"category": "legume", "protein": 22, "carbs": 60, "fat": 1.5, "fiber": 10, "notes": "Must be cooked"},
     "kidney_beans": {"category": "legume", "protein": 24, "carbs": 60, "fat": 1, "fiber": 7, "notes": "Must be cooked, toxic raw"},
     "pinto_beans": {"category": "legume", "protein": 21, "carbs": 63, "fat": 1, "fiber": 9, "notes": "Must be cooked"},
-    "adzuki_beans": {"category": "legume", "protein": 20, "carbs": 63, "fat": 0.5, "fiber": 7, "notes": "Small red beans"},
+    "adzuki_beans": {"category": "legume", "protein": 20, "carbs": 63, "fat": 0.5, "fiber": 7, "notes": "Cooked or properly processed small red beans"},
     "lima_beans": {"category": "legume", "protein": 21, "carbs": 40, "fat": 0.7, "fiber": 7, "notes": "Must be cooked, toxic raw"},
     "black_beans": {"category": "legume", "protein": 21, "carbs": 62, "fat": 0.9, "fiber": 15, "notes": "Must be cooked, toxic raw"},
     
-    "vetch": {"category": "legume", "protein": 24, "carbs": 60, "fat": 1.5, "fiber": 6, "notes": "Common vetch, high protein"},
-    "lupins": {"category": "legume", "protein": 36, "carbs": 40, "fat": 9, "fiber": 19, "notes": "Very high protein, high fiber"},
+    "vetch": {"category": "legume", "protein": 24, "carbs": 60, "fat": 1.5, "fiber": 6, "notes": "Feed-grade heat-treated common vetch; high protein"},
+    "lupins": {"category": "legume", "protein": 36, "carbs": 40, "fat": 9, "fiber": 19, "notes": "Feed-grade sweet lupins only; very high protein and fiber"},
     "soybeans": {"category": "legume", "protein": 36, "carbs": 30, "fat": 20, "fiber": 9, "notes": "Very high protein and fat"},
     
     // ===== SEEDS (Fat and Special Nutrients) =====

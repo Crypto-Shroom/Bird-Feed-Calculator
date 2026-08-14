@@ -36,3 +36,7 @@
 - [x] Restore the pre-audit grain, legume, and seed category colors in the overview.
 - [x] Restore the pre-audit batch-estimate warning presentation and remove audit-only advisory framing where it changed the original interface.
 - [x] Compare all remaining user-visible audit changes against the pre-audit baseline and present only unresolved restoration choices.
+- [x] Implement the approved two-stage deterministic optimizer while preserving inventory, safety, formulation data, and user-visible baseline behaviour.
+- [x] Restore practical preparation messages for chickpeas, adzuki beans, lupins, and vetch with bird-specific guidance where evidence supports it.
+- [x] Replace audit-style “not documented” user-facing copy with practical preparation guidance or the preserved message.
+- [x] Add a concise approval-focused change summary and adopt pull-request-style notes for future repository changes.

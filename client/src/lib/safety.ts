@@ -1,5 +1,6 @@
 // Safety warnings and ingredient preparation notes
 // This module handles toxic ingredient detection and safety information
+import type { BirdType } from "./birds";
 
 export interface ToxicIngredient {
   name: string;
@@ -13,6 +14,7 @@ export interface IngredientPrep {
   name: string;
   preparation: string;
   notes: string;
+  birdGuidance?: Partial<Record<BirdType, string>>;
 }
 
 // Toxic ingredients that should NEVER be fed raw
@@ -76,26 +78,20 @@ export const SAFE_RAW_LEGUMES = new Set([
   "lentils_brown",
   "split_peas",
   "mung_beans",
-  "black_eyed_peas",
-  "chickpeas",
-  "adzuki_beans"
+  "black_eyed_peas"
 ]);
 
 // These ingredients must not be treated as ready-to-feed on the basis of a name alone.
 // Feed-grade processing, cultivar, and inclusion rate require professional confirmation.
 export const INGREDIENTS_REQUIRING_VERIFIED_PROCESSING = new Set([
-  "adzuki_beans",
   "beans",
   "black_beans",
-  "chickpeas",
   "fava_beans",
   "kidney_beans",
   "lima_beans",
-  "lupins",
   "navy_beans",
   "pinto_beans",
   "soybeans",
-  "vetch",
 ]);
 
 // Grains that should not be the only grain in a mix
@@ -175,6 +171,58 @@ export const INGREDIENT_PREP: Record<string, IngredientPrep> = {
     name: "Pepitas (Hulled Pumpkin Seeds)",
     preparation: "Feed as is",
     notes: "Hulled pumpkin seeds, high protein. Less fiber than whole seeds."
+  },
+  "chickpeas": {
+    name: "Chickpeas",
+    preparation: "Soak, then boil until completely soft; drain and cool before feeding",
+    notes: "Cooked or properly processed chickpeas only. Their antinutritional factors are reduced by heat treatment.",
+    birdGuidance: {
+      pigeon: "Offer cooked chickpeas whole or split, mixed with the usual grain/seed formula.",
+      chicken: "Offer cooked chickpeas as a limited part of a balanced poultry ration, not as a sole protein source.",
+      parrot: "Offer only cooked, plain, soft chickpeas; never salted or seasoned.",
+      african_grey: "Offer only cooked, plain, soft chickpeas; never salted or seasoned.",
+      budgie: "Offer cooked chickpeas finely chopped or mashed in a suitable small-bird portion.",
+      canary: "Offer cooked chickpeas finely chopped or mashed in a suitable small-bird portion."
+    }
+  },
+  "adzuki_beans": {
+    name: "Adzuki Beans",
+    preparation: "Soak, then boil until completely soft; drain and cool before feeding",
+    notes: "Soaking and cooking reduce phytic acid, tannins, and trypsin-inhibitor activity in adzuki beans.",
+    birdGuidance: {
+      pigeon: "Offer cooked adzuki beans whole or split, mixed with the usual grain/seed formula.",
+      chicken: "Offer cooked adzuki beans as a limited part of a balanced poultry ration.",
+      parrot: "Offer only cooked, plain, soft adzuki beans; never salted or seasoned.",
+      african_grey: "Offer only cooked, plain, soft adzuki beans; never salted or seasoned.",
+      budgie: "Offer cooked adzuki beans finely chopped or mashed in a suitable small-bird portion.",
+      canary: "Offer cooked adzuki beans finely chopped or mashed in a suitable small-bird portion."
+    }
+  },
+  "lupins": {
+    name: "Lupins",
+    preparation: "Use only feed-grade sweet lupins (low-alkaloid); do not use bitter garden lupins",
+    notes: "Sweet lupins are the low-alkaloid feed type. Bitter lupins can contain high alkaloid levels and must not be used.",
+    birdGuidance: {
+      pigeon: "Use only verified feed-grade sweet lupins in the dry mix.",
+      chicken: "Use only verified feed-grade sweet lupins in a balanced poultry ration.",
+      parrot: "Offer only a prepared feed-grade sweet-lupin product suitable for companion birds.",
+      african_grey: "Offer only a prepared feed-grade sweet-lupin product suitable for companion birds.",
+      budgie: "Use only a finely prepared feed-grade sweet-lupin product suitable for small birds.",
+      canary: "Use only a finely prepared feed-grade sweet-lupin product suitable for small birds."
+    }
+  },
+  "vetch": {
+    name: "Common Vetch",
+    preparation: "Use feed-grade common vetch that has been heat-treated; do not feed raw vetch seed",
+    notes: "Common vetch contains antinutritional factors. Heat treatment improves usable inclusion in poultry diets.",
+    birdGuidance: {
+      pigeon: "Use only feed-grade, heat-treated common vetch as part of a mixed formula.",
+      chicken: "Use only feed-grade, heat-treated common vetch at a limited inclusion within a balanced poultry ration.",
+      parrot: "Do not add common vetch to a companion-parrot seed mix; use an appropriate formulated diet instead.",
+      african_grey: "Do not add common vetch to an African-grey seed mix; use an appropriate formulated diet instead.",
+      budgie: "Do not add common vetch to a budgie seed mix.",
+      canary: "Do not add common vetch to a canary seed mix."
+    }
   }
 };
 

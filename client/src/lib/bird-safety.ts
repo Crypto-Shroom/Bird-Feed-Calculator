@@ -300,6 +300,11 @@ export const INGREDIENT_COMPATIBILITY: Record<string, IngredientCompatibility> =
     compatibleBirds: ['pigeon', 'parrot', 'african_grey', 'budgie', 'canary', 'chicken'],
     incompatibleBirds: [],
   },
+  vetch: {
+    ingredient: 'vetch',
+    compatibleBirds: ['pigeon', 'chicken'],
+    incompatibleBirds: ['parrot', 'african_grey', 'budgie', 'canary'],
+  },
   sunflower: {
     ingredient: 'sunflower',
     compatibleBirds: ['pigeon', 'parrot', 'african_grey', 'budgie', 'canary', 'chicken'],

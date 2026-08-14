@@ -1,6 +1,10 @@
 # Adzuki Beans: Evidence Review
 
-**Status:** Evidence recorded; no eligibility, safety rule, nutrient value, profile target, or formula has been changed.
+**Status:** Practical preparation guidance implemented. Adzuki beans are eligible in the calculator with a cooked-or-properly-processed requirement; nutrition values and profile targets are unchanged.
+
+## Current app guidance
+
+The app labels adzuki beans as **cooked or properly processed small red beans**. Its preparation panel instructs users to soak, then boil until completely soft, drain, and cool. The selected-bird note gives whole/split use for pigeons, balanced-ration use for chickens, plain soft cooked portions for parrots/African greys, and finely chopped or mashed portions for budgies/canaries. Soaking and heat preparation are supported by the processing evidence below.
 
 ## Existing project record
 

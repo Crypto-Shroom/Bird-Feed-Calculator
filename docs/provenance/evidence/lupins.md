@@ -1,8 +1,12 @@
 # Lupins: Evidence Review
 
-**Status:** Evidence recorded; no eligibility, safety rule, nutrient value, profile target, or formula has been changed.
+**Status:** Practical preparation guidance implemented. The calculator record now represents **feed-grade low-alkaloid sweet lupins**, not bitter garden lupins; nutrition values and profile targets are unchanged.
 
-## Existing project record
+## Current app guidance
+
+The app requires a verified feed-grade sweet-lupin product and states that bitter garden lupins must not be used. Pigeon and chicken messages retain feed/ration context. Companion-bird messages require an appropriately prepared feed-grade product, with small-bird preparation for budgies and canaries.
+
+## Historical audit record
 
 The generic `lupins` record states “Very high protein, high fiber.” It is currently blocked by the audit processing filter. The record does not identify a *Lupinus* species, whether it is a sweet or bitter cultivar, its alkaloid analysis, product form, or intended bird/inclusion level.
 
@@ -23,9 +27,9 @@ The generic name is insufficient to make an automatic eligibility decision. The 
 | Does the source provide a pigeon/parrot-specific automatic rule? | **No.** |
 | Is a live rule change justified before collecting cultivar/product evidence? | **No.** |
 
-## Approval-gated choice
+## Implemented product decision
 
-Keep generic `lupins` out of automatic formulas. If the product owner wants support for a verified product later, add a **new, distinct record** such as “feed-grade sweet lupin (identified cultivar/analysis)” with a source, product-form rule, and bird-specific policy. Do not reclassify the existing generic `lupins` record as safe or unsafe without that distinction.
+The product owner approved practical preparation guidance. The calculator record now carries the distinction directly: it means a verified feed-grade sweet-lupin product. It does not authorize bitter or unidentified garden lupins.
 
 ## Reference
 

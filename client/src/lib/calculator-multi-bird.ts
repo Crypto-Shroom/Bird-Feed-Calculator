@@ -38,6 +38,7 @@ export interface MixResult {
   herbPurpose: string;
   missingIngredients?: MissingIngredient[];
   targetWeight: number;
+  optimization: OptimizationSummary;
 }
 
 export interface NutritionSummary {
@@ -51,6 +52,14 @@ export interface CategorySummary {
   grain: number;
   legume: number;
   seed: number;
+}
+
+export interface OptimizationSummary {
+  total: number;
+  macroDistance: number;
+  categoryDistance: number;
+  diversityPenalty: number;
+  targetMisses: number;
 }
 
 interface AvailableIngredient extends Ingredient {
@@ -101,6 +110,7 @@ export class MultibirMixCalculator {
     const mix = this.optimizeMix(eligible, actualTarget, profile.nutrition);
     const nutrition = this.calculateNutrition(mix);
     const categories = this.calculateCategoryRatios(mix);
+    const optimization = this.objectiveScore(mix, profile.nutrition);
     const suggestions = this.buildSuggestions(mix, nutrition, categories, profile.nutrition);
 
     this.addTargetWarnings(nutrition, categories, profile.nutrition, warnings);
@@ -115,6 +125,7 @@ export class MultibirMixCalculator {
       herbPurpose: "Therapeutic herb dosages are intentionally not provided. Discuss supplements with an exotics vet.",
       missingIngredients: missingIngredients.length ? missingIngredients : undefined,
       targetWeight: actualTarget,
+      optimization,
     };
   }
 
@@ -129,6 +140,7 @@ export class MultibirMixCalculator {
       herbPurpose: "Therapeutic herb dosages are intentionally not provided. Discuss supplements with an exotics vet.",
       missingIngredients,
       targetWeight,
+      optimization: { total: 0, macroDistance: 0, categoryDistance: 0, diversityPenalty: 0, targetMisses: 0 },
     };
   }
 
@@ -143,8 +155,10 @@ export class MultibirMixCalculator {
       const rawToxicity = isToxicRaw(name);
       const requiresProcessing = requiresVerifiedProcessing(name);
 
-      if (!isIngredientCompatible(name, this.bird) || toxicity || rawToxicity || requiresProcessing) {
-        const reason = toxicity?.description || rawToxicity?.message || getProcessingWarning(name) || "it is not compatible with the selected bird";
+      const compatible = isIngredientCompatible(name, this.bird);
+      if (!compatible || toxicity || rawToxicity || requiresProcessing) {
+        const birdGuidance = getPreparationInstructions(name)?.birdGuidance?.[this.bird];
+        const reason = toxicity?.description || rawToxicity?.message || getProcessingWarning(name) || birdGuidance || "it is not compatible with the selected bird";
         warnings.push({ level: "CRITICAL", message: `${name.replace(/_/g, " ")} was excluded: ${reason}.` });
         return;
       }
@@ -175,63 +189,178 @@ export class MultibirMixCalculator {
     targetWeight: number,
     target: NutritionTarget,
   ): Record<string, number> {
-    const remaining = new Map(ingredients.map((ingredient) => [ingredient.name, ingredient.amount]));
-    const mix: Record<string, number> = {};
-    const step = targetWeight <= 500 ? 5 : 10;
-    let mixedWeight = 0;
+    const sortedIngredients = [...ingredients].sort((left, right) => left.name.localeCompare(right.name));
+    const plans = this.createFeasibleCategoryPlans(sortedIngredients, targetWeight);
+    const candidates = plans.map((plan) => this.buildCandidate(sortedIngredients, targetWeight, target, plan));
 
-    while (mixedWeight < targetWeight - 0.001) {
-      const amountToAdd = Math.min(step, targetWeight - mixedWeight);
-      let winner: AvailableIngredient | null = null;
-      let bestScore = Number.NEGATIVE_INFINITY;
+    return candidates
+      .sort((left, right) => this.compareCandidates(left, right, target))[0] || {};
+  }
 
-      ingredients.forEach((ingredient) => {
-        const remainingAmount = remaining.get(ingredient.name) || 0;
-        if (remainingAmount <= 0) return;
-        const addAmount = Math.min(amountToAdd, remainingAmount);
-        const candidate = { ...mix, [ingredient.name]: (mix[ingredient.name] || 0) + addAmount };
-        const score = this.scoreMix(candidate, target);
+  private createFeasibleCategoryPlans(ingredients: AvailableIngredient[], targetWeight: number): CategorySummary[] {
+    const targets = getCategoryTargets(this.bird);
+    const capacity = categoryKeys.reduce((summary, category) => {
+      summary[category] = ingredients
+        .filter((ingredient) => ingredient.category === category)
+        .reduce((total, ingredient) => total + ingredient.amount, 0) / targetWeight * 100;
+      return summary;
+    }, { grain: 0, legume: 0, seed: 0 } as CategorySummary);
 
-        if (score > bestScore || (score === bestScore && winner && ingredient.name.localeCompare(winner.name) < 0)) {
-          bestScore = score;
-          winner = ingredient;
+    const priorities: Array<keyof CategorySummary | null> = [null, "grain", "legume", "seed"];
+    return priorities.map((priority) => {
+      const plan = { grain: 0, legume: 0, seed: 0 } as CategorySummary;
+
+      categoryKeys.forEach((category) => {
+        if (capacity[category] > 0) {
+          plan[category] = Math.min(targets[category][0], capacity[category]);
         }
       });
 
-      const selected = winner as AvailableIngredient | null;
-      if (!selected) break;
+      let remaining = 100 - Object.values(plan).reduce((total, value) => total + value, 0);
+      while (remaining > 0.001) {
+        const viable = categoryKeys.filter((category) => capacity[category] - plan[category] > 0.001);
+        if (!viable.length) break;
 
-      const addAmount = Math.min(amountToAdd, remaining.get(selected.name) || 0);
-      mix[selected.name] = (mix[selected.name] || 0) + addAmount;
-      remaining.set(selected.name, (remaining.get(selected.name) || 0) - addAmount);
-      mixedWeight += addAmount;
+        const selected = [...viable].sort((left, right) => {
+          const leftScore = this.categoryAllocationScore(left, plan[left], targets[left], priority);
+          const rightScore = this.categoryAllocationScore(right, plan[right], targets[right], priority);
+          return rightScore - leftScore || left.localeCompare(right);
+        })[0];
+        const increment = Math.min(1, remaining, capacity[selected] - plan[selected]);
+        plan[selected] += increment;
+        remaining -= increment;
+      }
+
+      return plan;
+    });
+  }
+
+  private categoryAllocationScore(
+    category: keyof CategorySummary,
+    current: number,
+    target: [number, number],
+    priority: keyof CategorySummary | null,
+  ): number {
+    const [min, max] = target;
+    const midpoint = (min + max) / 2;
+    const range = Math.max(1, max - min);
+    const midpointNeed = (midpoint - current) / range;
+    const withinMaximum = current < max ? 1 : 0;
+    const priorityBonus = priority === category ? 0.45 : 0;
+    return midpointNeed + withinMaximum + priorityBonus;
+  }
+
+  private buildCandidate(
+    ingredients: AvailableIngredient[],
+    targetWeight: number,
+    target: NutritionTarget,
+    plan: CategorySummary,
+  ): Record<string, number> {
+    const remaining = new Map(ingredients.map((ingredient) => [ingredient.name, ingredient.amount]));
+    const mix: Record<string, number> = {};
+
+    categoryKeys.forEach((category) => {
+      const requestedWeight = targetWeight * (plan[category] / 100);
+      this.fillMix(mix, remaining, ingredients.filter((ingredient) => ingredient.category === category), requestedWeight, target, plan, targetWeight);
+    });
+
+    const unfilledWeight = targetWeight - Object.values(mix).reduce((total, amount) => total + amount, 0);
+    if (unfilledWeight > 0.001) {
+      this.fillMix(mix, remaining, ingredients, unfilledWeight, target, plan, targetWeight);
     }
 
     return mix;
   }
 
-  private scoreMix(mix: Record<string, number>, target: NutritionTarget): number {
+  private fillMix(
+    mix: Record<string, number>,
+    remaining: Map<string, number>,
+    choices: AvailableIngredient[],
+    requestedWeight: number,
+    target: NutritionTarget,
+    categoryPlan: CategorySummary,
+    targetWeight: number,
+  ) {
+    const step = targetWeight <= 500 ? 5 : 10;
+    let added = 0;
+
+    while (added < requestedWeight - 0.001) {
+      const amountToAdd = Math.min(step, requestedWeight - added);
+      const winner = choices
+        .filter((ingredient) => (remaining.get(ingredient.name) || 0) > 0)
+        .map((ingredient) => {
+          const addAmount = Math.min(amountToAdd, remaining.get(ingredient.name) || 0);
+          const candidate = { ...mix, [ingredient.name]: (mix[ingredient.name] || 0) + addAmount };
+          return { ingredient, addAmount, score: this.selectionScore(candidate, target, categoryPlan) };
+        })
+        .sort((left, right) => left.score - right.score || left.ingredient.name.localeCompare(right.ingredient.name))[0];
+
+      if (!winner) break;
+      mix[winner.ingredient.name] = (mix[winner.ingredient.name] || 0) + winner.addAmount;
+      remaining.set(winner.ingredient.name, (remaining.get(winner.ingredient.name) || 0) - winner.addAmount);
+      added += winner.addAmount;
+    }
+  }
+
+  private selectionScore(mix: Record<string, number>, target: NutritionTarget, categoryPlan: CategorySummary): number {
+    const objective = this.objectiveScore(mix, target);
+    const categories = this.calculateCategoryRatios(mix);
+    const planDistance = categoryKeys.reduce((total, category) => total + Math.abs(categories[category] - categoryPlan[category]) / 100, 0);
+    return objective.macroDistance * 0.7 + planDistance * 0.25 + objective.diversityPenalty * 0.05;
+  }
+
+  private compareCandidates(left: Record<string, number>, right: Record<string, number>, target: NutritionTarget): number {
+    const leftScore = this.objectiveScore(left, target);
+    const rightScore = this.objectiveScore(right, target);
+    const scoreDifference = leftScore.total - rightScore.total;
+    if (Math.abs(scoreDifference) > 1e-9) return scoreDifference;
+
+    const macroDifference = leftScore.macroDistance - rightScore.macroDistance;
+    if (Math.abs(macroDifference) > 1e-9) return macroDifference;
+
+    const categoryDifference = leftScore.categoryDistance - rightScore.categoryDistance;
+    if (Math.abs(categoryDifference) > 1e-9) return categoryDifference;
+
+    return this.mixSignature(left).localeCompare(this.mixSignature(right));
+  }
+
+  private objectiveScore(mix: Record<string, number>, target: NutritionTarget): OptimizationSummary {
     const nutrition = this.calculateNutrition(mix);
     const categories = this.calculateCategoryRatios(mix);
     const categoryTargets = getCategoryTargets(this.bird);
-    const totalWeight = Object.values(mix).reduce((total, amount) => total + amount, 0);
 
-    const nutritionPenalty = nutritionKeys.reduce((total, key) => {
+    const macroDistance = nutritionKeys.reduce((total, key) => {
       const [min, max] = target[key];
       const midpoint = (min + max) / 2;
       const width = Math.max(0.5, max - min);
       return total + Math.abs(nutrition[key] - midpoint) / width;
     }, 0);
 
-    const categoryPenalty = categoryKeys.reduce((total, key) => {
+    const categoryDistance = categoryKeys.reduce((total, key) => {
       const [min, max] = categoryTargets[key];
       const midpoint = (min + max) / 2;
-      const deficit = totalWeight > 20 && categories[key] < min ? (min - categories[key]) * 0.18 : 0;
-      return total + Math.abs(categories[key] - midpoint) * 0.03 + deficit;
+      const width = Math.max(1, max - min);
+      return total + Math.abs(categories[key] - midpoint) / width;
     }, 0);
 
-    const varietyBonus = Math.min(0.25, Object.keys(mix).length * 0.04);
-    return varietyBonus - nutritionPenalty - categoryPenalty;
+    const targetMisses = nutritionKeys.filter((key) => nutrition[key] < target[key][0] || nutrition[key] > target[key][1]).length
+      + categoryKeys.filter((key) => categories[key] < categoryTargets[key][0] || categories[key] > categoryTargets[key][1]).length;
+    const diversityPenalty = 1 - Math.min(1, Object.keys(mix).length / Math.min(5, Math.max(1, Object.keys(this.inventory).length)));
+
+    return {
+      macroDistance,
+      categoryDistance,
+      targetMisses,
+      diversityPenalty,
+      total: macroDistance * 0.55 + categoryDistance * 0.25 + diversityPenalty * 0.1 + targetMisses * 0.1,
+    };
+  }
+
+  private mixSignature(mix: Record<string, number>): string {
+    return Object.entries(mix)
+      .sort(([left], [right]) => left.localeCompare(right))
+      .map(([name, amount]) => `${name}:${amount.toFixed(3)}`)
+      .join("|");
   }
 
   private calculateNutrition(mix: Record<string, number>): NutritionSummary {

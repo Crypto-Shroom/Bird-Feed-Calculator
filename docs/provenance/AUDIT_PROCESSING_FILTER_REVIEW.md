@@ -1,6 +1,6 @@
 # Audit Processing-Filter Review
 
-**Status:** Review in progress. No ingredient eligibility, formula, nutrient value, or profile target has been changed by this document.
+**Status:** Review completed and product-owner direction implemented. Ingredient nutrition values, bird targets, profile names, and feeding recommendations remain unchanged.
 
 ## Finding
 
@@ -13,25 +13,26 @@ The audit introduced a global `INGREDIENTS_REQUIRING_VERIFIED_PROCESSING` filter
 | Kidney, lima, fava, navy, pinto, and black beans | Blocked before calculation. | Retain hard raw-toxicity rule. These are already covered by explicit raw-toxicity records. |
 | Soybeans | Blocked before calculation. | Retain processing rule. University of Georgia poultry guidance states raw soybeans contain antinutritional factors and require controlled processing. |
 | Generic `beans` | Blocked before calculation. | Retain a specific-type requirement; an unspecified bean cannot be safely classified. |
-| Black-eyed peas / cowpeas | Blocked before calculation despite a legacy safe-raw entry. | Global audit filter is unsupported as a pigeon-specific hard exclusion. Poultry evidence supports conditional feed use but does not establish a fatal raw-toxicity rule. |
-| Chickpeas | Blocked before calculation despite a legacy safe-raw entry. | Needs species- and inclusion-specific review. Poultry evidence shows cultivar and inclusion-rate dependence, so a global hard exclusion is broader than the evidence. |
-| Adzuki beans | Blocked before calculation despite a legacy safe-raw entry. | Needs a source-mapping review; the audit did not document a new toxic basis. |
-| Lupins and vetch | Blocked before calculation. | Review separately. Cultivar and toxin distinctions matter; broad automatic eligibility would be inappropriate without a species/product-form rule. |
+| Black-eyed peas / cowpeas | Eligible. | Restored after review; no audit-created hard exclusion remains. |
+| Chickpeas | Eligible with a cooked-or-properly-processed instruction. | The app gives selected-bird preparation guidance rather than an audit holding message. |
+| Adzuki beans | Eligible with a cooked-or-properly-processed instruction. | The app gives selected-bird preparation guidance based on soaking/heat-processing evidence. |
+| Lupins | Eligible as feed-grade low-alkaloid sweet lupins only. | Bitter or unidentified garden lupins are excluded by the preparation requirement. |
+| Common vetch | Eligible as feed-grade heat-treated common vetch for pigeon/chicken context; excluded for companion parrots and small birds. | The app shows the product-form restriction and bird-specific message. |
 
 ## Evidence records added
 
-The remaining review records are now available for product-owner decision. They do not change the live filter.
+The evidence records now support the implemented practical preparation messages.
 
-| Ingredient | Evidence record | Current recommended state pending approval |
+| Ingredient | Evidence record | Implemented state |
 |---|---|---|
-| Chickpeas | [Chickpeas review](./evidence/chickpeas.md) | Keep out of automatic formulas; do not label as a hard raw-toxicity equivalent. |
-| Adzuki beans | [Adzuki-beans review](./evidence/adzuki-beans.md) | Retain processing filter until a species/product-form source is mapped. |
-| Lupins | [Lupins review](./evidence/lupins.md) | Retain generic filter; distinguish identified feed-grade sweet lupin before any future use. |
-| Vetch | [Vetch review](./evidence/vetch.md) | Retain exclusion from automatic formulas; source supports higher-risk handling for generic common vetch. |
+| Chickpeas | [Chickpeas review](./evidence/chickpeas.md) | Cooked or properly processed; selected-bird preparation note displayed. |
+| Adzuki beans | [Adzuki-beans review](./evidence/adzuki-beans.md) | Cooked or properly processed; selected-bird preparation note displayed. |
+| Lupins | [Lupins review](./evidence/lupins.md) | Feed-grade low-alkaloid sweet lupins only. |
+| Vetch | [Vetch review](./evidence/vetch.md) | Feed-grade heat-treated common vetch for pigeon/chicken context; companion-bird exclusion retained. |
 
 ## Correction principle
 
-Only explicit raw-toxicity records should create an automatic red exclusion. Processing, cultivar, or inclusion-rate uncertainty should be displayed as information unless the product owner approves a species-specific exclusion rule supported by documented evidence.
+Only explicit raw-toxicity records create an automatic red exclusion. Preparation, cultivar, and bird-specific context are displayed directly in the ingredient and formula guidance; companion-bird vetch exclusion remains an explicit species-specific rule.
 
 ## Sources
 
