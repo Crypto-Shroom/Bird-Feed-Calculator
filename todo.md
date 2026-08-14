@@ -11,4 +11,12 @@
 - [x] Clarify the distinction between removed claims and data-provenance improvements.
 - [x] Reconcile every original requested feature against the audited changes.
 - [x] Prepare the audited project for a dedicated GitHub branch.
-- [ ] Create and verify the GitHub branch containing the audited version.
+- [x] Create and verify the GitHub branch containing the audited version.
+- [ ] Inspect the GitHub repository in read-only mode and prepare a preservation-first housekeeping proposal.
+- [ ] Compare prior and audited versions line by line for formulation, feature, source, and copy changes.
+- [ ] Inspect GitHub pull requests, issues, comments, and contributor history in read-only mode.
+- [ ] Present restoration options, GitHub guidance, and a long-term roadmap for approval only.
+- [ ] Present exact revised daily-feeding and warning wording for approval before changing it.
+- [ ] Restore the approved herb-benefit, dosage, frequency, and notes display without changing formulations.
+- [ ] Inspect the user-referenced GitHub issue and explain the branch-reconciliation path.
+- [ ] Add the approved pull-request CI check and release-governance documentation.
