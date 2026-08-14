@@ -33,3 +33,6 @@
 - [x] Restore original user-facing profile descriptions and non-approved audit copy, preserving the approved African Grey update.
 - [x] Replace user-facing avian or poultry veterinary terminology with “exotics vet”.
 - [x] Produce the optimizer improvement brief and remaining audit-filter ingredient review list for approval.
+- [x] Restore the pre-audit grain, legume, and seed category colors in the overview.
+- [x] Restore the pre-audit batch-estimate warning presentation and remove audit-only advisory framing where it changed the original interface.
+- [x] Compare all remaining user-visible audit changes against the pre-audit baseline and present only unresolved restoration choices.
