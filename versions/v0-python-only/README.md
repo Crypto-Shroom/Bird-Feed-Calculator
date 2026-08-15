@@ -23,4 +23,4 @@ The active browser application is [`../v3-webapp/`](../v3-webapp/). Do not edit 
 
 ## License
 
-This preserved project material is now covered by the repository-root [PolyForm Noncommercial License 1.0.0](../../LICENSE.md). Original source content remains historically preserved; this license notice supersedes the former project-level MIT metadata.
+This preserved project material is covered by the repository-root [Bird Feed Calculator Noncommercial License 1.0](../../LICENSE.md). Original source content remains historically preserved; this license notice supersedes the former project-level MIT metadata for this repository’s current and future distributions.

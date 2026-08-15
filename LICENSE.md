@@ -1,85 +1,72 @@
-# Bird Feed Calculator Project License
+# Bird Feed Calculator Noncommercial License 1.0
 
 Copyright 2025–2026 George Bill Fritz Hegel.
 
 Required Notice: Copyright 2025–2026 George Bill Fritz Hegel.
 
-Owner-authored source code, original documentation, original interface copy, database selection and arrangement, branding, and project-created assets in this repository are licensed under the **PolyForm Noncommercial License 1.0.0** below.
+## Scope and release coverage
 
-This license does not replace the separate licenses of third-party dependencies, fonts, upstream components, or any externally sourced material. Their notices and license terms continue to apply. Commercial use requires a separate written license from the copyright holder named above.
+This license applies to the owner-authored source code, original documentation, original interface copy, database selection and arrangement, branding, and project-created assets distributed from this repository, including the V0, V1, V2, and V3 source trees and any release archive made from them.
 
----
+This license does not replace the separate licenses of third-party dependencies, fonts, upstream components, or externally sourced material. Their notices and license terms continue to apply.
 
-# PolyForm Noncommercial License 1.0.0
-
-<https://polyformproject.org/licenses/noncommercial/1.0.0>
+This license governs this repository’s current and future distributions by the Licensor. It does not purport to revoke permissions already granted to a recipient under an earlier distribution.
 
 ## Acceptance
 
-In order to get any license under these terms, you must agree to them as both strict obligations and conditions to all your licenses.
+To receive a license under these terms, you must accept them as binding conditions of every license granted here. You accept them by doing anything with the Software that would otherwise infringe the Licensor’s copyright or patent rights.
 
-## Copyright License
+## Copyright license
 
-The licensor grants you a copyright license for the software to do everything you might do with the software that would otherwise infringe the licensor's copyright in it for any permitted purpose. However, you may only distribute the software according to Distribution License and make changes or new works based on the software according to Changes and New Works License.
+Subject to these terms, the Licensor grants you a worldwide, non-exclusive, royalty-free copyright license to use, copy, modify, create new works from, and distribute the Software for a Noncommercial Purpose.
 
-## Distribution License
+## Distribution, notices, and changes
 
-The licensor grants you an additional copyright license to distribute copies of the software. Your license to distribute covers distributing the software with changes and new works permitted by Changes and New Works License.
+You may distribute copies, modifications, and new works based on the Software only for a Noncommercial Purpose. You must ensure that each recipient receives either a copy of these terms or the URL of this license, together with every `Required Notice:` supplied by the Licensor. You may not sublicense or transfer the license granted to you.
 
-## Notices
+## Patent license
 
-You must ensure that anyone who gets a copy of any part of the software from you also gets a copy of these terms or the URL for them above, as well as copies of any plain-text lines beginning with `Required Notice:` that the licensor provided with the software.
+Subject to these terms, the Licensor grants you a worldwide, non-exclusive, royalty-free patent license for patent claims that the Licensor owns or has the right to license without paying royalties when you accept these terms, to the extent those claims would be infringed by using the Software for a Noncommercial Purpose.
 
-## Changes and New Works License
+## Noncommercial restriction
 
-The licensor grants you an additional copyright license to make changes and new works based on the software for any permitted purpose.
+You may not use the Software for any Commercial Purpose. A **Commercial Purpose** is any use intended for or directed toward commercial advantage or monetary compensation. This includes, without limitation, use in or for ad-supported platforms, subscription services, premium paywalls, paid distributions, commercial consulting, commercial hosting, or a product or service offered for payment.
 
-## Patent License
+Personal research, experimentation, testing for public knowledge, personal study, private entertainment, hobby projects, amateur pursuits, and religious observance without an anticipated commercial application are Noncommercial Purposes. Use by a charitable organization, educational institution, public research organization, public safety or health organization, environmental-protection organization, or government institution is also a Noncommercial Purpose, regardless of funding source or resulting funding obligations.
 
-The licensor grants you a patent license for the software that covers patent claims the licensor can license, or becomes able to license, that you would infringe by using the software.
+Commercial use requires a separate written license from the Licensor.
 
-## Noncommercial Purposes
+## Fair use
 
-Any noncommercial purpose is a permitted purpose.
+Nothing in this license limits any right you have under applicable fair-use or fair-dealing law.
 
-## Personal Uses
+## Trademarks and no other rights
 
-Personal use for research, experiment, and testing for the benefit of public knowledge, personal study, private entertainment, hobby projects, amateur pursuits, or religious observance, without any anticipated commercial application, is use for a permitted purpose.
+This license does not grant rights in the Licensor’s trademarks, service marks, logos, domain names, or branding. Except for the express copyright and patent licenses above, these terms grant no other rights.
 
-## Noncommercial Organizations
+## Patent defense and termination
 
-Use by any charitable organization, educational institution, public research organization, public safety or health organization, environmental protection organization, or government institution is use for a permitted purpose regardless of the source of funding or obligations resulting from the funding.
+If you or Your Company make a written claim that the Software infringes or contributes to infringement of a patent, the patent license granted by these terms ends immediately for you and, where applicable, for work on behalf of Your Company.
 
-## Fair Use
+If you violate these terms or use the Software for a purpose not permitted here, your licenses end immediately unless, on the first written notice of that violation, you fully cure it and take practical steps to correct past violations within 32 days of receiving notice. This cure provision does not restore a patent license terminated under the preceding paragraph.
 
-You may have "fair use" rights for the software under the law. These terms do not limit them.
+## No liability
 
-## No Other Rights
+To the fullest extent permitted by law, the Software is provided "as is," without warranty or condition of any kind. The Licensor will not be liable for damages arising out of these terms or the use or nature of the Software under any legal theory.
 
-These terms do not allow you to sublicense or transfer any of your licenses to anyone else, or prevent the licensor from granting licenses to anyone else. These terms do not imply any other licenses.
+## Choice of law, jurisdiction, and exclusions
 
-## Patent Defense
-
-If you make any written claim that the software infringes or contributes to infringement of any patent, your patent license for the software granted under these terms ends immediately. If your company makes such a claim, your patent license ends immediately for work on behalf of your company.
-
-## Violations
-
-The first time you are notified in writing that you have violated any of these terms, or done anything with the software not covered by your licenses, your licenses can nonetheless continue if you come into full compliance with these terms, and take practical steps to correct past violations, within 32 days of receiving notice. Otherwise, all your licenses end immediately.
-
-## No Liability
-
-As far as the law allows, the software comes as is, without any warranty or condition, and the licensor will not be liable to you for any damages arising out of these terms or the use or nature of the software, under any kind of legal claim.
+1. **Governing law.** This license, its interpretation, and any dispute arising out of or relating to it are exclusively governed by the substantive laws of the Federal Republic of Germany, without giving effect to conflict-of-law principles.
+2. **United States law exclusion.** United States federal law, United States state law, including the laws of California, New York, and Delaware, and the United States Uniform Computer Information Transactions Act (UCITA) are expressly excluded from this agreement.
+3. **Jurisdiction and venue.** Any legal action, suit, or proceeding arising out of or relating to this license must be brought exclusively in the competent courts located in Spain. You consent to the personal jurisdiction and venue of those courts and waive any objection based on forum non conveniens.
+4. **International conventions.** The United Nations Convention on Contracts for the International Sale of Goods is expressly excluded.
 
 ## Definitions
 
-The **licensor** is the individual or entity offering these terms, and the **software** is the software the licensor makes available under these terms.
+**Licensor** means the individual or entity offering this license.
 
-**You** refers to the individual or entity agreeing to these terms.
+**Software** means the software code and associated documentation offered under this license.
 
-**Your company** is any legal entity, sole proprietorship, or other kind of organization that you work for, plus all organizations that have control over, are under the control of, or are under common control with that organization. **Control** means ownership of substantially all the assets of an entity, or the power to direct its management and policies by vote, contract, or otherwise. Control can be direct or indirect.
+**You** means the individual or entity accepting these terms.
 
-**Your licenses** are all the licenses granted to you for the software under these terms.
-
-**Use** means anything you do with the software requiring one of your licenses.
-
-© PolyForm Project Inc.
+**Your Company** means any legal entity, sole proprietorship, or other organization for which you work, together with every organization that controls, is controlled by, or is under common control with that organization. **Control** means ownership of substantially all assets of an entity or the power to direct its management and policies by vote, contract, or otherwise.

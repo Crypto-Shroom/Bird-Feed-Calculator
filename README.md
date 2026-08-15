@@ -25,4 +25,4 @@ pnpm --dir versions/v3-webapp build
 
 ## License
 
-Owner-authored project material is licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE.md). It permits non-commercial use while reserving commercial licensing to the copyright holder. Third-party dependencies and external materials remain under their own terms.
+Owner-authored project material is licensed under the [Bird Feed Calculator Noncommercial License 1.0](LICENSE.md). It permits non-commercial use while reserving commercial licensing to the copyright holder, applies to V0 through V3 repository distributions, uses German governing law and Spanish court venue, and leaves third-party dependencies and external materials under their own terms.

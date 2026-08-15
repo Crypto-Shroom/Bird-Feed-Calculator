@@ -1,12 +1,12 @@
 # Licensing and Release Audit
 
-**Status:** The product owner approved PolyForm Noncommercial 1.0.0 for owner-authored repository material on 2026-08-15. The repository remains public pending a separate visibility decision; no Git tag has been created.
+**Status:** The product owner approved the Bird Feed Calculator Noncommercial License 1.0 for owner-authored repository material on 2026-08-15. It reconciles the supplied non-commercial restrictions with notice, distribution, change, patent-defense, and cure provisions, and retains German governing law with Spanish court venue. The repository remains public pending a separate visibility decision; no Git tag has been created.
 
 > This is a working copyright and release-management analysis, not formal legal advice. A qualified intellectual-property lawyer should review the final proprietary license and contributor arrangements before commercial release.
 
 ## Bottom line
 
-The repository is currently public and now has a root PolyForm Noncommercial 1.0.0 license for owner-authored project material. GitHub users may still view and fork a public repository under GitHub’s terms. [1] [2]
+The repository is currently public and now has a root Bird Feed Calculator Noncommercial License 1.0 for owner-authored project material. GitHub users may still view and fork a public repository under GitHub’s terms. [1] [2]
 
 The approved project license grants non-commercial use but reserves commercial licensing for the named copyright holder. It cannot revoke copies or permissions that were already published under previous terms; it governs the repository material distributed under the new license from this change onward.
 
@@ -15,8 +15,8 @@ The approved project license grants non-commercial use but reserves commercial l
 | Area | Finding | Effect on commercial-control goal | Required decision before release |
 |---|---|---|---|
 | Repository visibility | The GitHub repository is public. | Anyone can view and fork it through GitHub; public history and existing copies cannot be made unseen. | Decide whether to make the repository private before the commercial release. |
-| Root license | `LICENSE.md` applies PolyForm Noncommercial 1.0.0 to owner-authored project material and includes the required copyright notice. | Commercial use requires a separate owner-granted license. | Confirm eventual repository visibility and commercial licensing process. |
-| Project package metadata | The repository, V1, V2, active V3, and archived package manifests now declare `PolyForm-Noncommercial-1.0.0`. | Future project distributions clearly identify the non-commercial grant. | Do not represent third-party dependencies as covered by this project license. |
+| Root license | `LICENSE.md` applies the Bird Feed Calculator Noncommercial License 1.0 to owner-authored project material, including German governing law and Spanish court venue. | Commercial use requires a separate owner-granted license. | Confirm eventual repository visibility and commercial licensing process. |
+| Project package metadata | The repository, V1, V2, active V3, and archived package manifests now declare `LicenseRef-Bird-Feed-Calculator-Noncommercial-1.0`. | Future project distributions clearly identify the non-commercial grant. | Do not represent third-party dependencies as covered by this project license. |
 | Historical snapshots | V0/V1/V2 preserve their original source/content, with their own README/archive note recording the product-owner-approved license-metadata update. | The new notice clarifies future repository distribution; public copies made under earlier terms may still exist. | Keep historical sources distinct from supported releases. |
 | Third-party dependencies | Active V3 production dependencies report permissive license families: MIT, ISC, Apache-2.0, BSD, 0BSD, Unlicense, and MPL-2.0 or Apache-2.0. `khroma` is MIT upstream although its installed manifest omits a license field. [3] | These components may be commercially usable under their own licenses, but their notices and conditions must remain respected. They do not grant others a commercial license to the owner-authored project code. | Generate and ship a dependency-notices file for any public production distribution. |
 | Fonts and external services | Active V3 loads Google-hosted Inter and a Manus-hosted project image. The archived tree contains three local images without source attribution. | The audit cannot prove rights ownership or redistribution scope for external/generated/archive images. | Confirm the origin and commercial-use terms of every non-owner-created image and font; add an asset provenance manifest before release. |

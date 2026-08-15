@@ -26,4 +26,4 @@ The legacy pigeon-only calculator remains at `client/src/lib/calculator.ts` for 
 
 ## License
 
-Owner-authored project material is licensed under the repository-root [PolyForm Noncommercial License 1.0.0](../../LICENSE.md). Third-party dependencies and external materials remain under their own terms.
+Owner-authored project material is licensed under the repository-root [Bird Feed Calculator Noncommercial License 1.0](../../LICENSE.md). Third-party dependencies and external materials remain under their own terms.

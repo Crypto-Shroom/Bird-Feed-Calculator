@@ -37,7 +37,7 @@ Use release tags only after a reviewed pull request is merged or explicitly appr
 | `v0.0.0` | Original Python-only pigeon calculator baseline. Create only after its provenance and license notice are accepted as the historical V0 release record. |
 | `v3.0.0` | First supported fixed six-bird web-application release. Create only after PR #11 is merged with a merge commit, the license notice is reviewed, and all required checks pass. |
 
-Each tag must have release notes containing the commit, branch, user-visible change summary, validation result, known limitations, and an explicit statement about whether formulations or source data changed.
+Each tag must have release notes containing the commit, branch, user-visible change summary, validation result, known limitations, an explicit statement about whether formulations or source data changed, and a reference to the repository-root [Bird Feed Calculator Noncommercial License 1.0](../../../LICENSE.md). The V0 and V3 release archives are covered by that license for owner-authored project material.
 
 V1 and V2 are intentionally **not** releases. They remain in the repository as preserved intermediate source history between the Python-only V0 baseline and the supported V3 web application.
 

@@ -62,5 +62,8 @@
 - [x] Verify that popcorn requires its own approved active-data entry rather than a corn/maize alias.
 - [x] Choose V0 Python-only and V3 fixed multi-bird as the planned release milestones; V1 and V2 remain archival snapshots.
 - [x] Choose merge commits for approved structural pull requests; do not merge PR #11 until its full review is complete.
-- [ ] Apply the approved non-commercial license to active V3 material and document historical-snapshot treatment.
-- [ ] Add the approved popcorn record with the exact non-equivalence note and scenario coverage.
+- [x] Apply the approved non-commercial license to active V3 material and document historical-snapshot treatment.
+- [x] Add the approved popcorn record with the exact non-equivalence note and scenario coverage.
+- [x] Reconcile the product-owner-supplied custom license with the repository license, preserving its Germany and Spain provisions.
+- [x] Apply the reconciled license terms to the repository and all planned release records.
+- [ ] Update, validate, and merge PR #11 with a merge commit after the reconciled license is applied.
