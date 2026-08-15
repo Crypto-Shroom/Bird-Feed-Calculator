@@ -39,6 +39,9 @@ const optimizerSecond = new MultibirMixCalculator(baseInventory, "pigeon", "main
 if (JSON.stringify(optimizerFirst.mix) !== JSON.stringify(optimizerSecond.mix)) {
   throw new Error("optimizer returned different mixes for identical inputs");
 }
+if (optimizerFirst.warnings.some((warning) => warning.message.includes("estimate target") || warning.message.includes("estimate range"))) {
+  throw new Error("audit-style target-deviation advisories reappeared in the restored warning baseline");
+}
 for (const [name, amount] of Object.entries(optimizerFirst.mix)) {
   if (amount > baseInventory[name] + 0.001) {
     throw new Error(`optimizer exceeded available inventory for ${name}`);

@@ -40,3 +40,5 @@
 - [x] Restore practical preparation messages for chickpeas, adzuki beans, lupins, and vetch with bird-specific guidance where evidence supports it.
 - [x] Replace audit-style “not documented” user-facing copy with practical preparation guidance or the preserved message.
 - [x] Add a concise approval-focused change summary and adopt pull-request-style notes for future repository changes.
+- [ ] Trace the Advisory protein-target warning to its introducing commit and restore the pre-audit baseline if it was unapproved.
+- [x] Trace the Advisory protein-target warning to its introducing commit and restore the pre-audit baseline if it was unapproved.

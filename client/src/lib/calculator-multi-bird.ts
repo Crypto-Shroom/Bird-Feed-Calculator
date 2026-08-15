@@ -93,10 +93,6 @@ export class MultibirMixCalculator {
     const eligible = this.getEligibleIngredients(warnings);
     const missingIngredients = this.detectMissingCategories(eligible);
 
-    missingIngredients.forEach((missing) => {
-      warnings.push({ level: "WARNING", message: `${missing.category}: ${missing.reason}` });
-    });
-
     if (eligible.length === 0) {
       return this.emptyResult(targetWeight, warnings.length ? warnings : [{ level: "CRITICAL", message: "Add at least one compatible, safely prepared ingredient." }], missingIngredients);
     }
@@ -112,8 +108,6 @@ export class MultibirMixCalculator {
     const categories = this.calculateCategoryRatios(mix);
     const optimization = this.objectiveScore(mix, profile.nutrition);
     const suggestions = this.buildSuggestions(mix, nutrition, categories, profile.nutrition);
-
-    this.addTargetWarnings(nutrition, categories, profile.nutrition, warnings);
 
     return {
       mix,
@@ -384,6 +378,9 @@ export class MultibirMixCalculator {
     }, { grain: 0, legume: 0, seed: 0 } as CategorySummary);
   }
 
+  // Preserved audit analysis helper. It is intentionally not invoked by the restored
+  // pre-audit interface: nutrition cards show ranges and the red missing-category
+  // panel shows actionable shortages without creating new target-deviation advisories.
   private addTargetWarnings(
     nutrition: NutritionSummary,
     categories: CategorySummary,
