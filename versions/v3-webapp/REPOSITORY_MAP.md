@@ -40,7 +40,7 @@ The audit branch and `main` have independent commits. A direct fast-forward is t
 | `client/src/lib/calculator.ts` | Preserved legacy pigeon-only calculator. | Retained for comparison and historical continuity; do not delete. |
 | `scripts/verify-calculator.mjs` | Deterministic smoke tests. | Validates 21 bird/situation scenarios and raw-legume exclusion. |
 | `scripts/benchmark-engines.mjs` | Legacy-versus-multi-bird benchmark. | Supports the documented engine comparison; it does not change formulas. |
-| `.github/workflows/validate.yml` | Pull-request validation workflow. | Runs type-checking, smoke tests, and production build. |
+| [`../../.github/workflows/validate.yml`](../../.github/workflows/validate.yml) | Root-level pull-request validation workflow. | Runs V3 type-checking, smoke tests, and production build from this version folder. |
 | `docs/architecture/` | Architecture records and proposals. | Includes benchmark and approval-only optimizer brief. |
 | `docs/provenance/` | Source/evidence and change-control records. | Evidence files explain audit-review decisions without silently altering live data. |
 | `docs/governance/` | Release and change-control rules. | Human-made formulations require product-owner approval. |

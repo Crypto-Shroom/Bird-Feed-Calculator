@@ -53,3 +53,10 @@
 - [x] Review roasted-peanut suitability for pigeons and present any required ingredient-guidance correction for approval.
 - [x] Add bird-feed-source and high-fat treat guidance for peanuts without changing their nutrition values, eligibility, or formula targets.
 - [x] Verify that the optimizer limits peanuts in a balanced inventory and reports fat constraints when inventory is peanut-constrained.
+- [x] Review GitHub Issue #10 and implement its approved scope without changing protected formulation data.
+- [x] Research pigeon-specific apple-cider-vinegar water guidance before adding or changing the water-care copy.
+- [x] Map the exact V1, V2/Vite, and audit/V3 commits and file sets before applying the Issue #10 repository structure.
+- [x] Research pigeon drinking-water pH, tap-water context, and ACV evidence before proposing final care copy.
+- [x] Create the approved no-deletion Issue #10 branch with V1, V2/Vite, and V3 snapshots in their version folders.
+- [x] Move the active V3 application into `versions/v3-webapp/` and retarget validation paths without changing app behaviour.
+- [x] Create the approved database catalog for seed, herb, nutrition, safety, and provenance data.
