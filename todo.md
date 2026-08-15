@@ -46,5 +46,5 @@
 - [x] Complete a final screen-by-screen visible-interface provenance audit and list any remaining unauthorized changes without modifying the app during review.
 - [x] Verify the complete pre-audit water-and-grit icon treatment and restore any missing visual element if confirmed.
 - [x] Diagnose the failing GitHub CI checks and present the exact root cause before changing workflow or project configuration.
-- [ ] Move pnpm setup before Node cache initialization in the GitHub validation workflow and confirm the resulting CI run.
-- [ ] Remove the duplicate pnpm version declaration from the workflow so CI uses the repository’s pinned package-manager version.
+- [x] Move pnpm setup before Node cache initialization in the GitHub validation workflow and confirm the resulting CI run.
+- [x] Remove the duplicate pnpm version declaration from the workflow so CI uses the repository’s pinned package-manager version.
