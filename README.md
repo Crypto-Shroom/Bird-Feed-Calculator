@@ -12,7 +12,7 @@ If you are visiting to use or improve the current calculator, choose **V3** belo
 
 | Path | Role | Use it for |
 |---|---|---|
-| [`v0-python-only/`](v0-python-only/) | Preserved original Python-era calculator material (`24aa9c35`). | Historical V0 reference. |
+| [`v0-python-only/`](v0-python-only/) | Preserved original Python-era calculator material (`24aa9c35`). | Use via CLI. |
 | [`v1-original/`](v1-original/) | Exact original uploaded snapshot (`24aa9c35`). | Historical V1 reference. |
 | [`v2-vite-fix/`](v2-vite-fix/) | Exact snapshot after the Vite fix (`60037b5a`). | Historical V2 reference. |
 | [`v3-webapp/`](v3-webapp/) | **Active six-bird web application** from the approved audit branch. | Development, testing, and releases. |
