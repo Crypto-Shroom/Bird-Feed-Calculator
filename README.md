@@ -1,188 +1,36 @@
-# Pigeon Seed Mix Calculator
+# Bird Feed Calculator
 
-A Python-based calculator that optimizes pigeon seed mixes based on available ingredients and specific pigeon situations (racing, breeding, molting, winter, maintenance).
+This repository preserves the calculator’s history without treating cleanup artifacts as complete releases.
 
-## Features
+| Path | Role | Use it for |
+|---|---|---|
+| [`versions/v0-python-only/`](versions/v0-python-only/) | Preserved original Python-era calculator material (`24aa9c35`). | Historical V0 reference. |
+| [`versions/v1-original/`](versions/v1-original/) | Exact original uploaded snapshot (`24aa9c35`). | Historical V1 reference. |
+| [`versions/v2-vite-fix/`](versions/v2-vite-fix/) | Exact snapshot after the Vite fix (`60037b5a`). | Historical V2 reference. |
+| [`versions/v3-webapp/`](versions/v3-webapp/) | **Active six-bird web application** from the approved audit branch. | Development, testing, and releases. |
+| [`database/`](database/) | Catalog for active seed, herb, nutrition, safety, and provenance data. | Data stewardship. |
+| [`archive/codex-and-main-history/`](archive/codex-and-main-history/) | Preserved partial Codex imports and prior main cleanup artifacts. | Historical reference only. |
 
-- **Intelligent Mix Optimization** - Calculates the best possible mix from your available ingredients using a weighted scoring algorithm
-- **Situation-Specific Profiles** - Five different nutritional profiles tailored to pigeon needs
-- **Complete Nutritional Analysis** - Detailed breakdown of protein, carbohydrates, fat, and fiber
-- **Warning System** - Alerts for critical deficiencies and nutritional imbalances
-- **Smart Suggestions** - Actionable recommendations to improve your mix
-- **Printable Recipe Cards** - Professional formatted output for easy reference
-- **No External Dependencies** - Uses only Python standard library
-
-## Quick Start
-
-### Interactive Mode
+## Run V3
 
 ```bash
-cd pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/python-package/pigeon_mix_calculator
-python3 pigeon_mix_calculator.py
+pnpm install --dir versions/v3-webapp
+pnpm --dir versions/v3-webapp dev
+pnpm --dir versions/v3-webapp check
+pnpm --dir versions/v3-webapp test:calculator
+pnpm --dir versions/v3-webapp build
 ```
 
-Follow the prompts to:
-1. Select pigeon situation (racing, breeding, molting, winter, maintenance)
-2. Enter available ingredients and amounts in grams
-3. Specify desired batch size
-4. Get optimized mix with recipe card
-
-### Programmatic Use
-
-```python
-from pigeon_mix_calculator import PigeonMixCalculator
-
-inventory = {
-    "wheat": 5000,
-    "corn_yellow": 3000,
-    "peas": 2000,
-    "safflower": 500
-}
-
-calculator = PigeonMixCalculator(inventory, situation="racing")
-mix, recipe_card = calculator.calculate(target_weight=1000)
-print(recipe_card)
-```
-
-## Supported Situations
-
-1. **Maintenance/Rest** - Off-season general care (13.5-15% protein)
-2. **Racing/Performance** - Training and competition (16-18% protein)
-3. **Breeding/Brooding** - Egg laying and raising squabs (14-16% protein)
-4. **Molting Season** - Feather renewal period (16-18% protein, high amino acids)
-5. **Winter Season** - Cold weather (12-14% protein, higher fat for warmth)
-
-## Supported Ingredients
-
-### Grains
-Wheat, Yellow Corn, White Corn, Barley, Milo, Oats
-
-### Legumes
-Peas (Field/Canada), Lentils, Beans, Mung Beans
-
-### Seeds
-Safflower, Sunflower, Linseed/Flaxseed, Hemp, Millet, Canola
-
-## Example Output
-
-```
-═════════════════════════════════════════════════════════════════
-                       PIGEON SEED MIX RECIPE CARD               
-═════════════════════════════════════════════════════════════════
-
-Situation: Racing/Performance
-Total Batch Size: 1000g
-Date: 2025-12-01
-
-INGREDIENTS:
-─────────────────────────────────────────────────────────────────
-  Ingredient                      Amount   Percentage
-─────────────────────────────────────────────────────────────────
-  Wheat                            415g        41.5%
-  Lentils                          277g        27.7%
-  Peas                             150g        15.0%
-  Barley                           102g        10.2%
-  Safflower                         56g         5.6%
-
-NUTRITIONAL ANALYSIS:
-─────────────────────────────────────────────────────────────────
-  Protein:          18.0%    (Target: 16.0-18.0%)
-  Carbohydrates:    65.3%    (Target: 60-65%)
-  Fat:               3.7%    (Target: 2.0-5.0%)
-  Fiber:             5.2%    (Target: <5%)
-
-CATEGORY BREAKDOWN:
-─────────────────────────────────────────────────────────────────
-  Grains:            51.7%    (Target: 40-50%)
-  Legumes:           42.7%    (Target: 40-50%)
-  Seeds:              5.6%    (Target: 5-10%)
-```
-
-## Files Included
-
-- **Canonical Python package (location)**: `pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/python-package/pigeon_mix_calculator/` — contains:
-  - `pigeon_mix_calculator.py` — Main calculator program
-  - `USER_GUIDE.md` — Comprehensive user documentation
-  - `pigeon_nutrition_research.md` — Research notes and references
-  - `test_calculator.py` — Test scenarios and examples
-- **Note:** Small top-level documentation copies were moved to `docs/research/` or archived to `archive-root/` as part of the root tidy to keep the repository root minimal.
-
-## Requirements
-
-- Python 3.11 or higher
-- No external dependencies required
-
-## Testing
-
-Run the test suite (from the Python package directory) to see example scenarios:
-
-```bash
-cd pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/python-package/pigeon_mix_calculator
-python3 test_calculator.py
-```
-
-This generates six test scenarios covering various situations and edge cases.
-
-## How It Works
-
-The calculator uses a weighted scoring algorithm that evaluates potential mixes based on:
-
-- **Nutritional target match** (30%) - Protein alignment with target profile
-- **Carbohydrate match** (25%) - Energy content optimization
-- **Fat match** (15%) - Fat content for condition and warmth
-- **Fiber control** (10%) - Keeping fiber low (pigeons don't utilize it well)
-- **Category ratios** (15%) - Balance between grains, legumes, and seeds
-- **Diversity bonus** (5%) - Rewarding variety in ingredients
-
-The algorithm generates multiple candidate mixes and selects the one with the highest score while respecting ingredient availability constraints.
-
-## Nutritional Basis
-
-The calculator is based on research from:
-- Racing pigeon nutritionists and veterinarians
-- Commercial pigeon feed formulations
-- Pigeon fancier best practices
-- Scientific literature on avian nutrition
-
-Key principles:
-- Pigeons require 13.5-18% protein depending on activity
-- Carbohydrates should comprise 60-70% for energy
-- Fat needs vary from 2-8% based on season and activity
-- Fiber should be minimized (<5%) as pigeons don't digest it well
-- Yellow corn is essential for Vitamin A
-- Peas are the most essential ingredient for protein and vitamins
+> V0, V1, V2, and the historical archive are preserved snapshots. Do not overwrite or delete them as part of ordinary V3 work.
 
 ## License
 
-This software is provided as-is for educational and personal use.
+Owner-authored project material is licensed under the [Bird Feed Calculator Noncommercial License 1.0](LICENSE.md). It permits non-commercial use while reserving commercial licensing to the copyright holder, applies to V0 through V3 repository distributions, uses German governing law and Spanish court venue, and leaves third-party dependencies and external materials under their own terms.
 
-## Contributing
+## ⚖️ License & Commercial Restrictions
 
-Suggestions and improvements are welcome. The ingredient database can be expanded by editing the INGREDIENTS dictionary in the main Python file.
+This project is protected under the custom **Bird Feed Calculator Noncommercial License 1.0**, a modified non-commercial license informed by PolyForm-style terms.
 
-## Disclaimer
-
-This calculator provides general guidance based on common pigeon nutrition principles. Always observe your birds' condition and consult with experienced fanciers or avian veterinarians for specific health concerns. Individual birds may have different nutritional needs based on genetics, health status, and environmental factors.
-
----
-
-**Version:** 1.0  
-**Created:** December 2025
-
----
-
-## Repository layout 🔧
-
-- `pigeon-mix-web-multi-bird/` — The multi-bird web app (Vite + React + TypeScript)
-  - `client/` — UI and frontend source
-  - `server/` — small Express server used for production builds
-  - `shared/` — shared types and constants
-  - `dist/` — built artifacts (committed for convenience)
-- `python-package/pigeon_mix_calculator/` — Python CLI tool and test harness
-- `pigeon-mix-web/` — **legacy** pigeon-only web app (placeholder README)
-- `docs/` and research notes — documentation and research
-- `LICENSE` — NC-PUL-1.0 (Non-Commercial — Private Use License)
-
----
-
-If you'd like, I can add commands and examples for running the web app and the Python CLI in greater detail.
+- **Free Use:** Allowed for personal, educational, research, government, and non-profit projects as described in the [full license](LICENSE.md).
+- **Commercial Restrictions:** Monetization of any kind—including **ad-supported traffic**, paywalls, subscription services, paid distributions, commercial hosting, corporate sponsorships, or commercial consulting—is strictly prohibited without a separate written commercial license agreement from the copyright holder.
+- **Governing Terms:** The license uses German governing law and Spanish court venue; see the full license for all exclusions, conditions, and definitions.

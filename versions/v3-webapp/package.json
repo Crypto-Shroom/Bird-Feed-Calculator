@@ -2,13 +2,14 @@
   "name": "pigeon-mix-web",
   "version": "1.0.0",
   "type": "module",
-  "license": "MIT",
+  "license": "LicenseRef-Bird-Feed-Calculator-Noncommercial-1.0",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build && esbuild server/index.ts --platform=node --packages=external --bundle --format=esm --outdir=dist",
     "start": "NODE_ENV=production node dist/index.js",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
+    "test:calculator": "tsx scripts/verify-calculator.mjs",
     "format": "prettier --write ."
   },
   "dependencies": {

@@ -1,0 +1,42 @@
+# Governance contract: this workflow validates code only. It does not publish, deploy, alter data, or modify formulations.
+name: Validate calculator changes
+
+on:
+  pull_request:
+  push:
+    branches:
+      - audit-safety-optimization-2026-08-14
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Type-check, calculator test, and production build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out proposed change
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: versions/v3-webapp/pnpm-lock.yaml
+
+      - name: Install locked dependencies
+        run: pnpm --dir versions/v3-webapp install --frozen-lockfile
+
+      - name: Check TypeScript
+        run: pnpm --dir versions/v3-webapp check
+
+      - name: Verify all calculator scenarios
+        run: pnpm --dir versions/v3-webapp test:calculator
+
+      - name: Build production bundle
+        run: pnpm --dir versions/v3-webapp build
