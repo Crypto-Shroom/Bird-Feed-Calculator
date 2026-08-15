@@ -106,9 +106,9 @@ export const INGREDIENTS: Record<string, Ingredient> = {
     "chia": {"category": "seed", "protein": 17, "carbs": 42, "fat": 31, "fiber": 34, "notes": "Omega-3, very high fiber"},
     "pumpkin_seeds": {"category": "seed", "protein": 30, "carbs": 10, "fat": 49, "fiber": 6, "notes": "Pepitas, high protein"},
     "pepitas": {"category": "seed", "protein": 30, "carbs": 10, "fat": 49, "fiber": 6, "notes": "Pumpkin seeds"},
-    "peanuts": {"category": "seed", "protein": 26, "carbs": 16, "fat": 49, "fiber": 9, "notes": "High protein and fat, good energy source"},
-    "peanuts_raw": {"category": "seed", "protein": 26, "carbs": 16, "fat": 49, "fiber": 9, "notes": "Raw peanuts, unsalted"},
-    "peanuts_roasted": {"category": "seed", "protein": 26, "carbs": 16, "fat": 49, "fiber": 9, "notes": "Roasted unsalted peanuts"},
+    "peanuts": {"category": "seed", "protein": 26, "carbs": 16, "fat": 49, "fiber": 9, "notes": "Bird-feed source; high-fat treat, not a staple"},
+    "peanuts_raw": {"category": "seed", "protein": 26, "carbs": 16, "fat": 49, "fiber": 9, "notes": "Plain bird-feed source; high-fat treat, not a staple"},
+    "peanuts_roasted": {"category": "seed", "protein": 26, "carbs": 16, "fat": 49, "fiber": 9, "notes": "Plain bird-feed dry-roasted peanuts; high-fat treat, not a staple"},
 };
 
 export const HERBS_SUPPLEMENTS: Record<string, Herb> = {

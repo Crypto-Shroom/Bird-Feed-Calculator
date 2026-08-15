@@ -69,4 +69,27 @@ if (!parrotVetchResult.warnings.some((warning) => warning.message.includes("Do n
   throw new Error("companion-bird vetch exclusion did not show the practical bird-specific message");
 }
 
+const peanutBalancedResult = new MultibirMixCalculator({ ...baseInventory, peanuts_roasted: 1000 }, "pigeon", "pet").calculate(1000);
+const peanutFreeResult = new MultibirMixCalculator(baseInventory, "pigeon", "pet").calculate(1000);
+const peanutConstrainedResult = new MultibirMixCalculator({ wheat: 1000, peas: 1000, peanuts_roasted: 1000 }, "pigeon", "pet").calculate(1000);
+if ((peanutBalancedResult.mix.peanuts_roasted || 0) > 50) {
+  throw new Error("balanced inventory allowed roasted peanuts to dominate the pigeon companion mix");
+}
+if ((peanutBalancedResult.mix.peanuts_roasted || 0) >= (peanutConstrainedResult.mix.peanuts_roasted || 0)) {
+  throw new Error("balanced inventory did not limit peanut allocation relative to a peanut-constrained inventory");
+}
+if (peanutBalancedResult.nutrition.fat - peanutFreeResult.nutrition.fat > 0.25) {
+  throw new Error("balanced inventory did not offset the peanut fat contribution with available alternatives");
+}
+if (!peanutConstrainedResult.suggestions.some((suggestion) => suggestion.includes("high-fat ingredients"))) {
+  throw new Error("peanut-constrained inventory did not surface high-fat guidance in calculated suggestions");
+}
+if (process.env.INSPECT_PEANUT_BALANCE === "1") {
+  console.log(JSON.stringify({
+    peanutFree: { fat: peanutFreeResult.nutrition.fat, mix: peanutFreeResult.mix },
+    balanced: { peanuts: peanutBalancedResult.mix.peanuts_roasted || 0, fat: peanutBalancedResult.nutrition.fat, warnings: peanutBalancedResult.warnings },
+    constrained: { peanuts: peanutConstrainedResult.mix.peanuts_roasted || 0, fat: peanutConstrainedResult.nutrition.fat, warnings: peanutConstrainedResult.warnings },
+  }, null, 2));
+}
+
 console.log(`Verified ${scenarios} bird/situation scenarios, raw-legume exclusion, deterministic output, inventory limits, feasible pigeon category targets, and restored preparation guidance.`);

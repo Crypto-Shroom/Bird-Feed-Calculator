@@ -120,17 +120,17 @@ export const INGREDIENT_PREP: Record<string, IngredientPrep> = {
   "peanuts": {
     name: "Peanuts",
     preparation: "Remove shells before feeding",
-    notes: "Feed unsalted, unsweetened peanuts only. High fat content - use sparingly."
+    notes: "Use fresh, plain, unsalted bird-feed peanuts from a reputable aflatoxin-controlled source. Discard damaged, musty, or mouldy nuts. High-fat treat; the calculator balances it when other inventory is available."
   },
   "peanuts_raw": {
     name: "Raw Peanuts",
     preparation: "Remove shells before feeding",
-    notes: "Feed unsalted raw peanuts. High fat content - use sparingly."
+    notes: "Use fresh, plain, unsalted bird-feed peanuts from a reputable aflatoxin-controlled source. Discard damaged, musty, or mouldy nuts. High-fat treat; the calculator balances it when other inventory is available."
   },
   "peanuts_roasted": {
     name: "Roasted Peanuts",
     preparation: "Remove shells before feeding",
-    notes: "Feed unsalted, unsweetened roasted peanuts. High fat content - use sparingly."
+    notes: "Use fresh, plain, unsalted dry-roasted bird-feed peanuts from a reputable aflatoxin-controlled source. Discard damaged, musty, or mouldy nuts. High-fat treat; the calculator balances it when other inventory is available."
   },
   "sunflower": {
     name: "Sunflower Seeds",

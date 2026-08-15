@@ -277,6 +277,7 @@ export default function Home() {
                     const processingWarning = getProcessingWarning(name);
                     const hasConcern = Boolean(rawSafety || speciesToxicity || processingWarning || !isIngredientCompatible(name, selectedBird));
                     const preparation = getPreparationInstructions(name)?.preparation;
+                    const peanutGuidance = name === "peanuts" || name === "peanuts_raw" || name === "peanuts_roasted" ? getPreparationInstructions(name)?.notes : null;
                     return (
                       <div key={name} className={cn("group rounded-lg border p-3", hasConcern ? "border-red-300 bg-red-50" : "bg-card")}>
                         <div className="mb-2 flex items-start justify-between gap-3">
@@ -286,6 +287,7 @@ export default function Home() {
                           <Button type="button" variant="ghost" size="icon" aria-label={`Remove ${name.replace(/_/g, " ")}`} onClick={() => removeIngredient(name)} className="h-8 w-8 text-muted-foreground hover:text-destructive"><Trash2 className="h-4 w-4" /></Button>
                         </div>
                         {hasConcern && <p className="mb-2 rounded bg-red-100 p-2 text-xs font-medium text-red-900">Excluded from the formula: {speciesToxicity?.description || rawSafety?.message || processingWarning || `not compatible with ${birdProfile.name}`}.</p>}
+                        {peanutGuidance && <p className="mb-2 rounded border border-amber-200 bg-amber-50 p-2 text-xs font-medium text-amber-950"><strong>Peanut treat:</strong> {peanutGuidance}</p>}
                         <Input id={`amount-${name}`} type="number" min="0" value={amount} onChange={(event) => updateAmount(name, Number(event.target.value))} aria-label={`${name.replace(/_/g, " ")} amount in grams`} />
                       </div>
                     );

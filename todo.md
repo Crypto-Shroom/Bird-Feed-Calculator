@@ -50,3 +50,6 @@
 - [x] Remove the duplicate pnpm version declaration from the workflow so CI uses the repository’s pinned package-manager version.
 - [x] Compare the Detailed analysis heading and explanatory copy with the pre-audit baseline and report its provenance without changing it during review.
 - [x] Make Pet/Companion the opening profile for each bird that has a pet profile, without changing profile data or other selectable situations.
+- [x] Review roasted-peanut suitability for pigeons and present any required ingredient-guidance correction for approval.
+- [x] Add bird-feed-source and high-fat treat guidance for peanuts without changing their nutrition values, eligibility, or formula targets.
+- [x] Verify that the optimizer limits peanuts in a balanced inventory and reports fat constraints when inventory is peanut-constrained.
