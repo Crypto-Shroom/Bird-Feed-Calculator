@@ -22,12 +22,6 @@ Poultry evidence does not substantiate the claim that pigeons will necessarily p
 
 No ACV wording has been added to the application. The product owner is considering whether and where a non-prescriptive ACV note belongs. Any future wording should distinguish clean-water availability, flock-water management, and medical claims; it should not turn general poultry organic-acid evidence into a fixed pigeon dose or disease-treatment statement.
 
-### Draft for product-owner approval
-
-> **Water:** Always provide clean, fresh water. If a pH test confirms that your drinking water is alkaline, some keepers use a small, measured amount of plain food-grade vinegar to lower the pH. Hardness is not the same as pH, so test the water rather than relying on limescale alone. Watch each bird’s water intake—pigeons vary in whether they accept acidified water.
-
-This draft deliberately does **not** state that a pigeon “will love the taste.” The available evidence does not support that universal claim, and poultry technical literature reports reduced intake when single acids are used strongly enough to acidify water substantially. [11]
-
 ## References
 
 [1] [Pigeon study: chlorine, pH 8.5, and health outcomes](https://pubmed.ncbi.nlm.nih.gov/24389454/)

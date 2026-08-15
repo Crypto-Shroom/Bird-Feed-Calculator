@@ -17,12 +17,15 @@ The V3 additions beyond the V1 expanded reference are `black_beans`, `corn_red`,
 
 ## One historical record to review
 
-`popcorn` exists in the V1 expanded Python reference but is not a separate V3 ingredient record. It has **not** been restored automatically because adding it would change the current human-made data catalog. The product owner can approve one of the following later:
+`popcorn` exists in the V1 expanded Python reference but is not a separate V3 ingredient record. It has **not** been restored automatically because adding it would change the current human-made data catalog.
+
+Popcorn is a type of maize, so it belongs to the same broad **grain** category as corn and maize. It is **not**, however, an equal nutritional alias within the preserved database: the historical popcorn record is 13% protein, 74% carbohydrates, 4% fat, and 15% fiber, whereas active V3 yellow corn and maize are 9% protein, 72% carbohydrates, 4.5% fat, and 2% fiber. The historical record therefore models popcorn as a higher-fiber ingredient, not ordinary corn. No formulation data has changed.
 
 | Option | Effect |
 |---|---|
-| Leave V3 unchanged | Preserve the current active catalog; users can use the relevant maize/corn entry where appropriate. |
-| Add a separate popcorn entry | Requires a review of its nutrition values, safety/preparation note, category, and species compatibility. |
+| Leave V3 unchanged | Preserve the current active catalog; do not claim that popcorn is nutritionally identical to yellow corn or maize. |
+| Add a separate popcorn entry | Requires owner approval of its nutrition values, preparation note, category, and species compatibility. |
+| Add an inventory-only alias | Allow an unseasoned popcorn-kernel entry to map to a separately documented conservative profile; this still requires owner approval because it affects calculator input behaviour. |
 
 ## Method
 

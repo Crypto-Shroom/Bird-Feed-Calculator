@@ -57,3 +57,8 @@
 - [ ] Compare grain, legume, seed, herb, and ingredient counts across V0, V1, V2, V3, the prior-main archive, and available project artifacts.
 - [ ] Reconcile any confirmed historical ingredient records missing from V3 before proposing a formula or data change.
 - [ ] Evaluate the proposed hard-water vinegar and palatability wording against pigeon-specific evidence before changing visible water guidance.
+- [ ] Audit repository, dependency, asset, and documentation licenses for commercial-use and ownership limitations before any release.
+- [ ] Remove the unapproved ACV draft wording while retaining its evidence record.
+- [ ] Verify whether popcorn should map to an existing corn/maize record or require a separately approved active-data entry.
+- [ ] Define and document the product-owner-approved V0/V1/V2/V3 release history and release-tag policy.
+- [ ] Explain and choose a branch-merge strategy for future approved pull requests.
