@@ -4,6 +4,7 @@ This repository preserves the calculator’s history without treating cleanup ar
 
 | Path | Role | Use it for |
 |---|---|---|
+| [`versions/v0-python-only/`](versions/v0-python-only/) | Preserved original Python-era calculator material (`24aa9c35`). | Historical V0 reference. |
 | [`versions/v1-original/`](versions/v1-original/) | Exact original uploaded snapshot (`24aa9c35`). | Historical V1 reference. |
 | [`versions/v2-vite-fix/`](versions/v2-vite-fix/) | Exact snapshot after the Vite fix (`60037b5a`). | Historical V2 reference. |
 | [`versions/v3-webapp/`](versions/v3-webapp/) | **Active six-bird web application** from the approved audit branch. | Development, testing, and releases. |
@@ -20,4 +21,4 @@ pnpm --dir versions/v3-webapp test:calculator
 pnpm --dir versions/v3-webapp build
 ```
 
-> V1, V2, and the historical archive are preserved snapshots. Do not overwrite or delete them as part of ordinary V3 work.
+> V0, V1, V2, and the historical archive are preserved snapshots. Do not overwrite or delete them as part of ordinary V3 work.

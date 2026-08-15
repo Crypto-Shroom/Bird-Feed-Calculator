@@ -1,0 +1,41 @@
+═════════════════════════════════════════════════════════════════
+                       PIGEON SEED MIX RECIPE CARD               
+═════════════════════════════════════════════════════════════════
+
+Situation: Maintenance/Rest
+Total Batch Size: 1000g
+Date: 2026-08-15
+
+INGREDIENTS:
+─────────────────────────────────────────────────────────────────
+  Ingredient                      Amount   Percentage
+─────────────────────────────────────────────────────────────────
+  Lentils                           47g         4.7%
+  Millet                           145g        14.5%
+  Milo                             346g        34.6%
+  Peas                             178g        17.8%
+  Wheat                            284g        28.4%
+
+NUTRITIONAL ANALYSIS:
+─────────────────────────────────────────────────────────────────
+  Protein:          14.5%    (Target: 13.5-15.0%)
+  Carbohydrates:    69.6%    (Target: 60-70%)
+  Fat:               2.5%    (Target: 2.0-5.0%)
+  Fiber:             3.2%    (Target: <5%)
+
+CATEGORY BREAKDOWN:
+─────────────────────────────────────────────────────────────────
+  Grains:            63.0%    (Target: 60-70%)
+  Legumes:           22.5%    (Target: 15-20%)
+  Seeds:             14.5%    (Target: 10-15%)
+
+FEEDING INSTRUCTIONS:
+─────────────────────────────────────────────────────────────────
+  • Feed 30-40g per bird per day
+  • Light feeding in morning, standard mix in evening.
+
+NOTES:
+─────────────────────────────────────────────────────────────────
+  ⚡ Warning: No yellow corn - risk of Vitamin A deficiency
+
+═════════════════════════════════════════════════════════════════

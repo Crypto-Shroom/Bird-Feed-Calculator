@@ -12,9 +12,21 @@ The supplied literature provides useful context about **organic acids in poultry
 
 The supplied 2025 Wiley source is a chicken **feed** challenge trial involving bacteriophage and commercial acidifiers under *Salmonella* exposure; it is not an ACV drinking-water study in pigeons. [5] The supplied Rural Veterinary Outreach article argues against routine ACV in chickens and raises possible digestive and calcium-related concerns, but it is secondary veterinary-outreach material rather than a controlled pigeon trial. [6]
 
+### Water chemistry and palatability
+
+Hardness and alkalinity should not be used as interchangeable labels. **Hardness** describes dissolved minerals, principally calcium and magnesium; **pH** measures how acidic or basic water is; and **alkalinity** is the water’s ability to resist a pH change. [8] [9] Therefore, hard water alone is not a sufficient reason to add vinegar: the water’s actual pH should be measured, and high alkalinity can require more acid to move that pH.
+
+Poultry evidence does not substantiate the claim that pigeons will necessarily prefer vinegar water. A young-broiler trial of acetic acid at 0.4% lowered drinking-water pH to 4.01 but found no performance advantage over neutral water. [10] A poultry-industry technical article reports that single-acid use, including cooking vinegar, can create a bad taste and reduce water intake at the doses needed to reach pH 4; this is not pigeon-specific evidence, but it is directly contrary to promising universal palatability. [11]
+
 ## App-copy status
 
 No ACV wording has been added to the application. The product owner is considering whether and where a non-prescriptive ACV note belongs. Any future wording should distinguish clean-water availability, flock-water management, and medical claims; it should not turn general poultry organic-acid evidence into a fixed pigeon dose or disease-treatment statement.
+
+### Draft for product-owner approval
+
+> **Water:** Always provide clean, fresh water. If a pH test confirms that your drinking water is alkaline, some keepers use a small, measured amount of plain food-grade vinegar to lower the pH. Hardness is not the same as pH, so test the water rather than relying on limescale alone. Watch each bird’s water intake—pigeons vary in whether they accept acidified water.
+
+This draft deliberately does **not** state that a pigeon “will love the taste.” The available evidence does not support that universal claim, and poultry technical literature reports reduced intake when single acids are used strongly enough to acidify water substantially. [11]
 
 ## References
 
@@ -31,3 +43,11 @@ No ACV wording has been added to the application. The product owner is consideri
 [6] [Rural Veterinary Outreach (2025), *Apple Cider Vinegar*](https://ruralveterinaryoutreach.org/2025/06/14/apple-cider-vinegar/)
 
 [7] [PoultryDVM, *Apple cider vinegar*](https://poultrydvm.com/drugs/apple-cider-vinegar)
+
+[8] [U.S. Geological Survey, *Hardness of Water*](https://www.usgs.gov/water-science-school/science/hardness-water)
+
+[9] [U.S. Geological Survey, *Alkalinity and Water*](https://www.usgs.gov/water-science-school/science/alkalinity-and-water)
+
+[10] [Martínez et al. (2021), *Effect of Acetic Acid and Sodium Bicarbonate Supplemented to Drinking Water on Young Broilers*](https://pmc.ncbi.nlm.nih.gov/articles/PMC8300354/)
+
+[11] [Philipsen (2006), *Acidifying drinking water supports performance*](https://edepot.wur.nl/9111)

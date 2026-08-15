@@ -53,3 +53,7 @@
 - [x] Review roasted-peanut suitability for pigeons and present any required ingredient-guidance correction for approval.
 - [x] Add bird-feed-source and high-fat treat guidance for peanuts without changing their nutrition values, eligibility, or formula targets.
 - [x] Verify that the optimizer limits peanuts in a balanced inventory and reports fat constraints when inventory is peanut-constrained.
+- [ ] Preserve and document the earliest Python-only calculator as a V0 historical reference without deleting or rewriting its source.
+- [ ] Compare grain, legume, seed, herb, and ingredient counts across V0, V1, V2, V3, the prior-main archive, and available project artifacts.
+- [ ] Reconcile any confirmed historical ingredient records missing from V3 before proposing a formula or data change.
+- [ ] Evaluate the proposed hard-water vinegar and palatability wording against pigeon-specific evidence before changing visible water guidance.

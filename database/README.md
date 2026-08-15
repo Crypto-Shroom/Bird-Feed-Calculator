@@ -9,5 +9,6 @@ This catalog points to the active V3 data sources without duplicating them.
 | Bird-specific safety | [`../versions/v3-webapp/client/src/lib/bird-safety.ts`](../versions/v3-webapp/client/src/lib/bird-safety.ts) | Compatibility and species-specific toxicity rules. |
 | Shared safety and preparation | [`../versions/v3-webapp/client/src/lib/safety.ts`](../versions/v3-webapp/client/src/lib/safety.ts) | Raw-toxicity exclusions and preparation guidance. |
 | Provenance | [`../versions/v3-webapp/docs/provenance/`](../versions/v3-webapp/docs/provenance/) | Evidence and review records. |
+| Catalog history | [`CATALOG_RECONCILIATION.md`](CATALOG_RECONCILIATION.md) | V0/V1/V2/prior-main/V3 ingredient and herb coverage comparison. |
 
 This directory is for seed, herb, nutrition, safety, and provenance data. It does not define future user accounts, saved recipes, or user profiles.
