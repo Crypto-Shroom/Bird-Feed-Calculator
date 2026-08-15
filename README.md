@@ -1,6 +1,6 @@
 # Bird Feed Calculator
 
-This repository preserves the calculator’s history without treating cleanup artifacts as complete releases.
+This repository seperates and preserves different stages of the development. From V0 as Pigeon-only Python program to V3, which is the Version which is being prepared for Website release.
 
 | Path | Role | Use it for |
 |---|---|---|
