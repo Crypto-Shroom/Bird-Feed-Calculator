@@ -18,25 +18,28 @@ Formula, ingredient, nutrition-target, herb, warning, and profile-copy changes m
 | `fix/<topic>` | Focused bug fixes | Merge only by pull request after required checks and product-owner approval. |
 | `docs/<topic>` | Documentation-only improvements | Preserve technical and research context; do not rewrite historical claims without approval. |
 | `v*` tag | Immutable release marker | Create only from an approved commit; never move or reuse an existing tag. |
+| `archive/*` folders | Preserved intermediate history | V1 and V2 are archival snapshots, not public release milestones. Keep them intact; do not tag them as releases. |
 
 ## Pull-request rules
 
 Every pull request should explain the user-visible change, list every file changed, state whether data/formulations were changed, and include a validation summary. The validation workflow checks TypeScript, all deterministic calculator scenarios, and the production build. A passing check means the code builds; it does not authorize a formula or research change.
 
+Use a **merge commit** for repository-structure and release-milestone pull requests so their full review history stays visible. Squash merges are appropriate only for small, self-contained changes; do not use rebase-and-merge for shared historical or long-running review branches.
+
 For any calculation or data change, include at least one fixed inventory example with the previous and proposed outputs. If the change affects a species profile, show the output comparison for that species and situation.
 
 ## Release tags
 
-Use release tags only after a reviewed pull request is merged or explicitly approved as a baseline. Recommended names are:
+Use release tags only after a reviewed pull request is merged or explicitly approved as a baseline. The product owner has approved **only the following two release milestones**:
 
 | Tag | Intended use |
 |---|---|
-| `v0.1-pigeon-baseline` | First preserved pigeon-only formulation baseline, if approved. |
-| `v0.2-multibird-baseline` | Approved multi-bird baseline, if and when reconciliation is complete. |
-| `v0.2.1` | Backward-compatible bug fix that does not change formulas or data. |
-| `v0.3.0` | Approved feature milestone with release notes. |
+| `v0.0.0` | Original Python-only pigeon calculator baseline. Create only after its provenance and license notice are accepted as the historical V0 release record. |
+| `v3.0.0` | First supported fixed six-bird web-application release. Create only after PR #11 is merged with a merge commit, the license notice is reviewed, and all required checks pass. |
 
 Each tag must have release notes containing the commit, branch, user-visible change summary, validation result, known limitations, and an explicit statement about whether formulations or source data changed.
+
+V1 and V2 are intentionally **not** releases. They remain in the repository as preserved intermediate source history between the Python-only V0 baseline and the supported V3 web application.
 
 ## Issue workflow
 

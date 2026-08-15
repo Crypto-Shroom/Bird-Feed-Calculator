@@ -22,3 +22,7 @@ pnpm --dir versions/v3-webapp build
 ```
 
 > V0, V1, V2, and the historical archive are preserved snapshots. Do not overwrite or delete them as part of ordinary V3 work.
+
+## License
+
+Owner-authored project material is licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE.md). It permits non-commercial use while reserving commercial licensing to the copyright holder. Third-party dependencies and external materials remain under their own terms.

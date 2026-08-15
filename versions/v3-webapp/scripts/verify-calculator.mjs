@@ -1,5 +1,6 @@
 import { BIRD_PROFILES, getCategoryTargets } from "../client/src/lib/birds.ts";
 import { MultibirMixCalculator } from "../client/src/lib/calculator-multi-bird.ts";
+import { INGREDIENTS } from "../client/src/lib/data.ts";
 
 const baseInventory = {
   wheat: 5000,
@@ -67,6 +68,18 @@ if ("vetch" in parrotVetchResult.mix) {
 }
 if (!parrotVetchResult.warnings.some((warning) => warning.message.includes("Do not add common vetch"))) {
   throw new Error("companion-bird vetch exclusion did not show the practical bird-specific message");
+}
+
+const popcorn = INGREDIENTS.popcorn;
+if (!popcorn || popcorn.category !== "grain" || popcorn.protein !== 13 || popcorn.carbs !== 74 || popcorn.fat !== 4 || popcorn.fiber !== 15) {
+  throw new Error("popcorn did not retain its approved independent grain nutrition profile");
+}
+if (popcorn.notes !== "Popcorn is not the same as corn nutritionally.") {
+  throw new Error("popcorn did not retain the approved non-equivalence note");
+}
+const popcornResult = new MultibirMixCalculator({ popcorn: 1000, peas: 1000, safflower: 1000 }, "pigeon", "pet").calculate(500);
+if (!("popcorn" in popcornResult.mix)) {
+  throw new Error("approved popcorn was not available to the pigeon calculator");
 }
 
 const peanutBalancedResult = new MultibirMixCalculator({ ...baseInventory, peanuts_roasted: 1000 }, "pigeon", "pet").calculate(1000);

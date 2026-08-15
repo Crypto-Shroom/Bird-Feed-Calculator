@@ -256,7 +256,7 @@ export default function Home() {
                       <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-emerald-700">Compatible choices</p>
                       {ingredientOptions.available.length ? ingredientOptions.available.map((name) => (
                         <button key={name} type="button" onClick={() => addIngredient(name)} className="flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-sm hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                          <span className="capitalize">{name.replace(/_/g, " ")}</span><Plus className="h-4 w-4 text-emerald-700" />
+                          <span><span className="block capitalize">{name.replace(/_/g, " ")}</span>{name === "popcorn" && <span className="block text-xs text-muted-foreground">Popcorn is not the same as corn nutritionally.</span>}</span><Plus className="h-4 w-4 shrink-0 text-emerald-700" />
                         </button>
                       )) : <p className="px-2 py-3 text-sm text-muted-foreground">No compatible ingredients match this search.</p>}
                       {ingredientOptions.blocked.length > 0 && <>
@@ -278,6 +278,7 @@ export default function Home() {
                     const hasConcern = Boolean(rawSafety || speciesToxicity || processingWarning || !isIngredientCompatible(name, selectedBird));
                     const preparation = getPreparationInstructions(name)?.preparation;
                     const peanutGuidance = name === "peanuts" || name === "peanuts_raw" || name === "peanuts_roasted" ? getPreparationInstructions(name)?.notes : null;
+                    const popcornGuidance = name === "popcorn" ? INGREDIENTS[name].notes : null;
                     return (
                       <div key={name} className={cn("group rounded-lg border p-3", hasConcern ? "border-red-300 bg-red-50" : "bg-card")}>
                         <div className="mb-2 flex items-start justify-between gap-3">
@@ -288,6 +289,7 @@ export default function Home() {
                         </div>
                         {hasConcern && <p className="mb-2 rounded bg-red-100 p-2 text-xs font-medium text-red-900">Excluded from the formula: {speciesToxicity?.description || rawSafety?.message || processingWarning || `not compatible with ${birdProfile.name}`}.</p>}
                         {peanutGuidance && <p className="mb-2 rounded border border-amber-200 bg-amber-50 p-2 text-xs font-medium text-amber-950"><strong>Peanut treat:</strong> {peanutGuidance}</p>}
+                        {popcornGuidance && <p className="mb-2 flex items-start gap-1.5 rounded border border-blue-200 bg-blue-50 p-2 text-xs font-medium text-blue-950"><Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />{popcornGuidance}</p>}
                         <Input id={`amount-${name}`} type="number" min="0" value={amount} onChange={(event) => updateAmount(name, Number(event.target.value))} aria-label={`${name.replace(/_/g, " ")} amount in grams`} />
                       </div>
                     );

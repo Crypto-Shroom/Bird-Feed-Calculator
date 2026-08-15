@@ -28,6 +28,7 @@ export const INGREDIENTS: Record<string, Ingredient> = {
     "corn_white": {"category": "grain", "protein": 9, "carbs": 72, "fat": 4.5, "fiber": 2, "notes": "Standard corn, good energy source"},
     "corn_red": {"category": "grain", "protein": 9, "carbs": 72, "fat": 4.5, "fiber": 2, "notes": "Red corn variety, similar nutrition to yellow corn"},
     "maize": {"category": "grain", "protein": 9, "carbs": 72, "fat": 4.5, "fiber": 2, "notes": "Corn variety, high energy"},
+    "popcorn": {"category": "grain", "protein": 13, "carbs": 74, "fat": 4, "fiber": 15, "notes": "Popcorn is not the same as corn nutritionally."},
     
     "barley": {"category": "grain", "protein": 11, "carbs": 73, "fat": 2, "fiber": 5, "notes": "Easily digestible, good for winter"},
     "barley_pearled": {"category": "grain", "protein": 10, "carbs": 78, "fat": 1, "fiber": 3.5, "notes": "Lower fiber than whole barley"},

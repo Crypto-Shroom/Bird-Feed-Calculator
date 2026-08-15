@@ -53,12 +53,14 @@
 - [x] Review roasted-peanut suitability for pigeons and present any required ingredient-guidance correction for approval.
 - [x] Add bird-feed-source and high-fat treat guidance for peanuts without changing their nutrition values, eligibility, or formula targets.
 - [x] Verify that the optimizer limits peanuts in a balanced inventory and reports fat constraints when inventory is peanut-constrained.
-- [ ] Preserve and document the earliest Python-only calculator as a V0 historical reference without deleting or rewriting its source.
-- [ ] Compare grain, legume, seed, herb, and ingredient counts across V0, V1, V2, V3, the prior-main archive, and available project artifacts.
+- [x] Preserve and document the earliest Python-only calculator as a V0 historical reference without deleting or rewriting its source.
+- [x] Compare grain, legume, seed, herb, and ingredient counts across V0, V1, V2, V3, the prior-main archive, and available project artifacts.
 - [ ] Reconcile any confirmed historical ingredient records missing from V3 before proposing a formula or data change.
-- [ ] Evaluate the proposed hard-water vinegar and palatability wording against pigeon-specific evidence before changing visible water guidance.
-- [ ] Audit repository, dependency, asset, and documentation licenses for commercial-use and ownership limitations before any release.
-- [ ] Remove the unapproved ACV draft wording while retaining its evidence record.
-- [ ] Verify whether popcorn should map to an existing corn/maize record or require a separately approved active-data entry.
-- [ ] Define and document the product-owner-approved V0/V1/V2/V3 release history and release-tag policy.
-- [ ] Explain and choose a branch-merge strategy for future approved pull requests.
+- [x] Evaluate the proposed hard-water vinegar and palatability wording against pigeon-specific evidence before changing visible water guidance.
+- [x] Audit repository, dependency, asset, and documentation licenses for commercial-use and ownership limitations before any release.
+- [x] Remove the unapproved ACV draft wording while retaining its evidence record.
+- [x] Verify that popcorn requires its own approved active-data entry rather than a corn/maize alias.
+- [x] Choose V0 Python-only and V3 fixed multi-bird as the planned release milestones; V1 and V2 remain archival snapshots.
+- [x] Choose merge commits for approved structural pull requests; do not merge PR #11 until its full review is complete.
+- [ ] Apply the approved non-commercial license to active V3 material and document historical-snapshot treatment.
+- [ ] Add the approved popcorn record with the exact non-equivalence note and scenario coverage.

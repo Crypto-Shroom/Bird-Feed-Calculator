@@ -20,3 +20,7 @@ python3 test_calculator.py
 ```
 
 The active browser application is [`../v3-webapp/`](../v3-webapp/). Do not edit V0 as part of ordinary V3 development.
+
+## License
+
+This preserved project material is now covered by the repository-root [PolyForm Noncommercial License 1.0.0](../../LICENSE.md). Original source content remains historically preserved; this license notice supersedes the former project-level MIT metadata.
