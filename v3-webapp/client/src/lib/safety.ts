@@ -231,7 +231,7 @@ export const SAFETY_DISCLAIMER = `
 ⚠️ **IMPORTANT SAFETY REMINDERS:**
 - **Fresh Water**: Always provide clean, fresh water available at all times
 - **Grit**: Pigeons need grit to properly digest seeds and grains
-- **Toxic Legumes**: Never feed raw kidney beans, lima beans, fava beans, navy beans, or pinto beans - they contain deadly toxins
+- **Toxic Legumes**: Never feed raw kidney beans, lima beans, fava beans, navy beans, pinto beans, or black beans - they contain deadly toxins
 - **Preparation**: Follow preparation instructions for each ingredient carefully
 - **Exotics Vet Care**: If your pigeon shows signs of illness, contact an exotics vet immediately
 `;
