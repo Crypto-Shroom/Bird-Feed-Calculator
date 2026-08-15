@@ -42,3 +42,8 @@
 - [x] Add a concise approval-focused change summary and adopt pull-request-style notes for future repository changes.
 - [ ] Trace the Advisory protein-target warning to its introducing commit and restore the pre-audit baseline if it was unapproved.
 - [x] Trace the Advisory protein-target warning to its introducing commit and restore the pre-audit baseline if it was unapproved.
+- [x] Compare the content below the target-batch slider with the pre-audit baseline and restore any unapproved additions.
+- [x] Complete a final screen-by-screen visible-interface provenance audit and list any remaining unauthorized changes without modifying the app during review.
+- [x] Verify the complete pre-audit water-and-grit icon treatment and restore any missing visual element if confirmed.
+- [x] Diagnose the failing GitHub CI checks and present the exact root cause before changing workflow or project configuration.
+- [ ] Move pnpm setup before Node cache initialization in the GitHub validation workflow and confirm the resulting CI run.
