@@ -27,16 +27,16 @@ jobs:
         with:
           node-version: 22
           cache: pnpm
-          cache-dependency-path: versions/v3-webapp/pnpm-lock.yaml
+          cache-dependency-path: v3-webapp/pnpm-lock.yaml
 
       - name: Install locked dependencies
-        run: pnpm --dir versions/v3-webapp install --frozen-lockfile
+        run: pnpm --dir v3-webapp install --frozen-lockfile
 
       - name: Check TypeScript
-        run: pnpm --dir versions/v3-webapp check
+        run: pnpm --dir v3-webapp check
 
       - name: Verify all calculator scenarios
-        run: pnpm --dir versions/v3-webapp test:calculator
+        run: pnpm --dir v3-webapp test:calculator
 
       - name: Build production bundle
-        run: pnpm --dir versions/v3-webapp build
+        run: pnpm --dir v3-webapp build

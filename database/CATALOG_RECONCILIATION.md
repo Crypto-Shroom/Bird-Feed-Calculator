@@ -21,4 +21,4 @@ The product owner approved popcorn as its own active grain record on 2026-08-15 
 
 ## Method
 
-[`../scripts/compare-ingredient-history.mjs`](../scripts/compare-ingredient-history.mjs) compares exact identifiers from the original Python files, V1, V2, prior-main archive, and active V3. It is intentionally read-only and does not alter source data.
+[`tools/compare-ingredient-history.mjs`](tools/compare-ingredient-history.mjs) compares exact identifiers from the original Python files, V1, V2, prior-main archive, and active V3. It is intentionally read-only and does not alter source data.

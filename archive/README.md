@@ -9,7 +9,7 @@ This README is preserved from the prior fragmented GitHub `main` layout. It desc
 | `pigeon-mix-web-multi-bird/` | Later Codex-imported web/Python package, including its earlier nested/archive structure. |
 | `docs/` and root metadata | Documentation and metadata from the former `main` layout. |
 
-Use [`../../versions/`](../../versions/) for the preserved V1 and V2 snapshots and the active V3 web application. The original README remains below unchanged as historical documentation.
+Use the repository-root [`v1-original/`](../v1-original/), [`v2-vite-fix/`](../v2-vite-fix/), and [`v3-webapp/`](../v3-webapp/) directories for the preserved V1 and V2 snapshots and the active V3 web application. The original README remains below unchanged as historical documentation.
 
 ---
 
