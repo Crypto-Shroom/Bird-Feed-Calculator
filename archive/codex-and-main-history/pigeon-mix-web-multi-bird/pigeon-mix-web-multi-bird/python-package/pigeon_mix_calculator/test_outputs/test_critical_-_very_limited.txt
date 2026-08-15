@@ -1,0 +1,41 @@
+═════════════════════════════════════════════════════════════════
+                       PIGEON SEED MIX RECIPE CARD               
+═════════════════════════════════════════════════════════════════
+
+Situation: Maintenance/Rest
+Total Batch Size: 500g
+Date: 2025-12-18
+
+INGREDIENTS:
+─────────────────────────────────────────────────────────────────
+  Ingredient                      Amount   Percentage
+─────────────────────────────────────────────────────────────────
+  Corn Yellow                      275g        54.9%
+  Wheat                            225g        45.1%
+
+NUTRITIONAL ANALYSIS:
+─────────────────────────────────────────────────────────────────
+  Protein:          11.0%    (Target: 13.5-15.0%)
+  Carbohydrates:    72.6%    (Target: 60-70%)
+  Fat:               3.4%    (Target: 2.0-5.0%)
+  Fiber:             2.7%    (Target: <5%)
+
+CATEGORY BREAKDOWN:
+─────────────────────────────────────────────────────────────────
+  Grains:           100.0%    (Target: 60-70%)
+  Legumes:            0.0%    (Target: 15-20%)
+  Seeds:              0.0%    (Target: 10-15%)
+
+FEEDING INSTRUCTIONS:
+─────────────────────────────────────────────────────────────────
+  • Feed 30-40g per bird per day
+  • Light feeding in morning, standard mix in evening.
+
+NOTES:
+─────────────────────────────────────────────────────────────────
+  ⚠ CRITICAL: No legumes in mix - essential for protein and vitamins!
+  ⚠ CRITICAL: Very limited diversity - need at least 3-4 ingredients
+  ⚡ Warning: Limited diversity - consider adding more ingredients
+  ⚡ Warning: Protein (11.0%) differs from target (14.2%) by >15%
+
+═════════════════════════════════════════════════════════════════

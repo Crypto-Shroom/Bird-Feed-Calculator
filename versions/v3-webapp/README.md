@@ -1,6 +1,6 @@
-# V3 Web Application
+# V3 Active Web Application
 
-This is the active Bird Feed Calculator web application. It supports Pigeon, Parrot, African Grey, Budgie, Canary, and Chicken profiles, inventory-aware mix estimation, explicit safety handling, enrichment guidance, and documented provenance.
+This is the active six-bird Bird Feed Calculator application. It supports Pigeon, Parrot, African Grey, Budgie, Canary, and Chicken profiles, inventory-aware recipe estimates, safety guidance, enrichment details, and provenance records.
 
 ## Commands
 
@@ -12,16 +12,14 @@ pnpm test:calculator
 pnpm build
 ```
 
-## Project guide
-
 | Area | Location |
 |---|---|
 | Main interface | `client/src/pages/Home.tsx` |
-| Active six-bird calculator | `client/src/lib/calculator-multi-bird.ts` |
-| Ingredient and herb data | `client/src/lib/data.ts` |
-| Bird profiles and nutrition targets | `client/src/lib/birds.ts` |
-| Safety and preparation guidance | `client/src/lib/safety.ts`, `client/src/lib/bird-safety.ts` |
-| Tests | `scripts/verify-calculator.mjs` |
-| Governance and provenance | `docs/` |
+| Active calculator | `client/src/lib/calculator-multi-bird.ts` |
+| Ingredients and herbs | `client/src/lib/data.ts` |
+| Profiles and targets | `client/src/lib/birds.ts` |
+| Safety and preparation | `client/src/lib/safety.ts`, `client/src/lib/bird-safety.ts` |
+| Calculator scenarios | `scripts/verify-calculator.mjs` |
+| Evidence and governance | `docs/` |
 
-The preserved pigeon-only calculator remains in `client/src/lib/calculator.ts` for historical comparison; the active interface uses the multi-bird calculator.
+The legacy pigeon-only calculator remains at `client/src/lib/calculator.ts` for comparison; the live interface uses the multi-bird calculator.
