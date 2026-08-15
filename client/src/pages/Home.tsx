@@ -52,7 +52,7 @@ type NutrientKey = "protein" | "carbs" | "fat" | "fiber";
 
 export default function Home() {
   const [selectedBird, setSelectedBird] = useState<BirdType>("pigeon");
-  const [situation, setSituation] = useState("maintenance");
+  const [situation, setSituation] = useState("pet");
   const [targetWeight, setTargetWeight] = useState(1000);
   const [inventory, setInventory] = useState<Record<string, number>>(defaultInventory);
   const [result, setResult] = useState<MixResult | null>(null);

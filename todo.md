@@ -48,3 +48,5 @@
 - [x] Diagnose the failing GitHub CI checks and present the exact root cause before changing workflow or project configuration.
 - [x] Move pnpm setup before Node cache initialization in the GitHub validation workflow and confirm the resulting CI run.
 - [x] Remove the duplicate pnpm version declaration from the workflow so CI uses the repository’s pinned package-manager version.
+- [x] Compare the Detailed analysis heading and explanatory copy with the pre-audit baseline and report its provenance without changing it during review.
+- [x] Make Pet/Companion the opening profile for each bird that has a pet profile, without changing profile data or other selectable situations.
