@@ -60,3 +60,9 @@
 - [x] Create the approved no-deletion Issue #10 branch with V1, V2/Vite, and V3 snapshots in their version folders.
 - [x] Move the active V3 application into `versions/v3-webapp/` and retarget validation paths without changing app behaviour.
 - [x] Create the approved database catalog for seed, herb, nutrition, safety, and provenance data.
+- [ ] Map the current GitHub main branch against the V1, V2/Vite, and audited V3 sources for the intended main-branch organisation.
+- [ ] Present the exact no-deletion main-branch transformation sequence before applying V1, V2/Vite, and V3 folders to main.
+- [ ] Classify every existing GitHub main historical folder by content and ancestry before moving it into V1, V2, or a separate archive.
+- [ ] Prepare a branch-retirement inventory that identifies replacement branches and requires product-owner approval before deletion.
+- [ ] Explain the ancestry of current-main folder fragmentation and verify whether the current main README is the V1 README.
+- [ ] Review the user-supplied ACV research sources before revisiting water-care copy.
