@@ -7,6 +7,7 @@ import {
   CheckCircle2,
   Download,
   Droplets,
+  ExternalLink,
   Info,
   Leaf,
   Plus,
@@ -131,6 +132,25 @@ export default function Home() {
         return groups;
       }, { available: [], blocked: [] });
   }, [birdProfile.name, ingredientSearch, inventory, selectedBird]);
+
+  const ingredientSuggestionUrl = ingredientSearch.trim() ? buildGitHubIssueUrl(
+    "ingredient-research.md",
+    `[Ingredient research] ${ingredientSearch.trim()}`,
+    [
+      "## Requested ingredient",
+      ingredientSearch.trim(),
+      "",
+      "## Planner context",
+      `Bird: ${birdProfile.name}`,
+      `Profile: ${currentProfile.name}`,
+      "",
+      "## Research needed",
+      "This request requires research before any ingredient value, safety rule, compatibility decision, or feeding guidance can change.",
+      "",
+      "## What would you like to add or correct?",
+      "Please add any preparation detail, use case, or source here.",
+    ].join("\n"),
+  ) : null;
 
   const addIngredient = (name: string) => {
     setInventory((previous) => ({ ...previous, [name]: 1000 }));
@@ -283,7 +303,7 @@ export default function Home() {
                         <button key={name} type="button" onClick={() => addIngredient(name)} className="flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-sm hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
                           <span><span className="block capitalize">{name.replace(/_/g, " ")}</span>{name === "popcorn" && <span className="block text-xs text-muted-foreground">Popcorn is not the same as corn nutritionally.</span>}</span><Plus className="h-4 w-4 shrink-0 text-emerald-700" />
                         </button>
-                      )) : <p className="px-2 py-3 text-sm text-muted-foreground">No compatible ingredients match this search.</p>}
+                      )) : <div className="px-2 py-3"><p className="text-sm text-muted-foreground">No compatible ingredients match this search.</p>{ingredientSuggestionUrl && <a href={ingredientSuggestionUrl} target="_blank" rel="noreferrer" className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-800 underline-offset-4 hover:text-emerald-950 hover:underline"><ExternalLink className="h-3.5 w-3.5" />Suggest to add</a>}<p className="mt-1 text-xs leading-relaxed text-muted-foreground">Opens a research request assigned to the project owner; no ingredient data changes automatically.</p></div>}
                       {ingredientOptions.blocked.length > 0 && <>
                         <Separator className="my-3" />
                         <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Not offered for this bird</p>
@@ -358,7 +378,7 @@ export default function Home() {
 
                     {result.missingIngredients?.length ? <div className="mb-6 space-y-3 rounded-lg border border-red-200 bg-red-50 p-4 text-red-900"><div className="flex items-start gap-3"><AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" /><div className="flex-1"><h3 className="mb-2 font-bold">Missing Essential Ingredients</h3>{result.missingIngredients.map((item) => <div key={item.category} className="mb-3 last:mb-0"><p className="mb-1 text-sm font-medium text-red-800">{item.category}</p><p className="mb-2 text-sm text-red-700">{item.reason}</p><div className="flex flex-wrap gap-2">{item.recommendations.map((recommendation) => <Badge key={recommendation} variant="outline" className="border-red-300 bg-red-100 text-red-900">{recommendation}</Badge>)}</div></div>)}</div></div></div> : null}
 
-                    {Object.keys(result.mix).length ? <>{diversitySuggestion && <div className="flex items-start gap-3 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-950"><Leaf className="mt-0.5 h-4 w-4 shrink-0 text-emerald-700" /><p><strong className="font-semibold">Ingredient diversity:</strong> {diversitySuggestion}</p></div>}<div className="overflow-hidden rounded-lg border"><table className="w-full text-sm"><thead className="bg-muted/50 text-muted-foreground"><tr><th className="px-4 py-3 text-left">Ingredient</th><th className="px-4 py-3 text-right">Amount</th><th className="px-4 py-3 text-right">Batch share</th><th className="px-4 py-3 text-left">Category</th></tr></thead><tbody className="divide-y">{Object.entries(result.mix).sort(([, left], [, right]) => right - left).map(([name, amount]) => <tr key={name}><td className="px-4 py-3 font-medium capitalize">{name.replace(/_/g, " ")}</td><td className="px-4 py-3 text-right font-mono">{Math.round(amount)}g</td><td className="px-4 py-3 text-right">{((amount / result.targetWeight) * 100).toFixed(1)}%</td><td className="px-4 py-3"><Badge variant="secondary" className={cn("capitalize font-normal", INGREDIENTS[name].category === "grain" && "bg-amber-100 text-amber-800 hover:bg-amber-200", INGREDIENTS[name].category === "legume" && "bg-emerald-100 text-emerald-800 hover:bg-emerald-200", INGREDIENTS[name].category === "seed" && "bg-stone-100 text-stone-800 hover:bg-stone-200")}>{INGREDIENTS[name].category}</Badge></td></tr>)}</tbody></table></div>{Object.entries(result.mix).some(([name]) => getPreparationInstructions(name)) && <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><h3 className="mb-2 flex items-center gap-2 font-semibold"><Info className="h-4 w-4" />Preparation instructions</h3><ul className="space-y-2">{Object.keys(result.mix).filter((name) => getPreparationInstructions(name)).map((name) => { const preparation = getPreparationInstructions(name); const birdGuidance = preparation?.birdGuidance?.[selectedBird]; return <li key={name}><strong className="capitalize">{name.replace(/_/g, " ")}:</strong> {preparation?.preparation}{birdGuidance && <span className="block pl-1 text-amber-900">{birdGuidance}</span>}</li>; })}</ul></div>}</> : <p className="rounded-lg border border-dashed p-10 text-center text-sm text-muted-foreground">There is no safe, compatible ingredient combination to estimate yet.</p>}
+                    {Object.keys(result.mix).length ? <>{diversitySuggestion && <div className="flex items-start gap-3 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-950"><Leaf className="mt-0.5 h-4 w-4 shrink-0 text-emerald-700" /><p><strong className="font-semibold">Ingredient diversity:</strong> {diversitySuggestion}</p></div>}<div className="overflow-hidden rounded-lg border"><table className="w-full text-sm"><thead className="bg-muted/50 text-muted-foreground"><tr><th className="px-4 py-3 text-left">Ingredient</th><th className="px-4 py-3 text-right">Amount</th><th className="px-4 py-3 text-right">Batch share</th><th className="px-4 py-3 text-left">Category</th></tr></thead><tbody className="divide-y">{Object.entries(result.mix).sort(([, left], [, right]) => right - left).map(([name, amount]) => <tr key={name}><td className="px-4 py-3 font-medium capitalize">{name.replace(/_/g, " ")}</td><td className="px-4 py-3 text-right font-mono">{Math.round(amount)}g</td><td className="px-4 py-3 text-right">{((amount / result.targetWeight) * 100).toFixed(1)}%</td><td className="px-4 py-3"><Badge variant="secondary" className={cn("capitalize font-normal", INGREDIENTS[name].category === "grain" && "bg-amber-100 text-amber-800 hover:bg-amber-200", INGREDIENTS[name].category === "legume" && "bg-emerald-100 text-emerald-800 hover:bg-emerald-200", INGREDIENTS[name].category === "seed" && "bg-stone-100 text-stone-800 hover:bg-stone-200")}>{INGREDIENTS[name].category}</Badge></td></tr>)}</tbody></table></div>{Object.entries(result.mix).some(([name]) => getPreparationInstructions(name)) && <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><h3 className="mb-2 flex items-center gap-2 font-semibold"><Info className="h-4 w-4" />Preparation instructions</h3><ul className="space-y-2">{Object.keys(result.mix).filter((name) => getPreparationInstructions(name)).map((name) => { const preparation = getPreparationInstructions(name); const birdGuidance = preparation?.birdGuidance?.[selectedBird]; return <li key={name}><strong className="capitalize">{name.replace(/_/g, " ")}:</strong> {preparation?.preparation}{birdGuidance && <span className="block pl-1 text-amber-900">{birdGuidance}</span>}</li>; })}</ul></div>}</> : <p className="rounded-lg border border-dashed p-10 text-center text-sm text-muted-foreground">There is no safe, compatible ingredient combination to estimate yet.</p>}<ReportIssueLink section="Optimized Mix" bird={birdProfile.name} profile={currentProfile.name} />
 
                   </div>}
 
@@ -378,9 +398,10 @@ export default function Home() {
                       {herbRecommendation?.herbs.length ? <div className="grid gap-4 md:grid-cols-2">{herbRecommendation.herbs.map(({ name, herb }) => <HerbCard key={name} name={name} herb={herb} />)}</div> : <p className="rounded-lg border border-dashed p-8 text-center text-sm text-muted-foreground">No specific herb recommendations are recorded for this profile.</p>}
                     </section>
                     <PersonalizedSupplementMix />
+                    <ReportIssueLink section="Herbs & Supplements" bird={birdProfile.name} profile={currentProfile.name} />
                   </div>}
 
-                  {activeTab === "analysis" && <div className="space-y-8"><div><h2 className="mb-4 text-lg font-bold">Category Breakdown</h2><div className="space-y-4"><CategoryBar label="Grains" value={result.categories.grain} target={getCategoryTargets(selectedBird).grain} color="bg-amber-400" /><CategoryBar label="Legumes" value={result.categories.legume} target={getCategoryTargets(selectedBird).legume} color="bg-emerald-500" /><CategoryBar label="Seeds" value={result.categories.seed} target={getCategoryTargets(selectedBird).seed} color="bg-stone-500" /></div></div><Separator /><div><h2 className="mb-3 text-lg font-bold">Detailed analysis</h2><p className="text-sm text-muted-foreground">The optimizer favours the selected profile’s estimated macronutrient and category ranges using the inventory you supplied. It is deterministic: identical inventory and settings produce the same batch estimate.</p><div className="mt-4 grid gap-3 sm:grid-cols-2">{result.suggestions.map((suggestion) => <div key={suggestion} className="rounded-lg border bg-muted/20 p-4 text-sm"><CheckCircle2 className="mb-2 h-4 w-4 text-emerald-700" />{suggestion}</div>)}</div></div><div className="rounded-lg border border-blue-200 bg-blue-50 p-4"><h3 className="font-semibold text-blue-950">Profile: {currentProfile.name}</h3><p className="mt-1 text-sm text-blue-900">{currentProfile.feedingNotes}</p></div></div>}
+                  {activeTab === "analysis" && <div className="space-y-8"><div><h2 className="mb-4 text-lg font-bold">Category Breakdown</h2><div className="space-y-4"><CategoryBar label="Grains" value={result.categories.grain} target={getCategoryTargets(selectedBird).grain} color="bg-amber-400" /><CategoryBar label="Legumes" value={result.categories.legume} target={getCategoryTargets(selectedBird).legume} color="bg-emerald-500" /><CategoryBar label="Seeds" value={result.categories.seed} target={getCategoryTargets(selectedBird).seed} color="bg-stone-500" /></div></div><Separator /><div><h2 className="mb-3 text-lg font-bold">Detailed analysis</h2><p className="text-sm text-muted-foreground">The optimizer favours the selected profile’s estimated macronutrient and category ranges using the inventory you supplied. It is deterministic: identical inventory and settings produce the same batch estimate.</p><div className="mt-4 grid gap-3 sm:grid-cols-2">{result.suggestions.map((suggestion) => <div key={suggestion} className="rounded-lg border bg-muted/20 p-4 text-sm"><CheckCircle2 className="mb-2 h-4 w-4 text-emerald-700" />{suggestion}</div>)}</div></div><div className="rounded-lg border border-blue-200 bg-blue-50 p-4"><h3 className="font-semibold text-blue-950">Profile: {currentProfile.name}</h3><p className="mt-1 text-sm text-blue-900">{currentProfile.feedingNotes}</p></div><ReportIssueLink section="Detailed Analysis" bird={birdProfile.name} profile={currentProfile.name} /></div>}
                 </CardContent>
               </Card>
             </div>}
@@ -395,6 +416,35 @@ export default function Home() {
 
 function CareNote({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
   return <div className="flex items-start gap-3"><div className="mt-0.5 shrink-0">{icon}</div><div><p className="font-medium text-foreground">{title}</p><p className="text-xs leading-relaxed text-muted-foreground">{text}</p></div></div>;
+}
+
+function ReportIssueLink({ section, bird, profile }: { section: string; bird: string; profile: string }) {
+  const href = buildGitHubIssueUrl(
+    "information-report.md",
+    `[Information report] ${section}`,
+    [
+      "## Location in the calculator",
+      `Section: ${section}`,
+      `Bird: ${bird}`,
+      `Profile: ${profile}`,
+      "",
+      "## What seems incorrect, incomplete, or unclear?",
+      "Please describe the information that needs review.",
+      "",
+      "## Research needed",
+      "This report requires research before any nutrition value, herb record, safety rule, compatibility decision, or user-facing guidance can change.",
+      "",
+      "## Helpful source or context",
+      "Add a link, publication, photograph, or practical context if available.",
+    ].join("\n"),
+  );
+
+  return <div className="border-t border-dashed pt-6"><Button asChild type="button" variant="outline" className="gap-2 border-stone-300 bg-white text-stone-700 hover:bg-stone-50"><a href={href} target="_blank" rel="noreferrer"><ExternalLink className="h-4 w-4" />Report wrong info / issue</a></Button><p className="mt-2 text-xs text-muted-foreground">Opens a research request assigned to the project owner. Nothing in the calculator changes automatically.</p></div>;
+}
+
+function buildGitHubIssueUrl(template: string, title: string, body: string) {
+  const query = new URLSearchParams({ template, title, body });
+  return `https://github.com/Crypto-Shroom/Bird-Feed-Calculator/issues/new?${query.toString()}`;
 }
 
 function NutritionCard({ label, value, target, color }: { label: string; value: number; target: [number, number]; color: string }) {
