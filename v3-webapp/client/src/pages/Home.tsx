@@ -360,7 +360,17 @@ function NutritionCard({ label, value, target, color }: { label: string; value: 
   const [min, max] = target;
   const isGood = value >= min && value <= max;
   const isLow = value < min;
-  return <Card className="border-none bg-card shadow-md"><CardContent className="p-4"><div className="mb-1 text-sm text-muted-foreground">{label}</div><div className="mb-2 flex items-baseline gap-1"><span className={cn("font-mono text-2xl font-bold", !isGood && (isLow ? "text-blue-600" : "text-orange-600"))}>{value.toFixed(1)}</span><span className="text-xs font-medium text-muted-foreground">%</span></div><div className="relative h-1.5 overflow-hidden rounded-full bg-muted"><div className={cn("absolute left-0 top-0 h-full transition-all duration-500", color)} style={{ width: `${Math.min(100, (value / (max * 1.5)) * 100)}%` }} /></div><div className="mt-2 flex justify-between text-[10px] text-muted-foreground"><span>Target:</span><span className="font-medium">{min}-{max}%</span></div></CardContent></Card>;
+  const targetRange = Math.max(0.5, max - min);
+  const upperDisplayLimit = max + Math.max(targetRange * 2, max * 0.2);
+  const position = value < min
+    ? (value / Math.max(min, 0.5)) * 40
+    : value <= max
+      ? 40 + ((value - min) / targetRange) * 20
+      : 60 + ((value - max) / Math.max(upperDisplayLimit - max, 0.5)) * 40;
+  const markerPosition = Math.max(0, Math.min(100, position));
+  const status = isGood ? "within the target range" : isLow ? "below the target range" : "above the target range";
+
+  return <Card className="border-none bg-card shadow-md"><CardContent className="p-4"><div className="mb-1 text-sm text-muted-foreground">{label}</div><div className="mb-2 flex items-baseline gap-1"><span className={cn("font-mono text-2xl font-bold", !isGood && (isLow ? "text-blue-600" : "text-orange-600"))}>{value.toFixed(1)}</span><span className="text-xs font-medium text-muted-foreground">%</span></div><div className="relative h-3 overflow-hidden rounded-full bg-muted" role="img" aria-label={`${label}: ${value.toFixed(1)}%, ${status}; target range ${min} to ${max} percent.`}><div aria-hidden="true" className="absolute inset-y-0 border-x border-emerald-600/70 bg-emerald-100/80" style={{ left: "40%", width: "20%" }} /><div aria-hidden="true" className={cn("absolute left-0 top-0 h-full opacity-65 transition-[width] duration-300 motion-reduce:transition-none", color)} style={{ width: `${markerPosition}%` }} /><div aria-hidden="true" className={cn("absolute top-0 h-full w-1 rounded-full shadow-sm transition-[left] duration-300 motion-reduce:transition-none", isGood ? "bg-emerald-800" : isLow ? "bg-blue-700" : "bg-orange-700")} style={{ left: `calc(${markerPosition}% - 2px)` }} /></div><div className="mt-2 flex justify-between text-[10px] text-muted-foreground"><span className={cn("font-medium", isGood ? "text-emerald-700" : isLow ? "text-blue-700" : "text-orange-700")}>{status}</span><span>Target: <span className="font-medium">{min}-{max}%</span></span></div></CardContent></Card>;
 }
 
 function CategoryBar({ label, value, target, color }: { label: string; value: number; target: [number, number]; color: string }) {
