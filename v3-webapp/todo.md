@@ -78,3 +78,11 @@
 - [x] Add black beans to the V3 raw-toxicity README list and verify it matches active safety rules.
 - [x] Explain the scope and visible output of Codex’s PR #12 review.
 - [x] Identify the Codex review integration credential model and recommend secure free or low-cost automatic repository-maintenance options for approval.
+- [x] Merge approved PR #13 with a merge commit.
+- [x] Create immutable archive tags for each non-merged historical branch before retiring it.
+- [x] Retire the approved historical and already-merged cleanup branches only after verifying their commits remain reachable.
+- [x] Review GitHub Issues #7 through #9 locally and read-only; recommend issue-specific scope, validation, and comment workflow before posting anything.
+- [x] Restart and verify the active V3 development preview after a server stoppage.
+- [x] Correct target progress bars so protein, carbohydrates, fat, and fiber accurately show their current value and target range.
+- [ ] Define the Issue #7 herb-library page, profile/personalized supplement split, and optional diversity note without changing existing herb data or formulations.
+- [ ] Define the Issue #8 in-app wrong-information and missing-ingredient suggestion experience, including safe approval-gated GitHub and research automation.
