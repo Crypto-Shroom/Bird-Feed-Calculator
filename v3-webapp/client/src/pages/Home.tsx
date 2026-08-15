@@ -346,7 +346,7 @@ export default function Home() {
           </section>
         </div>
 
-        <section className="mt-16 border-t pt-8" aria-label="Safety reminders"><Alert className="border-amber-200 bg-amber-50"><AlertTriangle className="h-4 w-4 text-amber-600" /><AlertTitle className="font-bold text-amber-900">Important Safety Reminders</AlertTitle><AlertDescription className="mt-2 space-y-2 text-sm text-amber-800"><p>Fresh Water: Always provide clean, fresh water available at all times</p><p>Grit: Pigeons need grit to properly digest seeds and grains</p><p>Toxic Legumes: Never feed raw kidney beans, lima beans, fava beans, navy beans, or pinto beans</p><p>Preparation: Follow preparation instructions for each ingredient carefully</p><p>Exotics Vet Care: If your pigeon shows signs of illness, contact an exotics vet immediately</p></AlertDescription></Alert></section>
+        <section className="mt-16 border-t pt-8" aria-label="Safety reminders"><Alert className="border-amber-200 bg-amber-50"><AlertTriangle className="h-4 w-4 text-amber-600" /><AlertTitle className="font-bold text-amber-900">Important Safety Reminders</AlertTitle><AlertDescription className="mt-2 space-y-2 text-sm text-amber-800"><p>Fresh Water: Always provide clean, fresh water available at all times</p><p>Grit: Pigeons need grit to properly digest seeds and grains</p><p>Toxic Legumes: Never feed raw kidney beans, lima beans, fava beans, navy beans, pinto beans, or black beans</p><p>Preparation: Follow preparation instructions for each ingredient carefully</p><p>Exotics Vet Care: If your pigeon shows signs of illness, contact an exotics vet immediately</p></AlertDescription></Alert></section>
       </main>
     </div>
   );

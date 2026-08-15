@@ -17,7 +17,7 @@ The calculator starts with your own inventory. Add the ingredients and amounts y
 
 ## A note about safe feeding
 
-This planner helps organise seed and grain mixes; it does not replace appropriate complete feeding, careful observation, or individual care. Preparation reminders matter: some legumes require the correct feed-grade processing, and raw kidney beans, lima beans, fava beans, navy beans, and pinto beans must never be fed.
+This planner helps organise seed and grain mixes; it does not replace appropriate complete feeding, careful observation, or individual care. Preparation reminders matter: some legumes require the correct feed-grade processing, and raw kidney beans, lima beans, fava beans, navy beans, pinto beans, and black beans must never be fed.
 
 The calculator intentionally keeps a clear distinction between **critical safety warnings**, ordinary preparation guidance, and mix recommendations. If an ingredient does not appear for a chosen bird, use the inventory search to see whether it is incompatible or needs special handling.
 

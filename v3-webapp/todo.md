@@ -74,4 +74,7 @@
 - [x] Move the root comparison utility into the data documentation area and repair its path references.
 - [x] Preserve the original V1 README in V0 as a clearly labelled historical companion document.
 - [x] Rewrite the V3 README for bird keepers and prospective users rather than developers, while keeping accurate safety and scope guidance.
-- [ ] Post a completion summary on GitHub Issue #10 and close only that issue after the simplified layout is validated and pushed.
+- [x] Post a completion summary on GitHub Issue #10 and close only that issue after the simplified layout is validated and pushed.
+- [x] Add black beans to the V3 raw-toxicity README list and verify it matches active safety rules.
+- [x] Explain the scope and visible output of Codex’s PR #12 review.
+- [x] Identify the Codex review integration credential model and recommend secure free or low-cost automatic repository-maintenance options for approval.
