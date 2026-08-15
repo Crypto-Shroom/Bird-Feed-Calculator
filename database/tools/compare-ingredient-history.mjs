@@ -1,17 +1,17 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
-const repositoryRoot = resolve(import.meta.dirname, "..");
+const repositoryRoot = resolve(import.meta.dirname, "..", "..");
 
 const sources = [
-  ["V1 standalone Python", "versions/v1-original/pigeon_mix_calculator.py", "python"],
-  ["V1 expanded Python reference", "versions/v1-original/expanded_ingredients.py", "python"],
-  ["V2 standalone Python", "versions/v2-vite-fix/pigeon_mix_calculator.py", "python"],
-  ["Prior-main Python package", "archive/codex-and-main-history/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/python-package/pigeon_mix_calculator/pigeon_mix_calculator.py", "python"],
-  ["Prior-main nested web ingredients", "archive/codex-and-main-history/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/data.ts", "typescript-ingredients"],
-  ["Prior-main nested web herbs", "archive/codex-and-main-history/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/data.ts", "typescript-herbs"],
-  ["V3 active ingredients", "versions/v3-webapp/client/src/lib/data.ts", "typescript-ingredients"],
-  ["V3 active herbs", "versions/v3-webapp/client/src/lib/data.ts", "typescript-herbs"],
+  ["V1 standalone Python", "v1-original/pigeon_mix_calculator.py", "python"],
+  ["V1 expanded Python reference", "v1-original/expanded_ingredients.py", "python"],
+  ["V2 standalone Python", "v2-vite-fix/pigeon_mix_calculator.py", "python"],
+  ["Prior-main Python package", "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/python-package/pigeon_mix_calculator/pigeon_mix_calculator.py", "python"],
+  ["Prior-main nested web ingredients", "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/data.ts", "typescript-ingredients"],
+  ["Prior-main nested web herbs", "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/data.ts", "typescript-herbs"],
+  ["V3 active ingredients", "v3-webapp/client/src/lib/data.ts", "typescript-ingredients"],
+  ["V3 active herbs", "v3-webapp/client/src/lib/data.ts", "typescript-herbs"],
 ];
 
 function extractPythonIngredientIds(source) {

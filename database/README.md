@@ -4,11 +4,11 @@ This catalog points to the active V3 data sources without duplicating them.
 
 | Data domain | Canonical V3 location | Content |
 |---|---|---|
-| Ingredients and herbs | [`../versions/v3-webapp/client/src/lib/data.ts`](../versions/v3-webapp/client/src/lib/data.ts) | Ingredient values, categories, preparation notes, legacy pigeon data, and herbs. |
-| Bird profiles and targets | [`../versions/v3-webapp/client/src/lib/birds.ts`](../versions/v3-webapp/client/src/lib/birds.ts) | Species, situations, nutrition/category targets, and care copy. |
-| Bird-specific safety | [`../versions/v3-webapp/client/src/lib/bird-safety.ts`](../versions/v3-webapp/client/src/lib/bird-safety.ts) | Compatibility and species-specific toxicity rules. |
-| Shared safety and preparation | [`../versions/v3-webapp/client/src/lib/safety.ts`](../versions/v3-webapp/client/src/lib/safety.ts) | Raw-toxicity exclusions and preparation guidance. |
-| Provenance | [`../versions/v3-webapp/docs/provenance/`](../versions/v3-webapp/docs/provenance/) | Evidence and review records. |
+| Ingredients and herbs | [`../v3-webapp/client/src/lib/data.ts`](../v3-webapp/client/src/lib/data.ts) | Ingredient values, categories, preparation notes, legacy pigeon data, and herbs. |
+| Bird profiles and targets | [`../v3-webapp/client/src/lib/birds.ts`](../v3-webapp/client/src/lib/birds.ts) | Species, situations, nutrition/category targets, and care copy. |
+| Bird-specific safety | [`../v3-webapp/client/src/lib/bird-safety.ts`](../v3-webapp/client/src/lib/bird-safety.ts) | Compatibility and species-specific toxicity rules. |
+| Shared safety and preparation | [`../v3-webapp/client/src/lib/safety.ts`](../v3-webapp/client/src/lib/safety.ts) | Raw-toxicity exclusions and preparation guidance. |
+| Provenance | [`../v3-webapp/docs/provenance/`](../v3-webapp/docs/provenance/) | Evidence and review records. |
 | Catalog history | [`CATALOG_RECONCILIATION.md`](CATALOG_RECONCILIATION.md) | V0/V1/V2/prior-main/V3 ingredient and herb coverage comparison. |
 
 This directory is for seed, herb, nutrition, safety, and provenance data. It does not define future user accounts, saved recipes, or user profiles.

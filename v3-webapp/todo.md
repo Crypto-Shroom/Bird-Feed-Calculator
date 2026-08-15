@@ -55,7 +55,7 @@
 - [x] Verify that the optimizer limits peanuts in a balanced inventory and reports fat constraints when inventory is peanut-constrained.
 - [x] Preserve and document the earliest Python-only calculator as a V0 historical reference without deleting or rewriting its source.
 - [x] Compare grain, legume, seed, herb, and ingredient counts across V0, V1, V2, V3, the prior-main archive, and available project artifacts.
-- [ ] Reconcile any confirmed historical ingredient records missing from V3 before proposing a formula or data change.
+- [x] Reconcile any confirmed historical ingredient records missing from V3 before proposing a formula or data change.
 - [x] Evaluate the proposed hard-water vinegar and palatability wording against pigeon-specific evidence before changing visible water guidance.
 - [x] Audit repository, dependency, asset, and documentation licenses for commercial-use and ownership limitations before any release.
 - [x] Remove the unapproved ACV draft wording while retaining its evidence record.
@@ -66,5 +66,12 @@
 - [x] Add the approved popcorn record with the exact non-equivalence note and scenario coverage.
 - [x] Reconcile the product-owner-supplied custom license with the repository license, preserving its Germany and Spain provisions.
 - [x] Apply the reconciled license terms to the repository and all planned release records.
-- [ ] Update, validate, and merge PR #11 with a merge commit after the reconciled license is applied.
+- [x] Update, validate, and merge PR #11 with a merge commit after the reconciled license is applied.
 - [x] Add the product-owner-approved commercial-restrictions summary to the end of the root README and reconcile it with the custom license text.
+- [x] Move the preserved prior-main history directly beneath `archive/` without deleting any file or history.
+- [x] Add welcoming Bird Feeder REPO guidance to the existing root README without replacing its current content; explain versions, how to begin, and where contributors should work.
+- [x] Move V0, V1, V2, and V3 directly beneath the repository root and repair all affected commands, links, workflow paths, and data references.
+- [x] Move the root comparison utility into the data documentation area and repair its path references.
+- [x] Preserve the original V1 README in V0 as a clearly labelled historical companion document.
+- [x] Rewrite the V3 README for bird keepers and prospective users rather than developers, while keeping accurate safety and scope guidance.
+- [ ] Post a completion summary on GitHub Issue #10 and close only that issue after the simplified layout is validated and pushed.
