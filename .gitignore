@@ -19,3 +19,6 @@
 # Generated Python bytecode
 **/__pycache__/
 *.py[cod]
+
+# Generated V0 scenario output; preserved source examples remain in the repository.
+v0-python-only/test_*.txt

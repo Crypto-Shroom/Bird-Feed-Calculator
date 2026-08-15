@@ -1,11 +1,12 @@
 {
   "name": "bird-feed-calculator-repository",
   "private": true,
+  "license": "LicenseRef-Bird-Feed-Calculator-Noncommercial-1.0",
   "packageManager": "pnpm@10.4.1",
   "scripts": {
-    "dev": "pnpm --dir versions/v3-webapp dev",
-    "check": "pnpm --dir versions/v3-webapp check",
-    "test:calculator": "pnpm --dir versions/v3-webapp test:calculator",
-    "build": "pnpm --dir versions/v3-webapp build"
+    "dev": "pnpm --dir v3-webapp dev",
+    "check": "pnpm --dir v3-webapp check",
+    "test:calculator": "pnpm --dir v3-webapp test:calculator",
+    "build": "pnpm --dir v3-webapp build"
   }
 }
