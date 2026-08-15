@@ -47,3 +47,4 @@
 - [x] Verify the complete pre-audit water-and-grit icon treatment and restore any missing visual element if confirmed.
 - [x] Diagnose the failing GitHub CI checks and present the exact root cause before changing workflow or project configuration.
 - [ ] Move pnpm setup before Node cache initialization in the GitHub validation workflow and confirm the resulting CI run.
+- [ ] Remove the duplicate pnpm version declaration from the workflow so CI uses the repository’s pinned package-manager version.
