@@ -1,0 +1,55 @@
+# Multi-Bird Calculator Quality Audit
+
+- [x] Review project guidance and establish auditable acceptance criteria.
+- [x] Compare the active project with the supplied GitHub repository and identify the better baseline.
+- [x] Inspect architecture, data structures, and optimization logic for correctness and maintainability.
+- [x] Validate nutrition targets, toxicities, and ingredient-preparation guidance against credible avian sources.
+- [x] Test bird switching, profiles, ingredient compatibility, safety messaging, and recipe output.
+- [x] Review accessibility, responsive behavior, and production/deployment readiness.
+- [x] Implement validated corrections and document unresolved veterinary-review boundaries.
+- [x] Retest, save a checkpoint, and deliver the audit results.
+- [x] Clarify the distinction between removed claims and data-provenance improvements.
+- [x] Reconcile every original requested feature against the audited changes.
+- [x] Prepare the audited project for a dedicated GitHub branch.
+- [x] Create and verify the GitHub branch containing the audited version.
+- [x] Inspect the GitHub repository in read-only mode and prepare a preservation-first housekeeping proposal.
+- [ ] Compare prior and audited versions line by line for formulation, feature, source, and copy changes.
+- [x] Inspect GitHub pull requests, issues, comments, and contributor history in read-only mode.
+- [ ] Present restoration options, GitHub guidance, and a long-term roadmap for approval only.
+- [ ] Present exact revised daily-feeding and warning wording for approval before changing it.
+- [ ] Restore the approved herb-benefit, dosage, frequency, and notes display without changing formulations.
+- [x] Inspect the user-referenced GitHub issue and explain the branch-reconciliation path.
+- [x] Add the approved pull-request CI check and release-governance documentation.
+- [x] Restore prior visible titles, subtitles, and daily-feeding copy with smaller contextual notes.
+- [x] Make multi-bird safety warnings as explicit as the preserved original warning language.
+- [x] Compare legacy and multi-bird outputs for identical pigeon profile and inventory inputs.
+- [x] Recheck black-eyed-pea processing and compatibility evidence before altering its safety treatment.
+- [x] Design an additive source-provenance and user-submission review layer without modifying current records.
+- [ ] Recommend a durable hosting and data-storage path for saved recipes and inventories before Manus migration.
+- [x] Audit every ingredient restriction introduced by the audit-processing filter against preserved project data and evidence.
+- [x] Benchmark legacy and multi-bird formula outputs using agreed accuracy criteria and representative inventories.
+- [x] Remove unsupported audit-introduced ingredient exclusions only after documenting the basis.
+- [ ] Compare current free or low-cost hosting and private-data services for a portable public release.
+- [x] Restore original user-facing profile descriptions and non-approved audit copy, preserving the approved African Grey update.
+- [x] Replace user-facing avian or poultry veterinary terminology with “exotics vet”.
+- [x] Produce the optimizer improvement brief and remaining audit-filter ingredient review list for approval.
+- [x] Restore the pre-audit grain, legume, and seed category colors in the overview.
+- [x] Restore the pre-audit batch-estimate warning presentation and remove audit-only advisory framing where it changed the original interface.
+- [x] Compare all remaining user-visible audit changes against the pre-audit baseline and present only unresolved restoration choices.
+- [x] Implement the approved two-stage deterministic optimizer while preserving inventory, safety, formulation data, and user-visible baseline behaviour.
+- [x] Restore practical preparation messages for chickpeas, adzuki beans, lupins, and vetch with bird-specific guidance where evidence supports it.
+- [x] Replace audit-style “not documented” user-facing copy with practical preparation guidance or the preserved message.
+- [x] Add a concise approval-focused change summary and adopt pull-request-style notes for future repository changes.
+- [ ] Trace the Advisory protein-target warning to its introducing commit and restore the pre-audit baseline if it was unapproved.
+- [x] Trace the Advisory protein-target warning to its introducing commit and restore the pre-audit baseline if it was unapproved.
+- [x] Compare the content below the target-batch slider with the pre-audit baseline and restore any unapproved additions.
+- [x] Complete a final screen-by-screen visible-interface provenance audit and list any remaining unauthorized changes without modifying the app during review.
+- [x] Verify the complete pre-audit water-and-grit icon treatment and restore any missing visual element if confirmed.
+- [x] Diagnose the failing GitHub CI checks and present the exact root cause before changing workflow or project configuration.
+- [x] Move pnpm setup before Node cache initialization in the GitHub validation workflow and confirm the resulting CI run.
+- [x] Remove the duplicate pnpm version declaration from the workflow so CI uses the repository’s pinned package-manager version.
+- [x] Compare the Detailed analysis heading and explanatory copy with the pre-audit baseline and report its provenance without changing it during review.
+- [x] Make Pet/Companion the opening profile for each bird that has a pet profile, without changing profile data or other selectable situations.
+- [x] Review roasted-peanut suitability for pigeons and present any required ingredient-guidance correction for approval.
+- [x] Add bird-feed-source and high-fat treat guidance for peanuts without changing their nutrition values, eligibility, or formula targets.
+- [x] Verify that the optimizer limits peanuts in a balanced inventory and reports fat constraints when inventory is peanut-constrained.

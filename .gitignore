@@ -1,25 +1,17 @@
-# Node
-node_modules/
-**/node_modules/
-
-# pnpm store
+# Dependencies and build output
+**/node_modules
+**/dist
+**/.vite
 .pnpm-store/
 
-# Dist/build output
-dist/
-**/dist/
-
-# Vite
-.vite/
-
-# IDE
+# Environment and local tooling
+.env
+.env.*.local
+.manus/
+.manus-logs/
+.project-config.json
 .vscode/
 .idea/
-
-# Python
-__pycache__/
-*.py[cod]
-
-# Misc
+*.log
+*.tsbuildinfo
 .DS_Store
-.env
