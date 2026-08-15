@@ -67,3 +67,4 @@
 - [x] Reconcile the product-owner-supplied custom license with the repository license, preserving its Germany and Spain provisions.
 - [x] Apply the reconciled license terms to the repository and all planned release records.
 - [ ] Update, validate, and merge PR #11 with a merge commit after the reconciled license is applied.
+- [x] Add the product-owner-approved commercial-restrictions summary to the end of the root README and reconcile it with the custom license text.
