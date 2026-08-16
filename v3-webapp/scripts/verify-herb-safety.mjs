@@ -38,11 +38,21 @@ for (const allium of ["garlic_powder", "garlic_oil"]) {
 
 const pigeonMaintenance = getEligibleHerbNames(HERB_RECOMMENDATIONS.maintenance.recommended, "pigeon");
 const pigeonRacing = getEligibleHerbNames(HERB_RECOMMENDATIONS.racing.recommended, "pigeon");
+const pigeonPet = getEligibleHerbNames(HERB_RECOMMENDATIONS.pet.recommended, "pigeon");
 if (!pigeonMaintenance.includes("garlic_powder")) {
   throw new Error("pigeon maintenance must retain garlic powder");
 }
 if (!pigeonRacing.includes("garlic_oil")) {
   throw new Error("pigeon racing must retain garlic oil");
+}
+if (!pigeonPet.includes("garlic_oil")) {
+  throw new Error("pigeon Pet/Companion must retain garlic oil as an occasional option");
+}
+for (const bird of BIRD_TYPES.filter((bird) => bird !== "pigeon")) {
+  const nonPigeonPet = getEligibleHerbNames(HERB_RECOMMENDATIONS.pet.recommended, bird);
+  if (nonPigeonPet.includes("garlic_oil")) {
+    throw new Error(`Pet/Companion must not automatically suggest garlic oil for ${bird}`);
+  }
 }
 
 console.log(`Verified evidence and automatic-suggestion safety for ${Object.keys(HERBS_SUPPLEMENTS).length} herb and supplement records across ${BIRD_TYPES.length} bird types.`);

@@ -134,7 +134,7 @@ export const HERB_EVIDENCE: Record<string, HerbEvidence> = {
   chamomile: eligible(["dardouri2025", "elSabrout2023"], "Poultry evidence; no individual companion-bird dose is asserted."),
   neem: libraryOnly(["hartady2021"], "Published poultry and avian literature is mixed by plant part and preparation, so it is reference-only until a species and preparation review is completed."),
   apple_cider_vinegar: libraryOnly(["vanImmerseel2007"], "Organic-acid poultry literature is not an apple-cider-vinegar-specific drinking-water protocol."),
-  garlic_oil: pigeonEligible(["wade2004", "hartady2021"], "The preserved pigeon racing and winter formulations include garlic oil. It remains automatically suggested for pigeons only. The cited companion-bird case report is a non-pigeon caution and does not establish a general pigeon exclusion."),
+  garlic_oil: pigeonEligible(["wade2004", "hartady2021"], "The preserved pigeon racing and winter formulations include garlic oil; the owner has also approved it as an occasional Pet/Companion option for pigeons. It remains automatically suggested for pigeons only. The cited companion-bird case report is a non-pigeon caution and does not establish a general pigeon exclusion."),
   hemp_oil: eligible(["gao2021"], "Poultry dietary-oil review; product composition and total dietary fat still require review."),
   cod_liver_oil: libraryOnly([], "No linked academic avian source has yet been recorded for this individual planner entry; vitamin A and D concentration must be product-specific."),
   linseed_oil: eligible(["gao2021"], "Poultry dietary-oil review; product composition and total dietary fat still require review."),
