@@ -92,3 +92,4 @@
 - [ ] Define and implement a source-backed herb knowledge-base view that displays the academic sources stored with each herb record, while preserving the concise calculator cards.
 - [ ] Trace and restore the optimized-mix ingredient-diversity suggestion box when a valid batch estimate does not currently surface it.
 - [ ] Make raw adzuki-bean safety messaging explicit and red while retaining its approved cooked or properly processed guidance.
+- [x] Repair the GitHub Actions Firebase deployment workflow so it installs and verifies dependencies inside v3-webapp before deploying merged main.
