@@ -7,6 +7,10 @@ const GITHUB_INSTALLATION_ID = "154218058";
 const REPO_OWNER = "Crypto-Shroom";
 const REPO_NAME = "Bird-Feed-Calculator";
 
+// Simple in-memory rate limiting map (IP -> timestamp)
+const recentSubmissions = new Map<string, number>();
+const RATE_LIMIT_WINDOW_MS = 60 * 1000; // 1 minute
+
 function getPrivateKey(): string {
   const secretKey = process.env.GITHUB_APP_PRIVATE_KEY;
   if (secretKey) {
@@ -59,7 +63,22 @@ export const submitIssue = onRequest(
     }
 
     try {
-      const { title, body, labels } = req.body || {};
+      const clientIp = (req.headers["x-forwarded-for"] as string) || req.ip || "unknown";
+      const now = Date.now();
+      const lastSubmission = recentSubmissions.get(clientIp);
+      if (lastSubmission && now - lastSubmission < RATE_LIMIT_WINDOW_MS) {
+        res.status(429).json({ error: "Too many submissions. Please wait a minute before submitting another report." });
+        return;
+      }
+
+      const { title, body, labels, websiteUrl } = req.body || {};
+
+      // Honeypot check: websiteUrl should be empty for genuine human users
+      if (websiteUrl && typeof websiteUrl === "string" && websiteUrl.trim().length > 0) {
+        res.status(400).json({ error: "Invalid submission." });
+        return;
+      }
+
       if (!title || typeof title !== "string" || title.trim().length === 0) {
         res.status(400).json({ error: "A valid title is required." });
         return;
@@ -68,6 +87,8 @@ export const submitIssue = onRequest(
         res.status(400).json({ error: "A valid description body is required." });
         return;
       }
+
+      recentSubmissions.set(clientIp, now);
 
       const sanitizedTitle = title.trim().slice(0, 200);
       const sanitizedBody = body.trim().slice(0, 5000);

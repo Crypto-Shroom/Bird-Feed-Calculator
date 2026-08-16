@@ -1,18 +1,10 @@
 import React, { useState } from "react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ExternalLink, Loader2, Send, CheckCircle2, AlertCircle } from "lucide-react";
+import { Textarea } from "@/components/ui/textarea";
+import { CheckCircle2, AlertCircle, Loader2, ExternalLink } from "lucide-react";
 
 interface IssueSubmitDialogProps {
   triggerLabel: React.ReactNode;
@@ -34,6 +26,7 @@ export function IssueSubmitDialog({
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState(defaultTitle);
   const [body, setBody] = useState(defaultBody);
+  const [websiteUrl, setWebsiteUrl] = useState(""); // Honeypot field for bot protection
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [successUrl, setSuccessUrl] = useState<string | null>(null);
@@ -47,7 +40,7 @@ export function IssueSubmitDialog({
       const response = await fetch("/api/submit-issue", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, body, labels }),
+        body: JSON.stringify({ title, body, labels, websiteUrl }),
       });
 
       const text = await response.text();
@@ -83,7 +76,7 @@ export function IssueSubmitDialog({
           {triggerLabel}
         </button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-lg">
+      <DialogContent className="sm:max-w-xl">
         <DialogHeader>
           <DialogTitle>Submit Request to Project Owner</DialogTitle>
           <DialogDescription>
@@ -125,6 +118,20 @@ export function IssueSubmitDialog({
               </div>
             )}
 
+            {/* Hidden honeypot field for bot protection */}
+            <div className="hidden" aria-hidden="true">
+              <label htmlFor="websiteUrl">Website</label>
+              <input
+                type="text"
+                id="websiteUrl"
+                name="websiteUrl"
+                value={websiteUrl}
+                onChange={(e) => setWebsiteUrl(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
+
             <div className="space-y-2">
               <Label htmlFor="issue-title">Issue Title</Label>
               <Input
@@ -136,28 +143,27 @@ export function IssueSubmitDialog({
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="issue-body">Issue Details (Markdown)</Label>
+              <Label htmlFor="issue-body">Description & Research Notes</Label>
               <Textarea
                 id="issue-body"
+                rows={7}
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
-                rows={9}
                 required
-                className="font-mono text-xs"
               />
             </div>
 
             {helperText && <p className="text-xs text-muted-foreground">{helperText}</p>}
 
-            <DialogFooter className="pt-2">
+            <div className="flex justify-end gap-3 pt-2">
               <Button type="button" variant="outline" onClick={() => setOpen(false)}>
                 Cancel
               </Button>
-              <Button type="submit" disabled={loading} className="gap-2 bg-emerald-700 text-white hover:bg-emerald-800">
-                {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
-                {loading ? "Submitting..." : "Submit to GitHub"}
+              <Button type="submit" disabled={loading} className="bg-emerald-700 hover:bg-emerald-800 text-white">
+                {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                Submit to GitHub
               </Button>
-            </DialogFooter>
+            </div>
           </form>
         )}
       </DialogContent>
