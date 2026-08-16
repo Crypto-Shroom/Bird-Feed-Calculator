@@ -92,3 +92,11 @@
 - [ ] Configure Firebase Hosting for the V3 web application without committing any credential.
 - [ ] Move the GitHub issue-submission endpoint into a Firebase Cloud Function using Firebase secrets.
 - [ ] Validate Firebase build output and prepare the owner-gated live deploy step.
+
+# Spark-plan report queue
+
+- [ ] Enable Firestore and apply restrictive report-queue security rules.
+- [ ] Store in-app reports in Firestore with validation and anti-spam controls.
+- [ ] Process new report documents into GitHub issues once per day through an idempotent GitHub Actions workflow.
+- [ ] Compare Spark-plus-Firestore architecture with genuinely free server-hosting alternatives.
+- [ ] Replace the incorrect curved-arrow favicon with an unmistakable pigeon mark.

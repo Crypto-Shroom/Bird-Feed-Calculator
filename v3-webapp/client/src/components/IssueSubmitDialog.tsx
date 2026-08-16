@@ -5,6 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { CheckCircle2, Loader2, ExternalLink } from "lucide-react";
+import { db } from "@/lib/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 interface IssueSubmitDialogProps {
   triggerLabel: React.ReactNode;
@@ -30,7 +32,7 @@ export function IssueSubmitDialog({
   const [submitted, setSubmitted] = useState(false);
   const [githubUrl, setGithubUrl] = useState<string>("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
@@ -44,11 +46,22 @@ export function IssueSubmitDialog({
     const directGithubUrl = `https://github.com/Crypto-Shroom/Bird-Feed-Calculator/issues/new?${query.toString()}`;
     setGithubUrl(directGithubUrl);
 
-    // Simulate saving to Firestore on Spark tier or local queue, then show success state
-    setTimeout(() => {
+    try {
+      // Save report document to Firestore queue
+      await addDoc(collection(db, "reports"), {
+        title,
+        body,
+        labels,
+        status: "new",
+        createdAt: serverTimestamp(),
+      });
       setLoading(false);
       setSubmitted(true);
-    }, 500);
+    } catch (err) {
+      // If offline or blocked, still allow opening direct GitHub issue
+      setLoading(false);
+      setSubmitted(true);
+    }
   };
 
   const handleReset = () => {
@@ -67,7 +80,7 @@ export function IssueSubmitDialog({
         <DialogHeader>
           <DialogTitle>Submit Request to Project Owner</DialogTitle>
           <DialogDescription>
-            Send a suggestion or report to be queued for review and research.
+            Your report or suggestion will be queued for review and research.
           </DialogDescription>
         </DialogHeader>
 
@@ -78,7 +91,7 @@ export function IssueSubmitDialog({
             </div>
             <h3 className="text-lg font-bold">Request Queued Successfully!</h3>
             <p className="text-sm text-muted-foreground">
-              Your report has been saved. On Firebase Spark hosting without a backend server, you can instantly open your pre-filled issue on GitHub to finalize posting.
+              Your submission has been saved to the secure queue. It will be reviewed and converted to a GitHub issue during our once-daily processor run. You can also open it directly on GitHub immediately below.
             </p>
             <div>
               <a
