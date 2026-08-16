@@ -1,6 +1,7 @@
 import { BIRD_PROFILES, getCategoryTargets } from "../client/src/lib/birds.ts";
 import { MultibirMixCalculator } from "../client/src/lib/calculator-multi-bird.ts";
 import { INGREDIENTS } from "../client/src/lib/data.ts";
+import { getPreparationInstructions } from "../client/src/lib/safety.ts";
 
 const baseInventory = {
   wheat: 5000,
@@ -61,6 +62,13 @@ for (const ingredient of ["chickpeas", "adzuki_beans", "lupins", "vetch"]) {
   if (!(ingredient in preparedIngredientResult.mix)) {
     throw new Error(`${ingredient} was not restored to the pigeon calculator after its preparation guidance was added`);
   }
+}
+const adzukiPreparation = getPreparationInstructions("adzuki_beans");
+if (!adzukiPreparation?.notes.includes("RAW ADZUKI BEANS ARE TOXIC")) {
+  throw new Error("adzuki beans did not retain the explicit raw-toxicity warning");
+}
+if (!adzukiPreparation.preparation.includes("boil until completely soft")) {
+  throw new Error("adzuki beans did not retain their approved cooked preparation guidance");
 }
 const parrotVetchResult = new MultibirMixCalculator({ wheat: 1000, peas: 1000, safflower: 1000, vetch: 1000 }, "parrot", "pet").calculate(500);
 if ("vetch" in parrotVetchResult.mix) {

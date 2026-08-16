@@ -59,7 +59,7 @@ export default function HerbLibrary() {
                   <span className="font-mono text-sm text-muted-foreground">{herbs.length} entries</span>
                 </div>
                 <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-                  {herbs.map(([name, herb]) => <HerbCard key={name} name={name} herb={herb} />)}
+                  {herbs.map(([name, herb]) => <HerbCard key={name} name={name} herb={herb} showSources />)}
                 </div>
               </section>
             );

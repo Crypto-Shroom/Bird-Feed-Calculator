@@ -5,6 +5,8 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { HERBS_SUPPLEMENTS } from "@/lib/data";
+import { isHerbEligibleForBird } from "@/lib/herb-evidence";
+import type { BirdType } from "@/lib/birds";
 
 const supplementGoals = [
   { value: "digestion", label: "Digestive comfort", benefit: "Digestion" },
@@ -20,7 +22,7 @@ const supplementFormats = [
   { value: "supplement", label: "Liquid & powder supplements", categories: ["liquid_supplement", "powder_supplement"] },
 ] as const;
 
-export function PersonalizedSupplementMix() {
+export function PersonalizedSupplementMix({ bird }: { bird: BirdType }) {
   const [supplementGoal, setSupplementGoal] = useState<(typeof supplementGoals)[number]["value"]>("digestion");
   const [supplementFormat, setSupplementFormat] = useState<(typeof supplementFormats)[number]["value"]>("all");
 
@@ -29,9 +31,10 @@ export function PersonalizedSupplementMix() {
   const matches = useMemo(() => Object.entries(HERBS_SUPPLEMENTS)
     // Product-owner decision: do not surface apple cider vinegar in newly added app copy until its wording is explicitly approved.
     .filter(([name]) => name !== "apple_cider_vinegar")
+    .filter(([name]) => isHerbEligibleForBird(name, bird))
     .filter(([, herb]) => herb.benefits.includes(goal.benefit))
     .filter(([, herb]) => !format.categories || (format.categories as readonly string[]).includes(herb.category))
-    .sort(([left], [right]) => left.localeCompare(right)), [format, goal]);
+    .sort(([left], [right]) => left.localeCompare(right)), [bird, format, goal]);
 
   return (
     <section aria-labelledby="personalized-supplement-heading" className="border-t border-emerald-100 pt-8">
