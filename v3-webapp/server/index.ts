@@ -2,6 +2,7 @@ import express from "express";
 import { createServer } from "http";
 import path from "path";
 import { fileURLToPath } from "url";
+import { createGitHubIssue } from "./github";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -9,6 +10,23 @@ const __dirname = path.dirname(__filename);
 async function startServer() {
   const app = express();
   const server = createServer(app);
+
+  app.use(express.json());
+
+  // API endpoint for in-app issue submission
+  app.post("/api/submit-issue", async (req, res) => {
+    try {
+      const { title, body, labels } = req.body;
+      if (!title || !body) {
+        return res.status(400).json({ error: "Title and body are required." });
+      }
+      const result = await createGitHubIssue(title, body, labels || []);
+      return res.json({ success: true, html_url: result.html_url });
+    } catch (error: any) {
+      console.error("Failed to create GitHub issue:", error);
+      return res.status(500).json({ error: error.message || "Failed to create issue" });
+    }
+  });
 
   // Serve static files from dist/public in production
   const staticPath =
@@ -23,10 +41,10 @@ async function startServer() {
     res.sendFile(path.join(staticPath, "index.html"));
   });
 
-  const port = process.env.PORT || 3000;
+  const port = Number(process.env.API_PORT || process.env.PORT || 3001);
 
   server.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}/`);
+    console.log(`API server running on http://localhost:${port}/`);
   });
 }
 
