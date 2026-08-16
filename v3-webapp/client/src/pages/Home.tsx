@@ -29,6 +29,7 @@ import { Slider } from "@/components/ui/slider";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { HerbCard } from "@/components/HerbCard";
 import { PersonalizedSupplementMix } from "@/components/PersonalizedSupplementMix";
+import { IssueSubmitDialog } from "@/components/IssueSubmitDialog";
 import { HERB_RECOMMENDATIONS, HERBS_SUPPLEMENTS, INGREDIENTS } from "@/lib/data";
 import { checkBirdToxicity, isIngredientCompatible } from "@/lib/bird-safety";
 import {
@@ -133,24 +134,21 @@ export default function Home() {
       }, { available: [], blocked: [] });
   }, [birdProfile.name, ingredientSearch, inventory, selectedBird]);
 
-  const ingredientSuggestionUrl = ingredientSearch.trim() ? buildGitHubIssueUrl(
-    "ingredient-research.md",
-    `[Ingredient research] ${ingredientSearch.trim()}`,
-    [
-      "## Requested ingredient",
-      ingredientSearch.trim(),
-      "",
-      "## Planner context",
-      `Bird: ${birdProfile.name}`,
-      `Profile: ${currentProfile.name}`,
-      "",
-      "## Research needed",
-      "This request requires research before any ingredient value, safety rule, compatibility decision, or feeding guidance can change.",
-      "",
-      "## What would you like to add or correct?",
-      "Please add any preparation detail, use case, or source here.",
-    ].join("\n"),
-  ) : null;
+  const ingredientTitle = ingredientSearch.trim() ? `[Ingredient research] ${ingredientSearch.trim()}` : "[Ingredient research]";
+  const ingredientBody = ingredientSearch.trim() ? [
+    "## Requested ingredient",
+    ingredientSearch.trim(),
+    "",
+    "## Planner context",
+    `Bird: ${birdProfile.name}`,
+    `Profile: ${currentProfile.name}`,
+    "",
+    "## Research needed",
+    "This request requires research before any ingredient value, safety rule, compatibility decision, or feeding guidance can change.",
+    "",
+    "## What would you like to add or correct?",
+    "Please add any preparation detail, use case, or source here.",
+  ].join("\n") : "";
 
   const addIngredient = (name: string) => {
     setInventory((previous) => ({ ...previous, [name]: 1000 }));
@@ -303,7 +301,7 @@ export default function Home() {
                         <button key={name} type="button" onClick={() => addIngredient(name)} className="flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-sm hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
                           <span><span className="block capitalize">{name.replace(/_/g, " ")}</span>{name === "popcorn" && <span className="block text-xs text-muted-foreground">Popcorn is not the same as corn nutritionally.</span>}</span><Plus className="h-4 w-4 shrink-0 text-emerald-700" />
                         </button>
-                      )) : <div className="px-2 py-3"><p className="text-sm text-muted-foreground">No compatible ingredients match this search.</p>{ingredientSuggestionUrl && <a href={ingredientSuggestionUrl} target="_blank" rel="noreferrer" className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-800 underline-offset-4 hover:text-emerald-950 hover:underline"><ExternalLink className="h-3.5 w-3.5" />Suggest to add</a>}<p className="mt-1 text-xs leading-relaxed text-muted-foreground">Opens a research request assigned to the project owner; no ingredient data changes automatically.</p></div>}
+                      )) : <div className="px-2 py-3"><p className="text-sm text-muted-foreground">No compatible ingredients match this search.</p>{ingredientSearch.trim() && <div className="mt-3"><IssueSubmitDialog triggerLabel={<><ExternalLink className="h-3.5 w-3.5" />Suggest to add</>} defaultTitle={ingredientTitle} defaultBody={ingredientBody} helperText="Submits an ingredient research request directly to the repository." /></div>}<p className="mt-1 text-xs leading-relaxed text-muted-foreground">Submits a research request assigned to the project owner; no ingredient data changes automatically.</p></div>}
                       {ingredientOptions.blocked.length > 0 && <>
                         <Separator className="my-3" />
                         <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Not offered for this bird</p>
@@ -401,7 +399,7 @@ export default function Home() {
                     <ReportIssueLink section="Herbs & Supplements" bird={birdProfile.name} profile={currentProfile.name} />
                   </div>}
 
-                  {activeTab === "analysis" && <div className="space-y-8"><div><h2 className="mb-4 text-lg font-bold">Category Breakdown</h2><div className="space-y-4"><CategoryBar label="Grains" value={result.categories.grain} target={getCategoryTargets(selectedBird).grain} color="bg-amber-400" /><CategoryBar label="Legumes" value={result.categories.legume} target={getCategoryTargets(selectedBird).legume} color="bg-emerald-500" /><CategoryBar label="Seeds" value={result.categories.seed} target={getCategoryTargets(selectedBird).seed} color="bg-stone-500" /></div></div><Separator /><div><h2 className="mb-3 text-lg font-bold">Detailed analysis</h2><p className="text-sm text-muted-foreground">The optimizer favours the selected profile’s estimated macronutrient and category ranges using the inventory you supplied. It is deterministic: identical inventory and settings produce the same batch estimate.</p><div className="mt-4 grid gap-3 sm:grid-cols-2">{result.suggestions.map((suggestion) => <div key={suggestion} className="rounded-lg border bg-muted/20 p-4 text-sm"><CheckCircle2 className="mb-2 h-4 w-4 text-emerald-700" />{suggestion}</div>)}</div></div><div className="rounded-lg border border-blue-200 bg-blue-50 p-4"><h3 className="font-semibold text-blue-950">Profile: {currentProfile.name}</h3><p className="mt-1 text-sm text-blue-900">{currentProfile.feedingNotes}</p></div><ReportIssueLink section="Detailed Analysis" bird={birdProfile.name} profile={currentProfile.name} /></div>}
+                  {activeTab === "analysis" && <div className="space-y-8"><div><h2 className="mb-4 text-lg font-bold">Category Breakdown</h2><div className="space-y-4"><CategoryBar label="Grains" value={result.categories.grain} target={getCategoryTargets(selectedBird).grain} color="bg-amber-400" /><CategoryBar label="Legumes" value={result.categories.legume} target={getCategoryTargets(selectedBird).legume} color="bg-emerald-500" /><CategoryBar label="Seeds" value={result.categories.seed} target={getCategoryTargets(selectedBird).seed} color="bg-stone-500" /></div></div><Separator /><div><h2 className="mb-3 text-lg font-bold">Detailed analysis</h2><p className="text-sm text-muted-foreground mb-3">Detailed analysis of the recommended seed mix based on nutritional targets and ingredient properties.</p><div className="mt-4 grid gap-3 sm:grid-cols-2">{result.suggestions.map((suggestion) => <div key={suggestion} className="rounded-lg border bg-muted/20 p-4 text-sm"><CheckCircle2 className="mb-2 h-4 w-4 text-emerald-700" />{suggestion}</div>)}</div><p className="mt-4 text-xs text-muted-foreground">Optimizer note: The optimizer favours the selected profile’s estimated macronutrient and category ranges using the inventory you supplied. It is deterministic: identical inventory and settings produce the same batch estimate.</p></div><div className="rounded-lg border border-blue-200 bg-blue-50 p-4"><h3 className="font-semibold text-blue-950">Profile: {currentProfile.name}</h3><p className="mt-1 text-sm text-blue-900">{currentProfile.feedingNotes}</p></div><ReportIssueLink section="Detailed Analysis" bird={birdProfile.name} profile={currentProfile.name} /></div>}
                 </CardContent>
               </Card>
             </div>}
@@ -419,27 +417,35 @@ function CareNote({ icon, title, text }: { icon: React.ReactNode; title: string;
 }
 
 function ReportIssueLink({ section, bird, profile }: { section: string; bird: string; profile: string }) {
-  const href = buildGitHubIssueUrl(
-    "information-report.md",
-    `[Information report] ${section}`,
-    [
-      "## Location in the calculator",
-      `Section: ${section}`,
-      `Bird: ${bird}`,
-      `Profile: ${profile}`,
-      "",
-      "## What seems incorrect, incomplete, or unclear?",
-      "Please describe the information that needs review.",
-      "",
-      "## Research needed",
-      "This report requires research before any nutrition value, herb record, safety rule, compatibility decision, or user-facing guidance can change.",
-      "",
-      "## Helpful source or context",
-      "Add a link, publication, photograph, or practical context if available.",
-    ].join("\n"),
-  );
+  const title = `[Information report] ${section}`;
+  const body = [
+    "## Location in the calculator",
+    `Section: ${section}`,
+    `Bird: ${bird}`,
+    `Profile: ${profile}`,
+    "",
+    "## What seems incorrect, incomplete, or unclear?",
+    "Please describe the information that needs review.",
+    "",
+    "## Research needed",
+    "This report requires research before any nutrition value, herb record, safety rule, compatibility decision, or user-facing guidance can change.",
+    "",
+    "## Helpful source or context",
+    "Add a link, publication, photograph, or practical context if available.",
+  ].join("\n");
 
-  return <div className="border-t border-dashed pt-6"><Button asChild type="button" variant="outline" className="gap-2 border-stone-300 bg-white text-stone-700 hover:bg-stone-50"><a href={href} target="_blank" rel="noreferrer"><ExternalLink className="h-4 w-4" />Report wrong info / issue</a></Button><p className="mt-2 text-xs text-muted-foreground">Opens a research request assigned to the project owner. Nothing in the calculator changes automatically.</p></div>;
+  return (
+    <div className="border-t border-dashed pt-6">
+      <IssueSubmitDialog
+        triggerLabel={<><ExternalLink className="h-4 w-4" />Report wrong info / issue</>}
+        triggerClassName="inline-flex items-center justify-center gap-2 rounded-md border border-stone-300 bg-white px-3 py-2 text-sm font-medium text-stone-700 shadow-sm hover:bg-stone-50 transition-colors"
+        defaultTitle={title}
+        defaultBody={body}
+        helperText="Submits a research request directly to the repository without leaving the calculator."
+      />
+      <p className="mt-2 text-xs text-muted-foreground">Submits a research request assigned to the project owner. Nothing in the calculator changes automatically.</p>
+    </div>
+  );
 }
 
 function buildGitHubIssueUrl(template: string, title: string, body: string) {
