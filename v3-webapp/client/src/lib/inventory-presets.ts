@@ -1,4 +1,4 @@
-// Design contract: starter inventory is a profile-aware availability example, not a nutritional formulation or feeding recommendation.
+// Design contract: profile defaults provide the basis for a displayed standard formula; they never claim to be a visitor's stock.
 import type { BirdType } from "@/lib/birds";
 
 type Inventory = Record<string, number>;
@@ -51,7 +51,10 @@ const PRESETS: Record<BirdType, Record<string, Inventory>> = {
   chicken,
 };
 
-export function getStarterInventory(bird: BirdType, situation: string): Inventory {
+export function getProfileDefaultIngredients(bird: BirdType, situation: string): Inventory {
   const preset = PRESETS[bird][situation] || PRESETS[bird].pet || Object.values(PRESETS[bird])[0];
   return { ...preset };
 }
+
+/** @deprecated Use getProfileDefaultIngredients for profile-default formulas. */
+export const getStarterInventory = getProfileDefaultIngredients;

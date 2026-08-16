@@ -97,3 +97,5 @@
 - [x] Adopt an issue-linked pull-request workflow with concise scope, validation, decision, and handoff comments for every substantive repository change.
 - [x] Reimplement and validate the missing "Reset to standard mix" control for GitHub Issue #39 on an issue-linked review branch.
 - [x] Add automated coverage confirming profile-specific inventory presets remain distinct and resettable without shared mutation.
+- [x] Supersede the reset-control interpretation of Issue #39 with an empty real inventory and a clearly labelled profile-default formula that yields to actual entered stock.
+- [x] Add coverage confirming profile-default formulas exist across all six birds and actual inventory overrides the displayed default.
