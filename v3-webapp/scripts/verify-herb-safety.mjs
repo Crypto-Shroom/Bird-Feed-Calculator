@@ -19,23 +19,30 @@ for (const [profile, recommendation] of Object.entries(HERB_RECOMMENDATIONS)) {
         throw new Error(`${profile} would automatically suggest ${name} for ${bird} despite its evidence or safety status`);
       }
     }
-    for (const allium of ["garlic_powder", "garlic_oil"]) {
-      if (automaticNames.includes(allium)) {
-        throw new Error(`${profile} would automatically suggest ${allium} for ${bird}`);
-      }
-    }
   }
 }
 
 for (const allium of ["garlic_powder", "garlic_oil"]) {
-  if (HERB_EVIDENCE[allium]?.eligibility !== "do_not_suggest") {
-    throw new Error(`${allium} must remain excluded from automatic herb suggestions`);
+  if (HERB_EVIDENCE[allium]?.eligibility !== "eligible") {
+    throw new Error(`${allium} must remain eligible for the approved pigeon formulation`);
   }
-  for (const bird of BIRD_TYPES) {
+  if (!isHerbEligibleForBird(allium, "pigeon")) {
+    throw new Error(`${allium} must be eligible for pigeons`);
+  }
+  for (const bird of BIRD_TYPES.filter((bird) => bird !== "pigeon")) {
     if (isHerbEligibleForBird(allium, bird)) {
-      throw new Error(`${allium} must not be eligible for ${bird}`);
+      throw new Error(`${allium} must not be eligible outside the approved pigeon formulation`);
     }
   }
+}
+
+const pigeonMaintenance = getEligibleHerbNames(HERB_RECOMMENDATIONS.maintenance.recommended, "pigeon");
+const pigeonRacing = getEligibleHerbNames(HERB_RECOMMENDATIONS.racing.recommended, "pigeon");
+if (!pigeonMaintenance.includes("garlic_powder")) {
+  throw new Error("pigeon maintenance must retain garlic powder");
+}
+if (!pigeonRacing.includes("garlic_oil")) {
+  throw new Error("pigeon racing must retain garlic oil");
 }
 
 console.log(`Verified evidence and automatic-suggestion safety for ${Object.keys(HERBS_SUPPLEMENTS).length} herb and supplement records across ${BIRD_TYPES.length} bird types.`);

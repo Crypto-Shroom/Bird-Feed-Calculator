@@ -14,7 +14,9 @@ export function HerbCard({ name, herb, showSources = false }: HerbCardProps) {
   const evidence = getHerbEvidence(name);
   const sourceEntries = evidence.sourceIds.map((sourceId) => HERB_SOURCES[sourceId]);
   const safetyLabel = evidence.eligibility === "eligible"
-    ? "Eligible for automatic suggestions"
+    ? evidence.compatibleBirds.length === 1 && evidence.compatibleBirds[0] === "pigeon"
+      ? "Pigeon-only automatic suggestion"
+      : "Eligible for automatic suggestions"
     : evidence.eligibility === "do_not_suggest"
       ? "Not automatically suggested"
       : "Reference only";
