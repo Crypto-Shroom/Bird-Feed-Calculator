@@ -86,3 +86,9 @@
 - [x] Correct target progress bars so protein, carbohydrates, fat, and fiber accurately show their current value and target range.
 - [ ] Define the Issue #7 herb-library page, profile/personalized supplement split, and optional diversity note without changing existing herb data or formulations.
 - [ ] Define the Issue #8 in-app wrong-information and missing-ingredient suggestion experience, including safe approval-gated GitHub and research automation.
+- [ ] Maintain GitHub pull requests as the approval gate; allow Firebase production deployment only from merged GitHub `main` through the repository workflow.
+- [ ] Add clearly labelled “Suggest bird” and “Suggest profile” controls adjacent to their respective calculator selectors without changing active bird or profile data.
+- [ ] Audit herb recommendations by supported bird and prevent toxic or contraindicated herb suggestions before any user-facing herb-library expansion.
+- [ ] Define and implement a source-backed herb knowledge-base view that displays the academic sources stored with each herb record, while preserving the concise calculator cards.
+- [ ] Trace and restore the optimized-mix ingredient-diversity suggestion box when a valid batch estimate does not currently surface it.
+- [ ] Make raw adzuki-bean safety messaging explicit and red while retaining its approved cooked or properly processed guidance.

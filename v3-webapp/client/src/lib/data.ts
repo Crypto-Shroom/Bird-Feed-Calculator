@@ -73,7 +73,7 @@ export const INGREDIENTS: Record<string, Ingredient> = {
     "navy_beans": {"category": "legume", "protein": 22, "carbs": 60, "fat": 1.5, "fiber": 10, "notes": "Must be cooked"},
     "kidney_beans": {"category": "legume", "protein": 24, "carbs": 60, "fat": 1, "fiber": 7, "notes": "Must be cooked, toxic raw"},
     "pinto_beans": {"category": "legume", "protein": 21, "carbs": 63, "fat": 1, "fiber": 9, "notes": "Must be cooked"},
-    "adzuki_beans": {"category": "legume", "protein": 20, "carbs": 63, "fat": 0.5, "fiber": 7, "notes": "Cooked or properly processed small red beans"},
+    "adzuki_beans": {"category": "legume", "protein": 20, "carbs": 63, "fat": 0.5, "fiber": 7, "notes": "TOXIC RAW — cooked or properly processed small red beans only"},
     "lima_beans": {"category": "legume", "protein": 21, "carbs": 40, "fat": 0.7, "fiber": 7, "notes": "Must be cooked, toxic raw"},
     "black_beans": {"category": "legume", "protein": 21, "carbs": 62, "fat": 0.9, "fiber": 15, "notes": "Must be cooked, toxic raw"},
     

@@ -44,6 +44,7 @@ export default defineConfig({
     fs: {
       strict: true,
       deny: ["**/.*"],
+      allow: [path.resolve(import.meta.dirname, "..")],
     },
   },
 });
