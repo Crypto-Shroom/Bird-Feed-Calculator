@@ -96,3 +96,14 @@
 - [ ] Treat the repository-level database/ directory as the canonical knowledge-base and provenance source; link app variables to it through a reviewable synchronization layer.
 - [ ] Manually invoke the existing GitHub Actions Firestore report processor, then record the created GitHub issue links.
 - [ ] Repair the report-processing workflow dependency installation so manual GitHub Actions dispatches can process Firestore reports reliably.
+- [ ] Correct the report processor’s Firestore service-account access and make Firestore or GitHub issue-creation failures fail the workflow visibly before importing queued reports.
+- [ ] Research and prepare owner-reviewable, bird-specific almond guidance for imported GitHub Issue #43 without changing active ingredient data until approved.
+- [ ] Research and prepare owner-reviewable, bird-specific cashew guidance for imported GitHub Issue #44 without changing active ingredient data until approved.
+- [ ] Investigate and respond to the imported Optimized Mix information report in GitHub Issue #42.
+- [ ] Reimplement and validate the missing "Reset to standard mix" control for GitHub Issue #39 on a dedicated review branch.
+- [ ] Review every candidate food across pigeon, parrot, African Grey, budgie, canary, and chicken before proposing any active ingredient-data change.
+- [ ] Replace the mistaken inventory-reset approach for Issue #39 with profile-default formulas in Recommended Formula while preserving an empty real inventory until a user enters stock.
+- [ ] Manually dispatch the repaired Firestore report processor again and record the newly created GitHub issues.
+- [ ] Investigate why the successful report processor found no queued Firestore reports after new in-app submissions.
+- [ ] Fix Firebase Hosting report submissions that receive the SPA HTML fallback with HTTP 200 and are therefore incorrectly reported as created GitHub issues instead of queued Firestore reports.
+- [ ] Update the persistent Manus project instructions after the active fixes to preserve the owner-approved review, six-bird research, preview, and inventory/default-formula workflow; do not add this instruction text to the repository.
