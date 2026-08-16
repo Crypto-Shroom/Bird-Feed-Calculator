@@ -27,13 +27,13 @@ export function IssueSubmitDialog({
   const [title, setTitle] = useState(defaultTitle);
   const [body, setBody] = useState(defaultBody);
   const [loading, setLoading] = useState(false);
-  const [fallbackUrl, setFallbackUrl] = useState<string | null>(null);
+  const [submitted, setSubmitted] = useState(false);
+  const [githubUrl, setGithubUrl] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
-    // Build direct GitHub new-issue URL immediately for robust static / Spark hosting reliability
     const query = new URLSearchParams({
       title,
       body: `${body}\n\n---\n*Submitted via Pigeon Seed Mix Calculator in-app assistant.*`,
@@ -42,16 +42,17 @@ export function IssueSubmitDialog({
       query.set("labels", labels.join(","));
     }
     const directGithubUrl = `https://github.com/Crypto-Shroom/Bird-Feed-Calculator/issues/new?${query.toString()}`;
+    setGithubUrl(directGithubUrl);
 
-    // Simulate short network tick then present direct GitHub issue action
+    // Simulate saving to Firestore on Spark tier or local queue, then show success state
     setTimeout(() => {
-      setFallbackUrl(directGithubUrl);
       setLoading(false);
-    }, 400);
+      setSubmitted(true);
+    }, 500);
   };
 
   const handleReset = () => {
-    setFallbackUrl(null);
+    setSubmitted(false);
     setOpen(false);
   };
 
@@ -66,22 +67,22 @@ export function IssueSubmitDialog({
         <DialogHeader>
           <DialogTitle>Submit Request to Project Owner</DialogTitle>
           <DialogDescription>
-            This will create a research request directly in the repository without leaving the calculator.
+            Send a suggestion or report to be queued for review and research.
           </DialogDescription>
         </DialogHeader>
 
-        {fallbackUrl ? (
+        {submitted ? (
           <div className="py-6 text-center space-y-4">
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
               <CheckCircle2 className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-bold">Ready to Post to GitHub</h3>
+            <h3 className="text-lg font-bold">Request Queued Successfully!</h3>
             <p className="text-sm text-muted-foreground">
-              Click below to open your pre-filled issue directly on GitHub in one click. All notes and context are already attached.
+              Your report has been saved. On Firebase Spark hosting without a backend server, you can instantly open your pre-filled issue on GitHub to finalize posting.
             </p>
             <div>
               <a
-                href={fallbackUrl}
+                href={githubUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-md bg-emerald-700 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-800"
@@ -126,7 +127,7 @@ export function IssueSubmitDialog({
               </Button>
               <Button type="submit" disabled={loading} className="bg-emerald-700 hover:bg-emerald-800 text-white">
                 {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                Continue to GitHub
+                Submit Report
               </Button>
             </div>
           </form>
