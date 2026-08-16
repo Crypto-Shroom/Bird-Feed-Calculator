@@ -105,3 +105,6 @@ temp/
 *.sqlite
 *.sqlite3
 .project-config.json
+
+# GitHub App Private Key
+server/github-app.pem
