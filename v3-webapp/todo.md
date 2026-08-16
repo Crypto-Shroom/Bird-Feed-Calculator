@@ -94,3 +94,5 @@
 - [ ] Make raw adzuki-bean safety messaging explicit and red while retaining its approved cooked or properly processed guidance.
 - [ ] Verify and merge the approved PR #31 and dependent PR #32 in safe dependency order, preserving GitHub as the only Firebase deployment trigger.
 - [ ] Treat the repository-level database/ directory as the canonical knowledge-base and provenance source; link app variables to it through a reviewable synchronization layer.
+- [ ] Manually invoke the existing GitHub Actions Firestore report processor, then record the created GitHub issue links.
+- [ ] Repair the report-processing workflow dependency installation so manual GitHub Actions dispatches can process Firestore reports reliably.
