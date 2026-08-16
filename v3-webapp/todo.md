@@ -86,3 +86,8 @@
 - [x] Correct target progress bars so protein, carbohydrates, fat, and fiber accurately show their current value and target range.
 - [ ] Define the Issue #7 herb-library page, profile/personalized supplement split, and optional diversity note without changing existing herb data or formulations.
 - [ ] Define the Issue #8 in-app wrong-information and missing-ingredient suggestion experience, including safe approval-gated GitHub and research automation.
+- [ ] Assess a server-side in-app issue-submission endpoint that keeps visitors on the calculator without exposing a GitHub credential.
+- [ ] Keep the Manus preview on the newest integrated working branch ahead of main, while retaining focused review PRs and explicit owner-only merge approval.
+- [x] Repair GitHub App private-key discovery for the bundled server without exposing or committing the key.
+- [x] Verify in-app submission uses the loaded GitHub App credential and returns a clear success or safe error response.
+- [ ] Push the verified in-app reporting repair to a focused review branch with no private-key file.
