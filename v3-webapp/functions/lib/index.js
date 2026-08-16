@@ -46,16 +46,25 @@ exports.submitIssue = (0, https_1.onRequest)({ secrets: ["GITHUB_APP_PRIVATE_KEY
         return;
     }
     try {
-        const { title, body, labels } = req.body;
-        if (!title || !body) {
-            res.status(400).json({ error: "Title and body are required." });
+        const { title, body, labels } = req.body || {};
+        if (!title || typeof title !== "string" || title.trim().length === 0) {
+            res.status(400).json({ error: "A valid title is required." });
             return;
         }
+        if (!body || typeof body !== "string" || body.trim().length === 0) {
+            res.status(400).json({ error: "A valid description body is required." });
+            return;
+        }
+        const sanitizedTitle = title.trim().slice(0, 200);
+        const sanitizedBody = body.trim().slice(0, 5000);
+        const safeLabels = Array.isArray(labels)
+            ? labels.slice(0, 5).map((l) => String(l).slice(0, 50))
+            : [];
         const token = await getInstallationAccessToken();
         const githubRes = await axios_1.default.post(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues`, {
-            title,
-            body,
-            labels: labels || [],
+            title: sanitizedTitle,
+            body: sanitizedBody,
+            labels: safeLabels,
         }, {
             headers: {
                 Authorization: `Bearer ${token}`,
