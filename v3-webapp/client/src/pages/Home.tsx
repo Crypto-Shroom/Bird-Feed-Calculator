@@ -42,17 +42,9 @@ import {
 } from "@/lib/birds";
 import { MultibirMixCalculator, type MixResult } from "@/lib/calculator-multi-bird";
 import { getPreparationInstructions, getProcessingWarning, isToxicRaw } from "@/lib/safety";
+import { getStarterInventory } from "@/lib/inventory-presets";
 import { cn } from "@/lib/utils";
 import { Link } from "wouter";
-
-const defaultInventory: Record<string, number> = {
-  wheat: 5000,
-  corn_yellow: 3000,
-  peas: 2000,
-  lentils: 1000,
-  safflower: 500,
-  barley: 2000,
-};
 
 type NutrientKey = "protein" | "carbs" | "fat" | "fiber";
 
@@ -60,7 +52,7 @@ export default function Home() {
   const [selectedBird, setSelectedBird] = useState<BirdType>("pigeon");
   const [situation, setSituation] = useState("pet");
   const [targetWeight, setTargetWeight] = useState(1000);
-  const [inventory, setInventory] = useState<Record<string, number>>(defaultInventory);
+  const [inventory, setInventory] = useState<Record<string, number>>(() => getStarterInventory("pigeon", "pet"));
   const [result, setResult] = useState<MixResult | null>(null);
   const [activeTab, setActiveTab] = useState("calculator");
   const [ingredientSearch, setIngredientSearch] = useState("");
@@ -105,6 +97,11 @@ export default function Home() {
   useEffect(() => {
     if (!availableSituations.includes(situation)) setSituation(availableSituations[0]);
   }, [availableSituations, situation]);
+
+  useEffect(() => {
+    if (!availableSituations.includes(situation)) return;
+    setInventory(getStarterInventory(selectedBird, situation));
+  }, [availableSituations, selectedBird, situation]);
 
   useEffect(() => {
     const calculator = new MultibirMixCalculator(inventory, selectedBird, situation);
@@ -352,13 +349,13 @@ export default function Home() {
                 <NutritionCard label="Fiber" value={result.nutrition.fiber} target={currentProfile.nutrition.fiber} color="bg-[var(--chart-4)]" />
               </div>
 
-              <Card className="overflow-hidden border-none shadow-xl">
+              <Card className="border-none shadow-xl">
                 <Tabs value={activeTab} onValueChange={setActiveTab}>
-                  <div className="border-b bg-muted/30 p-2">
-                    <TabsList className="grid h-auto w-full grid-cols-3 bg-transparent">
-                      <TabsTrigger value="calculator">Optimized Mix</TabsTrigger>
-                      <TabsTrigger value="herbs">Herbs & Supplements</TabsTrigger>
-                      <TabsTrigger value="analysis">Detailed Analysis</TabsTrigger>
+                  <div className="overflow-x-auto border-b bg-muted/30 p-2" aria-label="Calculator sections">
+                    <TabsList className="flex h-auto min-w-[510px] w-full justify-stretch bg-transparent">
+                      <TabsTrigger value="calculator" className="flex-1 whitespace-nowrap">Optimized Mix</TabsTrigger>
+                      <TabsTrigger value="herbs" className="flex-1 whitespace-nowrap">Herbs & Supplements</TabsTrigger>
+                      <TabsTrigger value="analysis" className="flex-1 whitespace-nowrap">Detailed Analysis</TabsTrigger>
                     </TabsList>
                   </div>
                 </Tabs>
@@ -376,7 +373,7 @@ export default function Home() {
 
                     {result.missingIngredients?.length ? <div className="mb-6 space-y-3 rounded-lg border border-red-200 bg-red-50 p-4 text-red-900"><div className="flex items-start gap-3"><AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" /><div className="flex-1"><h3 className="mb-2 font-bold">Missing Essential Ingredients</h3>{result.missingIngredients.map((item) => <div key={item.category} className="mb-3 last:mb-0"><p className="mb-1 text-sm font-medium text-red-800">{item.category}</p><p className="mb-2 text-sm text-red-700">{item.reason}</p><div className="flex flex-wrap gap-2">{item.recommendations.map((recommendation) => <Badge key={recommendation} variant="outline" className="border-red-300 bg-red-100 text-red-900">{recommendation}</Badge>)}</div></div>)}</div></div></div> : null}
 
-                    {Object.keys(result.mix).length ? <>{diversitySuggestion && <div className="flex items-start gap-3 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-950"><Leaf className="mt-0.5 h-4 w-4 shrink-0 text-emerald-700" /><p><strong className="font-semibold">Ingredient diversity:</strong> {diversitySuggestion}</p></div>}<div className="overflow-hidden rounded-lg border"><table className="w-full text-sm"><thead className="bg-muted/50 text-muted-foreground"><tr><th className="px-4 py-3 text-left">Ingredient</th><th className="px-4 py-3 text-right">Amount</th><th className="px-4 py-3 text-right">Batch share</th><th className="px-4 py-3 text-left">Category</th></tr></thead><tbody className="divide-y">{Object.entries(result.mix).sort(([, left], [, right]) => right - left).map(([name, amount]) => <tr key={name}><td className="px-4 py-3 font-medium capitalize">{name.replace(/_/g, " ")}</td><td className="px-4 py-3 text-right font-mono">{Math.round(amount)}g</td><td className="px-4 py-3 text-right">{((amount / result.targetWeight) * 100).toFixed(1)}%</td><td className="px-4 py-3"><Badge variant="secondary" className={cn("capitalize font-normal", INGREDIENTS[name].category === "grain" && "bg-amber-100 text-amber-800 hover:bg-amber-200", INGREDIENTS[name].category === "legume" && "bg-emerald-100 text-emerald-800 hover:bg-emerald-200", INGREDIENTS[name].category === "seed" && "bg-stone-100 text-stone-800 hover:bg-stone-200")}>{INGREDIENTS[name].category}</Badge></td></tr>)}</tbody></table></div>{Object.entries(result.mix).some(([name]) => getPreparationInstructions(name)) && <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><h3 className="mb-2 flex items-center gap-2 font-semibold"><Info className="h-4 w-4" />Preparation instructions</h3><ul className="space-y-2">{Object.keys(result.mix).filter((name) => getPreparationInstructions(name)).map((name) => { const preparation = getPreparationInstructions(name); const birdGuidance = preparation?.birdGuidance?.[selectedBird]; return <li key={name}><strong className="capitalize">{name.replace(/_/g, " ")}:</strong> {preparation?.preparation}{birdGuidance && <span className="block pl-1 text-amber-900">{birdGuidance}</span>}</li>; })}</ul></div>}</> : <p className="rounded-lg border border-dashed p-10 text-center text-sm text-muted-foreground">There is no safe, compatible ingredient combination to estimate yet.</p>}<ReportIssueLink section="Optimized Mix" bird={birdProfile.name} profile={currentProfile.name} />
+                    {Object.keys(result.mix).length ? <>{diversitySuggestion && <div className="flex items-start gap-3 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-950"><Leaf className="mt-0.5 h-4 w-4 shrink-0 text-emerald-700" /><p><strong className="font-semibold">Ingredient diversity:</strong> {diversitySuggestion}</p></div>}<div className="rounded-lg border"><div className="overflow-x-auto"><table className="min-w-[560px] w-full text-sm"><thead className="bg-muted/50 text-muted-foreground"><tr><th className="px-4 py-3 text-left">Ingredient</th><th className="px-4 py-3 text-right">Amount</th><th className="px-4 py-3 text-right">Batch share</th><th className="px-4 py-3 text-left">Category</th></tr></thead><tbody className="divide-y">{Object.entries(result.mix).sort(([, left], [, right]) => right - left).map(([name, amount]) => <tr key={name}><td className="px-4 py-3 font-medium capitalize">{name.replace(/_/g, " ")}</td><td className="px-4 py-3 text-right font-mono">{Math.round(amount)}g</td><td className="px-4 py-3 text-right">{((amount / result.targetWeight) * 100).toFixed(1)}%</td><td className="px-4 py-3"><Badge variant="secondary" className={cn("capitalize font-normal", INGREDIENTS[name].category === "grain" && "bg-amber-100 text-amber-800 hover:bg-amber-200", INGREDIENTS[name].category === "legume" && "bg-emerald-100 text-emerald-800 hover:bg-emerald-200", INGREDIENTS[name].category === "seed" && "bg-stone-100 text-stone-800 hover:bg-stone-200")}>{INGREDIENTS[name].category}</Badge></td></tr>)}</tbody></table></div></div><p className="text-xs text-muted-foreground sm:hidden">Swipe the formula table sideways to view all columns.</p>{Object.entries(result.mix).some(([name]) => getPreparationInstructions(name)) && <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><h3 className="mb-2 flex items-center gap-2 font-semibold"><Info className="h-4 w-4" />Preparation instructions</h3><ul className="space-y-2">{Object.keys(result.mix).filter((name) => getPreparationInstructions(name)).map((name) => { const preparation = getPreparationInstructions(name); const birdGuidance = preparation?.birdGuidance?.[selectedBird]; return <li key={name}><strong className="capitalize">{name.replace(/_/g, " ")}:</strong> {preparation?.preparation}{birdGuidance && <span className="block pl-1 text-amber-900">{birdGuidance}</span>}</li>; })}</ul></div>}</> : <p className="rounded-lg border border-dashed p-10 text-center text-sm text-muted-foreground">There is no safe, compatible ingredient combination to estimate yet.</p>}<ReportIssueLink section="Optimized Mix" bird={birdProfile.name} profile={currentProfile.name} />
 
                   </div>}
 

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://bird-food-calculator-25e6d.web.app/sitemap.xml
