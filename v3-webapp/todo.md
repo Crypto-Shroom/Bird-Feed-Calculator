@@ -93,3 +93,4 @@
 - [ ] Trace and restore the optimized-mix ingredient-diversity suggestion box when a valid batch estimate does not currently surface it.
 - [ ] Make raw adzuki-bean safety messaging explicit and red while retaining its approved cooked or properly processed guidance.
 - [x] Repair the GitHub Actions Firebase deployment workflow so it installs and verifies dependencies inside v3-webapp before deploying merged main.
+- [x] Adopt an issue-linked pull-request workflow with concise scope, validation, decision, and handoff comments for every substantive repository change.

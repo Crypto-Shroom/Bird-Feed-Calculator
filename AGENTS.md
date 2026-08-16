@@ -18,7 +18,10 @@
 
 - Prefer focused branches and pull requests for ordinary V3 changes. Use a direct commit to `main` only when the product owner explicitly approves that exception.
 - Explain user-visible effects in plain language. For any proposed nutrition, safety, or formulation change, show the exact before-and-after wording or values before implementation.
-- Run the relevant checks before opening a pull request: `pnpm check`, `pnpm test:calculator`, and `pnpm build` from the repository root.
+- Link every substantive change to an existing GitHub issue or create a focused issue before implementation. A substantive change includes user-visible behaviour, formulation or safety data, deployment, automation, documentation policy, or repository structure. Trivial typo corrections and routine branch maintenance may be handled without a new issue when they have no such impact.
+- Each pull request must include `Closes #<issue>` or `Relates to #<issue>`, a concise scope and user-impact summary, validation performed, implementation decisions, and any follow-up deliberately left out of scope.
+- Use normal developer comments to log meaningful milestones: implementation handoff, review findings, owner-approved merge, deployment outcome, and any blocker. Keep comments specific and readable; do not add unrelated process commentary to feature PRs.
+- Run the relevant checks before opening a pull request: `pnpm --dir v3-webapp check`, `pnpm --dir v3-webapp test:calculator`, `pnpm --dir v3-webapp test:herb-safety`, and `pnpm --dir v3-webapp build` when applicable.
 - Do not merge a pull request without explicit product-owner approval.
 
 ## Review focus
