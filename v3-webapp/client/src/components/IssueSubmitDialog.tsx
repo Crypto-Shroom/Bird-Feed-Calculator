@@ -15,6 +15,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { AlertCircle, CheckCircle2, ExternalLink, Loader2, Send } from "lucide-react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
+import { parseIssueCreationResponse } from "@/lib/issue-submission";
 
 interface IssueSubmitDialogProps {
   triggerLabel: React.ReactNode;
@@ -65,15 +66,14 @@ export function IssueSubmitDialog({
         body: JSON.stringify({ title, body, labels }),
       });
       const text = await response.text();
-      let data: { html_url?: string; error?: string } = {};
-      try {
-        data = text ? JSON.parse(text) : {};
-      } catch {
-        data = { error: text || "Server returned an invalid response." };
-      }
-      if (!response.ok) throw new Error(data.error || `Server error (${response.status})`);
+      const data = parseIssueCreationResponse({
+        ok: response.ok,
+        status: response.status,
+        contentType: response.headers.get("content-type"),
+        body: text,
+      });
 
-      setGithubUrl(data.html_url || directGithubUrl);
+      setGithubUrl(data.html_url);
       setSubmissionMode("created");
       return;
     } catch {
