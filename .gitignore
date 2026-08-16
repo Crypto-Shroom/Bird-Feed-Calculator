@@ -22,3 +22,8 @@
 
 # Generated V0 scenario output; preserved source examples remain in the repository.
 v0-python-only/test_*.txt
+
+# Archive folders containing historical large binary assets
+archive/
+v1-original/
+v2-vite-fix/
