@@ -100,3 +100,5 @@
 - [ ] Process new report documents into GitHub issues once per day through an idempotent GitHub Actions workflow.
 - [ ] Compare Spark-plus-Firestore architecture with genuinely free server-hosting alternatives.
 - [ ] Replace the incorrect curved-arrow favicon with an unmistakable pigeon mark.
+- [ ] Make calculator tabs and optimized-formula table readable and horizontally scrollable on mobile.
+- [ ] Make default inventory selections change predictably with the active bird and situation profile without changing nutritional formulations.
