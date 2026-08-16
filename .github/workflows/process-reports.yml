@@ -22,7 +22,7 @@ jobs:
       - name: Install Dependencies
         run: |
           cd v3-webapp
-          npm install firebase-admin axios
+          npm install --legacy-peer-deps firebase-admin axios
 
       - name: Run Report Processor
         env:
