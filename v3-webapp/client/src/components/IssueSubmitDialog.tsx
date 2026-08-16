@@ -26,15 +26,27 @@ export function IssueSubmitDialog({
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState(defaultTitle);
   const [body, setBody] = useState(defaultBody);
-  const [websiteUrl, setWebsiteUrl] = useState(""); // Honeypot field for bot protection
+  const [websiteUrl, setWebsiteUrl] = useState(""); // Honeypot
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [successUrl, setSuccessUrl] = useState<string | null>(null);
+  const [fallbackUrl, setFallbackUrl] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    setFallbackUrl(null);
+
+    // Build direct GitHub new-issue URL as a robust fallback for static / Spark hosting
+    const query = new URLSearchParams({
+      title,
+      body: `${body}\n\n---\n*Submitted via Pigeon Seed Mix Calculator in-app assistant.*`,
+    });
+    if (labels && labels.length > 0) {
+      query.set("labels", labels.join(","));
+    }
+    const directGithubUrl = `https://github.com/Crypto-Shroom/Bird-Feed-Calculator/issues/new?${query.toString()}`;
 
     try {
       const response = await fetch("/api/submit-issue", {
@@ -43,21 +55,30 @@ export function IssueSubmitDialog({
         body: JSON.stringify({ title, body, labels, websiteUrl }),
       });
 
-      const text = await response.text();
-      let data: any = {};
-      try {
-        data = text ? JSON.parse(text) : {};
-      } catch {
-        data = { error: text || "Server returned an invalid response." };
-      }
-
       if (!response.ok) {
+        // If API endpoint is missing (404) or not hosted on static Spark tier, offer direct GitHub submission fallback cleanly
+        if (response.status === 404 || response.status === 501 || response.status === 405) {
+          setFallbackUrl(directGithubUrl);
+          setLoading(false);
+          return;
+        }
+
+        const text = await response.text();
+        let data: any = {};
+        try {
+          data = text ? JSON.parse(text) : {};
+        } catch {
+          data = { error: text || "Server returned an invalid response." };
+        }
         throw new Error(data.error || `Server error (${response.status})`);
       }
 
-      setSuccessUrl(data.html_url);
+      const text = await response.text();
+      const data = text ? JSON.parse(text) : {};
+      setSuccessUrl(data.html_url || directGithubUrl);
     } catch (err: any) {
-      setError(err.message || "Something went wrong while submitting to GitHub.");
+      // If network or API failure occurs, provide direct GitHub fallback link so user is never blocked
+      setFallbackUrl(directGithubUrl);
     } finally {
       setLoading(false);
     }
@@ -65,6 +86,7 @@ export function IssueSubmitDialog({
 
   const handleReset = () => {
     setSuccessUrl(null);
+    setFallbackUrl(null);
     setError(null);
     setOpen(false);
   };
@@ -84,23 +106,27 @@ export function IssueSubmitDialog({
           </DialogDescription>
         </DialogHeader>
 
-        {successUrl ? (
+        {successUrl || fallbackUrl ? (
           <div className="py-6 text-center space-y-4">
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
               <CheckCircle2 className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-bold">Request Successfully Submitted!</h3>
+            <h3 className="text-lg font-bold">
+              {successUrl ? "Request Successfully Submitted!" : "Ready to Post to GitHub"}
+            </h3>
             <p className="text-sm text-muted-foreground">
-              Your suggestion or report has been posted to GitHub as a tracked issue. The project owner will review the research needed.
+              {successUrl
+                ? "Your suggestion or report has been posted to GitHub as a tracked issue."
+                : "Since Firebase Hosting is currently running on static-only free hosting (Spark plan without server functions), click below to open your pre-filled issue directly on GitHub in one click."}
             </p>
             <div>
               <a
-                href={successUrl}
+                href={successUrl || fallbackUrl || "#"}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-md bg-emerald-700 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-800"
               >
-                View Created GitHub Issue <ExternalLink className="h-4 w-4" />
+                {successUrl ? "View Created GitHub Issue" : "Open Pre-filled GitHub Issue"} <ExternalLink className="h-4 w-4" />
               </a>
             </div>
             <div className="pt-2">
@@ -118,7 +144,7 @@ export function IssueSubmitDialog({
               </div>
             )}
 
-            {/* Hidden honeypot field for bot protection */}
+            {/* Hidden honeypot field */}
             <div className="hidden" aria-hidden="true">
               <label htmlFor="websiteUrl">Website</label>
               <input
@@ -161,7 +187,7 @@ export function IssueSubmitDialog({
               </Button>
               <Button type="submit" disabled={loading} className="bg-emerald-700 hover:bg-emerald-800 text-white">
                 {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                Submit to GitHub
+                Continue to GitHub
               </Button>
             </div>
           </form>
