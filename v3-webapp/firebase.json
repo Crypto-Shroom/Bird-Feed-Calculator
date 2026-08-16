@@ -8,27 +8,9 @@
     ],
     "rewrites": [
       {
-        "source": "/api/submit-issue",
-        "function": "submitIssue"
-      },
-      {
         "source": "**",
         "destination": "/index.html"
       }
-    ]
-  },
-  "functions": {
-    "source": "functions",
-    "codebase": "default",
-    "ignore": [
-      "node_modules",
-      ".git",
-      "firebase-debug.log",
-      "UI-Debug.log",
-      "*.local"
-    ],
-    "predeploy": [
-      "npm --prefix \"$RESOURCE_DIR\" run build"
     ]
   }
 }
