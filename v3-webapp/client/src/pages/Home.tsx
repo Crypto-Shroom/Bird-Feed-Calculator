@@ -12,6 +12,7 @@ import {
   Info,
   Leaf,
   Plus,
+  RotateCcw,
   Scale,
   Search,
   Trash2,
@@ -153,6 +154,12 @@ export default function Home() {
       delete updated[name];
       return updated;
     });
+  };
+
+  const resetToStandardMix = () => {
+    setInventory(getStarterInventory(selectedBird, situation));
+    setIngredientSearch("");
+    setAddOpen(false);
   };
 
   const exportRecipe = () => {
@@ -311,6 +318,7 @@ export default function Home() {
                 <CardDescription>Enter the available amount of each ingredient in grams. Unsafe or incompatible ingredients are not offered for this bird.</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
+                <div className="grid gap-2 sm:grid-cols-2">
                 <Popover open={addOpen} onOpenChange={setAddOpen}>
                   <PopoverTrigger asChild>
                     <Button type="button" variant="outline" className="w-full justify-start gap-2"><Plus className="h-4 w-4" />Add compatible ingredient</Button>
@@ -337,6 +345,10 @@ export default function Home() {
                     </ScrollArea>
                   </PopoverContent>
                 </Popover>
+                  <Button type="button" variant="outline" className="w-full justify-start gap-2" onClick={resetToStandardMix} title={`Restore the ${birdProfile.name} ${currentProfile.name} standard inventory`}>
+                    <RotateCcw className="h-4 w-4" />Reset to standard mix
+                  </Button>
+                </div>
 
                 <div className="space-y-3">
                   {Object.entries(inventory).map(([name, amount]) => {
