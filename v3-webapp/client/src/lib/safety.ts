@@ -188,7 +188,7 @@ export const INGREDIENT_PREP: Record<string, IngredientPrep> = {
   "adzuki_beans": {
     name: "Adzuki Beans",
     preparation: "Soak, then boil until completely soft; drain and cool before feeding",
-    notes: "Soaking and cooking reduce phytic acid, tannins, and trypsin-inhibitor activity in adzuki beans.",
+    notes: "RAW ADZUKI BEANS ARE TOXIC. Soak and boil until completely soft before feeding; never offer raw or undercooked beans.",
     birdGuidance: {
       pigeon: "Offer cooked adzuki beans whole or split, mixed with the usual grain/seed formula.",
       chicken: "Offer cooked adzuki beans as a limited part of a balanced poultry ration.",

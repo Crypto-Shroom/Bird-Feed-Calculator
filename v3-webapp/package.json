@@ -12,6 +12,7 @@
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
     "test:calculator": "tsx scripts/verify-calculator.mjs",
+    "test:herb-safety": "tsx scripts/verify-herb-safety.mjs",
     "test:github-app": "tsx scripts/verify-github-app-auth.mjs",
     "format": "prettier --write ."
   },

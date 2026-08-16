@@ -1,4 +1,5 @@
 // Design contract: Modern Agrarian / Organic Tech — a warm, editorial feed workshop that communicates scope and safety clearly without overstating nutrition precision.
+// Design contract: Modern Agrarian / Organic Tech — retain the practical calculator rhythm while keeping contribution prompts compact, friendly, and safety-aware.
 import { useEffect, useMemo, useState } from "react";
 import {
   AlertTriangle,
@@ -32,6 +33,7 @@ import { PersonalizedSupplementMix } from "@/components/PersonalizedSupplementMi
 import { IssueSubmitDialog } from "@/components/IssueSubmitDialog";
 import { HERB_RECOMMENDATIONS, HERBS_SUPPLEMENTS, INGREDIENTS } from "@/lib/data";
 import { checkBirdToxicity, isIngredientCompatible } from "@/lib/bird-safety";
+import { getEligibleHerbNames } from "@/lib/herb-evidence";
 import {
   BIRD_CARE,
   BIRD_PROFILES,
@@ -45,8 +47,6 @@ import { getPreparationInstructions, getProcessingWarning, isToxicRaw } from "@/
 import { getStarterInventory } from "@/lib/inventory-presets";
 import { cn } from "@/lib/utils";
 import { Link } from "wouter";
-
-type NutrientKey = "protein" | "carbs" | "fat" | "fiber";
 
 export default function Home() {
   const [selectedBird, setSelectedBird] = useState<BirdType>("pigeon");
@@ -67,32 +67,22 @@ export default function Home() {
     if (!recommendation) return null;
     return {
       notes: recommendation.notes,
-      herbs: recommendation.recommended
+      herbs: getEligibleHerbNames(recommendation.recommended, selectedBird)
         .map((name) => ({ name, herb: HERBS_SUPPLEMENTS[name] }))
         .filter((entry): entry is { name: string; herb: NonNullable<typeof entry.herb> } => Boolean(entry.herb)),
     };
-  }, [situation]);
+  }, [selectedBird, situation]);
 
   const diversitySuggestion = useMemo(() => {
     if (!result || result.missingIngredients?.length || !Object.keys(result.mix).length) return null;
 
-    const nutritionIsInRange = (Object.keys(currentProfile.nutrition) as NutrientKey[]).every((key) => {
-      const [min, max] = currentProfile.nutrition[key];
-      return result.nutrition[key] >= min && result.nutrition[key] <= max;
-    });
-    if (!nutritionIsInRange) return null;
-
-    const candidate = Object.keys(inventory)
-      .filter((name) => !result.mix[name] && inventory[name] > 0)
+    const candidate = ["barley", "oats", "millet", "sorghum", "buckwheat", "wheat", "rice_brown"]
+      .filter((name) => !result.mix[name])
       .filter((name) => isIngredientCompatible(name, selectedBird) && !isToxicRaw(name) && !checkBirdToxicity(name, selectedBird) && !getProcessingWarning(name))
-      .sort((left, right) => {
-        const leftGrain = INGREDIENTS[left]?.category === "grain" ? 0 : 1;
-        const rightGrain = INGREDIENTS[right]?.category === "grain" ? 0 : 1;
-        return leftGrain - rightGrain || left.localeCompare(right);
-      })[0];
+      .find((name) => INGREDIENTS[name]?.category === "grain");
 
     return candidate ? `Try offering ${candidate.replace(/_/g, " ")} alongside this mix to increase diversity for your bird.` : null;
-  }, [currentProfile.nutrition, inventory, result, selectedBird]);
+  }, [result, selectedBird]);
 
   useEffect(() => {
     if (!availableSituations.includes(situation)) setSituation(availableSituations[0]);
@@ -214,7 +204,7 @@ export default function Home() {
       <main className="container relative z-10 -mt-14 pb-16">
         <section aria-labelledby="bird-selector-heading" className="mb-8 rounded-xl border bg-card p-5 shadow-lg">
           <h2 id="bird-selector-heading" className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Choose a bird</h2>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-7">
             {BIRD_TYPES.map((bird) => {
               const profile = BIRD_PROFILES[bird];
               const selected = bird === selectedBird;
@@ -234,6 +224,23 @@ export default function Home() {
                 </button>
               );
             })}
+            <IssueSubmitDialog
+              triggerLabel={<><Plus className="h-6 w-6" aria-hidden="true" /><span className="text-sm font-semibold">Suggest bird</span></>}
+              triggerClassName="flex aspect-square min-h-[108px] flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-emerald-300 bg-emerald-50/40 p-4 text-center text-emerald-900 transition-colors hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              defaultTitle="[Bird research] Suggest a bird"
+              defaultBody={[
+                "## Requested bird",
+                "",
+                "## Intended use and life stage",
+                "",
+                "## Known dietary considerations or source links",
+                "",
+                "## Research request",
+                "Please research nutrition targets, safe ingredients, toxicity boundaries, and suitable profiles before any calculator data is added.",
+              ].join("\n")}
+              labels={["needs-research", "bird-request"]}
+              helperText="Suggestions are queued for research and product-owner review. They never add a live calculator bird automatically."
+            />
           </div>
         </section>
 
@@ -246,15 +253,36 @@ export default function Home() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-2">
-                  <label htmlFor="situation" className="text-sm font-medium text-muted-foreground">Current situation</label>
-                  <Select value={situation} onValueChange={setSituation}>
-                    <SelectTrigger id="situation" className="h-12 text-base"><SelectValue /></SelectTrigger>
-                    <SelectContent>
-                      {availableSituations.map((value) => (
-                        <SelectItem key={value} value={value}>{birdProfile.profiles[value].name}</SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  <div className="flex items-end gap-3">
+                    <div className="min-w-0 flex-1 space-y-2">
+                      <label htmlFor="situation" className="text-sm font-medium text-muted-foreground">Current situation</label>
+                      <Select value={situation} onValueChange={setSituation}>
+                        <SelectTrigger id="situation" className="h-12 text-base"><SelectValue /></SelectTrigger>
+                        <SelectContent>
+                          {availableSituations.map((value) => (
+                            <SelectItem key={value} value={value}>{birdProfile.profiles[value].name}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <IssueSubmitDialog
+                      triggerLabel={<><Plus className="h-5 w-5" aria-hidden="true" /><span className="sr-only">Suggest profile</span></>}
+                      triggerClassName="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-md border-2 border-dashed border-emerald-300 bg-emerald-50 text-emerald-900 transition-colors hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                      defaultTitle={`[Profile research] ${birdProfile.name}`}
+                      defaultBody={[
+                        `## Bird\n${birdProfile.name}`,
+                        "",
+                        "## Suggested profile name",
+                        "",
+                        "## Intended use, life stage, or condition",
+                        "",
+                        "## Research request",
+                        "Please research nutrition targets, suitability, safety boundaries, and source support before any calculator profile is added.",
+                      ].join("\n")}
+                      labels={["needs-research", "profile-request"]}
+                      helperText="Suggestions are queued for research and product-owner review. They never alter an existing profile automatically."
+                    />
+                  </div>
                   <div className="rounded-md border bg-muted/40 p-3">
                     <p className="text-sm text-muted-foreground">{currentProfile.feedingNotes}</p>
                     {currentProfile.contextNote && <p className="mt-2 text-xs leading-relaxed text-muted-foreground/80">{currentProfile.contextNote}</p>}
@@ -319,8 +347,9 @@ export default function Home() {
                     const preparation = getPreparationInstructions(name)?.preparation;
                     const peanutGuidance = name === "peanuts" || name === "peanuts_raw" || name === "peanuts_roasted" ? getPreparationInstructions(name)?.notes : null;
                     const popcornGuidance = name === "popcorn" ? INGREDIENTS[name].notes : null;
+                    const adzukiSafety = name === "adzuki_beans" ? getPreparationInstructions(name)?.notes : null;
                     return (
-                      <div key={name} className={cn("group rounded-lg border p-3", hasConcern ? "border-red-300 bg-red-50" : "bg-card")}>
+                      <div key={name} className={cn("group rounded-lg border p-3", hasConcern || adzukiSafety ? "border-red-300 bg-red-50" : "bg-card")}>
                         <div className="mb-2 flex items-start justify-between gap-3">
                           <div>
                             <label htmlFor={`amount-${name}`} className="text-sm font-medium capitalize">{name.replace(/_/g, " ")}{preparation && <span className="ml-1 text-xs font-normal text-muted-foreground">(Preparation: {preparation})</span>}</label>
@@ -328,6 +357,7 @@ export default function Home() {
                           <Button type="button" variant="ghost" size="icon" aria-label={`Remove ${name.replace(/_/g, " ")}`} onClick={() => removeIngredient(name)} className="h-8 w-8 text-muted-foreground hover:text-destructive"><Trash2 className="h-4 w-4" /></Button>
                         </div>
                         {hasConcern && <p className="mb-2 rounded bg-red-100 p-2 text-xs font-medium text-red-900">Excluded from the formula: {speciesToxicity?.description || rawSafety?.message || processingWarning || `not compatible with ${birdProfile.name}`}.</p>}
+                        {adzukiSafety && <p className="mb-2 flex items-start gap-1.5 rounded border border-red-300 bg-red-100 p-2 text-xs font-semibold text-red-950"><AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />{adzukiSafety}</p>}
                         {peanutGuidance && <p className="mb-2 rounded border border-amber-200 bg-amber-50 p-2 text-xs font-medium text-amber-950"><strong>Peanut treat:</strong> {peanutGuidance}</p>}
                         {popcornGuidance && <p className="mb-2 flex items-start gap-1.5 rounded border border-blue-200 bg-blue-50 p-2 text-xs font-medium text-blue-950"><Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />{popcornGuidance}</p>}
                         <Input id={`amount-${name}`} type="number" min="0" value={amount} onChange={(event) => updateAmount(name, Number(event.target.value))} aria-label={`${name.replace(/_/g, " ")} amount in grams`} />
@@ -392,7 +422,7 @@ export default function Home() {
                       </div>
                       {herbRecommendation?.herbs.length ? <div className="grid gap-4 md:grid-cols-2">{herbRecommendation.herbs.map(({ name, herb }) => <HerbCard key={name} name={name} herb={herb} />)}</div> : <p className="rounded-lg border border-dashed p-8 text-center text-sm text-muted-foreground">No specific herb recommendations are recorded for this profile.</p>}
                     </section>
-                    <PersonalizedSupplementMix />
+                    <PersonalizedSupplementMix bird={selectedBird} />
                     <ReportIssueLink section="Herbs & Supplements" bird={birdProfile.name} profile={currentProfile.name} />
                   </div>}
 
