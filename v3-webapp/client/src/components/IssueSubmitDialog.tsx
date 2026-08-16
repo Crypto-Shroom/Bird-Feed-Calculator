@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { CheckCircle2, AlertCircle, Loader2, ExternalLink } from "lucide-react";
+import { CheckCircle2, Loader2, ExternalLink } from "lucide-react";
 
 interface IssueSubmitDialogProps {
   triggerLabel: React.ReactNode;
@@ -26,19 +26,14 @@ export function IssueSubmitDialog({
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState(defaultTitle);
   const [body, setBody] = useState(defaultBody);
-  const [websiteUrl, setWebsiteUrl] = useState(""); // Honeypot
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [successUrl, setSuccessUrl] = useState<string | null>(null);
   const [fallbackUrl, setFallbackUrl] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError(null);
-    setFallbackUrl(null);
 
-    // Build direct GitHub new-issue URL as a robust fallback for static / Spark hosting
+    // Build direct GitHub new-issue URL immediately for robust static / Spark hosting reliability
     const query = new URLSearchParams({
       title,
       body: `${body}\n\n---\n*Submitted via Pigeon Seed Mix Calculator in-app assistant.*`,
@@ -48,46 +43,15 @@ export function IssueSubmitDialog({
     }
     const directGithubUrl = `https://github.com/Crypto-Shroom/Bird-Feed-Calculator/issues/new?${query.toString()}`;
 
-    try {
-      const response = await fetch("/api/submit-issue", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, body, labels, websiteUrl }),
-      });
-
-      if (!response.ok) {
-        // If API endpoint is missing (404) or not hosted on static Spark tier, offer direct GitHub submission fallback cleanly
-        if (response.status === 404 || response.status === 501 || response.status === 405) {
-          setFallbackUrl(directGithubUrl);
-          setLoading(false);
-          return;
-        }
-
-        const text = await response.text();
-        let data: any = {};
-        try {
-          data = text ? JSON.parse(text) : {};
-        } catch {
-          data = { error: text || "Server returned an invalid response." };
-        }
-        throw new Error(data.error || `Server error (${response.status})`);
-      }
-
-      const text = await response.text();
-      const data = text ? JSON.parse(text) : {};
-      setSuccessUrl(data.html_url || directGithubUrl);
-    } catch (err: any) {
-      // If network or API failure occurs, provide direct GitHub fallback link so user is never blocked
+    // Simulate short network tick then present direct GitHub issue action
+    setTimeout(() => {
       setFallbackUrl(directGithubUrl);
-    } finally {
       setLoading(false);
-    }
+    }, 400);
   };
 
   const handleReset = () => {
-    setSuccessUrl(null);
     setFallbackUrl(null);
-    setError(null);
     setOpen(false);
   };
 
@@ -106,27 +70,23 @@ export function IssueSubmitDialog({
           </DialogDescription>
         </DialogHeader>
 
-        {successUrl || fallbackUrl ? (
+        {fallbackUrl ? (
           <div className="py-6 text-center space-y-4">
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
               <CheckCircle2 className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-bold">
-              {successUrl ? "Request Successfully Submitted!" : "Ready to Post to GitHub"}
-            </h3>
+            <h3 className="text-lg font-bold">Ready to Post to GitHub</h3>
             <p className="text-sm text-muted-foreground">
-              {successUrl
-                ? "Your suggestion or report has been posted to GitHub as a tracked issue."
-                : "Since Firebase Hosting is currently running on static-only free hosting (Spark plan without server functions), click below to open your pre-filled issue directly on GitHub in one click."}
+              Click below to open your pre-filled issue directly on GitHub in one click. All notes and context are already attached.
             </p>
             <div>
               <a
-                href={successUrl || fallbackUrl || "#"}
+                href={fallbackUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-md bg-emerald-700 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-800"
               >
-                {successUrl ? "View Created GitHub Issue" : "Open Pre-filled GitHub Issue"} <ExternalLink className="h-4 w-4" />
+                Open Pre-filled GitHub Issue <ExternalLink className="h-4 w-4" />
               </a>
             </div>
             <div className="pt-2">
@@ -137,27 +97,6 @@ export function IssueSubmitDialog({
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4 py-2">
-            {error && (
-              <div className="flex items-center gap-2 rounded-md bg-red-50 p-3 text-sm text-red-900 border border-red-200">
-                <AlertCircle className="h-4 w-4 shrink-0 text-red-600" />
-                <span>{error}</span>
-              </div>
-            )}
-
-            {/* Hidden honeypot field */}
-            <div className="hidden" aria-hidden="true">
-              <label htmlFor="websiteUrl">Website</label>
-              <input
-                type="text"
-                id="websiteUrl"
-                name="websiteUrl"
-                value={websiteUrl}
-                onChange={(e) => setWebsiteUrl(e.target.value)}
-                tabIndex={-1}
-                autoComplete="off"
-              />
-            </div>
-
             <div className="space-y-2">
               <Label htmlFor="issue-title">Issue Title</Label>
               <Input
