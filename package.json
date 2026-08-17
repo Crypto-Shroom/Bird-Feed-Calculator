@@ -7,6 +7,7 @@
     "dev": "pnpm --dir v3-webapp dev",
     "check": "pnpm --dir v3-webapp check",
     "test:calculator": "pnpm --dir v3-webapp test:calculator",
+    "test:provenance": "node database/tools/validate-provenance-ledger.mjs && pnpm --dir v3-webapp exec vitest run src/lib/provenance-ledger.test.ts",
     "build": "pnpm --dir v3-webapp build"
   }
 }

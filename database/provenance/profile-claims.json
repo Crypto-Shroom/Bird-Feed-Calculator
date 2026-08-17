@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Future source-level reconciliation records for active and historical profile targets. This first no-runtime-change ledger release intentionally seeds no runtime target decision.",
+  "profileClaims": []
+}
