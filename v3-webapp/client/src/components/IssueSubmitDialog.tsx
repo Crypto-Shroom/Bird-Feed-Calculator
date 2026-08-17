@@ -111,7 +111,7 @@ export function IssueSubmitDialog({
   const successCopy = submissionMode === "created"
     ? "Your suggestion or report has been created as a tracked GitHub issue."
     : submissionMode === "queued"
-      ? "Your request has been saved to the secure review queue and will be processed into GitHub during the once-daily workflow."
+      ? "Your submission has been saved to the secure queue. It will be reviewed and converted to a GitHub issue during our once-daily processor run. You can also open it directly on GitHub immediately below."
       : "Your request is ready as a pre-filled GitHub issue. It was not submitted automatically because the in-app reporting service was unavailable.";
 
   return (
@@ -125,7 +125,7 @@ export function IssueSubmitDialog({
         <DialogHeader>
           <DialogTitle>Submit Request to Project Owner</DialogTitle>
           <DialogDescription>
-            Your report stays in the calculator. It is submitted directly when the review service is available, otherwise securely queued for the daily repository workflow.
+            Your report stays in the calculator.
           </DialogDescription>
         </DialogHeader>
 
