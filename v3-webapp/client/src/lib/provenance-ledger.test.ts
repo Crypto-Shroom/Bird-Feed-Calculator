@@ -46,7 +46,7 @@ describe("canonical provenance ledger", () => {
     ]);
   });
 
-  it("records the apple review for all six birds without inferring pigeon approval", () => {
+  it("records the apple review for all six birds with limited pigeon-specific evidence", () => {
     const ledger = readJson("food-reviews.json") as {
       ingredientReviews: Array<{
         ingredientId: string;
@@ -64,7 +64,9 @@ describe("canonical provenance ledger", () => {
       "canary",
       "chicken",
     ]);
-    expect(apple?.speciesEvidence.find((entry) => entry.bird === "pigeon")?.outcome).toBe("unresolved");
+    const pigeonApple = apple?.speciesEvidence.find((entry) => entry.bird === "pigeon");
+    expect(pigeonApple?.outcome).toBe("limited");
+    expect(pigeonApple?.sourceIds).toContain("modern-pet-pigeon-fruits-vegetables-2026");
     expect(apple?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
   });
 

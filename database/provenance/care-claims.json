@@ -75,14 +75,14 @@
         {
           "bird": "pigeon",
           "outcome": "limited",
-          "sourceIds": ["vca-pigeon-dove-feeding", "melbourne-pet-pigeon-diet-2023"],
-          "locator": "VCA 'Fruits and Vegetables' section; Melbourne Bird Veterinary Clinic 'A range of fresh fruit and vegetables'",
+          "sourceIds": ["vca-pigeon-dove-feeding", "melbourne-pet-pigeon-diet-2023", "modern-pet-pigeon-fruits-vegetables-2026", "palomacy-pigeon-feeding-2026"],
+          "locator": "VCA 'Fruits and Vegetables' section; Melbourne Bird Veterinary Clinic 'A range of fresh fruit and vegetables'; Modern Pet Pigeon Society 'Safe fruits and vegetables'; Palomacy 'Veggies or greens' section",
           "evidenceScope": "species_specific",
-          "rationale": "Both sources support varied, prepared fresh produce for pet pigeons; neither supports treating fresh produce as a dry-formula component or gives an apple-specific pigeon approval.",
+          "rationale": "The reviewed pigeon-specific sources support washed, finely prepared greens and vegetables with smaller fruit portions served separately from the dry diet. The Modern Pet Pigeon Society source now provides a direct pigeon-specific apple listing with seed-removal guidance. None supports treating fresh produce as a dry-formula component or a complete diet.",
           "reviewedAt": "2026-08-17"
         }
       ],
-      "proposedCopyBoundary": "May support a pigeon-specific note about offering a variety of washed, finely chopped greens and vegetables with smaller fruit portions in a separate dish. It must not name apple until a direct pigeon apple source is added.",
+      "proposedCopyBoundary": "May support a pigeon-specific note about offering a variety of washed, finely chopped greens and vegetables with smaller fruit portions in a separate dish, including prepared apple flesh. It must keep fresh produce separate from dry mix and must not imply that apple seeds, apple core, or any fresh produce is a dry-formula ingredient.",
       "lastReviewedAt": "2026-08-17"
     }
   ]

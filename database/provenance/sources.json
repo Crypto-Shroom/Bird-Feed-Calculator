@@ -312,6 +312,42 @@
       "permittedUse": "Complete-feed foundation, sparing-treatment boundary, calcium/eggshell context, and chicken feeding-management evidence.",
       "limitations": "It does not identify apples as a required ration component or set a fruit portion; treats remain incomplete feeds.",
       "accessedAt": "2026-08-17"
+    },
+    {
+      "id": "modern-pet-pigeon-fruits-vegetables-2026",
+      "title": "Fruits and vegetables",
+      "authorsOrOrganization": "Modern Pet Pigeon Society Wiki",
+      "publishedYear": "2026",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://modernpetpigeonsociety.miraheze.org/wiki/Fruits_and_vegetables?oldid=2803",
+      "speciesScopes": ["pigeon"],
+      "permittedUse": "Pigeon-specific companion-care guidance that explicitly lists fresh apple flesh among produce options and sets wash, small-piece, fruit-treat, and apple-seed-exclusion boundaries.",
+      "limitations": "Community-maintained owner guidance. Its cited references support context but it is not a nutrient analysis, a complete-ration rule, or evidence for dry-mix inclusion rates.",
+      "accessedAt": "2026-08-17"
+    },
+    {
+      "id": "pigeoncaretips-pigeon-diet-2026",
+      "title": "What do pigeons eat | Complete Guide",
+      "authorsOrOrganization": "Ismail Hossain; Pigeon Care Tips",
+      "publishedYear": "2026",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://pigeoncaretips.com/what-do-pigeons-eat/",
+      "speciesScopes": ["pigeon"],
+      "permittedUse": "Corroborative pigeon-specific keeper guidance that names small apple pieces as an occasional fresh-food addition alongside a grain-and-seed main diet.",
+      "limitations": "Non-veterinary online guidance with no cited evidence trail on the page. It is corroborative only and cannot establish nutrient values, medicinal claims, formula inclusion, or portions.",
+      "accessedAt": "2026-08-17"
+    },
+    {
+      "id": "palomacy-pigeon-feeding-2026",
+      "title": "Pigeon feeding & dove feeding",
+      "authorsOrOrganization": "Palomacy Pigeon & Dove Adoptions",
+      "publishedYear": "2026",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.pigeonrescue.org/birds/care/pigeon-feeding-dove-feeding/",
+      "speciesScopes": ["pigeon", "columbiformes"],
+      "permittedUse": "Pigeon/dove rescue guidance for washed, finely chopped vegetables and greens as separate fresh-food additions with clean water and pigeon-safe grit context.",
+      "limitations": "Rescue/owner guidance that does not name apple or establish a full fresh-produce nutrient plan, dry-mix inclusion rate, or universal feeding schedule.",
+      "accessedAt": "2026-08-17"
     }
   ]
 }

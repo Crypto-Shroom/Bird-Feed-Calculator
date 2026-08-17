@@ -22,11 +22,11 @@
       "speciesEvidence": [
         {
           "bird": "pigeon",
-          "outcome": "unresolved",
-          "sourceIds": ["vca-pigeon-dove-feeding", "vca-fruits-vegetables-birds"],
-          "locator": "VCA pigeon/dove 'Fruits and Vegetables' section; VCA broad produce recommended-items table",
-          "evidenceScope": "group_specific",
-          "rationale": "Pigeon/dove guidance supports small daily fruit portions and prepared produce, but it does not name apple. Broad companion-bird apple guidance cannot infer pigeon-specific approval.",
+          "outcome": "limited",
+          "sourceIds": ["vca-pigeon-dove-feeding", "modern-pet-pigeon-fruits-vegetables-2026", "pigeoncaretips-pigeon-diet-2026"],
+          "locator": "VCA pigeon/dove 'Fruits and Vegetables' section; Modern Pet Pigeon Society 'Safe fruits and vegetables' pome-fruit list and preparation section; Pigeon Care Tips 'What fruits or vegetables can pigeons eat?' FAQ",
+          "evidenceScope": "species_specific",
+          "rationale": "Pigeon/dove veterinary guidance supports prepared small fruit portions. The Modern Pet Pigeon Society pigeon-specific guide explicitly lists apples, with wash, small-piece, fruit-treat, and seed-removal boundaries; a pigeon-keeper guide corroborates small apple pieces as occasional additions. This supports limited prepared apple flesh only, not a dry-mix ingredient, nutrient value, or staple use.",
           "reviewedAt": "2026-08-17"
         },
         {
