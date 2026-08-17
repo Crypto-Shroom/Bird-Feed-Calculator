@@ -15,6 +15,7 @@
     "test:herb-safety": "tsx scripts/verify-herb-safety.mjs",
     "test:inventory-presets": "tsx scripts/verify-inventory-presets.mjs",
     "test:profile-default-formulas": "tsx scripts/verify-profile-default-formulas.mjs",
+    "test:issue-submission": "tsx scripts/verify-issue-submission.mjs",
     "test:github-app": "tsx scripts/verify-github-app-auth.mjs",
     "format": "prettier --write ."
   },
