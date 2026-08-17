@@ -10,7 +10,7 @@ Every reusable source is defined once in `sources.json`.
 | `title` | Yes | Source title. |
 | `authorsOrOrganization` | Yes | Named authors or responsible organization. |
 | `publishedYear` | Yes | Publication/update year; `unknown` is permitted only for protected historical project files. |
-| `sourceTier` | Yes | `primary`, `systematic_review`, `peer_reviewed_review`, `veterinary_reference`, `academic_book`, `owner_guidance_with_citations`, or `historical_project`. |
+| `sourceTier` | Yes | `primary`, `systematic_review`, `peer_reviewed_review`, `veterinary_reference`, `academic_book`, `owner_guidance_with_citations`, `historical_project`, or `runtime_configuration`. |
 | `urlOrDoi` | Yes | Stable public URL or DOI; repository-relative path for protected project evidence. |
 | `speciesScopes` | Yes | Species or species groups the source actually covers. |
 | `permittedUse` | Yes | What the source can substantiate. |
@@ -62,11 +62,23 @@ Every reusable source is defined once in `sources.json`.
 | Honest gaps | `unresolved` is valid and required when current evidence does not meet the six-bird standard. |
 | No inferred approval | A source written for pigeons cannot silently permit the food for parrots, African Greys, budgies, canaries, or chickens. |
 
+## Care claim record
+
+`care-claims.json` contains source-backed husbandry claims that may later support care cards or Detailed Analysis text. It is a no-runtime-change evidence layer.
+
+| Invariant | Requirement |
+|---|---|
+| Explicit scope | Each care-evidence row names its bird and uses `species_specific`, `group_specific`, `related_species`, or `historical_project`. |
+| Explicit outcome | Each row has a supported outcome, non-empty rationale, source ID, locator, and review date. |
+| No universal prescription | A broad lighting or husbandry source cannot justify a universal lamp, UV index, distance, duration, or treatment instruction. |
+| Proposed-copy boundary | Each care claim records exactly what public wording its evidence can and cannot support. |
+| No automatic UI change | A `proposed_not_runtime` record does not alter care cards, Detailed Analysis, or calculator behavior. |
+
 ## Profile claim record
 
-`profile-claims.json` will contain `profileClaims`. Each profile range must list its exact bird, profile name, nutrient, numeric range, source IDs, locator, evidence scope, and historical-to-active reconciliation status.
+`profile-claims.json` contains `profileClaims`. Each profile range lists its exact bird, profile name, nutrient, numeric range, source IDs, locator, evidence scope, claim kind, linked counterpart, and historical-to-active reconciliation status.
 
-The ledger does not decide which historical or current target is correct. It records their sources and differences so the owner can approve a later runtime decision.
+`claimKind` is either `protected_historical_configuration` or `runtime_configuration_snapshot`. `reconciliationStatus` is either `matches_pre_audit_configuration` or `differs_from_pre_audit_configuration`. A configuration snapshot is evidence of what the app used, **not** scientific validation of the range. The ledger does not decide which historical or current target is correct; it records their sources and differences so the owner can approve a later runtime decision.
 
 ## Historical claim record
 

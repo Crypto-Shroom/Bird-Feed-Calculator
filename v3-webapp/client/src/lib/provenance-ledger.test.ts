@@ -45,4 +45,70 @@ describe("canonical provenance ledger", () => {
       "chicken",
     ]);
   });
+
+  it("records the apple review for all six birds with limited pigeon-specific evidence", () => {
+    const ledger = readJson("food-reviews.json") as {
+      ingredientReviews: Array<{
+        ingredientId: string;
+        speciesEvidence: Array<{ bird: string; outcome: string; sourceIds: string[] }>;
+      }>;
+    };
+    const apple = ledger.ingredientReviews.find((review) => review.ingredientId === "apple");
+
+    expect(apple).toBeDefined();
+    expect(apple?.speciesEvidence.map((entry) => entry.bird)).toEqual([
+      "pigeon",
+      "parrot",
+      "african_grey",
+      "budgie",
+      "canary",
+      "chicken",
+    ]);
+    const pigeonApple = apple?.speciesEvidence.find((entry) => entry.bird === "pigeon");
+    expect(pigeonApple?.outcome).toBe("limited");
+    expect(pigeonApple?.sourceIds).toContain("modern-pet-pigeon-fruits-vegetables-2026");
+    expect(apple?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
+  });
+
+  it("keeps light and fresh-produce care claims source-backed and non-runtime", () => {
+    const ledger = readJson("care-claims.json") as {
+      careClaims: Array<{
+        id: string;
+        implementationStatus: string;
+        speciesEvidence: Array<{ sourceIds: string[] }>;
+      }>;
+    };
+
+    expect(ledger.careClaims.map((claim) => claim.id)).toEqual([
+      "light-uvb-window-calcium",
+      "pigeon-fresh-produce-variety",
+    ]);
+    for (const claim of ledger.careClaims) {
+      expect(claim.implementationStatus).toBe("proposed_not_runtime");
+      expect(claim.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
+    }
+  });
+
+  it("keeps protected and runtime profile configuration claims paired without deciding which range is scientifically correct", () => {
+    const ledger = readJson("profile-claims.json") as {
+      profileClaims: Array<{
+        id: string;
+        claimKind: string;
+        comparedClaimId: string;
+        reconciliationStatus: string;
+      }>;
+    };
+    const claimsById = new Map(ledger.profileClaims.map((claim) => [claim.id, claim]));
+
+    expect(ledger.profileClaims).toHaveLength(168);
+    expect(ledger.profileClaims.filter((claim) => claim.claimKind === "protected_historical_configuration")).toHaveLength(84);
+    expect(ledger.profileClaims.filter((claim) => claim.claimKind === "runtime_configuration_snapshot")).toHaveLength(84);
+
+    for (const claim of ledger.profileClaims) {
+      const counterpart = claimsById.get(claim.comparedClaimId);
+      expect(counterpart).toBeDefined();
+      expect(counterpart?.comparedClaimId).toBe(claim.id);
+      expect(counterpart?.reconciliationStatus).toBe(claim.reconciliationStatus);
+    }
+  });
 });

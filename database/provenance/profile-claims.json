@@ -1,5 +1,3534 @@
 {
   "schemaVersion": 1,
-  "purpose": "Future source-level reconciliation records for active and historical profile targets. This first no-runtime-change ledger release intentionally seeds no runtime target decision.",
-  "profileClaims": []
+  "purpose": "Read-only reconciliation records for preserved pre-audit profile configuration and current V3 runtime configuration. A record is not a scientific endorsement or runtime adapter.",
+  "profileClaims": [
+    {
+      "id": "profile.pigeon.maintenance.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "maintenance",
+      "profileName": "Maintenance/Rest",
+      "nutrient": "protein",
+      "range": [
+        13.5,
+        15
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.maintenance.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.maintenance.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.maintenance.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "maintenance",
+      "profileName": "Maintenance/Rest",
+      "nutrient": "protein",
+      "range": [
+        13.5,
+        15
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.maintenance.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.maintenance.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.maintenance.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "maintenance",
+      "profileName": "Maintenance/Rest",
+      "nutrient": "carbs",
+      "range": [
+        60,
+        70
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.maintenance.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.maintenance.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.maintenance.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "maintenance",
+      "profileName": "Maintenance/Rest",
+      "nutrient": "carbs",
+      "range": [
+        60,
+        70
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.maintenance.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.maintenance.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.maintenance.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "maintenance",
+      "profileName": "Maintenance/Rest",
+      "nutrient": "fat",
+      "range": [
+        2.5,
+        4
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.maintenance.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.maintenance.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.maintenance.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "maintenance",
+      "profileName": "Maintenance/Rest",
+      "nutrient": "fat",
+      "range": [
+        2.5,
+        4
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.maintenance.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.maintenance.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.maintenance.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "maintenance",
+      "profileName": "Maintenance/Rest",
+      "nutrient": "fiber",
+      "range": [
+        0.5,
+        2
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.maintenance.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.maintenance.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.maintenance.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "maintenance",
+      "profileName": "Maintenance/Rest",
+      "nutrient": "fiber",
+      "range": [
+        0.5,
+        2
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.maintenance.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.maintenance.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.racing.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "racing",
+      "profileName": "Racing/Competition",
+      "nutrient": "protein",
+      "range": [
+        16,
+        18
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.racing.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.racing.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.racing.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "racing",
+      "profileName": "Racing/Competition",
+      "nutrient": "protein",
+      "range": [
+        16,
+        18
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.racing.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.racing.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.racing.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "racing",
+      "profileName": "Racing/Competition",
+      "nutrient": "carbs",
+      "range": [
+        58,
+        68
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.racing.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.racing.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.racing.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "racing",
+      "profileName": "Racing/Competition",
+      "nutrient": "carbs",
+      "range": [
+        55,
+        65
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.racing.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.racing.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.racing.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "racing",
+      "profileName": "Racing/Competition",
+      "nutrient": "fat",
+      "range": [
+        4,
+        6
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.racing.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.racing.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.racing.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "racing",
+      "profileName": "Racing/Competition",
+      "nutrient": "fat",
+      "range": [
+        3,
+        5
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.racing.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.racing.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.racing.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "racing",
+      "profileName": "Racing/Competition",
+      "nutrient": "fiber",
+      "range": [
+        0.5,
+        1.5
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.racing.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.racing.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.racing.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "racing",
+      "profileName": "Racing/Competition",
+      "nutrient": "fiber",
+      "range": [
+        0.5,
+        1.5
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.racing.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.racing.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.breeding.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "breeding",
+      "profileName": "Breeding/Brooding",
+      "nutrient": "protein",
+      "range": [
+        14,
+        16
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.breeding.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.breeding.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.breeding.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "protein",
+      "range": [
+        14,
+        16
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.breeding.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.breeding.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.breeding.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "breeding",
+      "profileName": "Breeding/Brooding",
+      "nutrient": "carbs",
+      "range": [
+        60,
+        68
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.breeding.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.breeding.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.breeding.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "carbs",
+      "range": [
+        58,
+        68
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.breeding.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.breeding.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.breeding.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "breeding",
+      "profileName": "Breeding/Brooding",
+      "nutrient": "fat",
+      "range": [
+        3,
+        5
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.breeding.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.breeding.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.breeding.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "fat",
+      "range": [
+        3,
+        4.5
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.breeding.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.breeding.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.breeding.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "breeding",
+      "profileName": "Breeding/Brooding",
+      "nutrient": "fiber",
+      "range": [
+        0.5,
+        2
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.breeding.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.breeding.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.breeding.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "fiber",
+      "range": [
+        0.5,
+        2
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.breeding.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.breeding.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.molting.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "protein",
+      "range": [
+        16,
+        18
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.molting.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.molting.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.molting.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "protein",
+      "range": [
+        16,
+        18
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.molting.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.molting.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.molting.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "carbs",
+      "range": [
+        58,
+        68
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.molting.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.molting.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.molting.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "carbs",
+      "range": [
+        55,
+        65
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.molting.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.molting.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.molting.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fat",
+      "range": [
+        4,
+        6
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.molting.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.molting.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.molting.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fat",
+      "range": [
+        3.5,
+        5
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.molting.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.molting.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.molting.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fiber",
+      "range": [
+        0.5,
+        1.5
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.molting.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.molting.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.molting.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fiber",
+      "range": [
+        0.5,
+        1.5
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.molting.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.molting.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.winter.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "winter",
+      "profileName": "Winter Season",
+      "nutrient": "protein",
+      "range": [
+        12,
+        14
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.winter.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.winter.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.winter.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "winter",
+      "profileName": "Winter Season",
+      "nutrient": "protein",
+      "range": [
+        12,
+        14
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.winter.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.winter.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.winter.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "winter",
+      "profileName": "Winter Season",
+      "nutrient": "carbs",
+      "range": [
+        62,
+        72
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.winter.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.winter.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.winter.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "winter",
+      "profileName": "Winter Season",
+      "nutrient": "carbs",
+      "range": [
+        55,
+        65
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.winter.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.winter.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.winter.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "winter",
+      "profileName": "Winter Season",
+      "nutrient": "fat",
+      "range": [
+        5,
+        8
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.winter.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.winter.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.winter.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "winter",
+      "profileName": "Winter Season",
+      "nutrient": "fat",
+      "range": [
+        4,
+        6
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.winter.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.winter.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.winter.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "winter",
+      "profileName": "Winter Season",
+      "nutrient": "fiber",
+      "range": [
+        0.5,
+        2
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.winter.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.winter.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.winter.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "winter",
+      "profileName": "Winter Season",
+      "nutrient": "fiber",
+      "range": [
+        0.5,
+        2
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.winter.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.winter.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.pet.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "protein",
+      "range": [
+        12,
+        14
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.pet.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.pet.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.pet.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "protein",
+      "range": [
+        12,
+        14
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.pet.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.pet.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.pet.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "carbs",
+      "range": [
+        62,
+        70
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.pet.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.pet.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.pet.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "carbs",
+      "range": [
+        60,
+        70
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.pet.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.pet.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.pet.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fat",
+      "range": [
+        2.5,
+        4
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.pet.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.pet.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.pet.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fat",
+      "range": [
+        2.5,
+        4
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.pet.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.pet.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.pet.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fiber",
+      "range": [
+        0.5,
+        2
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.pet.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.pet.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.pet.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fiber",
+      "range": [
+        1,
+        2.5
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.pet.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.pet.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.pet.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "parrot",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "protein",
+      "range": [
+        10,
+        12
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.parrot.pet.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.pet.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.pet.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "parrot",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "protein",
+      "range": [
+        10,
+        15
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.parrot.profiles.pet.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.pet.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.pet.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "parrot",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "carbs",
+      "range": [
+        60,
+        70
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.parrot.pet.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.pet.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.pet.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "parrot",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "carbs",
+      "range": [
+        50,
+        65
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.parrot.profiles.pet.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.pet.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.pet.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "parrot",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fat",
+      "range": [
+        5,
+        8
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.parrot.pet.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.pet.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.pet.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "parrot",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fat",
+      "range": [
+        5,
+        12
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.parrot.profiles.pet.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.pet.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.pet.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "parrot",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fiber",
+      "range": [
+        1,
+        3
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.parrot.pet.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.pet.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.pet.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "parrot",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fiber",
+      "range": [
+        2,
+        4
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.parrot.profiles.pet.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.pet.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.breeding.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "parrot",
+      "profile": "breeding",
+      "profileName": "Breeding/Egg-laying",
+      "nutrient": "protein",
+      "range": [
+        14,
+        16
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.parrot.breeding.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.breeding.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.breeding.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "parrot",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "protein",
+      "range": [
+        12,
+        16
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.parrot.profiles.breeding.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.breeding.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.breeding.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "parrot",
+      "profile": "breeding",
+      "profileName": "Breeding/Egg-laying",
+      "nutrient": "carbs",
+      "range": [
+        58,
+        68
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.parrot.breeding.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.breeding.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.breeding.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "parrot",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "carbs",
+      "range": [
+        48,
+        62
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.parrot.profiles.breeding.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.breeding.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.breeding.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "parrot",
+      "profile": "breeding",
+      "profileName": "Breeding/Egg-laying",
+      "nutrient": "fat",
+      "range": [
+        6,
+        10
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.parrot.breeding.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.breeding.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.breeding.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "parrot",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "fat",
+      "range": [
+        6,
+        12
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.parrot.profiles.breeding.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.breeding.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.breeding.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "parrot",
+      "profile": "breeding",
+      "profileName": "Breeding/Egg-laying",
+      "nutrient": "fiber",
+      "range": [
+        1,
+        2
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.parrot.breeding.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.breeding.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.breeding.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "parrot",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "fiber",
+      "range": [
+        2,
+        4
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.parrot.profiles.breeding.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.breeding.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.molting.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "parrot",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "protein",
+      "range": [
+        14,
+        16
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.parrot.molting.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.molting.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.molting.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "parrot",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "protein",
+      "range": [
+        14,
+        18
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.parrot.profiles.molting.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.molting.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.molting.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "parrot",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "carbs",
+      "range": [
+        58,
+        68
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.parrot.molting.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.molting.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.molting.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "parrot",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "carbs",
+      "range": [
+        45,
+        60
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.parrot.profiles.molting.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.molting.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.molting.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "parrot",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fat",
+      "range": [
+        6,
+        9
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.parrot.molting.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.molting.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.molting.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "parrot",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fat",
+      "range": [
+        6,
+        12
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.parrot.profiles.molting.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.molting.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.molting.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "parrot",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fiber",
+      "range": [
+        1,
+        2
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.parrot.molting.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.molting.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.parrot.molting.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "parrot",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fiber",
+      "range": [
+        2,
+        4
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.parrot.profiles.molting.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.parrot.molting.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.pet.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "african_grey",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "protein",
+      "range": [
+        12,
+        14
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.african_grey.pet.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.pet.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.pet.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "african_grey",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "protein",
+      "range": [
+        10,
+        14
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.african_grey.profiles.pet.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.pet.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.pet.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "african_grey",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "carbs",
+      "range": [
+        58,
+        68
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.african_grey.pet.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.pet.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.pet.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "african_grey",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "carbs",
+      "range": [
+        50,
+        65
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.african_grey.profiles.pet.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.pet.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.pet.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "african_grey",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fat",
+      "range": [
+        6,
+        9
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.african_grey.pet.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.pet.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.pet.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "african_grey",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fat",
+      "range": [
+        5,
+        10
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.african_grey.profiles.pet.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.pet.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.pet.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "african_grey",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fiber",
+      "range": [
+        1,
+        3
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.african_grey.pet.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.pet.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.pet.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "african_grey",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fiber",
+      "range": [
+        2,
+        4
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.african_grey.profiles.pet.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.pet.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.breeding.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "african_grey",
+      "profile": "breeding",
+      "profileName": "Breeding/Egg-laying",
+      "nutrient": "protein",
+      "range": [
+        15,
+        17
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.african_grey.breeding.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.breeding.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.breeding.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "african_grey",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "protein",
+      "range": [
+        12,
+        15
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.african_grey.profiles.breeding.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.breeding.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.breeding.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "african_grey",
+      "profile": "breeding",
+      "profileName": "Breeding/Egg-laying",
+      "nutrient": "carbs",
+      "range": [
+        56,
+        66
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.african_grey.breeding.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.breeding.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.breeding.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "african_grey",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "carbs",
+      "range": [
+        48,
+        62
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.african_grey.profiles.breeding.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.breeding.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.breeding.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "african_grey",
+      "profile": "breeding",
+      "profileName": "Breeding/Egg-laying",
+      "nutrient": "fat",
+      "range": [
+        7,
+        11
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.african_grey.breeding.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.breeding.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.breeding.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "african_grey",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "fat",
+      "range": [
+        6,
+        10
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.african_grey.profiles.breeding.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.breeding.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.breeding.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "african_grey",
+      "profile": "breeding",
+      "profileName": "Breeding/Egg-laying",
+      "nutrient": "fiber",
+      "range": [
+        1,
+        2
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.african_grey.breeding.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.breeding.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.breeding.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "african_grey",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "fiber",
+      "range": [
+        2,
+        4
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.african_grey.profiles.breeding.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.breeding.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.molting.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "african_grey",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "protein",
+      "range": [
+        15,
+        17
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.african_grey.molting.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.molting.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.molting.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "african_grey",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "protein",
+      "range": [
+        13,
+        16
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.african_grey.profiles.molting.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.molting.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.molting.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "african_grey",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "carbs",
+      "range": [
+        56,
+        66
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.african_grey.molting.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.molting.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.molting.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "african_grey",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "carbs",
+      "range": [
+        45,
+        60
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.african_grey.profiles.molting.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.molting.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.molting.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "african_grey",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fat",
+      "range": [
+        7,
+        10
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.african_grey.molting.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.molting.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.molting.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "african_grey",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fat",
+      "range": [
+        6,
+        10
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.african_grey.profiles.molting.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.molting.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.molting.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "african_grey",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fiber",
+      "range": [
+        1,
+        2
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.african_grey.molting.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.molting.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.african_grey.molting.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "african_grey",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fiber",
+      "range": [
+        2,
+        4
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.african_grey.profiles.molting.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.african_grey.molting.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.pet.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "budgie",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "protein",
+      "range": [
+        11,
+        13
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.budgie.pet.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.pet.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.pet.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "budgie",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "protein",
+      "range": [
+        12,
+        14
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.budgie.profiles.pet.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.pet.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.pet.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "budgie",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "carbs",
+      "range": [
+        62,
+        72
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.budgie.pet.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.pet.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.pet.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "budgie",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "carbs",
+      "range": [
+        55,
+        70
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.budgie.profiles.pet.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.pet.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.pet.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "budgie",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fat",
+      "range": [
+        7,
+        10
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.budgie.pet.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.pet.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.pet.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "budgie",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fat",
+      "range": [
+        5,
+        10
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.budgie.profiles.pet.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.pet.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.pet.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "budgie",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fiber",
+      "range": [
+        1,
+        2
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.budgie.pet.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.pet.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.pet.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "budgie",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fiber",
+      "range": [
+        2,
+        4
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.budgie.profiles.pet.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.pet.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.breeding.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "budgie",
+      "profile": "breeding",
+      "profileName": "Breeding/Egg-laying",
+      "nutrient": "protein",
+      "range": [
+        13,
+        15
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.budgie.breeding.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.breeding.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.breeding.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "budgie",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "protein",
+      "range": [
+        14,
+        16
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.budgie.profiles.breeding.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.breeding.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.breeding.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "budgie",
+      "profile": "breeding",
+      "profileName": "Breeding/Egg-laying",
+      "nutrient": "carbs",
+      "range": [
+        60,
+        70
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.budgie.breeding.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.breeding.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.breeding.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "budgie",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "carbs",
+      "range": [
+        50,
+        65
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.budgie.profiles.breeding.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.breeding.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.breeding.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "budgie",
+      "profile": "breeding",
+      "profileName": "Breeding/Egg-laying",
+      "nutrient": "fat",
+      "range": [
+        8,
+        12
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.budgie.breeding.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.breeding.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.breeding.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "budgie",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "fat",
+      "range": [
+        6,
+        10
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.budgie.profiles.breeding.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.breeding.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.breeding.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "budgie",
+      "profile": "breeding",
+      "profileName": "Breeding/Egg-laying",
+      "nutrient": "fiber",
+      "range": [
+        1,
+        2
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.budgie.breeding.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.breeding.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.breeding.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "budgie",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "fiber",
+      "range": [
+        2,
+        4
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.budgie.profiles.breeding.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.breeding.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.molting.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "budgie",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "protein",
+      "range": [
+        13,
+        15
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.budgie.molting.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.molting.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.molting.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "budgie",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "protein",
+      "range": [
+        15,
+        17
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.budgie.profiles.molting.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.molting.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.molting.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "budgie",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "carbs",
+      "range": [
+        60,
+        70
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.budgie.molting.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.molting.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.molting.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "budgie",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "carbs",
+      "range": [
+        48,
+        62
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.budgie.profiles.molting.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.molting.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.molting.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "budgie",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fat",
+      "range": [
+        8,
+        11
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.budgie.molting.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.molting.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.molting.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "budgie",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fat",
+      "range": [
+        6,
+        10
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.budgie.profiles.molting.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.molting.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.molting.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "budgie",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fiber",
+      "range": [
+        1,
+        2
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.budgie.molting.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.molting.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.budgie.molting.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "budgie",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fiber",
+      "range": [
+        2,
+        4
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.budgie.profiles.molting.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.budgie.molting.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.pet.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "canary",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "protein",
+      "range": [
+        12,
+        14
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.canary.pet.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.pet.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.pet.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "canary",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "protein",
+      "range": [
+        12,
+        14
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.canary.profiles.pet.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.pet.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.pet.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "canary",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "carbs",
+      "range": [
+        64,
+        74
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.canary.pet.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.pet.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.pet.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "canary",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "carbs",
+      "range": [
+        60,
+        72
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.canary.profiles.pet.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.pet.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.pet.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "canary",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fat",
+      "range": [
+        8,
+        11
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.canary.pet.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.pet.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.pet.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "canary",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fat",
+      "range": [
+        4,
+        8
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.canary.profiles.pet.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.pet.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.pet.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "canary",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fiber",
+      "range": [
+        1,
+        2
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.canary.pet.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.pet.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.pet.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "canary",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fiber",
+      "range": [
+        2,
+        4
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.canary.profiles.pet.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.pet.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.breeding.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "canary",
+      "profile": "breeding",
+      "profileName": "Breeding/Egg-laying",
+      "nutrient": "protein",
+      "range": [
+        14,
+        16
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.canary.breeding.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.breeding.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.breeding.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "canary",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "protein",
+      "range": [
+        14,
+        16
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.canary.profiles.breeding.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.breeding.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.breeding.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "canary",
+      "profile": "breeding",
+      "profileName": "Breeding/Egg-laying",
+      "nutrient": "carbs",
+      "range": [
+        62,
+        72
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.canary.breeding.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.breeding.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.breeding.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "canary",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "carbs",
+      "range": [
+        55,
+        68
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.canary.profiles.breeding.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.breeding.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.breeding.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "canary",
+      "profile": "breeding",
+      "profileName": "Breeding/Egg-laying",
+      "nutrient": "fat",
+      "range": [
+        9,
+        13
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.canary.breeding.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.breeding.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.breeding.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "canary",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "fat",
+      "range": [
+        5,
+        9
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.canary.profiles.breeding.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.breeding.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.breeding.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "canary",
+      "profile": "breeding",
+      "profileName": "Breeding/Egg-laying",
+      "nutrient": "fiber",
+      "range": [
+        1,
+        2
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.canary.breeding.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.breeding.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.breeding.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "canary",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "fiber",
+      "range": [
+        2,
+        4
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.canary.profiles.breeding.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.breeding.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.molting.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "canary",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "protein",
+      "range": [
+        14,
+        16
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.canary.molting.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.molting.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.molting.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "canary",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "protein",
+      "range": [
+        15,
+        17
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.canary.profiles.molting.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.molting.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.molting.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "canary",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "carbs",
+      "range": [
+        62,
+        72
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.canary.molting.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.molting.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.molting.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "canary",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "carbs",
+      "range": [
+        52,
+        65
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.canary.profiles.molting.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.molting.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.molting.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "canary",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fat",
+      "range": [
+        9,
+        12
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.canary.molting.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.molting.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.molting.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "canary",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fat",
+      "range": [
+        5,
+        9
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.canary.profiles.molting.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.molting.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.molting.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "canary",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fiber",
+      "range": [
+        1,
+        2
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.canary.molting.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.molting.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.canary.molting.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "canary",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fiber",
+      "range": [
+        2,
+        4
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.canary.profiles.molting.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.canary.molting.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.pet.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "chicken",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "protein",
+      "range": [
+        14,
+        16
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.chicken.pet.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.pet.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.pet.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "chicken",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "protein",
+      "range": [
+        12,
+        16
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.chicken.profiles.pet.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.pet.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.pet.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "chicken",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "carbs",
+      "range": [
+        58,
+        68
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.chicken.pet.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.pet.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.pet.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "chicken",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "carbs",
+      "range": [
+        55,
+        70
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.chicken.profiles.pet.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.pet.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.pet.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "chicken",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fat",
+      "range": [
+        4,
+        7
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.chicken.pet.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.pet.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.pet.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "chicken",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fat",
+      "range": [
+        3,
+        6
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.chicken.profiles.pet.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.pet.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.pet.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "chicken",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fiber",
+      "range": [
+        3,
+        6
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.chicken.pet.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.pet.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.pet.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "chicken",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "fiber",
+      "range": [
+        3,
+        5
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.chicken.profiles.pet.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.pet.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.egg_laying.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "chicken",
+      "profile": "egg_laying",
+      "profileName": "Egg-laying",
+      "nutrient": "protein",
+      "range": [
+        16,
+        18
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.chicken.egg-laying.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.egg_laying.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.egg_laying.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "chicken",
+      "profile": "egg_laying",
+      "profileName": "Egg-laying",
+      "nutrient": "protein",
+      "range": [
+        16,
+        18
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.chicken.profiles.egg_laying.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.egg_laying.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.egg_laying.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "chicken",
+      "profile": "egg_laying",
+      "profileName": "Egg-laying",
+      "nutrient": "carbs",
+      "range": [
+        56,
+        66
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.chicken.egg-laying.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.egg_laying.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.egg_laying.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "chicken",
+      "profile": "egg_laying",
+      "profileName": "Egg-laying",
+      "nutrient": "carbs",
+      "range": [
+        50,
+        65
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.chicken.profiles.egg_laying.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.egg_laying.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.egg_laying.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "chicken",
+      "profile": "egg_laying",
+      "profileName": "Egg-laying",
+      "nutrient": "fat",
+      "range": [
+        5,
+        8
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.chicken.egg-laying.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.egg_laying.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.egg_laying.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "chicken",
+      "profile": "egg_laying",
+      "profileName": "Egg-laying",
+      "nutrient": "fat",
+      "range": [
+        4,
+        7
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.chicken.profiles.egg_laying.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.egg_laying.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.egg_laying.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "chicken",
+      "profile": "egg_laying",
+      "profileName": "Egg-laying",
+      "nutrient": "fiber",
+      "range": [
+        3,
+        6
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.chicken.egg-laying.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.egg_laying.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.egg_laying.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "chicken",
+      "profile": "egg_laying",
+      "profileName": "Egg-laying",
+      "nutrient": "fiber",
+      "range": [
+        3,
+        5
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.chicken.profiles.egg_laying.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.egg_laying.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.molting.protein.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "chicken",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "protein",
+      "range": [
+        17,
+        19
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.chicken.molting.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.molting.protein.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.molting.protein.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "chicken",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "protein",
+      "range": [
+        16,
+        18
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.chicken.profiles.molting.nutrition.protein",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.molting.protein.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.molting.carbs.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "chicken",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "carbs",
+      "range": [
+        54,
+        64
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.chicken.molting.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.molting.carbs.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.molting.carbs.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "chicken",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "carbs",
+      "range": [
+        50,
+        65
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.chicken.profiles.molting.nutrition.carbs",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.molting.carbs.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.molting.fat.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "chicken",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fat",
+      "range": [
+        5,
+        8
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.chicken.molting.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.molting.fat.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.molting.fat.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "chicken",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fat",
+      "range": [
+        4,
+        7
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.chicken.profiles.molting.nutrition.fat",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.molting.fat.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.molting.fiber.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "chicken",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fiber",
+      "range": [
+        3,
+        6
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "client/src/lib/birds.ts → ALL_PROFILES.chicken.molting.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.molting.fiber.runtime_configuration",
+      "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.chicken.molting.fiber.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "chicken",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "fiber",
+      "range": [
+        3,
+        5
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.chicken.profiles.molting.nutrition.fiber",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.chicken.molting.fiber.historical_configuration",
+      "reviewedAt": "2026-08-17"
+    }
+  ]
 }
