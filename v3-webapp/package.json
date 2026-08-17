@@ -18,6 +18,7 @@
     "test:care-guidance": "tsx scripts/verify-care-guidance.mjs",
     "test:issue-submission": "tsx scripts/verify-issue-submission.mjs",
     "test:github-app": "tsx scripts/verify-github-app-auth.mjs",
+    "test:report-queue": "vitest run --config scripts/vitest.config.ts",
     "verify:firebase-deploy-credential": "node scripts/verify-firebase-service-account.mjs",
     "format": "prettier --write ."
   },
@@ -58,6 +59,7 @@
     "embla-carousel-react": "^8.6.0",
     "express": "^4.21.2",
     "firebase": "^12.17.1",
+    "firebase-admin": "^12.1.0",
     "framer-motion": "^12.23.22",
     "input-otp": "^1.4.2",
     "jsonwebtoken": "^9.0.3",

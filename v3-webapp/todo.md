@@ -108,3 +108,7 @@
 - [x] Render canonical Water, Grit, Base Diet, and pigeon-only Fresh Produce notes together in the profile box for Issue #79.
 - [x] Verify owner-provided pigeon sources and record direct pigeon-specific Apple support in the provenance ledger without changing calculator runtime data.
 - [x] Implement the owner-approved Light card, Detailed Analysis environmental-support note, and revised pigeon fresh-produce wording on Issue #101's review branch.
+- [x] Harden Firestore report creation with an explicit schema and preserve anonymous queue submission for Issue #106.
+- [x] Make the daily report processor deterministic with the committed Functions lockfile and validate malformed queue data before GitHub issue creation for Issue #106.
+- [ ] Correct report-routing documentation to state that Cloud Functions issue creation is intentionally unrouted and unused.
+- [x] Add focused automated coverage for the hardened report queue without changing visitor-facing copy.
