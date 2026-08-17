@@ -16,6 +16,7 @@
     "test:inventory-presets": "tsx scripts/verify-inventory-presets.mjs",
     "test:issue-submission": "tsx scripts/verify-issue-submission.mjs",
     "test:github-app": "tsx scripts/verify-github-app-auth.mjs",
+    "verify:firebase-deploy-credential": "node scripts/verify-firebase-service-account.mjs",
     "format": "prettier --write ."
   },
   "dependencies": {
