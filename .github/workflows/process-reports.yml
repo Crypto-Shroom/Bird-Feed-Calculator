@@ -9,6 +9,7 @@ jobs:
   process-reports:
     runs-on: ubuntu-latest
     permissions:
+      contents: read
       issues: write
     steps:
       - name: Checkout Repository
@@ -21,8 +22,13 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd v3-webapp
-          npm install --legacy-peer-deps firebase-admin axios
+          cd v3-webapp/functions
+          npm ci --ignore-scripts
+
+      - name: Install Processor Dependencies
+        run: |
+          corepack enable
+          pnpm --dir v3-webapp install --frozen-lockfile --ignore-scripts
 
       - name: Run Report Processor
         env:
@@ -30,4 +36,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
-          node v3-webapp/scripts/process-reports.mjs
+          pnpm --dir v3-webapp exec node scripts/process-reports.mjs
