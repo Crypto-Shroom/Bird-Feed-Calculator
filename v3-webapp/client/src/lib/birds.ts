@@ -36,6 +36,8 @@ export interface BirdCareGuidance {
   water: string;
   grit: string;
   gritBySituation?: Partial<Record<string, string>>;
+  light: string;
+  freshProduce?: string;
 }
 
 export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
@@ -358,36 +360,43 @@ export const BIRD_CARE: Record<BirdType, BirdCareGuidance> = {
     gritBySituation: {
       breeding: 'During breeding, include suitable shell grit as a calcium source.',
     },
+    light: 'For indoor birds, provide safe natural daylight or a species-appropriate avian UVB setup with a shaded retreat.',
+    freshProduce: 'Offer a variety of washed, finely chopped leafy greens and vegetables such as carrot in a separate dish. Add smaller fruit portions, including apple, and remove leftovers promptly; keep fresh foods separate from the dry mix.',
   },
   parrot: {
     scope: 'A seed and grain enrichment mix, not a complete parrot diet.',
     baseDiet: 'Use a species-appropriate formulated diet as the nutritional base, with fresh vegetables and fruit, and only limited seeds or nuts.',
     water: 'Always provide clean, fresh water available at all times.',
     grit: 'Do not routinely add grit for parrots unless an exotics vet specifically recommends it.',
+    light: 'For indoor birds, provide safe natural daylight or a species-appropriate avian UVB setup with a shaded retreat.',
   },
   african_grey: {
     scope: 'A seed and grain enrichment mix, not a complete African grey diet.',
     baseDiet: 'Use a species-appropriate formulated diet as the nutritional base, with fresh vegetables and fruit. African greys need guidance from an exotics vet for calcium and vitamin D concerns.',
     water: 'Always provide clean, fresh water available at all times.',
     grit: 'Do not routinely add grit unless an exotics vet specifically recommends it.',
+    light: 'For indoor birds, provide safe natural daylight or a species-appropriate avian UVB setup with a shaded retreat.',
   },
   budgie: {
     scope: 'A seed and grain enrichment mix, not a complete budgie diet.',
     baseDiet: 'Use a species-appropriate formulated diet as the nutritional base, together with fresh vegetables, fruit, and limited seed.',
     water: 'Always provide clean, fresh water available at all times.',
     grit: 'Do not routinely add grit unless an exotics vet specifically recommends it.',
+    light: 'For indoor birds, provide safe natural daylight or a species-appropriate avian UVB setup with a shaded retreat.',
   },
   canary: {
     scope: 'A seed and grain enrichment mix, not a complete canary diet.',
     baseDiet: 'Use a species-appropriate formulated diet or fortified diet as the nutritional base, with fresh vegetables, fruit, and limited seed.',
     water: 'Always provide clean, fresh water available at all times.',
     grit: 'Do not routinely add grit unless an exotics vet specifically recommends it.',
+    light: 'For indoor birds, provide safe natural daylight or a species-appropriate avian UVB setup with a shaded retreat.',
   },
   chicken: {
     scope: 'A scratch-grain supplement mix, not a complete poultry ration. Keep scratch and other treats to a small share of daily intake.',
     baseDiet: 'Use an age- and production-appropriate complete poultry feed as the nutritional base, with insects as occasional enrichment. Laying hens require a validated layer ration.',
     water: 'Provide clean, fresh water continuously; water access strongly affects feed intake and egg production.',
     grit: 'Offer insoluble grit only when feeding whole grains or seeds and birds cannot obtain suitable grit from the ground. Oyster shell is not a grit substitute.',
+    light: 'For indoor birds, provide safe natural daylight or a species-appropriate avian UVB setup with a shaded retreat.',
   },
 };
 

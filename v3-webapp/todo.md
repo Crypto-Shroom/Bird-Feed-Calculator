@@ -106,3 +106,5 @@
 - [x] Display canonical compatible-bird badges only in the dedicated Herb Library for Issues #48 and #49, never in calculator cards.
 - [x] Automatically add `Priority` to wrong-information/issue reports and `enhancement` to bird/profile suggestions while preserving existing imported report labels.
 - [x] Render canonical Water, Grit, Base Diet, and pigeon-only Fresh Produce notes together in the profile box for Issue #79.
+- [x] Verify owner-provided pigeon sources and record direct pigeon-specific Apple support in the provenance ledger without changing calculator runtime data.
+- [x] Implement the owner-approved Light card, Detailed Analysis environmental-support note, and revised pigeon fresh-produce wording on Issue #101's review branch.
