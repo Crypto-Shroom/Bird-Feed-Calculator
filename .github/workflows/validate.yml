@@ -38,6 +38,9 @@ jobs:
       - name: Verify all calculator scenarios
         run: pnpm --dir v3-webapp test:calculator
 
+      - name: Verify care guidance
+        run: pnpm --dir v3-webapp test:care-guidance
+
       - name: Validate provenance ledger
         run: pnpm test:provenance
 
