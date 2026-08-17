@@ -21,6 +21,7 @@ const sourceTiers = new Set([
   "academic_book",
   "owner_guidance_with_citations",
   "historical_project",
+  "runtime_configuration",
 ]);
 
 const outcomes = new Set([
@@ -37,6 +38,16 @@ const evidenceScopes = new Set([
   "group_specific",
   "related_species",
   "historical_project",
+]);
+
+const profileClaimKinds = new Set([
+  "protected_historical_configuration",
+  "runtime_configuration_snapshot",
+]);
+
+const profileReconciliationStatuses = new Set([
+  "matches_pre_audit_configuration",
+  "differs_from_pre_audit_configuration",
 ]);
 
 function readJson(fileName) {
@@ -149,17 +160,52 @@ function validateFoodReviews(reviews, sourceIndex, errors) {
 }
 
 function validateProfileClaims(claims, sourceIndex, errors) {
+  const claimIndex = new Map();
+
   for (const claim of claims) {
     const context = `Profile claim '${claim.id ?? "<missing id>"}'`;
-    for (const field of ["id", "bird", "profile", "nutrient", "locator", "evidenceScope", "reviewedAt"]) {
+    for (const field of ["id", "claimKind", "bird", "profile", "profileName", "nutrient", "unit", "locator", "evidenceScope", "reconciliationStatus", "comparedClaimId", "reviewedAt"]) {
       if (!isNonEmptyString(claim[field])) {
         errors.push(`${context} must include '${field}'.`);
       }
     }
+
+    if (claimIndex.has(claim.id)) {
+      errors.push(`${context} has a duplicated ID.`);
+    }
+    claimIndex.set(claim.id, claim);
+
+    if (!profileClaimKinds.has(claim.claimKind)) {
+      errors.push(`${context} has unsupported claim kind '${claim.claimKind}'.`);
+    }
     if (!evidenceScopes.has(claim.evidenceScope)) {
       errors.push(`${context} has unsupported evidence scope '${claim.evidenceScope}'.`);
     }
+    if (!profileReconciliationStatuses.has(claim.reconciliationStatus)) {
+      errors.push(`${context} has unsupported reconciliation status '${claim.reconciliationStatus}'.`);
+    }
+    if (!Array.isArray(claim.range) || claim.range.length !== 2 || !claim.range.every((value) => typeof value === "number")) {
+      errors.push(`${context} must include a two-value numeric range.`);
+    }
     validateSourceReferences(claim.sourceIds, sourceIndex, context, errors);
+  }
+
+  for (const claim of claims) {
+    const counterpart = claimIndex.get(claim.comparedClaimId);
+    const context = `Profile claim '${claim.id ?? "<missing id>"}'`;
+    if (!counterpart) {
+      errors.push(`${context} must point to an existing paired claim.`);
+      continue;
+    }
+    if (counterpart.comparedClaimId !== claim.id) {
+      errors.push(`${context} must be reciprocally linked to its paired claim.`);
+    }
+    if (counterpart.bird !== claim.bird || counterpart.profile !== claim.profile || counterpart.nutrient !== claim.nutrient) {
+      errors.push(`${context} must pair with the same bird, profile, and nutrient.`);
+    }
+    if (counterpart.reconciliationStatus !== claim.reconciliationStatus) {
+      errors.push(`${context} and its paired claim must share a reconciliation status.`);
+    }
   }
 }
 

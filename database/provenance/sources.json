@@ -156,6 +156,30 @@
       "permittedUse": "Cross-species chapter-level veterinary reference for nutrition, toxicology, racing pigeons, galliformes, and canaries/finches.",
       "limitations": "Each future claim must cite its exact relevant chapter/section; the book title cannot act as blanket six-bird approval.",
       "accessedAt": "2026-08-17"
+    },
+    {
+      "id": "historical-preaudit-profile-config",
+      "title": "Preserved pre-audit multi-bird profile configuration",
+      "authorsOrOrganization": "Original Manus project implementation",
+      "publishedYear": "2025",
+      "sourceTier": "historical_project",
+      "urlOrDoi": "Preserved Manus archive: pigeon-mix-web-multi-bird/client/src/lib/birds.ts",
+      "speciesScopes": ["pigeon", "parrot", "african_grey", "budgie", "canary", "chicken"],
+      "permittedUse": "Exact preservation of the pre-audit multi-bird profile configuration used for reconciliation.",
+      "limitations": "This configuration snapshot proves the previous implemented value; it is not a scientific source validating that value.",
+      "accessedAt": "2026-08-17"
+    },
+    {
+      "id": "runtime-v3-profile-config",
+      "title": "Current V3 runtime profile configuration",
+      "authorsOrOrganization": "Bird Feed Calculator V3 implementation",
+      "publishedYear": "2026",
+      "sourceTier": "runtime_configuration",
+      "urlOrDoi": "v3-webapp/client/src/lib/birds.ts",
+      "speciesScopes": ["pigeon", "parrot", "african_grey", "budgie", "canary", "chicken"],
+      "permittedUse": "Exact snapshot of the currently configured V3 target ranges for reconciliation only.",
+      "limitations": "This is a live implementation snapshot, not a scientific source or a replacement for the protected original research.",
+      "accessedAt": "2026-08-17"
     }
   ]
 }

@@ -13,7 +13,7 @@ The first ledger release is intentionally **no-runtime-change**. It preserves or
 | [`SCHEMA.md`](./SCHEMA.md) | Required shape for every future source, profile, ingredient, processing, safety, herb, and six-bird evidence row. | Governing policy. |
 | [`HISTORICAL_BASELINE.md`](./HISTORICAL_BASELINE.md) | Crosswalk to the preserved pre-GitHub project files and recovered Manus research. | Governing historical-intent index. |
 | [`food-reviews.json`](./food-reviews.json) | Future per-food, per-form, six-bird outcomes. | Empty by design until each review is evidenced. |
-| [`profile-claims.json`](./profile-claims.json) | Future profile-target provenance rows. | Empty by design until each profile range is mapped source-by-source. |
+| [`profile-claims.json`](./profile-claims.json) | Read-only historical-versus-current profile target reconciliation rows. | Seeded with configuration snapshots; scientific reconciliation remains pending. |
 
 ## Non-negotiable rules
 
@@ -64,5 +64,7 @@ The first ledger release is intentionally **no-runtime-change**. It preserves or
 | `merck-poultry-2024` | Chicken nutrition requirements | Peer-reviewed veterinary reference |
 | `nas-poultry-2026` | Chicken nutrition book | National Academies consensus report |
 | `clinical-avian-medicine-2006` | Cross-species nutrition, toxicology, pigeon, galliform, and canary/finch chapters | Academic veterinary book |
+| `historical-preaudit-profile-config` | Preserved pre-audit multi-bird profile configuration | Historical project configuration |
+| `runtime-v3-profile-config` | Current V3 `birds.ts` profile configuration | Runtime configuration snapshot |
 
 The detailed machine-readable entries, scopes, URLs, and limitations are in [`sources.json`](./sources.json).

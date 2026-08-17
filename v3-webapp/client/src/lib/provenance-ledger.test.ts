@@ -45,4 +45,27 @@ describe("canonical provenance ledger", () => {
       "chicken",
     ]);
   });
+
+  it("keeps protected and runtime profile configuration claims paired without deciding which range is scientifically correct", () => {
+    const ledger = readJson("profile-claims.json") as {
+      profileClaims: Array<{
+        id: string;
+        claimKind: string;
+        comparedClaimId: string;
+        reconciliationStatus: string;
+      }>;
+    };
+    const claimsById = new Map(ledger.profileClaims.map((claim) => [claim.id, claim]));
+
+    expect(ledger.profileClaims).toHaveLength(168);
+    expect(ledger.profileClaims.filter((claim) => claim.claimKind === "protected_historical_configuration")).toHaveLength(84);
+    expect(ledger.profileClaims.filter((claim) => claim.claimKind === "runtime_configuration_snapshot")).toHaveLength(84);
+
+    for (const claim of ledger.profileClaims) {
+      const counterpart = claimsById.get(claim.comparedClaimId);
+      expect(counterpart).toBeDefined();
+      expect(counterpart?.comparedClaimId).toBe(claim.id);
+      expect(counterpart?.reconciliationStatus).toBe(claim.reconciliationStatus);
+    }
+  });
 });

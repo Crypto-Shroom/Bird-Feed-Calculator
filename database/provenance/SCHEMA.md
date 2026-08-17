@@ -10,7 +10,7 @@ Every reusable source is defined once in `sources.json`.
 | `title` | Yes | Source title. |
 | `authorsOrOrganization` | Yes | Named authors or responsible organization. |
 | `publishedYear` | Yes | Publication/update year; `unknown` is permitted only for protected historical project files. |
-| `sourceTier` | Yes | `primary`, `systematic_review`, `peer_reviewed_review`, `veterinary_reference`, `academic_book`, `owner_guidance_with_citations`, or `historical_project`. |
+| `sourceTier` | Yes | `primary`, `systematic_review`, `peer_reviewed_review`, `veterinary_reference`, `academic_book`, `owner_guidance_with_citations`, `historical_project`, or `runtime_configuration`. |
 | `urlOrDoi` | Yes | Stable public URL or DOI; repository-relative path for protected project evidence. |
 | `speciesScopes` | Yes | Species or species groups the source actually covers. |
 | `permittedUse` | Yes | What the source can substantiate. |
@@ -64,9 +64,9 @@ Every reusable source is defined once in `sources.json`.
 
 ## Profile claim record
 
-`profile-claims.json` will contain `profileClaims`. Each profile range must list its exact bird, profile name, nutrient, numeric range, source IDs, locator, evidence scope, and historical-to-active reconciliation status.
+`profile-claims.json` contains `profileClaims`. Each profile range lists its exact bird, profile name, nutrient, numeric range, source IDs, locator, evidence scope, claim kind, linked counterpart, and historical-to-active reconciliation status.
 
-The ledger does not decide which historical or current target is correct. It records their sources and differences so the owner can approve a later runtime decision.
+`claimKind` is either `protected_historical_configuration` or `runtime_configuration_snapshot`. `reconciliationStatus` is either `matches_pre_audit_configuration` or `differs_from_pre_audit_configuration`. A configuration snapshot is evidence of what the app used, **not** scientific validation of the range. The ledger does not decide which historical or current target is correct; it records their sources and differences so the owner can approve a later runtime decision.
 
 ## Historical claim record
 
