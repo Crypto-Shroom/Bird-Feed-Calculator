@@ -102,3 +102,4 @@
 - [x] Supersede the reset-control interpretation of Issue #39 with an empty real inventory and a clearly labelled profile-default formula that yields to actual entered stock.
 - [x] Add coverage confirming profile-default formulas exist across all six birds and actual inventory overrides the displayed default.
 - [x] Restore the exact pre-change empty-inventory message after removing unapproved explanatory public copy from the Issue #39 correction.
+- [x] Update only active V3 axios, PostCSS, and Vite patch versions for Issue #61; regenerate the locked dependency graph and preserve archive, V1/V2, Firebase Functions, and all application behavior.
