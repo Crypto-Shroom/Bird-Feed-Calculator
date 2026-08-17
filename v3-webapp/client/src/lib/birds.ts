@@ -30,6 +30,23 @@ export interface CategoryTargets {
   seed: [number, number];
 }
 
+export interface CareSourceLink {
+  label: string;
+  url: string;
+}
+
+export interface FreshProduceGuidance {
+  triggerLabel: string;
+  heading: string;
+  introduction: string;
+  vegetables: string;
+  fruits: string;
+  safety: string;
+  sourcesTriggerLabel: string;
+  sourcesHeading: string;
+  sources: CareSourceLink[];
+}
+
 export interface BirdCareGuidance {
   scope: string;
   baseDiet: string;
@@ -38,6 +55,7 @@ export interface BirdCareGuidance {
   gritBySituation?: Partial<Record<string, string>>;
   light: string;
   freshProduce?: string;
+  freshProduceGuidance?: FreshProduceGuidance;
 }
 
 export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
@@ -362,6 +380,23 @@ export const BIRD_CARE: Record<BirdType, BirdCareGuidance> = {
     },
     light: 'For indoor birds, provide safe natural daylight or a species-appropriate avian UVB setup with a shaded retreat.',
     freshProduce: 'Offer a variety of washed, finely chopped leafy greens and vegetables such as carrot in a separate dish. Add smaller fruit portions, including apple, and remove leftovers promptly; keep fresh foods separate from the dry mix.',
+    freshProduceGuidance: {
+      triggerLabel: 'View suitable fresh vegetables and fruit',
+      heading: 'Suitable fresh vegetables and fruit for pigeons',
+      introduction: 'Offer fresh, washed, finely chopped or grated vegetables and small pieces of fruit in a separate dish.',
+      vegetables: 'Vegetables: carrot, broccoli, cauliflower, bell pepper, dandelion greens, and leafy greens such as kale, romaine, or collard greens.',
+      fruits: 'Small fruit portions: apple flesh with the core and seeds removed, and berries.',
+      safety: 'Do not offer avocado, onion, or rhubarb. Remove leftovers promptly.',
+      sourcesTriggerLabel: 'Sources for this guidance',
+      sourcesHeading: 'Sources for fresh vegetable and fruit guidance',
+      sources: [
+        { label: 'VCA: Feeding Pigeons and Doves', url: 'https://vcahospitals.com/know-your-pet/pigeons-and-doves-feeding' },
+        { label: 'Melbourne Bird Veterinary Clinic: Diet for Pet Pigeons', url: 'https://www.melbournebirdvet.com/post/diet-for-pet-pigeons' },
+        { label: 'Palomacy: Pigeon feeding and dove feeding', url: 'https://www.pigeonrescue.org/birds/care/pigeon-feeding-dove-feeding/' },
+        { label: 'Modern Pet Pigeon Society: Fruits and vegetables', url: 'https://modernpetpigeonsociety.miraheze.org/wiki/Fruits_and_vegetables' },
+        { label: 'Pigeon Care Tips: What do pigeons eat?', url: 'https://pigeoncaretips.com/what-do-pigeons-eat/' },
+      ],
+    },
   },
   parrot: {
     scope: 'A seed and grain enrichment mix, not a complete parrot diet.',

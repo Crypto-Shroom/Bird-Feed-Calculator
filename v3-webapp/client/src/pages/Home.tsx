@@ -311,7 +311,7 @@ export default function Home() {
                   <CareNote icon={<Scale className="h-5 w-5 text-amber-700" />} title="Grit" text={gritText} />
                   <CareNote icon={<Sun className="h-5 w-5 text-amber-500" />} title="Light" text={care.light} />
                   <CareNote icon={<BookOpen className="h-5 w-5 text-emerald-600" />} title="Base Diet" text={care.baseDiet} />
-                  {care.freshProduce && <CareNote icon={<Leaf className="h-5 w-5 text-emerald-600" />} title="Fresh Produce" text={care.freshProduce} />}
+                  {care.freshProduce && <FreshProduceCareNote text={care.freshProduce} guidance={care.freshProduceGuidance} />}
                 </div>
               </CardContent>
             </Card>
@@ -452,6 +452,64 @@ export default function Home() {
 
 function CareNote({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
   return <div className="flex items-start gap-3"><div className="mt-0.5 shrink-0">{icon}</div><div><p className="font-medium text-foreground">{title}</p><p className="text-xs leading-relaxed text-muted-foreground">{text}</p></div></div>;
+}
+
+function FreshProduceCareNote({ text, guidance }: { text: string; guidance?: NonNullable<typeof BIRD_CARE.pigeon.freshProduceGuidance> }) {
+  return (
+    <div className="flex items-start gap-3">
+      <div className="mt-0.5 shrink-0"><Leaf className="h-5 w-5 text-emerald-600" /></div>
+      <div className="min-w-0">
+        <p className="font-medium text-foreground">Fresh Produce</p>
+        <p className="text-xs leading-relaxed text-muted-foreground">{text}</p>
+        {guidance && (
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button type="button" variant="outline" size="sm" className="mt-3 h-auto whitespace-normal px-2.5 py-1.5 text-left text-xs text-emerald-900 hover:bg-emerald-50">
+                <Leaf className="mr-1.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                {guidance.triggerLabel}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent align="start" className="w-[min(92vw,430px)] p-4" aria-label={guidance.heading}>
+              <ScrollArea className="max-h-[65vh] pr-3">
+                <div className="space-y-3">
+                  <div>
+                    <h3 className="font-semibold text-foreground">{guidance.heading}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-muted-foreground">{guidance.introduction}</p>
+                  </div>
+                  <div className="rounded-md bg-emerald-50 p-3 text-sm leading-relaxed text-emerald-950">
+                    <p>{guidance.vegetables}</p>
+                    <p className="mt-2">{guidance.fruits}</p>
+                  </div>
+                  <p className="rounded-md border border-red-200 bg-red-50 p-3 text-sm font-medium leading-relaxed text-red-950">{guidance.safety}</p>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button type="button" variant="ghost" size="sm" className="h-auto px-0 py-1 text-xs text-emerald-800 hover:bg-transparent hover:text-emerald-950">
+                        <ExternalLink className="mr-1.5 h-3.5 w-3.5" aria-hidden="true" />
+                        {guidance.sourcesTriggerLabel}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent align="start" className="w-[min(88vw,360px)] p-4" aria-label={guidance.sourcesHeading}>
+                      <h4 className="text-sm font-semibold text-foreground">{guidance.sourcesHeading}</h4>
+                      <ul className="mt-3 space-y-2">
+                        {guidance.sources.map((source) => (
+                          <li key={source.url}>
+                            <a href={source.url} target="_blank" rel="noreferrer" className="inline-flex items-start gap-1 text-sm leading-snug text-emerald-800 underline-offset-2 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                              <ExternalLink className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+                              {source.label}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </PopoverContent>
+                  </Popover>
+                </div>
+              </ScrollArea>
+            </PopoverContent>
+          </Popover>
+        )}
+      </div>
+    </div>
+  );
 }
 
 function ReportIssueLink({ section, bird, profile }: { section: string; bird: string; profile: string }) {

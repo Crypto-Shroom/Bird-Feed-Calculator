@@ -16,4 +16,28 @@ describe("canonical bird care guidance", () => {
     );
     expect(BIRD_TYPES.filter((bird) => bird !== "pigeon").every((bird) => !BIRD_CARE[bird].freshProduce)).toBe(true);
   });
+
+  it("defines the owner-approved pigeon vegetable, fruit, safety, and source-link guidance", () => {
+    const guidance = BIRD_CARE.pigeon.freshProduceGuidance;
+
+    expect(guidance).toMatchObject({
+      triggerLabel: "View suitable fresh vegetables and fruit",
+      heading: "Suitable fresh vegetables and fruit for pigeons",
+      introduction: "Offer fresh, washed, finely chopped or grated vegetables and small pieces of fruit in a separate dish.",
+      vegetables: "Vegetables: carrot, broccoli, cauliflower, bell pepper, dandelion greens, and leafy greens such as kale, romaine, or collard greens.",
+      fruits: "Small fruit portions: apple flesh with the core and seeds removed, and berries.",
+      safety: "Do not offer avocado, onion, or rhubarb. Remove leftovers promptly.",
+      sourcesTriggerLabel: "Sources for this guidance",
+      sourcesHeading: "Sources for fresh vegetable and fruit guidance",
+    });
+    expect(guidance?.sources).toHaveLength(5);
+    expect(guidance?.sources.map((source) => source.url)).toEqual([
+      "https://vcahospitals.com/know-your-pet/pigeons-and-doves-feeding",
+      "https://www.melbournebirdvet.com/post/diet-for-pet-pigeons",
+      "https://www.pigeonrescue.org/birds/care/pigeon-feeding-dove-feeding/",
+      "https://modernpetpigeonsociety.miraheze.org/wiki/Fruits_and_vegetables",
+      "https://pigeoncaretips.com/what-do-pigeons-eat/",
+    ]);
+    expect(BIRD_TYPES.filter((bird) => bird !== "pigeon").every((bird) => !BIRD_CARE[bird].freshProduceGuidance)).toBe(true);
+  });
 });
