@@ -104,6 +104,7 @@
 - [ ] Review every candidate food across pigeon, parrot, African Grey, budgie, canary, and chicken before proposing any active ingredient-data change.
 - [ ] Replace the mistaken inventory-reset approach for Issue #39 with profile-default formulas in Recommended Formula while preserving an empty real inventory until a user enters stock.
 - [ ] Manually dispatch the repaired Firestore report processor again and record the newly created GitHub issues.
+- [ ] Automatically label imported wrong-information/issue reports as `Priority` and suggested bird/profile reports as `Enhancement`, preserving existing report content and labels.
 - [ ] Investigate why the successful report processor found no queued Firestore reports after new in-app submissions.
 - [ ] Fix Firebase Hosting report submissions that receive the SPA HTML fallback with HTTP 200 and are therefore incorrectly reported as created GitHub issues instead of queued Firestore reports.
 - [ ] Update the persistent Manus project instructions after the active fixes to preserve the owner-approved review, six-bird research, preview, and inventory/default-formula workflow; do not add this instruction text to the repository.
