@@ -107,3 +107,4 @@
 - [ ] Investigate why the successful report processor found no queued Firestore reports after new in-app submissions.
 - [ ] Fix Firebase Hosting report submissions that receive the SPA HTML fallback with HTTP 200 and are therefore incorrectly reported as created GitHub issues instead of queued Firestore reports.
 - [ ] Update the persistent Manus project instructions after the active fixes to preserve the owner-approved review, six-bird research, preview, and inventory/default-formula workflow; do not add this instruction text to the repository.
+- [ ] Perform a read-only review of GitHub secret-scanning findings and repository quality signals; do not rotate credentials, rewrite history, close alerts, or alter files without owner approval.
