@@ -105,4 +105,3 @@
 - [x] Update only active V3 axios, PostCSS, and Vite patch versions for Issue #61; regenerate the locked dependency graph and preserve archive, V1/V2, Firebase Functions, and all application behavior.
 - [x] Display canonical compatible-bird badges only in the dedicated Herb Library for Issues #48 and #49, never in calculator cards.
 - [x] Automatically add `Priority` to wrong-information/issue reports and `enhancement` to bird/profile suggestions while preserving existing imported report labels.
-- [x] Render canonical Water, Grit, Base Diet, and pigeon-only Fresh Produce notes together in the profile box for Issue #79.
