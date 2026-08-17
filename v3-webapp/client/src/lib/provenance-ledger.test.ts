@@ -46,6 +46,47 @@ describe("canonical provenance ledger", () => {
     ]);
   });
 
+  it("records the apple review for all six birds without inferring pigeon approval", () => {
+    const ledger = readJson("food-reviews.json") as {
+      ingredientReviews: Array<{
+        ingredientId: string;
+        speciesEvidence: Array<{ bird: string; outcome: string; sourceIds: string[] }>;
+      }>;
+    };
+    const apple = ledger.ingredientReviews.find((review) => review.ingredientId === "apple");
+
+    expect(apple).toBeDefined();
+    expect(apple?.speciesEvidence.map((entry) => entry.bird)).toEqual([
+      "pigeon",
+      "parrot",
+      "african_grey",
+      "budgie",
+      "canary",
+      "chicken",
+    ]);
+    expect(apple?.speciesEvidence.find((entry) => entry.bird === "pigeon")?.outcome).toBe("unresolved");
+    expect(apple?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
+  });
+
+  it("keeps light and fresh-produce care claims source-backed and non-runtime", () => {
+    const ledger = readJson("care-claims.json") as {
+      careClaims: Array<{
+        id: string;
+        implementationStatus: string;
+        speciesEvidence: Array<{ sourceIds: string[] }>;
+      }>;
+    };
+
+    expect(ledger.careClaims.map((claim) => claim.id)).toEqual([
+      "light-uvb-window-calcium",
+      "pigeon-fresh-produce-variety",
+    ]);
+    for (const claim of ledger.careClaims) {
+      expect(claim.implementationStatus).toBe("proposed_not_runtime");
+      expect(claim.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
+    }
+  });
+
   it("keeps protected and runtime profile configuration claims paired without deciding which range is scientifically correct", () => {
     const ledger = readJson("profile-claims.json") as {
       profileClaims: Array<{

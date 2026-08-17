@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "purpose": "Future per-food, per-form, six-bird evidence records. This first no-runtime-change ledger release intentionally seeds no active food outcomes.",
+  "purpose": "Per-food, per-form, six-bird evidence records. Entries document evidence and gaps only; they do not modify active calculator outcomes.",
   "requiredBirdOrder": [
     "pigeon",
     "parrot",
@@ -9,5 +9,78 @@
     "canary",
     "chicken"
   ],
-  "ingredientReviews": []
+  "ingredientReviews": [
+    {
+      "ingredientId": "apple",
+      "ingredientDisplayName": "Apple",
+      "form": "fresh washed flesh with core and seeds removed",
+      "nutrition": {
+        "sourceIds": ["vca-fruits-vegetables-birds"],
+        "basis": "not_applicable",
+        "notes": "This evidence batch records suitability and preparation only; it does not add a nutrient value or a dry-mix ingredient record."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": ["vca-pigeon-dove-feeding", "vca-fruits-vegetables-birds"],
+          "locator": "VCA pigeon/dove 'Fruits and Vegetables' section; VCA broad produce recommended-items table",
+          "evidenceScope": "group_specific",
+          "rationale": "Pigeon/dove guidance supports small daily fruit portions and prepared produce, but it does not name apple. Broad companion-bird apple guidance cannot infer pigeon-specific approval.",
+          "reviewedAt": "2026-08-17"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "limited",
+          "sourceIds": ["vca-meyers-parrot-feeding", "vca-fruits-vegetables-birds", "merck-pet-bird-nutritional-diseases"],
+          "locator": "VCA Meyer's Parrot 'Fruits and Vegetables' section; VCA broad produce recommended-items table; Merck pet-bird foods-to-avoid statement",
+          "evidenceScope": "group_specific",
+          "rationale": "Psittacine guidance supports small washed fruit pieces and explicitly excludes apple seeds; broad companion-bird guidance lists apple. This is limited group-level, not every-parrot-species evidence.",
+          "reviewedAt": "2026-08-17"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "limited",
+          "sourceIds": ["vca-african-grey-feeding", "vca-fruits-vegetables-birds", "merck-pet-bird-nutritional-diseases"],
+          "locator": "VCA African Grey 'Fruits and Vegetables' section; VCA broad produce recommended-items table; Merck pet-bird foods-to-avoid statement",
+          "evidenceScope": "group_specific",
+          "rationale": "Grey-specific guidance supports limited fresh fruit in a pellet-based diet; broad guidance lists apple and Merck excludes apple seeds. No Grey-specific apple trial or portion was found.",
+          "reviewedAt": "2026-08-17"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "limited",
+          "sourceIds": ["vca-budgie-feeding", "merck-pet-bird-nutritional-diseases"],
+          "locator": "VCA Budgies 'List of suitable fruits and vegetables' table and 'Fruits and Vegetables' section; Merck pet-bird foods-to-avoid statement",
+          "evidenceScope": "species_specific",
+          "rationale": "VCA explicitly lists apple for budgies and requires washed small pieces; fresh foods remain limited within the cited diet boundary, and apple seeds are excluded.",
+          "reviewedAt": "2026-08-17"
+        },
+        {
+          "bird": "canary",
+          "outcome": "limited",
+          "sourceIds": ["vca-canary-feeding", "merck-pet-bird-nutritional-diseases"],
+          "locator": "VCA Canaries 'Fruits, Vegetables, and Legumes Suitable for Canaries' table and 'Fruits and Vegetables' section; Merck pet-bird foods-to-avoid statement",
+          "evidenceScope": "species_specific",
+          "rationale": "VCA explicitly lists apple for canaries and requires washed, tiny, size-appropriate produce; apple seeds are excluded and apple remains a small fresh-food component.",
+          "reviewedAt": "2026-08-17"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": ["uf-ifas-chicken-apple-seeds-2026", "alabama-extension-laying-hen-feeding-2022"],
+          "locator": "UF/IFAS 'Apple Seeds and Fruit Pits' section; Alabama Extension 'Scratch grains, treats, and kitchen scraps' section",
+          "evidenceScope": "species_specific",
+          "rationale": "UF/IFAS states the fruit is safe after removing seeds; Alabama Extension establishes that treats are incomplete feeds to use sparingly. Apple is therefore a prepared treat, not a ration ingredient.",
+          "reviewedAt": "2026-08-17"
+        }
+      ],
+      "processing": {
+        "sourceIds": ["merck-pet-bird-nutritional-diseases", "vca-fruits-vegetables-birds"],
+        "rule": "Wash fruit; remove core and seeds; cut flesh to a species-appropriate size; do not use the record as a dry-mix or complete-ration instruction.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-17"
+    }
+  ]
 }

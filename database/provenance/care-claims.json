@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Source-backed husbandry and care evidence. These records do not activate UI text, calculator behavior, or medical-style directives without a separate owner-approved implementation PR.",
+  "careClaims": [
+    {
+      "id": "light-uvb-window-calcium",
+      "title": "Light, UVB, vitamin-D, and calcium husbandry context",
+      "category": "light",
+      "implementationStatus": "proposed_not_runtime",
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "limited",
+          "sourceIds": ["harrisons-uvb-husbandry-2024"],
+          "locator": "'How it Works'; 'How Pet Owners Can Supply UVB'",
+          "evidenceScope": "group_specific",
+          "rationale": "Companion-bird husbandry source supports the general UVB/window-glass context, but does not prescribe a pigeon-specific lamp setup or schedule.",
+          "reviewedAt": "2026-08-17"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "limited",
+          "sourceIds": ["harrisons-uvb-husbandry-2024"],
+          "locator": "'How it Works'; 'How Pet Owners Can Supply UVB'",
+          "evidenceScope": "group_specific",
+          "rationale": "Companion-bird husbandry source supports the general UVB/window-glass context but not a universal parrot fixture or exposure prescription.",
+          "reviewedAt": "2026-08-17"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "limited",
+          "sourceIds": ["harrisons-uvb-husbandry-2024"],
+          "locator": "'Relationship to Diet' discussion of the cited African Grey UVB/calcium study",
+          "evidenceScope": "species_specific",
+          "rationale": "The source discusses African Grey calcium metabolism in connection with UVB and diet; it still does not establish a one-size-fits-all home-lighting protocol.",
+          "reviewedAt": "2026-08-17"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "limited",
+          "sourceIds": ["harrisons-uvb-husbandry-2024"],
+          "locator": "'What Level of UV is Recommended?' discussion of budgerigars and need for a shaded escape area",
+          "evidenceScope": "species_specific",
+          "rationale": "The source discusses budgerigars in its husbandry context, but proposed values are explicitly prudent starting points rather than a validated universal prescription.",
+          "reviewedAt": "2026-08-17"
+        },
+        {
+          "bird": "canary",
+          "outcome": "limited",
+          "sourceIds": ["harrisons-uvb-husbandry-2024"],
+          "locator": "'Behavioral Changes of Birds Exposed to Sunlight' and 'How Pet Owners Can Supply UVB'",
+          "evidenceScope": "species_specific",
+          "rationale": "The source includes a canary observation and broad companion-bird UVB practice context, but it does not establish a canary-specific fixture or duration.",
+          "reviewedAt": "2026-08-17"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": ["wei-2020-uvb-laying-hens"],
+          "locator": "Simple Summary; Abstract; Introduction; Methods sections describing the studied 296–316 nm UVB-LED intervention",
+          "evidenceScope": "species_specific",
+          "rationale": "Controlled laying-hen evidence supports the studied UVB/calcium/vitamin-D context; it does not prescribe a home flock fixture or an automatic care-card schedule.",
+          "reviewedAt": "2026-08-17"
+        }
+      ],
+      "proposedCopyBoundary": "May support a concise, non-prescriptive note that closed window glass does not supply useful UVB and that lighting setup requires a species-appropriate source plus an escape/shade area. It must not specify a universal lamp, distance, UV index, or duration.",
+      "lastReviewedAt": "2026-08-17"
+    },
+    {
+      "id": "pigeon-fresh-produce-variety",
+      "title": "Pigeon fresh-produce variety and preparation",
+      "category": "fresh_produce",
+      "implementationStatus": "proposed_not_runtime",
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "limited",
+          "sourceIds": ["vca-pigeon-dove-feeding", "melbourne-pet-pigeon-diet-2023"],
+          "locator": "VCA 'Fruits and Vegetables' section; Melbourne Bird Veterinary Clinic 'A range of fresh fruit and vegetables'",
+          "evidenceScope": "species_specific",
+          "rationale": "Both sources support varied, prepared fresh produce for pet pigeons; neither supports treating fresh produce as a dry-formula component or gives an apple-specific pigeon approval.",
+          "reviewedAt": "2026-08-17"
+        }
+      ],
+      "proposedCopyBoundary": "May support a pigeon-specific note about offering a variety of washed, finely chopped greens and vegetables with smaller fruit portions in a separate dish. It must not name apple until a direct pigeon apple source is added.",
+      "lastReviewedAt": "2026-08-17"
+    }
+  ]
+}

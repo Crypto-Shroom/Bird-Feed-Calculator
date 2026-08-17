@@ -14,6 +14,7 @@ The first ledger release is intentionally **no-runtime-change**. It preserves or
 | [`HISTORICAL_BASELINE.md`](./HISTORICAL_BASELINE.md) | Crosswalk to the preserved pre-GitHub project files and recovered Manus research. | Governing historical-intent index. |
 | [`food-reviews.json`](./food-reviews.json) | Future per-food, per-form, six-bird outcomes. | Empty by design until each review is evidenced. |
 | [`profile-claims.json`](./profile-claims.json) | Read-only historical-versus-current profile target reconciliation rows. | Seeded with configuration snapshots; scientific reconciliation remains pending. |
+| [`care-claims.json`](./care-claims.json) | Source-backed husbandry evidence and explicit limits for future care-card or Detailed Analysis wording. | Seeded; no runtime adapter. |
 
 ## Non-negotiable rules
 
@@ -42,7 +43,7 @@ The first ledger release is intentionally **no-runtime-change**. It preserves or
 ## Review workflow
 
 1. Add or improve the source entry in `sources.json`.
-2. Add one ingredient/form record containing exactly six species evidence rows.
+2. Add one ingredient/form record containing exactly six species evidence rows, or add a care claim with a source-backed proposed-copy boundary.
 3. Reference source IDs and exact locators for every row.
 4. Run `pnpm test:provenance` from the repository root.
 5. Open a focused PR that explains what the ledger records and explicitly confirms whether runtime behaviour or public text changes. If runtime behaviour changes, it belongs in a **separate** owner-approved PR.
@@ -66,5 +67,12 @@ The first ledger release is intentionally **no-runtime-change**. It preserves or
 | `clinical-avian-medicine-2006` | Cross-species nutrition, toxicology, pigeon, galliform, and canary/finch chapters | Academic veterinary book |
 | `historical-preaudit-profile-config` | Preserved pre-audit multi-bird profile configuration | Historical project configuration |
 | `runtime-v3-profile-config` | Current V3 `birds.ts` profile configuration | Runtime configuration snapshot |
+| `harrisons-uvb-husbandry-2024` | Companion-bird UVB and window-glass husbandry context | Owner guidance with cited sources |
+| `wei-2020-uvb-laying-hens` | Studied UVB-LED, vitamin-D, and calcium context in laying hens | Primary research |
+| `vca-pigeon-dove-feeding` | Pigeon/dove produce, fruit, and shell-grit context | Veterinary owner guidance |
+| `melbourne-pet-pigeon-diet-2023` | Pet-pigeon fresh-produce context | Veterinary owner guidance |
+| `vca-canary-feeding`, `vca-meyers-parrot-feeding`, `vca-budgie-feeding`, `vca-fruits-vegetables-birds` | Apple and produce review sources | Veterinary owner guidance |
+| `merck-pet-bird-nutritional-diseases` | Broad pet-bird apple-seed exclusion | Veterinary reference |
+| `uf-ifas-chicken-apple-seeds-2026`, `alabama-extension-laying-hen-feeding-2022` | Chicken apple safety and treat boundary | Extension guidance |
 
 The detailed machine-readable entries, scopes, URLs, and limitations are in [`sources.json`](./sources.json).

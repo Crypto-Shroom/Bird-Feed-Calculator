@@ -62,6 +62,18 @@ Every reusable source is defined once in `sources.json`.
 | Honest gaps | `unresolved` is valid and required when current evidence does not meet the six-bird standard. |
 | No inferred approval | A source written for pigeons cannot silently permit the food for parrots, African Greys, budgies, canaries, or chickens. |
 
+## Care claim record
+
+`care-claims.json` contains source-backed husbandry claims that may later support care cards or Detailed Analysis text. It is a no-runtime-change evidence layer.
+
+| Invariant | Requirement |
+|---|---|
+| Explicit scope | Each care-evidence row names its bird and uses `species_specific`, `group_specific`, `related_species`, or `historical_project`. |
+| Explicit outcome | Each row has a supported outcome, non-empty rationale, source ID, locator, and review date. |
+| No universal prescription | A broad lighting or husbandry source cannot justify a universal lamp, UV index, distance, duration, or treatment instruction. |
+| Proposed-copy boundary | Each care claim records exactly what public wording its evidence can and cannot support. |
+| No automatic UI change | A `proposed_not_runtime` record does not alter care cards, Detailed Analysis, or calculator behavior. |
+
 ## Profile claim record
 
 `profile-claims.json` contains `profileClaims`. Each profile range lists its exact bird, profile name, nutrient, numeric range, source IDs, locator, evidence scope, claim kind, linked counterpart, and historical-to-active reconciliation status.
