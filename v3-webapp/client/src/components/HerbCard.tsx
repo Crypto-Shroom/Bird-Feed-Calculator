@@ -2,15 +2,25 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import type { Herb } from "@/lib/data";
-import { getHerbEvidence, HERB_SOURCES } from "@/lib/herb-evidence";
+import { getHerbEvidence, HERB_SOURCES, type HerbBirdKey } from "@/lib/herb-evidence";
+
+const birdLabels: Record<HerbBirdKey, string> = {
+  pigeon: "Pigeon",
+  parrot: "Parrot",
+  african_grey: "African Grey",
+  budgie: "Budgie",
+  canary: "Canary",
+  chicken: "Chicken",
+};
 
 interface HerbCardProps {
   name: string;
   herb: Herb;
   showSources?: boolean;
+  showCompatibleBirds?: boolean;
 }
 
-export function HerbCard({ name, herb, showSources = false }: HerbCardProps) {
+export function HerbCard({ name, herb, showSources = false, showCompatibleBirds = false }: HerbCardProps) {
   const evidence = getHerbEvidence(name);
   const sourceEntries = evidence.sourceIds.map((sourceId) => HERB_SOURCES[sourceId]);
   const safetyLabel = evidence.eligibility === "eligible"
@@ -34,6 +44,12 @@ export function HerbCard({ name, herb, showSources = false }: HerbCardProps) {
         <div className="mt-3 flex flex-wrap gap-2">
           {herb.benefits.map((benefit) => <Badge key={benefit} variant="secondary" className="bg-emerald-50 text-emerald-900 hover:bg-emerald-100">{benefit}</Badge>)}
         </div>
+        {showCompatibleBirds && <section className="mt-5" aria-label={`Compatible birds for ${name.replace(/_/g, " ")}`}>
+          <h4 className="text-sm font-semibold text-foreground">Compatible birds</h4>
+          {evidence.compatibleBirds.length ? <div className="mt-2 flex flex-wrap gap-2">
+            {evidence.compatibleBirds.map((bird) => <Badge key={bird} variant="outline" className="border-sky-200 bg-sky-50 text-sky-900">{birdLabels[bird]}</Badge>)}
+          </div> : <p className="mt-1 text-xs text-muted-foreground">No species compatibility is recorded for this reference entry.</p>}
+        </section>}
         <dl className="mt-5 space-y-3 text-sm">
           <div>
             <dt className="font-medium text-foreground">Dosage per 1 kg batch</dt>
