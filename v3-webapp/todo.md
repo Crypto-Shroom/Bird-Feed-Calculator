@@ -120,3 +120,4 @@
 - [ ] Triage Issues #48 and #49 for herb-library compatible-bird metadata, preserving the library-only presentation boundary.
 - [ ] Create linked issues for server-backed saved inventory and mixes, user accounts, and staged German/Dutch localization before any implementation branch begins.
 - [ ] Close the resolved free-hosting issue with the verified Firebase deployment outcome and document the remaining automation decisions in Issue #20.
+- [ ] Research and design a safe fresh-vegetable recommendation layer for pigeons (chopped greens, grated carrot, preparation boundaries) without mixing fresh produce into dry seed batch weight or altering active calculations.
