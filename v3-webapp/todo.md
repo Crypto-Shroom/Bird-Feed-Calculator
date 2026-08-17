@@ -122,3 +122,4 @@
 - [ ] Close the resolved free-hosting issue with the verified Firebase deployment outcome and document the remaining automation decisions in Issue #20.
 - [ ] Research and design a safe fresh-vegetable recommendation layer for pigeons (chopped greens, grated carrot, preparation boundaries) without mixing fresh produce into dry seed batch weight or altering active calculations.
 - [ ] Add pigeon-only fresh produce info (chopped salad greens, grated carrots) alongside grit and water in the profile card.
+- [ ] Create an issue-linked pull request for the profile-box care notes update (water, grit, base diet, pigeon fresh produce) and document exact visible strings.
