@@ -1,6 +1,7 @@
 import { initializeApp, cert } from 'firebase-admin/app';
 import { getFirestore } from 'firebase-admin/firestore';
 import axios from 'axios';
+import { labelsForImportedReport } from './report-labels.mjs';
 
 const serviceAccountEnv = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
 if (!serviceAccountEnv) {
@@ -42,7 +43,7 @@ async function run() {
         {
           title: data.title,
           body: `${data.body}\n\n---\n*Queued via Firestore and processed automatically.*`,
-          labels: data.labels || ["needs-research"]
+          labels: labelsForImportedReport(data.labels || ["needs-research"])
         },
         {
           headers: {
