@@ -19,6 +19,7 @@
     "test:issue-submission": "tsx scripts/verify-issue-submission.mjs",
     "test:github-app": "tsx scripts/verify-github-app-auth.mjs",
     "test:report-queue": "vitest run --config scripts/vitest.config.ts",
+    "test:server": "vitest run --config vitest.server.config.ts",
     "verify:firebase-deploy-credential": "node scripts/verify-firebase-service-account.mjs",
     "format": "prettier --write ."
   },
@@ -57,9 +58,10 @@
     "cmdk": "^1.1.1",
     "concurrently": "^9.2.1",
     "embla-carousel-react": "^8.6.0",
-    "express": "^4.21.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.6.2",
     "firebase": "^12.17.1",
-    "firebase-admin": "^12.1.0",
+    "firebase-admin": "^14.2.0",
     "framer-motion": "^12.23.22",
     "input-otp": "^1.4.2",
     "jsonwebtoken": "^9.0.3",
@@ -71,9 +73,8 @@
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.64.0",
     "react-resizable-panels": "^3.0.6",
-    "recharts": "^2.15.2",
+    "recharts": "^3.10.1",
     "sonner": "^2.0.7",
-    "streamdown": "^1.4.0",
     "tailwind-merge": "^3.3.1",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^1.1.2",
@@ -110,7 +111,8 @@
       "wouter@3.7.1": "patches/wouter@3.7.1.patch"
     },
     "overrides": {
-      "tailwindcss>nanoid": "3.3.7"
+      "tailwindcss>nanoid": "3.3.7",
+      "uuid": "11.1.1"
     }
   }
 }

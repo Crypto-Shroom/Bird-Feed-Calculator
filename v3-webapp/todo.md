@@ -112,3 +112,9 @@
 - [x] Make the daily report processor deterministic with the committed Functions lockfile and validate malformed queue data before GitHub issue creation for Issue #106.
 - [ ] Correct report-routing documentation to state that Cloud Functions issue creation is intentionally unrouted and unused.
 - [x] Add focused automated coverage for the hardened report queue without changing visitor-facing copy.
+- [x] Verify whether the direct Streamdown package is used by active V3 source before removal for Issue #107.
+- [x] Update the active Express and Recharts production dependency paths, regenerate the V3 lockfile, and preserve runtime behavior for Issue #107.
+- [x] Compare production dependency advisories before and after the Issue #107 remediation.
+- [x] Run focused and full V3 regression coverage without changing visitor-facing copy for Issue #107.
+- [x] Add a tested silent request limit after CodeQL identified the static fallback as an unbounded filesystem-access route on Issue #107.
+- [x] Upgrade the merged Firebase Admin production path and verify the reconciled report processor dependency graph has no known advisories.
