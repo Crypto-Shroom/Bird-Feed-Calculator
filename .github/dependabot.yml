@@ -1,0 +1,23 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/v3-webapp"
+    schedule:
+      interval: "weekly"
+    ignore:
+      - dependency-name: "*"
+
+  - package-ecosystem: "npm"
+    directory: "/v0-python-only"
+    schedule:
+      interval: "never"
+
+  - package-ecosystem: "npm"
+    directory: "/v1-pigeon-only"
+    schedule:
+      interval: "never"
+
+  - package-ecosystem: "npm"
+    directory: "/v2-multi-bird"
+    schedule:
+      interval: "never"
