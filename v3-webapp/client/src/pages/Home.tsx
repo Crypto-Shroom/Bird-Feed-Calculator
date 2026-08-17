@@ -370,7 +370,7 @@ export default function Home() {
                       </div>
                     );
                   })}
-                  {!Object.keys(inventory).length && <p className="rounded-md border border-dashed p-6 text-center text-sm text-muted-foreground">Your inventory is empty. Add the ingredients you actually have to replace the profile standard formula with an inventory-based calculation.</p>}
+                  {!Object.keys(inventory).length && <p className="rounded-md border border-dashed p-6 text-center text-sm text-muted-foreground">Add compatible ingredients to create a batch estimate.</p>}
                 </div>
               </CardContent>
             </Card>
