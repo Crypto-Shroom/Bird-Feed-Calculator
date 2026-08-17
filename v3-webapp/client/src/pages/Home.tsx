@@ -12,7 +12,6 @@ import {
   Info,
   Leaf,
   Plus,
-  RotateCcw,
   Scale,
   Search,
   Trash2,
@@ -45,7 +44,8 @@ import {
 } from "@/lib/birds";
 import { MultibirMixCalculator, type MixResult } from "@/lib/calculator-multi-bird";
 import { getPreparationInstructions, getProcessingWarning, isToxicRaw } from "@/lib/safety";
-import { getStarterInventory } from "@/lib/inventory-presets";
+import { getProfileDefaultIngredients } from "@/lib/inventory-presets";
+import { resolveDisplayedFormula } from "@/lib/formula-display";
 import { cn } from "@/lib/utils";
 import { Link } from "wouter";
 
@@ -53,8 +53,7 @@ export default function Home() {
   const [selectedBird, setSelectedBird] = useState<BirdType>("pigeon");
   const [situation, setSituation] = useState("pet");
   const [targetWeight, setTargetWeight] = useState(1000);
-  const [inventory, setInventory] = useState<Record<string, number>>(() => getStarterInventory("pigeon", "pet"));
-  const [result, setResult] = useState<MixResult | null>(null);
+  const [inventory, setInventory] = useState<Record<string, number>>({});
   const [activeTab, setActiveTab] = useState("calculator");
   const [ingredientSearch, setIngredientSearch] = useState("");
   const [addOpen, setAddOpen] = useState(false);
@@ -74,8 +73,27 @@ export default function Home() {
     };
   }, [selectedBird, situation]);
 
+  useEffect(() => {
+    if (!availableSituations.includes(situation)) setSituation(availableSituations[0]);
+  }, [availableSituations, situation]);
+
+  const profileDefaultResult = useMemo(
+    () => new MultibirMixCalculator(getProfileDefaultIngredients(selectedBird, situation), selectedBird, situation).calculate(targetWeight),
+    [selectedBird, situation, targetWeight],
+  );
+
+  const inventoryResult = useMemo(
+    () => Object.keys(inventory).length ? new MultibirMixCalculator(inventory, selectedBird, situation).calculate(targetWeight) : null,
+    [inventory, selectedBird, situation, targetWeight],
+  );
+
+  const { result, source: formulaSource } = useMemo(
+    () => resolveDisplayedFormula(inventory, profileDefaultResult, inventoryResult),
+    [inventory, inventoryResult, profileDefaultResult],
+  );
+
   const diversitySuggestion = useMemo(() => {
-    if (!result || result.missingIngredients?.length || !Object.keys(result.mix).length) return null;
+    if (result.missingIngredients?.length || !Object.keys(result.mix).length) return null;
 
     const candidate = ["barley", "oats", "millet", "sorghum", "buckwheat", "wheat", "rice_brown"]
       .filter((name) => !result.mix[name])
@@ -84,20 +102,6 @@ export default function Home() {
 
     return candidate ? `Try offering ${candidate.replace(/_/g, " ")} alongside this mix to increase diversity for your bird.` : null;
   }, [result, selectedBird]);
-
-  useEffect(() => {
-    if (!availableSituations.includes(situation)) setSituation(availableSituations[0]);
-  }, [availableSituations, situation]);
-
-  useEffect(() => {
-    if (!availableSituations.includes(situation)) return;
-    setInventory(getStarterInventory(selectedBird, situation));
-  }, [availableSituations, selectedBird, situation]);
-
-  useEffect(() => {
-    const calculator = new MultibirMixCalculator(inventory, selectedBird, situation);
-    setResult(calculator.calculate(targetWeight));
-  }, [inventory, selectedBird, situation, targetWeight]);
 
   const ingredientOptions = useMemo(() => {
     const query = ingredientSearch.trim().toLowerCase();
@@ -156,16 +160,11 @@ export default function Home() {
     });
   };
 
-  const resetToStandardMix = () => {
-    setInventory(getStarterInventory(selectedBird, situation));
-    setIngredientSearch("");
-    setAddOpen(false);
-  };
-
   const exportRecipe = () => {
     if (!result || !Object.keys(result.mix).length) return;
     const lines = [
       `${birdProfile.name} — ${currentProfile.name}`,
+      formulaSource === "profile-default" ? "Profile standard formula" : "Calculated from your inventory",
       `Batch estimate: ${Math.round(result.targetWeight)}g`,
       "",
       "FORMULA",
@@ -318,7 +317,6 @@ export default function Home() {
                 <CardDescription>Enter the available amount of each ingredient in grams. Unsafe or incompatible ingredients are not offered for this bird.</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="grid gap-2 sm:grid-cols-2">
                 <Popover open={addOpen} onOpenChange={setAddOpen}>
                   <PopoverTrigger asChild>
                     <Button type="button" variant="outline" className="w-full justify-start gap-2"><Plus className="h-4 w-4" />Add compatible ingredient</Button>
@@ -345,10 +343,6 @@ export default function Home() {
                     </ScrollArea>
                   </PopoverContent>
                 </Popover>
-                  <Button type="button" variant="outline" className="w-full justify-start gap-2" onClick={resetToStandardMix} title={`Restore the ${birdProfile.name} ${currentProfile.name} standard inventory`}>
-                    <RotateCcw className="h-4 w-4" />Reset to standard mix
-                  </Button>
-                </div>
 
                 <div className="space-y-3">
                   {Object.entries(inventory).map(([name, amount]) => {
@@ -405,7 +399,7 @@ export default function Home() {
                 <CardContent className="min-h-[520px] p-6">
                   {activeTab === "calculator" && <div className="space-y-6">
                     <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
-                      <div><h2 className="text-xl font-bold">Recommended Formula</h2></div>
+                      <div><h2 className="text-xl font-bold">Recommended Formula</h2><p className="mt-1 text-sm text-muted-foreground">{formulaSource === "profile-default" ? `Profile standard formula for ${birdProfile.name} — ${currentProfile.name}. Add your actual inventory to calculate from it instead.` : "Calculated from the inventory you entered."}</p></div>
                       <Button type="button" variant="outline" size="sm" className="gap-2" onClick={exportRecipe} disabled={!Object.keys(result.mix).length}><Download className="h-4 w-4" />Export recipe</Button>
                     </div>
 

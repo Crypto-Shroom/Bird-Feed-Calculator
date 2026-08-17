@@ -98,3 +98,6 @@
 - [x] Pin third-party GitHub Actions references to full commit SHAs under GitHub Issue #56 so Dependabot validation can start under repository policy.
 - [x] Reimplement and validate the missing "Reset to standard mix" control for GitHub Issue #39 on an issue-linked review branch.
 - [x] Add automated coverage confirming profile-specific inventory presets remain distinct and resettable without shared mutation.
+- [x] Supersede the reset-control interpretation of Issue #39 with an empty real inventory and a clearly labelled profile-default formula that yields to actual entered stock.
+- [x] Add coverage confirming profile-default formulas exist across all six birds and actual inventory overrides the displayed default.
+- [x] Restore the exact pre-change empty-inventory message after removing unapproved explanatory public copy from the Issue #39 correction.
