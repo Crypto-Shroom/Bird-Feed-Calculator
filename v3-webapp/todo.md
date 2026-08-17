@@ -95,6 +95,7 @@
 - [x] Add garlic oil as an occasional pigeon-only Pet/Companion recommendation through the canonical herb provenance database, without changing other bird recommendations.
 - [x] Repair the GitHub Actions Firebase deployment workflow so it installs and verifies dependencies inside v3-webapp before deploying merged main.
 - [x] Adopt an issue-linked pull-request workflow with concise scope, validation, decision, and handoff comments for every substantive repository change.
+- [x] Pin third-party GitHub Actions references to full commit SHAs under GitHub Issue #56 so Dependabot validation can start under repository policy.
 - [x] Reimplement and validate the missing "Reset to standard mix" control for GitHub Issue #39 on an issue-linked review branch.
 - [x] Add automated coverage confirming profile-specific inventory presets remain distinct and resettable without shared mutation.
 - [x] Supersede the reset-control interpretation of Issue #39 with an empty real inventory and a clearly labelled profile-default formula that yields to actual entered stock.
