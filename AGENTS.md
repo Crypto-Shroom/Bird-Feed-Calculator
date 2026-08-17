@@ -27,3 +27,9 @@
 - Flag changes that weaken raw-toxicity warnings, obscure required preparation, or silently alter protected data or profile wording.
 - Flag attempted edits to V0–V2 or `archive/` that are not explicitly preservation-only.
 - Keep review feedback focused on consequential, repository-specific issues. Leave formatting and deterministic checks to automated validation.
+
+
+## Multilingual research and six-bird evidence standards
+
+- When researching food, herb, or ingredient compatibility, never stop at a single language or preliminary pass. Search Dutch, German, and Spanish sources where they provide deeper husbandry, racing, or avian veterinary insights (e.g. Dutch/German pigeon and corvid literature, Spanish psittacine sources).
+- Assess all six supported birds (pigeon, parrot, African Grey, budgie, canary, chicken) separately. Ground every species claim in primary or veterinary evidence before proposing active-data inclusion.

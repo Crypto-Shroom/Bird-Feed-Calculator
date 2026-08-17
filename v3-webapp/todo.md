@@ -108,3 +108,14 @@
 - [ ] Fix Firebase Hosting report submissions that receive the SPA HTML fallback with HTTP 200 and are therefore incorrectly reported as created GitHub issues instead of queued Firestore reports.
 - [ ] Update the persistent Manus project instructions after the active fixes to preserve the owner-approved review, six-bird research, preview, and inventory/default-formula workflow; do not add this instruction text to the repository.
 - [ ] Perform a read-only review of GitHub secret-scanning findings and repository quality signals; do not rotate credentials, rewrite history, close alerts, or alter files without owner approval.
+- [x] Review failing Dependabot checks, validate safe active-V3 dependency upgrades, and merge only the owner-approved passing updates; document any remaining archive-only blockers.
+- [x] Pin third-party GitHub Actions references to full commit SHAs under GitHub Issue #56 so Dependabot validation can start under repository policy.
+- [x] Merge the owner-approved passing grouped Dependabot update in PR #55 using a merge commit and preserve local audit worktrees.
+- [x] Audit all other open pull requests for scope, validation, and explicit owner approval before merging any of them.
+- [ ] Hold and split or regenerate Dependabot PR #60 because it updates active V3 tooling, Firebase Functions, archive paths, and historical V1/V2 directories but fails frozen-lockfile validation.
+- [ ] Prepare a focused active-V3 dependency-maintenance pull request that excludes archive, V1/V2, and Firebase Functions paths; regenerate the V3 lockfile and present it for owner approval without merging.
+- [ ] Verify the merged scoped active-V3 dependency update, retire only its remote branch, and present the next safety-aware issue priority order for owner direction.
+- [ ] Research almond and cashew across pigeon, parrot, African Grey, budgie, canary, and chicken; prepare cited issue reports without changing active data before owner approval.
+- [ ] Triage Issues #48 and #49 for herb-library compatible-bird metadata, preserving the library-only presentation boundary.
+- [ ] Create linked issues for server-backed saved inventory and mixes, user accounts, and staged German/Dutch localization before any implementation branch begins.
+- [ ] Close the resolved free-hosting issue with the verified Firebase deployment outcome and document the remaining automation decisions in Issue #20.
