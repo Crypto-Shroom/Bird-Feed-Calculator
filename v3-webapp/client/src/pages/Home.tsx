@@ -62,6 +62,7 @@ export default function Home() {
   const birdProfile = BIRD_PROFILES[selectedBird];
   const currentProfile = birdProfile.profiles[situation] || birdProfile.profiles[availableSituations[0]];
   const care = BIRD_CARE[selectedBird];
+  const gritText = care.gritBySituation?.[situation] ? `${care.grit} ${care.gritBySituation[situation]}` : care.grit;
   const herbRecommendation = useMemo(() => {
     const recommendation = HERB_RECOMMENDATIONS[situation];
     if (!recommendation) return null;
@@ -304,10 +305,10 @@ export default function Home() {
                 </div>
 
                 <Separator />
-                <div className="space-y-4 text-sm">
-                  <CareNote icon={<Droplets className="h-5 w-5 text-blue-600" />} title="Water" text={care.water} />
-                  <CareNote icon={<Scale className="h-5 w-5 text-amber-700" />} title="Grit" text={care.grit} />
-                  <CareNote icon={<BookOpen className="h-5 w-5 text-emerald-600" />} title="Base Diet" text={care.baseDiet} />
+                  <div className="space-y-4 text-sm">
+                    <CareNote icon={<Droplets className="h-5 w-5 text-blue-600" />} title="Water" text={care.water} />
+                    <CareNote icon={<Scale className="h-5 w-5 text-amber-700" />} title="Grit" text={gritText} />
+                    <CareNote icon={<BookOpen className="h-5 w-5 text-emerald-600" />} title="Base Diet" text={care.baseDiet} />
                   {selectedBird === "pigeon" && (
                     <CareNote icon={<Leaf className="h-5 w-5 text-emerald-600" />} title="Fresh Produce" text="Offer small quantities of finely chopped salad greens or grated carrots 2–3 times weekly in a separate dish." />
                   )}
