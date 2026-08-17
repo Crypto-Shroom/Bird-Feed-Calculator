@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Future per-food, per-form, six-bird evidence records. This first no-runtime-change ledger release intentionally seeds no active food outcomes.",
+  "requiredBirdOrder": [
+    "pigeon",
+    "parrot",
+    "african_grey",
+    "budgie",
+    "canary",
+    "chicken"
+  ],
+  "ingredientReviews": []
+}

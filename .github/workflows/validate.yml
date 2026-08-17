@@ -38,5 +38,8 @@ jobs:
       - name: Verify all calculator scenarios
         run: pnpm --dir v3-webapp test:calculator
 
+      - name: Validate provenance ledger
+        run: pnpm test:provenance
+
       - name: Build production bundle
         run: pnpm --dir v3-webapp build

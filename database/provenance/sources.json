@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "id": "historical-manus-multibird-2025",
+      "title": "Multi-Bird Nutrition Research Findings",
+      "authorsOrOrganization": "Original Manus project research",
+      "publishedYear": "2025",
+      "sourceTier": "historical_project",
+      "urlOrDoi": "https://manus.im/share/file/2afc85ee-4513-4e12-a705-2c3156d0813c",
+      "speciesScopes": ["parrot", "african_grey", "budgie", "canary", "pigeon"],
+      "permittedUse": "Protected evidence of original multi-bird research intent and original named source trail.",
+      "limitations": "Not a complete field-level citation ledger and cannot independently validate every ingredient or six-bird compatibility outcome.",
+      "accessedAt": "2026-08-17"
+    },
+    {
+      "id": "historical-pigeon-research-2025",
+      "title": "Preserved pigeon nutrition research and original ingredient catalog",
+      "authorsOrOrganization": "Original Manus project research",
+      "publishedYear": "2025",
+      "sourceTier": "historical_project",
+      "urlOrDoi": "v1-original/pigeon_nutrition_research.md; v1-original/expanded_ingredients.py; v2-vite-fix/RESEARCH_REFERENCES.md",
+      "speciesScopes": ["pigeon"],
+      "permittedUse": "Protected evidence of pigeon-only research, catalog lineage, target intent, and named reference list.",
+      "limitations": "Individual nutrient rows and formulation targets still need source-level locator mapping before live-data changes.",
+      "accessedAt": "2026-08-17"
+    },
+    {
+      "id": "historical-raw-legume-2025",
+      "title": "Toxic Legumes for Pigeons - Research Findings",
+      "authorsOrOrganization": "Original Manus project research",
+      "publishedYear": "2025",
+      "sourceTier": "historical_project",
+      "urlOrDoi": "v1-original/toxic_legumes_research.md; v2-vite-fix/toxic_legumes_research.md",
+      "speciesScopes": ["pigeon"],
+      "permittedUse": "Protected record of original raw-legume safety and preparation intent.",
+      "limitations": "Its named research inputs include broad pet sources, rescue organizations, and forums; it requires stronger source-level validation before future runtime use.",
+      "accessedAt": "2026-08-17"
+    },
+    {
+      "id": "finchinfo-nutrition",
+      "title": "Nutritional Requirements",
+      "authorsOrOrganization": "Finch Information Center",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "http://www.finchinfo.com/diet/nutritional_requirements.php",
+      "speciesScopes": ["canary", "passerine"],
+      "permittedUse": "Canary/finch/passserine maintenance context, explicit limits on poultry extrapolation, and cited nutrient discussion.",
+      "limitations": "Approximate passerine allowances are not universal canary targets and cannot be copied to any other calculator species.",
+      "accessedAt": "2026-08-17"
+    },
+    {
+      "id": "merck-columbiformes-2025",
+      "title": "Nutrition in Pigeons and Doves",
+      "authorsOrOrganization": "Joeke Nijboer, PhD; Anouk Fens, MSc; Merck Veterinary Manual",
+      "publishedYear": "2025",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.merckvetmanual.com/management-and-nutrition/nutrition-exotic-and-zoo-animals/nutrition-in-pigeons-and-doves",
+      "speciesScopes": ["pigeon", "columbiformes"],
+      "permittedUse": "Pigeon/dove feeding ecology, pellet context, and crop-milk/squab nutrition.",
+      "limitations": "Does not validate each dry-mix ingredient, racing profile, or all six species.",
+      "accessedAt": "2026-08-17"
+    },
+    {
+      "id": "sales-janssens-2003",
+      "title": "Nutrition of the domestic pigeon (Columba livia domestica)",
+      "authorsOrOrganization": "J. Sales; G. P. J. Janssens",
+      "publishedYear": "2003",
+      "sourceTier": "peer_reviewed_review",
+      "urlOrDoi": "https://doi.org/10.1079/WPS20030014",
+      "speciesScopes": ["pigeon"],
+      "permittedUse": "Domestic pigeon nutrient, energy, whole-grain feeding, and species-difference review.",
+      "limitations": "Adult-production context does not automatically set pet, racing, breeding, or winter calculator targets without an explicit mapping decision.",
+      "accessedAt": "2026-08-17"
+    },
+    {
+      "id": "merck-psittacines-2025",
+      "title": "Nutrition in Psittacines",
+      "authorsOrOrganization": "Joeke Nijboer, PhD; Anouk Fens, MSc; Merck Veterinary Manual",
+      "publishedYear": "2025",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.merckvetmanual.com/management-and-nutrition/nutrition-exotic-and-zoo-animals/nutrition-in-psittacines",
+      "speciesScopes": ["parrot", "african_grey", "budgie", "psittacine"],
+      "permittedUse": "Psittacine feeding context, explicit Grey and budgerigar maintenance ranges, seed-diet limits, and grit distinction.",
+      "limitations": "A psittacine-general statement cannot be treated as a species-specific food approval for every parrot, Grey, or budgie record.",
+      "accessedAt": "2026-08-17"
+    },
+    {
+      "id": "koutsos-2001-psittacines",
+      "title": "Nutrition of Birds in the Order Psittaciformes: A Review",
+      "authorsOrOrganization": "E. A. Koutsos; K. D. Matson; K. C. Klasing",
+      "publishedYear": "2001",
+      "sourceTier": "peer_reviewed_review",
+      "urlOrDoi": "https://doi.org/10.1647/1082-6742(2001)015%5B0257:NOBITO%5D2.0.CO;2",
+      "speciesScopes": ["parrot", "african_grey", "budgie", "psittacine"],
+      "permittedUse": "Scientific framework for physiologically appropriate psittacine diet and related-species evidence assessment.",
+      "limitations": "Methodological review; it is not an ingredient-by-ingredient compatibility approval table.",
+      "accessedAt": "2026-08-17"
+    },
+    {
+      "id": "peron-grosset-2013",
+      "title": "The diet of adult psittacids: veterinarian and ethological approaches",
+      "authorsOrOrganization": "F. Péron; C. Grosset",
+      "publishedYear": "2013",
+      "sourceTier": "peer_reviewed_review",
+      "urlOrDoi": "https://doi.org/10.1111/jpn.12103",
+      "speciesScopes": ["parrot", "african_grey", "budgie", "psittacine"],
+      "permittedUse": "Seed-mix limitations, selective feeding, captive-diet context, water-supplement risks, and cited Grey/budgie observations.",
+      "limitations": "Does not provide a six-bird food compatibility catalogue.",
+      "accessedAt": "2026-08-17"
+    },
+    {
+      "id": "vca-african-grey-feeding",
+      "title": "African Grey Parrots - Feeding",
+      "authorsOrOrganization": "Gregory Rich, DVM; Laurie Hess, DVM, DABVP; Rick Axelson, DVM; VCA Animal Hospitals",
+      "publishedYear": "2022",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://vcahospitals.com/know-your-pet/african-grey-feeding",
+      "speciesScopes": ["african_grey"],
+      "permittedUse": "African Grey companion-care context for seed/nut moderation, calcium/vitamin-A risks, fresh food, water, and grit boundaries.",
+      "limitations": "Owner-facing veterinary guidance; not a complete nutrient or ingredient-analysis database.",
+      "accessedAt": "2026-08-17"
+    },
+    {
+      "id": "merck-poultry-2024",
+      "title": "Nutritional Requirements of Poultry",
+      "authorsOrOrganization": "Doug Korver, PhD; Merck Veterinary Manual",
+      "publishedYear": "2024",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.merckvetmanual.com/poultry/nutrition-and-management-poultry/nutritional-requirements-of-poultry",
+      "speciesScopes": ["chicken"],
+      "permittedUse": "Chicken life-stage complete-ration, water, nutrient-density, amino-acid, vitamin, and mineral context.",
+      "limitations": "Does not make a dry seed, grain, or legume mix a complete chicken ration and cannot set requirements for other bird groups.",
+      "accessedAt": "2026-08-17"
+    },
+    {
+      "id": "nas-poultry-2026",
+      "title": "Nutrient Requirements of Poultry: Tenth Revised Edition",
+      "authorsOrOrganization": "National Academies of Sciences, Engineering, and Medicine",
+      "publishedYear": "2026",
+      "sourceTier": "academic_book",
+      "urlOrDoi": "https://www.nationalacademies.org/projects/DELS-BANR-15-01",
+      "speciesScopes": ["chicken", "poultry"],
+      "permittedUse": "Current consensus backbone for poultry nutrient requirements, feed ingredients, bioavailability, and life-phase review.",
+      "limitations": "Future numeric rows must cite the exact edition, table, and life stage rather than the book title alone.",
+      "accessedAt": "2026-08-17"
+    },
+    {
+      "id": "clinical-avian-medicine-2006",
+      "title": "Clinical Avian Medicine",
+      "authorsOrOrganization": "Greg J. Harrison, DVM; Teresa L. Lightfoot, DVM; contributing authors",
+      "publishedYear": "2006",
+      "sourceTier": "academic_book",
+      "urlOrDoi": "https://www.ivis.org/library/clinical-avian-medicine",
+      "speciesScopes": ["pigeon", "parrot", "african_grey", "budgie", "canary", "chicken", "avian"],
+      "permittedUse": "Cross-species chapter-level veterinary reference for nutrition, toxicology, racing pigeons, galliformes, and canaries/finches.",
+      "limitations": "Each future claim must cite its exact relevant chapter/section; the book title cannot act as blanket six-bird approval.",
+      "accessedAt": "2026-08-17"
+    }
+  ]
+}

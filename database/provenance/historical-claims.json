@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Protected historical research claims captured without promoting them to runtime behaviour.",
+  "claims": [
+    {
+      "id": "historical-multibird-core-compatibility-list",
+      "status": "historical_claim_only",
+      "sourceIds": ["historical-manus-multibird-2025"],
+      "scope": "Original multi-bird research listed wheat, barley, oats, millet, corn, lentils, peas, mung beans, chickpeas, sunflower seeds, safflower seeds, hemp seeds, basil, oregano, thyme, and parsley as safe for all birds.",
+      "limitations": "This is protected evidence of original project intent, but it does not satisfy the owner-required explicit six-bird review for every individual food/form. It must not create a runtime compatibility default.",
+      "recordedAt": "2026-08-17"
+    },
+    {
+      "id": "historical-raw-legume-rules",
+      "status": "historical_claim_only",
+      "sourceIds": ["historical-raw-legume-2025"],
+      "scope": "Original pigeon research distinguished raw lentils, split peas, mung beans, chickpeas, and garden peas from raw kidney, lima, fava, black, pinto, navy, white, and other large dried beans requiring cooking.",
+      "limitations": "The preserved research identifies owner-critical safety intent but cites broad pet sources, rescue organizations, and forums. Each legume/form/bird outcome requires stronger food-science and species-specific source review before a future runtime change.",
+      "recordedAt": "2026-08-17"
+    },
+    {
+      "id": "historical-pet-herb-intent",
+      "status": "historical_claim_only",
+      "sourceIds": ["historical-pigeon-research-2025"],
+      "scope": "Original pigeon research listed chamomile and lavender for stress relief, fennel and ginger for digestive health, and oregano and thyme for general wellness in the Pet/Stay-at-Home profile.",
+      "limitations": "This captures historical feature intent, not a therapeutic or six-bird eligibility claim. Herb source review and species evidence remain required.",
+      "recordedAt": "2026-08-17"
+    }
+  ]
+}
