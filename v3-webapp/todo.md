@@ -103,3 +103,4 @@
 - [x] Add coverage confirming profile-default formulas exist across all six birds and actual inventory overrides the displayed default.
 - [x] Restore the exact pre-change empty-inventory message after removing unapproved explanatory public copy from the Issue #39 correction.
 - [x] Update only active V3 axios, PostCSS, and Vite patch versions for Issue #61; regenerate the locked dependency graph and preserve archive, V1/V2, Firebase Functions, and all application behavior.
+- [x] Display canonical compatible-bird badges only in the dedicated Herb Library for Issues #48 and #49, never in calculator cards.
