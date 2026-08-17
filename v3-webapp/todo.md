@@ -123,3 +123,5 @@
 - [ ] Research and design a safe fresh-vegetable recommendation layer for pigeons (chopped greens, grated carrot, preparation boundaries) without mixing fresh produce into dry seed batch weight or altering active calculations.
 - [ ] Add pigeon-only fresh produce info (chopped salad greens, grated carrots) alongside grit and water in the profile card.
 - [ ] Create an issue-linked pull request for the profile-box care notes update (water, grit, base diet, pigeon fresh produce) and document exact visible strings.
+- [x] Verify the owner-provided pigeon feeding sources and update the six-bird Apple provenance record where direct pigeon evidence supports it.
+- [ ] Add the owner-approved Light care note with a sun symbol, the detailed environmental-support note, and the revised pigeon fresh-produce wording in a separate issue-linked PR.

@@ -15,6 +15,7 @@ import {
   Plus,
   Scale,
   Search,
+  Sun,
   Trash2,
   Wheat,
 } from "lucide-react";
@@ -302,10 +303,9 @@ export default function Home() {
                 <div className="space-y-4 text-sm">
                   <CareNote icon={<Droplets className="h-5 w-5 text-blue-600" />} title="Water" text={care.water} />
                   <CareNote icon={<Scale className="h-5 w-5 text-amber-700" />} title="Grit" text={care.grit} />
+                  <CareNote icon={<Sun className="h-5 w-5 text-amber-500" />} title="Light" text={care.light} />
                   <CareNote icon={<BookOpen className="h-5 w-5 text-emerald-600" />} title="Base Diet" text={care.baseDiet} />
-                  {selectedBird === "pigeon" && (
-                    <CareNote icon={<Leaf className="h-5 w-5 text-emerald-600" />} title="Fresh Produce" text="Offer small quantities of finely chopped salad greens or grated carrots 2–3 times weekly in a separate dish." />
-                  )}
+                  {care.freshProduce && <CareNote icon={<Leaf className="h-5 w-5 text-emerald-600" />} title="Fresh Produce" text={care.freshProduce} />}
                 </div>
               </CardContent>
             </Card>
@@ -431,7 +431,7 @@ export default function Home() {
                     <ReportIssueLink section="Herbs & Supplements" bird={birdProfile.name} profile={currentProfile.name} />
                   </div>}
 
-                  {activeTab === "analysis" && <div className="space-y-8"><div><h2 className="mb-4 text-lg font-bold">Category Breakdown</h2><div className="space-y-4"><CategoryBar label="Grains" value={result.categories.grain} target={getCategoryTargets(selectedBird).grain} color="bg-amber-400" /><CategoryBar label="Legumes" value={result.categories.legume} target={getCategoryTargets(selectedBird).legume} color="bg-emerald-500" /><CategoryBar label="Seeds" value={result.categories.seed} target={getCategoryTargets(selectedBird).seed} color="bg-stone-500" /></div></div><Separator /><div><h2 className="mb-3 text-lg font-bold">Detailed analysis</h2><p className="text-sm text-muted-foreground mb-3">Detailed analysis of the recommended seed mix based on nutritional targets and ingredient properties.</p><div className="mt-4 grid gap-3 sm:grid-cols-2">{result.suggestions.map((suggestion) => <div key={suggestion} className="rounded-lg border bg-muted/20 p-4 text-sm"><CheckCircle2 className="mb-2 h-4 w-4 text-emerald-700" />{suggestion}</div>)}</div><p className="mt-4 text-xs text-muted-foreground">Optimizer note: The optimizer favours the selected profile’s estimated macronutrient and category ranges using the inventory you supplied. It is deterministic: identical inventory and settings produce the same batch estimate.</p></div><div className="rounded-lg border border-blue-200 bg-blue-50 p-4"><h3 className="font-semibold text-blue-950">Profile: {currentProfile.name}</h3><p className="mt-1 text-sm text-blue-900">{currentProfile.feedingNotes}</p></div><ReportIssueLink section="Detailed Analysis" bird={birdProfile.name} profile={currentProfile.name} /></div>}
+                  {activeTab === "analysis" && <div className="space-y-8"><div><h2 className="mb-4 text-lg font-bold">Category Breakdown</h2><div className="space-y-4"><CategoryBar label="Grains" value={result.categories.grain} target={getCategoryTargets(selectedBird).grain} color="bg-amber-400" /><CategoryBar label="Legumes" value={result.categories.legume} target={getCategoryTargets(selectedBird).legume} color="bg-emerald-500" /><CategoryBar label="Seeds" value={result.categories.seed} target={getCategoryTargets(selectedBird).seed} color="bg-stone-500" /></div></div><Separator /><div><h2 className="mb-3 text-lg font-bold">Detailed analysis</h2><p className="text-sm text-muted-foreground mb-3">Detailed analysis of the recommended seed mix based on nutritional targets and ingredient properties.</p><div className="mt-4 grid gap-3 sm:grid-cols-2">{result.suggestions.map((suggestion) => <div key={suggestion} className="rounded-lg border bg-muted/20 p-4 text-sm"><CheckCircle2 className="mb-2 h-4 w-4 text-emerald-700" />{suggestion}</div>)}</div><p className="mt-4 text-xs text-muted-foreground">Optimizer note: The optimizer favours the selected profile’s estimated macronutrient and category ranges using the inventory you supplied. It is deterministic: identical inventory and settings produce the same batch estimate.</p></div><div className="rounded-lg border border-blue-200 bg-blue-50 p-4"><h3 className="font-semibold text-blue-950">Profile: {currentProfile.name}</h3><p className="mt-1 text-sm text-blue-900">{currentProfile.feedingNotes}</p></div><div className="rounded-lg border border-amber-200 bg-amber-50 p-4"><h3 className="flex items-center gap-2 font-semibold text-amber-950"><Sun className="h-4 w-4 text-amber-600" aria-hidden="true" />Environmental Support</h3><p className="mt-1 text-sm text-amber-900">Daylight through closed window glass does not provide useful UVB. UVB supports vitamin-D metabolism and calcium use.</p></div><ReportIssueLink section="Detailed Analysis" bird={birdProfile.name} profile={currentProfile.name} /></div>}
                 </CardContent>
               </Card>
             </div>}
