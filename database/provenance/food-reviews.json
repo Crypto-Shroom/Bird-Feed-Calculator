@@ -81,6 +81,78 @@
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-17"
+    },
+    {
+      "ingredientId": "chickpeas",
+      "ingredientDisplayName": "Chickpeas",
+      "form": "raw dried seeds",
+      "nutrition": {
+        "sourceIds": ["eorganic-chickpeas-poultry-2014"],
+        "basis": "not_applicable",
+        "notes": "This evidence-first record evaluates the raw dried form only. It does not add a nutrient value, a dry-mix ingredient instruction, or a complete-ration claim."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": ["vca-pigeon-dove-feeding"],
+          "locator": "VCA 'Can I feed people food to my pigeon or dove?' section",
+          "evidenceScope": "species_specific",
+          "rationale": "The pigeon-specific veterinary source provides general small-quantity human-food context but does not name chickpeas or raw pulses. The poultry extension source cannot be used to infer a pigeon preparation outcome. Raw dried chickpeas therefore remain unresolved for pigeons pending a direct pigeon-specific chickpea or raw-pulse source.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "requires_preparation",
+          "sourceIds": ["happy-cockatoo-parrot-sprouts-2012"],
+          "locator": "'Cautions' section: lists garbanzo beans (chickpeas) among legumes and states that legumes are not safe raw; requires sprouting until root tails are visible",
+          "evidenceScope": "group_specific",
+          "rationale": "The replacement source directly addresses parrots, names garbanzo beans/chickpeas, and states that legumes are not safe raw. Raw dried chickpeas therefore require preparation before any parrot use. This experienced-keeper guidance is non-clinical, so it does not establish a cooking method, portion, recipe, formula inclusion, complete ration, runtime food approval, or a result for another species.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "requires_preparation",
+          "sourceIds": ["vca-african-grey-feeding", "eorganic-chickpeas-poultry-2014"],
+          "locator": "VCA 'Fruits and Vegetables' section and suggested-items table; eOrganic 'Composition' and 'Feeding Chickpeas to Poultry' sections",
+          "evidenceScope": "species_specific",
+          "rationale": "The African Grey source names chickpeas and separately names cooked beans in a pellet-led companion diet. The chickpea-specific source identifies antinutritional factors and explains that heat treatment inactivates most of them. Raw dried chickpeas therefore require preparation before any African Grey use; this does not establish a portion, recipe, formula inclusion, or an unrestricted cooked-food outcome.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "requires_preparation",
+          "sourceIds": ["vca-budgie-feeding", "exoticdirect-budgie-chickpeas-2019"],
+          "locator": "VCA 'List of suitable fruits and vegetables for budgies' table; ExoticDirect list beginning 'These are suitable for budgies but do not ever feed raw'",
+          "evidenceScope": "species_specific",
+          "rationale": "The VCA source lists cooked beans in budgie feeding guidance. The budgie-specific owner guidance explicitly includes chickpeas among foods that should not be fed raw. Raw dried chickpeas therefore require preparation before any budgie use; the non-clinical source does not establish a cooking method, portion, formula inclusion, or complete ration.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "canary",
+          "outcome": "requires_preparation",
+          "sourceIds": ["vca-canary-feeding", "eorganic-chickpeas-poultry-2014"],
+          "locator": "VCA 'Fruits, vegetables, and legumes suitable for canaries include' table, where chickpeas appear under 'cooked beans'; eOrganic 'Composition' and 'Feeding Chickpeas to Poultry' sections",
+          "evidenceScope": "species_specific",
+          "rationale": "The canary-specific veterinary source lists chickpeas under cooked beans, not as a raw dried food. The chickpea-specific source identifies antinutritional factors and explains that heat treatment inactivates most of them. Raw dried chickpeas therefore require preparation before any canary use; this does not establish a portion, recipe, formula inclusion, or complete ration.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": ["eorganic-chickpeas-poultry-2014", "danek-majewska-2021-raw-chickpea-broilers"],
+          "locator": "eOrganic 'Feeding Chickpeas to Poultry' section; Danek-Majewska et al. 2021 abstract, introduction, and methods describing Ross 308 broiler grower/finisher compound diets",
+          "evidenceScope": "species_specific",
+          "rationale": "Chicken evidence describes antinutritional factors and controlled broiler-ration studies of raw chickpea, including a formulated grower/finisher diet. This is limited to the studied poultry/ration context and does not establish unsupervised household feeding, a complete ration, or a rule for other birds.",
+          "reviewedAt": "2026-08-18"
+        }
+      ],
+      "processing": {
+        "sourceIds": ["eorganic-chickpeas-poultry-2014", "danek-majewska-2021-raw-chickpea-broilers"],
+        "rule": "Parrot, African Grey, budgie, and canary records require preparation before use. Pigeon remains unresolved pending direct pigeon-specific chickpea or raw-pulse evidence. Chicken evidence is limited to a controlled formulated-ration context. This evidence record does not approve a preparation method, runtime use, formula inclusion, portion, or complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-18"
     }
   ]
 }

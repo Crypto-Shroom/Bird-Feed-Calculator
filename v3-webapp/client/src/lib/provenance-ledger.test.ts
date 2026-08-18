@@ -70,6 +70,43 @@ describe("canonical provenance ledger", () => {
     expect(apple?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
   });
 
+  it("records raw dried chickpeas with explicit six-bird evidence and a historical raw-legume coverage link", () => {
+    const foodLedger = readJson("food-reviews.json") as {
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{ bird: string; outcome: string; sourceIds: string[] }>;
+      }>;
+    };
+    const coverageLedger = readJson("food-coverage.json") as {
+      claimCoverage: Array<{
+        historicalClaimId: string;
+        trackedItems: Array<{ id: string; linkedFoodReviewKeys: string[] }>;
+      }>;
+    };
+    const chickpeas = foodLedger.ingredientReviews.find(
+      (review) => review.ingredientId === "chickpeas" && review.form === "raw dried seeds",
+    );
+    const rawLegumeCoverage = coverageLedger.claimCoverage.find(
+      (coverage) => coverage.historicalClaimId === "historical-raw-legume-rules",
+    );
+    const rawChickpeaCoverage = rawLegumeCoverage?.trackedItems.find((item) => item.id === "chickpeas-raw");
+
+    expect(chickpeas?.speciesEvidence.map((entry) => entry.bird)).toEqual([
+      "pigeon",
+      "parrot",
+      "african_grey",
+      "budgie",
+      "canary",
+      "chicken",
+    ]);
+    expect(chickpeas?.speciesEvidence.filter((entry) => entry.outcome === "unresolved")).toHaveLength(1);
+    expect(chickpeas?.speciesEvidence.filter((entry) => entry.outcome === "requires_preparation")).toHaveLength(4);
+    expect(chickpeas?.speciesEvidence.find((entry) => entry.bird === "chicken")?.outcome).toBe("limited");
+    expect(chickpeas?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
+    expect(rawChickpeaCoverage?.linkedFoodReviewKeys).toEqual(["chickpeas::raw dried seeds"]);
+  });
+
   it("keeps light and fresh-produce care claims source-backed and non-runtime", () => {
     const ledger = readJson("care-claims.json") as {
       careClaims: Array<{

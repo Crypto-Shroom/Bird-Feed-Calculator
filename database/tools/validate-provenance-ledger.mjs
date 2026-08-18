@@ -159,6 +159,60 @@ function validateFoodReviews(reviews, sourceIndex, errors) {
   }
 }
 
+function validateFoodCoverage(coverageLedger, historicalClaims, foodReviews, errors) {
+  if (!coverageLedger || coverageLedger.schemaVersion !== 1 || !Array.isArray(coverageLedger.claimCoverage)) {
+    errors.push("Food coverage ledger must declare schemaVersion 1 and a claimCoverage array.");
+    return;
+  }
+
+  const historicalClaimsById = new Map(historicalClaims.map((claim) => [claim.id, claim]));
+  const foodReviewsByKey = new Map(foodReviews.map((review) => [`${review.ingredientId}::${review.form}`, review]));
+  const trackedItemIds = new Set();
+
+  for (const coverage of coverageLedger.claimCoverage) {
+    const historicalClaim = historicalClaimsById.get(coverage.historicalClaimId);
+    if (!historicalClaim) {
+      errors.push(`Food coverage references unknown historical claim '${coverage.historicalClaimId ?? "<missing>"}'.`);
+      continue;
+    }
+
+    if (!Array.isArray(coverage.trackedItems) || coverage.trackedItems.length === 0) {
+      errors.push(`Food coverage '${coverage.historicalClaimId}' must list at least one tracked food/form item.`);
+      continue;
+    }
+
+    for (const item of coverage.trackedItems) {
+      const context = `Food coverage item '${item.id ?? "<missing>"}' for '${coverage.historicalClaimId}'`;
+      for (const field of ["id", "displayName", "historicalForm"]) {
+        if (!isNonEmptyString(item[field])) {
+          errors.push(`${context} must include '${field}'.`);
+        }
+      }
+      if (trackedItemIds.has(item.id)) {
+        errors.push(`${context} is duplicated.`);
+      }
+      trackedItemIds.add(item.id);
+
+      if (!Array.isArray(item.linkedFoodReviewKeys)) {
+        errors.push(`${context} must include linkedFoodReviewKeys as an array.`);
+        continue;
+      }
+
+      for (const reviewKey of item.linkedFoodReviewKeys) {
+        const review = foodReviewsByKey.get(reviewKey);
+        if (!review) {
+          errors.push(`${context} links unknown food review '${reviewKey}'.`);
+          continue;
+        }
+        const birds = review.speciesEvidence?.map((entry) => entry.bird) ?? [];
+        if (birds.length !== requiredBirds.length || requiredBirds.some((bird) => birds.filter((entry) => entry === bird).length !== 1)) {
+          errors.push(`${context} links food review '${reviewKey}' without complete six-bird coverage.`);
+        }
+      }
+    }
+  }
+}
+
 function validateProfileClaims(claims, sourceIndex, errors) {
   const claimIndex = new Map();
 
@@ -259,16 +313,18 @@ const errors = [];
 const sourceLedger = readJson("sources.json");
 const historicalLedger = readJson("historical-claims.json");
 const foodLedger = readJson("food-reviews.json");
+const foodCoverageLedger = readJson("food-coverage.json");
 const profileLedger = readJson("profile-claims.json");
 const careLedger = readJson("care-claims.json");
 
-if (sourceLedger.schemaVersion !== 1 || historicalLedger.schemaVersion !== 1 || foodLedger.schemaVersion !== 1 || profileLedger.schemaVersion !== 1 || careLedger.schemaVersion !== 1) {
+if (sourceLedger.schemaVersion !== 1 || historicalLedger.schemaVersion !== 1 || foodLedger.schemaVersion !== 1 || foodCoverageLedger.schemaVersion !== 1 || profileLedger.schemaVersion !== 1 || careLedger.schemaVersion !== 1) {
   errors.push("All ledger JSON files must declare schemaVersion 1.");
 }
 
 const sourceIndex = validateSources(sourceLedger.sources, errors);
 validateHistoricalClaims(historicalLedger.claims, sourceIndex, errors);
 validateFoodReviews(foodLedger.ingredientReviews, sourceIndex, errors);
+validateFoodCoverage(foodCoverageLedger, historicalLedger.claims, foodLedger.ingredientReviews, errors);
 validateProfileClaims(profileLedger.profileClaims, sourceIndex, errors);
 validateCareClaims(careLedger.careClaims, sourceIndex, errors);
 
@@ -282,5 +338,6 @@ console.log("Provenance ledger validation passed.");
 console.log(`- ${sourceLedger.sources.length} source records`);
 console.log(`- ${historicalLedger.claims.length} protected historical claims`);
 console.log(`- ${foodLedger.ingredientReviews.length} food reviews (each future review requires six explicit species rows)`);
+console.log(`- ${foodCoverageLedger.claimCoverage.length} tracked historical food-claim coverage groups`);
 console.log(`- ${profileLedger.profileClaims.length} profile claim records`);
 console.log(`- ${careLedger.careClaims.length} proposed care claims`);
