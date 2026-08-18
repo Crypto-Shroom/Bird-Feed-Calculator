@@ -34,4 +34,4 @@ This audit covers every source previously attached to the raw-dried-chickpea rec
 
 ## Review conclusion
 
-The final record contains **no `unresolved` outcome**. For pigeon, parrot, African Grey, budgie, and canary, the outcome is `requires_preparation`, a conservative raw-form boundary rather than a food approval. Chicken remains `limited` to the cited controlled broiler-ration study. No cross-species suitability, runtime behavior, formula, inventory instruction, preparation method, or visitor-visible copy has been introduced.
+The final record retains **two `unresolved` outcomes**: pigeon and parrot. Their existing sources provide only general diet context and do not name chickpeas or raw pulses, so a poultry processing source cannot fill the gap. African Grey, budgie, and canary are `requires_preparation`, a conservative raw-form boundary rather than a food approval. Chicken remains `limited` to the cited controlled broiler-ration study. No cross-species suitability, runtime behavior, formula, inventory instruction, preparation method, or visitor-visible copy has been introduced.
