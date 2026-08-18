@@ -1,6 +1,5 @@
 {
-  "schemaVersion": 1,
-  "purpose": "Per-food, per-form, six-bird evidence records. Entries document evidence and gaps only; they do not modify active calculator outcomes.",
+  "version": null,
   "requiredBirdOrder": [
     "pigeon",
     "parrot",
@@ -15,7 +14,9 @@
       "ingredientDisplayName": "Apple",
       "form": "fresh washed flesh with core and seeds removed",
       "nutrition": {
-        "sourceIds": ["vca-fruits-vegetables-birds"],
+        "sourceIds": [
+          "vca-fruits-vegetables-birds"
+        ],
         "basis": "not_applicable",
         "notes": "This evidence batch records suitability and preparation only; it does not add a nutrient value or a dry-mix ingredient record."
       },
@@ -23,7 +24,11 @@
         {
           "bird": "pigeon",
           "outcome": "limited",
-          "sourceIds": ["vca-pigeon-dove-feeding", "modern-pet-pigeon-fruits-vegetables-2026", "pigeoncaretips-pigeon-diet-2026"],
+          "sourceIds": [
+            "vca-pigeon-dove-feeding",
+            "modern-pet-pigeon-fruits-vegetables-2026",
+            "pigeoncaretips-pigeon-diet-2026"
+          ],
           "locator": "VCA pigeon/dove 'Fruits and Vegetables' section; Modern Pet Pigeon Society 'Safe fruits and vegetables' pome-fruit list and preparation section; Pigeon Care Tips 'What fruits or vegetables can pigeons eat?' FAQ",
           "evidenceScope": "species_specific",
           "rationale": "Pigeon/dove veterinary guidance supports prepared small fruit portions. The Modern Pet Pigeon Society pigeon-specific guide explicitly lists apples, with wash, small-piece, fruit-treat, and seed-removal boundaries; a pigeon-keeper guide corroborates small apple pieces as occasional additions. This supports limited prepared apple flesh only, not a dry-mix ingredient, nutrient value, or staple use.",
@@ -32,7 +37,11 @@
         {
           "bird": "parrot",
           "outcome": "limited",
-          "sourceIds": ["vca-meyers-parrot-feeding", "vca-fruits-vegetables-birds", "merck-pet-bird-nutritional-diseases"],
+          "sourceIds": [
+            "vca-meyers-parrot-feeding",
+            "vca-fruits-vegetables-birds",
+            "merck-pet-bird-nutritional-diseases"
+          ],
           "locator": "VCA Meyer's Parrot 'Fruits and Vegetables' section; VCA broad produce recommended-items table; Merck pet-bird foods-to-avoid statement",
           "evidenceScope": "group_specific",
           "rationale": "Psittacine guidance supports small washed fruit pieces and explicitly excludes apple seeds; broad companion-bird guidance lists apple. This is limited group-level, not every-parrot-species evidence.",
@@ -41,7 +50,11 @@
         {
           "bird": "african_grey",
           "outcome": "limited",
-          "sourceIds": ["vca-african-grey-feeding", "vca-fruits-vegetables-birds", "merck-pet-bird-nutritional-diseases"],
+          "sourceIds": [
+            "vca-african-grey-feeding",
+            "vca-fruits-vegetables-birds",
+            "merck-pet-bird-nutritional-diseases"
+          ],
           "locator": "VCA African Grey 'Fruits and Vegetables' section; VCA broad produce recommended-items table; Merck pet-bird foods-to-avoid statement",
           "evidenceScope": "group_specific",
           "rationale": "Grey-specific guidance supports limited fresh fruit in a pellet-based diet; broad guidance lists apple and Merck excludes apple seeds. No Grey-specific apple trial or portion was found.",
@@ -50,7 +63,10 @@
         {
           "bird": "budgie",
           "outcome": "limited",
-          "sourceIds": ["vca-budgie-feeding", "merck-pet-bird-nutritional-diseases"],
+          "sourceIds": [
+            "vca-budgie-feeding",
+            "merck-pet-bird-nutritional-diseases"
+          ],
           "locator": "VCA Budgies 'List of suitable fruits and vegetables' table and 'Fruits and Vegetables' section; Merck pet-bird foods-to-avoid statement",
           "evidenceScope": "species_specific",
           "rationale": "VCA explicitly lists apple for budgies and requires washed small pieces; fresh foods remain limited within the cited diet boundary, and apple seeds are excluded.",
@@ -59,7 +75,10 @@
         {
           "bird": "canary",
           "outcome": "limited",
-          "sourceIds": ["vca-canary-feeding", "merck-pet-bird-nutritional-diseases"],
+          "sourceIds": [
+            "vca-canary-feeding",
+            "merck-pet-bird-nutritional-diseases"
+          ],
           "locator": "VCA Canaries 'Fruits, Vegetables, and Legumes Suitable for Canaries' table and 'Fruits and Vegetables' section; Merck pet-bird foods-to-avoid statement",
           "evidenceScope": "species_specific",
           "rationale": "VCA explicitly lists apple for canaries and requires washed, tiny, size-appropriate produce; apple seeds are excluded and apple remains a small fresh-food component.",
@@ -68,7 +87,10 @@
         {
           "bird": "chicken",
           "outcome": "limited",
-          "sourceIds": ["uf-ifas-chicken-apple-seeds-2026", "alabama-extension-laying-hen-feeding-2022"],
+          "sourceIds": [
+            "uf-ifas-chicken-apple-seeds-2026",
+            "alabama-extension-laying-hen-feeding-2022"
+          ],
           "locator": "UF/IFAS 'Apple Seeds and Fruit Pits' section; Alabama Extension 'Scratch grains, treats, and kitchen scraps' section",
           "evidenceScope": "species_specific",
           "rationale": "UF/IFAS states the fruit is safe after removing seeds; Alabama Extension establishes that treats are incomplete feeds to use sparingly. Apple is therefore a prepared treat, not a ration ingredient.",
@@ -76,7 +98,10 @@
         }
       ],
       "processing": {
-        "sourceIds": ["merck-pet-bird-nutritional-diseases", "vca-fruits-vegetables-birds"],
+        "sourceIds": [
+          "merck-pet-bird-nutritional-diseases",
+          "vca-fruits-vegetables-birds"
+        ],
         "rule": "Wash fruit; remove core and seeds; cut flesh to a species-appropriate size; do not use the record as a dry-mix or complete-ration instruction.",
         "severity": "warning"
       },
@@ -87,7 +112,9 @@
       "ingredientDisplayName": "Chickpeas",
       "form": "raw dried seeds",
       "nutrition": {
-        "sourceIds": ["eorganic-chickpeas-poultry-2014"],
+        "sourceIds": [
+          "eorganic-chickpeas-poultry-2014"
+        ],
         "basis": "not_applicable",
         "notes": "This evidence-first record evaluates the raw dried form only. It does not add a nutrient value, a dry-mix ingredient instruction, or a complete-ration claim."
       },
@@ -95,7 +122,9 @@
         {
           "bird": "pigeon",
           "outcome": "unresolved",
-          "sourceIds": ["vca-pigeon-dove-feeding"],
+          "sourceIds": [
+            "vca-pigeon-dove-feeding"
+          ],
           "locator": "VCA 'Can I feed people food to my pigeon or dove?' section",
           "evidenceScope": "species_specific",
           "rationale": "The pigeon-specific veterinary source provides general small-quantity human-food context but does not name chickpeas or raw pulses. The poultry extension source cannot be used to infer a pigeon preparation outcome. Raw dried chickpeas therefore remain unresolved for pigeons pending a direct pigeon-specific chickpea or raw-pulse source.",
@@ -104,7 +133,9 @@
         {
           "bird": "parrot",
           "outcome": "requires_preparation",
-          "sourceIds": ["happy-cockatoo-parrot-sprouts-2012"],
+          "sourceIds": [
+            "happy-cockatoo-parrot-sprouts-2012"
+          ],
           "locator": "'Cautions' section: lists garbanzo beans (chickpeas) among legumes and states that legumes are not safe raw; requires sprouting until root tails are visible",
           "evidenceScope": "group_specific",
           "rationale": "The replacement source directly addresses parrots, names garbanzo beans/chickpeas, and states that legumes are not safe raw. Raw dried chickpeas therefore require preparation before any parrot use. This experienced-keeper guidance is non-clinical, so it does not establish a cooking method, portion, recipe, formula inclusion, complete ration, runtime food approval, or a result for another species.",
@@ -113,7 +144,10 @@
         {
           "bird": "african_grey",
           "outcome": "requires_preparation",
-          "sourceIds": ["vca-african-grey-feeding", "eorganic-chickpeas-poultry-2014"],
+          "sourceIds": [
+            "vca-african-grey-feeding",
+            "eorganic-chickpeas-poultry-2014"
+          ],
           "locator": "VCA 'Fruits and Vegetables' section and suggested-items table; eOrganic 'Composition' and 'Feeding Chickpeas to Poultry' sections",
           "evidenceScope": "species_specific",
           "rationale": "The African Grey source names chickpeas and separately names cooked beans in a pellet-led companion diet. The chickpea-specific source identifies antinutritional factors and explains that heat treatment inactivates most of them. Raw dried chickpeas therefore require preparation before any African Grey use; this does not establish a portion, recipe, formula inclusion, or an unrestricted cooked-food outcome.",
@@ -122,7 +156,10 @@
         {
           "bird": "budgie",
           "outcome": "requires_preparation",
-          "sourceIds": ["vca-budgie-feeding", "exoticdirect-budgie-chickpeas-2019"],
+          "sourceIds": [
+            "vca-budgie-feeding",
+            "exoticdirect-budgie-chickpeas-2019"
+          ],
           "locator": "VCA 'List of suitable fruits and vegetables for budgies' table; ExoticDirect list beginning 'These are suitable for budgies but do not ever feed raw'",
           "evidenceScope": "species_specific",
           "rationale": "The VCA source lists cooked beans in budgie feeding guidance. The budgie-specific owner guidance explicitly includes chickpeas among foods that should not be fed raw. Raw dried chickpeas therefore require preparation before any budgie use; the non-clinical source does not establish a cooking method, portion, formula inclusion, or complete ration.",
@@ -131,7 +168,10 @@
         {
           "bird": "canary",
           "outcome": "requires_preparation",
-          "sourceIds": ["vca-canary-feeding", "eorganic-chickpeas-poultry-2014"],
+          "sourceIds": [
+            "vca-canary-feeding",
+            "eorganic-chickpeas-poultry-2014"
+          ],
           "locator": "VCA 'Fruits, vegetables, and legumes suitable for canaries include' table, where chickpeas appear under 'cooked beans'; eOrganic 'Composition' and 'Feeding Chickpeas to Poultry' sections",
           "evidenceScope": "species_specific",
           "rationale": "The canary-specific veterinary source lists chickpeas under cooked beans, not as a raw dried food. The chickpea-specific source identifies antinutritional factors and explains that heat treatment inactivates most of them. Raw dried chickpeas therefore require preparation before any canary use; this does not establish a portion, recipe, formula inclusion, or complete ration.",
@@ -140,7 +180,10 @@
         {
           "bird": "chicken",
           "outcome": "limited",
-          "sourceIds": ["eorganic-chickpeas-poultry-2014", "danek-majewska-2021-raw-chickpea-broilers"],
+          "sourceIds": [
+            "eorganic-chickpeas-poultry-2014",
+            "danek-majewska-2021-raw-chickpea-broilers"
+          ],
           "locator": "eOrganic 'Feeding Chickpeas to Poultry' section; Danek-Majewska et al. 2021 abstract, introduction, and methods describing Ross 308 broiler grower/finisher compound diets",
           "evidenceScope": "species_specific",
           "rationale": "Chicken evidence describes antinutritional factors and controlled broiler-ration studies of raw chickpea, including a formulated grower/finisher diet. This is limited to the studied poultry/ration context and does not establish unsupervised household feeding, a complete ration, or a rule for other birds.",
@@ -148,8 +191,104 @@
         }
       ],
       "processing": {
-        "sourceIds": ["eorganic-chickpeas-poultry-2014", "danek-majewska-2021-raw-chickpea-broilers"],
+        "sourceIds": [
+          "eorganic-chickpeas-poultry-2014",
+          "danek-majewska-2021-raw-chickpea-broilers"
+        ],
         "rule": "Parrot, African Grey, budgie, and canary records require preparation before use. Pigeon remains unresolved pending direct pigeon-specific chickpea or raw-pulse evidence. Chicken evidence is limited to a controlled formulated-ration context. This evidence record does not approve a preparation method, runtime use, formula inclusion, portion, or complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-18"
+    },
+    {
+      "ingredientId": "wheat",
+      "ingredientDisplayName": "Wheat",
+      "form": "whole dry grain, threshed/hulled where applicable",
+      "nutrition": {
+        "sourceIds": [
+          "uk-poultry-extension-wheat-diets-2026"
+        ],
+        "basis": "not_applicable",
+        "notes": "This record documents species/form evidence only. It does not change the existing nutrient row or approve wheat as a complete ration."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "merck-columbiformes-2025"
+          ],
+          "locator": "Nutrition in Pigeons and Doves, opening feeding-ecology and seed-eating-pigeon paragraphs",
+          "evidenceScope": "species_specific",
+          "rationale": "The veterinary reference establishes that many pigeons are granivorous and that seed-eating pigeons accept formulated diets, but it does not identify whole dry wheat or validate a wheat form, amount, or complete-ration role for pigeons.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "merck-psittacines-2025"
+          ],
+          "locator": "Nutrition in Psittacines, opening diet paragraph and seed-diet limitations",
+          "evidenceScope": "group_specific",
+          "rationale": "The veterinary reference describes species variation within psittacines and warns that strictly seed-based diets are suboptimal, but it does not establish whole dry wheat as suitable for the general parrot row.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "merck-psittacines-2025",
+            "vca-african-grey-feeding"
+          ],
+          "locator": "Nutrition in Psittacines, Grey-parrot diet and species-variation discussion; VCA African Grey feeding guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "Grey-specific nutrition guidance is available, but the reviewed passages address balanced formulated diets, seed moderation, and nutrient risks rather than a validated whole-dry-wheat food/form outcome.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "limited",
+          "sourceIds": [
+            "omlet-parakeet-food-list-2026",
+            "vca-budgie-feeding"
+          ],
+          "locator": "Omlet Parakeet Food List, 'Parakeet Grains' and 'Parakeet-Friendly Grains' sections; VCA Budgies feeding guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "The budgie/parakeet-specific list names wheat among parakeet-friendly grains and specifies fresh threshed/hulled grain while excluding cooked or processed forms. This supports limited whole dry wheat within a varied diet, not a complete ration or universal quantity.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "vca-canary-feeding",
+            "merck-pet-bird-nutritional-diseases"
+          ],
+          "locator": "VCA Canaries feeding, seed-diet limitations and balanced-diet sections; Merck pet-bird nutrition context",
+          "evidenceScope": "species_specific",
+          "rationale": "Canary guidance confirms that wild canaries eat varied seeds and that seed-only diets are incomplete, but it does not identify whole dry wheat or distinguish wheat form and portion. Absence of a warning is not treated as approval.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "uk-poultry-extension-wheat-diets-2026",
+            "merck-poultry-2024"
+          ],
+          "locator": "University of Kentucky Poultry Extension, opening wheat-in-poultry-diets paragraphs and whole-wheat paragraph; Merck Nutritional Requirements of Poultry, nutrient-requirement and feed-energy sections",
+          "evidenceScope": "species_specific",
+          "rationale": "Poultry feed guidance explicitly describes wheat as used in poultry diets and discusses whole wheat, varieties, nutrient composition, and mold/processing boundaries. This supports limited formulated-feed use for chickens, not wheat as a complete ration or a transfer to other birds.",
+          "reviewedAt": "2026-08-18"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "omlet-parakeet-food-list-2026",
+          "uk-poultry-extension-wheat-diets-2026"
+        ],
+        "rule": "Keep the reviewed form distinct: whole, dry, threshed/hulled grain where applicable. Do not treat wheat alone as a complete ration. For poultry use, account for variety, formulation, nutrient balance, and mold-control requirements; do not substitute cooked, rolled, roasted, or otherwise processed forms for this record.",
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-18"

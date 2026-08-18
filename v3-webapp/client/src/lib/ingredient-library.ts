@@ -16,13 +16,13 @@ export const SUPPORTED_INGREDIENT_LIBRARY_BIRDS: readonly BirdType[] = [
   "chicken",
 ] as const;
 
-export type IngredientEvidenceStatus = "unresolved";
+export type IngredientEvidenceStatus = "ledger_only";
+export type SafetyModelStatus = "explicitly_excluded" | "not_explicitly_excluded";
 
 export interface IngredientLibraryEntry {
   id: string;
   ingredient: Ingredient;
-  compatibleBirds: BirdType[];
-  incompatibleBirds: BirdType[];
+  safetyModelStatusByBird: Record<BirdType, SafetyModelStatus>;
   toxicityByBird: Partial<Record<BirdType, ToxicFood>>;
   evidenceStatus: IngredientEvidenceStatus;
   provenancePath: string;
@@ -45,10 +45,16 @@ export function getIngredientLibraryEntries(): IngredientLibraryEntry[] {
     .map(([id, ingredient]) => ({
       id,
       ingredient,
-      compatibleBirds: SUPPORTED_INGREDIENT_LIBRARY_BIRDS.filter((bird) => isIngredientCompatible(id, bird)),
-      incompatibleBirds: getIncompatibleBirds(id),
+      safetyModelStatusByBird: Object.fromEntries(
+        SUPPORTED_INGREDIENT_LIBRARY_BIRDS.map((bird) => [
+          bird,
+          getIncompatibleBirds(id).includes(bird) || !isIngredientCompatible(id, bird)
+            ? "explicitly_excluded"
+            : "not_explicitly_excluded",
+        ]),
+      ) as Record<BirdType, SafetyModelStatus>,
       toxicityByBird: getToxicityByBird(id),
-      evidenceStatus: "unresolved",
+      evidenceStatus: "ledger_only",
       provenancePath: PROVENANCE_PATH,
     }));
 }
