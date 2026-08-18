@@ -569,6 +569,290 @@
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-18"
+    },
+    {
+      "ingredientId": "mealworms",
+      "ingredientDisplayName": "Mealworms",
+      "form": "live yellow mealworm larvae",
+      "nutrition": {
+        "sourceIds": [
+          "oddon-live-larvae-broilers-2021"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only record. It does not add a runtime ingredient or a daily feeding amount."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "melbourne-pet-pigeon-diet-2023",
+            "valdes-exotic-insects-2022"
+          ],
+          "locator": "Melbourne Bird Veterinary Clinic insect-enrichment context; Vald\u00e9s et al. companion/exotic-pet whole/live/dehydrated insect discussion",
+          "evidenceScope": "species_specific",
+          "rationale": "The pigeon source permits general insect enrichment context but does not name live yellow mealworm larvae. The broad exotic-pet review cannot supply a pigeon-specific outcome.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "valdes-exotic-insects-2022",
+            "merck-psittacines-2025"
+          ],
+          "locator": "Vald\u00e9s et al. exotic-pet insect-format discussion; Merck psittacine nutrition and species-variation sections",
+          "evidenceScope": "group_specific",
+          "rationale": "The review notes generalized exotic-pet use but limited species-specific evidence, and Merck does not establish live mealworms for the general parrot row.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "valdes-exotic-insects-2022",
+            "vca-african-grey-feeding"
+          ],
+          "locator": "Vald\u00e9s et al. exotic-pet evidence-limit discussion; VCA African Grey balanced-diet guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "Neither source establishes live yellow mealworm larvae for African Greys or a safe treat amount.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "valdes-exotic-insects-2022",
+            "vca-budgie-feeding"
+          ],
+          "locator": "Vald\u00e9s et al. exotic-pet insect-format discussion; VCA Budgies feeding guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "The reviewed budgie source does not establish live mealworms, and the broad review does not replace species-specific evidence.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "lafeber-canary-mealworms-2020",
+            "valdes-exotic-insects-2022"
+          ],
+          "locator": "Lafeber canary answer addresses dried mealworms; Vald\u00e9s et al. distinguishes whole/live/dehydrated exotic-pet formats",
+          "evidenceScope": "species_specific",
+          "rationale": "Lafeber supports dried mealworms only. It does not establish the submitted live-larva form for canaries.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "oddon-live-larvae-broilers-2021",
+            "elahi-poultry-insect-meal-2022"
+          ],
+          "locator": "Oddon et al. broiler live-larvae trial methods and conclusion; Elahi et al. poultry live/dried/paste form discussion",
+          "evidenceScope": "species_specific",
+          "rationale": "A controlled broiler study found limited live yellow mealworm larvae used alongside commercial feed had no negative performance or health effect in that study. This is limited broiler-context evidence, not a complete ration or universal amount.",
+          "reviewedAt": "2026-08-18"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "oddon-live-larvae-broilers-2021",
+          "elahi-poultry-insect-meal-2022"
+        ],
+        "rule": "Keep live yellow mealworm larvae distinct from dried mealworms, mealworm meal, wild-caught worms, and other larvae. Use only clean, commercially controlled feed-grade material; never treat insects alone as a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-18"
+    },
+    {
+      "ingredientId": "mealworms",
+      "ingredientDisplayName": "Mealworms",
+      "form": "dried mealworms",
+      "nutrition": {
+        "sourceIds": [
+          "lafeber-canary-mealworms-2020",
+          "valdes-exotic-insects-2022"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only record. It does not add a runtime ingredient or a daily feeding amount."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "melbourne-pet-pigeon-diet-2023",
+            "valdes-exotic-insects-2022"
+          ],
+          "locator": "Melbourne Bird Veterinary Clinic insect-enrichment context; Vald\u00e9s et al. dehydrated insect discussion",
+          "evidenceScope": "species_specific",
+          "rationale": "The pigeon source does not name dried mealworms, and the broad exotic-pet review cannot establish a pigeon-specific dried form outcome.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "valdes-exotic-insects-2022",
+            "merck-psittacines-2025"
+          ],
+          "locator": "Vald\u00e9s et al. dehydrated insect discussion; Merck psittacine diet and species-variation sections",
+          "evidenceScope": "group_specific",
+          "rationale": "The broad review acknowledges exotic-pet insect use but limited species-specific safety evidence. No reviewed source establishes dried mealworms for the general parrot row.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "valdes-exotic-insects-2022",
+            "vca-african-grey-feeding"
+          ],
+          "locator": "Vald\u00e9s et al. dehydrated insect discussion; VCA African Grey feeding guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "No reviewed source establishes dried mealworms for African Greys or a portion boundary.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "valdes-exotic-insects-2022",
+            "vca-budgie-feeding"
+          ],
+          "locator": "Vald\u00e9s et al. dehydrated insect discussion; VCA Budgies feeding guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "The budgie source does not name dried mealworms and the broad review is insufficient for approval.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "canary",
+          "outcome": "limited",
+          "sourceIds": [
+            "lafeber-canary-mealworms-2020"
+          ],
+          "locator": "Lafeber canary answer: dried mealworms as an occasional treat, especially during molt or breeding conditioning, with sparing use",
+          "evidenceScope": "species_specific",
+          "rationale": "The canary-specific source directly addresses dried mealworms and supports only an occasional, very sparing treat; it warns that extra protein may trigger hormonal behavior.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "elahi-poultry-insect-meal-2022"
+          ],
+          "locator": "Elahi et al. poultry review live/dried/paste insect-form discussion and mealworm-meal sections",
+          "evidenceScope": "species_specific",
+          "rationale": "The poultry review supports insect meals and distinguishes dried products, but it does not establish whole dried mealworms as the submitted form or a household treat amount for chickens.",
+          "reviewedAt": "2026-08-18"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "lafeber-canary-mealworms-2020",
+          "elahi-poultry-insect-meal-2022"
+        ],
+        "rule": "Keep dried whole mealworms distinct from live larvae, mealworm meal, wild-caught insects, and flavored or salted products. Use only clean commercial material and never treat dried insects as a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-18"
+    },
+    {
+      "ingredientId": "crickets",
+      "ingredientDisplayName": "Crickets",
+      "form": "live commercial crickets",
+      "nutrition": {
+        "sourceIds": [
+          "valdes-exotic-insects-2022",
+          "elahi-poultry-insect-meal-2022"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only record. It does not add a runtime ingredient or a daily feeding amount."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "melbourne-pet-pigeon-diet-2023",
+            "valdes-exotic-insects-2022"
+          ],
+          "locator": "Melbourne Bird Veterinary Clinic insect-enrichment context; Vald\u00e9s et al. house-cricket whole/live format discussion",
+          "evidenceScope": "species_specific",
+          "rationale": "The pigeon source does not name live commercial crickets, and the broad exotic-pet review does not establish a pigeon-specific outcome.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "valdes-exotic-insects-2022",
+            "merck-psittacines-2025"
+          ],
+          "locator": "Vald\u00e9s et al. house-cricket whole/live discussion; Merck psittacine diet and species-variation sections",
+          "evidenceScope": "group_specific",
+          "rationale": "The broad review says exotic-pet use is generalized but species-specific safety evidence is limited; Merck does not establish live crickets for the general parrot row.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "valdes-exotic-insects-2022",
+            "vca-african-grey-feeding"
+          ],
+          "locator": "Vald\u00e9s et al. house-cricket discussion; VCA African Grey feeding guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "No reviewed source establishes live commercial crickets for African Greys or a portion/form boundary.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "valdes-exotic-insects-2022",
+            "vca-budgie-feeding"
+          ],
+          "locator": "Vald\u00e9s et al. house-cricket discussion; VCA Budgies feeding guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "The reviewed budgie guidance does not establish live commercial crickets, and the broad exotic-pet review cannot supply that species-specific outcome.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "lafeber-canary-mealworms-2020",
+            "valdes-exotic-insects-2022"
+          ],
+          "locator": "Lafeber canary answer addresses dried mealworms, not crickets; Vald\u00e9s et al. house-cricket discussion",
+          "evidenceScope": "species_specific",
+          "rationale": "The canary-specific source supports dried mealworms only, so it does not establish live commercial crickets.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "elahi-poultry-insect-meal-2022"
+          ],
+          "locator": "Elahi et al. poultry review live, dried, and paste forms and cricket/Orthoptera poultry sections",
+          "evidenceScope": "species_specific",
+          "rationale": "The poultry review identifies crickets among insect feed sources and discusses live forms in poultry diets. This supports limited formulated-feed context, not a complete ration or household feeding quantity.",
+          "reviewedAt": "2026-08-18"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "elahi-poultry-insect-meal-2022",
+          "valdes-exotic-insects-2022"
+        ],
+        "rule": "Use only clean, commercially controlled live crickets of an appropriate size; keep wild-caught insects, dried crickets, cricket meal, gut-loading diets, and pesticide exposure as distinct forms and risk questions. Never treat insects alone as a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-18"
     }
   ]
 }

@@ -582,6 +582,65 @@
       "permittedUse": "Poultry feeding value, antinutritional factors, and processing context for field peas and chickpeas.",
       "limitations": "Poultry review; it does not establish companion-bird suitability, raw-food safety for the six supported birds, or a complete ration by itself.",
       "accessedAt": "2026-08-18"
+    },
+    {
+      "id": "lafeber-canary-mealworms-2020",
+      "title": "Canary diet",
+      "authorsOrOrganization": "Lafeber Pet Birds",
+      "publishedYear": "2020",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://lafeber.com/pet-birds/questions/canary-diet/",
+      "speciesScopes": [
+        "canary"
+      ],
+      "permittedUse": "Canary-specific guidance for occasional dried-mealworm treats, including molt and breeding-conditioning context and sparing-use limits.",
+      "limitations": "A veterinary owner-answer rather than a controlled feeding trial; it does not establish live mealworm, cricket, pigeon, parrot, African Grey, budgie, or chicken outcomes.",
+      "accessedAt": "2026-08-18"
+    },
+    {
+      "id": "valdes-exotic-insects-2022",
+      "title": "Insects as Feed for Companion and Exotic Pets: A Current Trend",
+      "authorsOrOrganization": "Fabrizzio Vald\u00e9s; Valeria Villanueva; Emerson Dur\u00e1n; Francisca Campos; Constanza Avenda\u00f1o; Manuel S\u00e1nchez; Chaneta Domingoz-Araujo; Carolina Valenzuela",
+      "publishedYear": "2022",
+      "sourceTier": "peer_reviewed_review",
+      "urlOrDoi": "https://doi.org/10.3390/ani12111450",
+      "speciesScopes": [
+        "companion_bird",
+        "exotic_pet"
+      ],
+      "permittedUse": "Broad exotic-pet context for mealworms and house crickets in whole, live, or dehydrated formats, with evidence-scarcity and safety limitations.",
+      "limitations": "The review says species-specific safety and feeding evidence for exotic pets is limited; it cannot silently approve any named calculator bird or portion.",
+      "accessedAt": "2026-08-18"
+    },
+    {
+      "id": "elahi-poultry-insect-meal-2022",
+      "title": "Insect meal as a feed ingredient for poultry",
+      "authorsOrOrganization": "Usman Elahi; Chang-chun Xu; Jing Wang; Jing Lin; Shu-geng Wu; Hai-jun Zhang; Guang-hai Qi",
+      "publishedYear": "2022",
+      "sourceTier": "peer_reviewed_review",
+      "urlOrDoi": "https://doi.org/10.5713/ab.21.0435",
+      "speciesScopes": [
+        "chicken",
+        "poultry"
+      ],
+      "permittedUse": "Poultry feed context for mealworm, cricket, earthworm, and other insect meals; distinguishes live, dried, and paste forms and discusses hygiene and disease-carrier risks.",
+      "limitations": "Poultry review; it does not establish companion-bird suitability, household treat portions, or a complete ration from insects alone.",
+      "accessedAt": "2026-08-18"
+    },
+    {
+      "id": "oddon-live-larvae-broilers-2021",
+      "title": "Black soldier fly and yellow mealworm live larvae for broiler chickens: Effects on bird performance and health status",
+      "authorsOrOrganization": "Sara Bellezza Oddon; Ilaria Biasato; Arianna Imarisio; Miha Pipan; Dominik Dekleva; Elena Colombino; Maria Teresa Capucchio; Marco Meneguz; Stefania Bergagna; Raffaella Barbero; Marta Gariglio; Sihem Dabbou; Edoardo Fiorilla; Laura Gasco; Achille Schiavone",
+      "publishedYear": "2021",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1111/jpn.13567",
+      "speciesScopes": [
+        "chicken",
+        "broiler"
+      ],
+      "permittedUse": "Controlled broiler study of limited live yellow mealworm larvae as environmental enrichment alongside a commercial diet.",
+      "limitations": "Broiler strain, age, quantity, and study conditions are specific; it cannot establish pet-bird outcomes or a general mealworm feeding amount.",
+      "accessedAt": "2026-08-18"
     }
   ]
 }
