@@ -128,7 +128,7 @@
           "id": "chickpeas-raw",
           "displayName": "Chickpeas",
           "historicalForm": "raw",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": ["chickpeas::raw dried seeds"]
         },
         {
           "id": "garden-peas-raw",

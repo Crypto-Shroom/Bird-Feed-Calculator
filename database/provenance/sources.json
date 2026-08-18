@@ -247,7 +247,7 @@
       "authorsOrOrganization": "Gregory Rich, DVM; Laurie Hess, DVM; Rick Axelson, DVM; VCA Animal Hospitals",
       "publishedYear": "unknown",
       "sourceTier": "owner_guidance_with_citations",
-      "urlOrDoi": "https://vcahospitals.com/know-your-pet/parrots-feeding",
+      "urlOrDoi": "https://vcahospitals.com/know-your-pet/meyers-parrots-feeding",
       "speciesScopes": ["parrot", "psittacine"],
       "permittedUse": "Psittacine fresh-produce preparation, fruit moderation, and explicit apple-seed avoidance context.",
       "limitations": "Meyer's-parrot guidance is group-level support only; it cannot silently approve every parrot species or set African Grey and budgie portions.",
@@ -348,6 +348,30 @@
       "permittedUse": "Pigeon/dove rescue guidance for washed, finely chopped vegetables and greens as separate fresh-food additions with clean water and pigeon-safe grit context.",
       "limitations": "Rescue/owner guidance that does not name apple or establish a full fresh-produce nutrient plan, dry-mix inclusion rate, or universal feeding schedule.",
       "accessedAt": "2026-08-17"
+    },
+    {
+      "id": "eorganic-chickpeas-poultry-2014",
+      "title": "Including Chickpeas in Organic Poultry Diets",
+      "authorsOrOrganization": "Jacquie Jacob, PhD; University of Kentucky / eOrganic",
+      "publishedYear": "2014",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://eorganic.org/pages/70243/including-chickpeas-in-organic-poultry-diets",
+      "speciesScopes": ["chicken", "poultry"],
+      "permittedUse": "Chicken/poultry context for chickpea antinutritional factors, raw-chickpea inclusion research, heat-treatment considerations, and complete-ration limitations.",
+      "limitations": "Extension guidance summarizing feed studies; it does not establish a household feeding method, a complete ration, or suitability for pigeons, psittacines, budgies, or canaries.",
+      "accessedAt": "2026-08-18"
+    },
+    {
+      "id": "danek-majewska-2021-raw-chickpea-broilers",
+      "title": "Raw Chickpea (Cicer arietinum L.) as a Substitute of Soybean Meal in Compound Feed for Broiler Chickens",
+      "authorsOrOrganization": "Anna Danek-Majewska; Małgorzata Kwiecień; Anna Winiarska-Mieczan; Małgorzata Haliniarz; Agata Bielak",
+      "publishedYear": "2021",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.3390/ani11123367",
+      "speciesScopes": ["chicken", "broiler_chicken"],
+      "permittedUse": "Controlled broiler-chicken evidence for raw chickpea seed used within specified formulated grower and finisher diets.",
+      "limitations": "A Ross 308 broiler production study; it does not establish unsupervised household feeding, a complete ration, a universal inclusion level, or suitability for any other supported bird.",
+      "accessedAt": "2026-08-18"
     }
   ]
 }

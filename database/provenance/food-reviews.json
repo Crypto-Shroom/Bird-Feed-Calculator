@@ -81,6 +81,78 @@
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-17"
+    },
+    {
+      "ingredientId": "chickpeas",
+      "ingredientDisplayName": "Chickpeas",
+      "form": "raw dried seeds",
+      "nutrition": {
+        "sourceIds": ["historical-raw-legume-2025"],
+        "basis": "not_applicable",
+        "notes": "This evidence-first record evaluates the raw dried form only. It does not add a nutrient value, a dry-mix ingredient instruction, or a complete-ration claim."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": ["vca-pigeon-dove-feeding", "historical-raw-legume-2025"],
+          "locator": "VCA 'What should I feed my pigeon or dove?' and 'Can I feed people food to my pigeon or dove?' sections; protected historical raw-legume record",
+          "evidenceScope": "species_specific",
+          "rationale": "The veterinary pigeon/dove guidance provides general diet and small-quantity people-food context but does not name chickpeas or raw legumes. The protected historical record names raw chickpeas, but its documented source limitations do not meet the current six-bird standard. Raw dried chickpeas therefore remain unresolved for pigeons.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "unresolved",
+          "sourceIds": ["vca-meyers-parrot-feeding", "historical-raw-legume-2025"],
+          "locator": "VCA 'What should I feed my Meyer’s parrot?' and 'Can I feed my Meyer’s parrot people food?' sections; protected historical raw-legume record",
+          "evidenceScope": "group_specific",
+          "rationale": "The Meyer’s-parrot guidance supports only general balanced-diet and fresh-food context and does not name chickpeas or raw legumes. The protected historical record does not independently establish a raw-chickpea outcome for parrots. Raw dried chickpeas therefore remain unresolved.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": ["vca-african-grey-feeding", "historical-raw-legume-2025"],
+          "locator": "VCA 'Fruits and Vegetables' section and suggested-items table; protected historical raw-legume record",
+          "evidenceScope": "species_specific",
+          "rationale": "The African Grey guidance names chickpeas and separately names cooked beans, but it does not identify raw dried chickpeas, preparation criteria, or a portion. The protected historical record is insufficient to fill that raw-form gap. Raw dried chickpeas therefore remain unresolved.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": ["vca-budgie-feeding", "historical-raw-legume-2025"],
+          "locator": "VCA 'List of suitable fruits and vegetables for budgies' table; protected historical raw-legume record",
+          "evidenceScope": "species_specific",
+          "rationale": "The budgie guidance names cooked beans but does not name chickpeas or raw dried legumes. The protected historical record is not enough to infer a raw-form outcome. Raw dried chickpeas therefore remain unresolved.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": ["vca-canary-feeding", "historical-raw-legume-2025"],
+          "locator": "VCA 'Fruits, vegetables, and legumes suitable for canaries include' table; protected historical raw-legume record",
+          "evidenceScope": "species_specific",
+          "rationale": "The canary guidance lists chickpeas under cooked beans and does not support the raw dried form. The protected historical record is not enough to infer raw suitability. Raw dried chickpeas therefore remain unresolved.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": ["eorganic-chickpeas-poultry-2014", "danek-majewska-2021-raw-chickpea-broilers"],
+          "locator": "eOrganic 'Feeding Chickpeas to Poultry' section; Danek-Majewska et al. 2021 abstract, introduction, and methods describing Ross 308 broiler grower/finisher compound diets",
+          "evidenceScope": "species_specific",
+          "rationale": "Chicken evidence describes antinutritional factors and controlled broiler-ration studies of raw chickpea, including a formulated grower/finisher diet. This is limited to the studied poultry/ration context and does not establish unsupervised household feeding, a complete ration, or a rule for other birds.",
+          "reviewedAt": "2026-08-18"
+        }
+      ],
+      "processing": {
+        "sourceIds": ["eorganic-chickpeas-poultry-2014", "danek-majewska-2021-raw-chickpea-broilers"],
+        "rule": "This raw-seed record does not approve a preparation method or runtime use. Chicken evidence is limited to controlled complete-ration contexts; the other supported birds remain unresolved for raw dried chickpeas.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-18"
     }
   ]
 }
