@@ -100,8 +100,8 @@ describe("canonical provenance ledger", () => {
       "canary",
       "chicken",
     ]);
-    expect(chickpeas?.speciesEvidence.filter((entry) => entry.outcome === "unresolved")).toHaveLength(2);
-    expect(chickpeas?.speciesEvidence.filter((entry) => entry.outcome === "requires_preparation")).toHaveLength(3);
+    expect(chickpeas?.speciesEvidence.filter((entry) => entry.outcome === "unresolved")).toHaveLength(1);
+    expect(chickpeas?.speciesEvidence.filter((entry) => entry.outcome === "requires_preparation")).toHaveLength(4);
     expect(chickpeas?.speciesEvidence.find((entry) => entry.bird === "chicken")?.outcome).toBe("limited");
     expect(chickpeas?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
     expect(rawChickpeaCoverage?.linkedFoodReviewKeys).toEqual(["chickpeas::raw dried seeds"]);

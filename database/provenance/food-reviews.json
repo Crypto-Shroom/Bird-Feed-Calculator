@@ -103,11 +103,11 @@
         },
         {
           "bird": "parrot",
-          "outcome": "unresolved",
-          "sourceIds": ["vca-meyers-parrot-feeding"],
-          "locator": "VCA 'Can I feed my Meyer’s parrot people food?' section",
+          "outcome": "requires_preparation",
+          "sourceIds": ["happy-cockatoo-parrot-sprouts-2012"],
+          "locator": "'Cautions' section: lists garbanzo beans (chickpeas) among legumes and states that legumes are not safe raw; requires sprouting until root tails are visible",
           "evidenceScope": "group_specific",
-          "rationale": "The Meyer’s-parrot veterinary source provides general small-quantity human-food context but does not name chickpeas or raw pulses. The poultry extension source cannot be used to infer a general-parrot preparation outcome. Raw dried chickpeas therefore remain unresolved for parrots pending a direct parrot-specific chickpea or raw-pulse source.",
+          "rationale": "The replacement source directly addresses parrots, names garbanzo beans/chickpeas, and states that legumes are not safe raw. Raw dried chickpeas therefore require preparation before any parrot use. This experienced-keeper guidance is non-clinical, so it does not establish a cooking method, portion, recipe, formula inclusion, complete ration, runtime food approval, or a result for another species.",
           "reviewedAt": "2026-08-18"
         },
         {
@@ -149,7 +149,7 @@
       ],
       "processing": {
         "sourceIds": ["eorganic-chickpeas-poultry-2014", "danek-majewska-2021-raw-chickpea-broilers"],
-        "rule": "African Grey, budgie, and canary records require preparation before use. Pigeon and parrot remain unresolved pending direct species-specific chickpea or raw-pulse evidence. Chicken evidence is limited to a controlled formulated-ration context. This evidence record does not approve a preparation method, runtime use, formula inclusion, portion, or complete ration.",
+        "rule": "Parrot, African Grey, budgie, and canary records require preparation before use. Pigeon remains unresolved pending direct pigeon-specific chickpea or raw-pulse evidence. Chicken evidence is limited to a controlled formulated-ration context. This evidence record does not approve a preparation method, runtime use, formula inclusion, portion, or complete ration.",
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-18"

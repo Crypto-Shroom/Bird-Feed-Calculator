@@ -350,6 +350,18 @@
       "accessedAt": "2026-08-17"
     },
     {
+      "id": "happy-cockatoo-parrot-sprouts-2012",
+      "title": "Soaks and Sprouts: A Nutritional Powerhouse for Parrots",
+      "authorsOrOrganization": "Michelle “Elle” Magnon; The Happy Cockatoo: Elle's Avian Cuisine",
+      "publishedYear": "2012",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://thehappycockatoo.wordpress.com/soaks-and-sprouts-a-nutritional-powerhouse-for-parrots/",
+      "speciesScopes": ["parrot", "psittacine"],
+      "permittedUse": "Direct parrot-specific owner guidance that names garbanzo beans/chickpeas and states that legumes are not safe raw; it requires sprouting to visible root tails before feeding.",
+      "limitations": "Experienced parrot keeper guidance, not peer-reviewed or clinical guidance. It does not establish a cooking method, portion, nutrition value, complete ration, runtime food approval, or outcome for pigeons, African Greys, budgies, canaries, or chickens.",
+      "accessedAt": "2026-08-18"
+    },
+    {
       "id": "eorganic-chickpeas-poultry-2014",
       "title": "Including Chickpeas in Organic Poultry Diets",
       "authorsOrOrganization": "Jacquie Jacob, PhD; University of Kentucky / eOrganic",
