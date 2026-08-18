@@ -292,6 +292,282 @@
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-18"
+    },
+    {
+      "ingredientId": "millet",
+      "ingredientDisplayName": "Millet",
+      "form": "whole dry seed",
+      "nutrition": {
+        "sourceIds": [
+          "finchinfo-nutrition"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only record. It does not change the existing millet nutrient row or approve seed-only feeding."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "merck-columbiformes-2025",
+            "historical-manus-multibird-2025"
+          ],
+          "locator": "Nutrition in Pigeons and Doves opening ecology and seed-diet sections; protected historical multi-bird compatibility claim",
+          "evidenceScope": "species_specific",
+          "rationale": "Pigeons are described as granivorous and may receive seed as part of a varied diet, but the reviewed veterinary source does not identify millet or this form. The historical all-bird list is preserved intent only, so this row remains unresolved.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "merck-psittacines-2025"
+          ],
+          "locator": "Nutrition in Psittacines opening diet paragraph and strict-seed-diet limitation",
+          "evidenceScope": "group_specific",
+          "rationale": "The psittacine reference warns that strict seed diets are suboptimal and does not establish whole dry millet as a food/form outcome for the general parrot row.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "merck-psittacines-2025",
+            "vca-african-grey-feeding"
+          ],
+          "locator": "Nutrition in Psittacines Grey-parrot diet discussion; VCA African Grey feeding guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "Grey-specific guidance addresses balanced diets and seed/nut moderation, not a whole-dry-millet outcome. No cross-species approval is inferred.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "limited",
+          "sourceIds": [
+            "omlet-parakeet-food-list-2026",
+            "exoticdirect-budgie-food-2019"
+          ],
+          "locator": "Omlet Parakeet Food List oily-seed section; ExoticDirect Budgie grains and high-fat-seed sections",
+          "evidenceScope": "species_specific",
+          "rationale": "Both budgie/parakeet sources name millet as a seed/grain, while warning that high-fat seeds should be limited and seed mixes are not complete diets. This supports limited use within a varied diet, not a staple-only or complete-ration claim.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "canary",
+          "outcome": "limited",
+          "sourceIds": [
+            "vca-canary-feeding"
+          ],
+          "locator": "VCA Canaries Feeding seed section: millet spray is preferentially selected; seed-only diet is incomplete",
+          "evidenceScope": "species_specific",
+          "rationale": "VCA identifies millet as a commonly selected seed but explicitly states seeds are nutritionally incomplete and should be only a small part of the diet. This supports limited use only.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "merck-poultry-2024"
+          ],
+          "locator": "Merck Nutritional Requirements of Poultry nutrient-balance and feed-formulation sections",
+          "evidenceScope": "species_specific",
+          "rationale": "The poultry reference establishes complete-ration nutrient requirements but does not identify whole dry millet as a reviewed ingredient/form outcome in the examined sections.",
+          "reviewedAt": "2026-08-18"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "vca-canary-feeding",
+          "omlet-parakeet-food-list-2026"
+        ],
+        "rule": "Keep whole dry seed distinct from cooked, sprouted, rolled, or processed forms; never treat millet alone or a seed-only diet as complete nutrition.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-18"
+    },
+    {
+      "ingredientId": "peas_green",
+      "ingredientDisplayName": "Green peas",
+      "form": "fresh green peas, lightly cooked",
+      "nutrition": {
+        "sourceIds": [
+          "david-poultry-legumes-2024"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only record. It does not change the existing peas nutrient row or create an active inventory item."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "limited",
+          "sourceIds": [
+            "pigeonvitality-nutrition-2013",
+            "merck-columbiformes-2025"
+          ],
+          "locator": "Pigeon Vitality grain-ration paragraphs naming garden peas and peas as a protein ingredient; Merck pigeon/dove varied-diet guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "The pigeon-specific racing source names garden peas/peas in grain rations and describes peas as essential for protein. This supports limited ration-context evidence for peas, but not a pet portion or universal formula.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "merck-psittacines-2025"
+          ],
+          "locator": "Nutrition in Psittacines species-variation and seed-diet sections",
+          "evidenceScope": "group_specific",
+          "rationale": "The reviewed psittacine reference does not establish lightly cooked green peas as a food/form outcome for the general parrot row.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "merck-psittacines-2025",
+            "vca-african-grey-feeding"
+          ],
+          "locator": "Nutrition in Psittacines species-variation discussion; VCA African Grey fresh-food guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "Grey guidance supports a balanced diet and fresh-food context but does not establish lightly cooked green peas specifically.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "limited",
+          "sourceIds": [
+            "exoticdirect-budgie-food-2019"
+          ],
+          "locator": "ExoticDirect Budgie vegetables section: peas in pods are lightly cooked and offered in small portions",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie-specific guidance names peas and gives a light-cooking/small-portion boundary. This supports limited prepared use, not a complete ration.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "canary",
+          "outcome": "limited",
+          "sourceIds": [
+            "vca-canary-feeding"
+          ],
+          "locator": "VCA Canaries suitable fruits, vegetables, and legumes table naming peas; varied-diet sections",
+          "evidenceScope": "species_specific",
+          "rationale": "VCA explicitly lists peas among suitable foods but places them within a varied, primarily formulated diet. This supports limited use only.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "david-poultry-legumes-2024",
+            "merck-poultry-2024"
+          ],
+          "locator": "Poultry legume review field-pea sections; Merck poultry complete-ration requirements",
+          "evidenceScope": "species_specific",
+          "rationale": "The poultry review concerns dry field peas and feed formulation, not fresh green peas lightly cooked. The distinct food/form remains unresolved.",
+          "reviewedAt": "2026-08-18"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "exoticdirect-budgie-food-2019",
+          "vca-canary-feeding"
+        ],
+        "rule": "Keep fresh green peas, lightly cooked distinct from dry field peas, raw peas, split peas, and sprouts; use only as a limited addition within a balanced diet.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-18"
+    },
+    {
+      "ingredientId": "chickpeas",
+      "ingredientDisplayName": "Chickpeas",
+      "form": "cooked chickpeas, plain and unsalted",
+      "nutrition": {
+        "sourceIds": [
+          "david-poultry-legumes-2024"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only record. It does not change the existing chickpeas nutrient row or create an active inventory item."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "historical-raw-legume-2025",
+            "merck-columbiformes-2025"
+          ],
+          "locator": "Preserved raw-legume research chickpea section; Merck pigeon/dove varied-diet guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "Historical pigeon research says chickpeas are generally safe raw but acknowledges conflicting sources and does not establish this cooked, plain form. The current evidence is insufficient for a cooked-chickpea approval.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "merck-psittacines-2025"
+          ],
+          "locator": "Nutrition in Psittacines species-variation and seed-diet limitation sections",
+          "evidenceScope": "group_specific",
+          "rationale": "No reviewed source establishes cooked chickpeas as a food/form outcome for the general parrot row.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "merck-psittacines-2025",
+            "vca-african-grey-feeding"
+          ],
+          "locator": "Nutrition in Psittacines Grey-specific diet discussion; VCA African Grey feeding guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "Grey-specific sources reviewed do not establish plain cooked chickpeas or a portion/form boundary.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "exoticdirect-budgie-food-2019"
+          ],
+          "locator": "ExoticDirect Budgie legumes section: chickpeas are listed as suitable but must not be fed raw",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie-specific guidance requires a non-raw preparation for chickpeas. This record is limited to plain cooked chickpeas and does not approve raw, dry, sprouted, or seasoned forms.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "canary",
+          "outcome": "limited",
+          "sourceIds": [
+            "vca-canary-feeding"
+          ],
+          "locator": "VCA Canaries suitable fruits, vegetables, and legumes table explicitly listing cooked chickpeas",
+          "evidenceScope": "species_specific",
+          "rationale": "VCA explicitly lists cooked chickpeas among suitable canary foods, while its broader guidance requires a balanced diet and limits seed/fresh-food components. This supports limited prepared use.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "david-poultry-legumes-2024",
+            "merck-poultry-2024"
+          ],
+          "locator": "Peer-reviewed poultry review chickpea feeding-value, antinutritional-factor, and processing sections; Merck poultry nutrient-balance requirements",
+          "evidenceScope": "species_specific",
+          "rationale": "The poultry review supports processed chickpeas as a feed ingredient in formulated poultry diets while discussing antinutritional factors and processing. This is limited feed-context evidence, not a complete-ration or companion-bird approval.",
+          "reviewedAt": "2026-08-18"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "david-poultry-legumes-2024",
+          "exoticdirect-budgie-food-2019"
+        ],
+        "rule": "This record applies only to plain, thoroughly cooked chickpeas. Do not substitute raw, dry, sprouted, canned-with-salt, seasoned, roasted, or powdered forms; do not treat chickpeas alone as a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-18"
     }
   ]
 }

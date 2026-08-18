@@ -537,6 +537,51 @@
       "permittedUse": "Chicken/poultry feed context for wheat varieties, whole-wheat inclusion, nutrient composition, and processing/mold-management boundaries.",
       "limitations": "Poultry feed guidance does not make wheat a complete ration, does not establish companion-bird suitability, and does not remove the need to formulate for life stage and nutrient balance.",
       "accessedAt": "2026-08-18"
+    },
+    {
+      "id": "pigeonvitality-nutrition-2013",
+      "title": "The Nutrition of the Racing Pigeons",
+      "authorsOrOrganization": "J. Aubrey Mire; Pigeon Vitality",
+      "publishedYear": "2013",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://pigeonvitality.com/the-nutrition-of-the-racing-pigeons/",
+      "speciesScopes": [
+        "pigeon",
+        "racing_pigeon"
+      ],
+      "permittedUse": "Racing-pigeon grain-ration context naming corn, sorghum, wheat, peas, and their nutrient roles.",
+      "limitations": "Racing context and owner guidance; it cannot set companion-pigeon portions, approve other species, or replace a complete veterinary review.",
+      "accessedAt": "2026-08-18"
+    },
+    {
+      "id": "exoticdirect-budgie-food-2019",
+      "title": "What can budgies eat?",
+      "authorsOrOrganization": "ExoticDirect",
+      "publishedYear": "2019",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://exoticdirect.co.uk/news/what-can-budgies-eat/",
+      "speciesScopes": [
+        "budgie",
+        "parakeet"
+      ],
+      "permittedUse": "Budgie-specific food lists and preparation cautions for grains, millet, peas, and legumes.",
+      "limitations": "Owner guidance rather than a controlled feeding study; it cannot approve these forms for other species or establish a complete ration.",
+      "accessedAt": "2026-08-18"
+    },
+    {
+      "id": "david-poultry-legumes-2024",
+      "title": "Feeding Value of Lupins, Field Peas, Faba Beans and Chickpeas for Poultry: An Overview",
+      "authorsOrOrganization": "Laura S. David; Catootjie L. Nalle; M. Reza Abdollahi; Velmurugu Ravindran",
+      "publishedYear": "2024",
+      "sourceTier": "peer_reviewed_review",
+      "urlOrDoi": "https://doi.org/10.3390/ani14040619",
+      "speciesScopes": [
+        "chicken",
+        "poultry"
+      ],
+      "permittedUse": "Poultry feeding value, antinutritional factors, and processing context for field peas and chickpeas.",
+      "limitations": "Poultry review; it does not establish companion-bird suitability, raw-food safety for the six supported birds, or a complete ration by itself.",
+      "accessedAt": "2026-08-18"
     }
   ]
 }
