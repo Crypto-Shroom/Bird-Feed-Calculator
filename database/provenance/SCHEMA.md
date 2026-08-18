@@ -62,6 +62,32 @@ Every reusable source is defined once in `sources.json`.
 | Honest gaps | `unresolved` is valid and required when current evidence does not meet the six-bird standard. |
 | No inferred approval | A source written for pigeons cannot silently permit the food for parrots, African Greys, budgies, canaries, or chickens. |
 
+## Food coverage record
+
+`food-coverage.json` makes the protected historical food, preparation, and safety backlog measurable without promoting historical statements to live compatibility rules.
+
+```json
+{
+  "historicalClaimId": "historical-raw-legume-rules",
+  "trackedItems": [
+    {
+      "id": "kidney-beans-raw",
+      "displayName": "Kidney beans",
+      "historicalForm": "raw",
+      "linkedFoodReviewKeys": []
+    }
+  ]
+}
+```
+
+| Invariant | Requirement |
+|---|---|
+| Historical anchor | `historicalClaimId` must identify an existing protected historical claim. |
+| Explicit food/form backlog | Every tracked item has a stable ID, display name, and form exactly as or more narrowly than the protected historical wording permits. |
+| No implied completion | An empty `linkedFoodReviewKeys` array records an unresolved mapping gap; it is not an allowed, limited, avoid, or prohibited outcome. |
+| Complete-review links only | Every linked key uses `ingredientId::form` and must resolve to a food review with exactly one evidence row for each supported bird. |
+| No duplicate obligations | A tracked item ID may appear only once across the coverage ledger. |
+
 ## Care claim record
 
 `care-claims.json` contains source-backed husbandry claims that may later support care cards or Detailed Analysis text. It is a no-runtime-change evidence layer.

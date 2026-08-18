@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Tracks the no-runtime-change mapping coverage for protected historical food, preparation, and safety claims. A listed item is not a current compatibility outcome or calculator ingredient.",
+  "claimCoverage": [
+    {
+      "historicalClaimId": "historical-multibird-core-compatibility-list",
+      "trackedItems": [
+        {
+          "id": "wheat",
+          "displayName": "Wheat",
+          "historicalForm": "form not specified in the protected historical claim",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "barley",
+          "displayName": "Barley",
+          "historicalForm": "form not specified in the protected historical claim",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "oats",
+          "displayName": "Oats",
+          "historicalForm": "form not specified in the protected historical claim",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "millet",
+          "displayName": "Millet",
+          "historicalForm": "form not specified in the protected historical claim",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "corn",
+          "displayName": "Corn",
+          "historicalForm": "form not specified in the protected historical claim",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "lentils",
+          "displayName": "Lentils",
+          "historicalForm": "form not specified in the protected historical claim",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "peas",
+          "displayName": "Peas",
+          "historicalForm": "form not specified in the protected historical claim",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "mung-beans",
+          "displayName": "Mung beans",
+          "historicalForm": "form not specified in the protected historical claim",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "chickpeas",
+          "displayName": "Chickpeas",
+          "historicalForm": "form not specified in the protected historical claim",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "sunflower-seeds",
+          "displayName": "Sunflower seeds",
+          "historicalForm": "form not specified in the protected historical claim",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "safflower-seeds",
+          "displayName": "Safflower seeds",
+          "historicalForm": "form not specified in the protected historical claim",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "hemp-seeds",
+          "displayName": "Hemp seeds",
+          "historicalForm": "form not specified in the protected historical claim",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "basil",
+          "displayName": "Basil",
+          "historicalForm": "form not specified in the protected historical claim",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "oregano",
+          "displayName": "Oregano",
+          "historicalForm": "form not specified in the protected historical claim",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "thyme",
+          "displayName": "Thyme",
+          "historicalForm": "form not specified in the protected historical claim",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "parsley",
+          "displayName": "Parsley",
+          "historicalForm": "form not specified in the protected historical claim",
+          "linkedFoodReviewKeys": []
+        }
+      ]
+    },
+    {
+      "historicalClaimId": "historical-raw-legume-rules",
+      "trackedItems": [
+        {
+          "id": "lentils-raw",
+          "displayName": "Lentils",
+          "historicalForm": "raw",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "split-peas-raw",
+          "displayName": "Split peas",
+          "historicalForm": "raw",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "mung-beans-raw",
+          "displayName": "Mung beans",
+          "historicalForm": "raw",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "chickpeas-raw",
+          "displayName": "Chickpeas",
+          "historicalForm": "raw",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "garden-peas-raw",
+          "displayName": "Garden peas",
+          "historicalForm": "raw",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "kidney-beans-raw",
+          "displayName": "Kidney beans",
+          "historicalForm": "raw",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "lima-beans-raw",
+          "displayName": "Lima beans",
+          "historicalForm": "raw",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "fava-beans-raw",
+          "displayName": "Fava beans",
+          "historicalForm": "raw",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "black-beans-raw",
+          "displayName": "Black beans",
+          "historicalForm": "raw",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "pinto-beans-raw",
+          "displayName": "Pinto beans",
+          "historicalForm": "raw",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "navy-beans-raw",
+          "displayName": "Navy beans",
+          "historicalForm": "raw",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "white-beans-raw",
+          "displayName": "White beans",
+          "historicalForm": "raw",
+          "linkedFoodReviewKeys": []
+        },
+        {
+          "id": "large-dried-beans-raw",
+          "displayName": "Other large dried beans",
+          "historicalForm": "raw",
+          "linkedFoodReviewKeys": []
+        }
+      ]
+    }
+  ]
+}

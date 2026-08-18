@@ -12,7 +12,8 @@ The first ledger release is intentionally **no-runtime-change**. It preserves or
 | [`historical-claims.json`](./historical-claims.json) | Protected record of what the original project research asserted, including its limitations. | Seeded; not a runtime adapter. |
 | [`SCHEMA.md`](./SCHEMA.md) | Required shape for every future source, profile, ingredient, processing, safety, herb, and six-bird evidence row. | Governing policy. |
 | [`HISTORICAL_BASELINE.md`](./HISTORICAL_BASELINE.md) | Crosswalk to the preserved pre-GitHub project files and recovered Manus research. | Governing historical-intent index. |
-| [`food-reviews.json`](./food-reviews.json) | Future per-food, per-form, six-bird outcomes. | Empty by design until each review is evidenced. |
+| [`food-reviews.json`](./food-reviews.json) | Per-food, per-form, six-bird evidence records. | Seeded only with completed, no-runtime-change reviews. |
+| [`food-coverage.json`](./food-coverage.json) | Mapping coverage for protected historical food, preparation, and safety claims. | Tracks review gaps without inferring a live outcome. |
 | [`profile-claims.json`](./profile-claims.json) | Read-only historical-versus-current profile target reconciliation rows. | Seeded with configuration snapshots; scientific reconciliation remains pending. |
 | [`care-claims.json`](./care-claims.json) | Source-backed husbandry evidence and explicit limits for future care-card or Detailed Analysis wording. | Seeded; no runtime adapter. |
 
@@ -45,8 +46,9 @@ The first ledger release is intentionally **no-runtime-change**. It preserves or
 1. Add or improve the source entry in `sources.json`.
 2. Add one ingredient/form record containing exactly six species evidence rows, or add a care claim with a source-backed proposed-copy boundary.
 3. Reference source IDs and exact locators for every row.
-4. Run `pnpm test:provenance` from the repository root.
-5. Open a focused PR that explains what the ledger records and explicitly confirms whether runtime behaviour or public text changes. If runtime behaviour changes, it belongs in a **separate** owner-approved PR.
+4. Update `food-coverage.json` when the work reconciles a protected historical food, preparation, or safety claim; link only complete six-bird records.
+5. Run `pnpm test:provenance` and, when the food-coverage scope is involved, `pnpm report:provenance-food-coverage` from the repository root.
+6. Open a focused PR that explains what the ledger records and explicitly confirms whether runtime behaviour or public text changes. If runtime behaviour changes, it belongs in a **separate** owner-approved PR.
 
 ## Initial source register
 
