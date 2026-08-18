@@ -107,6 +107,46 @@ describe("canonical provenance ledger", () => {
     expect(rawChickpeaCoverage?.linkedFoodReviewKeys).toEqual(["chickpeas::raw dried seeds"]);
   });
 
+  it("records each new food/form review with six birds and expected outcomes", () => {
+    const ledger = readJson("food-reviews.json") as {
+      requiredBirdOrder: string[];
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{ bird: string; outcome: string }>;
+      }>;
+    };
+    const expected = [
+      {
+        ingredientId: "wheat",
+        form: "whole dry grain, threshed/hulled where applicable",
+        outcomes: ["unresolved", "unresolved", "unresolved", "limited", "unresolved", "limited"],
+      },
+      {
+        ingredientId: "millet",
+        form: "whole dry seed",
+        outcomes: ["unresolved", "unresolved", "unresolved", "limited", "limited", "unresolved"],
+      },
+      {
+        ingredientId: "peas_green",
+        form: "fresh green peas, lightly cooked",
+        outcomes: ["unresolved", "unresolved", "unresolved", "limited", "limited", "unresolved"],
+      },
+      {
+        ingredientId: "chickpeas",
+        form: "cooked chickpeas, plain and unsalted",
+        outcomes: ["unresolved", "unresolved", "unresolved", "unresolved", "limited", "limited"],
+      },
+    ];
+
+    for (const expectedReview of expected) {
+      const review = ledger.ingredientReviews.find((candidate) => candidate.ingredientId === expectedReview.ingredientId);
+      expect(review?.form).toBe(expectedReview.form);
+      expect(review?.speciesEvidence.map((entry) => entry.bird)).toEqual(ledger.requiredBirdOrder);
+      expect(review?.speciesEvidence.map((entry) => entry.outcome)).toEqual(expectedReview.outcomes);
+    }
+  });
+
   it("keeps light and fresh-produce care claims source-backed and non-runtime", () => {
     const ledger = readJson("care-claims.json") as {
       careClaims: Array<{

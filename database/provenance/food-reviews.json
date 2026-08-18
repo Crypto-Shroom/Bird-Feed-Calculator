@@ -399,14 +399,14 @@
       "speciesEvidence": [
         {
           "bird": "pigeon",
-          "outcome": "limited",
+          "outcome": "unresolved",
           "sourceIds": [
             "pigeonvitality-nutrition-2013",
             "merck-columbiformes-2025"
           ],
           "locator": "Pigeon Vitality grain-ration paragraphs naming garden peas and peas as a protein ingredient; Merck pigeon/dove varied-diet guidance",
           "evidenceScope": "species_specific",
-          "rationale": "The pigeon-specific racing source names garden peas/peas in grain rations and describes peas as essential for protein. This supports limited ration-context evidence for peas, but not a pet portion or universal formula.",
+          "rationale": "The pigeon-specific racing source names garden peas/peas in dry grain-ration context, but it does not establish the submitted form of fresh green peas, lightly cooked. Merck’s varied-diet guidance also does not name this form, so the exact food/form outcome remains unresolved.",
           "reviewedAt": "2026-08-18"
         },
         {
@@ -526,13 +526,13 @@
         },
         {
           "bird": "budgie",
-          "outcome": "requires_preparation",
+          "outcome": "unresolved",
           "sourceIds": [
             "exoticdirect-budgie-food-2019"
           ],
           "locator": "ExoticDirect Budgie legumes section: chickpeas are listed as suitable but must not be fed raw",
           "evidenceScope": "species_specific",
-          "rationale": "Budgie-specific guidance requires a non-raw preparation for chickpeas. This record is limited to plain cooked chickpeas and does not approve raw, dry, sprouted, or seasoned forms.",
+          "rationale": "Budgie-specific guidance says chickpeas must not be fed raw, but it does not clearly establish the submitted form of plain cooked chickpeas or provide a cooked preparation boundary. The exact food/form outcome therefore remains unresolved.",
           "reviewedAt": "2026-08-18"
         },
         {
