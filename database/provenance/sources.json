@@ -372,6 +372,18 @@
       "permittedUse": "Controlled broiler-chicken evidence for raw chickpea seed used within specified formulated grower and finisher diets.",
       "limitations": "A Ross 308 broiler production study; it does not establish unsupervised household feeding, a complete ration, a universal inclusion level, or suitability for any other supported bird.",
       "accessedAt": "2026-08-18"
+    },
+    {
+      "id": "exoticdirect-budgie-chickpeas-2019",
+      "title": "What can budgies eat?",
+      "authorsOrOrganization": "ExoticDirect",
+      "publishedYear": "2019",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://exoticdirect.co.uk/news/what-can-budgies-eat/",
+      "speciesScopes": ["budgie"],
+      "permittedUse": "Budgie-specific owner guidance that explicitly lists chickpeas among foods that should not be fed raw.",
+      "limitations": "Commercial insurer guidance without named clinical authors or an evidence list. It is limited to a raw-form preparation boundary and does not establish a cooking method, nutrition value, portion, complete ration, or another species outcome.",
+      "accessedAt": "2026-08-18"
     }
   ]
 }

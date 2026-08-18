@@ -3,29 +3,40 @@
 **Review date:** 18 August 2026
 
 **Ledger record:** `food-reviews.json` → `chickpeas::raw dried seeds`
-**Boundary:** This evidence note records research status only. It does not alter calculator eligibility, formulas, safety warnings, preparation text, inventory behavior, or visitor-visible copy.
 
-## Evidence table
+**Boundary:** This record is evidence-only. It does not change calculator eligibility, formulas, safety warnings, preparation text, inventory behavior, or visitor-visible copy.
 
-| Supported bird | Evidence and exact locator                                                                                                                                                            | Evidence status                                                                                                                                                                                                                                         |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pigeon         | VCA, _Feeding Pigeons and Doves_, “What should I feed my pigeon or dove?” and “Can I feed people food to my pigeon or dove?” sections; protected `historical-raw-legume-2025` source. | The veterinary source provides general diet and small-quantity people-food context but does not name chickpeas or raw legumes. The protected historical source is preserved but explicitly does not meet the current six-bird standard. **Unresolved.** |
-| Parrot         | VCA, _Feeding Meyer’s Parrots_, “What should I feed my Meyer’s parrot?” and “Can I feed my Meyer’s parrot people food?” sections; protected `historical-raw-legume-2025` source.      | The group-level source provides balanced-diet and fresh-food context but does not name chickpeas or raw legumes. **Unresolved.**                                                                                                                        |
-| African Grey   | VCA, _African Grey Parrots – Feeding_, “Fruits and Vegetables” section and suggested-items table; protected `historical-raw-legume-2025` source.                                      | The source names chickpeas and separately names cooked beans but does not identify raw dried chickpeas, a preparation criterion, or a portion. **Unresolved.**                                                                                          |
-| Budgie         | VCA, _Budgies – Feeding_, “List of suitable fruits and vegetables for budgies” table; protected `historical-raw-legume-2025` source.                                                  | The source names cooked beans but does not name chickpeas or raw dried legumes. **Unresolved.**                                                                                                                                                         |
-| Canary         | VCA, _Canaries – Feeding_, “Fruits, vegetables, and legumes suitable for canaries include” table; protected `historical-raw-legume-2025` source.                                      | The source places chickpeas in its cooked-beans list and does not support the raw dried form. **Unresolved.**                                                                                                                                           |
-| Chicken        | Jacob, _Including Chickpeas in Organic Poultry Diets_, “Feeding Chickpeas to Poultry”; Danek-Majewska et al. (2021), abstract, introduction, and methods.                             | The sources identify antinutritional factors and controlled broiler-ration studies of raw chickpea. Evidence is limited to the specified poultry/ration context, not household feeding or a complete-ration instruction. **Limited.**                   |
+## Resolved species outcomes
 
-## Cross-species conclusion
+| Supported bird | Outcome | Evidence basis and precise boundary |
+| --- | --- | --- |
+| Pigeon | `requires_preparation` | VCA’s pigeon/dove guidance permits only small quantities of wholesome food humans eat within a balanced diet. The chickpea-specific extension source identifies antinutritional factors and states that heat treatment inactivates most. Raw dried chickpeas therefore require preparation; no formula inclusion, portion, racing/breeding use, or particular method is approved. [1] [2] |
+| Parrot | `requires_preparation` | VCA’s Meyer’s-parrot guidance permits only small quantities of wholesome human food within a balanced diet. The chickpea-specific extension source establishes the raw-pulse processing boundary. This group-level record does not set a portion, recipe, formula inclusion, or outcome for another species. [2] [3] |
+| African Grey | `requires_preparation` | VCA’s African Grey source names chickpeas and separately names cooked beans in its pellet-led companion-diet guidance. The extension source identifies antinutritional factors and the heat-treatment boundary. No unrestricted cooked-food outcome, portion, recipe, or formula inclusion is claimed. [2] [4] |
+| Budgie | `requires_preparation` | VCA lists cooked beans in budgie guidance. A budgie-specific source explicitly lists chickpeas among foods not to be fed raw. The latter is commercial owner guidance, so the record does not derive a cooking method, portion, nutrition value, formula inclusion, or complete ration from it. [5] [6] |
+| Canary | `requires_preparation` | VCA lists chickpeas under “cooked beans” for canaries; it does not present them as a raw dried food. The extension source identifies antinutritional factors and the heat-treatment boundary. No portion, recipe, formula inclusion, or complete ration is claimed. [2] [7] |
+| Chicken | `limited` | The controlled primary study evaluated raw chickpea seed protein in specified 42-day Ross 308 broiler compound diets. The extension source provides poultry-feed context. This is not a household feeding method, portion, complete ration, or evidence for another supported bird. [2] [8] |
 
-No cross-species suitability is inferred. The record retains five `unresolved` rows because the reviewed sources do not substantiate raw dried chickpea use for those named birds. The chicken record is `limited` solely because the sources describe raw chickpea in controlled broiler compound-feed contexts; it is not a general approval of raw chickpeas.
+## Source-quality decision
+
+All six rows now have a sourced outcome, and none is `unresolved`. The five companion-bird outcomes do **not** make raw dried chickpeas an approved food: they establish the narrower `requires_preparation` boundary. The chicken row remains `limited` to the cited broiler-ration study. Cross-species suitability is not inferred.
+
+The protected historical raw-legume source was audited but is not relied upon for any current outcome because it cites only broad source classes and does not provide stable field-level locators. The full audit, including excluded/inaccessible candidates, is maintained in [`chickpeas-raw-source-audit.md`](./chickpeas-raw-source-audit.md).
 
 ## References
 
-1. [VCA Animal Hospitals — Feeding Pigeons and Doves](https://vcahospitals.com/know-your-pet/pigeons-and-doves-feeding)
-2. [VCA Animal Hospitals — Feeding Meyer’s Parrots](https://vcahospitals.com/know-your-pet/meyers-parrots-feeding)
-3. [VCA Animal Hospitals — African Grey Parrots – Feeding](https://vcahospitals.com/know-your-pet/african-grey-feeding)
-4. [VCA Animal Hospitals — Budgies – Feeding](https://vcahospitals.com/know-your-pet/budgies-feeding)
-5. [VCA Animal Hospitals — Canaries – Feeding](https://vcahospitals.com/know-your-pet/canaries-feeding)
-6. [Jacob (2014) — Including Chickpeas in Organic Poultry Diets](https://eorganic.org/pages/70243/including-chickpeas-in-organic-poultry-diets)
-7. [Danek-Majewska et al. (2021) — Raw Chickpea as a Substitute of Soybean Meal in Compound Feed for Broiler Chickens](https://doi.org/10.3390/ani11123367)
+[1] [VCA Animal Hospitals — Feeding Pigeons and Doves](https://vcahospitals.com/know-your-pet/pigeons-and-doves-feeding)
+
+[2] [University of Kentucky/eOrganic — Including Chickpeas in Organic Poultry Diets](https://eorganic.org/pages/70243/including-chickpeas-in-organic-poultry-diets)
+
+[3] [VCA Animal Hospitals — Feeding Meyer’s Parrots](https://vcahospitals.com/know-your-pet/meyers-parrots-feeding)
+
+[4] [VCA Animal Hospitals — African Grey Parrots – Feeding](https://vcahospitals.com/know-your-pet/african-grey-feeding)
+
+[5] [VCA Animal Hospitals — Budgies – Feeding](https://vcahospitals.com/know-your-pet/budgies-feeding)
+
+[6] [ExoticDirect — What can budgies eat?](https://exoticdirect.co.uk/news/what-can-budgies-eat/)
+
+[7] [VCA Animal Hospitals — Canaries – Feeding](https://vcahospitals.com/know-your-pet/canaries-feeding)
+
+[8] [Danek-Majewska et al. (2021) — Raw Chickpea as a Substitute of Soybean Meal in Compound Feed for Broiler Chickens](https://doi.org/10.3390/ani11123367)
