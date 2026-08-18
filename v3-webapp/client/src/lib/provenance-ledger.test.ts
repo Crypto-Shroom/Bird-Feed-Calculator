@@ -140,7 +140,10 @@ describe("canonical provenance ledger", () => {
     ];
 
     for (const expectedReview of expected) {
-      const review = ledger.ingredientReviews.find((candidate) => candidate.ingredientId === expectedReview.ingredientId);
+      const review = ledger.ingredientReviews.find(
+        (candidate) =>
+          candidate.ingredientId === expectedReview.ingredientId && candidate.form === expectedReview.form,
+      );
       expect(review?.form).toBe(expectedReview.form);
       expect(review?.speciesEvidence.map((entry) => entry.bird)).toEqual(ledger.requiredBirdOrder);
       expect(review?.speciesEvidence.map((entry) => entry.outcome)).toEqual(expectedReview.outcomes);

@@ -1,5 +1,6 @@
 {
-  "version": null,
+  "schemaVersion": 1,
+  "purpose": "Per-food, per-form, six-bird evidence records. Entries document evidence and gaps only; they do not modify active calculator outcomes.",
   "requiredBirdOrder": [
     "pigeon",
     "parrot",
