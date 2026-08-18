@@ -107,6 +107,75 @@ describe("canonical provenance ledger", () => {
     expect(rawChickpeaCoverage?.linkedFoodReviewKeys).toEqual(["chickpeas::raw dried seeds"]);
   });
 
+  it("records the five-item raw-legume batch with complete six-bird evidence and coverage links", () => {
+    const foodLedger = readJson("food-reviews.json") as {
+      requiredBirdOrder: string[];
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{ bird: string; outcome: string; sourceIds: string[] }>;
+      }>;
+    };
+    const coverageLedger = readJson("food-coverage.json") as {
+      claimCoverage: Array<{
+        historicalClaimId: string;
+        trackedItems: Array<{ id: string; linkedFoodReviewKeys: string[] }>;
+      }>;
+    };
+    const expected = [
+      {
+        trackedItemId: "lentils-raw",
+        ingredientId: "lentils",
+        form: "raw dried lentil seeds",
+        outcomes: ["limited", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "limited"],
+      },
+      {
+        trackedItemId: "split-peas-raw",
+        ingredientId: "split_peas",
+        form: "raw dried split pea cotyledons",
+        outcomes: ["limited", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "limited"],
+      },
+      {
+        trackedItemId: "mung-beans-raw",
+        ingredientId: "mung_beans",
+        form: "raw dried mung beans",
+        outcomes: ["limited", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "unresolved"],
+      },
+      {
+        trackedItemId: "garden-peas-raw",
+        ingredientId: "garden_peas",
+        form: "raw mature dried garden peas",
+        outcomes: ["limited", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "limited"],
+      },
+      {
+        trackedItemId: "kidney-beans-raw",
+        ingredientId: "kidney_beans",
+        form: "raw dried kidney beans",
+        outcomes: ["unresolved", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation"],
+      },
+    ];
+    const rawLegumeCoverage = coverageLedger.claimCoverage.find(
+      (coverage) => coverage.historicalClaimId === "historical-raw-legume-rules",
+    );
+
+    for (const expectedReview of expected) {
+      const review = foodLedger.ingredientReviews.find(
+        (candidate) =>
+          candidate.ingredientId === expectedReview.ingredientId && candidate.form === expectedReview.form,
+      );
+      const trackedItem = rawLegumeCoverage?.trackedItems.find(
+        (item) => item.id === expectedReview.trackedItemId,
+      );
+
+      expect(review?.speciesEvidence.map((entry) => entry.bird)).toEqual(foodLedger.requiredBirdOrder);
+      expect(review?.speciesEvidence.map((entry) => entry.outcome)).toEqual(expectedReview.outcomes);
+      expect(review?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
+      expect(trackedItem?.linkedFoodReviewKeys).toEqual([
+        `${expectedReview.ingredientId}::${expectedReview.form}`,
+      ]);
+    }
+  });
+
   it("records each new food/form review with six birds and expected outcomes", () => {
     const ledger = readJson("food-reviews.json") as {
       requiredBirdOrder: string[];

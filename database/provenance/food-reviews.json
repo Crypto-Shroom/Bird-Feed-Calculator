@@ -589,7 +589,7 @@
             "melbourne-pet-pigeon-diet-2023",
             "valdes-exotic-insects-2022"
           ],
-          "locator": "Melbourne Bird Veterinary Clinic insect-enrichment context; Vald\u00e9s et al. companion/exotic-pet whole/live/dehydrated insect discussion",
+          "locator": "Melbourne Bird Veterinary Clinic insect-enrichment context; Valdés et al. companion/exotic-pet whole/live/dehydrated insect discussion",
           "evidenceScope": "species_specific",
           "rationale": "The pigeon source permits general insect enrichment context but does not name live yellow mealworm larvae. The broad exotic-pet review cannot supply a pigeon-specific outcome.",
           "reviewedAt": "2026-08-18"
@@ -601,7 +601,7 @@
             "valdes-exotic-insects-2022",
             "merck-psittacines-2025"
           ],
-          "locator": "Vald\u00e9s et al. exotic-pet insect-format discussion; Merck psittacine nutrition and species-variation sections",
+          "locator": "Valdés et al. exotic-pet insect-format discussion; Merck psittacine nutrition and species-variation sections",
           "evidenceScope": "group_specific",
           "rationale": "The review notes generalized exotic-pet use but limited species-specific evidence, and Merck does not establish live mealworms for the general parrot row.",
           "reviewedAt": "2026-08-18"
@@ -613,7 +613,7 @@
             "valdes-exotic-insects-2022",
             "vca-african-grey-feeding"
           ],
-          "locator": "Vald\u00e9s et al. exotic-pet evidence-limit discussion; VCA African Grey balanced-diet guidance",
+          "locator": "Valdés et al. exotic-pet evidence-limit discussion; VCA African Grey balanced-diet guidance",
           "evidenceScope": "species_specific",
           "rationale": "Neither source establishes live yellow mealworm larvae for African Greys or a safe treat amount.",
           "reviewedAt": "2026-08-18"
@@ -625,7 +625,7 @@
             "valdes-exotic-insects-2022",
             "vca-budgie-feeding"
           ],
-          "locator": "Vald\u00e9s et al. exotic-pet insect-format discussion; VCA Budgies feeding guidance",
+          "locator": "Valdés et al. exotic-pet insect-format discussion; VCA Budgies feeding guidance",
           "evidenceScope": "species_specific",
           "rationale": "The reviewed budgie source does not establish live mealworms, and the broad review does not replace species-specific evidence.",
           "reviewedAt": "2026-08-18"
@@ -637,7 +637,7 @@
             "lafeber-canary-mealworms-2020",
             "valdes-exotic-insects-2022"
           ],
-          "locator": "Lafeber canary answer addresses dried mealworms; Vald\u00e9s et al. distinguishes whole/live/dehydrated exotic-pet formats",
+          "locator": "Lafeber canary answer addresses dried mealworms; Valdés et al. distinguishes whole/live/dehydrated exotic-pet formats",
           "evidenceScope": "species_specific",
           "rationale": "Lafeber supports dried mealworms only. It does not establish the submitted live-larva form for canaries.",
           "reviewedAt": "2026-08-18"
@@ -685,7 +685,7 @@
             "melbourne-pet-pigeon-diet-2023",
             "valdes-exotic-insects-2022"
           ],
-          "locator": "Melbourne Bird Veterinary Clinic insect-enrichment context; Vald\u00e9s et al. dehydrated insect discussion",
+          "locator": "Melbourne Bird Veterinary Clinic insect-enrichment context; Valdés et al. dehydrated insect discussion",
           "evidenceScope": "species_specific",
           "rationale": "The pigeon source does not name dried mealworms, and the broad exotic-pet review cannot establish a pigeon-specific dried form outcome.",
           "reviewedAt": "2026-08-18"
@@ -697,7 +697,7 @@
             "valdes-exotic-insects-2022",
             "merck-psittacines-2025"
           ],
-          "locator": "Vald\u00e9s et al. dehydrated insect discussion; Merck psittacine diet and species-variation sections",
+          "locator": "Valdés et al. dehydrated insect discussion; Merck psittacine diet and species-variation sections",
           "evidenceScope": "group_specific",
           "rationale": "The broad review acknowledges exotic-pet insect use but limited species-specific safety evidence. No reviewed source establishes dried mealworms for the general parrot row.",
           "reviewedAt": "2026-08-18"
@@ -709,7 +709,7 @@
             "valdes-exotic-insects-2022",
             "vca-african-grey-feeding"
           ],
-          "locator": "Vald\u00e9s et al. dehydrated insect discussion; VCA African Grey feeding guidance",
+          "locator": "Valdés et al. dehydrated insect discussion; VCA African Grey feeding guidance",
           "evidenceScope": "species_specific",
           "rationale": "No reviewed source establishes dried mealworms for African Greys or a portion boundary.",
           "reviewedAt": "2026-08-18"
@@ -721,7 +721,7 @@
             "valdes-exotic-insects-2022",
             "vca-budgie-feeding"
           ],
-          "locator": "Vald\u00e9s et al. dehydrated insect discussion; VCA Budgies feeding guidance",
+          "locator": "Valdés et al. dehydrated insect discussion; VCA Budgies feeding guidance",
           "evidenceScope": "species_specific",
           "rationale": "The budgie source does not name dried mealworms and the broad review is insufficient for approval.",
           "reviewedAt": "2026-08-18"
@@ -779,7 +779,7 @@
             "melbourne-pet-pigeon-diet-2023",
             "valdes-exotic-insects-2022"
           ],
-          "locator": "Melbourne Bird Veterinary Clinic insect-enrichment context; Vald\u00e9s et al. house-cricket whole/live format discussion",
+          "locator": "Melbourne Bird Veterinary Clinic insect-enrichment context; Valdés et al. house-cricket whole/live format discussion",
           "evidenceScope": "species_specific",
           "rationale": "The pigeon source does not name live commercial crickets, and the broad exotic-pet review does not establish a pigeon-specific outcome.",
           "reviewedAt": "2026-08-18"
@@ -791,7 +791,7 @@
             "valdes-exotic-insects-2022",
             "merck-psittacines-2025"
           ],
-          "locator": "Vald\u00e9s et al. house-cricket whole/live discussion; Merck psittacine diet and species-variation sections",
+          "locator": "Valdés et al. house-cricket whole/live discussion; Merck psittacine diet and species-variation sections",
           "evidenceScope": "group_specific",
           "rationale": "The broad review says exotic-pet use is generalized but species-specific safety evidence is limited; Merck does not establish live crickets for the general parrot row.",
           "reviewedAt": "2026-08-18"
@@ -803,7 +803,7 @@
             "valdes-exotic-insects-2022",
             "vca-african-grey-feeding"
           ],
-          "locator": "Vald\u00e9s et al. house-cricket discussion; VCA African Grey feeding guidance",
+          "locator": "Valdés et al. house-cricket discussion; VCA African Grey feeding guidance",
           "evidenceScope": "species_specific",
           "rationale": "No reviewed source establishes live commercial crickets for African Greys or a portion/form boundary.",
           "reviewedAt": "2026-08-18"
@@ -815,7 +815,7 @@
             "valdes-exotic-insects-2022",
             "vca-budgie-feeding"
           ],
-          "locator": "Vald\u00e9s et al. house-cricket discussion; VCA Budgies feeding guidance",
+          "locator": "Valdés et al. house-cricket discussion; VCA Budgies feeding guidance",
           "evidenceScope": "species_specific",
           "rationale": "The reviewed budgie guidance does not establish live commercial crickets, and the broad exotic-pet review cannot supply that species-specific outcome.",
           "reviewedAt": "2026-08-18"
@@ -827,7 +827,7 @@
             "lafeber-canary-mealworms-2020",
             "valdes-exotic-insects-2022"
           ],
-          "locator": "Lafeber canary answer addresses dried mealworms, not crickets; Vald\u00e9s et al. house-cricket discussion",
+          "locator": "Lafeber canary answer addresses dried mealworms, not crickets; Valdés et al. house-cricket discussion",
           "evidenceScope": "species_specific",
           "rationale": "The canary-specific source supports dried mealworms only, so it does not establish live commercial crickets.",
           "reviewedAt": "2026-08-18"
@@ -850,6 +850,468 @@
           "valdes-exotic-insects-2022"
         ],
         "rule": "Use only clean, commercially controlled live crickets of an appropriate size; keep wild-caught insects, dried crickets, cricket meal, gut-loading diets, and pesticide exposure as distinct forms and risk questions. Never treat insects alone as a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-18"
+    },
+    {
+      "ingredientId": "lentils",
+      "ingredientDisplayName": "Lentils",
+      "form": "raw dried lentil seeds",
+      "nutrition": {
+        "sourceIds": [
+          "ciurescu-2017-raw-lentil-broilers"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only review of the raw dried lentil form. It does not add a nutrient value, a dry-mix instruction, or a complete-ration claim."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "limited",
+          "sourceIds": [
+            "pigeon-guide-diet-2026"
+          ],
+          "locator": "Pigeon Diet Guide ‘Treats’ and ‘Mixing Your Own Feed’ sections naming dried lentils",
+          "evidenceScope": "species_specific",
+          "rationale": "Pigeon-specific owner guidance names dried lentils in feed/treat context. Its reference section is empty and it provides no raw-legume safety, portion, or nutrition rule, so this is limited context only and not a formula or runtime approval.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "petcraft-parrot-beans-2014"
+          ],
+          "locator": "Petcraft opening pulse paragraph and list explicitly naming lentils among pulses that must be cooked",
+          "evidenceScope": "group_specific",
+          "rationale": "Parrot-focused guidance explicitly names lentils among pulses that must be cooked. This establishes a preparation boundary only; it does not prescribe a method, portion, complete ration, or result for another species.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-african-grey-feeding"
+          ],
+          "locator": "VCA African Grey suggested-food table, which separately lists lentils and ‘cooked beans (various types)’",
+          "evidenceScope": "species_specific",
+          "rationale": "Grey-specific veterinary guidance lists lentils within a table that separately identifies cooked beans. The raw dried form therefore requires preparation before any Grey use; no portion, recipe, formula, or unrestricted approval is established.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-budgie-feeding"
+          ],
+          "locator": "VCA Budgies suitable-food table listing ‘cooked beans (various)’ and its balanced-diet guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie-specific veterinary guidance identifies cooked beans, not raw dried lentils. This supports a preparation requirement only; it does not establish a method, portion, formula use, or complete ration.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "canary",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-canary-feeding"
+          ],
+          "locator": "VCA Canaries ‘Fruits, vegetables, and legumes suitable for canaries include’ table, where lentils are under ‘cooked beans’",
+          "evidenceScope": "species_specific",
+          "rationale": "Canary-specific veterinary guidance explicitly lists lentils under cooked beans, not as raw dried food. This supports a preparation requirement only and does not establish a portion, formula use, or complete ration.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "ciurescu-2017-raw-lentil-broilers"
+          ],
+          "locator": "Ciurescu et al. abstract: Cobb 500 broilers, raw lentil seed at 200 or 400 g/kg in balanced experimental diets",
+          "evidenceScope": "species_specific",
+          "rationale": "Direct broiler evidence concerns raw lentil seed in specified balanced experimental rations. It supports only the studied chicken/ration context and does not establish unsupervised household feeding, a universal inclusion rate, or another species outcome.",
+          "reviewedAt": "2026-08-18"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "petcraft-parrot-beans-2014",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "ciurescu-2017-raw-lentil-broilers"
+        ],
+        "rule": "Keep raw dried lentil seeds distinct from cooked lentils, sprouted lentils, lentil flour, and lentil products. Companion-bird records require preparation; chicken evidence is limited to the cited balanced broiler-ration context; pigeon evidence is limited uncited owner guidance. This record does not approve runtime use, a formula, a portion, or a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-18"
+    },
+    {
+      "ingredientId": "split_peas",
+      "ingredientDisplayName": "Split peas",
+      "form": "raw dried split pea cotyledons",
+      "nutrition": {
+        "sourceIds": [
+          "david-poultry-legumes-2024"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only review of unheated dried split pea cotyledons. It does not add a nutrient value, a dry-mix instruction, or a complete-ration claim."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "limited",
+          "sourceIds": [
+            "pigeon-guide-diet-2026"
+          ],
+          "locator": "Pigeon Diet Guide ‘Mixing Your Own Feed’ section naming dried lentils and split peas",
+          "evidenceScope": "species_specific",
+          "rationale": "Pigeon-specific owner guidance names split peas as a dried feed-mix addition. It provides no raw-legume preparation or inclusion-rate evidence, so this supports limited named-ingredient context only.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "petcraft-parrot-beans-2014"
+          ],
+          "locator": "Petcraft opening pulse paragraph and list explicitly naming yellow and green split peas among pulses that must be cooked",
+          "evidenceScope": "group_specific",
+          "rationale": "Parrot-focused guidance explicitly names yellow and green split peas among pulses that must be cooked. This is a preparation boundary only, not a portion, formula, runtime approval, or another-species conclusion.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-african-grey-feeding"
+          ],
+          "locator": "VCA African Grey suggested-food table’s ‘cooked beans (various types)’ entry and balanced-diet guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "Grey-specific veterinary guidance identifies cooked beans rather than an unheated dried split-pea form. This supports a preparation requirement only; no raw form, portion, recipe, formula, or complete ration is established.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-budgie-feeding"
+          ],
+          "locator": "VCA Budgies suitable-food table’s ‘cooked beans (various)’ entry and balanced-diet guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie-specific veterinary guidance identifies cooked beans rather than an unheated dried split-pea form. This supports a preparation requirement only; no raw form, portion, formula use, or complete ration is established.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "canary",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-canary-feeding"
+          ],
+          "locator": "VCA Canaries cooked-bean entry and suitable-food table naming peas",
+          "evidenceScope": "species_specific",
+          "rationale": "Canary-specific veterinary guidance distinguishes cooked beans and separately names peas. It does not establish raw dried split peas; this conservative record requires preparation and does not establish portion, formula use, or a complete ration.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "david-poultry-legumes-2024"
+          ],
+          "locator": "David et al. abstract and field-pea poultry-feed sections",
+          "evidenceScope": "species_specific",
+          "rationale": "The poultry review addresses dry field peas and antinutritional-factor/formulation boundaries in poultry feed. This is limited chicken feed-context evidence only; it does not establish home feeding, a complete ration, or another species outcome.",
+          "reviewedAt": "2026-08-18"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "petcraft-parrot-beans-2014",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "david-poultry-legumes-2024"
+        ],
+        "rule": "Keep raw dried split pea cotyledons distinct from whole dry field peas, fresh garden peas, cooked peas, and sprouts. Companion-bird records require preparation; chicken evidence is limited to poultry feed formulation; pigeon evidence is limited uncited owner guidance. This record does not approve runtime use, a formula, a portion, or a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-18"
+    },
+    {
+      "ingredientId": "mung_beans",
+      "ingredientDisplayName": "Mung beans",
+      "form": "raw dried mung beans",
+      "nutrition": {
+        "sourceIds": [
+          "ftb-legume-safety-2018"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only review of the raw dried mung-bean form. It does not add a nutrient value, a dry-mix instruction, or a complete-ration claim."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "limited",
+          "sourceIds": [
+            "pigeon-guide-diet-2026"
+          ],
+          "locator": "Pigeon Diet Guide ‘Treats’ section naming mung beans",
+          "evidenceScope": "species_specific",
+          "rationale": "Pigeon-specific owner guidance names mung beans as treats, but does not specify form, preparation, portion, or a citation trail. This is limited ingredient context only and not an approval of raw dried use, a formula, or a runtime outcome.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "ftb-legume-safety-2018"
+          ],
+          "locator": "For the Birds ‘There are a few varieties of beans that are okay to sprout’ paragraph naming mung bean",
+          "evidenceScope": "group_specific",
+          "rationale": "Parrot-rescue guidance identifies mung bean as sproutable, which establishes a preparation boundary rather than raw dried use. It does not prescribe a sprouting protocol, portion, complete ration, runtime approval, or another species outcome.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-african-grey-feeding"
+          ],
+          "locator": "VCA African Grey suggested-food table’s ‘cooked beans (various types)’ entry and balanced-diet guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "Grey-specific veterinary guidance identifies cooked beans rather than raw dried mung beans. This supports a preparation requirement only; no raw form, portion, formula use, or complete ration is established.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-budgie-feeding"
+          ],
+          "locator": "VCA Budgies suitable-food table’s ‘cooked beans (various)’ entry and balanced-diet guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie-specific veterinary guidance identifies cooked beans rather than raw dried mung beans. This supports a preparation requirement only; no raw form, portion, formula use, or complete ration is established.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "canary",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-canary-feeding"
+          ],
+          "locator": "VCA Canaries suitable-food table listing mung under ‘cooked beans’",
+          "evidenceScope": "species_specific",
+          "rationale": "Canary-specific veterinary guidance explicitly lists mung under cooked beans, not raw dried food. This supports a preparation requirement only and does not establish a portion, formula use, or complete ration.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "merck-poultry-2024"
+          ],
+          "locator": "Merck Nutritional Requirements of Poultry nutrient-balance and complete-ration sections",
+          "evidenceScope": "species_specific",
+          "rationale": "A targeted search identified mung-bean broiler studies but accessible full text could not be verified; Merck establishes only the complete-ration boundary and does not identify raw dried mung bean. The chicken raw-mung record therefore remains unresolved rather than relying on snippets or cross-legume inference.",
+          "reviewedAt": "2026-08-18"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "ftb-legume-safety-2018",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "merck-poultry-2024"
+        ],
+        "rule": "Keep raw dried mung beans distinct from sprouted mung beans, cooked mung beans, mung flour, and residues. Companion-bird records require preparation; chicken remains unresolved pending accessible direct raw-mung chicken evidence; pigeon evidence is limited uncited owner guidance. This record does not approve runtime use, a formula, a portion, or a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-18"
+    },
+    {
+      "ingredientId": "garden_peas",
+      "ingredientDisplayName": "Garden peas",
+      "form": "raw mature dried garden peas",
+      "nutrition": {
+        "sourceIds": [
+          "david-poultry-legumes-2024"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only review of raw mature dried garden peas. It does not add a nutrient value, a dry-mix instruction, or a complete-ration claim."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "limited",
+          "sourceIds": [
+            "pigeon-guide-diet-2026"
+          ],
+          "locator": "Pigeon Diet Guide opening diet paragraph naming dried peas and ‘Treats’ paragraph naming peas",
+          "evidenceScope": "species_specific",
+          "rationale": "Pigeon-specific owner guidance names dried peas and peas in feed/treat context. It lacks a preparation, portion, and citation trail, so this supports limited named-ingredient context only and not a formula or runtime approval.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "ftb-legume-safety-2018"
+          ],
+          "locator": "For the Birds sproutable-beans paragraph naming ‘Peas (sweet or green)’",
+          "evidenceScope": "group_specific",
+          "rationale": "Parrot-rescue guidance identifies sweet/green peas as sproutable, establishing a preparation boundary rather than approval of a raw mature dried form. It does not prescribe a process, portion, complete ration, runtime approval, or another species outcome.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-african-grey-feeding"
+          ],
+          "locator": "VCA African Grey suggested-food table naming peas and separately listing ‘cooked beans (various types)’",
+          "evidenceScope": "species_specific",
+          "rationale": "Grey-specific veterinary guidance names peas in fresh-food context and identifies cooked beans. It does not establish raw mature dried garden peas; this conservative record requires preparation and does not establish a portion, formula use, or complete ration.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-budgie-feeding"
+          ],
+          "locator": "VCA Budgies suitable-food table naming peas and ‘cooked beans (various)’",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie-specific veterinary guidance names peas and cooked beans, not raw mature dried garden peas. This supports a preparation requirement only; no raw form, portion, formula use, or complete ration is established.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "canary",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-canary-feeding"
+          ],
+          "locator": "VCA Canaries suitable-food table naming peas and cooked beans",
+          "evidenceScope": "species_specific",
+          "rationale": "Canary-specific veterinary guidance names peas and cooked beans, not raw mature dried garden peas. This supports a preparation requirement only and does not establish a portion, formula use, or complete ration.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "david-poultry-legumes-2024"
+          ],
+          "locator": "David et al. abstract, grain-legume classification, and field-pea poultry feeding sections",
+          "evidenceScope": "species_specific",
+          "rationale": "The poultry review addresses dry field peas and feed formulation with antinutritional-factor boundaries. This is limited chicken feed-context evidence only; it does not establish household feeding, a complete ration, or another species outcome.",
+          "reviewedAt": "2026-08-18"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "ftb-legume-safety-2018",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "david-poultry-legumes-2024"
+        ],
+        "rule": "Keep raw mature dried garden peas distinct from fresh green peas, split peas, cooked peas, and sprouts. Companion-bird records require preparation; chicken evidence is limited to dry field-pea feed formulation; pigeon evidence is limited uncited owner guidance. This record does not approve runtime use, a formula, a portion, or a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-18"
+    },
+    {
+      "ingredientId": "kidney_beans",
+      "ingredientDisplayName": "Kidney beans",
+      "form": "raw dried kidney beans",
+      "nutrition": {
+        "sourceIds": [
+          "emiola-2007-raw-kidney-bean-broilers"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only review of the raw dried kidney-bean form. It does not add a nutrient value, a dry-mix instruction, or a complete-ration claim."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "vca-pigeon-dove-feeding"
+          ],
+          "locator": "VCA ‘Can I feed people food to my pigeon or dove?’ section",
+          "evidenceScope": "species_specific",
+          "rationale": "The pigeon-specific veterinary source gives general human-food context but does not name kidney beans, raw beans, or a preparation boundary. Targeted pigeon searches returned inaccessible social posts and conflicting unverified community claims, so this raw kidney-bean record remains unresolved rather than inferring from chicken or parrot sources.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "ftb-legume-safety-2018",
+            "petcraft-parrot-beans-2014"
+          ],
+          "locator": "For the Birds kidney-bean paragraph requiring full cooking; Petcraft opening pulse paragraph requiring cooking",
+          "evidenceScope": "group_specific",
+          "rationale": "Parrot-focused guidance explicitly says kidney beans should be fully cooked and more broadly directs that pulses be cooked. This establishes a preparation boundary only, not a method, portion, formula use, complete ration, runtime approval, or another species outcome.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-african-grey-feeding"
+          ],
+          "locator": "VCA African Grey suggested-food table’s ‘cooked beans (various types)’ entry and balanced-diet guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "Grey-specific veterinary guidance identifies cooked beans rather than raw dried kidney beans. This supports a preparation requirement only; no raw form, portion, formula use, or complete ration is established.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-budgie-feeding"
+          ],
+          "locator": "VCA Budgies suitable-food table’s ‘cooked beans (various)’ entry and balanced-diet guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie-specific veterinary guidance identifies cooked beans rather than raw dried kidney beans. This supports a preparation requirement only; no raw form, portion, formula use, or complete ration is established.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "canary",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-canary-feeding"
+          ],
+          "locator": "VCA Canaries suitable-food table listing kidney under ‘cooked beans’",
+          "evidenceScope": "species_specific",
+          "rationale": "Canary-specific veterinary guidance explicitly lists kidney under cooked beans, not raw dried food. This supports a preparation requirement only and does not establish a portion, formula use, or complete ration.",
+          "reviewedAt": "2026-08-18"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "emiola-2007-raw-kidney-bean-broilers"
+          ],
+          "locator": "Emiola et al. abstract: raw/dehulled kidney-bean meals, broiler performance and internal-organ histology; aqueous-heated meal result",
+          "evidenceScope": "species_specific",
+          "rationale": "Direct broiler evidence found poorer performance and reported pancreatic, kidney, and liver changes with raw/dehulled kidney-bean meals, while aqueous-heated meal did not show the reported adverse effects in that trial. This establishes a chicken preparation boundary only; it does not prescribe a household method, formula, portion, or another species outcome.",
+          "reviewedAt": "2026-08-18"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "ftb-legume-safety-2018",
+          "petcraft-parrot-beans-2014",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "emiola-2007-raw-kidney-bean-broilers"
+        ],
+        "rule": "Keep raw dried kidney beans distinct from fully cooked, sprouted, canned, flour, or processed forms. Companion-bird and chicken records require preparation; pigeon remains unresolved pending direct pigeon-specific evidence. This record does not approve runtime use, a formula, a portion, or a complete ration.",
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-18"
