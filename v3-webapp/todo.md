@@ -123,3 +123,4 @@
 - [x] Implement and validate Issue #137’s non-runtime optimizer policy and deterministic CPLEX-LP model builder without importing the active calculator or changing visible behavior.
 - [x] Implement and validate Issue #138’s serializable solver protocol and strict result adapter without adding a browser Worker, calculator integration, visible output, or public-copy change.
 - [x] Implement and validate Issue #139’s deterministic serial objective-lock and structured infeasibility-evidence foundations without changing runtime behavior or visitor-visible output.
+- [x] Implement and validate Issue #140’s isolated browser-worker lifecycle controller without registering it in the calculator or changing visible behavior.
