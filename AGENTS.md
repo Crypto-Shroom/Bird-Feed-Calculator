@@ -34,7 +34,7 @@
 ## Evidence-research persistence
 
 - Review every proposed food **and exact food form** across pigeon, parrot, African Grey, budgie, canary, and chicken before proposing any active-data change. Keep unresolved evidence explicit; it is a current evidence state, not a reason to stop researching.
-- Continue seeking direct, form-specific evidence for unresolved rows before final handoff. Search English sources and, where useful, Dutch and German material for pigeon or corvid context and Spanish material for parrot-style birds. Record the source boundary for every row and never infer a bird outcome from another species.
+- Continue seeking direct, form-specific evidence for unresolved rows before final handoff. Search English sources and, where useful, Dutch and German material for pigeon or corvid context and Spanish material for parrot-style birds. Record the source boundary for every row. Do not infer a bird outcome merely by analogy from another species; a cross-species conclusion is permitted only when a cited, authoritative scientific-consensus source explicitly establishes the relevant principle across the birds in scope, with its limits recorded and any species-specific evidence taking priority.
 - Keep provenance-only research separate from runtime ingredients, formulas, inventory behavior, safety rules, and visitor-facing wording. A ledger record does not authorize a calculator change.
 
 ## Concrete review communication

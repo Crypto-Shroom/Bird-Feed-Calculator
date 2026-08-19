@@ -1,45 +1,42 @@
-# Firebase Deployment Guide (Bird Feed Calculator)
+# Firebase Hosting and Firestore Report Queue
 
-This guide covers deploying the Pigeon Seed Mix Calculator to **Firebase Hosting** with backend in-app issue reporting powered by **Firebase Cloud Functions (2nd gen)** and secure **Firebase Secrets**.
+The production site is a **static React application on Firebase Hosting**. It does not use a deployed Firebase Cloud Function for issue reporting. Its Firestore database remains in the **`eur3` European multi-region**.
 
----
+## Normal deployment path
 
-## Prerequisites
+Production changes follow the GitHub-first workflow: a reviewed pull request merges into `main`, then the repository’s Firebase Hosting workflow deploys the V3 build. Do not deploy Firebase Functions as part of the normal site release.
 
-1. **Firebase CLI installed**: `npm install -g firebase-tools`
-2. **Authenticated**: `firebase login`
+The active Hosting configuration rewrites all paths to the React application entry point. It has **no** `/api/submit-issue` rewrite and does not route requests to the legacy `submitIssue` Cloud Function.
 
----
+## In-app report flow
 
-## 1. Select your Firebase Project
+The report dialog keeps visitors inside the calculator wherever possible.
 
-Link your local repository to your Firebase project:
+1. In a local or Manus development environment, the dialog may receive a valid JSON response from the local Express `/api/submit-issue` endpoint.
+2. On Firebase Hosting, an unavailable API route returns the single-page application fallback rather than a GitHub issue response. The client detects that non-JSON response and writes the report to Firestore collection `reports` instead.
+3. GitHub Actions workflow [`process-reports.yml`](../../.github/workflows/process-reports.yml) runs daily at **08:00 UTC** and can also be manually dispatched. It reads new Firestore reports and creates GitHub issues using the repository token.
+4. If the Firestore queue cannot be used, the dialog offers a pre-filled GitHub issue link as the last fallback.
 
-```bash
-firebase use bird-food-calculator-25e6d
-```
+> The live production route is the Firestore queue plus the daily GitHub Actions importer. The local Express helper is for development only. The old Cloud Function source is deliberately **unrouted and unused**; do not re-enable or deploy it without a separately approved hardening and routing decision.
 
----
+## Report-import configuration
 
-## 2. Store the GitHub App Private Key as a Firebase Secret
+The GitHub Actions importer uses two repository secrets:
 
-For secure in-app reporting without exposing credentials, store your GitHub App private key in Firebase Secret Manager:
+| Secret | Purpose |
+| --- | --- |
+| `FIREBASE_SERVICE_ACCOUNT_BIRD_FOOD_CALCULATOR_25E6D` | Authenticates the daily importer to the project’s Firestore database. |
+| GitHub-provided `GITHUB_TOKEN` | Creates and labels the imported GitHub issues with the workflow’s restricted `issues: write` permission. |
 
-```bash
-firebase functions:secrets:set GITHUB_APP_PRIVATE_KEY
-```
-When prompted, paste the contents of your `github-app.pem` file.
+No GitHub App private key or Firebase Functions secret is required by the active production report flow.
 
----
+## Verification
 
-## 3. Build and Deploy
-
-To build the React frontend and Cloud Functions, then deploy Hosting and Functions in one step:
+For a code change affecting reports, validate the queue parser and the production build before review:
 
 ```bash
-pnpm build
-firebase deploy
+pnpm --dir v3-webapp test:issue-submission
+pnpm --dir v3-webapp build
 ```
 
-- **Hosting URL**: Serves the static React frontend and rewrites `/api/submit-issue` requests directly to the `submitIssue` Cloud Function.
-- **Security**: The private key is injected securely into the Cloud Function container at runtime via Firebase Secrets and never touches the client browser or repository.
+Use **Run workflow** on `Process Firestore Report Queue` only when the product owner asks for an immediate import. Otherwise, leave the scheduled once-daily importer to process new reports.
