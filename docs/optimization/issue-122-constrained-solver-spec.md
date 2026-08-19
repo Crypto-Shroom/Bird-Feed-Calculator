@@ -10,6 +10,8 @@ The calculator must find a **diverse, practical, and well-balanced mix from the 
 
 The current greedy construction cannot meet this contract. It allocates a category in fixed order, scores a 5 g or 10 g addition against an incomplete partial mix, commits the locally best ingredient, and performs no swap or backtracking pass. Issue #111 demonstrated that this can miss a same-inventory, same-category solution that meets every displayed macro range.
 
+The current output is **repeatable**, but not globally optimized. It first alphabetically sorts the eligible inventory, creates four local category-share plans, fills `grain → legume → seed` one increment at a time, and resolves score ties by ingredient ID. The local `candidates` variable is simply the four completed trial mixes built from those plans; it does **not** import foods and it does not represent all feasible combinations. The final sort chooses the lowest score among those four greedy paths. Determinism is useful for reproducibility, but it cannot repair a locally committed allocation or prove that the result is the best complete mix.
+
 ## 2. Data boundary: provenance is not runtime eligibility
 
 `database/provenance/` is the canonical **evidence and review ledger**. A ledger record documents the exact food form, six-bird evidence status, sources, and limits. It is intentionally not imported by the V3 client.
@@ -18,12 +20,27 @@ The calculator currently receives candidate stock only from the visitor inventor
 
 This separation is required. A food should pass, in order, an evidence review, an owner-approved active-data change, safety/compatibility configuration, nutrition/category data review, and UI/inventory integration before it becomes usable. **A ledger review alone is neither active-data approval nor a claim that a visitor owns the food.**
 
+### 2.1 Food and herb catalog policy
+
+The active food catalog and the visitor inventory are different things. The food catalog is the set of owner-approved, searchable items the planner understands; the visitor inventory is the subset and quantity that the visitor says they have. A reviewed food should become a catalog item only after the owner approves its exact active form, nutrition/category data, safety behavior, and any visible presentation. It must never be silently inserted into a visitor’s inventory.
+
+Herbs and supplements already have a separate active catalog: `HERBS_SUPPLEMENTS`, backed for eligibility by `database/herb-provenance.mts`, and surfaced in the Herb Library and Personalized Supplement Mix. They are intentionally not `INGREDIENTS` for the grain/legume/seed macronutrient optimizer: their recorded forms, doses, and purposes are different from a kilogram-scale energy/protein mix. The desired policy is therefore:
+
+| Item type | When it becomes catalog-visible | Where it belongs | May enter the macronutrient mix solver? |
+| --- | --- | --- | --- |
+| Food/feed ingredient | After evidence review **and** separate owner approval of active form, nutrition/category data, safety behavior, and UI integration. | Active food catalog; visitor can add it to actual inventory. | Yes, only after the visitor adds actual stock and all hard gates pass. |
+| Herb or supplement | After evidence review **and** owner approval of its active herb record, bird eligibility, and display/dose data. | Herb & Supplement catalog; a future separate “my supplements” list may track possession. | No, unless a separate owner-approved change establishes that exact form as a gram-scale feed ingredient with nutrition/category and safety evidence. |
+
+The catalog should therefore contain approved herb requests after their evidence and active-data path completes, but herbs should not be mixed automatically into the calorie/macronutrient formulation merely because they are catalogued.
+
 The future UI must also keep two concepts separate:
 
 | Concept | Purpose | May seed the optimizer? |
 | --- | --- | --- |
 | **Recommended Formula** | Shows the owner-approved standard formula for the selected bird/profile. | No. It is explanatory reference data only. |
 | **Actual Inventory** | Contains only ingredients and amounts the visitor added or explicitly imported. | Yes. It is the sole source of solver decision variables. |
+
+The current screen still initializes and resets inventory from profile-specific starter presets. That is not the desired final contract: it can make a standard formula look like visitor stock. The future reviewed UI change must start the actual inventory empty, display the selected bird/profile’s standard formula in Recommended Formula, and calculate from inventory only after the visitor adds stock.
 
 ## 3. Required inputs and safety gates
 
@@ -42,7 +59,7 @@ No optimizer objective, however attractive the nutrition score, may reintroduce 
 
 ## 4. Mathematical model
 
-Let `i` be an eligible ingredient and `c` a category (`grain`, `legume`, or `seed`). Let `q` be an owner-approved practical increment in grams. The initial proof of concept should evaluate 5 g and 10 g; production default must be selected only after accuracy and performance tests.
+Let `i` be an eligible ingredient and `c` a category (`grain`, `legume`, or `seed`). Let `q` be the computation increment in grams. The initial benchmark supports **1 g** precision as the default computation increment; display and export rounding are separate owner-approved presentation decisions. The full corpus must still verify 1 g performance on the largest supported real inventories and target browsers before adoption.
 
 The primary quantity variable is an integer number of increments:
 
@@ -73,14 +90,14 @@ zᵢ ∈ {0, 1}
 q · zᵢ ≤ xᵢ ≤ min(availableᵢ, practicalMaximumᵢ) · zᵢ
 ```
 
-An ingredient counts as diverse only when it has at least one meaningful increment. The owner must approve whether the minimum should be one increment or a species/profile-specific value. This prevents cosmetic 5 g or 10 g additions merely to increase a diversity count.
+An ingredient counts as diverse only when it has at least the owner-approved meaningful minimum. The initial proposed default is **1 g**, because the solver can compute at 1 g precision; the corpus must still test whether a higher meaningful threshold is needed to prevent cosmetic trace additions in a visitor-facing formula.
 
-The initial design uses two complementary diversity measures:
+The initial model measures two complementary mix-quality dimensions from the start of the **completed** mix:
 
-1. **Meaningful ingredient count:** maximize `Σ zᵢ` after nutrition quality is settled.
-2. **Concentration:** minimize `M`, with `xᵢ ≤ M · totalWeight` for all `i`, after the count is settled.
+1. **Meaningful ingredient count:** `Σ zᵢ`.
+2. **Concentration:** `M`, with `xᵢ ≤ M · totalWeight` for all `i`.
 
-The count prevents the current one-dominant-ingredient pattern; the concentration stage prevents a 61% wheat result when a less concentrated equally valid composition exists. Diet-optimization literature similarly requires explicit acceptability or consumption bounds to avoid mathematically valid but unreasonable one-food solutions.[2]
+Concentration is not a late cosmetic tie-break. It is part of the same initial full-mix balance decision as macro and category midpoint distance. The solver must calculate the efficient frontier across nutritional balance, category balance, meaningful diversity, and maximum share; it then selects only a non-dominated composition using the approved tolerance policy. This allows a modest change inside an acceptable profile range to reduce an avoidable 61% staple share or to add meaningful variety, while never allowing diversity or concentration to create a macro/category range violation. Diet-optimization literature similarly requires explicit acceptability or consumption bounds to avoid mathematically valid but unreasonable one-food solutions.[2]
 
 ## 5. Lexicographic solve sequence
 
@@ -90,12 +107,10 @@ A single weighted score is not sufficient. It obscures policy trade-offs, can al
 | --- | --- | --- |
 | 0 | Apply the hard gates and establish actual target weight. | Safety and inventory are never negotiated. |
 | 1 | Solve the exact feasibility model: all macro and category ranges inside configured bounds. | A feasible profile-compliant mix is categorically preferable to an attractive but out-of-range mix. |
-| 2A, if Stage 1 is feasible | Minimize normalized distance from macro midpoints. | Selects a balanced mix within acceptable ranges. |
-| 2B, if Stage 1 is infeasible | Minimize normalized lower/upper violations across macros and categories; use a documented priority policy for macro versus category deviations. | Returns the best attainable result honestly instead of failing or using a greedy path. |
-| 3 | Minimize normalized category-midpoint distance. | Preserves the selected bird’s intended broad composition after nutrition compliance. |
-| 4 | Maximize meaningful ingredient count. | Improves ingredient variety only after profile quality is fixed. |
-| 5 | Minimize maximum single-ingredient share `M`. | Avoids avoidable concentration among equally varied mixes. |
-| 6 | Stable deterministic tie-break on the canonical sorted ingredient ID vector. | Ensures same input always yields same output. |
+| 2A, if Stage 1 is feasible | Build the non-dominated full-mix frontier across normalized macro-midpoint distance, category-midpoint distance, meaningful diversity count, and maximum single-ingredient share `M`. | Balance, diversity, and concentration are evaluated together from the completed mix rather than from partial allocations. |
+| 2B, if Stage 1 is infeasible | Minimize normalized lower/upper violations across macros and categories; macro violations are evaluated before category violations, then apply the same full-mix balance frontier. | Returns the best attainable result honestly without using an arbitrary category shape to hide a material macro miss. |
+| 3 | Select from the retained frontier using approved tolerances: preserve the best nutritional-balance band, then prefer lower concentration and higher meaningful diversity inside that band. | Lets concentration influence the initial calculation without allowing it to outweigh core profile quality. |
+| 4 | Stable deterministic tie-break on the canonical sorted ingredient ID vector. | Ensures same input always yields same output. |
 
 The fallback stage must expose the signed deficit or excess for each macro/category and identify the safe eligible ingredient/category capacities that prevented exact feasibility. It must never say “optimized” without indicating `feasible` versus `best_attainable`.
 
@@ -124,6 +139,12 @@ The proof of concept should compare two implementation candidates against an ide
 
 All solving should run in a Web Worker once a candidate meets the correctness corpus, so a slower solve cannot freeze the UI. The worker should receive serializable inputs and return a fully validated result; it must not own product rules or alter safety outcomes.
 
+### 6.1 Initial 1 g precision benchmark
+
+An isolated YALPS benchmark used the active Chicken → Pet/Companion target ranges, active category bounds, and the active five-item Chicken starter inventory at a 1,000 g target. It jointly enforced exact macros/categories and stock limits while minimizing maximum ingredient share from the start. All three tested increments reached the same globally balanced 200 g each of corn, wheat, barley, oats, and peas; 1 g was `optimal` over 20 runs with a 0.347 ms median, 0.542 ms mean, and 2.179 ms maximum local solve time. The matching 5 g and 10 g medians were 0.092 ms and 0.073 ms respectively.
+
+This is encouraging evidence that 1 g is practical for a small real five-ingredient model, **not** production proof. The acceptance corpus must still test maximum real inventory size, all birds/profiles, difficult infeasible cases, browser workers, bundle impact, and deterministic repeated execution before 1 g becomes a production commitment.
+
 ## 7. Validation and acceptance corpus
 
 The implementation cannot be accepted based on the Chicken example alone. Create a checked-in scenario corpus and verify every solve against a reference model.
@@ -136,8 +157,7 @@ The implementation cannot be accepted based on the Chicken example alone. Create
 | Issue #73 — pigeon Winter | Classifies the result feasible or best attainable using exact range checks and reports protein limits correctly. |
 | Safety corpus | Toxic, incompatible, raw-unsafe, and processing-required stock never appears in a selected mix, even if it would solve a macro deficit. |
 | Inventory corpus | No selected amount exceeds stock; result sum equals requested/capped target; duplicate or invalid amounts are deterministic. |
-| Diversity corpus | A candidate with more meaningful ingredients wins only after matching all higher-priority profile objectives. |
-| Concentration corpus | Among equal higher-priority solutions, the lower maximum-share mix wins. |
+| Diversity and concentration corpus | The solver retains only non-dominated completed mixes across nutritional balance, category balance, meaningful inclusion count, and maximum share. Within the owner-approved nutritional tolerance band, lower concentration and higher meaningful diversity win together; neither may create a range violation. |
 | Determinism corpus | Reordered inventory keys produce byte-equivalent normalized output. |
 | Fallback corpus | Known infeasible inventory returns `best_attainable`, quantified misses, and limiting capacity explanation—not a false compliant result. |
 | Differential corpus | For every scenario, a retained exact reference model and the production adapter agree on status, quantities within increment tolerance, and ordered objective values. |
@@ -149,7 +169,7 @@ Property tests should additionally assert that increasing the available amount o
 
 1. Merge only the diagnostic and specification PRs that the owner explicitly approves. They are not runtime changes.
 2. Build an isolated proof-of-concept branch with no public-copy changes and no change to nutrition targets, active ingredients, or human-made standard formulas.
-3. Compare solver candidates and practical increments with the corpus above. Record package license, pinned version, bundle impact, worker loading, timeout behavior, and cross-browser evidence.
+3. Compare solver candidates using the 1 g corpus above. Record package license, pinned version, bundle impact, worker loading, timeout behavior, cross-browser evidence, and the frontier/tolerance selection trace.
 4. Present the actual behavior diff for every bird/profile default and the chosen user-supplied inventories. The owner must approve any altered output before implementation PR review.
 5. Implement the actual-inventory / Recommended Formula separation as a dedicated reviewed change, with explicit owner approval for every changed visible string.
 6. Keep existing critical safety warnings explicit and red. Do not weaken raw adzuki, raw legume, toxicity, preparation, or pigeon-only garlic boundaries.
@@ -161,10 +181,10 @@ Before implementation, the owner should approve these policy decisions:
 
 | Decision | Proposed default | Why it needs owner approval |
 | --- | --- | --- |
-| Range priority | Macro and category bounds are jointly hard when feasible; when jointly infeasible, minimize normalized macro violation before category violation. | Determines trade-off semantics. |
-| Practical increment | Evaluate 5 g versus 10 g in proof of concept; select from accuracy/performance evidence. | Changes output granularity. |
-| Meaningful inclusion | One practical increment initially; permit profile-specific future minimums only with evidence and approval. | Defines “diverse” in a visitor-visible result. |
-| Concentration | Minimize maximum share after count and profile quality. | Determines the balance between variety and familiar staple ingredients. |
+| Range priority | Macro and category bounds are jointly hard when feasible. When jointly infeasible, minimize normalized macro violation before category violation. Macros mean protein, carbohydrates, fat, and fiber; categories mean the grain, legume, and seed percentage shares. | Determines whether a nutrient miss can ever be accepted to preserve a category shape. |
+| Computation increment | Use 1 g in the proof of concept and keep display rounding as a separate presentation decision. The initial five-ingredient real-inventory benchmark was optimal at 1 g; the full corpus must confirm it. | Controls numerical precision independently from what is convenient to display or weigh. |
+| Meaningful inclusion | Start at 1 g for computation, then raise the inclusion threshold only if corpus evidence shows trace additions are misleading. | Defines “diverse” in a visitor-visible result. |
+| Concentration and diversity | Include maximum share and meaningful diversity in the initial completed-mix Pareto frontier with nutritional/category balance, then select inside an approved nutritional tolerance band. | Ensures ingredient share changes are evaluated as part of the whole mix, not as an afterthought. |
 | Solver | Start proof of concept with YALPS; compare with stable HiGHS MIP if available. | Adds an external dependency and browser execution behavior. |
 | Fallback explanation | Define exact owner-approved wording only after implementation evidence exists. | Public copy requires explicit approval. |
 
