@@ -107,12 +107,20 @@ describe("canonical provenance ledger", () => {
     expect(rawChickpeaCoverage?.linkedFoodReviewKeys).toEqual(["chickpeas::raw dried seeds"]);
   });
 
-  it("records the five-item raw-legume batch with complete six-bird evidence and coverage links", () => {
+  it("records the five-item raw-legume batch with complete six-bird evidence, coverage links, and lentil split-form inheritance", () => {
     const foodLedger = readJson("food-reviews.json") as {
       requiredBirdOrder: string[];
       ingredientReviews: Array<{
         ingredientId: string;
         form: string;
+        formAttributes?: {
+          model: string;
+          attribute: string;
+          supportedValues: string[];
+          defaultValue: string;
+          inherits: string[];
+          materialProcessingBoundaries: string[];
+        };
         speciesEvidence: Array<{ bird: string; outcome: string; sourceIds: string[] }>;
       }>;
     };
@@ -174,6 +182,20 @@ describe("canonical provenance ledger", () => {
         `${expectedReview.ingredientId}::${expectedReview.form}`,
       ]);
     }
+
+    const lentilReview = foodLedger.ingredientReviews.find(
+      (candidate) => candidate.ingredientId === "lentils" && candidate.form === "raw dried lentil seeds",
+    );
+    expect(lentilReview?.formAttributes).toMatchObject({
+      model: "inherited_mechanical_form",
+      attribute: "split",
+      supportedValues: ["whole", "split"],
+      defaultValue: "whole",
+      inherits: ["nutrition", "speciesEvidence"],
+    });
+    expect(lentilReview?.formAttributes?.materialProcessingBoundaries).toEqual(
+      expect.arrayContaining(["dehulled", "soaked", "cooked", "sprouted", "fermented"]),
+    );
   });
 
   it("records each new food/form review with six birds and expected outcomes", () => {
