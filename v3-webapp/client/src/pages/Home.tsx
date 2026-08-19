@@ -47,6 +47,7 @@ import { MultibirMixCalculator, type MixResult } from "@/lib/calculator-multi-bi
 import { getPreparationInstructions, getProcessingWarning, isToxicRaw } from "@/lib/safety";
 import { getProfileDefaultIngredients } from "@/lib/inventory-presets";
 import { resolveDisplayedFormula } from "@/lib/formula-display";
+import { selectDiversitySuggestionCandidate } from "@/lib/diversity-suggestion";
 import { cn } from "@/lib/utils";
 import { Link } from "wouter";
 
@@ -95,15 +96,15 @@ export default function Home() {
   );
 
   const diversitySuggestion = useMemo(() => {
-    if (result.missingIngredients?.length || !Object.keys(result.mix).length) return null;
-
-    const candidate = ["barley", "oats", "millet", "sorghum", "buckwheat", "wheat", "rice_brown"]
-      .filter((name) => !result.mix[name])
-      .filter((name) => isIngredientCompatible(name, selectedBird) && !isToxicRaw(name) && !checkBirdToxicity(name, selectedBird) && !getProcessingWarning(name))
-      .find((name) => INGREDIENTS[name]?.category === "grain");
+    const candidate = selectDiversitySuggestionCandidate({
+      bird: selectedBird,
+      formulaSource,
+      mix: result.mix,
+      missingIngredients: result.missingIngredients,
+    });
 
     return candidate ? `Try offering ${candidate.replace(/_/g, " ")} alongside this mix to increase diversity for your bird.` : null;
-  }, [result, selectedBird]);
+  }, [formulaSource, result, selectedBird]);
 
   const ingredientOptions = useMemo(() => {
     const query = ingredientSearch.trim().toLowerCase();
