@@ -958,6 +958,69 @@
       "permittedUse": "German parrot and parakeet guidance distinguishing processed edible kernels from the shell liquid and discussing cashew nutrition.",
       "limitations": "Owner education article; it does not establish a budgie-specific controlled outcome, exact roasted form, portion, or runtime formula use.",
       "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "lafeber-walnut-nutrition-2020",
+      "title": "Walnut nutrition",
+      "authorsOrOrganization": "Brenda; Lafeber Company",
+      "publishedYear": "2020",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://lafeber.com/pet-birds/questions/walnut-nutrition/",
+      "speciesScopes": [
+        "parrot"
+      ],
+      "permittedUse": "Direct Amazon-parrot guidance for small walnut pieces as an occasional reward within a predominantly complete diet.",
+      "limitations": "Owner-facing guidance for an Amazon parrot; it does not establish a universal parrot portion, a dry-mix ingredient, or an outcome for pigeons, African Greys, budgies, canaries, chickens, or roasted walnut specifically.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "petco-pigeon-cashew-preparation-2019",
+      "title": "Is it safe to feed my pigeon cashew nuts? How should I prepare them?",
+      "authorsOrOrganization": "Todd Cecil, Veterinarian; Petco",
+      "publishedYear": "2019",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.petco.com/pet-education/bird/vet-qa/pigeon-safe-cashew-nuts-preparation",
+      "speciesScopes": [
+        "pigeon"
+      ],
+      "permittedUse": "Pigeon-specific mechanical-size guidance that nut pieces should be chopped to small-seed size because pigeons cannot masticate.",
+      "limitations": "The answer addresses cashews rather than walnuts and does not establish walnut safety, toxicity, portion, or dry-roasted use.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "feedipedia-walnut-juglans-regia",
+      "title": "Walnut (Juglans regia)",
+      "authorsOrOrganization": "Feedipedia; Association Française de Zootechnie, CIRAD, FAO, INRAE",
+      "publishedYear": "2012",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.feedipedia.org/node/38",
+      "speciesScopes": [
+        "chicken",
+        "poultry",
+        "parrot",
+        "african_grey",
+        "budgie",
+        "canary",
+        "pigeon"
+      ],
+      "permittedUse": "Ingredient-form distinction for walnut kernel, toasted kernel, oil meal, shell, and husk; high-fat and rancidity/mould boundaries; historical poultry by-product context.",
+      "limitations": "The datasheet is not a six-bird whole-kernel feeding trial and its poultry discussion concerns walnut meal/by-products rather than the exact companion-bird treat form.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "jiang-walnut-meal-broilers-2024",
+      "title": "Walnut meal improves meat quality by modulating intestinal microbes in white feather broilers",
+      "authorsOrOrganization": "Xingjiao Jiang et al.",
+      "publishedYear": "2024",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11336344/",
+      "speciesScopes": [
+        "chicken",
+        "broiler_chicken"
+      ],
+      "permittedUse": "Controlled broiler evidence for 5% and 10% walnut meal powder in formulated diets.",
+      "limitations": "Walnut meal powder is not whole walnut kernel; the study does not establish household feeding, a treat portion, raw or dry-roasted kernel use, or outcomes for other birds.",
+      "accessedAt": "2026-08-19"
     }
   ]
 }
