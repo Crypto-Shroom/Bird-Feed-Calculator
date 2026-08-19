@@ -12,6 +12,7 @@
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
     "test:calculator": "tsx scripts/verify-calculator.mjs",
+    "inspect:issue111-chicken-pet": "tsx scripts/inspect-issue111-chicken-pet.mjs",
     "test:herb-safety": "tsx scripts/verify-herb-safety.mjs",
     "test:inventory-presets": "tsx scripts/verify-inventory-presets.mjs",
     "test:profile-default-formulas": "tsx scripts/verify-profile-default-formulas.mjs",
