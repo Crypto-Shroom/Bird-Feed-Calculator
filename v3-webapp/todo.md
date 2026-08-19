@@ -120,3 +120,4 @@
 - [x] Upgrade the merged Firebase Admin production path and verify the reconciled report processor dependency graph has no known advisories.
 - [x] Implement and validate the Issue #134 attribute-aware lentil provenance model: purely split forms inherit base lentil nutrition and suitability; only material processing states create separate evidence boundaries; no runtime/catalog change.
 - [x] Build and validate the Issue #125 development-only constrained-solver proof of concept with pinned HiGHS, real active-data fixtures, safety-gate checks, deterministic reference coverage, and no runtime or public-copy change.
+- [x] Implement and validate Issue #137’s non-runtime optimizer policy and deterministic CPLEX-LP model builder without importing the active calculator or changing visible behavior.
