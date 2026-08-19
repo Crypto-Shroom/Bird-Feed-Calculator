@@ -111,7 +111,31 @@ The model measures two complementary dimensions from the start of every **comple
 1. **Meaningful ingredient count:** `Σ zᵢ`.
 2. **Concentration:** `M` in grams, with `xᵢ ≤ M` for all `i`; the reported largest-share percentage is `100 × M / W`.
 
-Concentration is not a late cosmetic tie-break. `xᵢ`, `zᵢ`, and `M` exist together in **every full-mix model**; the solver never locks a partial recipe and adjusts it afterward. The policy controls which trade-offs are permitted: macro and category range compliance remain hard whenever possible, while documented epsilon tolerances around the best full-mix balance scores allow concentration and diversity to influence the chosen complete recipe without obscuring material nutritional quality. This allows a modest change inside an acceptable profile range to reduce an avoidable 61% staple share or to add meaningful variety, while never allowing diversity or concentration to create a macro/category range violation. Diet-optimization literature similarly requires explicit acceptability or consumption bounds to avoid mathematically valid but unreasonable one-food solutions.[2]
+Concentration is not a late cosmetic tie-break. `xᵢ`, `zᵢ`, and `M` exist together in **every full-mix model**; the solver never locks a partial recipe and adjusts it afterward. Diet-optimization literature similarly requires explicit acceptability or consumption bounds to avoid mathematically valid but unreasonable one-food solutions.[2]
+
+### 4.2 Normalized macro safety margin (Chebyshev center)
+
+For an exact-feasible mix, introduce one continuous variable `r ≥ 0`: the smallest normalized clearance from **any macro bound**. For each macro `m`, with percentage bounds `Lₘ` and `Uₘ`, and completed-mix macro percentage `pₘ = Pₘ / W`, enforce:
+
+```text
+(pₘ − Lₘ) / (Uₘ − Lₘ) ≥ r
+(Uₘ − pₘ) / (Uₘ − Lₘ) ≥ r
+```
+
+After multiplying by `W × (Uₘ − Lₘ)`, these are linear constraints suitable for HiGHS:
+
+```text
+Pₘ − W × (Uₘ − Lₘ) × r ≥ W × Lₘ
+Pₘ + W × (Uₘ − Lₘ) × r ≤ W × Uₘ
+```
+
+Maximizing `r` finds the **Chebyshev center of the feasible macro region**: the complete recipe whose nearest macro boundary is as far away as possible after each macro is normalized by its own allowed width. A result of `r = 0.1382`, for example, has at least 13.82% of every macro range width between it and its closest macro limit.
+
+Category bounds remain hard feasibility constraints but are **not included in `r`**. The local active Chicken/Pet test proved why: its safe inventory can meet category targets only at 80% grain, 20% legume, and 0% seed, so including category clearance forces a meaningless `r = 0` even while a positive macro safety margin exists. Category composition remains material through its hard bounds and later category-balance stage; it must not erase the useful nutritional safety-buffer measurement.
+
+The production model solves this margin directly as an integer MIP. A continuous LP upper bound may be retained in the test/reference harness, but it is not a required production stage: direct 1 g MIP maximization yields the actual achievable `r` and avoids an additional solve plus an arbitrary continuous-to-integer tolerance.
+
+For `best_attainable` fallback, `r` is not presented as an exact-feasible safety margin. The locked normalized macro/category slack values remain the authoritative deficit/excess measure.
 
 ## 5. Bounded global solve sequence
 
@@ -139,9 +163,10 @@ The denominators are the target-range width at the current achievable weight `W`
 | 1 | Solve global exact feasibility: total `W`, stock caps, macro ranges, category ranges, inclusion links, and maximum-share links. | If optimal, every macro/category slack is zero. |
 | 2A, only if Stage 1 is infeasible | Minimize `D_macro`; record `D_macro*`. Then add `D_macro = D_macro*` and minimize `D_category`; record `D_category*`. | Add **both** `D_macro = D_macro*` and `D_category = D_category*` to every later fallback stage. Mathematical locks are exact; implementation uses only documented solver feasibility tolerance and records it. |
 | 2B, if Stage 1 is feasible | Set `D_macro = 0` and `D_category = 0`. | Carry both zero locks forward. |
-| 3 | Minimize normalized macro-midpoint distance; record `macroBest`. | Add `macroDistance ≤ macroBest + ε_macro`. |
-| 4 | Minimize normalized category-midpoint distance under the macro lock; record `categoryBest`. | Add `categoryDistance ≤ categoryBest + ε_category`. |
-| 5A | Minimize maximum ingredient amount `M` under all retained slack and balance locks; record `M*`. | Add `M ≤ M* + τ_M`; first proof-of-concept default is `τ_M = 0 g`. |
+| 3, if Stage 1 is feasible | Maximize normalized macro safety margin `r`; record `r*`. | Add `r ≥ r* − ε_r`; first proof-of-concept default is `ε_r = 0`. |
+| 3, if Stage 1 is infeasible | Under both locked fallback slack values, minimize normalized macro-midpoint distance; record `macroBest`. | Add `macroDistance ≤ macroBest + ε_macro`. `r` is not treated as a feasible safety margin. |
+| 4 | Minimize normalized category-midpoint distance under the retained feasible margin or fallback macro-distance lock; record `categoryBest`. | Add `categoryDistance ≤ categoryBest + ε_category`. |
+| 5A | Minimize maximum ingredient amount `M` under all retained slack, margin, and balance locks; record `M*`. | Add `M ≤ M* + τ_M`; first proof-of-concept default is `τ_M = 0 g`. |
 | 5B | Maximize `Σ zᵢ` under all prior locks. | Lock the resulting inclusion count exactly. |
 | 6 | Apply serial quantity-vector tie-break to the remaining full-mix solutions. For canonically sorted ingredient IDs `i₁…iₙ`, minimize `xᵢ₁`, lock it, then minimize `xᵢ₂`, lock it, and continue through `xᵢₙ`. | This is collision-free because it compares the full ordered quantity vector component by component, rather than using an alphabetical weighted score. |
 
@@ -167,7 +192,7 @@ The recommended implementation is **stable HiGHS WebAssembly (`highs` 1.15.2, MI
 | --- | --- |
 | `optimizer-model.ts` | Pure model builder. It accepts only validated active-catalog records, actual inventory, bird/profile targets, and policy constants; it emits named LP rows/variables. |
 | `optimizer-worker.ts` | Loads HiGHS once, receives serializable requests, runs bounded stages, records status/time/gap, validates the returned mix, and disposes/restarts safely on error. |
-| `optimizer-policy.ts` | Contains owner-approved `q`, `d`, `ε_macro`, `ε_category`, `τ_M`, time budget, solver feasibility tolerance, and serial quantity-vector tie-break policy. No hidden score weights. |
+| `optimizer-policy.ts` | Contains owner-approved `q`, `d`, `ε_r`, `ε_macro`, `ε_category`, `τ_M`, time budget, solver feasibility tolerance, and serial quantity-vector tie-break policy. No hidden score weights. |
 | `optimizer-explain.ts` | Derives status, range checks, macro/category misses, limiting stock, and an audit trace from the returned mix. It must never invent an explanation. |
 | Main UI | Debounces inventory edits, cancels superseded worker requests, and renders only the latest validated response in the existing single mix panel. |
 
@@ -193,7 +218,7 @@ The implementation cannot be accepted based on the Chicken example alone. Create
 | Issue #73 — pigeon Winter | Classifies the result feasible or best attainable using exact range checks and reports protein limits correctly. |
 | Safety corpus | Toxic, incompatible, raw-unsafe, and processing-required stock never appears in a selected mix, even if it would solve a macro deficit. |
 | Inventory corpus | No selected amount exceeds stock; result sum equals requested/capped target; duplicate or invalid amounts are deterministic. |
-| Diversity and concentration corpus | The global full-mix stages apply approved `ε_macro` and `ε_category` balance bands, then minimize maximum share and maximize meaningful inclusion. Neither policy may create a macro/category range violation, and the audit trace identifies every retained tolerance. |
+| Safety-margin, diversity, and concentration corpus | For feasible mixes, the global full-mix stages maximize normalized macro margin `r`, retain approved `ε_r`, apply category-balance tolerance, then minimize maximum share and maximize meaningful inclusion. For fallbacks, locked slack values replace `r`. Neither policy may create a macro/category range violation, and the audit trace identifies every retained tolerance. |
 | Determinism corpus | Reordered inventory keys produce byte-equivalent normalized output. |
 | Fallback corpus | Known infeasible inventory returns `best_attainable`, quantified misses, and limiting capacity explanation—not a false compliant result. |
 | Differential corpus | For every scenario, a retained exact reference model and the production adapter agree on status, quantities within increment tolerance, and ordered objective values. |
@@ -220,7 +245,7 @@ Before implementation, the owner should approve these policy decisions:
 | Range priority | Macro and category bounds are jointly hard when feasible. When jointly infeasible, minimize normalized macro violation before category violation. Macros mean protein, carbohydrates, fat, and fiber; categories mean the grain, legume, and seed percentage shares. | Determines whether a nutrient miss can ever be accepted to preserve a category shape. |
 | Computation increment | Use 1 g in the proof of concept. It is more accurate but expands the integer search space; isolated stable-HiGHS evidence is encouraging, and the full corpus must confirm it. | Controls numerical precision and browser time budget. |
 | Meaningful inclusion | Compute at `q = 1 g`; use provisional `d = 5 g` for meaningful inclusion because the local Canary/Breeding test rejected the cosmetic 1 g alternative. Revalidate `d` across the full corpus before product adoption. | Defines “diverse” without equating numerical precision with a visitor-meaningful ingredient. |
-| Concentration and diversity | In every full-mix stage retain `x`, `z`, and `M`; after explicit macro/category balance locks, minimize `M`, lock `M ≤ M* + τ_M` with POC `τ_M = 0 g`, then maximize meaningful inclusion. | Makes the priority serial, deterministic, and auditable. |
+| Macro safety margin, concentration, and diversity | For feasible mixes, directly maximize normalized macro Chebyshev margin `r`, lock `r ≥ r* − ε_r` with POC `ε_r = 0`, retain category balance, then minimize `M`, lock `M ≤ M* + τ_M` with POC `τ_M = 0 g`, and maximize meaningful inclusion. | Keeps the furthest achievable macro safety buffer ahead of composition quality without allowing category bounds to collapse that buffer to zero. |
 | Solver | Use stable `highs` 1.15.2 in a dedicated browser Worker only after the declared largest-inventory, desktop/mobile, cancellation, timeout/incumbent, bundle, determinism, and reference-agreement corpus passes. | Adds an external dependency and browser execution behavior. |
 | Single panel | Use the current mix-panel location for both the profile’s initial standard formula and the later actual-inventory mix; do not add a separate Recommended Formula field. | Preserves the owner’s requested interaction model while not misrepresenting standard formula as stock. |
 | Fallback explanation | Define exact owner-approved wording only after implementation evidence exists. | Public copy requires explicit approval. |
