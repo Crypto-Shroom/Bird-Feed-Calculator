@@ -21,6 +21,7 @@
     "test:constrained-solver-poc": "tsx scripts/verify-constrained-solver-poc.mjs",
     "test:optimizer-model": "vitest run src/lib/optimizer-model.test.ts",
     "test:optimizer-adapter": "vitest run src/lib/optimizer-adapter.test.ts",
+    "test:optimizer-stages": "vitest run src/lib/optimizer-stages.test.ts",
     "test:issue-submission": "tsx scripts/verify-issue-submission.mjs",
     "test:github-app": "tsx scripts/verify-github-app-auth.mjs",
     "test:report-queue": "vitest run --config scripts/vitest.config.ts",

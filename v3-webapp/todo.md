@@ -122,3 +122,4 @@
 - [x] Build and validate the Issue #125 development-only constrained-solver proof of concept with pinned HiGHS, real active-data fixtures, safety-gate checks, deterministic reference coverage, and no runtime or public-copy change.
 - [x] Implement and validate Issue #137’s non-runtime optimizer policy and deterministic CPLEX-LP model builder without importing the active calculator or changing visible behavior.
 - [x] Implement and validate Issue #138’s serializable solver protocol and strict result adapter without adding a browser Worker, calculator integration, visible output, or public-copy change.
+- [x] Implement and validate Issue #139’s deterministic serial objective-lock and structured infeasibility-evidence foundations without changing runtime behavior or visitor-visible output.
