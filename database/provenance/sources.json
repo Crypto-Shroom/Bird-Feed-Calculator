@@ -600,7 +600,7 @@
     {
       "id": "valdes-exotic-insects-2022",
       "title": "Insects as Feed for Companion and Exotic Pets: A Current Trend",
-      "authorsOrOrganization": "Fabrizzio Vald\u00e9s; Valeria Villanueva; Emerson Dur\u00e1n; Francisca Campos; Constanza Avenda\u00f1o; Manuel S\u00e1nchez; Chaneta Domingoz-Araujo; Carolina Valenzuela",
+      "authorsOrOrganization": "Fabrizzio Valdés; Valeria Villanueva; Emerson Durán; Francisca Campos; Constanza Avendaño; Manuel Sánchez; Chaneta Domingoz-Araujo; Carolina Valenzuela",
       "publishedYear": "2022",
       "sourceTier": "peer_reviewed_review",
       "urlOrDoi": "https://doi.org/10.3390/ani12111450",
@@ -640,6 +640,80 @@
       ],
       "permittedUse": "Controlled broiler study of limited live yellow mealworm larvae as environmental enrichment alongside a commercial diet.",
       "limitations": "Broiler strain, age, quantity, and study conditions are specific; it cannot establish pet-bird outcomes or a general mealworm feeding amount.",
+      "accessedAt": "2026-08-18"
+    },
+    {
+      "id": "pigeon-guide-diet-2026",
+      "title": "Pigeon Diet Guide",
+      "authorsOrOrganization": "CPC Staff; Columbidae Ownership Omnibus",
+      "publishedYear": "2026",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.pigeon.guide/Pigeon-Diet-Guide-f696d4f98d994603b367803aba5f0ce8",
+      "speciesScopes": [
+        "pigeon"
+      ],
+      "permittedUse": "Pigeon-specific owner guidance naming dried lentils, split peas, mung beans, and dried peas as feed-mix or treat context.",
+      "limitations": "Community guidance with an empty references section. It does not establish raw-legume safety, preparation, portion, nutrient values, formula inclusion, or kidney-bean use; it supports only the exact named pigeon ingredient context.",
+      "accessedAt": "2026-08-18"
+    },
+    {
+      "id": "petcraft-parrot-beans-2014",
+      "title": "Cooking Beans for Parrots",
+      "authorsOrOrganization": "David Poole; Petcraft",
+      "publishedYear": "2014",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.petcraft.com/articles/2014/10/12/cooking-beans-for-parrots/",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Parrot-focused preparation context explicitly naming lentils and yellow/green split peas as pulses to cook before offering.",
+      "limitations": "Owner guidance, not a controlled feeding study. It does not establish a species-specific dose, a universal cooking protocol, a complete ration, runtime approval, or an outcome for pigeons, African Greys, budgies, canaries, or chickens.",
+      "accessedAt": "2026-08-18"
+    },
+    {
+      "id": "ftb-legume-safety-2018",
+      "title": "Legume Safety Warning",
+      "authorsOrOrganization": "Shauna Roberts; For the Birds Parrot Rescue & Sanctuary",
+      "publishedYear": "2018",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.ftbrescue.com/post/2018/01/13/legume-safety-warning",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Parrot-rescue preparation guidance that identifies lentils, mung beans, and sweet/green peas as sproutable and says kidney beans should be fully cooked.",
+      "limitations": "Rescue owner guidance, not a controlled feeding trial. It does not establish a preparation method, portion, complete ration, runtime approval, or outcome for pigeons, African Greys, budgies, canaries, or chickens.",
+      "accessedAt": "2026-08-18"
+    },
+    {
+      "id": "ciurescu-2017-raw-lentil-broilers",
+      "title": "Beneficial Effects of Increasing Dietary Levels of Raw Lentil Seeds on Meat Fatty Acid and Plasma Metabolic Profile in Broiler Chickens",
+      "authorsOrOrganization": "Georgeta Ciurescu; Andreea Vasilachi; Mariana Ropotă; Mihai Palade; Cătălin Dragomir",
+      "publishedYear": "2017",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.56093/ijans.v87i11.75892",
+      "speciesScopes": [
+        "chicken",
+        "broiler_chicken"
+      ],
+      "permittedUse": "Controlled Cobb 500 broiler evidence for raw lentil seed within specified balanced experimental diets at stated inclusion levels.",
+      "limitations": "Broiler production study only; it does not establish household feeding, a universal inclusion rate, a complete ration, or an outcome for pigeons, psittacines, budgies, canaries, or another legume form.",
+      "accessedAt": "2026-08-18"
+    },
+    {
+      "id": "emiola-2007-raw-kidney-bean-broilers",
+      "title": "Performance and Histological Responses of Internal Organs of Broiler Chickens Fed Raw, Dehulled, and Aqueous and Dry-Heated Kidney Bean Meals",
+      "authorsOrOrganization": "I. A. Emiola; A. D. Ologhobo; R. M. Gous",
+      "publishedYear": "2007",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1093/ps/86.6.1234",
+      "speciesScopes": [
+        "chicken",
+        "broiler_chicken"
+      ],
+      "permittedUse": "Controlled 56-day broiler evidence comparing raw and processed kidney-bean meals within stated experimental diets and documenting the reported performance and organ-histology boundary.",
+      "limitations": "Broiler production study only; it does not prescribe a household preparation method, a complete ration, or an outcome for pigeons, psittacines, budgies, canaries, or another legume form.",
       "accessedAt": "2026-08-18"
     }
   ]

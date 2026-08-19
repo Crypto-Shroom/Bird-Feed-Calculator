@@ -110,37 +110,49 @@
           "id": "lentils-raw",
           "displayName": "Lentils",
           "historicalForm": "raw",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "lentils::raw dried lentil seeds"
+          ]
         },
         {
           "id": "split-peas-raw",
           "displayName": "Split peas",
           "historicalForm": "raw",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "split_peas::raw dried split pea cotyledons"
+          ]
         },
         {
           "id": "mung-beans-raw",
           "displayName": "Mung beans",
           "historicalForm": "raw",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "mung_beans::raw dried mung beans"
+          ]
         },
         {
           "id": "chickpeas-raw",
           "displayName": "Chickpeas",
           "historicalForm": "raw",
-          "linkedFoodReviewKeys": ["chickpeas::raw dried seeds"]
+          "linkedFoodReviewKeys": [
+            "chickpeas::raw dried seeds"
+          ]
         },
         {
           "id": "garden-peas-raw",
           "displayName": "Garden peas",
           "historicalForm": "raw",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "garden_peas::raw mature dried garden peas"
+          ]
         },
         {
           "id": "kidney-beans-raw",
           "displayName": "Kidney beans",
           "historicalForm": "raw",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "kidney_beans::raw dried kidney beans"
+          ]
         },
         {
           "id": "lima-beans-raw",
