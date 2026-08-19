@@ -150,6 +150,44 @@ describe("canonical provenance ledger", () => {
     }
   });
 
+  it("records the approved insect forms with six birds and exact outcomes", () => {
+    const ledger = readJson("food-reviews.json") as {
+      requiredBirdOrder: string[];
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{ bird: string; outcome: string; sourceIds: string[] }>;
+      }>;
+    };
+    const expected = [
+      {
+        ingredientId: "mealworms",
+        form: "live yellow mealworm larvae",
+        outcomes: ["unresolved", "unresolved", "unresolved", "unresolved", "unresolved", "limited"],
+      },
+      {
+        ingredientId: "mealworms",
+        form: "dried mealworms",
+        outcomes: ["unresolved", "unresolved", "unresolved", "unresolved", "limited", "unresolved"],
+      },
+      {
+        ingredientId: "crickets",
+        form: "live commercial crickets",
+        outcomes: ["unresolved", "unresolved", "unresolved", "unresolved", "unresolved", "limited"],
+      },
+    ];
+
+    for (const expectedReview of expected) {
+      const review = ledger.ingredientReviews.find(
+        (candidate) => candidate.ingredientId === expectedReview.ingredientId && candidate.form === expectedReview.form,
+      );
+      expect(review?.form).toBe(expectedReview.form);
+      expect(review?.speciesEvidence.map((entry) => entry.bird)).toEqual(ledger.requiredBirdOrder);
+      expect(review?.speciesEvidence.map((entry) => entry.outcome)).toEqual(expectedReview.outcomes);
+      expect(review?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
+    }
+  });
+
   it("keeps light and fresh-produce care claims source-backed and non-runtime", () => {
     const ledger = readJson("care-claims.json") as {
       careClaims: Array<{
