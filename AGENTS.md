@@ -30,3 +30,14 @@
 - Flag changes that weaken raw-toxicity warnings, obscure required preparation, or silently alter protected data or profile wording.
 - Flag attempted edits to V0–V2 or `archive/` that are not explicitly preservation-only.
 - Keep review feedback focused on consequential, repository-specific issues. Leave formatting and deterministic checks to automated validation.
+
+## Evidence-research persistence
+
+- Review every proposed food **and exact food form** across pigeon, parrot, African Grey, budgie, canary, and chicken before proposing any active-data change. Keep unresolved evidence explicit; it is a current evidence state, not a reason to stop researching.
+- Continue seeking direct, form-specific evidence for unresolved rows before final handoff. Search English sources and, where useful, Dutch and German material for pigeon or corvid context and Spanish material for parrot-style birds. Record the source boundary for every row and never infer a bird outcome from another species.
+- Keep provenance-only research separate from runtime ingredients, formulas, inventory behavior, safety rules, and visitor-facing wording. A ledger record does not authorize a calculator change.
+
+## Concrete review communication
+
+- Explain review findings in plain, concrete terms. State the exact file, field, string, value, or behavior that changed; distinguish a validation result from a review-quality concern and distinguish runtime impact from governance-only impact.
+- Do not hide a specific change behind abstract labels such as "formatting churn", "dependency risk", or "clean". Name the concrete before-and-after change and why it matters to the owner’s review decision.
