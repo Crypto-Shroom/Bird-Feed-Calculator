@@ -1415,6 +1415,355 @@
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-19"
+    },
+    {
+      "ingredientId": "cashew",
+      "ingredientDisplayName": "Cashew",
+      "form": "plain raw cashew kernel, unsalted, unflavoured, and shell-free",
+      "nutrition": {
+        "sourceIds": [
+          "akande-cashew-reject-meal-2015",
+          "lafeber-nut-meats-2026"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only record. It does not add an active ingredient, nutrient row, optimizer choice, or inventory item."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "limited",
+          "sourceIds": [
+            "petco-pigeon-cashew-2019",
+            "vca-pigeon-dove-feeding",
+            "stadttaubenhilfe-crop-obstruction",
+            "tiermedizinportal-avian-obstipation-2022"
+          ],
+          "locator": "Petco veterinarian Q&A: chop cashew pieces to the size of small seeds to avoid esophageal obstruction; VCA pigeon/dove small-beak and manageable-piece guidance; German pigeon crop-obstruction and avian obstruction references",
+          "evidenceScope": "species_specific",
+          "rationale": "Direct pigeon-specific veterinarian guidance supports a limited treat outcome for plain raw edible cashew only when shell-free and chopped to small-seed size. The evidence supports preparation and obstruction boundaries, not a universal portion, soaking requirement, toxicity trial, or staple use.",
+          "reviewedAt": "2026-08-19",
+          "followUpSearch": {
+            "queries": [
+              "pigeon cashew raw dry roasted unsalted veterinarian",
+              "pigeon cashew kernel chopped small veterinary",
+              "Taube Cashewkerne roh geröstet ungesalzen Fütterung"
+            ],
+            "sourceIds": [
+              "petco-pigeon-cashew-2019",
+              "vca-pigeon-dove-feeding"
+            ],
+            "result": "Petco directly supports shell-free cashew chopped to small-seed size for pigeons; no independent direct raw-form clinical outcome beyond that preparation guidance was found. Limited remains appropriate."
+          }
+        },
+        {
+          "bird": "parrot",
+          "outcome": "limited",
+          "sourceIds": [
+            "aav-feeding-birds-2021",
+            "lafeber-nut-meats-2026"
+          ],
+          "locator": "Lafeber parrot nut-meats answer on raw or dry-roasted unsalted nuts; raw form retained here as a separate exact form; AAV general nut moderation guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "Parrot guidance supports only limited treat/enrichment context for plain raw cashew pieces within a predominantly formulated diet. It is not a controlled cashew study, staple mix component, or complete ration.",
+          "reviewedAt": "2026-08-19",
+          "followUpSearch": {
+            "queries": [
+              "parrot cashew raw dry roasted unsalted veterinarian",
+              "cashew kernel parrot treat raw unsalted",
+              "Papagei Cashewkerne roh geröstet ungesalzen"
+            ],
+            "sourceIds": [
+              "lafeber-nut-meats-2026",
+              "dievogelschule-cashew-parrots-budgies-2026"
+            ],
+            "result": "Companion-parrot guidance supports plain raw or dry-roasted unsalted nuts only as small treats; the raw form remains limited, not a staple or formula ingredient."
+          }
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "vca-african-grey-feeding",
+            "merck-psittacines-2025"
+          ],
+          "locator": "VCA African Grey tree-nut guidance; Merck psittacine nutrition and species-variation sections",
+          "evidenceScope": "species_specific",
+          "rationale": "General African Grey and psittacine nutrition guidance does not establish the exact commercially prepared cashew form or a species-specific portion. The parrot row cannot be copied to African Grey.",
+          "reviewedAt": "2026-08-19",
+          "followUpSearch": {
+            "queries": [
+              "African Grey cashew raw dry roasted unsalted veterinarian",
+              "African Grey cashew kernel treat avian vet",
+              "Graupapagei Cashewkerne roh geröstet ungesalzen"
+            ],
+            "sourceIds": [
+              "exoticdirect-african-grey-cashew-2021",
+              "vca-african-grey-feeding"
+            ],
+            "result": "African Grey guidance names cashews and recommends sparing slivers, but does not establish a controlled exact-form portion. The raw form remains unresolved."
+          }
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "merck-psittacines-2025",
+            "aav-feeding-birds-2021"
+          ],
+          "locator": "Merck psittacine species-variation sections; AAV general companion-parrot nut guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "The reviewed sources do not establish commercially prepared cashew kernel for budgies. General parrot nut guidance is insufficient for budgie approval.",
+          "reviewedAt": "2026-08-19",
+          "followUpSearch": {
+            "queries": [
+              "budgie cashew raw dry roasted unsalted veterinarian",
+              "budgerigar cashew kernel treat avian vet",
+              "Wellensittich Cashewkerne roh geröstet ungesalzen"
+            ],
+            "sourceIds": [
+              "dievogelschule-cashew-parrots-budgies-2026",
+              "vca-budgie-feeding"
+            ],
+            "result": "A German parrot/parakeet article discusses edible cashew kernels, while VCA budgie guidance does not name cashew and warns about high-fat foods. Exact budgie suitability remains unresolved."
+          }
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "finchinfo-nutrition"
+          ],
+          "locator": "Finch Information Center canary/passserine nutrition context",
+          "evidenceScope": "species_specific",
+          "rationale": "The reviewed canary source does not name cashew or establish this form.",
+          "reviewedAt": "2026-08-19",
+          "followUpSearch": {
+            "queries": [
+              "canary cashew raw dry roasted unsalted veterinarian",
+              "canary bird cashew kernel treat avian vet",
+              "Kanarienvogel Cashewkerne roh geröstet ungesalzen"
+            ],
+            "sourceIds": [
+              "birdclinic-canary-nut-guidance-2026",
+              "vca-canary-feeding"
+            ],
+            "result": "Bird Vet Melbourne lists very finely chopped cashews occasionally for canaries, but does not distinguish raw versus dry-roasted or establish a universal portion. The exact raw form remains unresolved."
+          }
+        },
+        {
+          "bird": "chicken",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "akande-cashew-reject-meal-2015",
+            "merck-poultry-2024"
+          ],
+          "locator": "Akande et al. laying-hen study of full-fat and defatted cashew reject meal in formulated diets; Merck poultry nutrient-balance context",
+          "evidenceScope": "species_specific",
+          "rationale": "Chicken evidence concerns processed cashew reject meal in formulated diets, not commercially prepared whole cashew kernels as treats. The exact food/form remains unresolved rather than being inferred from meal studies.",
+          "reviewedAt": "2026-08-19",
+          "followUpSearch": {
+            "queries": [
+              "chicken cashew kernel raw dry roasted unsalted poultry study",
+              "chicken whole cashew nuts feeding backyard poultry",
+              "Hühner Cashewkerne roh geröstet ungesalzen Fütterung"
+            ],
+            "sourceIds": [
+              "akande-cashew-reject-meal-2015",
+              "merck-poultry-2024"
+            ],
+            "result": "The second search found poultry meal studies and non-clinical whole-nut discussions, but no controlled whole-kernel treat evidence. Meal evidence cannot be transferred; unresolved remains."
+          }
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "akande-cashew-reject-meal-2015",
+          "lafeber-nut-meats-2026",
+          "aav-feeding-birds-2021",
+          "petco-pigeon-cashew-2019",
+          "stadttaubenhilfe-crop-obstruction",
+          "tiermedizinportal-avian-obstipation-2022"
+        ],
+        "rule": "Review only plain raw cashew kernel that is unsalted, unflavoured, shell-free, and chopped to small-seed size for pigeons. Dry-roasted cashew is a separate exact form and requires its own species/form evidence. Exclude shell-on or unprocessed cashew material, oil-roasted, seasoned, chocolate-coated, damaged, moldy, rancid, oversized pieces, and cashew-only products. Do not imply that soaking is required.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-19"
+    },
+    {
+      "ingredientId": "cashew",
+      "ingredientDisplayName": "Cashew",
+      "form": "plain dry-roasted cashew kernel, unsalted, unflavoured, and shell-free",
+      "nutrition": {
+        "sourceIds": [
+          "griffin-dean-cashew-2017",
+          "lafeber-nut-meats-2026"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only record. It does not add an active ingredient, nutrient row, optimizer choice, or inventory item."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "merck-columbiformes-2025",
+            "griffin-dean-cashew-2017"
+          ],
+          "locator": "Merck pigeon/dove diet sections; Griffin & Dean raw/dry-roasted product distinction",
+          "evidenceScope": "species_specific",
+          "rationale": "No pigeon-specific dry-roasted cashew feeding evidence was found. The food-composition source distinguishes the form but does not establish avian suitability.",
+          "reviewedAt": "2026-08-19",
+          "followUpSearch": {
+            "queries": [
+              "pigeon cashew raw dry roasted unsalted veterinarian",
+              "pigeon cashew kernel chopped small veterinary",
+              "Taube Cashewkerne roh geröstet ungesalzen Fütterung"
+            ],
+            "sourceIds": [
+              "petco-pigeon-cashew-2019",
+              "merck-columbiformes-2025"
+            ],
+            "result": "Pigeon guidance supports small-seed-size preparation for cashew generally but does not establish dry-roasted cashew specifically. Remains unresolved."
+          }
+        },
+        {
+          "bird": "parrot",
+          "outcome": "limited",
+          "sourceIds": [
+            "aav-feeding-birds-2021",
+            "lafeber-nut-meats-2026",
+            "swicegood-nuts-birds-2000",
+            "griffin-dean-cashew-2017"
+          ],
+          "locator": "Lafeber parrot nut-meats answer explicitly accepting dry-roasted unsalted nuts in moderation; AAV small nut-piece enrichment guidance; Swicegood raw-versus-salty-roasted boundary; Griffin & Dean dry-roasted product definition",
+          "evidenceScope": "species_specific",
+          "rationale": "Direct companion-parrot guidance supports limited treat/enrichment use of plain dry-roasted unsalted cashew pieces. This is not a staple, complete ration, or universal portion.",
+          "reviewedAt": "2026-08-19",
+          "followUpSearch": {
+            "queries": [
+              "parrot cashew raw dry roasted unsalted veterinarian",
+              "cashew kernel parrot treat raw unsalted",
+              "Papagei Cashewkerne roh geröstet ungesalzen"
+            ],
+            "sourceIds": [
+              "lafeber-nut-meats-2026",
+              "griffin-dean-cashew-2017"
+            ],
+            "result": "Lafeber directly accepts dry-roasted unsalted nuts in moderation for parrots; the dry-roasted cashew form remains limited, not a staple or formula ingredient."
+          }
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "vca-african-grey-feeding",
+            "griffin-dean-cashew-2017"
+          ],
+          "locator": "VCA African Grey guidance on limited tree nuts and avoiding oil-cooked foods; Griffin & Dean dry-roasted product definition",
+          "evidenceScope": "species_specific",
+          "rationale": "African Grey guidance does not name cashew or establish dry-roasted cashew specifically. Avoidance of oil-cooked food does not itself approve dry-roasted cashew.",
+          "reviewedAt": "2026-08-19",
+          "followUpSearch": {
+            "queries": [
+              "African Grey cashew raw dry roasted unsalted veterinarian",
+              "African Grey cashew kernel treat avian vet",
+              "Graupapagei Cashewkerne roh geröstet ungesalzen"
+            ],
+            "sourceIds": [
+              "exoticdirect-african-grey-cashew-2021",
+              "vca-african-grey-feeding"
+            ],
+            "result": "African Grey guidance names cashews but does not establish dry-roasted cashew specifically; unresolved remains rather than inferring from general parrot guidance."
+          }
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "merck-psittacines-2025",
+            "griffin-dean-cashew-2017"
+          ],
+          "locator": "Merck psittacine species-variation sections; Griffin & Dean dry-roasted product definition",
+          "evidenceScope": "species_specific",
+          "rationale": "No budgie-specific dry-roasted cashew evidence was found; general psittacine guidance is insufficient for approval.",
+          "reviewedAt": "2026-08-19",
+          "followUpSearch": {
+            "queries": [
+              "budgie cashew raw dry roasted unsalted veterinarian",
+              "budgerigar cashew kernel treat avian vet",
+              "Wellensittich Cashewkerne roh geröstet ungesalzen"
+            ],
+            "sourceIds": [
+              "dievogelschule-cashew-parrots-budgies-2026",
+              "vca-budgie-feeding"
+            ],
+            "result": "The German article discusses cashew kernels for parakeets generally, but VCA does not name cashew and no exact dry-roasted budgie outcome is established. Remains unresolved."
+          }
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "finchinfo-nutrition",
+            "griffin-dean-cashew-2017"
+          ],
+          "locator": "Finch Information Center canary/passserine nutrition context; Griffin & Dean dry-roasted product definition",
+          "evidenceScope": "species_specific",
+          "rationale": "No canary-specific dry-roasted cashew evidence was found.",
+          "reviewedAt": "2026-08-19",
+          "followUpSearch": {
+            "queries": [
+              "canary cashew raw dry roasted unsalted veterinarian",
+              "canary bird cashew kernel treat avian vet",
+              "Kanarienvogel Cashewkerne roh geröstet ungesalzen"
+            ],
+            "sourceIds": [
+              "birdclinic-canary-nut-guidance-2026",
+              "vca-canary-feeding"
+            ],
+            "result": "Bird Vet Melbourne mentions finely chopped cashews occasionally but does not establish dry-roasted cashew specifically. Remains unresolved."
+          }
+        },
+        {
+          "bird": "chicken",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "akande-cashew-reject-meal-2015",
+            "merck-poultry-2024",
+            "griffin-dean-cashew-2017"
+          ],
+          "locator": "Akande et al. cashew reject-meal laying-hen study; Merck poultry nutrient-balance context; Griffin & Dean dry-roasted product definition",
+          "evidenceScope": "species_specific",
+          "rationale": "The chicken study concerns full-fat and defatted cashew reject meal, not dry-roasted whole kernels. The exact dry-roasted whole-kernel form remains unresolved.",
+          "reviewedAt": "2026-08-19",
+          "followUpSearch": {
+            "queries": [
+              "chicken cashew kernel raw dry roasted unsalted poultry study",
+              "chicken whole cashew nuts feeding backyard poultry",
+              "Hühner Cashewkerne roh geröstet ungesalzen Fütterung"
+            ],
+            "sourceIds": [
+              "akande-cashew-reject-meal-2015",
+              "merck-poultry-2024"
+            ],
+            "result": "Chicken evidence remains limited to cashew reject meal and other feed materials, not dry-roasted whole kernels. Remains unresolved."
+          }
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "aav-feeding-birds-2021",
+          "lafeber-nut-meats-2026",
+          "swicegood-nuts-birds-2000",
+          "griffin-dean-cashew-2017",
+          "petco-pigeon-cashew-2019",
+          "stadttaubenhilfe-crop-obstruction",
+          "tiermedizinportal-avian-obstipation-2022"
+        ],
+        "rule": "Review only plain dry-roasted cashew kernel that is unsalted, unflavoured, shell-free, and chopped to small-seed size for pigeons if pigeon use is ever supported by direct form evidence. Dry-roasted is distinct from raw, oil-roasted, fried, seasoned, chocolate-coated, damaged, moldy, rancid, shell-on/unprocessed material, oversized pieces, and cashew-only diets. Current pigeon dry-roasted outcome remains unresolved; no soaking requirement is established.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-19"
     }
   ]
 }

@@ -815,6 +815,149 @@
       "permittedUse": "Parrot owner guidance for raw or dry-roasted, unsalted almonds in very small amounts, with an explicit high-fat moderation boundary.",
       "limitations": "Owner-answer guidance for parrots; it does not establish African Grey, budgie, canary, pigeon, or chicken outcomes and does not create a universal daily portion.",
       "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "akande-cashew-reject-meal-2015",
+      "title": "Cashew reject meal in diets of laying chickens: nutritional and economic suitability",
+      "authorsOrOrganization": "Taiwo O. Akande; Akinyinka O. Akinwumi; Taye O. Abegunde",
+      "publishedYear": "2015",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1186/s40781-015-0051-7",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "Controlled laying-hen study of full-fat and defatted cashew reject meal in formulated diets, including feed intake, production, fat deposition, cholesterol, and processing distinctions.",
+      "limitations": "Reject meal is not the exact commercially prepared whole-kernel form; it does not establish companion-bird suitability, whole-cashew treat portions, or cashew-only feeding.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "lafeber-nut-meats-2026",
+      "title": "Nut Meats",
+      "authorsOrOrganization": "Lafeber Pet Birds",
+      "publishedYear": "2026",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://lafeber.com/pet-birds/questions/nut-meats/",
+      "speciesScopes": [
+        "parrot"
+      ],
+      "permittedUse": "Parrot owner guidance listing cashews among treat nuts, with raw or dry-roasted, unsalted, unflavoured, small-portion, and high-fat moderation boundaries.",
+      "limitations": "Owner-answer guidance for parrots; it does not establish African Grey, budgie, canary, pigeon, or chicken outcomes and does not create a universal portion.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "swicegood-nuts-birds-2000",
+      "title": "NUTS Are For The Birds",
+      "authorsOrOrganization": "Carolyn Swicegood; AFA Watchbird",
+      "publishedYear": "2000",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://journals.tdl.org/watchbird/index.php/watchbird/article/view/1524",
+      "speciesScopes": [
+        "parrot",
+        "companion_bird"
+      ],
+      "permittedUse": "Older avicultural education distinguishing fresh raw nuts from salty roasted human nuts and discussing nut meats as parrot foods.",
+      "limitations": "Educational article rather than a controlled species-specific cashew trial; it does not establish portions or outcomes for pigeon, African Grey, budgie, canary, or chicken.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "griffin-dean-cashew-2017",
+      "title": "Nutrient Composition of Raw, Dry-Roasted, and Skin-On Cashew Nuts",
+      "authorsOrOrganization": "Laura Griffin; Lisa Dean",
+      "publishedYear": "2017",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.5539/jfr.v6n6p13",
+      "speciesScopes": [
+        "food_composition"
+      ],
+      "permittedUse": "Food-composition study distinguishing raw and dry-roasted cashew products.",
+      "limitations": "Not a bird-feeding study; it cannot establish avian suitability, portions, or safety outcomes.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "petco-pigeon-cashew-2019",
+      "title": "Is it safe to feed my pigeon cashew nuts? How should I prepare them?",
+      "authorsOrOrganization": "Todd Cecil, Veterinarian; Petco Vet Q&A",
+      "publishedYear": "2019",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.petco.com/content/content-hub/home/questions/02/3/744018.html",
+      "speciesScopes": [
+        "pigeon"
+      ],
+      "permittedUse": "Direct pigeon-specific cashew preparation guidance: chop pieces to small-seed size so they can be swallowed without esophageal obstruction; nuts and seeds must not be the exclusive diet.",
+      "limitations": "Veterinarian Q&A rather than peer-reviewed feeding trial; it does not establish dry-roasted versus raw suitability, a universal portion, toxicity testing, or a requirement to soak.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "stadttaubenhilfe-crop-obstruction",
+      "title": "Kropfverstopfung",
+      "authorsOrOrganization": "Die Stadttaubenhilfe",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.stadttaubenhilfe.com/kropfverstopfung.html",
+      "speciesScopes": [
+        "pigeon"
+      ],
+      "permittedUse": "Pigeon crop-obstruction context covering foreign bodies and incorrect food type, amount, or consistency, with specialist-care boundaries.",
+      "limitations": "Rescue guidance, not cashew-specific evidence and not a feeding-safety trial.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "tiermedizinportal-avian-obstipation-2022",
+      "title": "Verstopfung (Obstipation) beim Vogel",
+      "authorsOrOrganization": "Miriam Lossau; veterinary quality review by Dr. med. vet. Michael Koch; Tiermedizinportal",
+      "publishedYear": "2022",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.tiermedizinportal.de/tierkrankheiten/vogelkrankheiten/verstopfung-obstipation-beim-vogel",
+      "speciesScopes": [
+        "avian"
+      ],
+      "permittedUse": "General avian obstruction and hydration context, including foreign bodies and food accumulation.",
+      "limitations": "Not cashew-specific and not a pigeon feeding recommendation.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "birdclinic-canary-nut-guidance-2026",
+      "title": "Caring for your Canary",
+      "authorsOrOrganization": "Bird Vet Melbourne",
+      "publishedYear": "2026",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.birdclinic.net/bird9.htm",
+      "speciesScopes": [
+        "canary"
+      ],
+      "permittedUse": "Canary veterinary practice page listing very finely chopped almonds, cashews, and Brazil nuts occasionally.",
+      "limitations": "Practice guidance without a controlled cashew study, exact raw-versus-dry-roasted distinction, or universal portion.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "exoticdirect-african-grey-cashew-2021",
+      "title": "What can African grey parrots eat?",
+      "authorsOrOrganization": "ExoticDirect",
+      "publishedYear": "2021",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://exoticdirect.co.uk/news/what-can-african-grey-parrots-eat/",
+      "speciesScopes": [
+        "african_grey"
+      ],
+      "permittedUse": "African Grey guidance naming cashews among nuts, recommending sparing use and slivers for training.",
+      "limitations": "Owner-facing insurance resource; it does not establish a controlled feeding study, roasted-form approval, or universal portion.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "dievogelschule-cashew-parrots-budgies-2026",
+      "title": "Sind Cashew-Kerne gesund für Papageien & Sittiche?",
+      "authorsOrOrganization": "Die Vogelschule / Ann Castro",
+      "publishedYear": "2026",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.dievogelschule.com/sittich-papageien-ernaehrung/cashew-kerne-gesund/",
+      "speciesScopes": [
+        "parrot",
+        "budgie"
+      ],
+      "permittedUse": "German parrot and parakeet guidance distinguishing processed edible kernels from the shell liquid and discussing cashew nutrition.",
+      "limitations": "Owner education article; it does not establish a budgie-specific controlled outcome, exact roasted form, portion, or runtime formula use.",
+      "accessedAt": "2026-08-19"
     }
   ]
 }
