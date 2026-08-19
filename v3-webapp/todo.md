@@ -119,3 +119,4 @@
 - [x] Add a tested silent request limit after CodeQL identified the static fallback as an unbounded filesystem-access route on Issue #107.
 - [x] Upgrade the merged Firebase Admin production path and verify the reconciled report processor dependency graph has no known advisories.
 - [x] Implement and validate the Issue #134 attribute-aware lentil provenance model: purely split forms inherit base lentil nutrition and suitability; only material processing states create separate evidence boundaries; no runtime/catalog change.
+- [x] Build and validate the Issue #125 development-only constrained-solver proof of concept with pinned HiGHS, real active-data fixtures, safety-gate checks, deterministic reference coverage, and no runtime or public-copy change.
