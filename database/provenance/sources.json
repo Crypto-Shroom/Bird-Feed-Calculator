@@ -171,6 +171,34 @@
       "accessedAt": "2026-08-17"
     },
     {
+      "id": "poultry-extension-scratch-2026",
+      "title": "Feeding Chickens for Egg Production in Small and Backyard Flocks",
+      "authorsOrOrganization": "Jacquie Jacob, DVM, PhD; University of Kentucky / Poultry Extension",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://poultry.extension.org/articles/feeds-and-feeding-of-poultry/feeding-chickens-for-egg-production/",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "Chicken complete-feed, scratch-grain, grit, and life-stage feeding context for a diagnostic review of a scratch-supplement estimator.",
+      "limitations": "Backyard poultry guidance; it does not validate this application's individual ingredient nutrient values, optimization objective, profile targets, or a replacement chicken formula.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "umaine-backyard-chicken-nutrition-2026",
+      "title": "Bulletin #2222, Nutrition for Backyard Chicken Flocks in Maine",
+      "authorsOrOrganization": "Donna R. Coffin; University of Maine Cooperative Extension",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://extension.umaine.edu/publications/2222e/",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "Chicken life-stage complete-feed, controlled-grain, scratch-grain, protein, calcium, and grit context for a diagnostic review of a scratch-supplement estimator.",
+      "limitations": "Backyard and small-flock guidance; it is not a direct instruction to change an application's profile, formula, safety outcome, nutrient table, or visitor-visible wording.",
+      "accessedAt": "2026-08-19"
+    },
+    {
       "id": "nas-poultry-2026",
       "title": "Nutrient Requirements of Poultry: Tenth Revised Edition",
       "authorsOrOrganization": "National Academies of Sciences, Engineering, and Medicine",
