@@ -743,6 +743,78 @@
       "permittedUse": "Controlled 56-day broiler evidence comparing raw and processed kidney-bean meals within stated experimental diets and documenting the reported performance and organ-histology boundary.",
       "limitations": "Broiler production study only; it does not prescribe a household preparation method, a complete ration, or an outcome for pigeons, psittacines, budgies, canaries, or another legume form.",
       "accessedAt": "2026-08-18"
+    },
+    {
+      "id": "kim-full-fat-almond-broilers-2021",
+      "title": "Partial Replacement of Animal Fat with Full-Fat Almond in Broiler Chicken Diets",
+      "authorsOrOrganization": "Yong Ju Kim; Min Ho Song; Ji Hwan Lee; Han Jin Oh; Se Yeon Chang; Jae Woo An; Young Bin Go; Dong Cheol Song; Hyun Ah Cho; Byoung Kon Lee; Seok Hyeon Cho; Hyeun Bum Kim; Jin Ho Cho",
+      "publishedYear": "2021",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.3390/ani11113075",
+      "speciesScopes": [
+        "chicken",
+        "broiler"
+      ],
+      "permittedUse": "Controlled broiler feed study using 1%, 2%, and 4% toasted full-fat almond in formulated diets, including performance, digestibility, and foot-pad outcomes.",
+      "limitations": "Broiler feed-formulation study; it does not establish whole-almond treat use, companion-bird suitability, or an almond-only ration.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "chaouali-almond-cyanide-2013",
+      "title": "Potential Toxic Levels of Cyanide in Almonds (Prunus amygdalus), Apricot Kernels (Prunus armeniaca), and Almond Syrup",
+      "authorsOrOrganization": "Nadia Chaouali; Ines Gana; Amira Dorra; Fathia Khelifi; Anouer Nouioui; Wafa Masri; Ines Belwaer; Hayet Ghorbel; Abderazzek Hedhili",
+      "publishedYear": "2013",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1155/2013/610648",
+      "speciesScopes": [
+        "food_safety"
+      ],
+      "permittedUse": "Food-safety boundary distinguishing measured cyanide levels in sweet and bitter almonds and supporting exclusion of bitter/wild almond forms.",
+      "limitations": "Human food-safety study, not a bird-feeding trial; it does not establish a bird-safe portion or sweet-almond suitability.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "lafeber-african-grey-almonds-2020",
+      "title": "African Grey diet",
+      "authorsOrOrganization": "Lafeber Pet Birds",
+      "publishedYear": "2020",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://lafeber.com/pet-birds/questions/african-grey-diet/",
+      "speciesScopes": [
+        "african_grey"
+      ],
+      "permittedUse": "African Grey owner guidance that almonds are a calcium-rich nut within a diet based predominantly on pellets and varied healthy foods.",
+      "limitations": "Owner-answer guidance; it does not establish a controlled almond-feeding study, a portion, or outcomes for other birds.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "aav-feeding-birds-2021",
+      "title": "Feeding Birds",
+      "authorsOrOrganization": "Association of Avian Veterinarians",
+      "publishedYear": "2021",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://birdsandexotics.com/wp-content/uploads/2021/11/AAV-Feeding-Birds.pdf",
+      "speciesScopes": [
+        "parrot",
+        "companion_bird"
+      ],
+      "permittedUse": "Companion-bird guidance that nuts are high-fat/high-energy and that small almond slivers may be used as limited training or foraging rewards.",
+      "limitations": "General companion-bird guidance; it does not establish a species-specific portion, complete nutrient value, or outcomes for pigeon, budgie, canary, or chicken.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "lafeber-nuts-for-birds-2021",
+      "title": "Nuts for birds",
+      "authorsOrOrganization": "Lafeber Pet Birds",
+      "publishedYear": "2021",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://lafeber.com/pet-birds/questions/nuts-for-birds/",
+      "speciesScopes": [
+        "parrot"
+      ],
+      "permittedUse": "Parrot owner guidance for raw or dry-roasted, unsalted almonds in very small amounts, with an explicit high-fat moderation boundary.",
+      "limitations": "Owner-answer guidance for parrots; it does not establish African Grey, budgie, canary, pigeon, or chicken outcomes and does not create a universal daily portion.",
+      "accessedAt": "2026-08-19"
     }
   ]
 }
