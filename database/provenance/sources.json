@@ -128,7 +128,7 @@
     {
       "id": "peron-grosset-2013",
       "title": "The diet of adult psittacids: veterinarian and ethological approaches",
-      "authorsOrOrganization": "F. P\u00e9ron; C. Grosset",
+      "authorsOrOrganization": "F. Péron; C. Grosset",
       "publishedYear": "2013",
       "sourceTier": "peer_reviewed_review",
       "urlOrDoi": "https://doi.org/10.1111/jpn.12103",
@@ -365,7 +365,7 @@
     },
     {
       "id": "vca-budgie-feeding",
-      "title": "Budgies \u2013 Feeding",
+      "title": "Budgies – Feeding",
       "authorsOrOrganization": "Gregory Rich, DVM; Laurie Hess, DVM; Rick Axelson, DVM; VCA Animal Hospitals",
       "publishedYear": "unknown",
       "sourceTier": "owner_guidance_with_citations",
@@ -480,7 +480,7 @@
     {
       "id": "happy-cockatoo-parrot-sprouts-2012",
       "title": "Soaks and Sprouts: A Nutritional Powerhouse for Parrots",
-      "authorsOrOrganization": "Michelle \u201cElle\u201d Magnon; The Happy Cockatoo: Elle's Avian Cuisine",
+      "authorsOrOrganization": "Michelle “Elle” Magnon; The Happy Cockatoo: Elle's Avian Cuisine",
       "publishedYear": "2012",
       "sourceTier": "owner_guidance_with_citations",
       "urlOrDoi": "https://thehappycockatoo.wordpress.com/soaks-and-sprouts-a-nutritional-powerhouse-for-parrots/",
@@ -510,7 +510,7 @@
     {
       "id": "danek-majewska-2021-raw-chickpea-broilers",
       "title": "Raw Chickpea (Cicer arietinum L.) as a Substitute of Soybean Meal in Compound Feed for Broiler Chickens",
-      "authorsOrOrganization": "Anna Danek-Majewska; Ma\u0142gorzata Kwiecie\u0144; Anna Winiarska-Mieczan; Ma\u0142gorzata Haliniarz; Agata Bielak",
+      "authorsOrOrganization": "Anna Danek-Majewska; Małgorzata Kwiecień; Anna Winiarska-Mieczan; Małgorzata Haliniarz; Agata Bielak",
       "publishedYear": "2021",
       "sourceTier": "primary",
       "urlOrDoi": "https://doi.org/10.3390/ani11123367",
@@ -628,7 +628,7 @@
     {
       "id": "valdes-exotic-insects-2022",
       "title": "Insects as Feed for Companion and Exotic Pets: A Current Trend",
-      "authorsOrOrganization": "Fabrizzio Vald\u00e9s; Valeria Villanueva; Emerson Dur\u00e1n; Francisca Campos; Constanza Avenda\u00f1o; Manuel S\u00e1nchez; Chaneta Domingoz-Araujo; Carolina Valenzuela",
+      "authorsOrOrganization": "Fabrizzio Valdés; Valeria Villanueva; Emerson Durán; Francisca Campos; Constanza Avendaño; Manuel Sánchez; Chaneta Domingoz-Araujo; Carolina Valenzuela",
       "publishedYear": "2022",
       "sourceTier": "peer_reviewed_review",
       "urlOrDoi": "https://doi.org/10.3390/ani12111450",
@@ -717,7 +717,7 @@
     {
       "id": "ciurescu-2017-raw-lentil-broilers",
       "title": "Beneficial Effects of Increasing Dietary Levels of Raw Lentil Seeds on Meat Fatty Acid and Plasma Metabolic Profile in Broiler Chickens",
-      "authorsOrOrganization": "Georgeta Ciurescu; Andreea Vasilachi; Mariana Ropot\u0103; Mihai Palade; C\u0103t\u0103lin Dragomir",
+      "authorsOrOrganization": "Georgeta Ciurescu; Andreea Vasilachi; Mariana Ropotă; Mihai Palade; Cătălin Dragomir",
       "publishedYear": "2017",
       "sourceTier": "primary",
       "urlOrDoi": "https://doi.org/10.56093/ijans.v87i11.75892",
@@ -914,6 +914,49 @@
       ],
       "permittedUse": "General avian obstruction and hydration context, including foreign bodies and food accumulation.",
       "limitations": "Not cashew-specific and not a pigeon feeding recommendation.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "birdclinic-canary-nut-guidance-2026",
+      "title": "Caring for your Canary",
+      "authorsOrOrganization": "Bird Vet Melbourne",
+      "publishedYear": "2026",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.birdclinic.net/bird9.htm",
+      "speciesScopes": [
+        "canary"
+      ],
+      "permittedUse": "Canary veterinary practice page listing very finely chopped almonds, cashews, and Brazil nuts occasionally.",
+      "limitations": "Practice guidance without a controlled cashew study, exact raw-versus-dry-roasted distinction, or universal portion.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "exoticdirect-african-grey-cashew-2021",
+      "title": "What can African grey parrots eat?",
+      "authorsOrOrganization": "ExoticDirect",
+      "publishedYear": "2021",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://exoticdirect.co.uk/news/what-can-african-grey-parrots-eat/",
+      "speciesScopes": [
+        "african_grey"
+      ],
+      "permittedUse": "African Grey guidance naming cashews among nuts, recommending sparing use and slivers for training.",
+      "limitations": "Owner-facing insurance resource; it does not establish a controlled feeding study, roasted-form approval, or universal portion.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "dievogelschule-cashew-parrots-budgies-2026",
+      "title": "Sind Cashew-Kerne gesund für Papageien & Sittiche?",
+      "authorsOrOrganization": "Die Vogelschule / Ann Castro",
+      "publishedYear": "2026",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.dievogelschule.com/sittich-papageien-ernaehrung/cashew-kerne-gesund/",
+      "speciesScopes": [
+        "parrot",
+        "budgie"
+      ],
+      "permittedUse": "German parrot and parakeet guidance distinguishing processed edible kernels from the shell liquid and discussing cashew nutrition.",
+      "limitations": "Owner education article; it does not establish a budgie-specific controlled outcome, exact roasted form, portion, or runtime formula use.",
       "accessedAt": "2026-08-19"
     }
   ]

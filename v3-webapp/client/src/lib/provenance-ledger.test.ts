@@ -321,6 +321,14 @@ describe("canonical provenance ledger", () => {
     }
   });
 
+  it("records second targeted searches for both cashew forms", () => {
+    const ledger = readJson("food-reviews.json") as { ingredientReviews: Array<{ ingredientId: string; form: string; speciesEvidence: Array<{ followUpSearch: { queries: string[]; sourceIds: string[]; result: string } }> }> };
+    const forms = ledger.ingredientReviews.filter((review) => review.ingredientId === "cashew");
+    expect(forms).toHaveLength(2);
+    expect(forms.every((review) => review.speciesEvidence.length === 6)).toBe(true);
+    expect(forms.every((review) => review.speciesEvidence.every((entry) => entry.followUpSearch.queries.length >= 2 && entry.followUpSearch.sourceIds.length > 0 && entry.followUpSearch.result.length > 0))).toBe(true);
+  });
+
   it("keeps light and fresh-produce care claims source-backed and non-runtime", () => {
     const ledger = readJson("care-claims.json") as {
       careClaims: Array<{
