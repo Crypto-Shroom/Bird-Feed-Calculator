@@ -1315,6 +1315,106 @@
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-18"
+    },
+    {
+      "ingredientId": "almond",
+      "ingredientDisplayName": "Sweet almond",
+      "form": "plain food-grade sweet almond kernel, raw or dry-roasted, unseasoned and unsalted",
+      "nutrition": {
+        "sourceIds": [
+          "kim-full-fat-almond-broilers-2021"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only record. It does not add an active ingredient, nutrient row, optimizer choice, or inventory item."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "merck-columbiformes-2025",
+            "chaouali-almond-cyanide-2013"
+          ],
+          "locator": "Merck pigeon/dove varied-diet and seed-eating sections; Chaouali et al. sweet/bitter almond cyanide measurements",
+          "evidenceScope": "species_specific",
+          "rationale": "The pigeon reference does not name almonds or establish this form. The cyanide source supports a bitter/wild-almond exclusion boundary but not pigeon suitability.",
+          "reviewedAt": "2026-08-19"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "limited",
+          "sourceIds": [
+            "aav-feeding-birds-2021",
+            "lafeber-nuts-for-birds-2021",
+            "chaouali-almond-cyanide-2013"
+          ],
+          "locator": "AAV Seeds and Nuts section on small almond slivers for training/foraging; Lafeber parrot answer on raw or dry-roasted unsalted almonds in very small amounts; Chaouali cyanide boundary",
+          "evidenceScope": "species_specific",
+          "rationale": "Companion-parrot guidance supports only limited reward/enrichment use of plain unsalted almond pieces within a predominantly formulated diet. It is not a staple, complete ration, or universal portion, and bitter/wild forms remain excluded.",
+          "reviewedAt": "2026-08-19"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "limited",
+          "sourceIds": [
+            "vca-african-grey-feeding",
+            "lafeber-african-grey-almonds-2020",
+            "chaouali-almond-cyanide-2013"
+          ],
+          "locator": "VCA African Grey feeding section listing a couple of tree-type nuts such as almonds; Lafeber African Grey answer on almonds as a calcium-rich nut within a pellet-based diet; Chaouali cyanide boundary",
+          "evidenceScope": "species_specific",
+          "rationale": "African Grey guidance supports only limited nut use within a balanced pellet-based diet. It is owner guidance rather than a controlled almond trial or a universal portion, and bitter/wild forms remain excluded.",
+          "reviewedAt": "2026-08-19"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "merck-psittacines-2025",
+            "aav-feeding-birds-2021",
+            "chaouali-almond-cyanide-2013"
+          ],
+          "locator": "Merck psittacine species-variation and seed-diet sections; AAV general companion-parrot nut guidance; Chaouali cyanide boundary",
+          "evidenceScope": "species_specific",
+          "rationale": "The reviewed general parrot guidance does not establish the exact sweet-almond form for budgies. The broad guidance cannot be converted into budgie approval by inference.",
+          "reviewedAt": "2026-08-19"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "finchinfo-nutrition",
+            "chaouali-almond-cyanide-2013"
+          ],
+          "locator": "Finch Information Center canary/passserine nutrition context; Chaouali cyanide boundary",
+          "evidenceScope": "species_specific",
+          "rationale": "The canary source does not establish almonds or this form. The cyanide source supports exclusion of bitter/wild forms but not canary suitability.",
+          "reviewedAt": "2026-08-19"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "kim-full-fat-almond-broilers-2021",
+            "merck-poultry-2024",
+            "chaouali-almond-cyanide-2013"
+          ],
+          "locator": "Kim et al. broiler methods and results using 1%, 2%, and 4% toasted full-fat almond in formulated diets; Merck poultry nutrient-balance context; Chaouali cyanide boundary",
+          "evidenceScope": "species_specific",
+          "rationale": "A controlled broiler study provides limited formulated-feed evidence for toasted full-fat almond alongside a complete diet. It does not establish a whole-almond treat amount, a complete almond ration, or transfer to other birds.",
+          "reviewedAt": "2026-08-19"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "aav-feeding-birds-2021",
+          "lafeber-nuts-for-birds-2021",
+          "chaouali-almond-cyanide-2013"
+        ],
+        "rule": "Review only plain food-grade sweet almond kernel, raw or dry-roasted, unseasoned and unsalted. Bitter almonds, wild almonds, apricot kernels, almond flavoring, salted/seasoned products, rancid nuts, and almond-only diets are excluded. The bitter/wild-almond exclusion is a hard safety boundary; no bird outcome may override it.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-19"
     }
   ]
 }

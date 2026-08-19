@@ -257,6 +257,36 @@ describe("canonical provenance ledger", () => {
     }
   });
 
+
+  it("records the sweet-almond form with six birds and explicit cyanide boundary", () => {
+    const ledger = readJson("food-reviews.json") as {
+      requiredBirdOrder: string[];
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{ bird: string; outcome: string; sourceIds: string[] }>;
+        processing: { rule: string; severity: string };
+      }>;
+    };
+    const almond = ledger.ingredientReviews.find(
+      (review) => review.ingredientId === "almond" && review.form === "plain food-grade sweet almond kernel, raw or dry-roasted, unseasoned and unsalted",
+    );
+
+    expect(almond?.speciesEvidence.map((entry) => entry.bird)).toEqual(ledger.requiredBirdOrder);
+    expect(almond?.speciesEvidence.map((entry) => entry.outcome)).toEqual([
+      "unresolved",
+      "limited",
+      "limited",
+      "unresolved",
+      "unresolved",
+      "limited",
+    ]);
+    expect(almond?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
+    expect(almond?.processing.severity).toBe("warning");
+    expect(almond?.processing.rule).toContain("Bitter almonds");
+    expect(almond?.processing.rule).toContain("wild almonds");
+  });
+
   it("keeps light and fresh-produce care claims source-backed and non-runtime", () => {
     const ledger = readJson("care-claims.json") as {
       careClaims: Array<{
