@@ -61,18 +61,27 @@ No optimizer objective, however attractive the nutrition score, may reintroduce 
 
 ## 4. Mathematical model
 
-Let `i` be an eligible ingredient and `c` a category (`grain`, `legume`, or `seed`). Let `q` be the computation increment in grams. The initial benchmark supports **1 g** precision as the default computation increment; display and export rounding are separate owner-approved presentation decisions. The full corpus must still verify 1 g performance on the largest supported real inventories and target browsers before adoption.
+Let `i` be an eligible ingredient and `c` a category (`grain`, `legume`, or `seed`). Let `q` be the computation increment in grams. The initial proof of concept uses **`q = 1 g`**. The validated requested weight must be a non-negative multiple of `q`; display and export rounding are separate owner-approved presentation decisions.
+
+For each safe active inventory record, first truncate stock to a quantity that can be represented exactly:
+
+```text
+Aᵢ = floor(availableᵢ / q) × q
+W = min(requestedWeight, Σᵢ Aᵢ)
+```
+
+`W` is the **achievable target weight** and is the exact total-weight equality used by every model stage. This definition is required, not illustrative. With the first proof-of-concept `q = 1 g`, `Aᵢ` and `W` are whole grams. A request that is not a multiple of `q` is rejected before solving rather than silently rounded inside the model.
 
 The primary quantity variable is an integer number of increments:
 
 ```text
 nᵢ ∈ ℤ≥0
 xᵢ = q · nᵢ grams of ingredient i
-0 ≤ xᵢ ≤ availableᵢ
-Σᵢ xᵢ = achievable target weight
+0 ≤ xᵢ ≤ Aᵢ
+Σᵢ xᵢ = W
 ```
 
-`achievable target weight` is the requested amount capped by total safe eligible stock. The result must preserve the current explicit warning when the visitor does not have enough safe stock.
+The result must preserve the current explicit warning when `W < requestedWeight` because safe eligible stock is insufficient.
 
 For each macro `m` and ingredient category `c`:
 
@@ -83,39 +92,60 @@ category(c) = Σᵢ∈c xᵢ / Σᵢ xᵢ
 
 Because the final weight is fixed, range constraints are linear after multiplying both sides by total weight. For a feasible solve, profile macro and category bounds are therefore represented directly as lower and upper linear inequalities. This is the established structure of feed formulation: exact mix weight, nutrient constraints, and ingredient-use bounds are solved jointly rather than sequentially.[1]
 
-### 4.1 Meaningful diversity
+### 4.1 Meaningful diversity and concentration
 
-Introduce one binary inclusion variable per eligible ingredient:
+Computation precision and meaningful diversity are separate policies. The first proof of concept computes every quantity at `q = 1 g`, but it uses a provisional **meaningful-inclusion threshold `d = 5 g`**. The local Canary/Breeding test demonstrated why: a 1 g threshold inserts cosmetic 1 g canola, while 5 g preserves the same profile-compliant mix without falsely counting it as diversity. The full corpus may support changing `d`, but it must never default to `q` merely because the solver computes at `q`.
+
+For an ingredient with `Aᵢ ≥ d`, introduce a binary indicator that is exactly linked to whether its completed-mix amount reaches the threshold:
 
 ```text
 zᵢ ∈ {0, 1}
-q · zᵢ ≤ xᵢ ≤ min(availableᵢ, practicalMaximumᵢ) · zᵢ
+d · zᵢ ≤ xᵢ
+xᵢ ≤ (d − q) + (Aᵢ − d + q) · zᵢ
 ```
 
-An ingredient counts as diverse only when it has at least the owner-approved meaningful minimum. The initial proposed default is **1 g**, because the solver can compute at 1 g precision; the corpus must still test whether a higher meaningful threshold is needed to prevent cosmetic trace additions in a visitor-facing formula.
+For `Aᵢ < d`, do not create a diversity binary; the ingredient may still be used for nutrition up to `Aᵢ`, but cannot count as meaningful diversity. This removes `practicalMaximumᵢ` entirely from the first proof of concept.
 
-The initial model measures two complementary mix-quality dimensions from the start of the **completed** mix:
+The model measures two complementary dimensions from the start of every **completed** mix:
 
 1. **Meaningful ingredient count:** `Σ zᵢ`.
-2. **Concentration:** `M`, with `xᵢ ≤ M · totalWeight` for all `i`.
+2. **Concentration:** `M` in grams, with `xᵢ ≤ M` for all `i`; the reported largest-share percentage is `100 × M / W`.
 
 Concentration is not a late cosmetic tie-break. `xᵢ`, `zᵢ`, and `M` exist together in **every full-mix model**; the solver never locks a partial recipe and adjusts it afterward. The policy controls which trade-offs are permitted: macro and category range compliance remain hard whenever possible, while documented epsilon tolerances around the best full-mix balance scores allow concentration and diversity to influence the chosen complete recipe without obscuring material nutritional quality. This allows a modest change inside an acceptable profile range to reduce an avoidable 61% staple share or to add meaningful variety, while never allowing diversity or concentration to create a macro/category range violation. Diet-optimization literature similarly requires explicit acceptability or consumption bounds to avoid mathematically valid but unreasonable one-food solutions.[2]
 
 ## 5. Bounded global solve sequence
 
-A single weighted score is not sufficient. It obscures policy trade-offs, can allow a small diversity benefit to outweigh a material macro miss, and makes future changes hard to audit. Conversely, generating an entire multiobjective integer Pareto front for every browser interaction is unnecessarily expensive. The production approach should use a bounded **epsilon/lexicographic sequence of globally solved full-mix models**. Each stage uses the same quantity, inclusion, and concentration variables; it never carries forward a partially constructed recipe.[8]
+A single weighted score is not sufficient. It obscures policy trade-offs, can allow a small diversity benefit to outweigh a material macro miss, and makes future changes hard to audit. Conversely, generating an entire multiobjective integer Pareto front for every browser interaction is unnecessarily expensive. The production approach uses a bounded **epsilon/lexicographic sequence of globally solved full-mix models**. Every stage uses the same `x`, `z`, and `M` variables; it never carries forward a partially constructed recipe.[8]
 
-| Stage | Full-mix objective / rule | Why it precedes later stages |
+### 5.1 Exact normalized fallback slack definitions
+
+Let a macro `m` have configured percentage bounds `Lₘ` and `Uₘ`, and completed-mix activity `Pₘ = Σᵢ xᵢ × macroᵢ(m)`. Let a category `c` have percentage bounds `L𝚌` and `U𝚌`, and gram activity `C𝚌 = Σᵢ∈c xᵢ`. Define non-negative lower and upper slack variables:
+
+```text
+p⁻ₘ = max(0, Lₘ × W − Pₘ)       p⁺ₘ = max(0, Pₘ − Uₘ × W)
+c⁻𝚌 = max(0, L𝚌 × W / 100 − C𝚌) c⁺𝚌 = max(0, C𝚌 − U𝚌 × W / 100)
+
+D_macro    = Σₘ (p⁻ₘ + p⁺ₘ) / (W × (Uₘ − Lₘ))
+D_category = Σ𝚌 (c⁻𝚌 + c⁺𝚌) / (W × (U𝚌 − L𝚌) / 100)
+```
+
+The denominators are the target-range width at the current achievable weight `W`. Each term is dimensionless; a one-range-width macro miss and a one-range-width category miss have the same normalized magnitude within their respective objective. The model implements each `max` expression with the corresponding non-negative linear slack inequalities, not nonlinear arithmetic.
+
+### 5.2 Serial full-mix stages
+
+| Stage | Full-mix objective / rule | Lock before later stages |
 | --- | --- | --- |
-| 0 | Apply hard gates and establish achievable target weight. | Safety, processing, active-catalog validity, and actual stock are never negotiated. |
-| 1 | Solve global 1 g feasibility: exact total weight, stock caps, macro ranges, category ranges, inclusion links, and maximum-share links. | A feasible profile-compliant complete recipe is categorically preferable to any fallback. |
-| 2, only if Stage 1 is infeasible | Add non-negative macro and category slack variables. Minimize normalized macro slack first, then fix that value and minimize normalized category slack. | Macros are protein, carbohydrates, fat, and fiber; categories are grain, legume, and seed shares. Both matter, but a nutrient miss takes precedence only when no joint solution exists. |
-| 3 | On the same globally solved full-mix model, minimize normalized macro midpoint distance and record `macroBest`. | Selects the best balanced profile without committing individual ingredients. |
-| 4 | Constrain macro distance to `macroBest + ε_macro`; minimize category midpoint distance and record `categoryBest`. | Lets category shape remain material while allowing a transparent, bounded macro trade-off. |
-| 5 | Constrain category distance to `categoryBest + ε_category`; minimize maximum share `M` and maximize meaningful ingredient count within the retained balance band. | Concentration and diversity now influence the recipe globally, not after a recipe has been built. |
-| 6 | Apply canonical ingredient-ID tie-break to otherwise equal full-mix results. | Makes output reproducible without deciding nutritional quality alphabetically. |
+| 0 | Apply hard gates and calculate `Aᵢ` and `W` exactly. | Safety, processing, active-catalog validity, and actual stock are never negotiated. |
+| 1 | Solve global exact feasibility: total `W`, stock caps, macro ranges, category ranges, inclusion links, and maximum-share links. | If optimal, every macro/category slack is zero. |
+| 2A, only if Stage 1 is infeasible | Minimize `D_macro`; record `D_macro*`. Then add `D_macro = D_macro*` and minimize `D_category`; record `D_category*`. | Add **both** `D_macro = D_macro*` and `D_category = D_category*` to every later fallback stage. Mathematical locks are exact; implementation uses only documented solver feasibility tolerance and records it. |
+| 2B, if Stage 1 is feasible | Set `D_macro = 0` and `D_category = 0`. | Carry both zero locks forward. |
+| 3 | Minimize normalized macro-midpoint distance; record `macroBest`. | Add `macroDistance ≤ macroBest + ε_macro`. |
+| 4 | Minimize normalized category-midpoint distance under the macro lock; record `categoryBest`. | Add `categoryDistance ≤ categoryBest + ε_category`. |
+| 5A | Minimize maximum ingredient amount `M` under all retained slack and balance locks; record `M*`. | Add `M ≤ M* + τ_M`; first proof-of-concept default is `τ_M = 0 g`. |
+| 5B | Maximize `Σ zᵢ` under all prior locks. | Lock the resulting inclusion count exactly. |
+| 6 | Apply serial quantity-vector tie-break to the remaining full-mix solutions. For canonically sorted ingredient IDs `i₁…iₙ`, minimize `xᵢ₁`, lock it, then minimize `xᵢ₂`, lock it, and continue through `xᵢₙ`. | This is collision-free because it compares the full ordered quantity vector component by component, rather than using an alphabetical weighted score. |
 
-The fallback stage must expose the signed deficit or excess for each macro/category and identify the safe eligible ingredient/category capacities that prevented exact feasibility. It must never say “optimized” without indicating `feasible` versus `best_attainable`.
+The fallback result must expose the signed deficit or excess for each macro/category and identify the safe eligible ingredient/category capacities that prevented exact feasibility. It must never say “optimized” without indicating `feasible` versus `best_attainable`.
 
 ### 5.1 Proposed status contract
 
@@ -137,11 +167,13 @@ The recommended implementation is **stable HiGHS WebAssembly (`highs` 1.15.2, MI
 | --- | --- |
 | `optimizer-model.ts` | Pure model builder. It accepts only validated active-catalog records, actual inventory, bird/profile targets, and policy constants; it emits named LP rows/variables. |
 | `optimizer-worker.ts` | Loads HiGHS once, receives serializable requests, runs bounded stages, records status/time/gap, validates the returned mix, and disposes/restarts safely on error. |
-| `optimizer-policy.ts` | Contains owner-approved `ε_macro`, `ε_category`, meaningful-inclusion threshold, time budget, and deterministic tie-break policy. No hidden score weights. |
+| `optimizer-policy.ts` | Contains owner-approved `q`, `d`, `ε_macro`, `ε_category`, `τ_M`, time budget, solver feasibility tolerance, and serial quantity-vector tie-break policy. No hidden score weights. |
 | `optimizer-explain.ts` | Derives status, range checks, macro/category misses, limiting stock, and an audit trace from the returned mix. It must never invent an explanation. |
 | Main UI | Debounces inventory edits, cancels superseded worker requests, and renders only the latest validated response in the existing single mix panel. |
 
 The use of one full-mix model per stage is intentional. It makes the policy auditable, preserves category importance, and lets concentration/diversity influence the same global quantity decisions without requiring an unbounded full Pareto-front enumeration. `glpk.js` is not the default candidate because its reviewed package is GPL-3.0, which requires a separate owner/license decision even though it supports browser LP/MILP.[7]
+
+The Worker/HiGHS direction is **conditional, not approved merely by this specification**. It may enter a runtime proof-of-concept branch only after the declared acceptance corpus covers largest real inventories, target desktop/mobile browsers, Worker cancellation, timeout and incumbent handling, bundle impact, repeated determinism, and reference-model agreement.
 
 ### 6.1 Initial 1 g precision benchmark
 
@@ -165,7 +197,7 @@ The implementation cannot be accepted based on the Chicken example alone. Create
 | Determinism corpus | Reordered inventory keys produce byte-equivalent normalized output. |
 | Fallback corpus | Known infeasible inventory returns `best_attainable`, quantified misses, and limiting capacity explanation—not a false compliant result. |
 | Differential corpus | For every scenario, a retained exact reference model and the production adapter agree on status, quantities within increment tolerance, and ordered objective values. |
-| Performance corpus | Benchmarks cover each supported bird/profile and a realistic maximum number of actual inventory items on desktop and target mobile browsers. Define the owner-approved time budget before adoption. |
+| Worker and performance corpus | Benchmarks cover each supported bird/profile, the largest real actual-inventory cases, target desktop and mobile browsers, first-load and warm solves, Worker cancellation, timeout and incumbent handling, repeated determinism, and bundle impact. Define the owner-approved time and MIP-gap budget before adoption. |
 
 Property tests should additionally assert that increasing the available amount of an eligible ingredient never reduces the feasible set, adding unsafe inventory never changes the safe candidate solution, and fixed inputs always produce fixed output.
 
@@ -187,9 +219,9 @@ Before implementation, the owner should approve these policy decisions:
 | --- | --- | --- |
 | Range priority | Macro and category bounds are jointly hard when feasible. When jointly infeasible, minimize normalized macro violation before category violation. Macros mean protein, carbohydrates, fat, and fiber; categories mean the grain, legume, and seed percentage shares. | Determines whether a nutrient miss can ever be accepted to preserve a category shape. |
 | Computation increment | Use 1 g in the proof of concept. It is more accurate but expands the integer search space; isolated stable-HiGHS evidence is encouraging, and the full corpus must confirm it. | Controls numerical precision and browser time budget. |
-| Meaningful inclusion | Start with a 1 g computation increment; set a separately approved inclusion threshold only if corpus evidence shows trace additions are misleading. | Defines “diverse” in a visitor-visible result. |
-| Concentration and diversity | Include quantity, inclusion, and maximum-share variables in every global full-mix stage; after documented macro/category balance bands are retained, minimize maximum share and maximize meaningful inclusion. | Ensures ingredient share changes are evaluated as part of the whole mix, not as an afterthought. |
-| Solver | Use stable `highs` 1.15.2 in a dedicated browser Worker, with serial named full-mix LP/MIP stages and an owner-approved time budget. | Adds an external dependency and browser execution behavior. |
+| Meaningful inclusion | Compute at `q = 1 g`; use provisional `d = 5 g` for meaningful inclusion because the local Canary/Breeding test rejected the cosmetic 1 g alternative. Revalidate `d` across the full corpus before product adoption. | Defines “diverse” without equating numerical precision with a visitor-meaningful ingredient. |
+| Concentration and diversity | In every full-mix stage retain `x`, `z`, and `M`; after explicit macro/category balance locks, minimize `M`, lock `M ≤ M* + τ_M` with POC `τ_M = 0 g`, then maximize meaningful inclusion. | Makes the priority serial, deterministic, and auditable. |
+| Solver | Use stable `highs` 1.15.2 in a dedicated browser Worker only after the declared largest-inventory, desktop/mobile, cancellation, timeout/incumbent, bundle, determinism, and reference-agreement corpus passes. | Adds an external dependency and browser execution behavior. |
 | Single panel | Use the current mix-panel location for both the profile’s initial standard formula and the later actual-inventory mix; do not add a separate Recommended Formula field. | Preserves the owner’s requested interaction model while not misrepresenting standard formula as stock. |
 | Fallback explanation | Define exact owner-approved wording only after implementation evidence exists. | Public copy requires explicit approval. |
 
