@@ -128,7 +128,7 @@
     {
       "id": "peron-grosset-2013",
       "title": "The diet of adult psittacids: veterinarian and ethological approaches",
-      "authorsOrOrganization": "F. Péron; C. Grosset",
+      "authorsOrOrganization": "F. P\u00e9ron; C. Grosset",
       "publishedYear": "2013",
       "sourceTier": "peer_reviewed_review",
       "urlOrDoi": "https://doi.org/10.1111/jpn.12103",
@@ -365,7 +365,7 @@
     },
     {
       "id": "vca-budgie-feeding",
-      "title": "Budgies – Feeding",
+      "title": "Budgies \u2013 Feeding",
       "authorsOrOrganization": "Gregory Rich, DVM; Laurie Hess, DVM; Rick Axelson, DVM; VCA Animal Hospitals",
       "publishedYear": "unknown",
       "sourceTier": "owner_guidance_with_citations",
@@ -480,7 +480,7 @@
     {
       "id": "happy-cockatoo-parrot-sprouts-2012",
       "title": "Soaks and Sprouts: A Nutritional Powerhouse for Parrots",
-      "authorsOrOrganization": "Michelle “Elle” Magnon; The Happy Cockatoo: Elle's Avian Cuisine",
+      "authorsOrOrganization": "Michelle \u201cElle\u201d Magnon; The Happy Cockatoo: Elle's Avian Cuisine",
       "publishedYear": "2012",
       "sourceTier": "owner_guidance_with_citations",
       "urlOrDoi": "https://thehappycockatoo.wordpress.com/soaks-and-sprouts-a-nutritional-powerhouse-for-parrots/",
@@ -510,7 +510,7 @@
     {
       "id": "danek-majewska-2021-raw-chickpea-broilers",
       "title": "Raw Chickpea (Cicer arietinum L.) as a Substitute of Soybean Meal in Compound Feed for Broiler Chickens",
-      "authorsOrOrganization": "Anna Danek-Majewska; Małgorzata Kwiecień; Anna Winiarska-Mieczan; Małgorzata Haliniarz; Agata Bielak",
+      "authorsOrOrganization": "Anna Danek-Majewska; Ma\u0142gorzata Kwiecie\u0144; Anna Winiarska-Mieczan; Ma\u0142gorzata Haliniarz; Agata Bielak",
       "publishedYear": "2021",
       "sourceTier": "primary",
       "urlOrDoi": "https://doi.org/10.3390/ani11123367",
@@ -628,7 +628,7 @@
     {
       "id": "valdes-exotic-insects-2022",
       "title": "Insects as Feed for Companion and Exotic Pets: A Current Trend",
-      "authorsOrOrganization": "Fabrizzio Valdés; Valeria Villanueva; Emerson Durán; Francisca Campos; Constanza Avendaño; Manuel Sánchez; Chaneta Domingoz-Araujo; Carolina Valenzuela",
+      "authorsOrOrganization": "Fabrizzio Vald\u00e9s; Valeria Villanueva; Emerson Dur\u00e1n; Francisca Campos; Constanza Avenda\u00f1o; Manuel S\u00e1nchez; Chaneta Domingoz-Araujo; Carolina Valenzuela",
       "publishedYear": "2022",
       "sourceTier": "peer_reviewed_review",
       "urlOrDoi": "https://doi.org/10.3390/ani12111450",
@@ -717,7 +717,7 @@
     {
       "id": "ciurescu-2017-raw-lentil-broilers",
       "title": "Beneficial Effects of Increasing Dietary Levels of Raw Lentil Seeds on Meat Fatty Acid and Plasma Metabolic Profile in Broiler Chickens",
-      "authorsOrOrganization": "Georgeta Ciurescu; Andreea Vasilachi; Mariana Ropotă; Mihai Palade; Cătălin Dragomir",
+      "authorsOrOrganization": "Georgeta Ciurescu; Andreea Vasilachi; Mariana Ropot\u0103; Mihai Palade; C\u0103t\u0103lin Dragomir",
       "publishedYear": "2017",
       "sourceTier": "primary",
       "urlOrDoi": "https://doi.org/10.56093/ijans.v87i11.75892",
@@ -843,6 +843,35 @@
       ],
       "permittedUse": "Parrot owner guidance listing cashews among treat nuts, with raw or dry-roasted, unsalted, unflavoured, small-portion, and high-fat moderation boundaries.",
       "limitations": "Owner-answer guidance for parrots; it does not establish African Grey, budgie, canary, pigeon, or chicken outcomes and does not create a universal portion.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "swicegood-nuts-birds-2000",
+      "title": "NUTS Are For The Birds",
+      "authorsOrOrganization": "Carolyn Swicegood; AFA Watchbird",
+      "publishedYear": "2000",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://journals.tdl.org/watchbird/index.php/watchbird/article/view/1524",
+      "speciesScopes": [
+        "parrot",
+        "companion_bird"
+      ],
+      "permittedUse": "Older avicultural education distinguishing fresh raw nuts from salty roasted human nuts and discussing nut meats as parrot foods.",
+      "limitations": "Educational article rather than a controlled species-specific cashew trial; it does not establish portions or outcomes for pigeon, African Grey, budgie, canary, or chicken.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "griffin-dean-cashew-2017",
+      "title": "Nutrient Composition of Raw, Dry-Roasted, and Skin-On Cashew Nuts",
+      "authorsOrOrganization": "Laura Griffin; Lisa Dean",
+      "publishedYear": "2017",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.5539/jfr.v6n6p13",
+      "speciesScopes": [
+        "food_composition"
+      ],
+      "permittedUse": "Food-composition study distinguishing raw and dry-roasted cashew products.",
+      "limitations": "Not a bird-feeding study; it cannot establish avian suitability, portions, or safety outcomes.",
       "accessedAt": "2026-08-19"
     }
   ]

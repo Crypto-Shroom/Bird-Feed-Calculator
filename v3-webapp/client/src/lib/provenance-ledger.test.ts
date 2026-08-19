@@ -257,7 +257,6 @@ describe("canonical provenance ledger", () => {
     }
   });
 
-
   it("records the sweet-almond form with six birds and explicit cyanide boundary", () => {
     const ledger = readJson("food-reviews.json") as {
       requiredBirdOrder: string[];
@@ -287,7 +286,7 @@ describe("canonical provenance ledger", () => {
     expect(almond?.processing.rule).toContain("wild almonds");
   });
 
-  it("records the commercially prepared cashew form with six birds and meal boundaries", () => {
+  it("records raw and plain dry-roasted cashew as separate six-bird forms", () => {
     const ledger = readJson("food-reviews.json") as {
       requiredBirdOrder: string[];
       ingredientReviews: Array<{
@@ -297,23 +296,28 @@ describe("canonical provenance ledger", () => {
         processing: { rule: string; severity: string };
       }>;
     };
-    const cashew = ledger.ingredientReviews.find(
-      (review) => review.ingredientId === "cashew" && review.form === "commercially prepared edible cashew kernel, plain, unsalted, unflavoured, and shell-free",
-    );
+    const expected = [
+      {
+        form: "plain raw cashew kernel, unsalted, unflavoured, and shell-free",
+        outcomes: ["unresolved", "limited", "unresolved", "unresolved", "unresolved", "unresolved"],
+      },
+      {
+        form: "plain dry-roasted cashew kernel, unsalted, unflavoured, and shell-free",
+        outcomes: ["unresolved", "limited", "unresolved", "unresolved", "unresolved", "unresolved"],
+      },
+    ];
 
-    expect(cashew?.speciesEvidence.map((entry) => entry.bird)).toEqual(ledger.requiredBirdOrder);
-    expect(cashew?.speciesEvidence.map((entry) => entry.outcome)).toEqual([
-      "unresolved",
-      "limited",
-      "unresolved",
-      "unresolved",
-      "unresolved",
-      "unresolved",
-    ]);
-    expect(cashew?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
-    expect(cashew?.processing.severity).toBe("warning");
-    expect(cashew?.processing.rule).toContain("shell-on");
-    expect(cashew?.processing.rule).toContain("reject meal");
+    for (const expectedForm of expected) {
+      const cashew = ledger.ingredientReviews.find(
+        (review) => review.ingredientId === "cashew" && review.form === expectedForm.form,
+      );
+      expect(cashew?.speciesEvidence.map((entry) => entry.bird)).toEqual(ledger.requiredBirdOrder);
+      expect(cashew?.speciesEvidence.map((entry) => entry.outcome)).toEqual(expectedForm.outcomes);
+      expect(cashew?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
+      expect(cashew?.processing.severity).toBe("warning");
+      expect(cashew?.processing.rule).toContain("oil-roasted");
+      expect(cashew?.processing.rule).toContain("reject meal");
+    }
   });
 
   it("keeps light and fresh-produce care claims source-backed and non-runtime", () => {
