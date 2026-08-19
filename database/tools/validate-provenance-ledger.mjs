@@ -125,11 +125,48 @@ function validateHistoricalClaims(claims, sourceIndex, errors) {
   }
 }
 
+function validateFormAttributes(review, errors) {
+  if (review.formAttributes === undefined) {
+    return;
+  }
+
+  const attributes = review.formAttributes;
+  const context = `Food review '${review.ingredientId ?? "<missing ingredient id>"}' form attributes`;
+  if (!attributes || typeof attributes !== "object" || Array.isArray(attributes)) {
+    errors.push(`${context} must be an object when present.`);
+    return;
+  }
+
+  if (attributes.model !== "inherited_mechanical_form" || !isNonEmptyString(attributes.attribute)) {
+    errors.push(`${context} must declare the inherited_mechanical_form model and a named attribute.`);
+  }
+
+  if (!Array.isArray(attributes.supportedValues) || attributes.supportedValues.length < 2 || attributes.supportedValues.some((value) => !isNonEmptyString(value))) {
+    errors.push(`${context} must declare at least two non-empty supported values.`);
+  } else if (!attributes.supportedValues.includes(attributes.defaultValue)) {
+    errors.push(`${context} defaultValue must be one of its supported values.`);
+  }
+
+  if (!Array.isArray(attributes.inherits) || !["nutrition", "speciesEvidence"].every((field) => attributes.inherits.includes(field))) {
+    errors.push(`${context} must explicitly inherit both nutrition and speciesEvidence.`);
+  }
+
+  if (!isNonEmptyString(attributes.appliesTo) || !isNonEmptyString(attributes.inheritanceRule)) {
+    errors.push(`${context} must state its scope and inheritance rule.`);
+  }
+
+  if (!Array.isArray(attributes.materialProcessingBoundaries) || attributes.materialProcessingBoundaries.length === 0 || attributes.materialProcessingBoundaries.some((value) => !isNonEmptyString(value))) {
+    errors.push(`${context} must list one or more material-processing evidence boundaries.`);
+  }
+}
+
 function validateFoodReviews(reviews, sourceIndex, errors) {
   for (const review of reviews) {
     if (!isNonEmptyString(review.ingredientId) || !isNonEmptyString(review.form)) {
       errors.push("Every food review must have an ingredient ID and one explicit form.");
     }
+
+    validateFormAttributes(review, errors);
 
     const evidence = review.speciesEvidence;
     if (!Array.isArray(evidence) || evidence.length !== requiredBirds.length) {

@@ -858,6 +858,30 @@
       "ingredientId": "lentils",
       "ingredientDisplayName": "Lentils",
       "form": "raw dried lentil seeds",
+      "formAttributes": {
+        "model": "inherited_mechanical_form",
+        "attribute": "split",
+        "supportedValues": [
+          "whole",
+          "split"
+        ],
+        "defaultValue": "whole",
+        "inherits": [
+          "nutrition",
+          "speciesEvidence"
+        ],
+        "appliesTo": "Any lentil cultivar or colour within this raw dried base form; this physical-form attribute does not itself establish cultivar-specific nutrition or evidence.",
+        "inheritanceRule": "Mechanical splitting alone does not create a separate ingredient, nutrition record, or six-bird suitability record. A split raw dried lentil inherits this base record's nutrition and species evidence.",
+        "materialProcessingBoundaries": [
+          "dehulled",
+          "soaked",
+          "cooked",
+          "sprouted",
+          "fermented",
+          "milled into flour",
+          "manufactured lentil products"
+        ]
+      },
       "nutrition": {
         "sourceIds": [
           "ciurescu-2017-raw-lentil-broilers"
@@ -941,7 +965,7 @@
           "vca-canary-feeding",
           "ciurescu-2017-raw-lentil-broilers"
         ],
-        "rule": "Keep raw dried lentil seeds distinct from cooked lentils, sprouted lentils, lentil flour, and lentil products. Companion-bird records require preparation; chicken evidence is limited to the cited balanced broiler-ration context; pigeon evidence is limited uncited owner guidance. This record does not approve runtime use, a formula, a portion, or a complete ration.",
+        "rule": "A mechanically split raw dried lentil inherits this raw dried base record. Keep materially processed lentils—dehulled, soaked, cooked, sprouted, fermented, milled into flour, or manufactured products—distinct. Companion-bird records require preparation; chicken evidence is limited to the cited balanced broiler-ration context; pigeon evidence is limited uncited owner guidance. This record does not approve runtime use, a formula, a portion, or a complete ration.",
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-18"
