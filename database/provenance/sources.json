@@ -1021,6 +1021,62 @@
       "permittedUse": "Controlled broiler evidence for 5% and 10% walnut meal powder in formulated diets.",
       "limitations": "Walnut meal powder is not whole walnut kernel; the study does not establish household feeding, a treat portion, raw or dry-roasted kernel use, or outcomes for other birds.",
       "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "lafeber-nut-meats-2026",
+      "title": "Nut Meats",
+      "authorsOrOrganization": "Lafeber Company",
+      "publishedYear": "2026",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://lafeber.com/pet-birds/questions/nut-meats/",
+      "speciesScopes": [
+        "parrot"
+      ],
+      "permittedUse": "Meyer-parrot guidance naming walnuts and distinguishing raw, dry-roasted unsalted, and oil-roasted nuts, with small-treat moderation.",
+      "limitations": "Owner-facing guidance for a Meyer’s parrot; it does not establish a universal parrot rule, an African Grey-specific portion, or outcomes for pigeons, budgies, canaries, chickens, or walnut meal.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "welli-net-walnuts-budgies-2025",
+      "title": "Walnüsse für Wellis, was gibt es da zu beachten?",
+      "authorsOrOrganization": "Welli.net community discussion",
+      "publishedYear": "2025",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://forum.welli.net/forum/alles-%C3%BCber-wellensittiche/ern%C3%A4hrung/293920-waln%C3%BCsse-f%C3%BCr-wellis-was-gibt-es-da-zu-beachten",
+      "speciesScopes": [
+        "budgie"
+      ],
+      "permittedUse": "Species-specific German owner discussion documenting conflicting budgie advice about walnut fat/oil, occasional use, and fresh-walnut fungal-spore concerns.",
+      "limitations": "Conflicting non-clinical forum discussion; it cannot establish a veterinary approval, prohibition, portion, roasting method, or runtime outcome.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "vogelforen-walnuts-canaries-2007",
+      "title": "Walnüsse für kanarien?",
+      "authorsOrOrganization": "Vogelforen community discussion",
+      "publishedYear": "2007",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.vogelforen.de/threads/walnuesse-fuer-kanarien.153005/",
+      "speciesScopes": [
+        "canary"
+      ],
+      "permittedUse": "Species-specific German owner discussion documenting repeated caution against walnuts for canaries because of high fat.",
+      "limitations": "Owner forum with conflicting opinions; it cannot establish a veterinary approval, prohibition, portion, roasting method, or runtime outcome.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "huehner-info-nuts-2023",
+      "title": "Futter: Nüsse",
+      "authorsOrOrganization": "Hühner-Info community resource",
+      "publishedYear": "2023",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://huehner-info.de/infos/futter_nuesse.htm",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "German chicken-keeping discussion describing nuts as high-fat and potentially suitable only as small treats.",
+      "limitations": "Non-clinical community guidance; it does not establish a controlled whole-walnut feeding outcome or a complete-ration role.",
+      "accessedAt": "2026-08-19"
     }
   ]
 }

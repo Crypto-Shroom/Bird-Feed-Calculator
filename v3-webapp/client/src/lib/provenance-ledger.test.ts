@@ -242,6 +242,22 @@ describe("canonical provenance ledger", () => {
     ]);
     expect(review?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
   });
+  it("records a documented second targeted search for every walnut bird/form pair", () => {
+    const ledger = readJson("food-reviews.json") as {
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{ bird: string; followUpSearch: { queries: string[]; sourceIds: string[]; result: string } }>;
+      }>;
+    };
+    const review = ledger.ingredientReviews.find(
+      (candidate) => candidate.ingredientId === "walnut" && candidate.form === "plain shelled walnut kernel, raw or dry-roasted, unsalted, unflavoured, fresh, and chopped to small-seed size",
+    );
+    expect(review?.speciesEvidence).toHaveLength(6);
+    expect(review?.speciesEvidence.every((entry) => entry.followUpSearch.queries.length >= 2)).toBe(true);
+    expect(review?.speciesEvidence.every((entry) => entry.followUpSearch.sourceIds.length > 0)).toBe(true);
+    expect(review?.speciesEvidence.every((entry) => entry.followUpSearch.result.length > 0)).toBe(true);
+  });
   it("records the approved insect forms with six birds and exact outcomes", () => {
     const ledger = readJson("food-reviews.json") as {
       requiredBirdOrder: string[];
