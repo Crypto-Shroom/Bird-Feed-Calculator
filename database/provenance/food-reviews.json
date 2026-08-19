@@ -1764,6 +1764,172 @@
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-19"
+    },
+    {
+      "ingredientId": "walnut",
+      "ingredientDisplayName": "Walnut",
+      "form": "plain shelled walnut kernel, raw or dry-roasted, unsalted, unflavoured, fresh, and chopped to small-seed size",
+      "nutrition": {
+        "sourceIds": [
+          "feedipedia-walnut-juglans-regia"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only record for the specified kernel form. It does not add a nutrient value, a dry-mix ingredient instruction, or a complete-ration claim."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "petco-pigeon-cashew-preparation-2019"
+          ],
+          "locator": "Veterinarian answer: pigeons cannot masticate and nut pieces should be chopped to small-seed size",
+          "evidenceScope": "species_specific",
+          "rationale": "The pigeon-specific source establishes a mechanical-size boundary for cashew pieces, not walnut suitability. No direct pigeon walnut source was found, so walnut remains unresolved rather than being inferred from parrot or poultry evidence. A documented second targeted search was completed; its queries and result are recorded in followUpSearch.",
+          "reviewedAt": "2026-08-19",
+          "followUpSearch": {
+            "queries": [
+              "pigeon walnut chopped small seed veterinary",
+              "pigeon walnut kernel raw unsalted feeding",
+              "Taube Walnusskerne Fütterung"
+            ],
+            "sourceIds": [
+              "vca-pigeon-dove-feeding",
+              "petco-pigeon-cashew-preparation-2019"
+            ],
+            "result": "VCA pigeon/dove guidance confirms tiny manageable pieces and small quantities for produce/people food but does not name walnut. Community and German results were not authoritative direct walnut evidence; the exact walnut outcome remains unresolved."
+          }
+        },
+        {
+          "bird": "parrot",
+          "outcome": "limited",
+          "sourceIds": [
+            "lafeber-walnut-nutrition-2020",
+            "feedipedia-walnut-juglans-regia"
+          ],
+          "locator": "Lafeber walnut-nutrition answer; Feedipedia kernel composition and rancidity sections",
+          "evidenceScope": "group_specific",
+          "rationale": "Lafeber directly supports small walnut pieces as an occasional Amazon-parrot reward within a predominantly complete diet. Feedipedia supports treating walnut kernel as a high-fat, freshness-sensitive food. This supports limited companion-parrot use only and does not approve a dry-mix ingredient, universal portion, or roasted form. A documented second targeted search was completed; its queries and result are recorded in followUpSearch.",
+          "reviewedAt": "2026-08-19",
+          "followUpSearch": {
+            "queries": [
+              "parrot walnut raw dry roasted unsalted veterinary",
+              "Papagei Walnüsse ungesalzen"
+            ],
+            "sourceIds": [
+              "lafeber-nut-meats-2026",
+              "lafeber-walnut-nutrition-2020"
+            ],
+            "result": "Lafeber’s Meyer-parrot guidance names walnuts, prefers raw nuts, accepts dry-roasted unsalted nuts in moderation, rejects oil-roasted nuts, and limits nuts to a small dietary share. This strengthens the limited parrot outcome."
+          }
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "limited",
+          "sourceIds": [
+            "vca-african-grey-feeding",
+            "feedipedia-walnut-juglans-regia"
+          ],
+          "locator": "VCA African Grey 'Seeds' section naming walnuts among occasional tree nuts; Feedipedia kernel composition and freshness sections",
+          "evidenceScope": "species_specific",
+          "rationale": "VCA explicitly names walnuts among the couple of tree nuts that may be offered daily to an African Grey while pellets remain the diet base, and warns about obesity and high-fat diets. Feedipedia supports the high-fat and freshness boundary. This is limited treat guidance, not formula inclusion or an unrestricted raw/roasted approval. A documented second targeted search was completed; its queries and result are recorded in followUpSearch.",
+          "reviewedAt": "2026-08-19",
+          "followUpSearch": {
+            "queries": [
+              "African Grey walnut raw unsalted veterinarian",
+              "Graupapagei Walnüsse ungesalzen Fütterung"
+            ],
+            "sourceIds": [
+              "vca-african-grey-feeding"
+            ],
+            "result": "VCA again directly names walnuts among occasional tree nuts for African Greys. Other results were keeper or retail guidance, so the outcome remains limited rather than unrestricted."
+          }
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "vca-budgie-feeding",
+            "feedipedia-walnut-juglans-regia"
+          ],
+          "locator": "VCA Budgies feeding sections on obesity, high-fat foods, tiny human-food portions, and avoidance of butter/oil-cooked foods; Feedipedia kernel composition",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie-specific veterinary guidance establishes obesity, high-fat, and preparation boundaries but does not name walnut. Feedipedia identifies walnut kernel as fat-rich. These sources do not establish a walnut outcome, so no cross-species inference is made. A documented second targeted search was completed; its queries and result are recorded in followUpSearch.",
+          "reviewedAt": "2026-08-19",
+          "followUpSearch": {
+            "queries": [
+              "budgie walnut raw unsalted veterinarian",
+              "Wellensittich Walnuss ungesalzen Fütterung"
+            ],
+            "sourceIds": [
+              "welli-net-walnuts-budgies-2025",
+              "vca-budgie-feeding"
+            ],
+            "result": "The species-specific German discussion contains conflicting non-clinical guidance: warnings about oil/fat, occasional-use comments, and a warning about invisible fungal spores in fresh walnuts. VCA does not name walnut, so the exact outcome remains unresolved."
+          }
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "vca-canary-feeding",
+            "feedipedia-walnut-juglans-regia"
+          ],
+          "locator": "VCA Canaries feeding sections on obesity, small quantities, and no butter/salt/cooking oil; Feedipedia kernel composition",
+          "evidenceScope": "species_specific",
+          "rationale": "Canary-specific veterinary guidance establishes balanced-diet, high-fat, and no-oil/salt boundaries but does not name walnut. Feedipedia identifies walnut kernel as fat-rich. The exact walnut form therefore remains unresolved rather than being inferred from parrot guidance. A documented second targeted search was completed; its queries and result are recorded in followUpSearch.",
+          "reviewedAt": "2026-08-19",
+          "followUpSearch": {
+            "queries": [
+              "canary walnut raw unsalted veterinarian",
+              "Kanarienvogel Walnuss ungesalzen Fütterung"
+            ],
+            "sourceIds": [
+              "vogelforen-walnuts-canaries-2007",
+              "vca-canary-feeding"
+            ],
+            "result": "The species-specific German discussion repeatedly advises against walnuts because of high fat, but it is an owner forum and conflicts with the absence of a direct veterinary walnut rule. The exact outcome remains unresolved."
+          }
+        },
+        {
+          "bird": "chicken",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "jiang-walnut-meal-broilers-2024",
+            "feedipedia-walnut-juglans-regia"
+          ],
+          "locator": "Jiang et al. 2024 broiler walnut-meal experiment; Feedipedia poultry walnut-meal section",
+          "evidenceScope": "species_specific",
+          "rationale": "Chicken evidence concerns walnut meal powder or historical walnut oil-meal/by-products in formulated poultry diets, not whole shelled kernel as a treat. Because the exact form differs, chicken whole-kernel suitability remains unresolved. A documented second targeted search was completed; its queries and result are recorded in followUpSearch.",
+          "reviewedAt": "2026-08-19",
+          "followUpSearch": {
+            "queries": [
+              "chicken whole walnut kernel feeding study poultry",
+              "broiler walnut kernels raw unsalted diet study",
+              "Hühner Walnüsse Walnusskerne Fütterung"
+            ],
+            "sourceIds": [
+              "jiang-walnut-meal-broilers-2024",
+              "huehner-info-nuts-2023"
+            ],
+            "result": "Peer-reviewed results concern walnut meal/oilcake rather than whole kernels. German and English backyard sources discuss walnuts as occasional treats but do not establish a controlled exact-form outcome; whole-kernel suitability remains unresolved."
+          }
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "petco-pigeon-cashew-preparation-2019",
+          "lafeber-walnut-nutrition-2020",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "feedipedia-walnut-juglans-regia",
+          "jiang-walnut-meal-broilers-2024"
+        ],
+        "rule": "Keep plain shelled walnut kernel distinct from walnut meal, oil meal, shell, husk, black walnut green material, moldy product, and rancid product. For the specified kernel form, use only fresh, unsalted, unflavoured product and chop to small-seed size where the bird-specific evidence requires a manageable piece. This provenance record does not approve soaking, a household roasting method, a portion, a formula, runtime use, or a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-19"
     }
   ]
 }

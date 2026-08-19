@@ -841,8 +841,8 @@
       "speciesScopes": [
         "parrot"
       ],
-      "permittedUse": "Parrot owner guidance listing cashews among treat nuts, with raw or dry-roasted, unsalted, unflavoured, small-portion, and high-fat moderation boundaries.",
-      "limitations": "Owner-answer guidance for parrots; it does not establish African Grey, budgie, canary, pigeon, or chicken outcomes and does not create a universal portion.",
+      "permittedUse": "Parrot owner guidance naming cashews and walnuts among small treat nuts; supports raw or dry-roasted, unsalted, unflavoured nuts in moderation and rejects oil-roasted nuts.",
+      "limitations": "Owner-answer guidance for parrot contexts; it does not establish a universal portion, a complete ration, African Grey-specific quantities, or outcomes for pigeons, budgies, canaries, chickens, walnut meal, or shell-on nuts.",
       "accessedAt": "2026-08-19"
     },
     {
@@ -957,6 +957,111 @@
       ],
       "permittedUse": "German parrot and parakeet guidance distinguishing processed edible kernels from the shell liquid and discussing cashew nutrition.",
       "limitations": "Owner education article; it does not establish a budgie-specific controlled outcome, exact roasted form, portion, or runtime formula use.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "lafeber-walnut-nutrition-2020",
+      "title": "Walnut nutrition",
+      "authorsOrOrganization": "Brenda; Lafeber Company",
+      "publishedYear": "2020",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://lafeber.com/pet-birds/questions/walnut-nutrition/",
+      "speciesScopes": [
+        "parrot"
+      ],
+      "permittedUse": "Direct Amazon-parrot guidance for small walnut pieces as an occasional reward within a predominantly complete diet.",
+      "limitations": "Owner-facing guidance for an Amazon parrot; it does not establish a universal parrot portion, a dry-mix ingredient, or an outcome for pigeons, African Greys, budgies, canaries, chickens, or roasted walnut specifically.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "petco-pigeon-cashew-preparation-2019",
+      "title": "Is it safe to feed my pigeon cashew nuts? How should I prepare them?",
+      "authorsOrOrganization": "Todd Cecil, Veterinarian; Petco",
+      "publishedYear": "2019",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.petco.com/pet-education/bird/vet-qa/pigeon-safe-cashew-nuts-preparation",
+      "speciesScopes": [
+        "pigeon"
+      ],
+      "permittedUse": "Pigeon-specific mechanical-size guidance that nut pieces should be chopped to small-seed size because pigeons cannot masticate.",
+      "limitations": "The answer addresses cashews rather than walnuts and does not establish walnut safety, toxicity, portion, or dry-roasted use.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "feedipedia-walnut-juglans-regia",
+      "title": "Walnut (Juglans regia)",
+      "authorsOrOrganization": "Feedipedia; Association Française de Zootechnie, CIRAD, FAO, INRAE",
+      "publishedYear": "2012",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.feedipedia.org/node/38",
+      "speciesScopes": [
+        "chicken",
+        "poultry",
+        "parrot",
+        "african_grey",
+        "budgie",
+        "canary",
+        "pigeon"
+      ],
+      "permittedUse": "Ingredient-form distinction for walnut kernel, toasted kernel, oil meal, shell, and husk; high-fat and rancidity/mould boundaries; historical poultry by-product context.",
+      "limitations": "The datasheet is not a six-bird whole-kernel feeding trial and its poultry discussion concerns walnut meal/by-products rather than the exact companion-bird treat form.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "jiang-walnut-meal-broilers-2024",
+      "title": "Walnut meal improves meat quality by modulating intestinal microbes in white feather broilers",
+      "authorsOrOrganization": "Xingjiao Jiang et al.",
+      "publishedYear": "2024",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11336344/",
+      "speciesScopes": [
+        "chicken",
+        "broiler_chicken"
+      ],
+      "permittedUse": "Controlled broiler evidence for 5% and 10% walnut meal powder in formulated diets.",
+      "limitations": "Walnut meal powder is not whole walnut kernel; the study does not establish household feeding, a treat portion, raw or dry-roasted kernel use, or outcomes for other birds.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "welli-net-walnuts-budgies-2025",
+      "title": "Walnüsse für Wellis, was gibt es da zu beachten?",
+      "authorsOrOrganization": "Welli.net community discussion",
+      "publishedYear": "2025",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://forum.welli.net/forum/alles-%C3%BCber-wellensittiche/ern%C3%A4hrung/293920-waln%C3%BCsse-f%C3%BCr-wellis-was-gibt-es-da-zu-beachten",
+      "speciesScopes": [
+        "budgie"
+      ],
+      "permittedUse": "Species-specific German owner discussion documenting conflicting budgie advice about walnut fat/oil, occasional use, and fresh-walnut fungal-spore concerns.",
+      "limitations": "Conflicting non-clinical forum discussion; it cannot establish a veterinary approval, prohibition, portion, roasting method, or runtime outcome.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "vogelforen-walnuts-canaries-2007",
+      "title": "Walnüsse für kanarien?",
+      "authorsOrOrganization": "Vogelforen community discussion",
+      "publishedYear": "2007",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.vogelforen.de/threads/walnuesse-fuer-kanarien.153005/",
+      "speciesScopes": [
+        "canary"
+      ],
+      "permittedUse": "Species-specific German owner discussion documenting repeated caution against walnuts for canaries because of high fat.",
+      "limitations": "Owner forum with conflicting opinions; it cannot establish a veterinary approval, prohibition, portion, roasting method, or runtime outcome.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "huehner-info-nuts-2023",
+      "title": "Futter: Nüsse",
+      "authorsOrOrganization": "Hühner-Info community resource",
+      "publishedYear": "2023",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://huehner-info.de/infos/futter_nuesse.htm",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "German chicken-keeping discussion describing nuts as high-fat and potentially suitable only as small treats.",
+      "limitations": "Non-clinical community guidance; it does not establish a controlled whole-walnut feeding outcome or a complete-ration role.",
       "accessedAt": "2026-08-19"
     }
   ]
