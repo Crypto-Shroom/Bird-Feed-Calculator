@@ -1431,13 +1431,16 @@
       "speciesEvidence": [
         {
           "bird": "pigeon",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "merck-columbiformes-2025"
+            "petco-pigeon-cashew-2019",
+            "vca-pigeon-dove-feeding",
+            "stadttaubenhilfe-crop-obstruction",
+            "tiermedizinportal-avian-obstipation-2022"
           ],
-          "locator": "Merck pigeon/dove varied-diet and seed-eating sections",
+          "locator": "Petco veterinarian Q&A: chop cashew pieces to the size of small seeds to avoid esophageal obstruction; VCA pigeon/dove small-beak and manageable-piece guidance; German pigeon crop-obstruction and avian obstruction references",
           "evidenceScope": "species_specific",
-          "rationale": "The reviewed pigeon source does not name cashew or establish this shell-free kernel form. No cross-species nut inference is used.",
+          "rationale": "Direct pigeon-specific veterinarian guidance supports a limited treat outcome for plain raw edible cashew only when shell-free and chopped to small-seed size. The evidence supports preparation and obstruction boundaries, not a universal portion, soaking requirement, toxicity trial, or staple use.",
           "reviewedAt": "2026-08-19"
         },
         {
@@ -1504,9 +1507,12 @@
         "sourceIds": [
           "akande-cashew-reject-meal-2015",
           "lafeber-nut-meats-2026",
-          "aav-feeding-birds-2021"
+          "aav-feeding-birds-2021",
+          "petco-pigeon-cashew-2019",
+          "stadttaubenhilfe-crop-obstruction",
+          "tiermedizinportal-avian-obstipation-2022"
         ],
-        "rule": "Review only plain raw cashew kernel that is unsalted, unflavoured, and shell-free. Dry-roasted cashew is a separate exact form. Exclude shell-on or unprocessed cashew material, oil-roasted, seasoned, chocolate-coated, damaged, moldy, rancid, or cashew-only products. Keep cashew reject meal and defatted/full-fat meal distinct from whole-kernel feeding.",
+        "rule": "Review only plain raw cashew kernel that is unsalted, unflavoured, shell-free, and chopped to small-seed size for pigeons. Dry-roasted cashew is a separate exact form and requires its own species/form evidence. Exclude shell-on or unprocessed cashew material, oil-roasted, seasoned, chocolate-coated, damaged, moldy, rancid, oversized pieces, and cashew-only products. Do not imply that soaking is required.",
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-19"
@@ -1605,9 +1611,12 @@
           "aav-feeding-birds-2021",
           "lafeber-nut-meats-2026",
           "swicegood-nuts-birds-2000",
-          "griffin-dean-cashew-2017"
+          "griffin-dean-cashew-2017",
+          "petco-pigeon-cashew-2019",
+          "stadttaubenhilfe-crop-obstruction",
+          "tiermedizinportal-avian-obstipation-2022"
         ],
-        "rule": "Review only plain dry-roasted cashew kernel that is unsalted, unflavoured, and shell-free. Dry-roasted is distinct from raw, oil-roasted, fried, seasoned, chocolate-coated, damaged, moldy, rancid, shell-on/unprocessed material, and cashew-only diets. Keep cashew reject meal and defatted/full-fat meal distinct from whole-kernel feeding.",
+        "rule": "Review only plain dry-roasted cashew kernel that is unsalted, unflavoured, shell-free, and chopped to small-seed size for pigeons if pigeon use is ever supported by direct form evidence. Dry-roasted is distinct from raw, oil-roasted, fried, seasoned, chocolate-coated, damaged, moldy, rancid, shell-on/unprocessed material, oversized pieces, and cashew-only diets. Current pigeon dry-roasted outcome remains unresolved; no soaking requirement is established.",
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-19"

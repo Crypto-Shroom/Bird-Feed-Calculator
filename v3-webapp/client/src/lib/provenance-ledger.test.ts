@@ -299,7 +299,7 @@ describe("canonical provenance ledger", () => {
     const expected = [
       {
         form: "plain raw cashew kernel, unsalted, unflavoured, and shell-free",
-        outcomes: ["unresolved", "limited", "unresolved", "unresolved", "unresolved", "unresolved"],
+        outcomes: ["limited", "limited", "unresolved", "unresolved", "unresolved", "unresolved"],
       },
       {
         form: "plain dry-roasted cashew kernel, unsalted, unflavoured, and shell-free",
@@ -316,7 +316,8 @@ describe("canonical provenance ledger", () => {
       expect(cashew?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
       expect(cashew?.processing.severity).toBe("warning");
       expect(cashew?.processing.rule).toContain("oil-roasted");
-      expect(cashew?.processing.rule).toContain("reject meal");
+      expect(cashew?.processing.rule).toContain("small-seed");
+      expect(cashew?.speciesEvidence[5].rationale).toContain("reject meal");
     }
   });
 

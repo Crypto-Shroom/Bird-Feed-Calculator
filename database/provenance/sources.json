@@ -873,6 +873,48 @@
       "permittedUse": "Food-composition study distinguishing raw and dry-roasted cashew products.",
       "limitations": "Not a bird-feeding study; it cannot establish avian suitability, portions, or safety outcomes.",
       "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "petco-pigeon-cashew-2019",
+      "title": "Is it safe to feed my pigeon cashew nuts? How should I prepare them?",
+      "authorsOrOrganization": "Todd Cecil, Veterinarian; Petco Vet Q&A",
+      "publishedYear": "2019",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.petco.com/content/content-hub/home/questions/02/3/744018.html",
+      "speciesScopes": [
+        "pigeon"
+      ],
+      "permittedUse": "Direct pigeon-specific cashew preparation guidance: chop pieces to small-seed size so they can be swallowed without esophageal obstruction; nuts and seeds must not be the exclusive diet.",
+      "limitations": "Veterinarian Q&A rather than peer-reviewed feeding trial; it does not establish dry-roasted versus raw suitability, a universal portion, toxicity testing, or a requirement to soak.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "stadttaubenhilfe-crop-obstruction",
+      "title": "Kropfverstopfung",
+      "authorsOrOrganization": "Die Stadttaubenhilfe",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.stadttaubenhilfe.com/kropfverstopfung.html",
+      "speciesScopes": [
+        "pigeon"
+      ],
+      "permittedUse": "Pigeon crop-obstruction context covering foreign bodies and incorrect food type, amount, or consistency, with specialist-care boundaries.",
+      "limitations": "Rescue guidance, not cashew-specific evidence and not a feeding-safety trial.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "tiermedizinportal-avian-obstipation-2022",
+      "title": "Verstopfung (Obstipation) beim Vogel",
+      "authorsOrOrganization": "Miriam Lossau; veterinary quality review by Dr. med. vet. Michael Koch; Tiermedizinportal",
+      "publishedYear": "2022",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.tiermedizinportal.de/tierkrankheiten/vogelkrankheiten/verstopfung-obstipation-beim-vogel",
+      "speciesScopes": [
+        "avian"
+      ],
+      "permittedUse": "General avian obstruction and hydration context, including foreign bodies and food accumulation.",
+      "limitations": "Not cashew-specific and not a pigeon feeding recommendation.",
+      "accessedAt": "2026-08-19"
     }
   ]
 }
