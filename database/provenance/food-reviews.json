@@ -1415,6 +1415,101 @@
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-19"
+    },
+    {
+      "ingredientId": "cashew",
+      "ingredientDisplayName": "Cashew",
+      "form": "commercially prepared edible cashew kernel, plain, unsalted, unflavoured, and shell-free",
+      "nutrition": {
+        "sourceIds": [
+          "akande-cashew-reject-meal-2015",
+          "lafeber-nut-meats-2026"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only record. It does not add an active ingredient, nutrient row, optimizer choice, or inventory item."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "merck-columbiformes-2025"
+          ],
+          "locator": "Merck pigeon/dove varied-diet and seed-eating sections",
+          "evidenceScope": "species_specific",
+          "rationale": "The reviewed pigeon source does not name cashew or establish this shell-free kernel form. No cross-species nut inference is used.",
+          "reviewedAt": "2026-08-19"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "limited",
+          "sourceIds": [
+            "aav-feeding-birds-2021",
+            "lafeber-nut-meats-2026"
+          ],
+          "locator": "AAV Seeds and Nuts section on small nut slivers for training/foraging; Lafeber parrot nut-meats answer listing cashew with raw/dry-roasted, unsalted, unflavoured, small-portion, high-fat boundaries",
+          "evidenceScope": "species_specific",
+          "rationale": "Parrot guidance supports only limited treat/enrichment context for plain cashew pieces within a predominantly formulated diet. It is not a controlled cashew study, staple mix component, or complete ration.",
+          "reviewedAt": "2026-08-19"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "vca-african-grey-feeding",
+            "merck-psittacines-2025"
+          ],
+          "locator": "VCA African Grey tree-nut guidance; Merck psittacine nutrition and species-variation sections",
+          "evidenceScope": "species_specific",
+          "rationale": "General African Grey and psittacine nutrition guidance does not establish the exact commercially prepared cashew form or a species-specific portion. The parrot row cannot be copied to African Grey.",
+          "reviewedAt": "2026-08-19"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "merck-psittacines-2025",
+            "aav-feeding-birds-2021"
+          ],
+          "locator": "Merck psittacine species-variation sections; AAV general companion-parrot nut guidance",
+          "evidenceScope": "species_specific",
+          "rationale": "The reviewed sources do not establish commercially prepared cashew kernel for budgies. General parrot nut guidance is insufficient for budgie approval.",
+          "reviewedAt": "2026-08-19"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "finchinfo-nutrition"
+          ],
+          "locator": "Finch Information Center canary/passserine nutrition context",
+          "evidenceScope": "species_specific",
+          "rationale": "The reviewed canary source does not name cashew or establish this form.",
+          "reviewedAt": "2026-08-19"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "akande-cashew-reject-meal-2015",
+            "merck-poultry-2024"
+          ],
+          "locator": "Akande et al. laying-hen study of full-fat and defatted cashew reject meal in formulated diets; Merck poultry nutrient-balance context",
+          "evidenceScope": "species_specific",
+          "rationale": "Chicken evidence concerns processed cashew reject meal in formulated diets, not commercially prepared whole cashew kernels as treats. The exact food/form remains unresolved rather than being inferred from meal studies.",
+          "reviewedAt": "2026-08-19"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "akande-cashew-reject-meal-2015",
+          "lafeber-nut-meats-2026",
+          "aav-feeding-birds-2021"
+        ],
+        "rule": "Review only commercially prepared edible cashew kernel that is plain, unsalted, unflavoured, and shell-free. Exclude shell-on or unprocessed cashew material, oil-roasted, seasoned, chocolate-coated, damaged, moldy, rancid, or cashew-only products. Keep cashew reject meal and defatted/full-fat meal distinct from whole-kernel feeding.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-19"
     }
   ]
 }

@@ -287,6 +287,35 @@ describe("canonical provenance ledger", () => {
     expect(almond?.processing.rule).toContain("wild almonds");
   });
 
+  it("records the commercially prepared cashew form with six birds and meal boundaries", () => {
+    const ledger = readJson("food-reviews.json") as {
+      requiredBirdOrder: string[];
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{ bird: string; outcome: string; sourceIds: string[] }>;
+        processing: { rule: string; severity: string };
+      }>;
+    };
+    const cashew = ledger.ingredientReviews.find(
+      (review) => review.ingredientId === "cashew" && review.form === "commercially prepared edible cashew kernel, plain, unsalted, unflavoured, and shell-free",
+    );
+
+    expect(cashew?.speciesEvidence.map((entry) => entry.bird)).toEqual(ledger.requiredBirdOrder);
+    expect(cashew?.speciesEvidence.map((entry) => entry.outcome)).toEqual([
+      "unresolved",
+      "limited",
+      "unresolved",
+      "unresolved",
+      "unresolved",
+      "unresolved",
+    ]);
+    expect(cashew?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
+    expect(cashew?.processing.severity).toBe("warning");
+    expect(cashew?.processing.rule).toContain("shell-on");
+    expect(cashew?.processing.rule).toContain("reject meal");
+  });
+
   it("keeps light and fresh-produce care claims source-backed and non-runtime", () => {
     const ledger = readJson("care-claims.json") as {
       careClaims: Array<{

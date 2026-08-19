@@ -815,6 +815,35 @@
       "permittedUse": "Parrot owner guidance for raw or dry-roasted, unsalted almonds in very small amounts, with an explicit high-fat moderation boundary.",
       "limitations": "Owner-answer guidance for parrots; it does not establish African Grey, budgie, canary, pigeon, or chicken outcomes and does not create a universal daily portion.",
       "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "akande-cashew-reject-meal-2015",
+      "title": "Cashew reject meal in diets of laying chickens: nutritional and economic suitability",
+      "authorsOrOrganization": "Taiwo O. Akande; Akinyinka O. Akinwumi; Taye O. Abegunde",
+      "publishedYear": "2015",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1186/s40781-015-0051-7",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "Controlled laying-hen study of full-fat and defatted cashew reject meal in formulated diets, including feed intake, production, fat deposition, cholesterol, and processing distinctions.",
+      "limitations": "Reject meal is not the exact commercially prepared whole-kernel form; it does not establish companion-bird suitability, whole-cashew treat portions, or cashew-only feeding.",
+      "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "lafeber-nut-meats-2026",
+      "title": "Nut Meats",
+      "authorsOrOrganization": "Lafeber Pet Birds",
+      "publishedYear": "2026",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://lafeber.com/pet-birds/questions/nut-meats/",
+      "speciesScopes": [
+        "parrot"
+      ],
+      "permittedUse": "Parrot owner guidance listing cashews among treat nuts, with raw or dry-roasted, unsalted, unflavoured, small-portion, and high-fat moderation boundaries.",
+      "limitations": "Owner-answer guidance for parrots; it does not establish African Grey, budgie, canary, pigeon, or chicken outcomes and does not create a universal portion.",
+      "accessedAt": "2026-08-19"
     }
   ]
 }
