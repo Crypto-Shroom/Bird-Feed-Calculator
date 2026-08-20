@@ -6,7 +6,7 @@
 
 This batch completes the six-bird evidence records for **raw dried lima beans**, **raw dried fava/broad beans**, **raw dried black beans**, **raw dried pinto beans**, and **raw dried navy beans**. Each review is limited to the named raw dried form. Cooked, soaked, sprouted, canned, fermented, milled, and processed bean forms remain distinct.
 
-Every food/form received a first species-specific search for every supported bird. Where that first pass did not establish a direct outcome, a second targeted search using additional terminology and source types was recorded in [`issue-145-research-log.md`](./issue-145-research-log.md). Results are incorporated in `food-reviews.json` and linked from the protected raw-legume coverage ledger.
+Every food/form received a first species-specific search for every supported bird. Where that first pass did not establish a direct outcome, a second targeted search using additional terminology and source types was recorded in [`issue-145-research-log.md`](./issue-145-research-log.md). A subsequent compound-level pigeon applicability review is recorded in [`issue-145-pigeon-compound-research.md`](./issue-145-pigeon-compound-research.md); it preserves all five raw-dried pigeon outcomes as unresolved because it found no exact pigeon raw-form exposure outcome. Results are incorporated in `food-reviews.json` and linked from the protected raw-legume coverage ledger.
 
 | Food/form | Pigeon | Parrot | African Grey | Budgie | Canary | Chicken |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -36,8 +36,8 @@ No accessible direct chicken study established the exact **raw dried black-bean*
 | --- | --- |
 | `food-reviews.json` | Added five complete six-bird raw-form records. |
 | `food-coverage.json` | Linked all five corresponding historical raw-legume obligations to their complete review keys. |
-| `sources.json` | Added the direct chicken study records, companion-bird black-bean preparation source, and direct feral-pigeon broad-bean crop-content study; clarified the existing For the Birds source’s named-bean scope. |
-| Research audit trail | Added `issue-145-research-log.md` with first-pass and required targeted-search outcomes. |
+| `sources.json` | Added the direct chicken study records, companion-bird black-bean preparation source, direct feral-pigeon broad-bean crop-content study, and five compound/pigeon-context sources; clarified the existing For the Birds source’s named-bean scope. |
+| Research audit trail | Added `issue-145-research-log.md` with first-pass and required targeted-search outcomes, plus `issue-145-pigeon-compound-research.md` with the completed compound-level pigeon applicability assessment. |
 
 The canonical coverage report now shows **11 of 13** raw-legume tracked items linked to complete six-bird reviews, leaving **18** total tracked food/forms awaiting review across the broader Issue #92 backlog. The remaining ten items in the historical multi-bird core list and the two raw-legume items are not represented as resolved by this batch.
 
