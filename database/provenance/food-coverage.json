@@ -9,31 +9,41 @@
           "id": "wheat",
           "displayName": "Wheat",
           "historicalForm": "form not specified in the protected historical claim",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "wheat::whole dry grain, threshed/hulled where applicable"
+          ]
         },
         {
           "id": "barley",
           "displayName": "Barley",
           "historicalForm": "form not specified in the protected historical claim",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "barley::whole dry barley grain, non-pearled"
+          ]
         },
         {
           "id": "oats",
           "displayName": "Oats",
           "historicalForm": "form not specified in the protected historical claim",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "oats::whole dry oat grain"
+          ]
         },
         {
           "id": "millet",
           "displayName": "Millet",
           "historicalForm": "form not specified in the protected historical claim",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "millet::whole dry seed"
+          ]
         },
         {
           "id": "corn",
           "displayName": "Corn",
           "historicalForm": "form not specified in the protected historical claim",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "corn::whole dry maize/corn kernel, cultivar/color unspecified"
+          ]
         },
         {
           "id": "lentils",
