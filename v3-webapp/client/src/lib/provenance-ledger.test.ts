@@ -198,6 +198,90 @@ describe("canonical provenance ledger", () => {
     );
   });
 
+  it("records the five-item raw-bean batch with exact six-bird outcomes and historical coverage links", () => {
+    const foodLedger = readJson("food-reviews.json") as {
+      requiredBirdOrder: string[];
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{ bird: string; outcome: string; sourceIds: string[]; evidenceScope: string }>;
+        ownerPolicy?: { policySourceId: string; policyType: string; authority: string; rejectionNote: string };
+      }>;
+    };
+    const coverageLedger = readJson("food-coverage.json") as {
+      claimCoverage: Array<{
+        historicalClaimId: string;
+        trackedItems: Array<{ id: string; linkedFoodReviewKeys: string[] }>;
+      }>;
+    };
+    const expected = [
+      {
+        trackedItemId: "lima-beans-raw",
+        ingredientId: "lima_beans",
+        form: "raw dried lima beans",
+        outcomes: ["avoid", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation"],
+      },
+      {
+        trackedItemId: "fava-beans-raw",
+        ingredientId: "fava_beans",
+        form: "raw dried fava beans",
+        outcomes: ["avoid", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "limited"],
+      },
+      {
+        trackedItemId: "black-beans-raw",
+        ingredientId: "black_beans",
+        form: "raw dried black beans",
+        outcomes: ["avoid", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "unresolved"],
+      },
+      {
+        trackedItemId: "pinto-beans-raw",
+        ingredientId: "pinto_beans",
+        form: "raw dried pinto beans",
+        outcomes: ["avoid", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation"],
+      },
+      {
+        trackedItemId: "navy-beans-raw",
+        ingredientId: "navy_beans",
+        form: "raw dried navy beans",
+        outcomes: ["avoid", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation"],
+      },
+    ];
+    const rawLegumeCoverage = coverageLedger.claimCoverage.find(
+      (coverage) => coverage.historicalClaimId === "historical-raw-legume-rules",
+    );
+
+    for (const expectedReview of expected) {
+      const review = foodLedger.ingredientReviews.find(
+        (candidate) => candidate.ingredientId === expectedReview.ingredientId && candidate.form === expectedReview.form,
+      );
+      const trackedItem = rawLegumeCoverage?.trackedItems.find(
+        (item) => item.id === expectedReview.trackedItemId,
+      );
+
+      expect(review?.speciesEvidence.map((entry) => entry.bird)).toEqual(foodLedger.requiredBirdOrder);
+      expect(review?.speciesEvidence.map((entry) => entry.outcome)).toEqual(expectedReview.outcomes);
+      expect(review?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
+      expect(review?.speciesEvidence[0]).toMatchObject({
+        outcome: "avoid",
+        evidenceScope: "owner_approved_policy",
+      });
+      expect(review?.speciesEvidence[0].sourceIds).toContain("issue-145-owner-pigeon-raw-bean-precaution-2026-08-20");
+      expect(review?.ownerPolicy).toMatchObject({
+        policySourceId: "issue-145-owner-pigeon-raw-bean-precaution-2026-08-20",
+        policyType: "precautionary_avoid",
+        authority: "product_owner",
+      });
+      expect(review?.ownerPolicy?.rejectionNote).toContain("documented compound concerns");
+      expect(review?.ownerPolicy?.rejectionNote).toContain("safe pigeon use");
+      if (expectedReview.ingredientId === "fava_beans") {
+        expect(review?.speciesEvidence[0].sourceIds).toContain("dilks-1975-feral-pigeon-broad-beans");
+      }
+      expect(trackedItem?.linkedFoodReviewKeys).toEqual([
+        `${expectedReview.ingredientId}::${expectedReview.form}`,
+      ]);
+    }
+  });
+
   it("records each new food/form review with six birds and expected outcomes", () => {
     const ledger = readJson("food-reviews.json") as {
       requiredBirdOrder: string[];

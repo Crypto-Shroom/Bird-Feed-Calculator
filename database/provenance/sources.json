@@ -710,9 +710,9 @@
         "parrot",
         "psittacine"
       ],
-      "permittedUse": "Parrot-rescue preparation guidance that identifies lentils, mung beans, and sweet/green peas as sproutable and says kidney beans should be fully cooked.",
+      "permittedUse": "Parrot-rescue preparation guidance that identifies lentils, mung beans, sweet/green peas, lima beans, fava beans, pinto beans, and navy beans as forms requiring sprouting or full cooking before offering.",
       "limitations": "Rescue owner guidance, not a controlled feeding trial. It does not establish a preparation method, portion, complete ration, runtime approval, or outcome for pigeons, African Greys, budgies, canaries, or chickens.",
-      "accessedAt": "2026-08-18"
+      "accessedAt": "2026-08-20"
     },
     {
       "id": "ciurescu-2017-raw-lentil-broilers",
@@ -1063,6 +1063,217 @@
       "permittedUse": "German chicken-keeping discussion describing nuts as high-fat and potentially suitable only as small treats.",
       "limitations": "Non-clinical community guidance; it does not establish a controlled whole-walnut feeding outcome or a complete-ration role.",
       "accessedAt": "2026-08-19"
+    },
+    {
+      "id": "kiwis-bird-rescue-diet-2026",
+      "title": "Diet and Chop Recipes",
+      "authorsOrOrganization": "Kiwi's New Life Bird Rescue",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.kiwisnewlifebirdrescue.org/programs",
+      "speciesScopes": [
+        "companion_bird"
+      ],
+      "permittedUse": "Companion-bird rescue guidance that requires dried beans to be rehydrated and fully cooked and cooled; its recipe identifies black beans only as cooked legumes.",
+      "limitations": "Rescue guidance is not a controlled feeding study. It does not define a species-specific amount, a complete ration, a universal cooking protocol, or an outcome for a different bird species.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "ologhobo-1993-raw-limabean-chicks",
+      "title": "Toxicity of Raw Limabeans (Phaseolus lunatus L.) and Limabean Fractions for Growing Chicks",
+      "authorsOrOrganization": "A. D. Ologhobo; D. F. Apata; A. Oyejide; O. Akinpelu",
+      "publishedYear": "1993",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1080/00071669308417606",
+      "speciesScopes": [
+        "chicken",
+        "broiler_chicken"
+      ],
+      "permittedUse": "Controlled four-week broiler-starter evidence for raw lima beans and soaked/boiled comparison diets, including growth and organ-histology outcomes.",
+      "limitations": "The study does not establish a home feeding method, a universally safe inclusion rate, a complete ration, or suitability for another supported bird.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "arija-2006-raw-extruded-pinto-chicks",
+      "title": "Nutritional Evaluation of Raw and Extruded Kidney Bean (Phaseolus vulgaris L. var. Pinto) in Chicken Diets",
+      "authorsOrOrganization": "I. Arija; C. Centeno; A. Viveros; A. Brenes; F. Marzo; J. C. Illera; G. Silvan",
+      "publishedYear": "2006",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1093/ps/85.4.635",
+      "speciesScopes": [
+        "chicken",
+        "broiler_chicken"
+      ],
+      "permittedUse": "Controlled 0–21-day broiler evidence comparing raw and extruded pinto-kidney-bean inclusion at 100, 200, and 300 g/kg.",
+      "limitations": "This broiler study does not establish an unsupervised household method, universal inclusion rate, complete ration, or any other species outcome.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "bhave-1964-nonheated-pinto-chicks",
+      "title": "A Comparison of Feeding Heated and Non Heated Pinto Bean Meal to Broiler-Strain Chicks",
+      "authorsOrOrganization": "G. V. Bhave; Kansas State University",
+      "publishedYear": "1964",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://krex.k-state.edu/bitstreams/4e22ae54-f61a-4d26-b382-86c899692ca7/download",
+      "speciesScopes": [
+        "chicken",
+        "broiler_chicken"
+      ],
+      "permittedUse": "Controlled broiler-strain-chick comparison of heated and non-heated pinto-bean meal, including raw-meal growth findings.",
+      "limitations": "A historical thesis with study-specific diets; it does not prescribe a household preparation method, a current formula, or another species outcome.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "hewitt-1973-raw-navy-chicks",
+      "title": "A Comparison of Fractions Prepared from Navy (Haricot) Beans (Phaseolus vulgaris L.) in Diets for Germ-free and Conventional Chicks",
+      "authorsOrOrganization": "D. Hewitt; M. E. Coates; M. L. Kakade; I. E. Liener",
+      "publishedYear": "1973",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1079/BJN19730118",
+      "speciesScopes": [
+        "chicken",
+        "chick"
+      ],
+      "permittedUse": "Direct conventional- and germ-free-chick comparison of raw and heated navy-bean meal, including body-weight and pancreatic outcomes.",
+      "limitations": "The controlled chick study does not provide a home feeding method, a complete ration, a universal inclusion rate, or evidence for another supported bird.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "rubio-1990-raw-autoclaved-faba-broilers",
+      "title": "The Utilization of Raw and Autoclaved Faba Beans (Vicia faba L., var. minor) and Faba Bean Fractions in Diets for Growing Broiler Chickens",
+      "authorsOrOrganization": "L. A. Rubio; A. Brenes; M. Castaño",
+      "publishedYear": "1990",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1079/BJN19900130",
+      "speciesScopes": [
+        "chicken",
+        "broiler_chicken"
+      ],
+      "permittedUse": "Direct growing-broiler comparison of raw and autoclaved faba-bean diets and fractions, including body-weight and organ outcomes.",
+      "limitations": "The studied varieties, processing, and diet levels are specific; this is not a household rule, complete ration, or other-species evidence.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "mateos-puchal-1981-raw-broad-bean-broilers",
+      "title": "Raw Broad Beans (Vicia faba L.) as an Energy and Protein Source for Broiler Chicks",
+      "authorsOrOrganization": "G. G. Mateos; F. Puchal",
+      "publishedYear": "1981",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.3382/ps.0602486",
+      "speciesScopes": [
+        "chicken",
+        "broiler_chicken"
+      ],
+      "permittedUse": "Direct broiler-chick study of raw broad beans at defined dietary inclusion levels.",
+      "limitations": "The study’s defined formulated diets cannot set a household amount, a complete ration, or an outcome for a different species.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "dilks-1975-feral-pigeon-broad-beans",
+      "title": "Diet of Feral Pigeons (Columba livia) in Hawke's Bay, New Zealand",
+      "authorsOrOrganization": "P. J. Dilks",
+      "publishedYear": "1975",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1080/00288233.1975.10430391",
+      "speciesScopes": [
+        "pigeon",
+        "columbiformes",
+        "feral_pigeon"
+      ],
+      "permittedUse": "Direct crop-content observation in free-ranging feral pigeons, including the named consumption of broad beans (Vicia faba) in a field-foraging context.",
+      "limitations": "The observational study does not identify processing, establish safety, prescribe a companion-pigeon amount or formula, or support another bean species or bird species.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "adebo-2023-lima-bean-review",
+      "title": "A Review on the Potential Food Application of Lima Beans (Phaseolus lunatus L.), an Underutilized Crop",
+      "authorsOrOrganization": "Janet Adeyinka Adebo",
+      "publishedYear": "2023",
+      "sourceTier": "peer_reviewed_review",
+      "urlOrDoi": "https://doi.org/10.3390/app13031996",
+      "speciesScopes": [
+        "lima_beans",
+        "phaseolus_lunatus"
+      ],
+      "permittedUse": "Maps source-specific antinutritional compounds reported for Phaseolus lunatus, including cyanide-producing glucosides, lectins, trypsin inhibitors, tannins, phytate, and oxalate.",
+      "limitations": "Does not study pigeons, define a pigeon dose, or establish a pigeon safety, processing, or formula outcome.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "lessire-2017-fava-vicine-hens",
+      "title": "Effects of Faba Beans with Different Concentrations of Vicine and Convicine on Egg Production, Egg Quality and Red Blood Cells in Laying Hens",
+      "authorsOrOrganization": "M. Lessire et al.",
+      "publishedYear": "2017",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1017/S1751731116002688",
+      "speciesScopes": [
+        "chicken",
+        "fava_beans",
+        "vicia_faba"
+      ],
+      "permittedUse": "Documents vicine/convicine exposure and red-cell findings in laying hens; identifies the fava-specific compound concern.",
+      "limitations": "Does not study pigeons or establish any pigeon response, dose, safety rule, or raw-dried fava outcome.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "baghshani-2009-pigeon-rhodanese",
+      "title": "Comparison of Rhodanese Distribution in Different Tissues of Japanese Quail, Partridge, and Pigeon",
+      "authorsOrOrganization": "Hasan Baghshani and Mahmoud Aminlari",
+      "publishedYear": "2009",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1007/s00580-008-0781-8",
+      "speciesScopes": [
+        "pigeon",
+        "columba_livia"
+      ],
+      "permittedUse": "Documents tissue distribution of the cyanide-related enzyme rhodanese in adult pigeons.",
+      "limitations": "No cyanide or lima-bean exposure, dose, clinical endpoint, tolerance threshold, processing condition, or raw-dried bean outcome was tested.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "agboola-2006-pigeon-cyanide-enzymes",
+      "title": "Activities of Thiosulphate and 3-Mercaptopyruvate-cyanide-sulphurtransferases in Poultry Birds and the Fruit Bat",
+      "authorsOrOrganization": "Femi Kayode Agboola, Bamidele Sanya Fagbohunka, and Gbenga Adebola Adenuga",
+      "publishedYear": "2006",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.3923/jbs.2006.833.839",
+      "speciesScopes": [
+        "pigeon",
+        "chicken",
+        "duck"
+      ],
+      "permittedUse": "Documents rhodanese and 3-mercaptopyruvate sulfurtransferase activity in pigeon tissues.",
+      "limitations": "No raw lima-bean feeding, cyanogenic-glycoside dose, cyanide tolerance threshold, clinical outcome, processing condition, or raw-dried bean outcome was tested.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "ji-2022-pigeon-phosphorus",
+      "title": "Influence of Dietary Phosphorus Concentrations on the Performance of Rearing Pigeons (Columba livia), and Bone Properties of Squabs",
+      "authorsOrOrganization": "Feng Ji et al.",
+      "publishedYear": "2022",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1016/j.psj.2022.101744",
+      "speciesScopes": [
+        "pigeon",
+        "columba_livia"
+      ],
+      "permittedUse": "Provides pigeon-specific dietary phosphorus context and describes plant-feed phosphorus as largely phytate-bound in the study background.",
+      "limitations": "Does not measure raw bean phytate or tannin, compare bean forms, or establish a pigeon safety or suitability outcome for any raw dried bean.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "issue-145-owner-pigeon-raw-bean-precaution-2026-08-20",
+      "title": "Owner-approved precautionary pigeon policy for five raw dried bean forms",
+      "authorsOrOrganization": "Bird Feed Calculator product owner",
+      "publishedYear": "2026",
+      "sourceTier": "owner_approved_policy",
+      "urlOrDoi": "https://github.com/Crypto-Shroom/Bird-Feed-Calculator/issues/145#issuecomment-5355227897",
+      "speciesScopes": [
+        "pigeon"
+      ],
+      "permittedUse": "Records the owner's explicit precautionary decision to classify raw dried lima, fava, black, pinto, and navy beans as avoid for pigeons because compound concerns exist and safe pigeon use has not been clearly established.",
+      "limitations": "This is a product safety-policy decision, not external proof of pigeon toxicity, a raw-bean feeding study, a preparation method, a nutrition value, a runtime formula rule, or a decision about another species or bean form.",
+      "accessedAt": "2026-08-20"
     }
   ]
 }

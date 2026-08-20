@@ -158,31 +158,41 @@
           "id": "lima-beans-raw",
           "displayName": "Lima beans",
           "historicalForm": "raw",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "lima_beans::raw dried lima beans"
+          ]
         },
         {
           "id": "fava-beans-raw",
           "displayName": "Fava beans",
           "historicalForm": "raw",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "fava_beans::raw dried fava beans"
+          ]
         },
         {
           "id": "black-beans-raw",
           "displayName": "Black beans",
           "historicalForm": "raw",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "black_beans::raw dried black beans"
+          ]
         },
         {
           "id": "pinto-beans-raw",
           "displayName": "Pinto beans",
           "historicalForm": "raw",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "pinto_beans::raw dried pinto beans"
+          ]
         },
         {
           "id": "navy-beans-raw",
           "displayName": "Navy beans",
           "historicalForm": "raw",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "navy_beans::raw dried navy beans"
+          ]
         },
         {
           "id": "white-beans-raw",
