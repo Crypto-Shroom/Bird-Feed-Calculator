@@ -124,3 +124,4 @@
 - [x] Implement and validate Issue #138’s serializable solver protocol and strict result adapter without adding a browser Worker, calculator integration, visible output, or public-copy change.
 - [x] Implement and validate Issue #139’s deterministic serial objective-lock and structured infeasibility-evidence foundations without changing runtime behavior or visitor-visible output.
 - [x] Implement and validate Issue #140’s isolated browser-worker lifecycle controller without registering it in the calculator or changing visible behavior.
+- [x] Implement and validate Issue #148’s canonical split-lentil solver identity while preserving the visible catalog record, existing inventory keys, formulas, and public copy.

@@ -23,6 +23,7 @@
     "test:optimizer-adapter": "vitest run src/lib/optimizer-adapter.test.ts",
     "test:optimizer-stages": "vitest run src/lib/optimizer-stages.test.ts",
     "test:optimizer-worker": "vitest run src/lib/optimizer-worker-controller.test.ts",
+    "test:optimizer-identity": "vitest run src/lib/optimizer-ingredient-identity.test.ts",
     "test:issue-submission": "tsx scripts/verify-issue-submission.mjs",
     "test:github-app": "tsx scripts/verify-github-app-auth.mjs",
     "test:report-queue": "vitest run --config scripts/vitest.config.ts",
