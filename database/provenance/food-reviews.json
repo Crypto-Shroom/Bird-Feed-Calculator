@@ -2067,12 +2067,13 @@
           "bird": "pigeon",
           "outcome": "unresolved",
           "sourceIds": [
+            "dilks-1975-feral-pigeon-broad-beans",
             "vca-pigeon-dove-feeding",
             "palomacy-pigeon-feeding-2026"
           ],
-          "locator": "VCA Feeding Pigeons and Doves and Palomacy pigeon-feeding guidance; Issue #145 first-pass and targeted second-search log for raw dried fava beans",
+          "locator": "Dilks (1975) abstract, Results, Figure 1, Table 1, and ‘Other food’ section naming broad beans (Vicia faba) in free-ranging pigeon crop contents; VCA and Palomacy pigeon-feeding guidance",
           "evidenceScope": "species_specific",
-          "rationale": "Neither direct pigeon source names raw dried fava beans or establishes its preparation boundary. The documented first and targeted second searches yielded no accessible exact pigeon/form evidence, so this row remains unresolved without using another bird’s evidence.",
+          "rationale": "Direct primary crop-content evidence identifies broad beans (Vicia faba) in free-ranging feral-pigeon diets, but does not identify bean maturity or processing and therefore cannot establish this distinct raw dried form. VCA and Palomacy do not resolve that form boundary. The raw dried fava-bean outcome remains unresolved rather than converting form-unspecified field consumption into a raw-dried approval, safety claim, or formula rule.",
           "reviewedAt": "2026-08-20"
         },
         {
@@ -2141,9 +2142,10 @@
           "vca-canary-feeding",
           "mateos-puchal-1981-raw-broad-bean-broilers",
           "rubio-1990-raw-autoclaved-faba-broilers",
-          "ftb-legume-safety-2018"
+          "ftb-legume-safety-2018",
+          "dilks-1975-feral-pigeon-broad-beans"
         ],
-        "rule": "Keep raw dried fava beans distinct from soaked, sprouted, cooked, canned, fermented, milled, or manufactured forms. Companion-bird records require preparation; pigeon and, where documented, chicken uncertainty remain explicit; chicken evidence is otherwise bounded to cited controlled poultry studies. This evidence-only record does not approve runtime use, a formula, a portion, or a complete ration.",
+        "rule": "Keep raw dried fava/broad beans distinct from fresh, soaked, sprouted, cooked, canned, fermented, milled, or manufactured forms. Direct feral-pigeon crop-content evidence identifies broad beans (Vicia faba) but not their maturity or processing, so the raw dried pigeon row remains unresolved. Companion-bird records require preparation; chicken evidence is bounded to cited controlled poultry studies. This evidence-only record does not approve runtime use, a formula, a portion, or a complete ration.",
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-20"

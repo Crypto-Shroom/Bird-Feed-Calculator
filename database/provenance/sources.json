@@ -1167,6 +1167,22 @@
       "permittedUse": "Direct broiler-chick study of raw broad beans at defined dietary inclusion levels.",
       "limitations": "The study’s defined formulated diets cannot set a household amount, a complete ration, or an outcome for a different species.",
       "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "dilks-1975-feral-pigeon-broad-beans",
+      "title": "Diet of Feral Pigeons (Columba livia) in Hawke's Bay, New Zealand",
+      "authorsOrOrganization": "P. J. Dilks",
+      "publishedYear": "1975",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1080/00288233.1975.10430391",
+      "speciesScopes": [
+        "pigeon",
+        "columbiformes",
+        "feral_pigeon"
+      ],
+      "permittedUse": "Direct crop-content observation in free-ranging feral pigeons, including the named consumption of broad beans (Vicia faba) in a field-foraging context.",
+      "limitations": "The observational study does not identify processing, establish safety, prescribe a companion-pigeon amount or formula, or support another bean species or bird species.",
+      "accessedAt": "2026-08-20"
     }
   ]
 }

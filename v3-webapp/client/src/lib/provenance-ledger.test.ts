@@ -260,6 +260,9 @@ describe("canonical provenance ledger", () => {
       expect(review?.speciesEvidence.map((entry) => entry.bird)).toEqual(foodLedger.requiredBirdOrder);
       expect(review?.speciesEvidence.map((entry) => entry.outcome)).toEqual(expectedReview.outcomes);
       expect(review?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
+      if (expectedReview.ingredientId === "fava_beans") {
+        expect(review?.speciesEvidence[0].sourceIds).toContain("dilks-1975-feral-pigeon-broad-beans");
+      }
       expect(trackedItem?.linkedFoodReviewKeys).toEqual([
         `${expectedReview.ingredientId}::${expectedReview.form}`,
       ]);

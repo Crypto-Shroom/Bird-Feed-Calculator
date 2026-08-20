@@ -138,3 +138,38 @@ The four outcomes are not inferred from the direct chicken, parrot, African-Grey
 ## Chicken — raw dried black beans
 
 The first pass (`raw black beans broiler chickens feeding study`; `black bean Phaseolus vulgaris raw poultry diet research`; `untreated black bean meal chicken feeding trial`) and targeted second pass (`"raw black bean" "broiler"`; `"black common bean" raw "chicken" diet`; `"Phaseolus vulgaris" black raw broiler feed`) did not yield an accessible direct raw dried black-bean chicken study. The returned black-bean broiler paper expressly used **boiled** beans. The chicken row remains `unresolved`; raw kidney/pinto/common-bean findings are not substituted.
+
+
+## Renewed pigeon evidence audit and re-search — 20 August 2026
+
+### Reconciliation of prior canonical sources
+
+The earlier Pigeon Diet Guide record directly names dried lentils, split peas, mung beans, and dried peas only. VCA, Palomacy, Merck, and Pigeon Vitality provide general pigeon/dove, fresh-food, feeding-ecology, or peas context but do not name raw dried lima, fava/broad, black, pinto, or navy beans. Therefore they cannot, on their own, resolve any of the five exact new bean forms.
+
+### Renewed fava/broad-bean result
+
+A renewed exact-form search using `racing pigeon Vicia faba beans feed`, `Columba livia Vicia faba diet`, and `pigeon raw broad beans feeding` found a direct primary pigeon diet study:
+
+- P. J. Dilks, “Diet of feral pigeons (*Columba livia*) in Hawke’s Bay, New Zealand,” *New Zealand Journal of Agricultural Research* 18(1), 87–90 (1975), DOI: https://doi.org/10.1080/00288233.1975.10430391.
+
+The full study reports crop-content analysis for 243 free-ranging feral pigeons over one year. It identifies **broad beans (*Vicia faba*)** among crop contents, reports that birds at Havelock North fed on broad beans during two weeks in mid-November, and specifies that they returned to peas when harvesting made peas accessible. This is direct pigeon-specific evidence of consumption of the exact fava/broad-bean species in a free-ranging field context. It does not identify bean processing, offer a husbandry portion, establish safety, or approve a companion-pigeon formula. The prospective outcome is therefore `limited`, not an unrestricted approval.
+
+The renewed Lima-bean queries (`racing pigeon lima beans feed`; `pigeon Phaseolus lunatus diet`; `Columba livia lima bean feeding`) produced generic bean/pulse discussion and a *Phaseolus* genus-level Rock Pigeon diet result, but no source establishing *Phaseolus lunatus* specifically. The exact lima-bean form remains unresolved pending further direct evidence.
+
+
+### Renewed black, pinto, and navy pigeon searches
+
+| Exact form | Renewed search terms | Result | Assessment |
+| --- | --- | --- | --- |
+| Raw dried black beans | `pigeon Phaseolus vulgaris black bean diet`; `Columba livia black beans crop contents`; `racing pigeon black bean feed` | Returned social-video/forum claims, generic *Phaseolus* material, poultry content, and the Dilks broad-bean study—not an accessible direct pigeon record for black beans. | Still no exact pigeon/form evidence. |
+| Raw dried pinto beans | `pigeon Phaseolus vulgaris pinto bean diet`; `Columba livia pinto beans crop contents`; `racing pigeon pinto bean feed` | Returned human, chicken, and forum results; no accessible pigeon study, professional pigeon source, or direct record for pinto beans. | Still no exact pigeon/form evidence. |
+| Raw dried navy beans | `pigeon navy bean Phaseolus vulgaris diet`; `Columba livia haricot bean crop contents`; `racing pigeon navy beans feed` | Returned poultry/human sources, social posts, generic common-bean material, and no accessible direct pigeon record for navy/haricot beans. | Still no exact pigeon/form evidence. |
+
+### Renewed general raw-legume warnings
+
+A targeted search for pigeon-specific veterinary, rescue, and university material on raw beans located two pigeon-directed commercial/owner pages:
+
+- Brieftaubenshop, “What to Feed an Injured Pigeon?”: https://www.brieftaubenshop.de/en/what-to-feed-an-injured-pigeon/. The page says uncooked beans and pulses contain toxins harmful to pigeons, but is a shop-editor article with no cited evidence, no named bean forms, and product sales.
+- Sophie The Pigeon, “Toxic and bad Foods”: https://sophie.teamxnl.com/pigeonarticles/toxic-foods/. The author expressly presents the page as a personal perspective; it broadly advises against raw/dried beans, but names no reviewed source for the claim and no individual lima, fava, black, pinto, or navy form.
+
+These sources are useful leads and conservative general pigeon warnings, but they are not accepted as resolving the four remaining exact bean/form rows: they do not identify the forms, give an auditable evidence chain, or meet the ledger’s evidence-first standard. They are retained in this research log, not used to replace an exact row with an unsupported claim.
