@@ -3739,6 +3739,262 @@
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-22"
+    },
+    {
+      "ingredientId": "barley",
+      "ingredientDisplayName": "Barley",
+      "form": "whole dry barley grain, non-pearled",
+      "nutrition": {
+        "sourceIds": [],
+        "basis": "not_applicable",
+        "notes": "Evidence-only record. It does not alter active catalog nutrition, calculator runtime behavior, formula ingredients, or inventory."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "limited",
+          "sourceIds": [
+            "hullar-pigeon-feed-energy-1999"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "Controlled pigeon whole-barley metabolism evidence supports only a limited experimental grain context.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "limited",
+          "sourceIds": [
+            "omlet-parrot-seed-guide"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "group_specific",
+          "rationale": "Parrot care guidance names barley in varied seed mixes; it is not complete nutrition.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "vca-african-grey-feeding"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "No exact African-Grey/non-pearled-barley outcome was found after two searches.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "limited",
+          "sourceIds": [
+            "exoticdirect-budgie-food-2019"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie care guidance names barley among grains within a varied diet.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "meander-canary-feeding"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "No exact canary/non-pearled-barley outcome was found after two searches.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "mofga-whole-grains-chickens",
+            "wilson-corn-wheat-barley-chickens-1944"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "Whole-barley chicken evidence is limited to balanced, age-aware ration contexts.",
+          "reviewedAt": "2026-08-20"
+        }
+      ],
+      "processing": {
+        "sourceIds": [],
+        "rule": "Keep this exact whole dry form distinct from fresh, cooked, rolled, cracked, ground, popped, pearled, sprouted, or otherwise processed forms. Do not treat any single grain as complete nutrition.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-20"
+    },
+    {
+      "ingredientId": "oats",
+      "ingredientDisplayName": "Oats",
+      "form": "whole dry oat grain",
+      "nutrition": {
+        "sourceIds": [],
+        "basis": "not_applicable",
+        "notes": "Evidence-only record. It does not alter active catalog nutrition, calculator runtime behavior, formula ingredients, or inventory."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "sales-janssens-pigeon-nutrition-2003"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "The targeted pigeon search did not establish a whole-dry-oat outcome; whole-grain generality and other-grain trials are not substituted.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "limited",
+          "sourceIds": [
+            "omlet-parrot-seed-guide"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "group_specific",
+          "rationale": "Parrot care guidance names whole oats in varied seed mixes; it is not complete nutrition.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "vca-african-grey-feeding"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "No exact African-Grey/whole-oat outcome was found after two searches.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "limited",
+          "sourceIds": [
+            "exoticdirect-budgie-food-2019"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie care guidance names oats among grains within a varied diet.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "meander-canary-feeding"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "No exact canary/whole-oat outcome was found after two searches.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "mofga-whole-grains-chickens"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "Whole-oat chicken guidance is limited to age-aware balanced-ration context.",
+          "reviewedAt": "2026-08-20"
+        }
+      ],
+      "processing": {
+        "sourceIds": [],
+        "rule": "Keep this exact whole dry form distinct from fresh, cooked, rolled, cracked, ground, popped, pearled, sprouted, or otherwise processed forms. Do not treat any single grain as complete nutrition.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-20"
+    },
+    {
+      "ingredientId": "corn",
+      "ingredientDisplayName": "Corn",
+      "form": "whole dry maize/corn kernel, cultivar/color unspecified",
+      "nutrition": {
+        "sourceIds": [],
+        "basis": "not_applicable",
+        "notes": "Evidence-only record. It does not alter active catalog nutrition, calculator runtime behavior, formula ingredients, or inventory."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "limited",
+          "sourceIds": [
+            "liu-pigeon-whole-grains-2023",
+            "hullar-pigeon-feed-energy-1999"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "Controlled pigeon whole-corn studies support only a limited mixed/experimental grain context.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "limited",
+          "sourceIds": [
+            "parrot-awareness-week-diet",
+            "omlet-parrot-seed-guide"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "group_specific",
+          "rationale": "Parrot care guidance names dried corn in varied dry seed mixes; it is not complete nutrition.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "vca-african-grey-feeding"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "African-Grey guidance names corn broadly but does not establish the distinct whole dry kernel form.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "exoticdirect-budgie-food-2019"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie care guidance distinguishes sweetcorn cooked fresh food; it does not establish whole dry corn kernels.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "meander-canary-feeding"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "No exact canary/whole-dry-corn outcome was found after two searches.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "mofga-whole-grains-chickens",
+            "wilson-corn-wheat-barley-chickens-1944"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "Whole-corn chicken evidence is limited to balanced ration or scratch-grain contexts with supplemental nutrition.",
+          "reviewedAt": "2026-08-20"
+        }
+      ],
+      "processing": {
+        "sourceIds": [],
+        "rule": "Keep this exact whole dry form distinct from fresh, cooked, rolled, cracked, ground, popped, pearled, sprouted, or otherwise processed forms. Do not treat any single grain as complete nutrition.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-20"
     }
   ]
 }
