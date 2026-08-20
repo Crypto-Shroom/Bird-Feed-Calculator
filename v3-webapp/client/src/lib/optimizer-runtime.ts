@@ -2,9 +2,11 @@ import { adaptExactFeasibilityResult, type AdaptedOptimizerResult } from "./opti
 import { checkBirdToxicity, isIngredientCompatible } from "./bird-safety";
 import type { BirdType } from "./birds";
 import { INGREDIENTS } from "./data";
+import { allocateCanonicalMixToInventoryForms } from "./optimizer-form-allocation";
 import { canonicalizeOptimizerCandidates } from "./optimizer-ingredient-identity";
 import { buildExactFeasibilityModel, type OptimizerCategory, type OptimizerMacro, type OptimizerRange } from "./optimizer-model";
 import type { OptimizerWorkerRawResult, OptimizerWorkerResponse } from "./optimizer-protocol";
+import { recordOptimizerRuntimeDiagnostic } from "./optimizer-runtime-diagnostics";
 import { isToxicRaw, requiresVerifiedProcessing } from "./safety";
 
 export interface BrowserOptimizerSolveInput {
@@ -109,14 +111,35 @@ export function startBrowserLocalOptimizerSolve(
   input: BrowserOptimizerSolveInput,
   options: BrowserOptimizerRuntimeOptions = {},
 ): BrowserOptimizerSolveHandle {
-  const candidates = buildBrowserOptimizerCandidates(input.inventory, input.bird);
-  const model = buildExactFeasibilityModel({
-    candidates,
-    requestedTargetGrams: input.requestedTargetGrams,
-    macroRanges: input.macroRanges,
-    categoryRanges: input.categoryRanges,
-  });
-  const worker = (options.createWorker ?? createDefaultWorker)();
+  const startedAtMs = Date.now();
+  let model;
+  let worker: BrowserOptimizerWorker;
+  try {
+    const candidates = buildBrowserOptimizerCandidates(input.inventory, input.bird);
+    model = buildExactFeasibilityModel({
+      candidates,
+      requestedTargetGrams: input.requestedTargetGrams,
+      macroRanges: input.macroRanges,
+      categoryRanges: input.categoryRanges,
+    });
+    worker = (options.createWorker ?? createDefaultWorker)();
+  } catch (error) {
+    const elapsedMs = Date.now() - startedAtMs;
+    const result: AdaptedOptimizerResult = {
+      status: "solver_error",
+      mix: {},
+      diagnostics: {
+        requestId: input.requestId,
+        elapsedMs,
+        requestedTargetGrams: input.requestedTargetGrams,
+        achievableTargetGrams: 0,
+        inventoryCapped: true,
+      },
+      violations: [error instanceof Error ? `setup:${error.message}` : "setup:unknown error"],
+    };
+    recordOptimizerRuntimeDiagnostic({ status: result.status, elapsedMs });
+    return { result: Promise.resolve(result), cancel: () => undefined };
+  }
   let settled = false;
 
   let resolveResult: (result: AdaptedOptimizerResult) => void = () => undefined;
@@ -128,13 +151,32 @@ export function startBrowserLocalOptimizerSolve(
     if (settled) return;
     settled = true;
     worker.terminate();
-    resolveResult(adaptExactFeasibilityResult(
+    const adapted = adaptExactFeasibilityResult(
       raw,
       model,
       input.requestedTargetGrams,
       input.macroRanges,
       input.categoryRanges,
-    ));
+    );
+    const allocated = adapted.status === "feasible"
+      ? (() => {
+        try {
+          return { ...adapted, mix: allocateCanonicalMixToInventoryForms(adapted.mix, input.inventory) };
+        } catch (error) {
+          return {
+            ...adapted,
+            status: "invalid_result" as const,
+            mix: {},
+            violations: [...adapted.violations, error instanceof Error ? `source_form_allocation:${error.message}` : "source_form_allocation:unknown error"],
+          };
+        }
+      })()
+      : adapted;
+    recordOptimizerRuntimeDiagnostic({
+      status: allocated.status,
+      elapsedMs: allocated.diagnostics.elapsedMs,
+    });
+    resolveResult(allocated);
   };
 
   worker.onmessage = (event) => {
@@ -161,4 +203,3 @@ export function startBrowserLocalOptimizerSolve(
     },
   };
 }
-

@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 
 import { buildBrowserOptimizerCandidates, startBrowserLocalOptimizerSolve, type BrowserOptimizerWorker } from "./optimizer-runtime";
+import {
+  clearLocalOptimizerRuntimeDiagnosticsForTest,
+  getLocalOptimizerRuntimeDiagnostics,
+} from "./optimizer-runtime-diagnostics";
 
 class FakeWorker implements BrowserOptimizerWorker {
   public readonly sent: unknown[] = [];
@@ -31,6 +35,21 @@ const input = {
 };
 
 describe("browser-local optimizer runtime adapter", () => {
+  it("records only terminal status and elapsed timing in the bounded local diagnostic buffer", async () => {
+    clearLocalOptimizerRuntimeDiagnosticsForTest();
+    const worker = new FakeWorker();
+    const handle = startBrowserLocalOptimizerSolve(input, { createWorker: () => worker });
+    worker.respond({ type: "result", requestId: input.requestId, status: "timeout", quantities: {}, elapsedMs: 500 });
+
+    await handle.result;
+    expect(getLocalOptimizerRuntimeDiagnostics()).toEqual([{
+      status: "timeout",
+      elapsedMs: 500,
+    }]);
+    expect(JSON.stringify(getLocalOptimizerRuntimeDiagnostics())).not.toContain("barley");
+    expect(JSON.stringify(getLocalOptimizerRuntimeDiagnostics())).not.toContain(input.requestId);
+  });
+
   it("safety-gates original catalog keys before aggregating split lentils into one canonical candidate", () => {
     const candidates = buildBrowserOptimizerCandidates({ lentils: 275, split_lentils: 125, kidney_beans: 500 }, "chicken");
 
