@@ -121,6 +121,103 @@
       "lastReviewedAt": "2026-08-17"
     },
     {
+      "ingredientId": "blueberry",
+      "ingredientDisplayName": "Blueberry",
+      "form": "fresh raw plain berry, washed and unseasoned",
+      "nutrition": {
+        "sourceIds": [
+          "vca-pigeon-dove-feeding",
+          "lafebervet-companion-parrot-nutrition-2008",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "chewy-chicken-blueberries-2026"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only record. It does not add an active ingredient, nutrient row, optimizer choice, inventory item, formula percentage, or serving amount."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "vca-pigeon-dove-feeding"
+          ],
+          "locator": "VCA 'What do wild pigeons and doves eat?' and 'Fruits and Vegetables' sections",
+          "evidenceScope": "species_specific",
+          "rationale": "Pigeon/dove veterinary guidance names berries and supports small prepared fruit portions, but does not name blueberries. The documented targeted second search found no accessible direct pigeon/fresh-blueberry outcome. General berry guidance is not converted into blueberry approval by inference.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "limited",
+          "sourceIds": [
+            "lafebervet-companion-parrot-nutrition-2008"
+          ],
+          "locator": "LafeberVet conclusion: 'true berries (such as blueberries)' may be added 'in small amounts'",
+          "evidenceScope": "group_specific",
+          "rationale": "Veterinary companion-parrot guidance permits true berries such as blueberries in small amounts within an individually tailored nutritional strategy. It does not establish a staple, portion, formula inclusion, or a result for another bird group.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "limited",
+          "sourceIds": [
+            "vca-african-grey-feeding"
+          ],
+          "locator": "VCA African Grey 'Fruits and Vegetables' section and suitable-item table listing blueberry",
+          "evidenceScope": "species_specific",
+          "rationale": "The African-Grey-specific veterinary source lists blueberry and limits fruit to 10% or less of daily diet within a pellet-based feeding framework. This is limited fresh-food context, not a formula, serving amount, or complete-ration claim.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "limited",
+          "sourceIds": [
+            "vca-budgie-feeding"
+          ],
+          "locator": "VCA Budgies 'Fruits and Vegetables' section and suitable-item table listing blueberry",
+          "evidenceScope": "species_specific",
+          "rationale": "The Budgie-specific veterinary source lists blueberry, requires washed small pieces served separately, and limits fruits, vegetables, and greens to at most 20–25% of daily diet. This is limited fresh-food context only.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "canary",
+          "outcome": "limited",
+          "sourceIds": [
+            "vca-canary-feeding"
+          ],
+          "locator": "VCA Canaries 'Fruits and Vegetables' section and suitable-item table listing blueberry",
+          "evidenceScope": "species_specific",
+          "rationale": "The Canary-specific veterinary source lists blueberry, requires washed tiny pieces served separately, and frames fruits, vegetables, and greens as approximately 20–25% of daily diet. This is limited fresh-food context only.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "chewy-chicken-blueberries-2026"
+          ],
+          "locator": "Chewy 'Key Takeaways', 'Can Chickens Have Blueberries?', and 'How To Safely Feed Blueberries' sections",
+          "evidenceScope": "species_specific",
+          "rationale": "The DVM-reviewed chicken guidance identifies plain fresh blueberries as an occasional treat that must not replace complete feed. It does not establish a formula, a universal serving amount, a complete ration, or an outcome for processed forms.",
+          "reviewedAt": "2026-08-20"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "vca-pigeon-dove-feeding",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "chewy-chicken-blueberries-2026"
+        ],
+        "rule": "This record is only for plain fresh raw blueberries that are washed, unseasoned, and not spoiled. Dried, sugared, juiced, cooked, fermented, pomace, flavored, syrup-packed, moldy, or otherwise processed blueberry products are outside this record. Serve only under the limited species rows; pigeon remains unresolved. The record is not a dry-mix, inventory, formula, portion, or complete-ration instruction.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-20"
+    },
+    {
       "ingredientId": "chickpeas",
       "ingredientDisplayName": "Chickpeas",
       "form": "raw dried seeds",

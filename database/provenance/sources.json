@@ -2427,6 +2427,50 @@
       "permittedUse": "Records the owner's explicit precautionary decision that whole vertebrate prey, including whole raw mice/rodents, is excluded for all six supported calculator birds; the owner separately recognizes that chickens may hunt mice but that this is not a regular-diet instruction.",
       "limitations": "This is a product safety-policy decision, not external proof of toxicity, a feeding trial, a portion, a complete ration, or a conclusion about insects, cooked meat, commercial animal-protein products, or a different prey form.",
       "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "lafebervet-companion-parrot-nutrition-2008",
+      "title": "Nutritional Strategies for the Companion Parrot",
+      "authorsOrOrganization": "Susan Orosz, DVM, DABVP (Avian Practice), DECZM; LafeberVet",
+      "publishedYear": "2008",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://lafeber.com/vet/nutritional-strategies-for-the-companion-parrot/",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Companion-parrot nutrition context that permits true berries such as blueberries in small amounts within an individually tailored feeding strategy.",
+      "limitations": "General companion-parrot veterinary guidance; it does not establish a quantity, a formula inclusion, a complete ration, an African-Grey-specific outcome, or an outcome for non-psittacine birds.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "chewy-chicken-blueberries-2026",
+      "title": "Can Chickens Eat Blueberries?",
+      "authorsOrOrganization": "Chewy Editors; reviewed by Byron de la Navarre, DVM",
+      "publishedYear": "2026",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.chewy.com/education/farm-animal/chicken/can-chickens-eat-blueberries",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "DVM-reviewed backyard-chicken context for plain fresh blueberries as a small occasional treat that does not replace complete feed, with washing and spoilage boundaries.",
+      "limitations": "Commercial owner guidance, not a controlled fresh-blueberry feeding trial, nutrient analysis, complete-ration formulation, universal serving rule, or evidence for other bird species or processed blueberry forms.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "aafc-blueberry-pomace-broilers-2023",
+      "title": "Secret sauce: berries show potential to improve gut health and prevent gut-borne diseases in chickens",
+      "authorsOrOrganization": "Agriculture and Agri-Food Canada",
+      "publishedYear": "2023",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://agriculture.canada.ca/en/science/story-agricultural-science/scientific-achievements-agriculture/secret-sauce-berries-show-potential-improve-gut-health-and-prevent-gut-borne-diseases-chickens",
+      "speciesScopes": [
+        "chicken",
+        "broiler"
+      ],
+      "permittedUse": "Documents the agency's broiler research context for lowbush/wild blueberry pomace and related poultry microbiome outcomes.",
+      "limitations": "The reviewed form is blueberry pomace, not plain fresh raw blueberry; it cannot establish a fresh-fruit feeding outcome, a household amount, a complete ration, or a result for another species.",
+      "accessedAt": "2026-08-20"
     }
   ]
 }
