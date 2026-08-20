@@ -19,6 +19,7 @@
     "test:profile-default-formulas": "tsx scripts/verify-profile-default-formulas.mjs",
     "test:care-guidance": "tsx scripts/verify-care-guidance.mjs",
     "test:constrained-solver-poc": "tsx scripts/verify-constrained-solver-poc.mjs",
+    "test:optimizer-model": "vitest run src/lib/optimizer-model.test.ts",
     "test:issue-submission": "tsx scripts/verify-issue-submission.mjs",
     "test:github-app": "tsx scripts/verify-github-app-auth.mjs",
     "test:report-queue": "vitest run --config scripts/vitest.config.ts",
