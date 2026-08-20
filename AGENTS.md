@@ -31,6 +31,11 @@
 - Flag attempted edits to V0–V2 or `archive/` that are not explicitly preservation-only.
 - Keep review feedback focused on consequential, repository-specific issues. Leave formatting and deterministic checks to automated validation.
 
+## Source-reconciled verification
+
+- Before stating a repository-backed fact, reconcile the active runtime source, relevant provenance records, and applicable tests or generated artifacts. If those layers conflict, report the exact conflict rather than treating one layer as authoritative by assumption.
+- Before stating a non-repository factual claim, perform an appropriate external-source check and cite the source where the claim is presented. Do not infer catalog, schema, runtime, or evidence state from a single inspectable layer.
+
 ## Evidence-research persistence
 
 - Review every proposed food **and exact food form** across pigeon, parrot, African Grey, budgie, canary, and chicken before proposing any active-data change. Keep unresolved evidence explicit; it is a current evidence state, not a reason to stop researching.
