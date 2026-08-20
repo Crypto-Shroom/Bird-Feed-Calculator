@@ -20,6 +20,7 @@ const sourceTiers = new Set([
   "veterinary_reference",
   "academic_book",
   "owner_guidance_with_citations",
+  "owner_approved_policy",
   "historical_project",
   "runtime_configuration",
 ]);
@@ -37,6 +38,7 @@ const evidenceScopes = new Set([
   "species_specific",
   "group_specific",
   "related_species",
+  "owner_approved_policy",
   "historical_project",
 ]);
 
@@ -192,6 +194,24 @@ function validateFoodReviews(reviews, sourceIndex, errors) {
         errors.push(`${context} must include a locator, rationale, and review date.`);
       }
       validateSourceReferences(entry.sourceIds, sourceIndex, context, errors);
+
+      if (entry.evidenceScope === "owner_approved_policy") {
+        const policy = review.ownerPolicy;
+        if (!policy || typeof policy !== "object" || !isNonEmptyString(policy.policySourceId) || !isNonEmptyString(policy.policyType) || !isNonEmptyString(policy.authority) || !isNonEmptyString(policy.decisionDate) || !isNonEmptyString(policy.decisionUrl) || !isNonEmptyString(policy.boundary)) {
+          errors.push(`${context} with owner_approved_policy scope must define a complete review.ownerPolicy object.`);
+          continue;
+        }
+        const policySource = sourceIndex.get(policy.policySourceId);
+        if (!policySource || policySource.sourceTier !== "owner_approved_policy") {
+          errors.push(`${context} must link review.ownerPolicy.policySourceId to an owner_approved_policy source.`);
+        }
+        if (!entry.sourceIds.includes(policy.policySourceId)) {
+          errors.push(`${context} must cite review.ownerPolicy.policySourceId.`);
+        }
+        if (entry.outcome !== "avoid" || policy.policyType !== "precautionary_avoid" || policy.authority !== "product_owner") {
+          errors.push(`${context} owner policy must be the explicit product-owner precautionary avoid policy.`);
+        }
+      }
     }
   }
 }

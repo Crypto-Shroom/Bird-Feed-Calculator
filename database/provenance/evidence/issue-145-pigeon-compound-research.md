@@ -101,6 +101,12 @@ The second targeted search used `Columba livia oral cyanide toxicity dose`, `pig
 
 The research establishes that the concern compounds exist in the named bean groups and that pigeon-specific metabolic/nutrition context exists for cyanide-related enzymes and phytate-bound phosphorus. It does **not** establish a raw-dried-bean exposure outcome in pigeons. The crucial missing bridge is compound concentration in the specific bean lot/form combined with a pigeon oral-exposure outcome or a well-supported pigeon-specific toxicology threshold. No other bird’s observed outcome is transferred across that gap.
 
+## Owner-approved precautionary policy after the evidence review
+
+After this evidence review was completed, the product owner explicitly directed that raw dried lima, fava/broad, black, pinto, and navy beans be classified as `avoid` for pigeons because compound concerns are documented and safe pigeon use is not clearly established.[9] The ledger records this as an `owner_approved_policy` outcome scope, not as a new species-specific research result. It changes only the pigeon outcome for these exact raw dried forms; it does not claim direct pigeon toxicity, approve a preparation method, affect another bird or form, or alter runtime behavior.
+
 ## Reference
 
 [8] [Brasel, Cooper, and Pritsos (2006), *Effects of Environmentally Relevant Doses of Cyanide on Flight Times in Pigeons, Columba livia*](https://doi.org/10.1007/s00128-006-0908-z)
+
+[9] [Issue #145 owner-approved precautionary pigeon policy (2026-08-20)](https://github.com/Crypto-Shroom/Bird-Feed-Calculator/issues/145#issuecomment-5355227897)

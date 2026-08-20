@@ -1260,6 +1260,20 @@
       "permittedUse": "Provides pigeon-specific dietary phosphorus context and describes plant-feed phosphorus as largely phytate-bound in the study background.",
       "limitations": "Does not measure raw bean phytate or tannin, compare bean forms, or establish a pigeon safety or suitability outcome for any raw dried bean.",
       "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "issue-145-owner-pigeon-raw-bean-precaution-2026-08-20",
+      "title": "Owner-approved precautionary pigeon policy for five raw dried bean forms",
+      "authorsOrOrganization": "Bird Feed Calculator product owner",
+      "publishedYear": "2026",
+      "sourceTier": "owner_approved_policy",
+      "urlOrDoi": "https://github.com/Crypto-Shroom/Bird-Feed-Calculator/issues/145#issuecomment-5355227897",
+      "speciesScopes": [
+        "pigeon"
+      ],
+      "permittedUse": "Records the owner's explicit precautionary decision to classify raw dried lima, fava, black, pinto, and navy beans as avoid for pigeons because compound concerns exist and safe pigeon use has not been clearly established.",
+      "limitations": "This is a product safety-policy decision, not external proof of pigeon toxicity, a raw-bean feeding study, a preparation method, a nutrition value, a runtime formula rule, or a decision about another species or bean form.",
+      "accessedAt": "2026-08-20"
     }
   ]
 }

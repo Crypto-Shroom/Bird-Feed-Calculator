@@ -10,7 +10,7 @@ Every reusable source is defined once in `sources.json`.
 | `title` | Yes | Source title. |
 | `authorsOrOrganization` | Yes | Named authors or responsible organization. |
 | `publishedYear` | Yes | Publication/update year; `unknown` is permitted only for protected historical project files. |
-| `sourceTier` | Yes | `primary`, `systematic_review`, `peer_reviewed_review`, `veterinary_reference`, `academic_book`, `owner_guidance_with_citations`, `historical_project`, or `runtime_configuration`. |
+| `sourceTier` | Yes | `primary`, `systematic_review`, `peer_reviewed_review`, `veterinary_reference`, `academic_book`, `owner_guidance_with_citations`, `owner_approved_policy`, `historical_project`, or `runtime_configuration`. An `owner_approved_policy` records an explicit owner safety decision and must not be presented as an external scientific source. |
 | `urlOrDoi` | Yes | Stable public URL or DOI; repository-relative path for protected project evidence. |
 | `speciesScopes` | Yes | Species or species groups the source actually covers. |
 | `permittedUse` | Yes | What the source can substantiate. |
@@ -58,9 +58,10 @@ Every reusable source is defined once in `sources.json`.
 | Bird coverage | `speciesEvidence` contains exactly six rows: `pigeon`, `parrot`, `african_grey`, `budgie`, `canary`, and `chicken`. |
 | Form distinction | A record applies to one food form only. Raw and cooked beans, garlic powder and garlic oil, or whole and crushed foods cannot share an undifferentiated record. |
 | Citation | Every species row names at least one source ID and a non-empty locator. |
-| Explicit evidence scope | Every row uses one of `species_specific`, `group_specific`, `related_species`, or `historical_project`. |
+| Explicit evidence scope | Every row uses one of `species_specific`, `group_specific`, `related_species`, `owner_approved_policy`, or `historical_project`. An `owner_approved_policy` row must preserve the underlying evidence boundary in its rationale and may not be represented as a direct research outcome. |
 | Honest gaps | `unresolved` is valid and required when current evidence does not meet the six-bird standard. |
 | No inferred approval | A source written for pigeons cannot silently permit the food for parrots, African Greys, budgies, canaries, or chickens. |
+| Owner precaution boundary | A food review may record an `ownerPolicy` only when the owner explicitly decides a safety posture. The linked policy source and entry rationale must state that it is a policy decision, preserve any direct-evidence gap, and state the exact bird/form boundary. |
 
 ## Food coverage record
 
