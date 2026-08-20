@@ -48,6 +48,8 @@ import { getPreparationInstructions, getProcessingWarning, isToxicRaw } from "@/
 import { getProfileDefaultIngredients } from "@/lib/inventory-presets";
 import { resolveDisplayedFormula } from "@/lib/formula-display";
 import { selectDiversitySuggestionCandidate } from "@/lib/diversity-suggestion";
+import { bridgeFeasibleWorkerMixToMixResult } from "@/lib/optimizer-mix-result-bridge";
+import { startBrowserLocalOptimizerSolve } from "@/lib/optimizer-runtime";
 import { cn } from "@/lib/utils";
 import { Link } from "wouter";
 
@@ -56,6 +58,7 @@ export default function Home() {
   const [situation, setSituation] = useState("pet");
   const [targetWeight, setTargetWeight] = useState(1000);
   const [inventory, setInventory] = useState<Record<string, number>>({});
+  const [workerInventoryResult, setWorkerInventoryResult] = useState<{ key: string; result: MixResult } | null>(null);
   const [activeTab, setActiveTab] = useState("calculator");
   const [ingredientSearch, setIngredientSearch] = useState("");
   const [addOpen, setAddOpen] = useState(false);
@@ -90,9 +93,52 @@ export default function Home() {
     [inventory, selectedBird, situation, targetWeight],
   );
 
+  const inventoryCalculationKey = useMemo(
+    () => JSON.stringify({
+      bird: selectedBird,
+      situation,
+      targetWeight,
+      inventory: Object.entries(inventory).sort(([left], [right]) => left.localeCompare(right)),
+    }),
+    [inventory, selectedBird, situation, targetWeight],
+  );
+
+  useEffect(() => {
+    if (!inventoryResult || Object.keys(inventory).length === 0) {
+      setWorkerInventoryResult(null);
+      return;
+    }
+
+    let active = true;
+    setWorkerInventoryResult(null);
+    const handle = startBrowserLocalOptimizerSolve({
+      requestId: `inventory-${Date.now()}`,
+      bird: selectedBird,
+      inventory,
+      requestedTargetGrams: targetWeight,
+      macroRanges: currentProfile.nutrition,
+      categoryRanges: getCategoryTargets(selectedBird),
+    });
+    void handle.result.then((workerResult) => {
+      if (!active || workerResult.status !== "feasible") return;
+      setWorkerInventoryResult({
+        key: inventoryCalculationKey,
+        result: bridgeFeasibleWorkerMixToMixResult(inventoryResult, workerResult.mix, inventory, selectedBird, situation),
+      });
+    });
+    return () => {
+      active = false;
+      handle.cancel();
+    };
+  }, [currentProfile.nutrition, inventory, inventoryCalculationKey, inventoryResult, selectedBird, situation, targetWeight]);
+
+  const displayedInventoryResult = workerInventoryResult?.key === inventoryCalculationKey
+    ? workerInventoryResult.result
+    : inventoryResult;
+
   const { result, source: formulaSource } = useMemo(
-    () => resolveDisplayedFormula(inventory, profileDefaultResult, inventoryResult),
-    [inventory, inventoryResult, profileDefaultResult],
+    () => resolveDisplayedFormula(inventory, profileDefaultResult, displayedInventoryResult),
+    [displayedInventoryResult, inventory, profileDefaultResult],
   );
 
   const diversitySuggestion = useMemo(() => {
