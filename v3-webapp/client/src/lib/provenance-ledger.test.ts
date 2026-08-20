@@ -70,7 +70,7 @@ describe("canonical provenance ledger", () => {
     expect(apple?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
   });
 
-  it("records fresh raw blueberry with six independent bird outcomes and retains the pigeon evidence gap", () => {
+  it("records fresh raw blueberry with six independent bird outcomes and a bounded corroborative pigeon source", () => {
     const ledger = readJson("food-reviews.json") as {
       requiredBirdOrder: string[];
       ingredientReviews: Array<{
@@ -86,17 +86,19 @@ describe("canonical provenance ledger", () => {
 
     expect(blueberry?.speciesEvidence.map((entry) => entry.bird)).toEqual(ledger.requiredBirdOrder);
     expect(blueberry?.speciesEvidence.map((entry) => entry.outcome)).toEqual([
-      "unresolved",
+      "limited",
       "limited",
       "limited",
       "limited",
       "limited",
       "limited",
     ]);
-    expect(blueberry?.speciesEvidence[0].sourceIds).toContain("vca-pigeon-dove-feeding");
+    expect(blueberry?.speciesEvidence[0].sourceIds).toEqual(
+      expect.arrayContaining(["vca-pigeon-dove-feeding", "pigeoncaretips-blueberries-2026"]),
+    );
     expect(blueberry?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
     expect(blueberry?.processing.severity).toBe("warning");
-    expect(blueberry?.processing.rule).toContain("pigeon remains unresolved");
+    expect(blueberry?.processing.rule).toContain("uncited owner guidance");
     expect(blueberry?.processing.rule).toContain("not a dry-mix");
   });
 

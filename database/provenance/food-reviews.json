@@ -139,13 +139,14 @@
       "speciesEvidence": [
         {
           "bird": "pigeon",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "vca-pigeon-dove-feeding"
+            "vca-pigeon-dove-feeding",
+            "pigeoncaretips-blueberries-2026"
           ],
-          "locator": "VCA 'What do wild pigeons and doves eat?' and 'Fruits and Vegetables' sections",
+          "locator": "VCA 'What do wild pigeons and doves eat?' and 'Fruits and Vegetables' sections; Pigeon Care Tips 'Can Pigeons Eat Blueberries Safely', 'How to Feed Blueberries to Pigeons', and 'How Often Pigeons Should Eat Blueberries' sections",
           "evidenceScope": "species_specific",
-          "rationale": "Pigeon/dove veterinary guidance names berries and supports small prepared fruit portions, but does not name blueberries. The documented targeted second search found no accessible direct pigeon/fresh-blueberry outcome. General berry guidance is not converted into blueberry approval by inference.",
+          "rationale": "Pigeon/dove veterinary guidance provides berry and prepared-fruit context. The expanded follow-up located a pigeon-specific keeper guide that directly addresses plain fresh blueberries as an occasional small treat alongside a grain-based main diet. Because that direct guide is non-veterinary and uncited, this is limited corroborative provenance only—not a nutrient, medical, formula, inventory, portion, or complete-ration approval.",
           "reviewedAt": "2026-08-20"
         },
         {
@@ -210,9 +211,10 @@
           "vca-african-grey-feeding",
           "vca-budgie-feeding",
           "vca-canary-feeding",
-          "chewy-chicken-blueberries-2026"
+          "chewy-chicken-blueberries-2026",
+          "pigeoncaretips-blueberries-2026"
         ],
-        "rule": "This record is only for plain fresh raw blueberries that are washed, unseasoned, and not spoiled. Dried, sugared, juiced, cooked, fermented, pomace, flavored, syrup-packed, moldy, or otherwise processed blueberry products are outside this record. Serve only under the limited species rows; pigeon remains unresolved. The record is not a dry-mix, inventory, formula, portion, or complete-ration instruction.",
+        "rule": "This record is only for plain fresh raw blueberries that are washed, unseasoned, and not spoiled. Dried, sugared, juiced, cooked, fermented, pomace, flavored, syrup-packed, moldy, or otherwise processed blueberry products are outside this record. Serve only under the limited species rows; the pigeon row rests on direct but uncited owner guidance and remains corroborative provenance only. The record is not a dry-mix, inventory, formula, portion, or complete-ration instruction.",
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-20"
