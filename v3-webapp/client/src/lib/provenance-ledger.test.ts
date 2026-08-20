@@ -295,12 +295,27 @@ describe("canonical provenance ledger", () => {
       {
         ingredientId: "wheat",
         form: "whole dry grain, threshed/hulled where applicable",
-        outcomes: ["unresolved", "unresolved", "unresolved", "limited", "unresolved", "limited"],
+        outcomes: ["limited", "limited", "unresolved", "limited", "unresolved", "limited"],
+      },
+      {
+        ingredientId: "barley",
+        form: "whole dry barley grain, non-pearled",
+        outcomes: ["limited", "limited", "unresolved", "limited", "unresolved", "limited"],
+      },
+      {
+        ingredientId: "oats",
+        form: "whole dry oat grain",
+        outcomes: ["unresolved", "limited", "unresolved", "limited", "unresolved", "limited"],
       },
       {
         ingredientId: "millet",
         form: "whole dry seed",
-        outcomes: ["unresolved", "unresolved", "unresolved", "limited", "limited", "unresolved"],
+        outcomes: ["limited", "limited", "unresolved", "limited", "limited", "limited"],
+      },
+      {
+        ingredientId: "corn",
+        form: "whole dry maize/corn kernel, cultivar/color unspecified",
+        outcomes: ["limited", "limited", "unresolved", "unresolved", "unresolved", "limited"],
       },
       {
         ingredientId: "peas_green",
