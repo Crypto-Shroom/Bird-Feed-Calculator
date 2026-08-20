@@ -128,3 +128,4 @@
 - [x] Implement and validate Issue #151’s browser-local Worker executor, bounded solve protocol, strict result validation, and no-server-compute boundary without changing visitor-facing copy or current output defaults.
 - [x] Implement and validate Issue #153 active Worker integration with deterministic allocation back to actual ingredient forms, silent legacy fallback for every non-feasible/technical outcome, and local privacy-preserving diagnostics.
 - [x] Research fresh raw blueberry suitability for pigeon, parrot, African Grey, budgie, canary, and chicken; document a separate first-pass and, where necessary, targeted follow-up for each bird/form pair in canonical provenance only, with no runtime/catalog/public-copy change.
+- [x] Conduct an expanded multilingual and source-type-diverse follow-up for direct pigeon evidence on plain fresh raw blueberries; preserve `unresolved` unless the exact species/form outcome is established.

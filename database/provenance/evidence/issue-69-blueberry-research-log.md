@@ -16,6 +16,12 @@
 | --- | --- | --- |
 | `pigeon fresh blueberry safe veterinary`; `pigeon blueberry feeding rescue`; `Taube frische Heidelbeeren füttern` | Results were community posts, forums, social material, and generic fruit/berry guidance. No accessible pigeon-specific veterinary, academic, or cited rescue source named fresh blueberries and established an outcome for this exact form. | **Unresolved after the required second search.** General pigeon berry and fruit guidance is retained as context only and is not converted into fresh-blueberry approval by inference. |
 
+### Expanded source-type and multilingual follow-up — 20 August 2026
+
+| Query variants | Source examined | Reconciled result |
+| --- | --- | --- |
+| `Columba livia fresh blueberry diet feeding`; `Tauben Heidelbeeren füttern Brieftauben`; `duiven blauwe bessen voeren voeding`; `pigeon blueberry veterinary rehabilitation diet` | Barbara Allen, [*Can Pigeons Eat Blueberries \| Safe Feeding Guide*](https://pigeoncaretips.com/can-pigeons-eat-blueberries/), dated 13 April 2026; VCA Animal Hospitals, [*Feeding Pigeons and Doves*](https://vcahospitals.com/know-your-pet/pigeons-and-doves-feeding) | The pigeon-specific keeper guide directly addresses plain fresh blueberries, framing them as a small occasional treat beside a grain-based main diet and describing washing, small/soft presentation, and prompt leftover removal. VCA supplies compatible pigeon/dove fruit-and-berry context but does not name blueberry. The direct article identifies no veterinary credential or citable evidence trail, so it changes the row only to **`limited` corroborative provenance**, not a runtime, nutrition, medicinal, formula, inventory, portion, or complete-ration approval. |
+
 ## Parrot
 
 ### First pass — 20 August 2026
@@ -64,4 +70,4 @@
 
 ## Cross-species outcome boundary
 
-Every supported-bird row was searched independently. The Pigeon row stays `unresolved` because no exact fresh-blueberry source was found after the documented second search. The Parrot, African Grey, Budgie, Canary, and Chicken evidence is limited to the cited species or companion-parrot/poultry context. No statement is inferred from another bird, a dried berry, juice, pomace, cooked fruit, a nutritional formula, or a broad “bird-safe” list.
+Every supported-bird row was searched independently. The expanded Pigeon follow-up found direct but uncited pigeon-specific keeper guidance, so its row is `limited` **only as corroborative provenance**. The Parrot, African Grey, Budgie, Canary, and Chicken evidence is limited to the cited species or companion-parrot/poultry context. No statement is inferred from another bird, a dried berry, juice, pomace, cooked fruit, a nutritional formula, or a broad “bird-safe” list.
