@@ -1954,6 +1954,487 @@
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-19"
+    },
+    {
+      "ingredientId": "lima_beans",
+      "ingredientDisplayName": "Lima beans",
+      "form": "raw dried lima beans",
+      "nutrition": {
+        "sourceIds": [
+          "ologhobo-1993-raw-limabean-chicks"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only review of raw dried lima beans. It does not add a nutrient value, an active ingredient, a dry-mix instruction, or a complete-ration claim."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "vca-pigeon-dove-feeding",
+            "palomacy-pigeon-feeding-2026"
+          ],
+          "locator": "VCA Feeding Pigeons and Doves and Palomacy pigeon-feeding guidance; Issue #145 first-pass and targeted second-search log for raw dried lima beans",
+          "evidenceScope": "species_specific",
+          "rationale": "Neither direct pigeon source names raw dried lima beans or establishes its preparation boundary. The documented first and targeted second searches yielded no accessible exact pigeon/form evidence, so this row remains unresolved without using another bird’s evidence.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "ftb-legume-safety-2018"
+          ],
+          "locator": "For the Birds Legume Safety Warning, preparation list naming lima beans among beans to sprout or fully cook",
+          "evidenceScope": "group_specific",
+          "rationale": "Parrot-rescue guidance names lima beans within a preparation-bound bean list. It does not establish raw dried use, a method, a portion, a formula, a complete ration, or any other species outcome.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-african-grey-feeding"
+          ],
+          "locator": "VCA African Grey suggested-food table: ‘cooked beans (various types)’",
+          "evidenceScope": "species_specific",
+          "rationale": "African-Grey-specific veterinary guidance presents beans as cooked, not as raw dried lima beans. This supports a preparation boundary only; it does not establish a method, portion, formula, or complete ration.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-budgie-feeding"
+          ],
+          "locator": "VCA Budgies suitable-food table: ‘cooked beans (various)’",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie-specific veterinary guidance presents beans as cooked, not as raw dried lima beans. This supports a preparation boundary only; it does not establish a method, portion, formula, or complete ration.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "canary",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-canary-feeding"
+          ],
+          "locator": "VCA Canaries suitable-food table listing lima beans under ‘cooked beans’",
+          "evidenceScope": "species_specific",
+          "rationale": "Canary-specific veterinary guidance explicitly lists lima beans under cooked beans, not as raw dried food. This supports a preparation boundary only; it does not establish a method, portion, formula, or complete ration.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "ologhobo-1993-raw-limabean-chicks"
+          ],
+          "locator": "Ologhobo et al. abstract: four-week broiler-starter trial comparing raw and soaked/boiled lima-bean diets, growth, and organ outcomes",
+          "evidenceScope": "species_specific",
+          "rationale": "The direct broiler study reports severely hindered growth and serious histopathological changes with raw lima-bean diets, while the soaked/boiled comparison was excepted. This establishes a preparation boundary only; it does not prescribe a household method, portion, formula, or complete ration.",
+          "reviewedAt": "2026-08-20"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "vca-pigeon-dove-feeding",
+          "palomacy-pigeon-feeding-2026",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "ologhobo-1993-raw-limabean-chicks",
+          "ftb-legume-safety-2018"
+        ],
+        "rule": "Keep raw dried lima beans distinct from soaked, sprouted, cooked, canned, fermented, milled, or manufactured forms. Companion-bird records require preparation; pigeon and, where documented, chicken uncertainty remain explicit; chicken evidence is otherwise bounded to cited controlled poultry studies. This evidence-only record does not approve runtime use, a formula, a portion, or a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-20"
+    },
+    {
+      "ingredientId": "fava_beans",
+      "ingredientDisplayName": "Fava beans",
+      "form": "raw dried fava beans",
+      "nutrition": {
+        "sourceIds": [
+          "mateos-puchal-1981-raw-broad-bean-broilers",
+          "rubio-1990-raw-autoclaved-faba-broilers"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only review of raw dried fava beans. It does not add a nutrient value, an active ingredient, a dry-mix instruction, or a complete-ration claim."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "vca-pigeon-dove-feeding",
+            "palomacy-pigeon-feeding-2026"
+          ],
+          "locator": "VCA Feeding Pigeons and Doves and Palomacy pigeon-feeding guidance; Issue #145 first-pass and targeted second-search log for raw dried fava beans",
+          "evidenceScope": "species_specific",
+          "rationale": "Neither direct pigeon source names raw dried fava beans or establishes its preparation boundary. The documented first and targeted second searches yielded no accessible exact pigeon/form evidence, so this row remains unresolved without using another bird’s evidence.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "ftb-legume-safety-2018"
+          ],
+          "locator": "For the Birds Legume Safety Warning, preparation list naming fava beans among beans to sprout or fully cook",
+          "evidenceScope": "group_specific",
+          "rationale": "Parrot-rescue guidance names fava beans within a preparation-bound bean list. It does not establish raw dried use, a method, a portion, a formula, a complete ration, or any other species outcome.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-african-grey-feeding"
+          ],
+          "locator": "VCA African Grey suggested-food table: ‘cooked beans (various types)’",
+          "evidenceScope": "species_specific",
+          "rationale": "African-Grey-specific veterinary guidance presents beans as cooked, not as raw dried fava beans. This supports a preparation boundary only; it does not establish a method, portion, formula, or complete ration.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-budgie-feeding"
+          ],
+          "locator": "VCA Budgies suitable-food table: ‘cooked beans (various)’",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie-specific veterinary guidance presents beans as cooked, not as raw dried fava beans. This supports a preparation boundary only; it does not establish a method, portion, formula, or complete ration.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "canary",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-canary-feeding"
+          ],
+          "locator": "VCA Canaries suitable-food table: ‘cooked beans’",
+          "evidenceScope": "species_specific",
+          "rationale": "Canary-specific veterinary guidance presents beans as cooked, not as raw dried fava beans. The targeted search found no higher-quality exact-form source, so this bounded preparation outcome does not establish a method, portion, formula, or complete ration.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "mateos-puchal-1981-raw-broad-bean-broilers",
+            "rubio-1990-raw-autoclaved-faba-broilers"
+          ],
+          "locator": "Mateos and Puchal defined low-inclusion raw broad-bean broiler diets; Rubio et al. raw-versus-autoclaved faba-bean broiler diets",
+          "evidenceScope": "species_specific",
+          "rationale": "Direct broiler studies show that raw fava/broad-bean outcomes depend on the defined balanced diet, inclusion level, and processing: one reports defined low-inclusion use, while the raw-versus-autoclaved study reports poorer outcomes at higher raw inclusion. This supports limited controlled-ration context only, not a home-feeding rule, complete ration, or other-species outcome.",
+          "reviewedAt": "2026-08-20"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "vca-pigeon-dove-feeding",
+          "palomacy-pigeon-feeding-2026",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "mateos-puchal-1981-raw-broad-bean-broilers",
+          "rubio-1990-raw-autoclaved-faba-broilers",
+          "ftb-legume-safety-2018"
+        ],
+        "rule": "Keep raw dried fava beans distinct from soaked, sprouted, cooked, canned, fermented, milled, or manufactured forms. Companion-bird records require preparation; pigeon and, where documented, chicken uncertainty remain explicit; chicken evidence is otherwise bounded to cited controlled poultry studies. This evidence-only record does not approve runtime use, a formula, a portion, or a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-20"
+    },
+    {
+      "ingredientId": "black_beans",
+      "ingredientDisplayName": "Black beans",
+      "form": "raw dried black beans",
+      "nutrition": {
+        "sourceIds": [
+          "merck-poultry-2024"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only review of raw dried black beans. It does not add a nutrient value, an active ingredient, a dry-mix instruction, or a complete-ration claim."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "vca-pigeon-dove-feeding",
+            "palomacy-pigeon-feeding-2026"
+          ],
+          "locator": "VCA Feeding Pigeons and Doves and Palomacy pigeon-feeding guidance; Issue #145 first-pass and targeted second-search log for raw dried black beans",
+          "evidenceScope": "species_specific",
+          "rationale": "Neither direct pigeon source names raw dried black beans or establishes its preparation boundary. The documented first and targeted second searches yielded no accessible exact pigeon/form evidence, so this row remains unresolved without using another bird’s evidence.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "kiwis-bird-rescue-diet-2026"
+          ],
+          "locator": "Kiwi’s New Life Bird Rescue Diet and Chop Recipes: dried beans must be rehydrated and fully cooked and cooled; black beans appear only in the cooked-legume recipe",
+          "evidenceScope": "group_specific",
+          "rationale": "Companion-bird rescue guidance frames black beans only as cooked legumes and requires dried beans to be rehydrated and fully cooked and cooled. This is a preparation boundary only; it does not establish a formula, amount, complete ration, or another species outcome.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-african-grey-feeding"
+          ],
+          "locator": "VCA African Grey suggested-food table: ‘cooked beans (various types)’",
+          "evidenceScope": "species_specific",
+          "rationale": "African-Grey-specific veterinary guidance presents beans as cooked, not as raw dried black beans. This supports a preparation boundary only; it does not establish a method, portion, formula, or complete ration.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-budgie-feeding"
+          ],
+          "locator": "VCA Budgies suitable-food table: ‘cooked beans (various)’",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie-specific veterinary guidance presents beans as cooked, not as raw dried black beans. This supports a preparation boundary only; it does not establish a method, portion, formula, or complete ration.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "canary",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-canary-feeding"
+          ],
+          "locator": "VCA Canaries suitable-food table: ‘cooked beans’",
+          "evidenceScope": "species_specific",
+          "rationale": "Canary-specific veterinary guidance presents beans as cooked, not as raw dried black beans. The targeted search found no higher-quality exact-form source, so this bounded preparation outcome does not establish a method, portion, formula, or complete ration.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "merck-poultry-2024"
+          ],
+          "locator": "Merck Nutritional Requirements of Poultry complete-ration boundary; Issue #145 first-pass and targeted second-search log for raw dried black beans",
+          "evidenceScope": "species_specific",
+          "rationale": "The documented first and targeted second searches found no accessible direct chicken study of the exact raw dried black-bean form; the accessible broiler black-bean source used boiled beans. Merck supplies only the complete-ration boundary, so the exact raw form remains unresolved rather than being inferred from pinto, kidney, or cooked black beans.",
+          "reviewedAt": "2026-08-20"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "vca-pigeon-dove-feeding",
+          "palomacy-pigeon-feeding-2026",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "merck-poultry-2024",
+          "kiwis-bird-rescue-diet-2026"
+        ],
+        "rule": "Keep raw dried black beans distinct from soaked, sprouted, cooked, canned, fermented, milled, or manufactured forms. Companion-bird records require preparation; pigeon and, where documented, chicken uncertainty remain explicit; chicken evidence is otherwise bounded to cited controlled poultry studies. This evidence-only record does not approve runtime use, a formula, a portion, or a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-20"
+    },
+    {
+      "ingredientId": "pinto_beans",
+      "ingredientDisplayName": "Pinto beans",
+      "form": "raw dried pinto beans",
+      "nutrition": {
+        "sourceIds": [
+          "arija-2006-raw-extruded-pinto-chicks",
+          "bhave-1964-nonheated-pinto-chicks"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only review of raw dried pinto beans. It does not add a nutrient value, an active ingredient, a dry-mix instruction, or a complete-ration claim."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "vca-pigeon-dove-feeding",
+            "palomacy-pigeon-feeding-2026"
+          ],
+          "locator": "VCA Feeding Pigeons and Doves and Palomacy pigeon-feeding guidance; Issue #145 first-pass and targeted second-search log for raw dried pinto beans",
+          "evidenceScope": "species_specific",
+          "rationale": "Neither direct pigeon source names raw dried pinto beans or establishes its preparation boundary. The documented first and targeted second searches yielded no accessible exact pigeon/form evidence, so this row remains unresolved without using another bird’s evidence.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "ftb-legume-safety-2018"
+          ],
+          "locator": "For the Birds Legume Safety Warning, preparation list naming pinto beans among beans to sprout or fully cook",
+          "evidenceScope": "group_specific",
+          "rationale": "Parrot-rescue guidance names pinto beans within a preparation-bound bean list. It does not establish raw dried use, a method, a portion, a formula, a complete ration, or any other species outcome.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-african-grey-feeding"
+          ],
+          "locator": "VCA African Grey suggested-food table: ‘cooked beans (various types)’",
+          "evidenceScope": "species_specific",
+          "rationale": "African-Grey-specific veterinary guidance presents beans as cooked, not as raw dried pinto beans. This supports a preparation boundary only; it does not establish a method, portion, formula, or complete ration.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-budgie-feeding"
+          ],
+          "locator": "VCA Budgies suitable-food table: ‘cooked beans (various)’",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie-specific veterinary guidance presents beans as cooked, not as raw dried pinto beans. This supports a preparation boundary only; it does not establish a method, portion, formula, or complete ration.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "canary",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-canary-feeding"
+          ],
+          "locator": "VCA Canaries suitable-food table: ‘cooked beans’",
+          "evidenceScope": "species_specific",
+          "rationale": "Canary-specific veterinary guidance presents beans as cooked, not as raw dried pinto beans. The targeted search found no higher-quality exact-form source, so this bounded preparation outcome does not establish a method, portion, formula, or complete ration.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "arija-2006-raw-extruded-pinto-chicks",
+            "bhave-1964-nonheated-pinto-chicks"
+          ],
+          "locator": "Arija et al. 0–21-day raw-versus-extruded pinto-kidney-bean broiler trial; Bhave heated-versus-non-heated pinto-bean-meal broiler-strain-chick thesis",
+          "evidenceScope": "species_specific",
+          "rationale": "Two direct chicken studies report poorer growth or performance with raw/non-heated pinto-bean diets and improvement with processing. This establishes a preparation boundary only; it does not prescribe a household method, portion, formula, or complete ration.",
+          "reviewedAt": "2026-08-20"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "vca-pigeon-dove-feeding",
+          "palomacy-pigeon-feeding-2026",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "arija-2006-raw-extruded-pinto-chicks",
+          "bhave-1964-nonheated-pinto-chicks",
+          "ftb-legume-safety-2018"
+        ],
+        "rule": "Keep raw dried pinto beans distinct from soaked, sprouted, cooked, canned, fermented, milled, or manufactured forms. Companion-bird records require preparation; pigeon and, where documented, chicken uncertainty remain explicit; chicken evidence is otherwise bounded to cited controlled poultry studies. This evidence-only record does not approve runtime use, a formula, a portion, or a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-20"
+    },
+    {
+      "ingredientId": "navy_beans",
+      "ingredientDisplayName": "Navy beans",
+      "form": "raw dried navy beans",
+      "nutrition": {
+        "sourceIds": [
+          "hewitt-1973-raw-navy-chicks"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only review of raw dried navy beans. It does not add a nutrient value, an active ingredient, a dry-mix instruction, or a complete-ration claim."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "vca-pigeon-dove-feeding",
+            "palomacy-pigeon-feeding-2026"
+          ],
+          "locator": "VCA Feeding Pigeons and Doves and Palomacy pigeon-feeding guidance; Issue #145 first-pass and targeted second-search log for raw dried navy beans",
+          "evidenceScope": "species_specific",
+          "rationale": "Neither direct pigeon source names raw dried navy beans or establishes its preparation boundary. The documented first and targeted second searches yielded no accessible exact pigeon/form evidence, so this row remains unresolved without using another bird’s evidence.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "ftb-legume-safety-2018"
+          ],
+          "locator": "For the Birds Legume Safety Warning, preparation list naming navy beans among beans to sprout or fully cook",
+          "evidenceScope": "group_specific",
+          "rationale": "Parrot-rescue guidance names navy beans within a preparation-bound bean list. It does not establish raw dried use, a method, a portion, a formula, a complete ration, or any other species outcome.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-african-grey-feeding"
+          ],
+          "locator": "VCA African Grey suggested-food table: ‘cooked beans (various types)’",
+          "evidenceScope": "species_specific",
+          "rationale": "African-Grey-specific veterinary guidance presents beans as cooked, not as raw dried navy beans. This supports a preparation boundary only; it does not establish a method, portion, formula, or complete ration.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-budgie-feeding"
+          ],
+          "locator": "VCA Budgies suitable-food table: ‘cooked beans (various)’",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie-specific veterinary guidance presents beans as cooked, not as raw dried navy beans. This supports a preparation boundary only; it does not establish a method, portion, formula, or complete ration.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "canary",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "vca-canary-feeding"
+          ],
+          "locator": "VCA Canaries suitable-food table listing navy beans under ‘cooked beans’",
+          "evidenceScope": "species_specific",
+          "rationale": "Canary-specific veterinary guidance explicitly lists navy beans under cooked beans, not as raw dried food. This supports a preparation boundary only; it does not establish a method, portion, formula, or complete ration.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "requires_preparation",
+          "sourceIds": [
+            "hewitt-1973-raw-navy-chicks"
+          ],
+          "locator": "Hewitt et al. abstract: raw and heated navy-bean meal diets in conventional and germ-free chicks",
+          "evidenceScope": "species_specific",
+          "rationale": "The direct chick study records body-weight depression and pancreatic changes with raw navy-bean meal, with a greater final-body-weight depression in conventional chicks. This establishes a preparation boundary only; it does not prescribe a household method, portion, formula, or complete ration.",
+          "reviewedAt": "2026-08-20"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "vca-pigeon-dove-feeding",
+          "palomacy-pigeon-feeding-2026",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "hewitt-1973-raw-navy-chicks",
+          "ftb-legume-safety-2018"
+        ],
+        "rule": "Keep raw dried navy beans distinct from soaked, sprouted, cooked, canned, fermented, milled, or manufactured forms. Companion-bird records require preparation; pigeon and, where documented, chicken uncertainty remain explicit; chicken evidence is otherwise bounded to cited controlled poultry studies. This evidence-only record does not approve runtime use, a formula, a portion, or a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-20"
     }
   ]
 }
