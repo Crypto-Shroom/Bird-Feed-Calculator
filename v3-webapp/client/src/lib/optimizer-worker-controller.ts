@@ -1,7 +1,7 @@
 import type { OptimizerWorkerCancelRequest, OptimizerWorkerRawResult, OptimizerWorkerRequest, OptimizerWorkerResponse, OptimizerWorkerSolveRequest } from "./optimizer-protocol";
 
 export interface OptimizerWorkerExecutorResult {
-  status: "optimal" | "infeasible" | "error";
+  status: OptimizerWorkerRawResult["status"];
   quantities: Record<string, number>;
   mipGap?: number;
   solverStatus?: string;

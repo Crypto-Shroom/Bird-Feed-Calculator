@@ -1,16 +1,13 @@
 import { OptimizerWorkerController, installOptimizerWorkerScope, type OptimizerWorkerScopeLike } from "./optimizer-worker-controller";
+import { BROWSER_WORKER_WALL_TIMEOUT_MS, createBrowserLocalSolverExecutor } from "./optimizer-worker-executor";
 
 const scope = globalThis as unknown as OptimizerWorkerScopeLike;
 
 if (typeof scope.addEventListener === "function" && typeof scope.postMessage === "function") {
   const controller = new OptimizerWorkerController(
     scope,
-    async () => ({
-      status: "error",
-      quantities: {},
-      errorMessage: "The isolated optimizer worker lifecycle proof of concept has no registered solver executor.",
-    }),
-    1_000,
+    createBrowserLocalSolverExecutor(),
+    BROWSER_WORKER_WALL_TIMEOUT_MS,
   );
   installOptimizerWorkerScope(scope, controller);
 }
