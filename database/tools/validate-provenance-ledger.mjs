@@ -197,8 +197,8 @@ function validateFoodReviews(reviews, sourceIndex, errors) {
 
       if (entry.evidenceScope === "owner_approved_policy") {
         const policy = review.ownerPolicy;
-        if (!policy || typeof policy !== "object" || !isNonEmptyString(policy.policySourceId) || !isNonEmptyString(policy.policyType) || !isNonEmptyString(policy.authority) || !isNonEmptyString(policy.decisionDate) || !isNonEmptyString(policy.decisionUrl) || !isNonEmptyString(policy.boundary)) {
-          errors.push(`${context} with owner_approved_policy scope must define a complete review.ownerPolicy object.`);
+        if (!policy || typeof policy !== "object" || !isNonEmptyString(policy.policySourceId) || !isNonEmptyString(policy.policyType) || !isNonEmptyString(policy.authority) || !isNonEmptyString(policy.decisionDate) || !isNonEmptyString(policy.decisionUrl) || !isNonEmptyString(policy.rejectionNote) || !isNonEmptyString(policy.boundary)) {
+          errors.push(`${context} with owner_approved_policy scope must define a complete review.ownerPolicy object, including a rejection note.`);
           continue;
         }
         const policySource = sourceIndex.get(policy.policySourceId);

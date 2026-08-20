@@ -57,6 +57,7 @@ for (const review of foodReviews.ingredientReviews) {
     authority: "product_owner",
     decisionDate: date,
     decisionUrl,
+    rejectionNote: `Avoid for pigeons: raw dried ${target.displayName} have documented compound concerns, while safe pigeon use of this exact raw dried form has not been clearly established. This is a precautionary owner policy, not a claim of directly demonstrated pigeon toxicity.`,
     boundary: "Applies only to the pigeon outcome for this exact raw dried form. It preserves the underlying direct-evidence limitation and does not change another species, food form, active catalog entry, nutrient value, formula, calculation behavior, warning UI, or public copy.",
   };
 

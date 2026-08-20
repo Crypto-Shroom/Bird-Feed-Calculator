@@ -205,7 +205,7 @@ describe("canonical provenance ledger", () => {
         ingredientId: string;
         form: string;
         speciesEvidence: Array<{ bird: string; outcome: string; sourceIds: string[]; evidenceScope: string }>;
-        ownerPolicy?: { policySourceId: string; policyType: string; authority: string };
+        ownerPolicy?: { policySourceId: string; policyType: string; authority: string; rejectionNote: string };
       }>;
     };
     const coverageLedger = readJson("food-coverage.json") as {
@@ -271,6 +271,8 @@ describe("canonical provenance ledger", () => {
         policyType: "precautionary_avoid",
         authority: "product_owner",
       });
+      expect(review?.ownerPolicy?.rejectionNote).toContain("documented compound concerns");
+      expect(review?.ownerPolicy?.rejectionNote).toContain("safe pigeon use");
       if (expectedReview.ingredientId === "fava_beans") {
         expect(review?.speciesEvidence[0].sourceIds).toContain("dilks-1975-feral-pigeon-broad-beans");
       }

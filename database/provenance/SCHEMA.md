@@ -61,7 +61,7 @@ Every reusable source is defined once in `sources.json`.
 | Explicit evidence scope | Every row uses one of `species_specific`, `group_specific`, `related_species`, `owner_approved_policy`, or `historical_project`. An `owner_approved_policy` row must preserve the underlying evidence boundary in its rationale and may not be represented as a direct research outcome. |
 | Honest gaps | `unresolved` is valid and required when current evidence does not meet the six-bird standard. |
 | No inferred approval | A source written for pigeons cannot silently permit the food for parrots, African Greys, budgies, canaries, or chickens. |
-| Owner precaution boundary | A food review may record an `ownerPolicy` only when the owner explicitly decides a safety posture. The linked policy source and entry rationale must state that it is a policy decision, preserve any direct-evidence gap, and state the exact bird/form boundary. |
+| Owner precaution boundary | A food review may record an `ownerPolicy` only when the owner explicitly decides a safety posture. The linked policy source and entry rationale must state that it is a policy decision, preserve any direct-evidence gap, and state the exact bird/form boundary. Its required non-runtime `rejectionNote` must concisely say why the named bird/form is rejected without presenting the policy as direct scientific proof. |
 
 ## Food coverage record
 
