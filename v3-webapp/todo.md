@@ -137,3 +137,5 @@
 - [x] Conduct an expanded multilingual and source-type-diverse follow-up for direct pigeon evidence on plain fresh raw blueberries; preserve `unresolved` unless the exact species/form outcome is established.
 - [x] Assess the owner-supplied pigeon nutrition sources for exact fresh-blueberry relevance, document their limitations in canonical provenance, and add a durable AGENTS.md rule requiring the appropriate research skill before evidence work.
 - [x] Create, validate, and save a reusable evidence-research best-practices skill for species/form provenance work, then use it for the owner-supplied pigeon-blueberry source reconciliation.
+- [x] Locate and assess an existing evidence-research best-practices skill or established skill source before retaining, replacing, or distributing any locally authored substitute.
+- [x] Replace the removed locally authored research-skill draft with the existing MIT-licensed Daymade `deep-research` skill and direct repository provenance work to it.
