@@ -3100,6 +3100,114 @@
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-21"
+    },
+    {
+      "ingredientId": "whole_mouse",
+      "ingredientDisplayName": "Whole raw mouse / rodent prey",
+      "form": "whole raw mouse or comparably sized whole rodent prey; excludes live hunting, insects, cooked meat, meat scraps, and commercial processed animal-protein products",
+      "nutrition": {
+        "sourceIds": [
+          "issue-68-whole-mouse-research-log-2026"
+        ],
+        "basis": "not_applicable",
+        "notes": "This evidence-only record evaluates the exact whole raw vertebrate-prey form. It does not add a nutrient value, inventory item, formula ingredient, or complete-ration claim."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "avoid",
+          "sourceIds": [
+            "merck-columbiformes-2025",
+            "issue-68-owner-whole-mouse-precaution-2026-08-21"
+          ],
+          "locator": "Merck 'Nutrition in Pigeons and Doves' opening feeding-ecology paragraph; Issue #68 owner policy",
+          "evidenceScope": "owner_approved_policy",
+          "rationale": "The owner has explicitly chosen a precautionary avoid outcome for this exact whole raw vertebrate-prey form. Merck describes pigeons/doves as primarily granivorous or frugivorous, with some invertebrates, but does not establish whole raw mouse use. The policy preserves that direct-evidence gap and does not claim pigeon toxicity.",
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "avoid",
+          "sourceIds": [
+            "merck-psittacines-2025",
+            "issue-68-owner-whole-mouse-precaution-2026-08-21"
+          ],
+          "locator": "Merck 'Nutrition in Psittacines' opening diet paragraph and carnivorous-diet warning; Issue #68 owner policy",
+          "evidenceScope": "owner_approved_policy",
+          "rationale": "The owner has explicitly chosen a precautionary avoid outcome for this exact whole raw vertebrate-prey form. Merck notes plant-based diets and that some psittacine species ingest carrion, but it does not establish whole raw mouse use for the general companion-parrot row. The policy preserves that direct-evidence gap and does not claim parrot toxicity.",
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "avoid",
+          "sourceIds": [
+            "vca-african-grey-feeding",
+            "merck-psittacines-2025",
+            "issue-68-owner-whole-mouse-precaution-2026-08-21"
+          ],
+          "locator": "VCA African Grey feeding wild-diet and people-food sections; Merck psittacine carnivorous-diet warning; Issue #68 owner policy",
+          "evidenceScope": "owner_approved_policy",
+          "rationale": "The owner has explicitly chosen a precautionary avoid outcome for this exact whole raw vertebrate-prey form. The Grey-specific guidance describes seeds, nuts, fruits, berries, vegetation, and a distinct cooked-meat context; neither source establishes whole raw mouse use. The policy preserves that direct-evidence gap and does not claim African Grey toxicity.",
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "avoid",
+          "sourceIds": [
+            "vca-budgie-feeding",
+            "merck-psittacines-2025",
+            "issue-68-owner-whole-mouse-precaution-2026-08-21"
+          ],
+          "locator": "VCA Budgies feeding wild-diet and pelleted/fresh-food sections; Merck psittacine diet context; Issue #68 owner policy",
+          "evidenceScope": "owner_approved_policy",
+          "rationale": "The owner has explicitly chosen a precautionary avoid outcome for this exact whole raw vertebrate-prey form. Budgie-specific guidance describes seeds, fruit, berries, vegetation, pellets, and fresh food; neither it nor the targeted follow-up establishes whole raw mouse use. The policy preserves that direct-evidence gap and does not claim budgie toxicity.",
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "canary",
+          "outcome": "avoid",
+          "sourceIds": [
+            "vca-canary-feeding",
+            "issue-68-owner-whole-mouse-precaution-2026-08-21"
+          ],
+          "locator": "VCA Canaries feeding wild-diet, seed, and balanced-diet sections; Issue #68 owner policy",
+          "evidenceScope": "owner_approved_policy",
+          "rationale": "The owner has explicitly chosen a precautionary avoid outcome for this exact whole raw vertebrate-prey form. Canary guidance describes seed eating with seasonal insects, fruit, berries, and vegetation, but no direct whole raw mouse outcome was found after targeted follow-up. The policy preserves that direct-evidence gap and does not claim canary toxicity.",
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "avoid",
+          "sourceIds": [
+            "sts-chicken-nutrition-mice-2026",
+            "usu-backyard-chickens-rodents-2021",
+            "issue-68-owner-whole-mouse-precaution-2026-08-21"
+          ],
+          "locator": "STS 'Die richtige Ernährung' paragraph on hunting small mice and prohibition on meat scraps; USU Extension rodent biosecurity discussion; Issue #68 owner policy",
+          "evidenceScope": "owner_approved_policy",
+          "rationale": "The owner has explicitly chosen a precautionary avoid outcome for this exact deliberate whole raw vertebrate-prey form. STS documents chickens hunting small mice, a distinct live-foraging behavior, and separately prohibits meat scraps; USU documents rodent-exposure and biosecurity concerns. Neither establishes offered whole raw mice as a regular diet. The policy preserves that boundary and does not claim chicken toxicity or deny occasional mouse hunting.",
+          "reviewedAt": "2026-08-21"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "issue-68-owner-whole-mouse-precaution-2026-08-21",
+          "sts-chicken-nutrition-mice-2026",
+          "usu-backyard-chickens-rodents-2021"
+        ],
+        "rule": "Do not treat this exact whole raw vertebrate-prey form as a calculator food for any supported bird. This owner-policy boundary remains distinct from live hunting, insects, cooked meat, meat scraps, commercial processed animal-protein products, a toxicology claim, a portion, a formula, or a complete-ration instruction.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-21",
+      "ownerPolicy": {
+        "policySourceId": "issue-68-owner-whole-mouse-precaution-2026-08-21",
+        "policyType": "precautionary_avoid",
+        "authority": "product_owner",
+        "decisionDate": "2026-08-21",
+        "decisionUrl": "https://github.com/Crypto-Shroom/Bird-Feed-Calculator/issues/68",
+        "rejectionNote": "Avoid for all six supported birds: whole raw mouse or rodent prey is excluded by owner precaution after the documented species/form research did not establish a supported calculator-food outcome. This is a product policy, not a claim of directly demonstrated toxicity; it does not deny that chickens may sometimes hunt mice.",
+        "boundary": "Applies only to whole raw mouse or comparably sized whole rodent prey for pigeon, parrot, African Grey, budgie, canary, and chicken. It does not decide a different prey form, insects, live hunting, cooked meat, meat scraps, commercial processed animal-protein products, active catalog entry, nutrient value, formula, calculation behavior, warning UI, or public copy."
+      }
     }
   ]
 }
