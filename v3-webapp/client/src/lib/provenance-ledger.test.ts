@@ -666,6 +666,7 @@ describe("canonical provenance ledger", () => {
     ]));
     expect(pigeonGrit?.proposedCopyBoundary).toContain("must not say that all redstone is insufficient");
     expect(pigeonGrit?.proposedCopyBoundary).toContain("claim that Pet/Companion pigeons are always breeding");
+    expect(pigeonGrit?.proposedCopyBoundary).toContain("does not authorize a change to the existing voluntary-use grit guidance");
   });
 
   it("keeps protected and runtime profile configuration claims paired without deciding which range is scientifically correct", () => {
