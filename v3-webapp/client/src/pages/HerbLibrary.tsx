@@ -1,9 +1,16 @@
 // Design contract: Modern Agrarian / Organic Tech — a calm, browseable botanical catalogue distinct from the calculator dashboard, using warm grain neutrals and deep greens.
+import { useState } from "react";
 import { ArrowLeft, Leaf } from "lucide-react";
 import { Link } from "wouter";
 import { Badge } from "@/components/ui/badge";
 import { HerbCard } from "@/components/HerbCard";
 import { HERBS_SUPPLEMENTS, type Herb } from "@/lib/data";
+import {
+  filterHerbLibraryEntries,
+  HERB_LIBRARY_BIRD_FILTERS,
+  type HerbLibraryBirdFilter,
+} from "@/lib/herb-library-filter";
+import type { HerbBirdKey } from "@/lib/herb-evidence";
 
 const categoryLabels: Record<Herb["category"], string> = {
   herb_seed: "Herb seeds",
@@ -15,11 +22,22 @@ const categoryLabels: Record<Herb["category"], string> = {
 
 const categoryOrder: Herb["category"][] = ["herb_seed", "herb_spice", "herb_dried", "liquid_supplement", "powder_supplement"];
 
+const birdLabels: Record<HerbBirdKey, string> = {
+  pigeon: "Pigeon",
+  parrot: "Parrot",
+  african_grey: "African Grey",
+  budgie: "Budgie",
+  canary: "Canary",
+  chicken: "Chicken",
+};
+
 export default function HerbLibrary() {
   // Product-owner decision: do not surface apple cider vinegar in newly added app copy until its wording is explicitly approved.
   const herbEntries = Object.entries(HERBS_SUPPLEMENTS)
     .filter(([name]) => name !== "apple_cider_vinegar")
     .sort(([left], [right]) => left.localeCompare(right));
+  const [birdFilter, setBirdFilter] = useState<HerbLibraryBirdFilter>("all");
+  const visibleHerbEntries = filterHerbLibraryEntries(herbEntries, birdFilter);
 
   return (
     <div className="min-h-screen bg-[#f9f7f2] text-foreground">
@@ -44,9 +62,25 @@ export default function HerbLibrary() {
           </div>
         </section>
 
+        <section className="mb-12 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-emerald-100 bg-white p-5 shadow-sm" aria-labelledby="herb-filter-heading">
+          <h2 id="herb-filter-heading" className="font-display text-xl font-bold text-stone-900">Filter compatibility</h2>
+          <select
+            aria-label="Filter compatibility"
+            className="min-h-10 rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-medium text-stone-900 shadow-sm outline-none transition-colors focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/25"
+            value={birdFilter}
+            onChange={(event) => setBirdFilter(event.target.value as HerbLibraryBirdFilter)}
+          >
+            <option value="all">All birds</option>
+            {HERB_LIBRARY_BIRD_FILTERS.map((bird) => <option key={bird} value={bird}>{birdLabels[bird]}</option>)}
+          </select>
+        </section>
+
+        {!visibleHerbEntries.length ? <section className="rounded-2xl border border-emerald-100 bg-white p-6 text-sm leading-relaxed text-muted-foreground shadow-sm">
+          No automatically compatible herb or supplement records are currently shown for this bird.
+        </section> :
         <div className="space-y-14">
           {categoryOrder.map((category) => {
-            const herbs = herbEntries.filter(([, herb]) => herb.category === category);
+            const herbs = visibleHerbEntries.filter(([, herb]) => herb.category === category);
             if (!herbs.length) return null;
 
             return (
@@ -65,6 +99,7 @@ export default function HerbLibrary() {
             );
           })}
         </div>
+        }
       </main>
     </div>
   );

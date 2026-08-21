@@ -127,3 +127,4 @@
 - [x] Implement and validate Issue #148’s canonical split-lentil solver identity while preserving the visible catalog record, existing inventory keys, formulas, and public copy.
 - [x] Implement and validate Issue #151’s browser-local Worker executor, bounded solve protocol, strict result validation, and no-server-compute boundary without changing visitor-facing copy or current output defaults.
 - [x] Implement and validate Issue #153 active Worker integration with deterministic allocation back to actual ingredient forms, silent legacy fallback for every non-feasible/technical outcome, and local privacy-preserving diagnostics.
+- [x] Implement and validate Issue #82 Herb Library compatibility visibility using only existing source-backed herb evidence, with the owner-approved filter labels only and no herb safety, active-data, other public-copy, or formula change.
