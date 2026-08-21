@@ -2360,6 +2360,73 @@
       "permittedUse": "Chicken-specific fresh-parsley husbandry context.",
       "limitations": "Owner guidance; no controlled dose or complete-ration claim.",
       "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "sts-chicken-nutrition-mice-2026",
+      "title": "Die richtige Ernährung",
+      "authorsOrOrganization": "Schweizer Tierschutz STS",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.huehnerrichtighalten.ch/die-richtige-ernaehrung/",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "Domestic-chicken husbandry context stating that chickens hunt small mice, while separately prohibiting the feeding of meat scraps because of animal-disease risk.",
+      "limitations": "It does not assess deliberate whole raw mouse feeding, distinguish an offered dead mouse from live hunting, establish a portion, or support another bird species.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "usu-backyard-chickens-rodents-2021",
+      "title": "Ask an Expert – Backyard Chicken Ranching, Rodents and COVID-19",
+      "authorsOrOrganization": "Terry Messmer; Utah State University Extension",
+      "publishedYear": "2021",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://extension.usu.edu/news_sections/agriculture_and_natural_resources/backyard-chicken-ranching-rodents-and-covid-19",
+      "speciesScopes": [
+        "chicken",
+        "rodent"
+      ],
+      "permittedUse": "Backyard-chicken rodent-exposure, hygiene, and biosecurity context, including rodent-associated zoonotic concerns and coop exclusion measures.",
+      "limitations": "It does not assess the nutritional suitability of deliberately feeding mice or any other whole raw prey item to chickens.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "issue-68-whole-mouse-research-log-2026",
+      "title": "Issue #68 whole raw mouse/rodent prey six-bird evidence research log",
+      "authorsOrOrganization": "Bird Feed Calculator project research record",
+      "publishedYear": "2026",
+      "sourceTier": "historical_project",
+      "urlOrDoi": "database/provenance/evidence/issue-68-mice-research-log.md",
+      "speciesScopes": [
+        "pigeon",
+        "parrot",
+        "african_grey",
+        "budgie",
+        "canary",
+        "chicken"
+      ],
+      "permittedUse": "Documents the separate first-pass and targeted second searches, full-source reads, source-quality limits, and counter-review for the exact whole raw mouse/rodent prey form.",
+      "limitations": "This audit record is not external feeding evidence, a toxicology finding, a portion, a formula, a complete ration, or a runtime decision.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "issue-68-owner-whole-mouse-precaution-2026-08-21",
+      "title": "Owner-approved precautionary policy for whole raw mouse or rodent prey",
+      "authorsOrOrganization": "Bird Feed Calculator product owner",
+      "publishedYear": "2026",
+      "sourceTier": "owner_approved_policy",
+      "urlOrDoi": "https://github.com/Crypto-Shroom/Bird-Feed-Calculator/issues/68",
+      "speciesScopes": [
+        "pigeon",
+        "parrot",
+        "african_grey",
+        "budgie",
+        "canary",
+        "chicken"
+      ],
+      "permittedUse": "Records the owner's explicit precautionary decision that whole vertebrate prey, including whole raw mice/rodents, is excluded for all six supported calculator birds; the owner separately recognizes that chickens may hunt mice but that this is not a regular-diet instruction.",
+      "limitations": "This is a product safety-policy decision, not external proof of toxicity, a feeding trial, a portion, a complete ration, or a conclusion about insects, cooked meat, commercial animal-protein products, or a different prey form.",
+      "accessedAt": "2026-08-21"
     }
   ]
 }
