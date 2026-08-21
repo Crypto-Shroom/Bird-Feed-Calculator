@@ -625,6 +625,45 @@ describe("canonical provenance ledger", () => {
     }
   });
 
+  it("records fresh plain strawberry with six direct bird/form evidence outcomes and documented targeted follow-up", () => {
+    const ledger = readJson("food-reviews.json") as {
+      requiredBirdOrder: string[];
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{
+          bird: string;
+          outcome: string;
+          sourceIds: string[];
+          followUpSearch: { queries: string[]; sourceIds: string[]; result: string };
+        }>;
+        processing: { rule: string; severity: string };
+      }>;
+    };
+    const strawberry = ledger.ingredientReviews.find(
+      (review) => review.ingredientId === "strawberry" && review.form === "fresh plain ripe strawberry flesh, washed, leafy cap removed, unflavoured and unsweetened",
+    );
+
+    expect(strawberry?.speciesEvidence.map((entry) => entry.bird)).toEqual(ledger.requiredBirdOrder);
+    expect(strawberry?.speciesEvidence.map((entry) => entry.outcome)).toEqual([
+      "limited",
+      "limited",
+      "limited",
+      "limited",
+      "limited",
+      "limited",
+    ]);
+    expect(strawberry?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
+    expect(strawberry?.speciesEvidence.every((entry) => entry.followUpSearch.queries.length >= 2)).toBe(true);
+    expect(strawberry?.speciesEvidence.every((entry) => entry.followUpSearch.sourceIds.length > 0)).toBe(true);
+    expect(strawberry?.speciesEvidence.every((entry) => entry.followUpSearch.result.length > 0)).toBe(true);
+    expect(strawberry?.speciesEvidence.find((entry) => entry.bird === "pigeon")?.sourceIds).toContain("ford-columbiformes-diet-2026");
+    expect(strawberry?.speciesEvidence.find((entry) => entry.bird === "chicken")?.sourceIds).toContain("chewy-chicken-strawberry-2025");
+    expect(strawberry?.processing.severity).toBe("warning");
+    expect(strawberry?.processing.rule).toContain("frozen");
+    expect(strawberry?.processing.rule).toContain("mouldy");
+  });
+
   it("records second targeted searches for both cashew forms", () => {
     const ledger = readJson("food-reviews.json") as { ingredientReviews: Array<{ ingredientId: string; form: string; speciesEvidence: Array<{ followUpSearch: { queries: string[]; sourceIds: string[]; result: string } }> }> };
     const forms = ledger.ingredientReviews.filter((review) => review.ingredientId === "cashew");
