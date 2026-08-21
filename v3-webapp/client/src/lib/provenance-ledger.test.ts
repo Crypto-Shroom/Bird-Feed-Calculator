@@ -452,13 +452,13 @@ describe("canonical provenance ledger", () => {
         trackedItemId: "thyme",
         ingredientId: "thyme",
         form: "dried culinary thyme leaf, plain and unsalted",
-        outcomes: ["unresolved", "unresolved", "unresolved", "unresolved", "unresolved", "limited"],
+        outcomes: ["limited", "limited", "limited", "limited", "limited", "limited"],
       },
       {
         trackedItemId: "parsley",
         ingredientId: "parsley",
         form: "dried culinary parsley leaf, plain and unsalted",
-        outcomes: ["unresolved", "unresolved", "unresolved", "unresolved", "unresolved", "limited"],
+        outcomes: ["unresolved", "unresolved", "unresolved", "unresolved", "limited", "limited"],
       },
     ];
     const coreCoverage = coverageLedger.claimCoverage.find(

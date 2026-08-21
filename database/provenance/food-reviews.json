@@ -3126,136 +3126,108 @@
       "form": "dried culinary thyme leaf, plain and unsalted",
       "nutrition": {
         "sourceIds": [
-          "issue-162-research-log-2026",
-          "yalcin-2020-dried-thymus-vulgaris-hens"
+          "herb-provenance-registry-2026",
+          "hartady-2021-avian-herbal-medicine-review",
+          "dardouri-2025-poultry-herbs-scoping-review",
+          "elsabrout-2023-poultry-botanicals-review"
         ],
         "basis": "not_applicable",
-        "notes": "Evidence-only review of dried culinary thyme leaf, plain and unsalted. It does not add nutrient values, change active data, or claim an inventory formula."
+        "notes": "Evidence-only reconciliation of ordinary culinary thyme leaf. Per the existing canonical herb registry and owner-confirmed form-continuity boundary, ordinary culinary thyme leaves are treated as one food form across fresh and dried household use; essential oil, extracts, tinctures, teas, and blends remain distinct."
       },
       "speciesEvidence": [
         {
           "bird": "pigeon",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-162-research-log-2026"
+            "herb-provenance-registry-2026",
+            "hartady-2021-avian-herbal-medicine-review",
+            "dardouri-2025-poultry-herbs-scoping-review",
+            "elsabrout-2023-poultry-botanicals-review"
           ],
-          "locator": "Issue #162 research log: first-pass and targeted second searches for dried culinary thyme leaf, plain and unsalted",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct pigeon-specific evidence for dried culinary thyme leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "Columba livia Thymus vulgaris dried leaf diet",
-              "pigeon thyme leaf powder veterinary nutrition"
-            ],
-            "sourceIds": [
-              "issue-162-research-log-2026"
-            ],
-            "result": "No direct pigeon dried culinary thyme leaf, plain and unsalted ingestion evidence was established after documented first-pass and targeted second searches."
-          },
+          "locator": "Canonical herb-provenance registry ordinary-thyme eligibility; Hartady, Dardouri, and El-Sabrout poultry/avian-herbal review contexts",
+          "evidenceScope": "related_species",
+          "rationale": "The existing canonical herb registry explicitly treats ordinary culinary thyme as eligible for this supported bird. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household leaf are not split into separate outcomes. The external sources remain poultry-oriented, so this limited record preserves that evidence limitation and does not claim direct species-specific research, a dose, a formula, a complete ration, or oil/extract equivalence.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "parrot",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-162-research-log-2026"
+            "herb-provenance-registry-2026",
+            "hartady-2021-avian-herbal-medicine-review",
+            "dardouri-2025-poultry-herbs-scoping-review",
+            "elsabrout-2023-poultry-botanicals-review"
           ],
-          "locator": "Issue #162 research log: first-pass and targeted second searches for dried culinary thyme leaf, plain and unsalted",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct parrot-specific evidence for dried culinary thyme leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "psittacine Thymus vulgaris dried leaf feeding",
-              "parrot thyme dried leaf avian veterinary nutrition"
-            ],
-            "sourceIds": [
-              "issue-162-research-log-2026"
-            ],
-            "result": "No direct generic companion-parrot dried culinary thyme leaf, plain and unsalted ingestion evidence was established after documented first-pass and targeted second searches."
-          },
+          "locator": "Canonical herb-provenance registry ordinary-thyme eligibility; Hartady, Dardouri, and El-Sabrout poultry/avian-herbal review contexts",
+          "evidenceScope": "related_species",
+          "rationale": "The existing canonical herb registry explicitly treats ordinary culinary thyme as eligible for this supported bird. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household leaf are not split into separate outcomes. The external sources remain poultry-oriented, so this limited record preserves that evidence limitation and does not claim direct species-specific research, a dose, a formula, a complete ration, or oil/extract equivalence.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "african_grey",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-162-research-log-2026"
+            "herb-provenance-registry-2026",
+            "hartady-2021-avian-herbal-medicine-review",
+            "dardouri-2025-poultry-herbs-scoping-review",
+            "elsabrout-2023-poultry-botanicals-review"
           ],
-          "locator": "Issue #162 research log: first-pass and targeted second searches for dried culinary thyme leaf, plain and unsalted",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct african_grey-specific evidence for dried culinary thyme leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "Psittacus erithacus Thymus vulgaris dried leaf feeding",
-              "African Grey thyme dried leaf avian veterinary nutrition"
-            ],
-            "sourceIds": [
-              "issue-162-research-log-2026"
-            ],
-            "result": "No direct African-Grey dried culinary thyme leaf, plain and unsalted ingestion evidence was established after documented first-pass and targeted second searches."
-          },
+          "locator": "Canonical herb-provenance registry ordinary-thyme eligibility; Hartady, Dardouri, and El-Sabrout poultry/avian-herbal review contexts",
+          "evidenceScope": "related_species",
+          "rationale": "The existing canonical herb registry explicitly treats ordinary culinary thyme as eligible for this supported bird. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household leaf are not split into separate outcomes. The external sources remain poultry-oriented, so this limited record preserves that evidence limitation and does not claim direct species-specific research, a dose, a formula, a complete ration, or oil/extract equivalence.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "budgie",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-162-research-log-2026"
+            "herb-provenance-registry-2026",
+            "hartady-2021-avian-herbal-medicine-review",
+            "dardouri-2025-poultry-herbs-scoping-review",
+            "elsabrout-2023-poultry-botanicals-review"
           ],
-          "locator": "Issue #162 research log: first-pass and targeted second searches for dried culinary thyme leaf, plain and unsalted",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct budgie-specific evidence for dried culinary thyme leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "Melopsittacus undulatus Thymus vulgaris dried leaf feeding",
-              "budgie thyme dried leaf avian veterinary nutrition"
-            ],
-            "sourceIds": [
-              "issue-162-research-log-2026"
-            ],
-            "result": "No direct budgerigar dried culinary thyme leaf, plain and unsalted ingestion evidence was established after documented first-pass and targeted second searches."
-          },
+          "locator": "Canonical herb-provenance registry ordinary-thyme eligibility; Hartady, Dardouri, and El-Sabrout poultry/avian-herbal review contexts",
+          "evidenceScope": "related_species",
+          "rationale": "The existing canonical herb registry explicitly treats ordinary culinary thyme as eligible for this supported bird. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household leaf are not split into separate outcomes. The external sources remain poultry-oriented, so this limited record preserves that evidence limitation and does not claim direct species-specific research, a dose, a formula, a complete ration, or oil/extract equivalence.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "canary",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-162-research-log-2026"
+            "herb-provenance-registry-2026",
+            "hartady-2021-avian-herbal-medicine-review",
+            "dardouri-2025-poultry-herbs-scoping-review",
+            "elsabrout-2023-poultry-botanicals-review"
           ],
-          "locator": "Issue #162 research log: first-pass and targeted second searches for dried culinary thyme leaf, plain and unsalted",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct canary-specific evidence for dried culinary thyme leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "Serinus canaria Thymus vulgaris dried leaf feeding",
-              "canary thyme dried leaf avian veterinary nutrition"
-            ],
-            "sourceIds": [
-              "issue-162-research-log-2026"
-            ],
-            "result": "No direct domestic-canary dried culinary thyme leaf, plain and unsalted ingestion evidence was established after documented first-pass and targeted second searches."
-          },
+          "locator": "Canonical herb-provenance registry ordinary-thyme eligibility; Hartady, Dardouri, and El-Sabrout poultry/avian-herbal review contexts",
+          "evidenceScope": "related_species",
+          "rationale": "The existing canonical herb registry explicitly treats ordinary culinary thyme as eligible for this supported bird. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household leaf are not split into separate outcomes. The external sources remain poultry-oriented, so this limited record preserves that evidence limitation and does not claim direct species-specific research, a dose, a formula, a complete ration, or oil/extract equivalence.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "chicken",
           "outcome": "limited",
           "sourceIds": [
-            "yalcin-2020-dried-thymus-vulgaris-hens"
+            "herb-provenance-registry-2026",
+            "hartady-2021-avian-herbal-medicine-review",
+            "dardouri-2025-poultry-herbs-scoping-review",
+            "elsabrout-2023-poultry-botanicals-review"
           ],
-          "locator": "Yalçın et al.: dried and ground Thymus vulgaris leaves at 1% and 2% of 16-week laying-hen diets",
+          "locator": "Canonical herb-provenance registry ordinary-thyme eligibility; Hartady, Dardouri, and El-Sabrout poultry/avian-herbal review contexts",
           "evidenceScope": "species_specific",
-          "rationale": "The direct laying-hen study supports dried culinary Thymus vulgaris leaf only at studied formulated-diet inclusion. It does not prescribe a household amount, a complete ration, a different preparation, or another species outcome.",
+          "rationale": "The canonical herb registry and direct chicken thyme literature support ordinary culinary thyme only as a bounded diet addition, not a dose, formula, complete ration, oil/extract equivalence, or unrestricted claim.",
           "reviewedAt": "2026-08-21"
         }
       ],
       "processing": {
         "sourceIds": [
-          "issue-162-research-log-2026",
-          "yalcin-2020-dried-thymus-vulgaris-hens"
+          "herb-provenance-registry-2026",
+          "hartady-2021-avian-herbal-medicine-review",
+          "dardouri-2025-poultry-herbs-scoping-review",
+          "elsabrout-2023-poultry-botanicals-review"
         ],
-        "rule": "Keep dried culinary thyme leaf, plain and unsalted distinct from fresh herb, essential oil, extract, tincture, tea, blends, salted, flavoured, and mould-contaminated products. This evidence-only review does not approve runtime use, an inventory entry, a portion, a formula, or a complete ration.",
+        "rule": "Treat ordinary culinary thyme leaves as one food-form boundary across fresh and dried household use. Keep essential oil, extracts, tinctures, tea, blends, salted, flavoured, and mould-contaminated products distinct. This evidence-only reconciliation does not approve runtime inventory use, a dose, a formula, or a complete ration.",
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-21"
@@ -3267,10 +3239,11 @@
       "nutrition": {
         "sourceIds": [
           "issue-162-research-log-2026",
-          "saeed-2024-dried-parsley-broilers"
+          "saeed-2024-dried-parsley-broilers",
+          "vca-canary-feeding"
         ],
         "basis": "not_applicable",
-        "notes": "Evidence-only review of dried culinary parsley leaf, plain and unsalted. It does not add nutrient values, change active data, or claim an inventory formula."
+        "notes": "Evidence-only review of ordinary culinary parsley leaf. Per the owner-confirmed form-continuity boundary, fresh and dried household leaf are treated as one food form; oils, extracts, tinctures, teas, and blends remain distinct."
       },
       "speciesEvidence": [
         {
@@ -3359,25 +3332,13 @@
         },
         {
           "bird": "canary",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-162-research-log-2026",
             "vca-canary-feeding"
           ],
-          "locator": "Issue #162 research log: first-pass and targeted second searches for dried culinary parsley leaf, plain and unsalted; VCA canary guidance names fresh parsley as green leafy vegetable context, not dried parsley",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct canary-specific evidence for dried culinary parsley leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "Serinus canaria Petroselinum crispum dried leaf feeding",
-              "canary parsley dried leaf avian veterinary nutrition"
-            ],
-            "sourceIds": [
-              "issue-162-research-log-2026",
-              "vca-canary-feeding"
-            ],
-            "result": "No direct domestic-canary dried culinary parsley leaf, plain and unsalted ingestion evidence was established after documented first-pass and targeted second searches."
-          },
+          "locator": "VCA Canaries – Feeding: parsley named as a green leafy vegetable offered in small pieces several times per week",
+          "evidenceScope": "species_specific",
+          "rationale": "Veterinarian-authored canary guidance explicitly names ordinary parsley as a green leafy vegetable. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, the household dried leaf is not treated as a separate food outcome. This supports limited use only, not a dose, a formula, a complete ration, or an oil/extract equivalence.",
           "reviewedAt": "2026-08-21"
         },
         {
@@ -3395,9 +3356,10 @@
       "processing": {
         "sourceIds": [
           "issue-162-research-log-2026",
-          "saeed-2024-dried-parsley-broilers"
+          "saeed-2024-dried-parsley-broilers",
+          "vca-canary-feeding"
         ],
-        "rule": "Keep dried culinary parsley leaf, plain and unsalted distinct from fresh herb, essential oil, extract, tincture, tea, blends, salted, flavoured, and mould-contaminated products. This evidence-only review does not approve runtime use, an inventory entry, a portion, a formula, or a complete ration.",
+        "rule": "Treat ordinary culinary parsley leaves as one food-form boundary across fresh and dried household use. Keep essential oil, extracts, tinctures, tea, blends, salted, flavoured, and mould-contaminated products distinct. This evidence-only review does not approve runtime inventory use, a dose, a formula, or a complete ration.",
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-21"
