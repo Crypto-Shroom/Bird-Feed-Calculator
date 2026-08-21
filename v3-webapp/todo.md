@@ -127,3 +127,9 @@
 - [x] Implement and validate Issue #148’s canonical split-lentil solver identity while preserving the visible catalog record, existing inventory keys, formulas, and public copy.
 - [x] Implement and validate Issue #151’s browser-local Worker executor, bounded solve protocol, strict result validation, and no-server-compute boundary without changing visitor-facing copy or current output defaults.
 - [x] Implement and validate Issue #153 active Worker integration with deterministic allocation back to actual ingredient forms, silent legacy fallback for every non-feasible/technical outcome, and local privacy-preserving diagnostics.
+- [x] Research fresh raw blueberry suitability for pigeon, parrot, African Grey, budgie, canary, and chicken; document a separate first-pass and, where necessary, targeted follow-up for each bird/form pair in canonical provenance only, with no runtime/catalog/public-copy change.
+- [x] Conduct an expanded multilingual and source-type-diverse follow-up for direct pigeon evidence on plain fresh raw blueberries; preserve `unresolved` unless the exact species/form outcome is established.
+- [x] Assess the owner-supplied pigeon nutrition sources for exact fresh-blueberry relevance, document their limitations in canonical provenance, and add a durable AGENTS.md rule requiring the appropriate research skill before evidence work.
+- [x] Create, validate, and save a reusable evidence-research best-practices skill for species/form provenance work, then use it for the owner-supplied pigeon-blueberry source reconciliation.
+- [x] Locate and assess an existing evidence-research best-practices skill or established skill source before retaining, replacing, or distributing any locally authored substitute.
+- [x] Replace the removed locally authored research-skill draft with the existing MIT-licensed Daymade `deep-research` skill and direct repository provenance work to it.
