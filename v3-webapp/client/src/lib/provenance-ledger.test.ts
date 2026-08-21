@@ -633,23 +633,39 @@ describe("canonical provenance ledger", () => {
     expect(forms.every((review) => review.speciesEvidence.every((entry) => entry.followUpSearch.queries.length >= 2 && entry.followUpSearch.sourceIds.length > 0 && entry.followUpSearch.result.length > 0))).toBe(true);
   });
 
-  it("keeps light and fresh-produce care claims source-backed and non-runtime", () => {
+  it("keeps light, fresh-produce, and pigeon breeding-grit care claims source-backed and non-runtime", () => {
     const ledger = readJson("care-claims.json") as {
       careClaims: Array<{
         id: string;
         implementationStatus: string;
-        speciesEvidence: Array<{ sourceIds: string[] }>;
+        speciesEvidence: Array<{ bird: string; outcome: string; sourceIds: string[] }>;
+        proposedCopyBoundary: string;
       }>;
     };
 
     expect(ledger.careClaims.map((claim) => claim.id)).toEqual([
       "light-uvb-window-calcium",
       "pigeon-fresh-produce-variety",
+      "pigeon-breeding-grit-shell-calcium",
     ]);
     for (const claim of ledger.careClaims) {
       expect(claim.implementationStatus).toBe("proposed_not_runtime");
       expect(claim.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
     }
+
+    const pigeonGrit = ledger.careClaims.find((claim) => claim.id === "pigeon-breeding-grit-shell-calcium");
+    expect(pigeonGrit?.speciesEvidence).toHaveLength(1);
+    expect(pigeonGrit?.speciesEvidence[0]).toMatchObject({ bird: "pigeon", outcome: "limited" });
+    expect(pigeonGrit?.speciesEvidence[0].sourceIds).toEqual(expect.arrayContaining([
+      "zhu2025-tarim-pigeon-grit",
+      "vca-pigeon-dove-feeding",
+      "versele-neogrit-composition-2026",
+      "yan2024-white-king-pigeon-photoperiod",
+      "merck-pet-bird-reproduction-2026",
+      "icwdm-pigeon-biology-2026",
+    ]));
+    expect(pigeonGrit?.proposedCopyBoundary).toContain("must not say that all redstone is insufficient");
+    expect(pigeonGrit?.proposedCopyBoundary).toContain("claim that Pet/Companion pigeons are always breeding");
   });
 
   it("keeps protected and runtime profile configuration claims paired without deciding which range is scientifically correct", () => {

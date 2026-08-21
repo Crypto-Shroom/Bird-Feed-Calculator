@@ -84,6 +84,32 @@
       ],
       "proposedCopyBoundary": "Supports the owner-approved pigeon-only Fresh Produce interaction: a button labelled 'View suitable fresh vegetables and fruit'; a guidance panel titled 'Suitable fresh vegetables and fruit for pigeons'; fresh, washed, finely chopped or grated vegetables and small fruit pieces served in a separate dish; examples of carrot, broccoli, cauliflower, bell pepper, dandelion greens, kale, romaine, collard greens, prepared apple flesh, and berries; and the explicit exclusion 'Do not offer avocado, onion, or rhubarb. Remove leftovers promptly.' It may provide an on-site 'Sources for this guidance' panel linking the VCA, Melbourne Bird Veterinary Clinic, Palomacy, Modern Pet Pigeon Society, and Pigeon Care Tips records. It must not imply that apple seeds, apple core, any fresh produce, or the examples listed are dry-formula ingredients, inventory additions, nutrient values, or automatic compatibility outcomes.",
       "lastReviewedAt": "2026-08-17"
+    },
+    {
+      "id": "pigeon-breeding-grit-shell-calcium",
+      "title": "Pigeon breeding grit, shell-calcium, and reproductive-context boundary",
+      "category": "grit",
+      "implementationStatus": "proposed_not_runtime",
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "limited",
+          "sourceIds": [
+            "zhu2025-tarim-pigeon-grit",
+            "vca-pigeon-dove-feeding",
+            "versele-neogrit-composition-2026",
+            "yan2024-white-king-pigeon-photoperiod",
+            "merck-pet-bird-reproduction-2026",
+            "icwdm-pigeon-biology-2026"
+          ],
+          "locator": "Zhu et al. discussion of calcareous grit during egg laying and breeding-period grit consumption; VCA 'Should I be concerned about what my pigeon or dove eats?' grit paragraph; Versele Neo-Grit 'Composition'; Yan et al. Abstract, Methods, and Results on controlled photoperiod programs; Merck opening reproductive-timing discussion; ICWDM 'Reproduction' section.",
+          "evidenceScope": "species_specific",
+          "rationale": "The evidence supports only a cautious pigeon breeding-context distinction: digestible shell/calcareous material can be a calcium source, and a named pigeon-grit composition lists shell/calcium materials separately from redstone. It does not establish that redstone alone is universally inadequate or that any product or quantity is appropriate. Direct pigeon and general veterinary reproductive sources show that breeding activity is condition-dependent; year-round potential does not support an unconditional Pet/Companion breeding-state rule.",
+          "reviewedAt": "2026-08-21"
+        }
+      ],
+      "proposedCopyBoundary": "May support a separately owner-approved, pigeon-Breeding-profile note that distinguishes a suitable digestible shell/calcium component from generic grit, framed as product-composition dependent. It must not say that all redstone is insufficient, prescribe a product or quantity, claim that Pet/Companion pigeons are always breeding, or prescribe lighting. Compact care-icon text and Detailed Analysis text remain separate owner-approved copy sets; this governance entry activates neither.",
+      "lastReviewedAt": "2026-08-21"
     }
   ]
 }
