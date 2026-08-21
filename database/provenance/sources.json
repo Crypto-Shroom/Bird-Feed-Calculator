@@ -1274,6 +1274,202 @@
       "permittedUse": "Records the owner's explicit precautionary decision to classify raw dried lima, fava, black, pinto, and navy beans as avoid for pigeons because compound concerns exist and safe pigeon use has not been clearly established.",
       "limitations": "This is a product safety-policy decision, not external proof of pigeon toxicity, a raw-bean feeding study, a preparation method, a nutrition value, a runtime formula rule, or a decision about another species or bean form.",
       "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "issue-160-research-log-2026",
+      "title": "Issue #160 seed and culinary-herb evidence research log",
+      "authorsOrOrganization": "Bird Feed Calculator project research record",
+      "publishedYear": "2026",
+      "sourceTier": "historical_project",
+      "urlOrDoi": "database/provenance/evidence/issue-160-research-log.md",
+      "speciesScopes": [
+        "pigeon",
+        "parrot",
+        "african_grey",
+        "budgie",
+        "canary",
+        "chicken"
+      ],
+      "permittedUse": "Documents the independently run first-pass, targeted, and specialist-database searches for the five exact Issue #160 forms, including exact-form exclusions and unresolved outcomes.",
+      "limitations": "It is an audit record, not an external feeding study, a safety approval, a portion, a formula, a complete ration, or a runtime decision.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "hullar-1999-pigeon-feed-energy",
+      "title": "Studies on the Energy Content of Pigeon Feeds I. Energy Content and True Metabolizable Energy of Individual Feedstuffs",
+      "authorsOrOrganization": "I. Hullár; M. Meleg; S. G. Fekete; R. Romvári",
+      "publishedYear": "1999",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://pubmed.ncbi.nlm.nih.gov/10626652/",
+      "speciesScopes": [
+        "pigeon"
+      ],
+      "permittedUse": "Direct adult homing-pigeon trial in which individual feedstuffs, including whole sunflower and whole hemp seed, were fed alone for energy/digestibility measurement.",
+      "limitations": "The individual-feedstuff research context does not establish unrestricted use, a household portion, a complete ration, another seed form, or another bird species outcome.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "melbourne-bird-vet-pigeon-diet-2023",
+      "title": "Diet for Pet Pigeons",
+      "authorsOrOrganization": "Melbourne Bird Veterinary Clinic",
+      "publishedYear": "2023",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.melbournebirdvet.com/post/diet-for-pet-pigeons",
+      "speciesScopes": [
+        "pigeon"
+      ],
+      "permittedUse": "Exotics-vet pigeon guidance that names safflower in a whole-grain mix and cautions against incomplete seed/grain-only diets.",
+      "limitations": "Clinical guidance does not establish a universally suitable mix, household portion, complete ration, another seed preparation, or another species outcome.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "aav-sunflower-seeds-2025",
+      "title": "Sunflower Seeds",
+      "authorsOrOrganization": "Association of Avian Veterinarians",
+      "publishedYear": "2025",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.aav.org/blogpost/1778905/509422/Sunflower-Seeds",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Professional avian-veterinary guidance on the high-fat, non-staple context of sunflower seed for companion parrots.",
+      "limitations": "It does not define an individual species portion, a complete ration, another seed form, or a safety outcome for pigeons, canaries, or chickens.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "ullrey-1991-psittacine-seed-mixtures",
+      "title": "Formulated Diets versus Seed Mixtures for Psittacines",
+      "authorsOrOrganization": "D. E. Ullrey; M. E. Allen; D. J. Baer",
+      "publishedYear": "1991",
+      "sourceTier": "peer_reviewed_review",
+      "urlOrDoi": "https://pubmed.ncbi.nlm.nih.gov/1941226/",
+      "speciesScopes": [
+        "parrot",
+        "african_grey",
+        "psittacine"
+      ],
+      "permittedUse": "Peer-reviewed psittacine nutrition review of commercial seed mixtures, including safflower seed composition and seed-mixture nutritional limits.",
+      "limitations": "A psittacine review does not establish whole-hemp evidence for the generic parrot row, a portion, a complete ration, or any non-psittacine outcome.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "vca-small-psittacine-nutrition-1998",
+      "title": "Clinical Nutrition of Small Psittacines and Passerines",
+      "authorsOrOrganization": "Veterinary Clinics of North America: Exotic Animal Practice",
+      "publishedYear": "1998",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://doi.org/10.1053/S1055-937X(98)80002-9",
+      "speciesScopes": [
+        "budgie",
+        "small_psittacine"
+      ],
+      "permittedUse": "Clinical nutrition reference identifying sunflower and safflower as oilseeds and warning against single-seed diet patterns in small companion birds.",
+      "limitations": "It does not establish a budgie portion, a whole-hemp outcome, a complete ration, or an outcome for a different bird species.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "poultry-extension-sunflower-seeds",
+      "title": "Sunflower Seeds in Poultry Diets",
+      "authorsOrOrganization": "Poultry Extension",
+      "publishedYear": "unknown",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://poultry.extension.org/articles/feeds-and-feeding-of-poultry/feed-ingredients-for-poultry/oilseed-meals-in-poultry-diets/sunflower-seeds-in-poultry-diets/",
+      "speciesScopes": [
+        "chicken",
+        "poultry"
+      ],
+      "permittedUse": "Poultry feed-ingredient context for sunflower seed in formulated chicken diets.",
+      "limitations": "Extension feed formulation context does not establish an unsupervised household amount, a complete ration, or any other bird species outcome.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "rathaur-2023-safflower-seed-broilers",
+      "title": "Effect of Dietary Supplementation of Safflower (Carthamus tinctorius L.) Seed on the Growth Performance, Blood Lipid and Meat Quality of Broiler Chickens",
+      "authorsOrOrganization": "A. Rathaur; D. C. Rai; A. Agarwal; A. D. Tripathi",
+      "publishedYear": "2023",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.18805/IJAR.B-4807",
+      "speciesScopes": [
+        "chicken",
+        "broiler_chicken"
+      ],
+      "permittedUse": "Controlled 42-day broiler study of basal rations supplemented with 2.5%, 5%, 7.5%, or 10% safflower seed.",
+      "limitations": "The balanced broiler diets and study levels do not prescribe a household portion, a complete ration, an unprocessed seed-form equivalence, or an outcome for another bird species.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "waterhouse-1961-budgerigar-seed-palatability",
+      "title": "Food Consumption and Palatability Studies in Budgerigars",
+      "authorsOrOrganization": "C. E. Waterhouse; L. M. Hutcheson",
+      "publishedYear": "1961",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1111/j.1748-5827.1961.tb04115.x",
+      "speciesScopes": [
+        "budgie"
+      ],
+      "permittedUse": "Direct budgerigar seed-choice evidence reporting hemp-seed consumption in a free-choice palatability study.",
+      "limitations": "A palatability study does not establish a safe portion, a complete ration, long-term health effect, or another species outcome.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "jamas-2026-budgerigar-hernia-hemp",
+      "title": "Surgical Repair of True Abdominal Wall Hernias in Two Budgerigars",
+      "authorsOrOrganization": "Journal of Avian Medicine and Surgery authors",
+      "publishedYear": "2026",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1647/AVIANMS-D-24-00056",
+      "speciesScopes": [
+        "budgie"
+      ],
+      "permittedUse": "Direct budgerigar clinical case report in which an obese bird had an unrestricted mixed-seed diet including hemp seed and clinicians advised removal of hemp and rapeseed while restricting the diet.",
+      "limitations": "A two-case report with multi-seed diet and reproductive/obesity confounders does not prove hemp alone caused disease, establish a portion, or support another species.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "boskovic-cabrol-2025-whole-hemp-hens",
+      "title": "Whole Hempseed as a Feeding Enrichment for Laying Hens: Effects on Egg Quality, Nutritional Profile and Sensory Attributes",
+      "authorsOrOrganization": "M. Bošković Cabrol; M. Pravato; F. Bordignon; G. Xiccato; C. Ciarelli; L. Bailoni; A. Trocino",
+      "publishedYear": "2025",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1016/j.psj.2025.105483",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "Four-week controlled laying-hen study of whole hemp seed at 10% of average daily feed intake alongside a commercial diet.",
+      "limitations": "The specific legal hemp varieties, commercial-diet background, layer population, and enrichment context do not prescribe a household amount, any other hemp product, a complete ration, or another species outcome.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "morakinyo-2025-basil-leaf-meal-broilers",
+      "title": "Comparative Evaluation of Scent (Ocimum gratissimum) and Sweet Basil (Ocimum basilicum) Leaf Meal Diets on Carcass Characteristics and Organoleptic Properties of Broiler Chickens",
+      "authorsOrOrganization": "O. O. Morakinyo; A. O. Akinwumi; R. A. Atandah; M. B. Daniel; T. M. Adedibu; O. M. Ogunsola",
+      "publishedYear": "2025",
+      "sourceTier": "primary",
+      "urlOrDoi": "http://njast.com.ng/index.php/home/article/view/461",
+      "speciesScopes": [
+        "chicken",
+        "broiler_chicken"
+      ],
+      "permittedUse": "Controlled broiler study of sweet-basil (Ocimum basilicum) leaf meal at 0.5, 1.0, and 1.5 g/kg in formulated diets.",
+      "limitations": "Leaf meal at cited experimental levels is not a household dose, a complete ration, a fresh/oil/extract equivalence, or another species outcome.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "ampode-2022-oregano-powder-broilers",
+      "title": "Oregano (Origanum vulgare Linn.) Powder as Phytobiotic Feed Additives Improves the Growth Performance, Lymphoid Organs, and Economic Traits in Broiler Chickens",
+      "authorsOrOrganization": "K. M. B. Ampode; F. C. Mendoza",
+      "publishedYear": "2022",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.17582/journal.aavs/2022/10.2.434.441",
+      "speciesScopes": [
+        "chicken",
+        "broiler_chicken"
+      ],
+      "permittedUse": "Controlled 42-day broiler study of sun-dried, pulverized Origanum vulgare leaf powder incorporated into formulated diets at 1%, 3%, and 5%.",
+      "limitations": "The defined powder, trial diets, and poultry population do not establish a household amount, fresh/oil/extract equivalence, a complete ration, or another bird species outcome.",
+      "accessedAt": "2026-08-21"
     }
   ]
 }

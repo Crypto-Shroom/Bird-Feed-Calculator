@@ -325,6 +325,84 @@ describe("canonical provenance ledger", () => {
     }
   });
 
+  it("records Issue #160 seed and dried-herb forms with six explicit evidence outcomes", () => {
+    const ledger = readJson("food-reviews.json") as {
+      requiredBirdOrder: string[];
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{ bird: string; outcome: string; sourceIds: string[] }>;
+      }>;
+    };
+    const expected = [
+      {
+        ingredientId: "sunflower",
+        form: "whole dry sunflower seed, plain, unsalted, and unflavoured",
+        outcomes: ["limited", "limited", "limited", "limited", "unresolved", "limited"],
+      },
+      {
+        ingredientId: "safflower",
+        form: "whole dry safflower seed, plain, unsalted, and unflavoured",
+        outcomes: ["limited", "limited", "limited", "limited", "unresolved", "limited"],
+      },
+      {
+        ingredientId: "hemp",
+        form: "whole dry hemp seed, plain, unsalted, and unflavoured",
+        outcomes: ["limited", "unresolved", "unresolved", "limited", "unresolved", "limited"],
+      },
+      {
+        ingredientId: "basil",
+        form: "dried culinary basil leaf, plain and unsalted",
+        outcomes: ["unresolved", "unresolved", "unresolved", "unresolved", "unresolved", "limited"],
+      },
+      {
+        ingredientId: "oregano",
+        form: "dried culinary oregano leaf, plain and unsalted",
+        outcomes: ["unresolved", "unresolved", "unresolved", "unresolved", "unresolved", "limited"],
+      },
+    ];
+
+    for (const expectedReview of expected) {
+      const review = ledger.ingredientReviews.find(
+        (candidate) => candidate.ingredientId === expectedReview.ingredientId && candidate.form === expectedReview.form,
+      );
+      expect(review?.speciesEvidence.map((entry) => entry.bird)).toEqual(ledger.requiredBirdOrder);
+      expect(review?.speciesEvidence.map((entry) => entry.outcome)).toEqual(expectedReview.outcomes);
+      expect(review?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
+    }
+  });
+
+  it("documents two targeted queries for every Issue #160 unresolved form outcome", () => {
+    const ledger = readJson("food-reviews.json") as {
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{
+          outcome: string;
+          followUpSearch?: { queries: string[]; sourceIds: string[]; result: string };
+        }>;
+      }>;
+    };
+    const forms = [
+      ["sunflower", "whole dry sunflower seed, plain, unsalted, and unflavoured"],
+      ["safflower", "whole dry safflower seed, plain, unsalted, and unflavoured"],
+      ["hemp", "whole dry hemp seed, plain, unsalted, and unflavoured"],
+      ["basil", "dried culinary basil leaf, plain and unsalted"],
+      ["oregano", "dried culinary oregano leaf, plain and unsalted"],
+    ] as const;
+
+    for (const [ingredientId, form] of forms) {
+      const review = ledger.ingredientReviews.find(
+        (candidate) => candidate.ingredientId === ingredientId && candidate.form === form,
+      );
+      for (const evidence of review?.speciesEvidence.filter((entry) => entry.outcome === "unresolved") ?? []) {
+        expect(evidence.followUpSearch?.queries.length).toBeGreaterThanOrEqual(2);
+        expect(evidence.followUpSearch?.sourceIds.length).toBeGreaterThan(0);
+        expect(evidence.followUpSearch?.result.length).toBeGreaterThan(0);
+      }
+    }
+  });
+
   it("records the walnut form with six birds and evidence-only outcomes", () => {
     const ledger = readJson("food-reviews.json") as {
       requiredBirdOrder: string[];

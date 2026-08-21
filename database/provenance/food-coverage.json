@@ -63,31 +63,41 @@
           "id": "sunflower-seeds",
           "displayName": "Sunflower seeds",
           "historicalForm": "form not specified in the protected historical claim",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "sunflower::whole dry sunflower seed, plain, unsalted, and unflavoured"
+          ]
         },
         {
           "id": "safflower-seeds",
           "displayName": "Safflower seeds",
           "historicalForm": "form not specified in the protected historical claim",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "safflower::whole dry safflower seed, plain, unsalted, and unflavoured"
+          ]
         },
         {
           "id": "hemp-seeds",
           "displayName": "Hemp seeds",
           "historicalForm": "form not specified in the protected historical claim",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "hemp::whole dry hemp seed, plain, unsalted, and unflavoured"
+          ]
         },
         {
           "id": "basil",
           "displayName": "Basil",
           "historicalForm": "form not specified in the protected historical claim",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "basil::dried culinary basil leaf, plain and unsalted"
+          ]
         },
         {
           "id": "oregano",
           "displayName": "Oregano",
           "historicalForm": "form not specified in the protected historical claim",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "oregano::dried culinary oregano leaf, plain and unsalted"
+          ]
         },
         {
           "id": "thyme",

@@ -2492,6 +2492,614 @@
         "rejectionNote": "Avoid for pigeons: raw dried navy beans have documented compound concerns, while safe pigeon use of this exact raw dried form has not been clearly established. This is a precautionary owner policy, not a claim of directly demonstrated pigeon toxicity.",
         "boundary": "Applies only to the pigeon outcome for this exact raw dried form. It preserves the underlying direct-evidence limitation and does not change another species, food form, active catalog entry, nutrient value, formula, calculation behavior, warning UI, or public copy."
       }
+    },
+    {
+      "ingredientId": "sunflower",
+      "ingredientDisplayName": "Sunflower Seeds",
+      "form": "whole dry sunflower seed, plain, unsalted, and unflavoured",
+      "nutrition": {
+        "sourceIds": [
+          "hullar-1999-pigeon-feed-energy",
+          "aav-sunflower-seeds-2025",
+          "poultry-extension-sunflower-seeds"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only review of whole dry, plain, unsalted, unflavoured sunflower seed. It does not add nutrient values, change active data, or claim an inventory formula."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "limited",
+          "sourceIds": [
+            "hullar-1999-pigeon-feed-energy"
+          ],
+          "locator": "Hullár et al.: adult homing pigeons received whole sunflower as an individual feedstuff for energy/digestibility measurement",
+          "evidenceScope": "species_specific",
+          "rationale": "The direct pigeon study establishes ingestion/digestibility context for whole sunflower seed only. It does not justify unrestricted or staple-diet use, a portion, a complete ration, or another species outcome.",
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "limited",
+          "sourceIds": [
+            "aav-sunflower-seeds-2025"
+          ],
+          "locator": "AAV Sunflower Seeds guidance on high-fat, non-staple context for companion parrots",
+          "evidenceScope": "group_specific",
+          "rationale": "Professional avian-veterinary guidance treats sunflower seed as high-fat and unsuitable as a staple. It supports limited companion-parrot context only, not a portion, complete ration, or individual-species approval.",
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "limited",
+          "sourceIds": [
+            "aav-sunflower-seeds-2025"
+          ],
+          "locator": "AAV Sunflower Seeds guidance; Issue #160 log African-Grey source reconciliation",
+          "evidenceScope": "group_specific",
+          "rationale": "The direct general parrot high-fat warning is retained as group-specific context, not as a distinct African-Grey feeding trial. It supports a limited outcome only and does not create a portion or complete ration.",
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "limited",
+          "sourceIds": [
+            "vca-small-psittacine-nutrition-1998"
+          ],
+          "locator": "Clinical Nutrition of Small Psittacines and Passerines: oilseed and single-seed-diet caution",
+          "evidenceScope": "group_specific",
+          "rationale": "Small-psittacine clinical nutrition identifies sunflower as an oilseed and warns against single-seed diet patterns. This supports a limited context, not a budgie portion, complete ration, or other species outcome.",
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-160-research-log-2026"
+          ],
+          "locator": "Issue #160 research log: first-pass and targeted second searches for whole dry sunflower seed, plain, unsalted, and unflavoured",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass, targeted, and specialist-database searches did not establish direct canary-specific evidence for whole dry sunflower seed, plain, unsalted, and unflavoured. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Serinus canaria sunflower seed diet study",
+              "canary whole sunflower seed avian veterinary diet"
+            ],
+            "sourceIds": [
+              "issue-160-research-log-2026"
+            ],
+            "result": "No direct canary whole-sunflower source with an exact form and diet outcome was established after the documented searches."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "poultry-extension-sunflower-seeds"
+          ],
+          "locator": "Poultry Extension: Sunflower Seeds in Poultry Diets",
+          "evidenceScope": "species_specific",
+          "rationale": "Poultry feed-ingredient guidance supports whole sunflower only in formulated chicken-diet context. It does not prescribe a household amount, a complete ration, or another species outcome.",
+          "reviewedAt": "2026-08-21"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "hullar-1999-pigeon-feed-energy",
+          "aav-sunflower-seeds-2025",
+          "poultry-extension-sunflower-seeds"
+        ],
+        "rule": "Keep whole dry sunflower seed distinct from kernels/hearts, meal, cake, oil, sprouts, roasted, salted, flavoured, and mould-contaminated products. This evidence-only review does not approve runtime use, an inventory entry, a portion, a formula, or a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-21"
+    },
+    {
+      "ingredientId": "safflower",
+      "ingredientDisplayName": "Safflower Seeds",
+      "form": "whole dry safflower seed, plain, unsalted, and unflavoured",
+      "nutrition": {
+        "sourceIds": [
+          "melbourne-bird-vet-pigeon-diet-2023",
+          "ullrey-1991-psittacine-seed-mixtures",
+          "rathaur-2023-safflower-seed-broilers"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only review of whole dry, plain, unsalted, unflavoured safflower seed. It does not add nutrient values, change active data, or claim an inventory formula."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "limited",
+          "sourceIds": [
+            "melbourne-bird-vet-pigeon-diet-2023"
+          ],
+          "locator": "Melbourne Bird Veterinary Clinic Diet for Pet Pigeons: safflower named in a whole-grain mix with complete-diet caution",
+          "evidenceScope": "species_specific",
+          "rationale": "Exotics-vet pigeon guidance includes safflower only in a bounded whole-grain mix and cautions against incomplete seed/grain-only diets. It supports limited context, not a portion, formula, or complete ration.",
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "limited",
+          "sourceIds": [
+            "ullrey-1991-psittacine-seed-mixtures"
+          ],
+          "locator": "Ullrey et al.: safflower seed composition within psittacine seed-mixture nutrition review",
+          "evidenceScope": "group_specific",
+          "rationale": "The psittacine review documents safflower in commercial seed-mixture context and the limits of seed mixtures. It supports limited group context, not a portion, complete ration, or another species outcome.",
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "limited",
+          "sourceIds": [
+            "ullrey-1991-psittacine-seed-mixtures"
+          ],
+          "locator": "Ullrey et al.: African Grey scope and safflower analysis within psittacine seed-mixture review",
+          "evidenceScope": "species_specific",
+          "rationale": "The review includes African Grey scope and safflower seed mixture context but does not provide an individual feeding prescription. It supports limited context only, not a portion or complete ration.",
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "limited",
+          "sourceIds": [
+            "vca-small-psittacine-nutrition-1998"
+          ],
+          "locator": "Clinical Nutrition of Small Psittacines and Passerines: safflower oilseed context",
+          "evidenceScope": "group_specific",
+          "rationale": "Small-psittacine clinical nutrition identifies safflower as an oilseed and cautions against single-seed diet patterns. It supports limited context, not a budgie portion, complete ration, or another species outcome.",
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-160-research-log-2026"
+          ],
+          "locator": "Issue #160 research log: first-pass and targeted second searches for whole dry safflower seed, plain, unsalted, and unflavoured",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass, targeted, and specialist-database searches did not establish direct canary-specific evidence for whole dry safflower seed, plain, unsalted, and unflavoured. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Serinus canaria safflower seed diet study",
+              "canary whole safflower seed veterinary nutrition"
+            ],
+            "sourceIds": [
+              "issue-160-research-log-2026"
+            ],
+            "result": "The documented searches did not yield an inspected direct domestic-canary whole-safflower outcome with a verified form boundary."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "rathaur-2023-safflower-seed-broilers"
+          ],
+          "locator": "Rathaur et al.: 42-day broiler trial with 2.5%–10% safflower seed in balanced starter/finisher diets",
+          "evidenceScope": "species_specific",
+          "rationale": "The direct broiler study supports safflower only within its cited balanced-diet and inclusion-level context. It does not prescribe a household portion, a complete ration, or another species outcome.",
+          "reviewedAt": "2026-08-21"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "melbourne-bird-vet-pigeon-diet-2023",
+          "ullrey-1991-psittacine-seed-mixtures",
+          "rathaur-2023-safflower-seed-broilers"
+        ],
+        "rule": "Keep whole dry safflower seed distinct from dehulled/decorticated material, meal, cake, oil, sprouts, roasted, salted, flavoured, and mould-contaminated products. This evidence-only review does not approve runtime use, an inventory entry, a portion, a formula, or a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-21"
+    },
+    {
+      "ingredientId": "hemp",
+      "ingredientDisplayName": "Hemp Seeds",
+      "form": "whole dry hemp seed, plain, unsalted, and unflavoured",
+      "nutrition": {
+        "sourceIds": [
+          "hullar-1999-pigeon-feed-energy",
+          "waterhouse-1961-budgerigar-seed-palatability",
+          "jamas-2026-budgerigar-hernia-hemp",
+          "boskovic-cabrol-2025-whole-hemp-hens"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only review of whole dry, plain, unsalted, unflavoured hemp seed. It does not add nutrient values, change active data, or claim an inventory formula."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "limited",
+          "sourceIds": [
+            "hullar-1999-pigeon-feed-energy"
+          ],
+          "locator": "Hullár et al.: adult homing pigeons received whole hemp as an individual feedstuff for energy/digestibility measurement",
+          "evidenceScope": "species_specific",
+          "rationale": "The direct pigeon study establishes whole-hemp ingestion/digestibility context only. It does not establish unrestricted or staple use, a portion, a complete ration, or another species outcome.",
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-160-research-log-2026"
+          ],
+          "locator": "Issue #160 research log: first-pass and targeted second searches for whole dry hemp seed, plain, unsalted, and unflavoured",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass, targeted, and specialist-database searches did not establish direct parrot-specific evidence for whole dry hemp seed, plain, unsalted, and unflavoured. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "psittacine whole hemp seed digestibility feeding trial",
+              "parrot Cannabis sativa in-shell seed diet veterinary"
+            ],
+            "sourceIds": [
+              "issue-160-research-log-2026"
+            ],
+            "result": "No direct generic companion-parrot in-shell whole-hemp trial was found; African-Grey and budgerigar evidence was not applied to the generic parrot row."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-160-research-log-2026"
+          ],
+          "locator": "Issue #160 research log: first-pass and targeted second searches for whole dry hemp seed, plain, unsalted, and unflavoured",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass, targeted, and specialist-database searches did not establish direct african_grey-specific evidence for whole dry hemp seed, plain, unsalted, and unflavoured. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Psittacus erithacus whole hemp seed digestibility",
+              "African Grey hemp seed nutrition research"
+            ],
+            "sourceIds": [
+              "issue-160-research-log-2026"
+            ],
+            "result": "The first-pass lead was not retained as an inspected, registered source with an exact whole-seed form boundary, so the African-Grey row remains neutral rather than upgrading an unverified lead."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "limited",
+          "sourceIds": [
+            "waterhouse-1961-budgerigar-seed-palatability",
+            "jamas-2026-budgerigar-hernia-hemp"
+          ],
+          "locator": "Waterhouse and Hutcheson free-choice hemp consumption; 2026 clinical case diet history and restriction advice",
+          "evidenceScope": "species_specific",
+          "rationale": "Direct budgerigar palatability evidence establishes hemp consumption, while the clinical case places hemp in a high-energy mixed-seed restriction context. Together they support limited context only, not causation, a portion, a complete ration, or another species outcome.",
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-160-research-log-2026"
+          ],
+          "locator": "Issue #160 research log: first-pass and targeted second searches for whole dry hemp seed, plain, unsalted, and unflavoured",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass, targeted, and specialist-database searches did not establish direct canary-specific evidence for whole dry hemp seed, plain, unsalted, and unflavoured. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Serinus canaria hemp seed diet study",
+              "domestic canary hemp seed veterinary nutrition"
+            ],
+            "sourceIds": [
+              "issue-160-research-log-2026"
+            ],
+            "result": "The documented searches did not yield an inspected direct domestic-canary whole-hemp outcome with a verified form boundary."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "boskovic-cabrol-2025-whole-hemp-hens"
+          ],
+          "locator": "Bošković Cabrol et al.: 4-week laying-hen trial of whole hemp seed at 10% of average daily feed intake alongside commercial diet",
+          "evidenceScope": "species_specific",
+          "rationale": "The direct laying-hen study supports whole hemp only in its named commercial-diet and legal-variety enrichment context. It does not prescribe a household amount, a complete ration, a different hemp product, or another species outcome.",
+          "reviewedAt": "2026-08-21"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "hullar-1999-pigeon-feed-energy",
+          "jamas-2026-budgerigar-hernia-hemp",
+          "boskovic-cabrol-2025-whole-hemp-hens"
+        ],
+        "rule": "Keep whole dry hemp seed distinct from hulled hearts, meal, cake, oil, sprouts, extracts, products with cannabinoids, roasted, salted, flavoured, and mould-contaminated products. This evidence-only review does not approve runtime use, an inventory entry, a portion, a formula, or a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-21"
+    },
+    {
+      "ingredientId": "basil",
+      "ingredientDisplayName": "Basil",
+      "form": "dried culinary basil leaf, plain and unsalted",
+      "nutrition": {
+        "sourceIds": [
+          "issue-160-research-log-2026",
+          "morakinyo-2025-basil-leaf-meal-broilers"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only review of dried culinary sweet-basil leaf. It does not add nutrient values, change active data, or claim an inventory formula."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-160-research-log-2026"
+          ],
+          "locator": "Issue #160 research log: first-pass and targeted second searches for dried culinary basil leaf, plain and unsalted",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass, targeted, and specialist-database searches did not establish direct pigeon-specific evidence for dried culinary basil leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Columba livia Ocimum basilicum dried leaf feed",
+              "pigeon basil leaf powder nutrition study"
+            ],
+            "sourceIds": [
+              "issue-160-research-log-2026"
+            ],
+            "result": "No direct pigeon dried sweet-basil leaf source was established; basil seed and non-pigeon evidence were excluded as wrong forms or species."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-160-research-log-2026"
+          ],
+          "locator": "Issue #160 research log: first-pass and targeted second searches for dried culinary basil leaf, plain and unsalted",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass, targeted, and specialist-database searches did not establish direct parrot-specific evidence for dried culinary basil leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "psittacine Ocimum basilicum dried leaf feeding",
+              "parrot sweet basil leaf powder safety study"
+            ],
+            "sourceIds": [
+              "issue-160-research-log-2026"
+            ],
+            "result": "No direct generic companion-parrot dried sweet-basil leaf source was established; care-list claims and non-psittacine evidence were excluded."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-160-research-log-2026"
+          ],
+          "locator": "Issue #160 research log: first-pass and targeted second searches for dried culinary basil leaf, plain and unsalted",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass, targeted, and specialist-database searches did not establish direct african_grey-specific evidence for dried culinary basil leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Psittacus erithacus Ocimum basilicum dried leaf",
+              "African Grey basil leaf feeding study"
+            ],
+            "sourceIds": [
+              "issue-160-research-log-2026"
+            ],
+            "result": "No direct African-Grey dried sweet-basil leaf source was established; generic parrot guidance was not applied to the species row."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-160-research-log-2026"
+          ],
+          "locator": "Issue #160 research log: first-pass and targeted second searches for dried culinary basil leaf, plain and unsalted",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass, targeted, and specialist-database searches did not establish direct budgie-specific evidence for dried culinary basil leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Melopsittacus undulatus Ocimum basilicum dried leaf",
+              "budgie sweet basil leaf feeding study"
+            ],
+            "sourceIds": [
+              "issue-160-research-log-2026"
+            ],
+            "result": "No direct budgerigar dried sweet-basil leaf source was established; Ocimum tenuiflorum and fresh-leaf results were excluded as botanical/form mismatches."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-160-research-log-2026"
+          ],
+          "locator": "Issue #160 research log: first-pass and targeted second searches for dried culinary basil leaf, plain and unsalted",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass, targeted, and specialist-database searches did not establish direct canary-specific evidence for dried culinary basil leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Serinus canaria Ocimum basilicum dried leaf",
+              "domestic canary sweet basil leaf feeding study"
+            ],
+            "sourceIds": [
+              "issue-160-research-log-2026"
+            ],
+            "result": "No direct domestic-canary dried sweet-basil leaf source was established after targeted and specialist searches."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "morakinyo-2025-basil-leaf-meal-broilers"
+          ],
+          "locator": "Morakinyo et al.: sweet-basil leaf meal at 0.5, 1.0, and 1.5 g/kg in formulated broiler diets",
+          "evidenceScope": "species_specific",
+          "rationale": "The direct broiler trial supports dried sweet-basil leaf meal only at studied formulated-diet levels. It does not prescribe a household portion, a complete ration, a fresh/oil/extract equivalence, or another species outcome.",
+          "reviewedAt": "2026-08-21"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "issue-160-research-log-2026",
+          "morakinyo-2025-basil-leaf-meal-broilers"
+        ],
+        "rule": "Keep dried culinary sweet-basil leaf distinct from fresh basil, seeds, essential oil, extracts, tinctures, tea, blends, salted, flavoured, or mould-contaminated products. This evidence-only review does not approve runtime use, an inventory entry, a portion, a formula, or a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-21"
+    },
+    {
+      "ingredientId": "oregano",
+      "ingredientDisplayName": "Oregano",
+      "form": "dried culinary oregano leaf, plain and unsalted",
+      "nutrition": {
+        "sourceIds": [
+          "issue-160-research-log-2026",
+          "ampode-2022-oregano-powder-broilers"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only review of dried culinary Origanum vulgare leaf. It does not add nutrient values, change active data, or claim an inventory formula."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-160-research-log-2026"
+          ],
+          "locator": "Issue #160 research log: first-pass and targeted second searches for dried culinary oregano leaf, plain and unsalted",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass, targeted, and specialist-database searches did not establish direct pigeon-specific evidence for dried culinary oregano leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Columba livia Origanum vulgare dried leaf powder diet",
+              "pigeon oregano leaf powder feeding study"
+            ],
+            "sourceIds": [
+              "issue-160-research-log-2026"
+            ],
+            "result": "No direct pigeon dried Origanum vulgare source was established; the accessible pigeon Origanum majorana powder trial and oregano extracts were excluded as botanical/preparation mismatches."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-160-research-log-2026"
+          ],
+          "locator": "Issue #160 research log: first-pass and targeted second searches for dried culinary oregano leaf, plain and unsalted",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass, targeted, and specialist-database searches did not establish direct parrot-specific evidence for dried culinary oregano leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "psittacine Origanum vulgare dried leaf feeding",
+              "parrot oregano leaf powder safety study"
+            ],
+            "sourceIds": [
+              "issue-160-research-log-2026"
+            ],
+            "result": "No direct generic companion-parrot dried oregano leaf source was established; generic care claims and essential-oil evidence were excluded."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-160-research-log-2026"
+          ],
+          "locator": "Issue #160 research log: first-pass and targeted second searches for dried culinary oregano leaf, plain and unsalted",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass, targeted, and specialist-database searches did not establish direct african_grey-specific evidence for dried culinary oregano leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Psittacus erithacus Origanum vulgare dried leaf",
+              "African Grey oregano leaf feeding study"
+            ],
+            "sourceIds": [
+              "issue-160-research-log-2026"
+            ],
+            "result": "No direct African-Grey dried oregano leaf source was established; generic parrot guidance was not applied to the species row."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-160-research-log-2026"
+          ],
+          "locator": "Issue #160 research log: first-pass and targeted second searches for dried culinary oregano leaf, plain and unsalted",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass, targeted, and specialist-database searches did not establish direct budgie-specific evidence for dried culinary oregano leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Melopsittacus undulatus Origanum vulgare dried leaf",
+              "budgie oregano leaf feeding study"
+            ],
+            "sourceIds": [
+              "issue-160-research-log-2026"
+            ],
+            "result": "No direct budgerigar dried oregano leaf source was established; generic and essential-oil material was excluded."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-160-research-log-2026"
+          ],
+          "locator": "Issue #160 research log: first-pass and targeted second searches for dried culinary oregano leaf, plain and unsalted",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass, targeted, and specialist-database searches did not establish direct canary-specific evidence for dried culinary oregano leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Serinus canaria Origanum vulgare dried leaf",
+              "domestic canary oregano leaf feeding study"
+            ],
+            "sourceIds": [
+              "issue-160-research-log-2026"
+            ],
+            "result": "No direct domestic-canary dried oregano leaf source was established after targeted and specialist searches."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "ampode-2022-oregano-powder-broilers"
+          ],
+          "locator": "Ampode and Mendoza: sun-dried, pulverized Origanum vulgare leaf powder at 1%, 3%, and 5% in 42-day broiler rations",
+          "evidenceScope": "species_specific",
+          "rationale": "The direct broiler study supports sun-dried oregano leaf powder only in its cited trial-diet context. It does not prescribe a household portion, a complete ration, a fresh/oil/extract equivalence, or another species outcome.",
+          "reviewedAt": "2026-08-21"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "issue-160-research-log-2026",
+          "ampode-2022-oregano-powder-broilers"
+        ],
+        "rule": "Keep dried culinary Origanum vulgare leaf distinct from sweet marjoram, fresh oregano, essential oil, extracts, tinctures, tea, blends, salted, flavoured, or mould-contaminated products. This evidence-only review does not approve runtime use, an inventory entry, a portion, a formula, or a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-21"
     }
   ]
 }
