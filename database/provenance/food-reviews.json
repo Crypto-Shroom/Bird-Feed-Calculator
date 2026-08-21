@@ -206,185 +206,172 @@
       "ingredientDisplayName": "Wheat",
       "form": "whole dry grain, threshed/hulled where applicable",
       "nutrition": {
-        "sourceIds": [
-          "uk-poultry-extension-wheat-diets-2026"
-        ],
+        "sourceIds": [],
         "basis": "not_applicable",
-        "notes": "This record documents species/form evidence only. It does not change the existing nutrient row or approve wheat as a complete ration."
+        "notes": "Evidence-only record. It does not alter active catalog nutrition, calculator runtime behavior, formula ingredients, or inventory."
       },
       "speciesEvidence": [
         {
           "bird": "pigeon",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "merck-columbiformes-2025"
+            "liu-pigeon-whole-grains-2023"
           ],
-          "locator": "Nutrition in Pigeons and Doves, opening feeding-ecology and seed-eating-pigeon paragraphs",
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
           "evidenceScope": "species_specific",
-          "rationale": "The veterinary reference establishes that many pigeons are granivorous and that seed-eating pigeons accept formulated diets, but it does not identify whole dry wheat or validate a wheat form, amount, or complete-ration role for pigeons.",
-          "reviewedAt": "2026-08-18"
+          "rationale": "Controlled whole-wheat-plus-pellet pigeon feeding supports only a limited mixed-production context; not a sole diet or companion-ration instruction.",
+          "reviewedAt": "2026-08-20"
         },
         {
           "bird": "parrot",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "merck-psittacines-2025"
+            "parrot-awareness-week-diet"
           ],
-          "locator": "Nutrition in Psittacines, opening diet paragraph and seed-diet limitations",
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
           "evidenceScope": "group_specific",
-          "rationale": "The veterinary reference describes species variation within psittacines and warns that strictly seed-based diets are suboptimal, but it does not establish whole dry wheat as suitable for the general parrot row.",
-          "reviewedAt": "2026-08-18"
+          "rationale": "Direct parrot care guidance names wheat in traditional dry seed mixes while warning that a single mix is not balanced; limited varied-mix context only.",
+          "reviewedAt": "2026-08-20"
         },
         {
           "bird": "african_grey",
           "outcome": "unresolved",
           "sourceIds": [
-            "merck-psittacines-2025",
             "vca-african-grey-feeding"
           ],
-          "locator": "Nutrition in Psittacines, Grey-parrot diet and species-variation discussion; VCA African Grey feeding guidance",
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
           "evidenceScope": "species_specific",
-          "rationale": "Grey-specific nutrition guidance is available, but the reviewed passages address balanced formulated diets, seed moderation, and nutrient risks rather than a validated whole-dry-wheat food/form outcome.",
-          "reviewedAt": "2026-08-18"
+          "rationale": "African-Grey guidance gives a balanced seed/pellet boundary but does not establish exact whole dry wheat.",
+          "reviewedAt": "2026-08-20"
         },
         {
           "bird": "budgie",
           "outcome": "limited",
           "sourceIds": [
-            "omlet-parakeet-food-list-2026",
-            "vca-budgie-feeding"
+            "exoticdirect-budgie-food-2019"
           ],
-          "locator": "Omlet Parakeet Food List, 'Parakeet Grains' and 'Parakeet-Friendly Grains' sections; VCA Budgies feeding guidance",
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
           "evidenceScope": "species_specific",
-          "rationale": "The budgie/parakeet-specific list names wheat among parakeet-friendly grains and specifies fresh threshed/hulled grain while excluding cooked or processed forms. This supports limited whole dry wheat within a varied diet, not a complete ration or universal quantity.",
-          "reviewedAt": "2026-08-18"
+          "rationale": "Direct budgie care guidance names wheat among grains within a varied diet; it is not a complete-ration or portion claim.",
+          "reviewedAt": "2026-08-20"
         },
         {
           "bird": "canary",
           "outcome": "unresolved",
           "sourceIds": [
-            "vca-canary-feeding",
-            "merck-pet-bird-nutritional-diseases"
+            "meander-canary-feeding"
           ],
-          "locator": "VCA Canaries feeding, seed-diet limitations and balanced-diet sections; Merck pet-bird nutrition context",
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
           "evidenceScope": "species_specific",
-          "rationale": "Canary guidance confirms that wild canaries eat varied seeds and that seed-only diets are incomplete, but it does not identify whole dry wheat or distinguish wheat form and portion. Absence of a warning is not treated as approval.",
-          "reviewedAt": "2026-08-18"
+          "rationale": "Canary sources establish varied seed context but not exact whole dry wheat after two searches.",
+          "reviewedAt": "2026-08-20"
         },
         {
           "bird": "chicken",
           "outcome": "limited",
           "sourceIds": [
-            "uk-poultry-extension-wheat-diets-2026",
-            "merck-poultry-2024"
+            "mofga-whole-grains-chickens",
+            "wilson-corn-wheat-barley-chickens-1944"
           ],
-          "locator": "University of Kentucky Poultry Extension, opening wheat-in-poultry-diets paragraphs and whole-wheat paragraph; Merck Nutritional Requirements of Poultry, nutrient-requirement and feed-energy sections",
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
           "evidenceScope": "species_specific",
-          "rationale": "Poultry feed guidance explicitly describes wheat as used in poultry diets and discusses whole wheat, varieties, nutrient composition, and mold/processing boundaries. This supports limited formulated-feed use for chickens, not wheat as a complete ration or a transfer to other birds.",
-          "reviewedAt": "2026-08-18"
+          "rationale": "Whole-wheat chicken evidence is limited to age-aware balanced rations with supplemental nutrition, not wheat alone.",
+          "reviewedAt": "2026-08-20"
         }
       ],
       "processing": {
-        "sourceIds": [
-          "omlet-parakeet-food-list-2026",
-          "uk-poultry-extension-wheat-diets-2026"
-        ],
-        "rule": "Keep the reviewed form distinct: whole, dry, threshed/hulled grain where applicable. Do not treat wheat alone as a complete ration. For poultry use, account for variety, formulation, nutrient balance, and mold-control requirements; do not substitute cooked, rolled, roasted, or otherwise processed forms for this record.",
+        "sourceIds": [],
+        "rule": "Keep this exact whole dry form distinct from fresh, cooked, rolled, cracked, ground, popped, pearled, sprouted, or otherwise processed forms. Do not treat any single grain as complete nutrition.",
         "severity": "warning"
       },
-      "lastReviewedAt": "2026-08-18"
+      "lastReviewedAt": "2026-08-20"
     },
     {
       "ingredientId": "millet",
       "ingredientDisplayName": "Millet",
       "form": "whole dry seed",
       "nutrition": {
-        "sourceIds": [
-          "finchinfo-nutrition"
-        ],
+        "sourceIds": [],
         "basis": "not_applicable",
-        "notes": "Evidence-only record. It does not change the existing millet nutrient row or approve seed-only feeding."
+        "notes": "Evidence-only record. It does not alter active catalog nutrition, calculator runtime behavior, formula ingredients, or inventory."
       },
       "speciesEvidence": [
         {
           "bird": "pigeon",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "merck-columbiformes-2025",
-            "historical-manus-multibird-2025"
+            "hullar-pigeon-feed-energy-1999"
           ],
-          "locator": "Nutrition in Pigeons and Doves opening ecology and seed-diet sections; protected historical multi-bird compatibility claim",
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
           "evidenceScope": "species_specific",
-          "rationale": "Pigeons are described as granivorous and may receive seed as part of a varied diet, but the reviewed veterinary source does not identify millet or this form. The historical all-bird list is preserved intent only, so this row remains unresolved.",
-          "reviewedAt": "2026-08-18"
+          "rationale": "Controlled pigeon whole red/white millet metabolism evidence supports only a limited experimental grain context.",
+          "reviewedAt": "2026-08-20"
         },
         {
           "bird": "parrot",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "merck-psittacines-2025"
+            "parrot-awareness-week-diet",
+            "omlet-parrot-seed-guide"
           ],
-          "locator": "Nutrition in Psittacines opening diet paragraph and strict-seed-diet limitation",
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
           "evidenceScope": "group_specific",
-          "rationale": "The psittacine reference warns that strict seed diets are suboptimal and does not establish whole dry millet as a food/form outcome for the general parrot row.",
-          "reviewedAt": "2026-08-18"
+          "rationale": "Parrot care guidance names millets in varied dry seed mixes; it is not complete nutrition.",
+          "reviewedAt": "2026-08-20"
         },
         {
           "bird": "african_grey",
           "outcome": "unresolved",
           "sourceIds": [
-            "merck-psittacines-2025",
             "vca-african-grey-feeding"
           ],
-          "locator": "Nutrition in Psittacines Grey-parrot diet discussion; VCA African Grey feeding guidance",
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
           "evidenceScope": "species_specific",
-          "rationale": "Grey-specific guidance addresses balanced diets and seed/nut moderation, not a whole-dry-millet outcome. No cross-species approval is inferred.",
-          "reviewedAt": "2026-08-18"
+          "rationale": "No exact African-Grey/whole-millet outcome was found after two searches.",
+          "reviewedAt": "2026-08-20"
         },
         {
           "bird": "budgie",
           "outcome": "limited",
           "sourceIds": [
-            "omlet-parakeet-food-list-2026",
+            "vca-budgie-feeding",
             "exoticdirect-budgie-food-2019"
           ],
-          "locator": "Omlet Parakeet Food List oily-seed section; ExoticDirect Budgie grains and high-fat-seed sections",
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
           "evidenceScope": "species_specific",
-          "rationale": "Both budgie/parakeet sources name millet as a seed/grain, while warning that high-fat seeds should be limited and seed mixes are not complete diets. This supports limited use within a varied diet, not a staple-only or complete-ration claim.",
-          "reviewedAt": "2026-08-18"
+          "rationale": "Budgie sources name millet and require a varied, non-seed-only diet.",
+          "reviewedAt": "2026-08-20"
         },
         {
           "bird": "canary",
           "outcome": "limited",
           "sourceIds": [
-            "vca-canary-feeding"
+            "harper-turner-canary-nutrition-2000",
+            "meander-canary-feeding"
           ],
-          "locator": "VCA Canaries Feeding seed section: millet spray is preferentially selected; seed-only diet is incomplete",
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
           "evidenceScope": "species_specific",
-          "rationale": "VCA identifies millet as a commonly selected seed but explicitly states seeds are nutritionally incomplete and should be only a small part of the diet. This supports limited use only.",
-          "reviewedAt": "2026-08-18"
+          "rationale": "Direct canary sources name millet while requiring varied seed/balanced-diet context.",
+          "reviewedAt": "2026-08-20"
         },
         {
           "bird": "chicken",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "merck-poultry-2024"
+            "mofga-whole-grains-chickens"
           ],
-          "locator": "Merck Nutritional Requirements of Poultry nutrient-balance and feed-formulation sections",
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
           "evidenceScope": "species_specific",
-          "rationale": "The poultry reference establishes complete-ration nutrient requirements but does not identify whole dry millet as a reviewed ingredient/form outcome in the examined sections.",
-          "reviewedAt": "2026-08-18"
+          "rationale": "Whole-millet chicken guidance is limited to balanced-ration context.",
+          "reviewedAt": "2026-08-20"
         }
       ],
       "processing": {
-        "sourceIds": [
-          "vca-canary-feeding",
-          "omlet-parakeet-food-list-2026"
-        ],
-        "rule": "Keep whole dry seed distinct from cooked, sprouted, rolled, or processed forms; never treat millet alone or a seed-only diet as complete nutrition.",
+        "sourceIds": [],
+        "rule": "Keep this exact whole dry form distinct from fresh, cooked, rolled, cracked, ground, popped, pearled, sprouted, or otherwise processed forms. Do not treat any single grain as complete nutrition.",
         "severity": "warning"
       },
-      "lastReviewedAt": "2026-08-18"
+      "lastReviewedAt": "2026-08-20"
     },
     {
       "ingredientId": "peas_green",
@@ -2492,6 +2479,262 @@
         "rejectionNote": "Avoid for pigeons: raw dried navy beans have documented compound concerns, while safe pigeon use of this exact raw dried form has not been clearly established. This is a precautionary owner policy, not a claim of directly demonstrated pigeon toxicity.",
         "boundary": "Applies only to the pigeon outcome for this exact raw dried form. It preserves the underlying direct-evidence limitation and does not change another species, food form, active catalog entry, nutrient value, formula, calculation behavior, warning UI, or public copy."
       }
+    },
+    {
+      "ingredientId": "barley",
+      "ingredientDisplayName": "Barley",
+      "form": "whole dry barley grain, non-pearled",
+      "nutrition": {
+        "sourceIds": [],
+        "basis": "not_applicable",
+        "notes": "Evidence-only record. It does not alter active catalog nutrition, calculator runtime behavior, formula ingredients, or inventory."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "limited",
+          "sourceIds": [
+            "hullar-pigeon-feed-energy-1999"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "Controlled pigeon whole-barley metabolism evidence supports only a limited experimental grain context.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "limited",
+          "sourceIds": [
+            "omlet-parrot-seed-guide"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "group_specific",
+          "rationale": "Parrot care guidance names barley in varied seed mixes; it is not complete nutrition.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "vca-african-grey-feeding"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "No exact African-Grey/non-pearled-barley outcome was found after two searches.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "limited",
+          "sourceIds": [
+            "exoticdirect-budgie-food-2019"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie care guidance names barley among grains within a varied diet.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "meander-canary-feeding"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "No exact canary/non-pearled-barley outcome was found after two searches.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "mofga-whole-grains-chickens",
+            "wilson-corn-wheat-barley-chickens-1944"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "Whole-barley chicken evidence is limited to balanced, age-aware ration contexts.",
+          "reviewedAt": "2026-08-20"
+        }
+      ],
+      "processing": {
+        "sourceIds": [],
+        "rule": "Keep this exact whole dry form distinct from fresh, cooked, rolled, cracked, ground, popped, pearled, sprouted, or otherwise processed forms. Do not treat any single grain as complete nutrition.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-20"
+    },
+    {
+      "ingredientId": "oats",
+      "ingredientDisplayName": "Oats",
+      "form": "whole dry oat grain",
+      "nutrition": {
+        "sourceIds": [],
+        "basis": "not_applicable",
+        "notes": "Evidence-only record. It does not alter active catalog nutrition, calculator runtime behavior, formula ingredients, or inventory."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "sales-janssens-pigeon-nutrition-2003"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "The targeted pigeon search did not establish a whole-dry-oat outcome; whole-grain generality and other-grain trials are not substituted.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "limited",
+          "sourceIds": [
+            "omlet-parrot-seed-guide"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "group_specific",
+          "rationale": "Parrot care guidance names whole oats in varied seed mixes; it is not complete nutrition.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "vca-african-grey-feeding"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "No exact African-Grey/whole-oat outcome was found after two searches.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "limited",
+          "sourceIds": [
+            "exoticdirect-budgie-food-2019"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie care guidance names oats among grains within a varied diet.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "meander-canary-feeding"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "No exact canary/whole-oat outcome was found after two searches.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "mofga-whole-grains-chickens"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "Whole-oat chicken guidance is limited to age-aware balanced-ration context.",
+          "reviewedAt": "2026-08-20"
+        }
+      ],
+      "processing": {
+        "sourceIds": [],
+        "rule": "Keep this exact whole dry form distinct from fresh, cooked, rolled, cracked, ground, popped, pearled, sprouted, or otherwise processed forms. Do not treat any single grain as complete nutrition.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-20"
+    },
+    {
+      "ingredientId": "corn",
+      "ingredientDisplayName": "Corn",
+      "form": "whole dry maize/corn kernel, cultivar/color unspecified",
+      "nutrition": {
+        "sourceIds": [],
+        "basis": "not_applicable",
+        "notes": "Evidence-only record. It does not alter active catalog nutrition, calculator runtime behavior, formula ingredients, or inventory."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "limited",
+          "sourceIds": [
+            "liu-pigeon-whole-grains-2023",
+            "hullar-pigeon-feed-energy-1999"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "Controlled pigeon whole-corn studies support only a limited mixed/experimental grain context.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "limited",
+          "sourceIds": [
+            "parrot-awareness-week-diet",
+            "omlet-parrot-seed-guide"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "group_specific",
+          "rationale": "Parrot care guidance names dried corn in varied dry seed mixes; it is not complete nutrition.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "vca-african-grey-feeding"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "African-Grey guidance names corn broadly but does not establish the distinct whole dry kernel form.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "exoticdirect-budgie-food-2019"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie care guidance distinguishes sweetcorn cooked fresh food; it does not establish whole dry corn kernels.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "meander-canary-feeding"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "No exact canary/whole-dry-corn outcome was found after two searches.",
+          "reviewedAt": "2026-08-20"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "mofga-whole-grains-chickens",
+            "wilson-corn-wheat-barley-chickens-1944"
+          ],
+          "locator": "See Issue #150 evidence log for the source-specific form boundary and first-/second-pass search record.",
+          "evidenceScope": "species_specific",
+          "rationale": "Whole-corn chicken evidence is limited to balanced ration or scratch-grain contexts with supplemental nutrition.",
+          "reviewedAt": "2026-08-20"
+        }
+      ],
+      "processing": {
+        "sourceIds": [],
+        "rule": "Keep this exact whole dry form distinct from fresh, cooked, rolled, cracked, ground, popped, pearled, sprouted, or otherwise processed forms. Do not treat any single grain as complete nutrition.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-20"
     }
   ]
 }

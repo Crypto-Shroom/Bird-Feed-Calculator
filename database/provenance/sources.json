@@ -583,18 +583,17 @@
     },
     {
       "id": "exoticdirect-budgie-food-2019",
-      "title": "What can budgies eat?",
-      "authorsOrOrganization": "ExoticDirect",
+      "title": "What Can Budgies Eat?",
+      "authorsOrOrganization": "Dorothy Schwarz; ExoticDirect",
       "publishedYear": "2019",
       "sourceTier": "owner_guidance_with_citations",
       "urlOrDoi": "https://exoticdirect.co.uk/news/what-can-budgies-eat/",
       "speciesScopes": [
-        "budgie",
-        "parakeet"
+        "budgie"
       ],
-      "permittedUse": "Budgie-specific food lists and preparation cautions for grains, millet, peas, and legumes.",
-      "limitations": "Owner guidance rather than a controlled feeding study; it cannot approve these forms for other species or establish a complete ration.",
-      "accessedAt": "2026-08-18"
+      "permittedUse": "Budgie grain context naming barley, oats, wheat, and millet; varied-diet boundary.",
+      "limitations": "Does not establish whole dry corn; sweetcorn is described as a distinct cooked fresh food.",
+      "accessedAt": "2026-08-20"
     },
     {
       "id": "david-poultry-legumes-2024",
@@ -1273,6 +1272,132 @@
       ],
       "permittedUse": "Records the owner's explicit precautionary decision to classify raw dried lima, fava, black, pinto, and navy beans as avoid for pigeons because compound concerns exist and safe pigeon use has not been clearly established.",
       "limitations": "This is a product safety-policy decision, not external proof of pigeon toxicity, a raw-bean feeding study, a preparation method, a nutrition value, a runtime formula rule, or a decision about another species or bean form.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "liu-pigeon-whole-grains-2023",
+      "title": "Free-Choice Feeding of Whole Grains Improves Meat Quality and Intestinal Development of Pigeon Squabs Compared with Complete Pelleted Feed",
+      "authorsOrOrganization": "Liu et al.",
+      "publishedYear": "2023",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.3390/life13030848",
+      "speciesScopes": [
+        "pigeon"
+      ],
+      "permittedUse": "Controlled Columba livia whole corn and whole wheat plus pellet feeding context.",
+      "limitations": "Production study; does not establish a companion-bird portion, sole diet, or other grain forms.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "hullar-pigeon-feed-energy-1999",
+      "title": "Studies on the Energy Content of Pigeon Feeds I. Determination of Digestibility and Metabolizable Energy Content",
+      "authorsOrOrganization": "Hullar et al.",
+      "publishedYear": "1999",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1093/ps/78.12.1757",
+      "speciesScopes": [
+        "pigeon"
+      ],
+      "permittedUse": "Controlled homing-pigeon whole-grain digestion study for corn, wheat, barley, and red/white millet.",
+      "limitations": "Metabolism study; not a balanced-ration, companion-care, or oat outcome.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "sales-janssens-pigeon-nutrition-2003",
+      "title": "Nutrition of the Domestic Pigeon (Columba livia domestica)",
+      "authorsOrOrganization": "J. Sales; G.P.J. Janssens",
+      "publishedYear": "2003",
+      "sourceTier": "peer_reviewed_review",
+      "urlOrDoi": "https://doi.org/10.1079/WPS20030014",
+      "speciesScopes": [
+        "pigeon"
+      ],
+      "permittedUse": "Domestic-pigeon whole-grain mixture and nutrition context.",
+      "limitations": "Accessible abstract does not establish a whole-oat outcome.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "parrot-awareness-week-diet",
+      "title": "Dietary Needs of Parrots",
+      "authorsOrOrganization": "Alan K. Jones BVetMed MRCVS",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.parrotawarenessweek.com/diet",
+      "speciesScopes": [
+        "parrot"
+      ],
+      "permittedUse": "Parrot dry-mix context naming wheat, oats, millets, and dried corn; mixed-diet warning.",
+      "limitations": "General parrot guidance; not a universal species or portion approval.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "omlet-parrot-seed-guide",
+      "title": "Seed for Parrots",
+      "authorsOrOrganization": "Omlet",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.omlet.us/guide/parrots/parrot_food/seed/",
+      "speciesScopes": [
+        "parrot"
+      ],
+      "permittedUse": "Parrot seed-mix context naming barley, dried corn, millet, whole oats, and wheat groats.",
+      "limitations": "Owner guidance; not a complete-ration or individual-parrot approval.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "harper-turner-canary-nutrition-2000",
+      "title": "Nutrition and Energetics of the Canary (Serinus canarius)",
+      "authorsOrOrganization": "E.J. Harper; C.L. Turner",
+      "publishedYear": "2000",
+      "sourceTier": "peer_reviewed_review",
+      "urlOrDoi": "https://doi.org/10.1016/S0305-0491(00)00210-8",
+      "speciesScopes": [
+        "canary"
+      ],
+      "permittedUse": "Direct canary review naming millet among preferred captive seeds.",
+      "limitations": "Does not establish wheat, barley, oats, or corn forms.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "meander-canary-feeding",
+      "title": "Feeding Your Canary",
+      "authorsOrOrganization": "Meander Valley Vets",
+      "publishedYear": "2012",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.meandervets.com.au/blog/feeding-your-canary",
+      "speciesScopes": [
+        "canary"
+      ],
+      "permittedUse": "Canary varied-seed diet and millet-preference context.",
+      "limitations": "Does not establish wheat, barley, oats, or whole dry corn.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "mofga-whole-grains-chickens",
+      "title": "Feeding Whole Grains to Chickens",
+      "authorsOrOrganization": "Diane Schivera; Maine Organic Farmers and Gardeners Association",
+      "publishedYear": "2007",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.mofga.org/resources/fact-sheets/feeding-whole-grains-to-chickens/",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "Whole-grain chicken context for corn, wheat, barley, oats, and millet with age and balanced-ration boundaries.",
+      "limitations": "Extension guidance; not a complete ration or other-bird outcome.",
+      "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "wilson-corn-wheat-barley-chickens-1944",
+      "title": "Corn, Wheat, and Barley for Chickens",
+      "authorsOrOrganization": "W.O. Wilson; South Dakota Agricultural Experiment Station",
+      "publishedYear": "1944",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://openprairie.sdstate.edu/cgi/viewcontent.cgi?article=1375&context=agexperimentsta_bulletins",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "Chicken whole corn, wheat, and barley scratch-grain trials supplied with mash, water, oyster shell, and grit.",
+      "limitations": "Historical study; not an oats/millet result or sole-grain approval.",
       "accessedAt": "2026-08-20"
     }
   ]
