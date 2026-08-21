@@ -127,3 +127,4 @@
 - [x] Implement and validate Issue #148’s canonical split-lentil solver identity while preserving the visible catalog record, existing inventory keys, formulas, and public copy.
 - [x] Implement and validate Issue #151’s browser-local Worker executor, bounded solve protocol, strict result validation, and no-server-compute boundary without changing visitor-facing copy or current output defaults.
 - [x] Implement and validate Issue #153 active Worker integration with deterministic allocation back to actual ingredient forms, silent legacy fallback for every non-feasible/technical outcome, and local privacy-preserving diagnostics.
+- [x] Research whole raw mouse/rodent prey across pigeon, parrot, African Grey, budgie, canary, and chicken; document independent first-pass and targeted follow-up evidence in canonical provenance only, without active-data, formula, warning, or public-copy changes.
