@@ -3373,141 +3373,107 @@
           "issue-168-research-log-2026"
         ],
         "basis": "not asserted",
-        "notes": "No nutrient claim is asserted in this provenance-only review. The review concerns the exact raw dried bean form and evidence gaps."
+        "notes": "No nutrient claim is asserted in this provenance-only review. The record concerns the raw dried Phaseolus-vulgaris common-bean form and an explicit, bounded shared-ingredient preparation inference."
       },
       "speciesEvidence": [
         {
           "bird": "pigeon",
-          "outcome": "unresolved",
+          "outcome": "requires_preparation",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "wsu-extension-common-bean-varieties-2026",
+            "hewitt-1973-raw-navy-chicks",
+            "arija-2006-raw-extruded-pinto-chicks",
+            "vca-pigeon-dove-feeding"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried Great Northern white beans, plain and unseasoned and pigeon",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct pigeon-specific evidence for raw dried Great Northern white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "pigeon raw dried Great Northern white beans, plain and unseasoned veterinary",
-              "pigeon raw dried Great Northern white beans, plain and unseasoned feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct pigeon-specific raw dried Great Northern white beans, plain and unseasoned outcome was established."
-          },
+          "locator": "WSU Extension: Great Northern, navy, cannellini/white kidney, and pinto are listed common-bean (Phaseolus vulgaris L.) market classes; Hewitt and Arija: raw navy/pinto Phaseolus-vulgaris material in chick diets; VCA pigeon/dove feeding context retained as a non-specific boundary",
+          "evidenceScope": "related_species",
+          "rationale": "Great Northern white beans is a raw dried Phaseolus-vulgaris common-bean market class. The retained raw-navy and raw-pinto chick studies establish a preparation boundary for raw Phaseolus-vulgaris material, and VCA pigeon/dove feeding context retained as a non-specific boundary provides the closest retained pigeon bean context. Because direct pigeon-specific evidence for this exact white-bean market class was not found, this is an explicitly labelled ingredient-level inference from the shared botanical identity, raw dried exposure, and raw-common-bean antinutritional boundary. It supports preparation required only; it does not establish a method, portion, formula, complete ration, medical use, runtime approval, or a different bean species/form.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "parrot",
-          "outcome": "unresolved",
+          "outcome": "requires_preparation",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "wsu-extension-common-bean-varieties-2026",
+            "hewitt-1973-raw-navy-chicks",
+            "arija-2006-raw-extruded-pinto-chicks",
+            "ftb-legume-safety-2018"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried Great Northern white beans, plain and unseasoned and parrot",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct parrot-specific evidence for raw dried Great Northern white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "parrot raw dried Great Northern white beans, plain and unseasoned veterinary",
-              "parrot raw dried Great Northern white beans, plain and unseasoned feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct parrot-specific raw dried Great Northern white beans, plain and unseasoned outcome was established."
-          },
+          "locator": "WSU Extension: Great Northern, navy, cannellini/white kidney, and pinto are listed common-bean (Phaseolus vulgaris L.) market classes; Hewitt and Arija: raw navy/pinto Phaseolus-vulgaris material in chick diets; For the Birds names navy beans among beans to sprout or fully cook",
+          "evidenceScope": "related_species",
+          "rationale": "Great Northern white beans is a raw dried Phaseolus-vulgaris common-bean market class. The retained raw-navy and raw-pinto chick studies establish a preparation boundary for raw Phaseolus-vulgaris material, and For the Birds names navy beans among beans to sprout or fully cook provides the closest retained parrot bean context. Because direct parrot-specific evidence for this exact white-bean market class was not found, this is an explicitly labelled ingredient-level inference from the shared botanical identity, raw dried exposure, and raw-common-bean antinutritional boundary. It supports preparation required only; it does not establish a method, portion, formula, complete ration, medical use, runtime approval, or a different bean species/form.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "african_grey",
-          "outcome": "unresolved",
+          "outcome": "requires_preparation",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "wsu-extension-common-bean-varieties-2026",
+            "hewitt-1973-raw-navy-chicks",
+            "arija-2006-raw-extruded-pinto-chicks",
+            "vca-african-grey-feeding"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried Great Northern white beans, plain and unseasoned and african_grey",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct african_grey-specific evidence for raw dried Great Northern white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "african_grey raw dried Great Northern white beans, plain and unseasoned veterinary",
-              "african_grey raw dried Great Northern white beans, plain and unseasoned feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct african_grey-specific raw dried Great Northern white beans, plain and unseasoned outcome was established."
-          },
+          "locator": "WSU Extension: Great Northern, navy, cannellini/white kidney, and pinto are listed common-bean (Phaseolus vulgaris L.) market classes; Hewitt and Arija: raw navy/pinto Phaseolus-vulgaris material in chick diets; VCA African Grey table presents beans as cooked",
+          "evidenceScope": "related_species",
+          "rationale": "Great Northern white beans is a raw dried Phaseolus-vulgaris common-bean market class. The retained raw-navy and raw-pinto chick studies establish a preparation boundary for raw Phaseolus-vulgaris material, and VCA African Grey table presents beans as cooked provides the closest retained african_grey bean context. Because direct african_grey-specific evidence for this exact white-bean market class was not found, this is an explicitly labelled ingredient-level inference from the shared botanical identity, raw dried exposure, and raw-common-bean antinutritional boundary. It supports preparation required only; it does not establish a method, portion, formula, complete ration, medical use, runtime approval, or a different bean species/form.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "budgie",
-          "outcome": "unresolved",
+          "outcome": "requires_preparation",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "wsu-extension-common-bean-varieties-2026",
+            "hewitt-1973-raw-navy-chicks",
+            "arija-2006-raw-extruded-pinto-chicks",
+            "vca-budgie-feeding"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried Great Northern white beans, plain and unseasoned and budgie",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct budgie-specific evidence for raw dried Great Northern white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "budgie raw dried Great Northern white beans, plain and unseasoned veterinary",
-              "budgie raw dried Great Northern white beans, plain and unseasoned feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct budgie-specific raw dried Great Northern white beans, plain and unseasoned outcome was established."
-          },
+          "locator": "WSU Extension: Great Northern, navy, cannellini/white kidney, and pinto are listed common-bean (Phaseolus vulgaris L.) market classes; Hewitt and Arija: raw navy/pinto Phaseolus-vulgaris material in chick diets; VCA budgie table presents beans as cooked",
+          "evidenceScope": "related_species",
+          "rationale": "Great Northern white beans is a raw dried Phaseolus-vulgaris common-bean market class. The retained raw-navy and raw-pinto chick studies establish a preparation boundary for raw Phaseolus-vulgaris material, and VCA budgie table presents beans as cooked provides the closest retained budgie bean context. Because direct budgie-specific evidence for this exact white-bean market class was not found, this is an explicitly labelled ingredient-level inference from the shared botanical identity, raw dried exposure, and raw-common-bean antinutritional boundary. It supports preparation required only; it does not establish a method, portion, formula, complete ration, medical use, runtime approval, or a different bean species/form.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "canary",
-          "outcome": "unresolved",
+          "outcome": "requires_preparation",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "wsu-extension-common-bean-varieties-2026",
+            "hewitt-1973-raw-navy-chicks",
+            "arija-2006-raw-extruded-pinto-chicks",
+            "vca-canary-feeding"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried Great Northern white beans, plain and unseasoned and canary",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct canary-specific evidence for raw dried Great Northern white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "canary raw dried Great Northern white beans, plain and unseasoned veterinary",
-              "canary raw dried Great Northern white beans, plain and unseasoned feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct canary-specific raw dried Great Northern white beans, plain and unseasoned outcome was established."
-          },
+          "locator": "WSU Extension: Great Northern, navy, cannellini/white kidney, and pinto are listed common-bean (Phaseolus vulgaris L.) market classes; Hewitt and Arija: raw navy/pinto Phaseolus-vulgaris material in chick diets; VCA canary table presents beans as cooked and names navy beans under cooked beans",
+          "evidenceScope": "related_species",
+          "rationale": "Great Northern white beans is a raw dried Phaseolus-vulgaris common-bean market class. The retained raw-navy and raw-pinto chick studies establish a preparation boundary for raw Phaseolus-vulgaris material, and VCA canary table presents beans as cooked and names navy beans under cooked beans provides the closest retained canary bean context. Because direct canary-specific evidence for this exact white-bean market class was not found, this is an explicitly labelled ingredient-level inference from the shared botanical identity, raw dried exposure, and raw-common-bean antinutritional boundary. It supports preparation required only; it does not establish a method, portion, formula, complete ration, medical use, runtime approval, or a different bean species/form.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "chicken",
-          "outcome": "unresolved",
+          "outcome": "requires_preparation",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "wsu-extension-common-bean-varieties-2026",
+            "hewitt-1973-raw-navy-chicks",
+            "arija-2006-raw-extruded-pinto-chicks",
+            "hewitt-1973-raw-navy-chicks"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried Great Northern white beans, plain and unseasoned and chicken",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct chicken-specific evidence for raw dried Great Northern white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "chicken raw dried Great Northern white beans, plain and unseasoned veterinary",
-              "chicken raw dried Great Northern white beans, plain and unseasoned feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct chicken-specific raw dried Great Northern white beans, plain and unseasoned outcome was established."
-          },
+          "locator": "WSU Extension: Great Northern, navy, cannellini/white kidney, and pinto are listed common-bean (Phaseolus vulgaris L.) market classes; Hewitt and Arija: raw navy/pinto Phaseolus-vulgaris material in chick diets; direct raw-navy chick study records body-weight depression and pancreatic changes",
+          "evidenceScope": "related_species",
+          "rationale": "Great Northern white beans is a raw dried Phaseolus-vulgaris common-bean market class. The retained raw-navy and raw-pinto chick studies establish a preparation boundary for raw Phaseolus-vulgaris material, and direct raw-navy chick study records body-weight depression and pancreatic changes provides the closest retained chicken bean context. Because direct chicken-specific evidence for this exact white-bean market class was not found, this is an explicitly labelled ingredient-level inference from the shared botanical identity, raw dried exposure, and raw-common-bean antinutritional boundary. It supports preparation required only; it does not establish a method, portion, formula, complete ration, medical use, runtime approval, or a different bean species/form.",
           "reviewedAt": "2026-08-21"
         }
       ],
       "processing": {
         "sourceIds": [
-          "issue-168-research-log-2026"
+          "issue-168-research-log-2026",
+          "wsu-extension-common-bean-varieties-2026",
+          "hewitt-1973-raw-navy-chicks",
+          "arija-2006-raw-extruded-pinto-chicks",
+          "vca-pigeon-dove-feeding",
+          "ftb-legume-safety-2018",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding"
         ],
-        "rule": "This evidence-only record does not approve raw dried Great Northern white beans for runtime use, stock inventory, a formula, a portion, a preparation method, or a complete ration. The exact species/form outcomes remain unresolved after documented first-pass and targeted second searches.",
+        "rule": "Raw dried Great Northern beans are a common-bean (Phaseolus vulgaris) form with an explicitly documented raw-common-bean preparation boundary. This evidence-only record requires preparation before any bird use but does not prescribe a method, portion, formula, complete ration, medical use, runtime inventory approval, or a result for a different bean species/form.",
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-21"
@@ -3521,141 +3487,107 @@
           "issue-168-research-log-2026"
         ],
         "basis": "not asserted",
-        "notes": "No nutrient claim is asserted in this provenance-only review. The review concerns the exact raw dried bean form and evidence gaps."
+        "notes": "No nutrient claim is asserted in this provenance-only review. The record concerns the raw dried Phaseolus-vulgaris common-bean form and an explicit, bounded shared-ingredient preparation inference."
       },
       "speciesEvidence": [
         {
           "bird": "pigeon",
-          "outcome": "unresolved",
+          "outcome": "requires_preparation",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "wsu-extension-common-bean-varieties-2026",
+            "hewitt-1973-raw-navy-chicks",
+            "arija-2006-raw-extruded-pinto-chicks",
+            "vca-pigeon-dove-feeding"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried cannellini white beans, plain and unseasoned and pigeon",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct pigeon-specific evidence for raw dried cannellini white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "pigeon raw dried cannellini white beans, plain and unseasoned veterinary",
-              "pigeon raw dried cannellini white beans, plain and unseasoned feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct pigeon-specific raw dried cannellini white beans, plain and unseasoned outcome was established."
-          },
+          "locator": "WSU Extension: Great Northern, navy, cannellini/white kidney, and pinto are listed common-bean (Phaseolus vulgaris L.) market classes; Hewitt and Arija: raw navy/pinto Phaseolus-vulgaris material in chick diets; VCA pigeon/dove feeding context retained as a non-specific boundary",
+          "evidenceScope": "related_species",
+          "rationale": "Cannellini white beans is a raw dried Phaseolus-vulgaris common-bean market class. The retained raw-navy and raw-pinto chick studies establish a preparation boundary for raw Phaseolus-vulgaris material, and VCA pigeon/dove feeding context retained as a non-specific boundary provides the closest retained pigeon bean context. Because direct pigeon-specific evidence for this exact white-bean market class was not found, this is an explicitly labelled ingredient-level inference from the shared botanical identity, raw dried exposure, and raw-common-bean antinutritional boundary. It supports preparation required only; it does not establish a method, portion, formula, complete ration, medical use, runtime approval, or a different bean species/form.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "parrot",
-          "outcome": "unresolved",
+          "outcome": "requires_preparation",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "wsu-extension-common-bean-varieties-2026",
+            "hewitt-1973-raw-navy-chicks",
+            "arija-2006-raw-extruded-pinto-chicks",
+            "ftb-legume-safety-2018"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried cannellini white beans, plain and unseasoned and parrot",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct parrot-specific evidence for raw dried cannellini white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "parrot raw dried cannellini white beans, plain and unseasoned veterinary",
-              "parrot raw dried cannellini white beans, plain and unseasoned feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct parrot-specific raw dried cannellini white beans, plain and unseasoned outcome was established."
-          },
+          "locator": "WSU Extension: Great Northern, navy, cannellini/white kidney, and pinto are listed common-bean (Phaseolus vulgaris L.) market classes; Hewitt and Arija: raw navy/pinto Phaseolus-vulgaris material in chick diets; For the Birds names navy beans among beans to sprout or fully cook",
+          "evidenceScope": "related_species",
+          "rationale": "Cannellini white beans is a raw dried Phaseolus-vulgaris common-bean market class. The retained raw-navy and raw-pinto chick studies establish a preparation boundary for raw Phaseolus-vulgaris material, and For the Birds names navy beans among beans to sprout or fully cook provides the closest retained parrot bean context. Because direct parrot-specific evidence for this exact white-bean market class was not found, this is an explicitly labelled ingredient-level inference from the shared botanical identity, raw dried exposure, and raw-common-bean antinutritional boundary. It supports preparation required only; it does not establish a method, portion, formula, complete ration, medical use, runtime approval, or a different bean species/form.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "african_grey",
-          "outcome": "unresolved",
+          "outcome": "requires_preparation",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "wsu-extension-common-bean-varieties-2026",
+            "hewitt-1973-raw-navy-chicks",
+            "arija-2006-raw-extruded-pinto-chicks",
+            "vca-african-grey-feeding"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried cannellini white beans, plain and unseasoned and african_grey",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct african_grey-specific evidence for raw dried cannellini white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "african_grey raw dried cannellini white beans, plain and unseasoned veterinary",
-              "african_grey raw dried cannellini white beans, plain and unseasoned feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct african_grey-specific raw dried cannellini white beans, plain and unseasoned outcome was established."
-          },
+          "locator": "WSU Extension: Great Northern, navy, cannellini/white kidney, and pinto are listed common-bean (Phaseolus vulgaris L.) market classes; Hewitt and Arija: raw navy/pinto Phaseolus-vulgaris material in chick diets; VCA African Grey table presents beans as cooked",
+          "evidenceScope": "related_species",
+          "rationale": "Cannellini white beans is a raw dried Phaseolus-vulgaris common-bean market class. The retained raw-navy and raw-pinto chick studies establish a preparation boundary for raw Phaseolus-vulgaris material, and VCA African Grey table presents beans as cooked provides the closest retained african_grey bean context. Because direct african_grey-specific evidence for this exact white-bean market class was not found, this is an explicitly labelled ingredient-level inference from the shared botanical identity, raw dried exposure, and raw-common-bean antinutritional boundary. It supports preparation required only; it does not establish a method, portion, formula, complete ration, medical use, runtime approval, or a different bean species/form.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "budgie",
-          "outcome": "unresolved",
+          "outcome": "requires_preparation",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "wsu-extension-common-bean-varieties-2026",
+            "hewitt-1973-raw-navy-chicks",
+            "arija-2006-raw-extruded-pinto-chicks",
+            "vca-budgie-feeding"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried cannellini white beans, plain and unseasoned and budgie",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct budgie-specific evidence for raw dried cannellini white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "budgie raw dried cannellini white beans, plain and unseasoned veterinary",
-              "budgie raw dried cannellini white beans, plain and unseasoned feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct budgie-specific raw dried cannellini white beans, plain and unseasoned outcome was established."
-          },
+          "locator": "WSU Extension: Great Northern, navy, cannellini/white kidney, and pinto are listed common-bean (Phaseolus vulgaris L.) market classes; Hewitt and Arija: raw navy/pinto Phaseolus-vulgaris material in chick diets; VCA budgie table presents beans as cooked",
+          "evidenceScope": "related_species",
+          "rationale": "Cannellini white beans is a raw dried Phaseolus-vulgaris common-bean market class. The retained raw-navy and raw-pinto chick studies establish a preparation boundary for raw Phaseolus-vulgaris material, and VCA budgie table presents beans as cooked provides the closest retained budgie bean context. Because direct budgie-specific evidence for this exact white-bean market class was not found, this is an explicitly labelled ingredient-level inference from the shared botanical identity, raw dried exposure, and raw-common-bean antinutritional boundary. It supports preparation required only; it does not establish a method, portion, formula, complete ration, medical use, runtime approval, or a different bean species/form.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "canary",
-          "outcome": "unresolved",
+          "outcome": "requires_preparation",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "wsu-extension-common-bean-varieties-2026",
+            "hewitt-1973-raw-navy-chicks",
+            "arija-2006-raw-extruded-pinto-chicks",
+            "vca-canary-feeding"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried cannellini white beans, plain and unseasoned and canary",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct canary-specific evidence for raw dried cannellini white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "canary raw dried cannellini white beans, plain and unseasoned veterinary",
-              "canary raw dried cannellini white beans, plain and unseasoned feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct canary-specific raw dried cannellini white beans, plain and unseasoned outcome was established."
-          },
+          "locator": "WSU Extension: Great Northern, navy, cannellini/white kidney, and pinto are listed common-bean (Phaseolus vulgaris L.) market classes; Hewitt and Arija: raw navy/pinto Phaseolus-vulgaris material in chick diets; VCA canary table presents beans as cooked and names navy beans under cooked beans",
+          "evidenceScope": "related_species",
+          "rationale": "Cannellini white beans is a raw dried Phaseolus-vulgaris common-bean market class. The retained raw-navy and raw-pinto chick studies establish a preparation boundary for raw Phaseolus-vulgaris material, and VCA canary table presents beans as cooked and names navy beans under cooked beans provides the closest retained canary bean context. Because direct canary-specific evidence for this exact white-bean market class was not found, this is an explicitly labelled ingredient-level inference from the shared botanical identity, raw dried exposure, and raw-common-bean antinutritional boundary. It supports preparation required only; it does not establish a method, portion, formula, complete ration, medical use, runtime approval, or a different bean species/form.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "chicken",
-          "outcome": "unresolved",
+          "outcome": "requires_preparation",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "wsu-extension-common-bean-varieties-2026",
+            "hewitt-1973-raw-navy-chicks",
+            "arija-2006-raw-extruded-pinto-chicks",
+            "hewitt-1973-raw-navy-chicks"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried cannellini white beans, plain and unseasoned and chicken",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct chicken-specific evidence for raw dried cannellini white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "chicken raw dried cannellini white beans, plain and unseasoned veterinary",
-              "chicken raw dried cannellini white beans, plain and unseasoned feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct chicken-specific raw dried cannellini white beans, plain and unseasoned outcome was established."
-          },
+          "locator": "WSU Extension: Great Northern, navy, cannellini/white kidney, and pinto are listed common-bean (Phaseolus vulgaris L.) market classes; Hewitt and Arija: raw navy/pinto Phaseolus-vulgaris material in chick diets; direct raw-navy chick study records body-weight depression and pancreatic changes",
+          "evidenceScope": "related_species",
+          "rationale": "Cannellini white beans is a raw dried Phaseolus-vulgaris common-bean market class. The retained raw-navy and raw-pinto chick studies establish a preparation boundary for raw Phaseolus-vulgaris material, and direct raw-navy chick study records body-weight depression and pancreatic changes provides the closest retained chicken bean context. Because direct chicken-specific evidence for this exact white-bean market class was not found, this is an explicitly labelled ingredient-level inference from the shared botanical identity, raw dried exposure, and raw-common-bean antinutritional boundary. It supports preparation required only; it does not establish a method, portion, formula, complete ration, medical use, runtime approval, or a different bean species/form.",
           "reviewedAt": "2026-08-21"
         }
       ],
       "processing": {
         "sourceIds": [
-          "issue-168-research-log-2026"
+          "issue-168-research-log-2026",
+          "wsu-extension-common-bean-varieties-2026",
+          "hewitt-1973-raw-navy-chicks",
+          "arija-2006-raw-extruded-pinto-chicks",
+          "vca-pigeon-dove-feeding",
+          "ftb-legume-safety-2018",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding"
         ],
-        "rule": "This evidence-only record does not approve raw dried cannellini white beans for runtime use, stock inventory, a formula, a portion, a preparation method, or a complete ration. The exact species/form outcomes remain unresolved after documented first-pass and targeted second searches.",
+        "rule": "Raw dried cannellini beans are a common-bean (Phaseolus vulgaris) form with an explicitly documented raw-common-bean preparation boundary. This evidence-only record requires preparation before any bird use but does not prescribe a method, portion, formula, complete ration, medical use, runtime inventory approval, or a result for a different bean species/form.",
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-21"
@@ -3663,129 +3595,106 @@
     {
       "ingredientId": "chamomile",
       "ingredientDisplayName": "Chamomile",
-      "form": "plain dried culinary chamomile flower",
+      "form": "ordinary culinary chamomile flower, fresh or dried, plain",
       "nutrition": {
         "sourceIds": [
           "issue-168-research-log-2026"
         ],
         "basis": "not asserted",
-        "notes": "No nutrient claim is asserted in this provenance-only review. It distinguishes the ordinary dried culinary flower from tea, extracts, oils, and therapeutic preparations."
+        "notes": "No nutrient claim is asserted in this provenance-only review. The owner-confirmed ordinary-culinary-herb boundary treats fresh and dried household flower as one form; tea, extracts, oils, and therapeutic preparations remain distinct."
       },
       "speciesEvidence": [
         {
           "bird": "pigeon",
           "outcome": "limited",
           "sourceIds": [
+            "herb-provenance-registry-2026",
+            "dardouri-2025-poultry-herbs-scoping-review",
+            "elsabrout-2023-poultry-botanicals-review",
             "el-ghamry-karosah-2020-pigeon-chamomile-flowers"
           ],
-          "locator": "Study title and abstract: domestic pigeons (Columba livia domestica) and chamomile flowers assessed as feed additives",
+          "locator": "Controlled domestic-pigeon chamomile-flower feed-additive study; canonical herb-provenance registry ordinary-chamomile eligibility",
           "evidenceScope": "species_specific",
-          "rationale": "The direct pigeon study supports only a bounded controlled feed-additive context for chamomile flowers. It does not establish a household amount, a formula, therapeutic use, a complete ration, oil/extract equivalence, or another bird outcome.",
+          "rationale": "The retained direct pigeon study and the canonical herb registry support ordinary culinary chamomile only as a bounded food-use context. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household use are one form; oils, extracts, tinctures, teas, and other concentrated preparations remain distinct. This does not establish a dose, formula, complete ration, medical use, or runtime approval.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "parrot",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "herb-provenance-registry-2026",
+            "dardouri-2025-poultry-herbs-scoping-review",
+            "elsabrout-2023-poultry-botanicals-review"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary chamomile flower and parrot",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct parrot-specific evidence for plain dried culinary chamomile flower. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "parrot plain dried culinary chamomile flower veterinary",
-              "parrot plain dried culinary chamomile flower feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct parrot-specific plain dried culinary chamomile flower outcome was established."
-          },
+          "locator": "Canonical herb-provenance registry ordinary-chamomile eligibility and its cited poultry/avian-herbal source context",
+          "evidenceScope": "related_species",
+          "rationale": "The canonical herb registry explicitly treats ordinary culinary chamomile as eligible for this supported bird. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household use are one form; oils, extracts, tinctures, teas, and other concentrated preparations remain distinct. This is an explicitly labelled related-species inference from the same ordinary culinary ingredient and preparation boundary; the retained external sources remain poultry/avian-herbal context and do not establish direct parrot-specific dosing, a formula, a complete ration, medical use, or runtime approval.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "african_grey",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "herb-provenance-registry-2026",
+            "dardouri-2025-poultry-herbs-scoping-review",
+            "elsabrout-2023-poultry-botanicals-review"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary chamomile flower and african_grey",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct african_grey-specific evidence for plain dried culinary chamomile flower. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "african_grey plain dried culinary chamomile flower veterinary",
-              "african_grey plain dried culinary chamomile flower feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct african_grey-specific plain dried culinary chamomile flower outcome was established."
-          },
+          "locator": "Canonical herb-provenance registry ordinary-chamomile eligibility and its cited poultry/avian-herbal source context",
+          "evidenceScope": "related_species",
+          "rationale": "The canonical herb registry explicitly treats ordinary culinary chamomile as eligible for this supported bird. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household use are one form; oils, extracts, tinctures, teas, and other concentrated preparations remain distinct. This is an explicitly labelled related-species inference from the same ordinary culinary ingredient and preparation boundary; the retained external sources remain poultry/avian-herbal context and do not establish direct african_grey-specific dosing, a formula, a complete ration, medical use, or runtime approval.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "budgie",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "herb-provenance-registry-2026",
+            "dardouri-2025-poultry-herbs-scoping-review",
+            "elsabrout-2023-poultry-botanicals-review"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary chamomile flower and budgie",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct budgie-specific evidence for plain dried culinary chamomile flower. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "budgie plain dried culinary chamomile flower veterinary",
-              "budgie plain dried culinary chamomile flower feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct budgie-specific plain dried culinary chamomile flower outcome was established."
-          },
+          "locator": "Canonical herb-provenance registry ordinary-chamomile eligibility and its cited poultry/avian-herbal source context",
+          "evidenceScope": "related_species",
+          "rationale": "The canonical herb registry explicitly treats ordinary culinary chamomile as eligible for this supported bird. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household use are one form; oils, extracts, tinctures, teas, and other concentrated preparations remain distinct. This is an explicitly labelled related-species inference from the same ordinary culinary ingredient and preparation boundary; the retained external sources remain poultry/avian-herbal context and do not establish direct budgie-specific dosing, a formula, a complete ration, medical use, or runtime approval.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "canary",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "herb-provenance-registry-2026",
+            "dardouri-2025-poultry-herbs-scoping-review",
+            "elsabrout-2023-poultry-botanicals-review"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary chamomile flower and canary",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct canary-specific evidence for plain dried culinary chamomile flower. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "canary plain dried culinary chamomile flower veterinary",
-              "canary plain dried culinary chamomile flower feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct canary-specific plain dried culinary chamomile flower outcome was established."
-          },
+          "locator": "Canonical herb-provenance registry ordinary-chamomile eligibility and its cited poultry/avian-herbal source context",
+          "evidenceScope": "related_species",
+          "rationale": "The canonical herb registry explicitly treats ordinary culinary chamomile as eligible for this supported bird. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household use are one form; oils, extracts, tinctures, teas, and other concentrated preparations remain distinct. This is an explicitly labelled related-species inference from the same ordinary culinary ingredient and preparation boundary; the retained external sources remain poultry/avian-herbal context and do not establish direct canary-specific dosing, a formula, a complete ration, medical use, or runtime approval.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "chicken",
           "outcome": "limited",
           "sourceIds": [
+            "herb-provenance-registry-2026",
+            "dardouri-2025-poultry-herbs-scoping-review",
+            "elsabrout-2023-poultry-botanicals-review",
             "al-kaisse-khalel-2011-broiler-chamomile-flowers"
           ],
-          "locator": "Abstract and methods: 250 broilers received basal diets plus 0.25%, 0.50%, 0.75%, or 1% dried milled chamomile-flower powder for six weeks",
+          "locator": "Broiler study using dried milled chamomile-flower powder at defined dietary inclusion levels; canonical herb-provenance registry ordinary-chamomile eligibility",
           "evidenceScope": "species_specific",
-          "rationale": "The direct broiler study supports only its defined balanced-ration context using dried milled flower material. It does not establish an unrestricted household amount, a complete ration, therapeutic use, oil/extract equivalence, or another bird outcome.",
+          "rationale": "The retained direct chicken study and the canonical herb registry support ordinary culinary chamomile only as a bounded food-use context. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household use are one form; oils, extracts, tinctures, teas, and other concentrated preparations remain distinct. This does not establish a dose, formula, complete ration, medical use, or runtime approval.",
           "reviewedAt": "2026-08-21"
         }
       ],
       "processing": {
         "sourceIds": [
           "issue-168-research-log-2026",
+          "herb-provenance-registry-2026",
+          "dardouri-2025-poultry-herbs-scoping-review",
+          "elsabrout-2023-poultry-botanicals-review",
           "el-ghamry-karosah-2020-pigeon-chamomile-flowers",
           "al-kaisse-khalel-2011-broiler-chamomile-flowers"
         ],
-        "rule": "Treat this review as ordinary dried culinary flower only. Tea, extracts, oils, tinctures, blends, medicinal dosing, salted or flavoured products, and mould-contaminated material remain distinct. This record does not approve runtime inventory use, a formula, a portion, or a complete ration.",
+        "rule": "Treat ordinary culinary chamomile flower as one fresh/dried household-use form. Keep tea, extracts, oils, tinctures, blends, medicinal dosing, salted or flavoured products, and mould-contaminated material distinct. This evidence-only reconciliation does not approve runtime inventory use, a formula, a portion, or a complete ration.",
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-21"
@@ -3793,13 +3702,13 @@
     {
       "ingredientId": "lavender",
       "ingredientDisplayName": "Lavender",
-      "form": "plain dried culinary lavender flower",
+      "form": "ordinary culinary lavender flower, fresh or dried, plain",
       "nutrition": {
         "sourceIds": [
           "issue-168-research-log-2026"
         ],
         "basis": "not asserted",
-        "notes": "No nutrient claim is asserted in this provenance-only review. It distinguishes the ordinary dried culinary flower from oils, diffusers, extracts, and aromatic products."
+        "notes": "No nutrient claim is asserted in this provenance-only review. The owner-confirmed ordinary-culinary-herb boundary treats fresh and dried household flower as one form; oils, diffusers, extracts, and aromatic products remain distinct."
       },
       "speciesEvidence": [
         {
@@ -3808,18 +3717,18 @@
           "sourceIds": [
             "issue-168-research-log-2026"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary lavender flower and pigeon",
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for ordinary culinary lavender flower, fresh or dried, plain and pigeon",
           "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct pigeon-specific evidence for plain dried culinary lavender flower. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct pigeon-specific evidence for ordinary culinary lavender flower, fresh or dried, plain, and the retained sources did not meet the owner-confirmed standard for an explicit ingredient-level inference. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a silent cross-species inference.",
           "followUpSearch": {
             "queries": [
-              "pigeon plain dried culinary lavender flower veterinary",
-              "pigeon plain dried culinary lavender flower feeding study"
+              "pigeon ordinary culinary lavender flower, fresh or dried, plain veterinary",
+              "pigeon ordinary culinary lavender flower, fresh or dried, plain feeding study"
             ],
             "sourceIds": [
               "issue-168-research-log-2026"
             ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct pigeon-specific plain dried culinary lavender flower outcome was established."
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct pigeon-specific ordinary culinary lavender flower, fresh or dried, plain outcome or defensible ingredient-level inference was established."
           },
           "reviewedAt": "2026-08-21"
         },
@@ -3829,18 +3738,18 @@
           "sourceIds": [
             "issue-168-research-log-2026"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary lavender flower and parrot",
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for ordinary culinary lavender flower, fresh or dried, plain and parrot",
           "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct parrot-specific evidence for plain dried culinary lavender flower. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct parrot-specific evidence for ordinary culinary lavender flower, fresh or dried, plain, and the retained sources did not meet the owner-confirmed standard for an explicit ingredient-level inference. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a silent cross-species inference.",
           "followUpSearch": {
             "queries": [
-              "parrot plain dried culinary lavender flower veterinary",
-              "parrot plain dried culinary lavender flower feeding study"
+              "parrot ordinary culinary lavender flower, fresh or dried, plain veterinary",
+              "parrot ordinary culinary lavender flower, fresh or dried, plain feeding study"
             ],
             "sourceIds": [
               "issue-168-research-log-2026"
             ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct parrot-specific plain dried culinary lavender flower outcome was established."
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct parrot-specific ordinary culinary lavender flower, fresh or dried, plain outcome or defensible ingredient-level inference was established."
           },
           "reviewedAt": "2026-08-21"
         },
@@ -3850,18 +3759,18 @@
           "sourceIds": [
             "issue-168-research-log-2026"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary lavender flower and african_grey",
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for ordinary culinary lavender flower, fresh or dried, plain and african_grey",
           "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct african_grey-specific evidence for plain dried culinary lavender flower. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct african_grey-specific evidence for ordinary culinary lavender flower, fresh or dried, plain, and the retained sources did not meet the owner-confirmed standard for an explicit ingredient-level inference. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a silent cross-species inference.",
           "followUpSearch": {
             "queries": [
-              "african_grey plain dried culinary lavender flower veterinary",
-              "african_grey plain dried culinary lavender flower feeding study"
+              "african_grey ordinary culinary lavender flower, fresh or dried, plain veterinary",
+              "african_grey ordinary culinary lavender flower, fresh or dried, plain feeding study"
             ],
             "sourceIds": [
               "issue-168-research-log-2026"
             ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct african_grey-specific plain dried culinary lavender flower outcome was established."
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct african_grey-specific ordinary culinary lavender flower, fresh or dried, plain outcome or defensible ingredient-level inference was established."
           },
           "reviewedAt": "2026-08-21"
         },
@@ -3871,18 +3780,18 @@
           "sourceIds": [
             "issue-168-research-log-2026"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary lavender flower and budgie",
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for ordinary culinary lavender flower, fresh or dried, plain and budgie",
           "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct budgie-specific evidence for plain dried culinary lavender flower. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct budgie-specific evidence for ordinary culinary lavender flower, fresh or dried, plain, and the retained sources did not meet the owner-confirmed standard for an explicit ingredient-level inference. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a silent cross-species inference.",
           "followUpSearch": {
             "queries": [
-              "budgie plain dried culinary lavender flower veterinary",
-              "budgie plain dried culinary lavender flower feeding study"
+              "budgie ordinary culinary lavender flower, fresh or dried, plain veterinary",
+              "budgie ordinary culinary lavender flower, fresh or dried, plain feeding study"
             ],
             "sourceIds": [
               "issue-168-research-log-2026"
             ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct budgie-specific plain dried culinary lavender flower outcome was established."
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct budgie-specific ordinary culinary lavender flower, fresh or dried, plain outcome or defensible ingredient-level inference was established."
           },
           "reviewedAt": "2026-08-21"
         },
@@ -3892,18 +3801,18 @@
           "sourceIds": [
             "issue-168-research-log-2026"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary lavender flower and canary",
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for ordinary culinary lavender flower, fresh or dried, plain and canary",
           "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct canary-specific evidence for plain dried culinary lavender flower. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct canary-specific evidence for ordinary culinary lavender flower, fresh or dried, plain, and the retained sources did not meet the owner-confirmed standard for an explicit ingredient-level inference. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a silent cross-species inference.",
           "followUpSearch": {
             "queries": [
-              "canary plain dried culinary lavender flower veterinary",
-              "canary plain dried culinary lavender flower feeding study"
+              "canary ordinary culinary lavender flower, fresh or dried, plain veterinary",
+              "canary ordinary culinary lavender flower, fresh or dried, plain feeding study"
             ],
             "sourceIds": [
               "issue-168-research-log-2026"
             ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct canary-specific plain dried culinary lavender flower outcome was established."
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct canary-specific ordinary culinary lavender flower, fresh or dried, plain outcome or defensible ingredient-level inference was established."
           },
           "reviewedAt": "2026-08-21"
         },
@@ -3913,18 +3822,18 @@
           "sourceIds": [
             "issue-168-research-log-2026"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary lavender flower and chicken",
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for ordinary culinary lavender flower, fresh or dried, plain and chicken",
           "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct chicken-specific evidence for plain dried culinary lavender flower. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct chicken-specific evidence for ordinary culinary lavender flower, fresh or dried, plain, and the retained sources did not meet the owner-confirmed standard for an explicit ingredient-level inference. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a silent cross-species inference.",
           "followUpSearch": {
             "queries": [
-              "chicken plain dried culinary lavender flower veterinary",
-              "chicken plain dried culinary lavender flower feeding study"
+              "chicken ordinary culinary lavender flower, fresh or dried, plain veterinary",
+              "chicken ordinary culinary lavender flower, fresh or dried, plain feeding study"
             ],
             "sourceIds": [
               "issue-168-research-log-2026"
             ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct chicken-specific plain dried culinary lavender flower outcome was established."
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct chicken-specific ordinary culinary lavender flower, fresh or dried, plain outcome or defensible ingredient-level inference was established."
           },
           "reviewedAt": "2026-08-21"
         }
@@ -3933,7 +3842,7 @@
         "sourceIds": [
           "issue-168-research-log-2026"
         ],
-        "rule": "Essential oil, diffusers, spray, extracts, tinctures, blends, and scented/aromatic products remain distinct from this dried culinary-flower form. This evidence-only record does not approve runtime inventory use, a formula, a portion, or a complete ration; all exact outcomes remain unresolved.",
+        "rule": "Treat ordinary culinary lavender flower as one fresh/dried household-use form. Essential oil, diffusers, spray, extracts, tinctures, blends, and scented/aromatic products remain distinct. This evidence-only record does not approve runtime inventory use, a formula, a portion, or a complete ration; the retained sources do not establish a defensible ingredient-level inference for any supported bird.",
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-21"
@@ -3941,140 +3850,99 @@
     {
       "ingredientId": "fennel",
       "ingredientDisplayName": "Fennel",
-      "form": "plain dried culinary fennel seed",
+      "form": "ordinary culinary fennel seed, fresh or dried, plain",
       "nutrition": {
         "sourceIds": [
           "issue-168-research-log-2026"
         ],
         "basis": "not asserted",
-        "notes": "No nutrient claim is asserted in this provenance-only review. It distinguishes the dry culinary seed from essential oil, extracts, tea, and other concentrated preparations."
+        "notes": "No nutrient claim is asserted in this provenance-only review. The owner-confirmed ordinary-culinary-herb boundary treats fresh and dried household seed as one form; oil, extracts, tea, and other concentrated preparations remain distinct."
       },
       "speciesEvidence": [
         {
           "bird": "pigeon",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "herb-provenance-registry-2026",
+            "dardouri-2025-poultry-herbs-scoping-review"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary fennel seed and pigeon",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct pigeon-specific evidence for plain dried culinary fennel seed. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "pigeon plain dried culinary fennel seed veterinary",
-              "pigeon plain dried culinary fennel seed feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct pigeon-specific plain dried culinary fennel seed outcome was established."
-          },
+          "locator": "Canonical herb-provenance registry ordinary-fennel eligibility and its cited poultry/avian-herbal source context",
+          "evidenceScope": "related_species",
+          "rationale": "The canonical herb registry explicitly treats ordinary culinary fennel as eligible for this supported bird. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household use are one form; oils, extracts, tinctures, teas, and other concentrated preparations remain distinct. This is an explicitly labelled related-species inference from the same ordinary culinary ingredient and preparation boundary; the retained external sources remain poultry/avian-herbal context and do not establish direct pigeon-specific dosing, a formula, a complete ration, medical use, or runtime approval.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "parrot",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "herb-provenance-registry-2026",
+            "dardouri-2025-poultry-herbs-scoping-review"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary fennel seed and parrot",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct parrot-specific evidence for plain dried culinary fennel seed. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "parrot plain dried culinary fennel seed veterinary",
-              "parrot plain dried culinary fennel seed feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct parrot-specific plain dried culinary fennel seed outcome was established."
-          },
+          "locator": "Canonical herb-provenance registry ordinary-fennel eligibility and its cited poultry/avian-herbal source context",
+          "evidenceScope": "related_species",
+          "rationale": "The canonical herb registry explicitly treats ordinary culinary fennel as eligible for this supported bird. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household use are one form; oils, extracts, tinctures, teas, and other concentrated preparations remain distinct. This is an explicitly labelled related-species inference from the same ordinary culinary ingredient and preparation boundary; the retained external sources remain poultry/avian-herbal context and do not establish direct parrot-specific dosing, a formula, a complete ration, medical use, or runtime approval.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "african_grey",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "herb-provenance-registry-2026",
+            "dardouri-2025-poultry-herbs-scoping-review"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary fennel seed and african_grey",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct african_grey-specific evidence for plain dried culinary fennel seed. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "african_grey plain dried culinary fennel seed veterinary",
-              "african_grey plain dried culinary fennel seed feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct african_grey-specific plain dried culinary fennel seed outcome was established."
-          },
+          "locator": "Canonical herb-provenance registry ordinary-fennel eligibility and its cited poultry/avian-herbal source context",
+          "evidenceScope": "related_species",
+          "rationale": "The canonical herb registry explicitly treats ordinary culinary fennel as eligible for this supported bird. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household use are one form; oils, extracts, tinctures, teas, and other concentrated preparations remain distinct. This is an explicitly labelled related-species inference from the same ordinary culinary ingredient and preparation boundary; the retained external sources remain poultry/avian-herbal context and do not establish direct african_grey-specific dosing, a formula, a complete ration, medical use, or runtime approval.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "budgie",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "herb-provenance-registry-2026",
+            "dardouri-2025-poultry-herbs-scoping-review"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary fennel seed and budgie",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct budgie-specific evidence for plain dried culinary fennel seed. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "budgie plain dried culinary fennel seed veterinary",
-              "budgie plain dried culinary fennel seed feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct budgie-specific plain dried culinary fennel seed outcome was established."
-          },
+          "locator": "Canonical herb-provenance registry ordinary-fennel eligibility and its cited poultry/avian-herbal source context",
+          "evidenceScope": "related_species",
+          "rationale": "The canonical herb registry explicitly treats ordinary culinary fennel as eligible for this supported bird. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household use are one form; oils, extracts, tinctures, teas, and other concentrated preparations remain distinct. This is an explicitly labelled related-species inference from the same ordinary culinary ingredient and preparation boundary; the retained external sources remain poultry/avian-herbal context and do not establish direct budgie-specific dosing, a formula, a complete ration, medical use, or runtime approval.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "canary",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "herb-provenance-registry-2026",
+            "dardouri-2025-poultry-herbs-scoping-review"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary fennel seed and canary",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct canary-specific evidence for plain dried culinary fennel seed. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "canary plain dried culinary fennel seed veterinary",
-              "canary plain dried culinary fennel seed feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct canary-specific plain dried culinary fennel seed outcome was established."
-          },
+          "locator": "Canonical herb-provenance registry ordinary-fennel eligibility and its cited poultry/avian-herbal source context",
+          "evidenceScope": "related_species",
+          "rationale": "The canonical herb registry explicitly treats ordinary culinary fennel as eligible for this supported bird. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household use are one form; oils, extracts, tinctures, teas, and other concentrated preparations remain distinct. This is an explicitly labelled related-species inference from the same ordinary culinary ingredient and preparation boundary; the retained external sources remain poultry/avian-herbal context and do not establish direct canary-specific dosing, a formula, a complete ration, medical use, or runtime approval.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "chicken",
           "outcome": "limited",
           "sourceIds": [
+            "herb-provenance-registry-2026",
+            "dardouri-2025-poultry-herbs-scoping-review",
             "al-sagan-2020-broiler-fennel-seed-powder",
             "ghonime-2025-broiler-fennel-seed-meal"
           ],
-          "locator": "Al-Sagan et al.: ground fennel seed powder at 0%, 1.6%, and 3.2% in Ross-308 broiler diets from day 19–41; Ghonime et al.: fennel seed meal at 5%, 10%, and 20% in formulated broiler diets",
+          "locator": "Broiler studies using ground fennel seed powder or seed meal in defined formulated diets; canonical herb-provenance registry ordinary-fennel eligibility",
           "evidenceScope": "species_specific",
-          "rationale": "The direct chicken studies support only their defined formulated-ration contexts using ground seed powder or seed meal. They do not establish a household amount, unrestricted whole-seed use, a complete ration, medical use, essential-oil equivalence, or another bird outcome.",
+          "rationale": "The retained direct chicken study and the canonical herb registry support ordinary culinary fennel only as a bounded food-use context. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household use are one form; oils, extracts, tinctures, teas, and other concentrated preparations remain distinct. This does not establish a dose, formula, complete ration, medical use, or runtime approval.",
           "reviewedAt": "2026-08-21"
         }
       ],
       "processing": {
         "sourceIds": [
           "issue-168-research-log-2026",
+          "herb-provenance-registry-2026",
+          "dardouri-2025-poultry-herbs-scoping-review",
           "al-sagan-2020-broiler-fennel-seed-powder",
           "ghonime-2025-broiler-fennel-seed-meal"
         ],
-        "rule": "This record is limited to plain dried culinary fennel seed. Oil, extract, tea, and other concentrated preparations remain distinct. The chicken evidence is restricted to study-specific ground-seed/meal formulated diets and does not approve runtime inventory use, a formula, a portion, or a complete ration.",
+        "rule": "Treat ordinary culinary fennel seed as one fresh/dried household-use form. Keep oil, extract, tea, and other concentrated preparations distinct. This evidence-only reconciliation does not approve runtime inventory use, a formula, a portion, or a complete ration.",
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-21"
@@ -4082,147 +3950,95 @@
     {
       "ingredientId": "ginger",
       "ingredientDisplayName": "Ginger",
-      "form": "plain fresh culinary ginger root",
+      "form": "ordinary culinary ginger root, fresh or dried, plain",
       "nutrition": {
         "sourceIds": [
           "issue-168-research-log-2026"
         ],
         "basis": "not asserted",
-        "notes": "No nutrient claim is asserted in this provenance-only review. It distinguishes the fresh culinary root from powders, tea, extracts, oils, and therapeutic preparations."
+        "notes": "No nutrient claim is asserted in this provenance-only review. The owner-confirmed ordinary-culinary-herb boundary treats fresh and dried household root as one form; powders, tea, extracts, oils, and therapeutic preparations remain distinct."
       },
       "speciesEvidence": [
         {
           "bird": "pigeon",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "herb-provenance-registry-2026",
+            "elsabrout-2023-poultry-botanicals-review"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain fresh culinary ginger root and pigeon",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct pigeon-specific evidence for plain fresh culinary ginger root. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "pigeon plain fresh culinary ginger root veterinary",
-              "pigeon plain fresh culinary ginger root feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct pigeon-specific plain fresh culinary ginger root outcome was established."
-          },
+          "locator": "Canonical herb-provenance registry ordinary-ginger eligibility and its cited poultry/avian-herbal source context",
+          "evidenceScope": "related_species",
+          "rationale": "The canonical herb registry explicitly treats ordinary culinary ginger as eligible for this supported bird. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household use are one form; oils, extracts, tinctures, teas, and other concentrated preparations remain distinct. This is an explicitly labelled related-species inference from the same ordinary culinary ingredient and preparation boundary; the retained external sources remain poultry/avian-herbal context and do not establish direct pigeon-specific dosing, a formula, a complete ration, medical use, or runtime approval.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "parrot",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "herb-provenance-registry-2026",
+            "elsabrout-2023-poultry-botanicals-review"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain fresh culinary ginger root and parrot",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct parrot-specific evidence for plain fresh culinary ginger root. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "parrot plain fresh culinary ginger root veterinary",
-              "parrot plain fresh culinary ginger root feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct parrot-specific plain fresh culinary ginger root outcome was established."
-          },
+          "locator": "Canonical herb-provenance registry ordinary-ginger eligibility and its cited poultry/avian-herbal source context",
+          "evidenceScope": "related_species",
+          "rationale": "The canonical herb registry explicitly treats ordinary culinary ginger as eligible for this supported bird. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household use are one form; oils, extracts, tinctures, teas, and other concentrated preparations remain distinct. This is an explicitly labelled related-species inference from the same ordinary culinary ingredient and preparation boundary; the retained external sources remain poultry/avian-herbal context and do not establish direct parrot-specific dosing, a formula, a complete ration, medical use, or runtime approval.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "african_grey",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "herb-provenance-registry-2026",
+            "elsabrout-2023-poultry-botanicals-review"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain fresh culinary ginger root and african_grey",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct african_grey-specific evidence for plain fresh culinary ginger root. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "african_grey plain fresh culinary ginger root veterinary",
-              "african_grey plain fresh culinary ginger root feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct african_grey-specific plain fresh culinary ginger root outcome was established."
-          },
+          "locator": "Canonical herb-provenance registry ordinary-ginger eligibility and its cited poultry/avian-herbal source context",
+          "evidenceScope": "related_species",
+          "rationale": "The canonical herb registry explicitly treats ordinary culinary ginger as eligible for this supported bird. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household use are one form; oils, extracts, tinctures, teas, and other concentrated preparations remain distinct. This is an explicitly labelled related-species inference from the same ordinary culinary ingredient and preparation boundary; the retained external sources remain poultry/avian-herbal context and do not establish direct african_grey-specific dosing, a formula, a complete ration, medical use, or runtime approval.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "budgie",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "herb-provenance-registry-2026",
+            "elsabrout-2023-poultry-botanicals-review"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain fresh culinary ginger root and budgie",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct budgie-specific evidence for plain fresh culinary ginger root. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "budgie plain fresh culinary ginger root veterinary",
-              "budgie plain fresh culinary ginger root feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct budgie-specific plain fresh culinary ginger root outcome was established."
-          },
+          "locator": "Canonical herb-provenance registry ordinary-ginger eligibility and its cited poultry/avian-herbal source context",
+          "evidenceScope": "related_species",
+          "rationale": "The canonical herb registry explicitly treats ordinary culinary ginger as eligible for this supported bird. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household use are one form; oils, extracts, tinctures, teas, and other concentrated preparations remain distinct. This is an explicitly labelled related-species inference from the same ordinary culinary ingredient and preparation boundary; the retained external sources remain poultry/avian-herbal context and do not establish direct budgie-specific dosing, a formula, a complete ration, medical use, or runtime approval.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "canary",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "herb-provenance-registry-2026",
+            "elsabrout-2023-poultry-botanicals-review"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain fresh culinary ginger root and canary",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct canary-specific evidence for plain fresh culinary ginger root. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "canary plain fresh culinary ginger root veterinary",
-              "canary plain fresh culinary ginger root feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct canary-specific plain fresh culinary ginger root outcome was established."
-          },
+          "locator": "Canonical herb-provenance registry ordinary-ginger eligibility and its cited poultry/avian-herbal source context",
+          "evidenceScope": "related_species",
+          "rationale": "The canonical herb registry explicitly treats ordinary culinary ginger as eligible for this supported bird. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household use are one form; oils, extracts, tinctures, teas, and other concentrated preparations remain distinct. This is an explicitly labelled related-species inference from the same ordinary culinary ingredient and preparation boundary; the retained external sources remain poultry/avian-herbal context and do not establish direct canary-specific dosing, a formula, a complete ration, medical use, or runtime approval.",
           "reviewedAt": "2026-08-21"
         },
         {
           "bird": "chicken",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "issue-168-research-log-2026"
+            "herb-provenance-registry-2026",
+            "elsabrout-2023-poultry-botanicals-review"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain fresh culinary ginger root and chicken",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct chicken-specific evidence for plain fresh culinary ginger root. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "chicken plain fresh culinary ginger root veterinary",
-              "chicken plain fresh culinary ginger root feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct chicken-specific plain fresh culinary ginger root outcome was established."
-          },
+          "locator": "Canonical poultry-botanicals review context for dietary ginger; canonical herb-provenance registry ordinary-ginger eligibility",
+          "evidenceScope": "species_specific",
+          "rationale": "The retained direct chicken study and the canonical herb registry support ordinary culinary ginger only as a bounded food-use context. Under the owner-confirmed ordinary-culinary-herb form-continuity boundary, fresh and dried household use are one form; oils, extracts, tinctures, teas, and other concentrated preparations remain distinct. This does not establish a dose, formula, complete ration, medical use, or runtime approval.",
           "reviewedAt": "2026-08-21"
         }
       ],
       "processing": {
         "sourceIds": [
-          "issue-168-research-log-2026"
+          "issue-168-research-log-2026",
+          "herb-provenance-registry-2026",
+          "elsabrout-2023-poultry-botanicals-review"
         ],
-        "rule": "This evidence-only record does not approve fresh ginger root for runtime use, stock inventory, a formula, a portion, medical dosing, or a complete ration. Powders, tea, extracts, oils, and other processed preparations remain distinct; all exact species/form outcomes remain unresolved after documented searches.",
+        "rule": "Treat ordinary culinary ginger root as one fresh/dried household-use form. Keep powders, tea, extracts, oils, and other concentrated or therapeutic preparations distinct. This evidence-only reconciliation does not approve runtime inventory use, a formula, a portion, medical dosing, or a complete ration.",
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-21"

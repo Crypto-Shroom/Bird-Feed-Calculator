@@ -1629,8 +1629,8 @@
         "canary",
         "chicken"
       ],
-      "permittedUse": "Documents the independent first-pass and targeted second-pass searches, retained source candidates, exact form boundaries, and unresolved evidence gaps for Issue #168.",
-      "limitations": "A research log documents the search process and evidence gaps. It is not an external scientific source and cannot convert unresolved outcomes into approval or cross-species evidence.",
+      "permittedUse": "Documents the independent first-pass and targeted second-pass searches, retained source candidates, form-continuity reconciliation, and explicitly labelled shared-ingredient inference rationale for Issue #168.",
+      "limitations": "A research log documents search process, evidence gaps, and the limits of a stated inference. It is not an external scientific source, cannot silently approve an ingredient, and cannot establish a dose, formula, complete ration, medical use, runtime approval, or a different preparation.",
       "accessedAt": "2026-08-21"
     },
     {
@@ -1687,6 +1687,21 @@
       ],
       "permittedUse": "Supports a bounded broiler-ration finding for fennel seed meal in formulated diets.",
       "limitations": "The meal was obtained after oil extraction and ground. It cannot establish a household serving amount, ordinary whole-seed equivalence, unrestricted use, a complete ration, therapeutic use, or another bird species outcome.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "wsu-extension-common-bean-varieties-2026",
+      "title": "Dry Bean Varieties for Niche Markets in the USA",
+      "authorsOrOrganization": "Washington State University Vegetable Research and Extension",
+      "publishedYear": "2026",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://vegetables.wsu.edu/dry-bean-varieties-for-niche-markets-in-the-usa/",
+      "speciesScopes": [
+        "plant_taxonomy",
+        "phaseolus_vulgaris"
+      ],
+      "permittedUse": "Supports the botanical identity boundary: the University extension list states that its listed market classes are common beans, Phaseolus vulgaris L., and includes Great Northern, Small White/Navy, White Kidney/Cannellini, and Pinto classes.",
+      "limitations": "A plant-variety source does not independently establish bird suitability, a safety outcome, preparation method, portion, formula, complete ration, or an outcome for a different bean species or a materially different product.",
       "accessedAt": "2026-08-21"
     }
   ]
