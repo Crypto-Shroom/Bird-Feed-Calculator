@@ -3363,6 +3363,163 @@
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-21"
+    },
+    {
+      "ingredientId": "strawberry",
+      "ingredientDisplayName": "Strawberry",
+      "form": "fresh plain ripe strawberry flesh, washed, leafy cap removed, unflavoured and unsweetened",
+      "nutrition": {
+        "sourceIds": [
+          "issue-69-strawberry-research-log-2026"
+        ],
+        "basis": "not_applicable",
+        "notes": "This evidence batch records species/form suitability and preparation boundaries only; it does not add a nutrient value, active inventory ingredient, dry-mix ingredient, or formula rule."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "limited",
+          "sourceIds": [
+            "pigeoncaretips-strawberry-2026",
+            "ford-columbiformes-diet-2026"
+          ],
+          "locator": "Pigeon Care Tips 'How to Feed Strawberries to Pigeons' and 'How Often'; Ford 'Diet' paragraph for Columba pigeons/doves",
+          "evidenceScope": "species_specific",
+          "rationale": "Direct pigeon guidance supports washed small strawberry pieces as an occasional fresh treat, while the exotics-vet Columbiformes handout keeps fruit such as berries as an addition to a seed/grain main diet. This supports limited fresh plain strawberry flesh only, not a dry mix, nutrient value, staple, or formula ingredient.",
+          "followUpSearch": {
+            "queries": [
+              "pigeon dove strawberry veterinary diet",
+              "Columba livia strawberry feeding"
+            ],
+            "sourceIds": [
+              "ford-columbiformes-diet-2026"
+            ],
+            "result": "The targeted exotics-vet handout established pigeon/dove berry-category context but did not name strawberry; the direct Pigeon Care Tips source remains the exact-form evidence."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "limited",
+          "sourceIds": [
+            "zarpa-exotic-birds-fruit-2026"
+          ],
+          "locator": "Clínica Veterinaria Zarpa 'Frutas (6% dieta)' list for loros, guacamayos, periquitos, and ninfas",
+          "evidenceScope": "group_specific",
+          "rationale": "Exotics-vet group guidance directly names strawberries within a varied parrot-family diet and cautions against a monotonous diet. This is limited generic-parrot evidence for fresh plain strawberry flesh only, not an African Grey, budgie, pigeon, canary, or chicken outcome and not a universal portion.",
+          "followUpSearch": {
+            "queries": [
+              "parrot strawberry avian veterinary feeding",
+              "loro fresas veterinario alimentación"
+            ],
+            "sourceIds": [
+              "zarpa-exotic-birds-fruit-2026"
+            ],
+            "result": "The targeted Spanish exotics-vet source directly names strawberries for a broad parrot-family group but does not supply a species-specific trial or universal amount."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "limited",
+          "sourceIds": [
+            "exoticdirect-african-grey-fruit-2021",
+            "vca-african-grey-feeding"
+          ],
+          "locator": "ExoticDirect African Grey fruit list; VCA African Grey 'Fruits and Vegetables' section",
+          "evidenceScope": "species_specific",
+          "rationale": "The African Grey-specific food list expressly includes strawberries. VCA provides the separate species-specific fresh-fruit boundary, including washing, manageable pieces, and fruit/vegetable moderation. This supports limited fresh plain strawberry flesh only, not a portion, dry-mix ingredient, formula rule, or processed strawberry form.",
+          "followUpSearch": {
+            "queries": [
+              "African Grey strawberry avian veterinarian",
+              "Psittacus erithacus strawberry veterinary diet"
+            ],
+            "sourceIds": [
+              "vca-african-grey-feeding"
+            ],
+            "result": "The targeted species-specific VCA source established a fruit-and-berry diet boundary but did not name strawberry; the African Grey exact-form listing remains owner guidance."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "limited",
+          "sourceIds": [
+            "hepper-parakeet-strawberry-2025",
+            "vca-budgie-feeding"
+          ],
+          "locator": "Hepper veterinarian-reviewed 'Preparation' section for parakeets/budgies; VCA Budgies 'Fruits and Vegetables' section",
+          "evidenceScope": "species_specific",
+          "rationale": "Veterinarian-reviewed parakeet/budgie guidance supports an occasional washed strawberry with the leafy cap removed and uneaten fresh pieces removed. VCA supplies an independent budgie fresh-food moderation boundary. This supports limited fresh plain strawberry flesh only, not dried, sweetened, or formula use.",
+          "followUpSearch": {
+            "queries": [
+              "budgie strawberry avian veterinary feeding",
+              "Melopsittacus undulatus strawberry avian nutrition"
+            ],
+            "sourceIds": [
+              "hepper-parakeet-strawberry-2025",
+              "vca-budgie-feeding"
+            ],
+            "result": "The targeted veterinarian-reviewed parakeet/budgie page supplied direct fresh-strawberry preparation and moderation guidance; VCA supplies a separate species-specific fruit boundary."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "canary",
+          "outcome": "limited",
+          "sourceIds": [
+            "sisters-vet-canary-feeding-2026",
+            "vca-canary-feeding"
+          ],
+          "locator": "Sisters Veterinary Clinic 'Feeding Canaries' fresh-food list; VCA Canaries 'Fruits and Vegetables' context",
+          "evidenceScope": "species_specific",
+          "rationale": "Veterinary-clinic canary guidance directly lists strawberries among fresh-food choices alongside a seed or pelleted base diet. VCA provides a separate canary fresh-produce context. This supports limited fresh plain strawberry flesh only, not a serving size, sweetened or dried products, or a complete-ration role.",
+          "followUpSearch": {
+            "queries": [
+              "canary strawberry avian veterinary feeding",
+              "Serinus canaria strawberry veterinary diet"
+            ],
+            "sourceIds": [
+              "sisters-vet-canary-feeding-2026",
+              "vca-canary-feeding"
+            ],
+            "result": "The targeted veterinary-clinic source directly lists strawberries for domestic canaries; VCA contributes general canary fresh-produce context without naming strawberry."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "chewy-chicken-strawberry-2025"
+          ],
+          "locator": "Chewy veterinarian-reviewed 'Are Strawberries Good for Chickens?', 'How To Safely Feed Strawberries to Chickens', and fresh-versus-dried/preserved form sections",
+          "evidenceScope": "species_specific",
+          "rationale": "Veterinarian-reviewed chicken guidance supports moderated fresh strawberries after washing and mould exclusion, while distinguishing higher-sugar dried or preserved forms. This supports limited fresh plain strawberry flesh only, not a complete ration, a formula ingredient, processed forms, or another species outcome.",
+          "followUpSearch": {
+            "queries": [
+              "chicken strawberry treat university extension",
+              "laying hen fresh strawberry feeding extension"
+            ],
+            "sourceIds": [
+              "chewy-chicken-strawberry-2025"
+            ],
+            "result": "The targeted extension queries did not produce a direct fresh-strawberry chicken source; the veterinarian-reviewed exact-form source was retained with its consumer-guidance limitation."
+          },
+          "reviewedAt": "2026-08-21"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "pigeoncaretips-strawberry-2026",
+          "vca-african-grey-feeding",
+          "hepper-parakeet-strawberry-2025",
+          "chewy-chicken-strawberry-2025"
+        ],
+        "rule": "This record covers washed, fresh, plain, ripe strawberry flesh only. Keep leafy caps, stems, leaves, frozen, dried, freeze-dried, preserved, sweetened, flavoured, chocolate-coated, juice, jam, syrup, mouldy, or spoiled products as separate evidence boundaries; use pieces appropriate to the bird and remove uneaten fresh material promptly.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-21"
     }
   ]
 }

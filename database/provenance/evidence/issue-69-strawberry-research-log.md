@@ -1,0 +1,76 @@
+# Issue #69 — Fresh Strawberry Six-Bird Provenance Research Log
+
+**AS_OF:** 2026-08-21
+**Research mode:** Standard general research; sequential execution under the active work environment; public sources only.
+**Exact form:** Fresh, plain, ripe strawberry (*Fragaria × ananassa*), washed, with no sugar, syrup, flavouring, chocolate, dried-fruit processing, leaves, stems, or plant material implied.
+**Scope:** Establish an independent evidence outcome for the exact form across pigeon, parrot, African Grey, budgie, canary, and chicken. This is provenance governance only. It does not authorize an active ingredient entry, formula, nutrition value, runtime behavior, safety rule, or visitor-copy change.
+
+## P0 — Source and counter-review policy
+
+All sources must be public and classified by source type, scope, accessibility, and limitation. The review will preserve unresolved outcomes when exact species/form evidence remains insufficient after a documented targeted follow-up search. No outcome may be inferred from another bird species, another berry, or a processed strawberry form.
+
+The counter-review will test: (1) whether generic companion-bird fruit lists are improperly treated as pigeon or chicken evidence; (2) whether strawberry plant, leaf, jam, sweetened, dried, or flavoured-product information is being conflated with fresh plain fruit; and (3) whether a source identifies the exact species rather than a broad bird category.
+
+## P1 — Six-bird research task board
+
+| Task | Bird and objective | First-pass query path | Targeted follow-up path if first pass is insufficient | Evidence target |
+| --- | --- | --- | --- | --- |
+| A | Pigeon: identify direct pigeon/dove evidence for fresh plain strawberry. | English, German, and Dutch pigeon/dove diet + strawberry terms. | Scientific, rescue, exotics-vet, and husbandry source variants with *Columba livia* or dove terms. | Species-specific outcome or documented unresolved result. |
+| B | Parrot: identify direct parrot evidence for fresh plain strawberry. | English and Spanish parrot diet + strawberry terms. | Psittacine, companion-parrot, veterinary, and scientific source variants. | Species-specific outcome or documented unresolved result. |
+| C | African Grey: identify direct African Grey evidence for fresh plain strawberry. | English and Spanish African Grey + strawberry terms. | *Psittacus erithacus* and exotics-vet/scientific source variants. | Species-specific outcome or documented unresolved result. |
+| D | Budgie: identify direct budgerigar evidence for fresh plain strawberry. | English budgie/budgerigar + strawberry terms. | *Melopsittacus undulatus*, veterinary, and specialist-small-psittacine source variants. | Species-specific outcome or documented unresolved result. |
+| E | Canary: identify direct canary evidence for fresh plain strawberry. | English canary + strawberry terms. | *Serinus canaria*, finch, veterinary, and specialist source variants. | Species-specific outcome or documented unresolved result. |
+| F | Chicken: identify direct chicken evidence for fresh plain strawberry. | English chicken/backyard poultry + strawberry terms. | University extension, poultry, and scientific source variants. | Species-specific outcome or documented unresolved result. |
+
+## P2 — Evidence notes
+
+### First-pass findings
+
+| Bird | Source | Source type / accessibility | Exact-form finding | Interim assessment and next step |
+| --- | --- | --- | --- | --- |
+| Pigeon | Pigeon Care Tips, [*Can Pigeons Eat Strawberries*](https://pigeoncaretips.com/can-pigeons-eat-strawberries/) | Species-focused owner guidance / public | The page expressly discusses strawberries for pigeons, frames them as an occasional treat, and describes washing plus cutting to small pieces. | Direct exact bird/form evidence supports a provisional `limited` outcome only. The page is not a veterinary or primary source; targeted follow-up will test whether an additional pigeon/dove source establishes a compatible limitation without importing berry or processed-fruit evidence. |
+| Parrot | Tiendanimal, [*¿Qué comen los loros?*](https://www.tiendanimal.es/articulos/que-comen-los-loros/) | Commercial companion-animal guidance / public | The page’s parrot fruit-and-vegetable list expressly includes `fresas` (strawberries). | Direct generic-parrot evidence supports only a provisional `limited` outcome. The source gives a broad list and no strawberry-specific preparation boundary, so targeted follow-up will seek a veterinary, specialist-psittacine, or independent Spanish source. |
+| African Grey | ExoticDirect, [*What can African grey parrots eat?*](https://exoticdirect.co.uk/news/what-can-african-grey-parrots-eat/) | Commercial exotic-pet guidance / public | The African Grey fruit list expressly includes strawberries and frames fruit in a wider fresh-food diet; it also notes a concern about commercially grown fruit and sucrose. | Direct exact bird/form evidence supports only a provisional `limited` outcome. The source is not a veterinary or primary reference and does not establish a strawberry portion; targeted follow-up will seek African Grey-specific professional or veterinary evidence. |
+| Budgie | ExoticDirect, [*What can budgies eat?*](https://exoticdirect.co.uk/news/what-can-budgies-eat/) | Commercial exotic-pet guidance / public | The extracted content lists strawberries among fruits for budgies but supplies no strawberry-specific preparation or moderation context. | The first pass is direct but thin. A targeted follow-up is required to seek specialist-small-psittacine or veterinary support; the current source alone cannot support an unqualified outcome or preparation claim. |
+| Canary | JustAnswer canary question result; VCA [*Canaries — Feeding*](https://vcahospitals.com/know-your-pet/canaries-feeding) and canary-care sources | Veterinary-question and veterinary/guidance candidates / public or access-limited | The first-pass result snippet names apples and strawberries for canaries, but the complete question-and-answer content was not accepted as final evidence. VCA establishes only general canary diet context in this pass and did not visibly list strawberry. | No exact species/form outcome is established from a sufficiently accessible, traceable source yet. Targeted follow-up is mandatory. |
+| Chicken | Chewy [*Can Chickens Eat Strawberries?*](https://www.chewy.com/education/farm-animal/chicken/can-chickens-eat-strawberries); poultry-extension and poultry-study candidates | Commercial chicken guidance and academic candidate / public | The direct article loaded only partially in the browser and its full extracted article text was not retained. The first-pass academic hit concerns dried apple-and-strawberry pomace, which is a different form. | No final exact-form outcome is recorded from this first pass. Targeted follow-up must distinguish fresh plain fruit from pomace, treats, leaves, and sweetened or processed products. |
+
+All six first-pass searches are complete. Targeted follow-up is now required for every pair where the first-pass source was thin, inaccessible, generic, or form-ambiguous; this includes all six pairs as a stronger cross-check before a ledger entry is proposed.
+
+### Targeted follow-up findings
+
+| Bird | Source | Source type / accessibility | Exact finding | Outcome implication and limitation |
+| --- | --- | --- | --- | --- |
+| Pigeon | Scott L. Ford, DVM, Dip. ABVP-Avian, [*Pigeons and Doves (Columbiformes) Diet and Care Recommendations*](https://avian-vet.com/web/content/749?unique=c897ab0ee60146b7f51bf14b3c95b9f5a74881ea&download=true&access_token=1a574ae3-ca2b-40e9-a970-044a88b7af43) | Exotics-vet handout / public | The handout is explicitly for *Columba* common pigeons/rock doves and related doves. It recommends a seed/grain mix as the main diet and says fruits such as berries may also be offered. | Professional pigeon/dove evidence provides a berry-category boundary but does not identify strawberry or a quantity. It corroborates `limited`, not a daily, formula, or nutrition-value claim. The direct Pigeon Care Tips strawberry page remains the exact-form source. |
+| Parrot | Clínica Veterinaria Zarpa, [*Alimentación para aves exóticas: loros, guacamayos, periquitos, ninfas*](https://www.clinicaveterinariazarpa.com/medicina-exoticos/alimentacion-aves-exoticas-cuenca/) | Exotics-vet clinic guidance / public | The clinic expressly covers parrots/macaws/parakeets/cockatiels. Its diet example lists fruit as 6% and names `fresas` (strawberries) among fruits these birds commonly like, while cautioning against a monotonous one-item diet. | This supports a direct generic-parrot `limited` outcome for fresh plain strawberry only. It is guidance for a broad exotic-bird group, not a source for African Grey, budgie, or canary-specific outcomes, and it does not authorize a universal portion. |
+| African Grey | VCA Animal Hospitals, [*Feeding African Grey Parrots*](https://vcahospitals.com/know-your-pet/african-grey-feeding) | Veterinary owner guidance / public | The African Grey-specific page says wild Greys eat fruits and berries, recommends washing fruit/vegetables and cutting them to manageable size, and places fruits/vegetables at 10% or less of the daily diet. It does not name strawberry. | The VCA source supplies a species-specific fresh-fruit boundary but not exact strawberry evidence. It corroborates a `limited` interpretation only when paired with the exact-form ExoticDirect listing; it cannot replace that source or establish a strawberry-specific portion. |
+| Budgie | VCA Animal Hospitals, [*Budgies — Feeding*](https://vcahospitals.com/know-your-pet/budgies-feeding) | Veterinary owner guidance / public | The budgie-specific page says wild budgies eat fruits and berries and advises a balanced diet, washed fresh fruit/vegetables, and fruits/vegetables at no more than 20–25% of the daily diet. It does not name strawberry. | The VCA source provides a species-specific fresh-food and moderation boundary but not exact strawberry evidence. It corroborates a `limited` interpretation only when paired with the direct ExoticDirect listing; it cannot establish a strawberry-specific portion or processing claim. |
+| Budgie | Hepper Pet Resources, veterinarian-reviewed by Dr. Ashley Darby, [*Can Parakeets Eat Strawberries?*](https://articles.hepper.com/can-parakeets-eat-strawberries/) | Veterinarian-reviewed parakeet guidance / public | The article treats parakeet and budgie as the same common-name group, calls strawberries an occasional treat, cautions against excess because of sugar, and advises washing, removing the stem, serving manageable pieces, and removing uneaten fresh fruit after a few hours. | This is direct exact-form support for a budgie `limited` outcome. Its general parakeet framing does not establish a diet percentage, a formula use, a dried or sweetened form, or any other species outcome. |
+| Canary | Sisters Veterinary Clinic, [*Canaries*](https://sistersveterinaryclinic.com/articles/415522-canaries) | Veterinary-clinic guidance / public | The article identifies the domestic canary as *Serinus canaria*, says fresh foods and greens should be offered, and lists strawberries among the stated good choices. | This is direct canary and exact-form support for a `limited` outcome. It does not give a strawberry amount, address dried or sweetened strawberry, or replace a balanced base diet. |
+| Chicken | Chewy, medically reviewed by Teresa Manucy, DVM, [*Can Chickens Eat Strawberries?*](https://www.chewy.com/education/farm-animal/chicken/can-chickens-eat-strawberries) | Veterinarian-reviewed chicken guidance / public | The article says fresh strawberries are safe for chickens when moderated, advises washing, checking for mold, and chopping or mashing; it separately states dried/preserved forms are higher-sugar and should be limited or avoided. | This is direct chicken and exact fresh-form support for `limited`. The article is retailer-hosted and its numerical treat guidance is not generalized into runtime copy or a formula; dried, preserved, frozen, tops, and chick contexts are not collapsed into this fresh adult form. |
+
+## P3 — Citation registry
+
+All retained sources are public and registered in `database/provenance/sources.json`. The approved set contains eight sources across eight domains: four veterinary or veterinarian-reviewed references, three owner-guidance references, and this project audit record. The independent direct bird/form sources are not used to infer outcomes for a different bird.
+
+| Source ID | Source type | Bird/form contribution | Retained limitation |
+| --- | --- | --- | --- |
+| `pigeoncaretips-strawberry-2026` | Owner guidance | Direct fresh-strawberry pigeon reference. | Non-veterinary and no portion evidence. |
+| `ford-columbiformes-diet-2026` | Exotics-vet reference | Pigeon/dove berry-category and grain-main-diet boundary. | Does not name strawberry. |
+| `zarpa-exotic-birds-fruit-2026` | Exotics-vet reference | Direct broad-parrot strawberry listing and variety boundary. | Not separate African Grey or budgie evidence. |
+| `exoticdirect-african-grey-fruit-2021` | Owner guidance | Direct African Grey strawberry listing. | No clinical portion or trial. |
+| `hepper-parakeet-strawberry-2025` | Veterinarian-reviewed reference | Direct budgie/parakeet strawberry preparation and moderation context. | Consumer guidance rather than a feeding trial. |
+| `sisters-vet-canary-feeding-2026` | Veterinary-clinic reference | Direct canary strawberry listing. | No portion or processed-form study. |
+| `chewy-chicken-strawberry-2025` | Veterinarian-reviewed reference | Direct chicken fresh-fruit, hygiene, and processed-form distinction. | Retailer-hosted consumer guidance. |
+| `issue-69-strawberry-research-log-2026` | Project record | Search, follow-up, and counter-review audit trail. | Not independent biological evidence. |
+
+## P6 — Counter-review
+
+1. **Exact-form boundary:** Fresh plain strawberry flesh is not the same form as leaves, stems, dried/freeze-dried fruit, jam, syrup, juice, chocolate-coated products, or mouldy fruit. The record does not transfer outcomes across those forms.
+2. **Species boundary:** Pigeon/dove berry evidence does not establish a parrot, budgie, canary, or chicken outcome; generic parrot evidence does not establish African Grey or budgie evidence. Every outcome retains a direct bird/form source.
+3. **Source-strength boundary:** Several direct listings are owner or consumer guidance rather than controlled trials. Those limitations support `limited`, not `allowed`, a formula change, a nutrient value, or a universal serving instruction.
+4. **Dietary-role boundary:** All supporting sources frame fruit as an addition, treat, or component of a varied diet. None establishes strawberry as a dry-mix ingredient, staple, complete ration, or a replacement for the selected bird/profile formula.
+
+## P7 — Traceability check
+
+All six species entries cite one or more registered source IDs, carry a documented targeted-follow-up result, and retain the canonical required bird order. No active catalog, nutrition value, formula, runtime safety rule, or visitor-visible copy was changed in this review.

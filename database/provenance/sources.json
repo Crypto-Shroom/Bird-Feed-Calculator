@@ -1691,6 +1691,128 @@
       "permittedUse": "Research-based pigeon biology context stating that breeding may occur in all seasons while reproduction has seasonal peaks and most broods are raised in spring and summer.",
       "limitations": "Wildlife-management material is not companion-pigeon clinical guidance and cannot define a Pet/Companion profile, individual reproductive state, or husbandry plan.",
       "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "pigeoncaretips-strawberry-2026",
+      "title": "Can Pigeons Eat Strawberries | Safe Feeding Guide",
+      "authorsOrOrganization": "Barbara Allen; Pigeon Care Tips",
+      "publishedYear": "2026",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://pigeoncaretips.com/can-pigeons-eat-strawberries/",
+      "speciesScopes": [
+        "pigeon"
+      ],
+      "permittedUse": "Direct pigeon-specific fresh-strawberry context for occasional small pieces after washing, with grain/seed food retained as the main diet.",
+      "limitations": "Non-veterinary owner guidance without a cited evidence trail. It cannot establish nutrient values, a portion, a complete ration, a formula inclusion rate, or another species outcome.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "ford-columbiformes-diet-2026",
+      "title": "Pigeons and Doves (Columbiformes) Diet and Care Recommendations",
+      "authorsOrOrganization": "Scott L. Ford, DVM, Dip. ABVP-Avian; Avian and Exotic Animal Care",
+      "publishedYear": "unknown",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://avian-vet.com/web/content/749?unique=c897ab0ee60146b7f51bf14b3c95b9f5a74881ea&download=true&access_token=1a574ae3-ca2b-40e9-a970-044a88b7af43",
+      "speciesScopes": [
+        "pigeon",
+        "columbiformes",
+        "columba_livia"
+      ],
+      "permittedUse": "Exotics-vet pigeon/dove context that keeps seed/grain mix as the main diet while allowing fruit such as berries as an addition.",
+      "limitations": "The handout does not name strawberry, prescribe a fruit amount, establish a dry-mix ingredient, or support outcomes for non-columbiform species.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "zarpa-exotic-birds-fruit-2026",
+      "title": "Alimentación para aves exóticas: loros, guacamayos, periquitos, ninfas",
+      "authorsOrOrganization": "Clínica Veterinaria Zarpa",
+      "publishedYear": "unknown",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.clinicaveterinariazarpa.com/medicina-exoticos/alimentacion-aves-exoticas-cuenca/",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Exotics-vet group guidance naming strawberries among fruit in a varied parrot/macaw/parakeet/cockatiel diet and warning against a monotonous diet.",
+      "limitations": "Broad exotic-bird guidance, not a controlled strawberry-feeding study. It cannot set a universal portion or establish separate African Grey, budgie, pigeon, canary, or chicken outcomes.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "exoticdirect-african-grey-fruit-2021",
+      "title": "What can African grey parrots eat?",
+      "authorsOrOrganization": "ExoticDirect",
+      "publishedYear": "2021",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://exoticdirect.co.uk/news/what-can-african-grey-parrots-eat/",
+      "speciesScopes": [
+        "african_grey"
+      ],
+      "permittedUse": "African Grey-specific owner guidance that expressly names strawberries in its fruit list and frames fruit within a broader fresh-food diet.",
+      "limitations": "Insurance-provider owner guidance, not a veterinary or controlled feeding study. It does not establish a strawberry amount, formula inclusion, processed-form safety, or another species outcome.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "hepper-parakeet-strawberry-2025",
+      "title": "Can Parakeets Eat Strawberries? Vet-Reviewed Nutritional Guide",
+      "authorsOrOrganization": "Keri-Beth Clur; veterinary review by Ashley Darby, BVSc; Hepper Pet Resources",
+      "publishedYear": "2025",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://articles.hepper.com/can-parakeets-eat-strawberries/",
+      "speciesScopes": [
+        "budgie",
+        "parakeet"
+      ],
+      "permittedUse": "Veterinarian-reviewed budgie/parakeet guidance for an occasional fresh strawberry treat, including wash, stem-removal, manageable-piece, and uneaten-fresh-food removal boundaries.",
+      "limitations": "Consumer pet guidance rather than a controlled budgie feeding trial. It does not establish a diet percentage, a complete ration, dried or sweetened strawberry use, or another bird species outcome.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "sisters-vet-canary-feeding-2026",
+      "title": "Canaries",
+      "authorsOrOrganization": "Sisters Veterinary Clinic",
+      "publishedYear": "unknown",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://sistersveterinaryclinic.com/articles/415522-canaries",
+      "speciesScopes": [
+        "canary",
+        "serinus_canaria"
+      ],
+      "permittedUse": "Veterinary-clinic canary guidance naming strawberries among fresh-food choices alongside a suitable seed or pelleted base diet.",
+      "limitations": "Practice guidance without a controlled strawberry study, exact portion, processed-form assessment, or evidence for other bird species.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "chewy-chicken-strawberry-2025",
+      "title": "Can Chickens Eat Strawberries?",
+      "authorsOrOrganization": "Yvonne Villasenor; medically reviewed by Teresa Manucy, DVM; Chewy",
+      "publishedYear": "2025",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.chewy.com/education/farm-animal/chicken/can-chickens-eat-strawberries",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "Veterinarian-reviewed chicken guidance for moderated fresh strawberry, washing, mould exclusion, and fresh-versus-preserved or dried form distinctions.",
+      "limitations": "Retailer-hosted consumer guidance, not a controlled layer-feed trial. It does not establish a complete ration, universal household quantity, or another species outcome.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "issue-69-strawberry-research-log-2026",
+      "title": "Issue #69 Fresh Strawberry Six-Bird Research Log",
+      "authorsOrOrganization": "Bird Feed Calculator project research record",
+      "publishedYear": "2026",
+      "sourceTier": "historical_project",
+      "urlOrDoi": "database/provenance/evidence/issue-69-strawberry-research-log.md",
+      "speciesScopes": [
+        "pigeon",
+        "parrot",
+        "african_grey",
+        "budgie",
+        "canary",
+        "chicken"
+      ],
+      "permittedUse": "Audit trail for the documented first-pass searches, targeted follow-up searches, source-accessibility review, counter-review, and evidence-only fresh-strawberry outcomes.",
+      "limitations": "Project governance documentation, not independent biological or veterinary evidence and not an active-calculator instruction.",
+      "accessedAt": "2026-08-21"
     }
   ]
 }
