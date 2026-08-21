@@ -129,3 +129,4 @@
 - [x] Implement and validate Issue #153 active Worker integration with deterministic allocation back to actual ingredient forms, silent legacy fallback for every non-feasible/technical outcome, and local privacy-preserving diagnostics.
 - [x] Research fresh raw blueberry suitability for pigeon, parrot, African Grey, budgie, canary, and chicken; document a separate first-pass and, where necessary, targeted follow-up for each bird/form pair in canonical provenance only, with no runtime/catalog/public-copy change.
 - [x] Conduct an expanded multilingual and source-type-diverse follow-up for direct pigeon evidence on plain fresh raw blueberries; preserve `unresolved` unless the exact species/form outcome is established.
+- [x] Assess the owner-supplied pigeon nutrition sources for exact fresh-blueberry relevance, document their limitations in canonical provenance, and add a durable AGENTS.md rule requiring the appropriate research skill before evidence work.

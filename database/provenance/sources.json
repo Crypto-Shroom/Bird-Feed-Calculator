@@ -1332,6 +1332,36 @@
       "permittedUse": "Pigeon-specific keeper guidance for plain fresh blueberries as an occasional small treat alongside a grain-based main diet, including wash, crush/cut-if-large, and remove-leftovers context.",
       "limitations": "Non-veterinary owner guidance based on the author's stated keeping experience; the page supplies no citable evidence trail. It is corroborative only and cannot establish nutrient values, medical benefit, a universal schedule or quantity, formula inclusion, inventory use, complete ration, or a result for another species or blueberry form.",
       "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "brieftaubenshop-pigeon-diet-2026",
+      "title": "What Do Pigeons Eat? Complete Guide to Pigeon Food & Diet",
+      "authorsOrOrganization": "Brieftaubenshop Editor; Brieftaubenshop",
+      "publishedYear": "not stated",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.brieftaubenshop.de/en/what-do-pigeons-eat/",
+      "speciesScopes": [
+        "pigeon",
+        "passenger_pigeon"
+      ],
+      "permittedUse": "Pigeon-husbandry context stating that wild pigeons eat berries and small fruits; it separately reports blueberries as a historical passenger-pigeon example.",
+      "limitations": "Commercial retailer guidance with no cited evidence trail. Its blueberry example is the extinct passenger pigeon, not Columba livia, so it cannot establish fresh-blueberry suitability for the supported Pigeon row or support cross-species inference.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "jimenez-albarral-blueberry-frugivory-2025",
+      "title": "Vertebrate frugivory in blueberry crops: Patterns across birds and mammals and consequences for yield",
+      "authorsOrOrganization": "José Javier Jiménez-Albarral; Daniel García; Marcos Miñarro",
+      "publishedYear": "2025",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1016/j.cropro.2025.107213",
+      "speciesScopes": [
+        "wild_birds",
+        "wild_mammals"
+      ],
+      "permittedUse": "Primary blueberry-orchard frugivory context documenting consumption by multiple wild vertebrate species in northern Spain.",
+      "limitations": "The accessible article preview does not identify Columba livia among the observed consumers. It cannot establish a fresh-blueberry outcome, feeding instruction, nutrient value, formula inclusion, or result for any supported bird row without a direct species record.",
+      "accessedAt": "2026-08-21"
     }
   ]
 }
