@@ -325,6 +325,45 @@ describe("canonical provenance ledger", () => {
     }
   });
 
+  it("records the Issue #162 six-item batch with complete birds, follow-up searches, and historical-core links", () => {
+    const foodLedger = readJson("food-reviews.json") as {
+      requiredBirdOrder: string[];
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{ bird: string; sourceIds: string[]; followUpSearch?: { queries: string[]; sourceIds: string[]; result: string } }>;
+      }>;
+    };
+    const coverageLedger = readJson("food-coverage.json") as {
+      claimCoverage: Array<{ historicalClaimId: string; trackedItems: Array<{ id: string; linkedFoodReviewKeys: string[] }> }>;
+    };
+    const expected = [
+      ["lentils", "raw dried lentil seeds", "lentils"],
+      ["peas", "raw dried whole peas", "peas"],
+      ["mung_beans", "raw dried mung beans", "mung-beans"],
+      ["chickpeas", "raw dried seeds", "chickpeas"],
+      ["thyme", "fresh thyme leaves, washed and chopped", "thyme"],
+      ["parsley", "fresh parsley leaves, washed and chopped", "parsley"],
+    ] as const;
+    const historicalCore = coverageLedger.claimCoverage.find(
+      (coverage) => coverage.historicalClaimId === "historical-multibird-core-compatibility-list",
+    );
+
+    for (const [ingredientId, form, trackedId] of expected) {
+      const review = foodLedger.ingredientReviews.find(
+        (candidate) => candidate.ingredientId === ingredientId && candidate.form === form,
+      );
+      const trackedItem = historicalCore?.trackedItems.find((item) => item.id === trackedId);
+      expect(review?.speciesEvidence.map((entry) => entry.bird)).toEqual(foodLedger.requiredBirdOrder);
+      expect(review?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
+      expect(review?.speciesEvidence.every((entry) => {
+        const followUp = entry.followUpSearch;
+        return Boolean(followUp && followUp.queries.length > 0 && followUp.sourceIds.length > 0 && followUp.result.length > 0);
+      })).toBe(true);
+      expect(trackedItem?.linkedFoodReviewKeys).toEqual([`${ingredientId}::${form}`]);
+    }
+  });
+
   it("records the walnut form with six birds and evidence-only outcomes", () => {
     const ledger = readJson("food-reviews.json") as {
       requiredBirdOrder: string[];

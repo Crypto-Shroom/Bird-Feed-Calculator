@@ -1274,6 +1274,134 @@
       "permittedUse": "Records the owner's explicit precautionary decision to classify raw dried lima, fava, black, pinto, and navy beans as avoid for pigeons because compound concerns exist and safe pigeon use has not been clearly established.",
       "limitations": "This is a product safety-policy decision, not external proof of pigeon toxicity, a raw-bean feeding study, a preparation method, a nutrition value, a runtime formula rule, or a decision about another species or bean form.",
       "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "panto-tauben-dried-peas-2026",
+      "title": "Tauben füttern: geeignete Körner und Hülsenfrüchte",
+      "authorsOrOrganization": "Panto Heimtier",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.panto-heimtier.de/ratgeber/tauben/tauben-fuettern/",
+      "speciesScopes": [
+        "pigeon"
+      ],
+      "permittedUse": "Pigeon-specific contextual evidence that names dried peas among offered foods.",
+      "limitations": "Full page extraction was unavailable; no portion, toxicity, or complete-ration claim is taken from this source.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "backyardchickens-peas-2021",
+      "title": "Can Chickens Eat Peas? All You Need To Know",
+      "authorsOrOrganization": "BackYardChickens.com",
+      "publishedYear": "2021",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.backyardchickens.com/articles/can-chickens-eat-peas-all-you-need-to-know.77165/",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "Chicken-specific distinction between fresh/cooked peas and dry peas.",
+      "limitations": "Owner guidance rather than controlled veterinary evidence; treat guidance is not a complete ration recommendation.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "northernparrots-safe-herbs-2026",
+      "title": "Safe Herbs for Parrots",
+      "authorsOrOrganization": "Northern Parrots",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.northernparrots.com/blog/safe-herbs-for-parrots/",
+      "speciesScopes": [
+        "parrot"
+      ],
+      "permittedUse": "Companion-parrot fresh-herb handling and moderation context for parsley and thyme.",
+      "limitations": "General parrot guidance; not direct evidence for African Grey, budgie, canary, pigeon, or chicken and not evidence for oils/extracts.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "pubmed-thyme-broilers-2015",
+      "title": "Effects of thyme as a feed additive in broiler chickens on thymol in gut contents, blood plasma, liver and muscle",
+      "authorsOrOrganization": "Haselmeyer, Zentek, and Chizzola",
+      "publishedYear": "2015",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://pubmed.ncbi.nlm.nih.gov/24862829/",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "Controlled broiler exposure to thyme herb leaves and flowers without stems in formulated feed.",
+      "limitations": "Feed-additive study, not a whole fresh-leaf treat recommendation and not transferable across bird species or forms.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "birds-online-fresh-thyme-budgie-2026",
+      "title": "Frischer Thymian schmeckt diesem Wellensittich so gut",
+      "authorsOrOrganization": "Birds Online",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.birds-online.de/wp/bo/ernaehrung/frischkost/kuechenkraeuter/wellensittich_thymian01/",
+      "speciesScopes": [
+        "budgie"
+      ],
+      "permittedUse": "Budgie-specific fresh-thyme exposure context.",
+      "limitations": "Informal care page and anecdotal acceptance; no dose, toxicity threshold, or complete-ration claim.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "birds-online-mungbeans-2026",
+      "title": "Mungbohnen (Vigna radiata)",
+      "authorsOrOrganization": "Birds Online",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.birds-online.de/wp/bo/ernaehrung/koerner-saaten/einzelsaaten/mungbohnen/",
+      "speciesScopes": [
+        "budgie",
+        "parrot",
+        "canary"
+      ],
+      "permittedUse": "Small-bird distinction between hard dry mung beans and soaked/sprouted preparation.",
+      "limitations": "General small-bird guidance and not direct evidence for pigeon, African Grey, or chicken; does not establish a universal safety outcome.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "exoticdirect-african-grey-foods-2021",
+      "title": "What can African grey parrots eat?",
+      "authorsOrOrganization": "ExoticDirect",
+      "publishedYear": "2021",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://exoticdirect.co.uk/news/what-can-african-grey-parrots-eat/",
+      "speciesScopes": [
+        "african_grey"
+      ],
+      "permittedUse": "African Grey fresh-food context that names parsley among possible greens.",
+      "limitations": "General care article; does not establish a quantity, unrestricted use, or herb-specific risk boundary.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "omlet-parakeets-fresh-food-2021",
+      "title": "Feeding Parakeets Fresh Food",
+      "authorsOrOrganization": "Omlet",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.omlet.us/guide/parakeets/parakeet_food/fresh_food/",
+      "speciesScopes": [
+        "budgie"
+      ],
+      "permittedUse": "Budgie fresh-food and parsley caution context.",
+      "limitations": "General owner guidance; no dose or complete-ration claim.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "bitchinchickens-parsley-2026",
+      "title": "Natural Remedy For Chickens: Parsley",
+      "authorsOrOrganization": "Bitchin Chickens",
+      "publishedYear": "2026",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://bitchinchickens.com/2026/05/04/natural-remedy-for-chickens-parsley/",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "Chicken-specific fresh-parsley husbandry context.",
+      "limitations": "Owner guidance; no controlled dose or complete-ration claim.",
+      "accessedAt": "2026-08-21"
     }
   ]
 }
