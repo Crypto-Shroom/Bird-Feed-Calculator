@@ -39,25 +39,33 @@
           "id": "lentils",
           "displayName": "Lentils",
           "historicalForm": "form not specified in the protected historical claim",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "lentils::raw dried lentil seeds"
+          ]
         },
         {
           "id": "peas",
           "displayName": "Peas",
           "historicalForm": "form not specified in the protected historical claim",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "garden_peas::raw mature dried garden peas"
+          ]
         },
         {
           "id": "mung-beans",
           "displayName": "Mung beans",
           "historicalForm": "form not specified in the protected historical claim",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "mung_beans::raw dried mung beans"
+          ]
         },
         {
           "id": "chickpeas",
           "displayName": "Chickpeas",
           "historicalForm": "form not specified in the protected historical claim",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "chickpeas::raw dried seeds"
+          ]
         },
         {
           "id": "sunflower-seeds",
@@ -103,13 +111,17 @@
           "id": "thyme",
           "displayName": "Thyme",
           "historicalForm": "form not specified in the protected historical claim",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "thyme::dried culinary thyme leaf, plain and unsalted"
+          ]
         },
         {
           "id": "parsley",
           "displayName": "Parsley",
           "historicalForm": "form not specified in the protected historical claim",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "parsley::dried culinary parsley leaf, plain and unsalted"
+          ]
         }
       ]
     },

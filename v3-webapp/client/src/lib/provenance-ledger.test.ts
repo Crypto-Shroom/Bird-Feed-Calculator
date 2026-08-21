@@ -147,7 +147,7 @@ describe("canonical provenance ledger", () => {
         trackedItemId: "mung-beans-raw",
         ingredientId: "mung_beans",
         form: "raw dried mung beans",
-        outcomes: ["limited", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "unresolved"],
+        outcomes: ["limited", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "limited"],
       },
       {
         trackedItemId: "garden-peas-raw",
@@ -395,6 +395,87 @@ describe("canonical provenance ledger", () => {
       const review = ledger.ingredientReviews.find(
         (candidate) => candidate.ingredientId === ingredientId && candidate.form === form,
       );
+      for (const evidence of review?.speciesEvidence.filter((entry) => entry.outcome === "unresolved") ?? []) {
+        expect(evidence.followUpSearch?.queries.length).toBeGreaterThanOrEqual(2);
+        expect(evidence.followUpSearch?.sourceIds.length).toBeGreaterThan(0);
+        expect(evidence.followUpSearch?.result.length).toBeGreaterThan(0);
+      }
+    }
+  });
+
+  it("closes the final six-item historical core-compatibility backlog with exact-form reviews", () => {
+    const foodLedger = readJson("food-reviews.json") as {
+      requiredBirdOrder: string[];
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{
+          bird: string;
+          outcome: string;
+          sourceIds: string[];
+          followUpSearch?: { queries: string[]; sourceIds: string[]; result: string };
+        }>;
+      }>;
+    };
+    const coverageLedger = readJson("food-coverage.json") as {
+      claimCoverage: Array<{
+        historicalClaimId: string;
+        trackedItems: Array<{ id: string; linkedFoodReviewKeys: string[] }>;
+      }>;
+    };
+    const expected = [
+      {
+        trackedItemId: "lentils",
+        ingredientId: "lentils",
+        form: "raw dried lentil seeds",
+        outcomes: ["limited", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "limited"],
+      },
+      {
+        trackedItemId: "peas",
+        ingredientId: "garden_peas",
+        form: "raw mature dried garden peas",
+        outcomes: ["limited", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "limited"],
+      },
+      {
+        trackedItemId: "mung-beans",
+        ingredientId: "mung_beans",
+        form: "raw dried mung beans",
+        outcomes: ["limited", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "limited"],
+      },
+      {
+        trackedItemId: "chickpeas",
+        ingredientId: "chickpeas",
+        form: "raw dried seeds",
+        outcomes: ["unresolved", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "limited"],
+      },
+      {
+        trackedItemId: "thyme",
+        ingredientId: "thyme",
+        form: "dried culinary thyme leaf, plain and unsalted",
+        outcomes: ["limited", "limited", "limited", "limited", "limited", "limited"],
+      },
+      {
+        trackedItemId: "parsley",
+        ingredientId: "parsley",
+        form: "dried culinary parsley leaf, plain and unsalted",
+        outcomes: ["unresolved", "unresolved", "unresolved", "unresolved", "limited", "limited"],
+      },
+    ];
+    const coreCoverage = coverageLedger.claimCoverage.find(
+      (coverage) => coverage.historicalClaimId === "historical-multibird-core-compatibility-list",
+    );
+
+    for (const expectedReview of expected) {
+      const review = foodLedger.ingredientReviews.find(
+        (candidate) => candidate.ingredientId === expectedReview.ingredientId && candidate.form === expectedReview.form,
+      );
+      const trackedItem = coreCoverage?.trackedItems.find((item) => item.id === expectedReview.trackedItemId);
+
+      expect(review?.speciesEvidence.map((entry) => entry.bird)).toEqual(foodLedger.requiredBirdOrder);
+      expect(review?.speciesEvidence.map((entry) => entry.outcome)).toEqual(expectedReview.outcomes);
+      expect(review?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
+      expect(trackedItem?.linkedFoodReviewKeys).toEqual([`${expectedReview.ingredientId}::${expectedReview.form}`]);
+
       for (const evidence of review?.speciesEvidence.filter((entry) => entry.outcome === "unresolved") ?? []) {
         expect(evidence.followUpSearch?.queries.length).toBeGreaterThanOrEqual(2);
         expect(evidence.followUpSearch?.sourceIds.length).toBeGreaterThan(0);

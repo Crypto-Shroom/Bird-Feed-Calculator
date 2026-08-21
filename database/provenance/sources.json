@@ -532,9 +532,9 @@
       "speciesScopes": [
         "budgie"
       ],
-      "permittedUse": "Budgie-specific owner guidance that explicitly lists chickpeas among foods that should not be fed raw.",
-      "limitations": "Commercial insurer guidance without named clinical authors or an evidence list. It is limited to a raw-form preparation boundary and does not establish a cooking method, nutrition value, portion, complete ration, or another species outcome.",
-      "accessedAt": "2026-08-18"
+      "permittedUse": "Budgie-specific care guidance that explicitly lists chickpeas, green peas, lentils, and mung beans as suitable legumes that must not ever be fed raw, and identifies sprouted legumes as the offered form.",
+      "limitations": "Non-clinical care guidance; it does not establish a controlled feeding result, a preparation protocol, a portion, a complete ration, a different food form, or any other bird species outcome.",
+      "accessedAt": "2026-08-21"
     },
     {
       "id": "omlet-parakeet-food-list-2026",
@@ -1469,6 +1469,149 @@
       ],
       "permittedUse": "Controlled 42-day broiler study of sun-dried, pulverized Origanum vulgare leaf powder incorporated into formulated diets at 1%, 3%, and 5%.",
       "limitations": "The defined powder, trial diets, and poultry population do not establish a household amount, fresh/oil/extract equivalence, a complete ration, or another bird species outcome.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "issue-162-research-log-2026",
+      "title": "Issue #162 final core-compatibility evidence research log",
+      "authorsOrOrganization": "Bird Feed Calculator project research record",
+      "publishedYear": "2026",
+      "sourceTier": "historical_project",
+      "urlOrDoi": "database/provenance/evidence/issue-162-research-log.md",
+      "speciesScopes": [
+        "pigeon",
+        "parrot",
+        "african_grey",
+        "budgie",
+        "canary",
+        "chicken"
+      ],
+      "permittedUse": "Documents independent first-pass, targeted second-search, specialist-source, and form-reconciliation work for the six exact Issue #162 forms, including exact-form exclusions and neutral unresolved outcomes.",
+      "limitations": "It is an audit record, not an external feeding study, a safety approval, a portion, a formula, a complete ration, or a runtime decision.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "creswell-1981-raw-mung-broilers",
+      "title": "Nutritional Evaluation of Mung Beans (Phaseolus aureus) for Young Broiler Chickens",
+      "authorsOrOrganization": "David C. Creswell",
+      "publishedYear": "1981",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.3382/ps.0601905",
+      "speciesScopes": [
+        "chicken",
+        "broiler_chicken"
+      ],
+      "permittedUse": "Controlled young-broiler trials of raw or boiled mung beans replacing soybean meal in corn-based diets at graded levels up to 20% or 40%.",
+      "limitations": "The formulated corn-based diets with added oil, methionine, and lysine do not prescribe household feeding, a complete ration, another mung form, or an outcome for another bird species.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "hejdysz-2017-raw-pea-broilers",
+      "title": "Influence of graded inclusion of raw and extruded pea (Pisum sativum L.) meal on the performance and nutrient digestibility of broiler chickens",
+      "authorsOrOrganization": "M. Hejdysz; S. A. Kaczmarek; M. Adamski; A. Rutkowski",
+      "publishedYear": "2017",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1016/j.anifeedsci.2017.05.016",
+      "speciesScopes": [
+        "chicken",
+        "broiler_chicken"
+      ],
+      "permittedUse": "Controlled Ross 308 broiler comparison of raw ground pea meal and extruded pea meal at 100–500 g/kg diet, including performance and digestibility outcomes.",
+      "limitations": "The raw meal and formulated trial diets do not establish household feeding, a complete ration, a different pea preparation, or an outcome for another bird species.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "yalcin-2020-dried-thymus-vulgaris-hens",
+      "title": "Effects of dried thyme (Thymus vulgaris L.) leaves on performance, some egg quality traits and immunity in laying hens",
+      "authorsOrOrganization": "Sakine Yalçın; Handan Eser; İlyas Onbaşılar; Suzan Yalçın",
+      "publishedYear": "2020",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.33988/auvfd.677150",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "Controlled 16-week laying-hen study of dried and ground Thymus vulgaris leaves at 1% and 2% of formulated diets.",
+      "limitations": "The defined dried/ground leaf form, poultry population, and trial diets do not prescribe a household amount, a complete ration, another preparation, or an outcome for another bird species.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "saeed-2024-dried-parsley-broilers",
+      "title": "Effects of Dried Local Parsley on Carcass Characteristics of Broiler Chicks (Ross 308)",
+      "authorsOrOrganization": "Rozhgar Baiz Saeed",
+      "publishedYear": "2024",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.58928/ku24.15425",
+      "speciesScopes": [
+        "chicken",
+        "broiler_chicken"
+      ],
+      "permittedUse": "Controlled Ross 308 broiler study of dried local parsley in a basal diet at three stated treatment levels, reporting carcass and meat-composition outcomes.",
+      "limitations": "The study’s local-parsley reporting and controlled basal-diet context do not establish unrestricted feeding, a household amount, a complete ration, another parsley preparation, or an outcome for another bird species.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "herb-provenance-registry-2026",
+      "title": "Canonical herb provenance and automatic-suggestion compatibility registry",
+      "authorsOrOrganization": "Bird Feed Calculator project",
+      "publishedYear": "2026",
+      "sourceTier": "runtime_configuration",
+      "urlOrDoi": "database/herb-provenance.mts",
+      "speciesScopes": [
+        "pigeon",
+        "parrot",
+        "african_grey",
+        "budgie",
+        "canary",
+        "chicken"
+      ],
+      "permittedUse": "Records the existing all-supported-birds eligibility policy for ordinary culinary thyme and separates ordinary herb use from essential oils and other concentrated forms.",
+      "limitations": "This is an active project configuration, not an external feeding study or a dose, formula, complete-ration, or product approval. It cannot be represented as direct species-specific scientific evidence.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "hartady-2021-avian-herbal-medicine-review",
+      "title": "Review of Herbal Medicine Works in the Avian Species",
+      "authorsOrOrganization": "Tyagita Hartady; Mas Rizky A. A. Syamsunarno; Bambang Pontjo Priosoeryanto; S. Jasni; Roostita L. Balia",
+      "publishedYear": "2021",
+      "sourceTier": "peer_reviewed_review",
+      "urlOrDoi": "https://doi.org/10.14202/vetworld.2021.2889-2906",
+      "speciesScopes": [
+        "chicken",
+        "poultry"
+      ],
+      "permittedUse": "Poultry-oriented avian-herbal review context for ordinary thyme preparations and explicit separation from concentrated preparations.",
+      "limitations": "The review’s accessible framing is poultry/chicken context; it does not by itself provide an individual non-chicken dose, complete-ration instruction, or direct species-specific thyme outcome.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "dardouri-2025-poultry-herbs-scoping-review",
+      "title": "Herbs Impact on Poultry Health and Antimicrobial Resistance: A Scoping Review with One Health Perspective",
+      "authorsOrOrganization": "Maha Dardouri; Meriem Maher Mtibaa; Sana Azaiez; Ahlem Mahjoub Khachroub; Wejdene Mansour",
+      "publishedYear": "2025",
+      "sourceTier": "systematic_review",
+      "urlOrDoi": "https://doi.org/10.1186/s12917-025-04760-6",
+      "speciesScopes": [
+        "chicken",
+        "poultry"
+      ],
+      "permittedUse": "Scoping review of chicken, hen, and chick studies, including ordinary thyme powder/leaf feeding context and defined poultry-study boundaries.",
+      "limitations": "Its inclusion criteria are poultry-only and its results do not directly establish an individual non-chicken outcome, dose, complete ration, or concentrated-product equivalence.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "elsabrout-2023-poultry-botanicals-review",
+      "title": "Application of Botanical Products as Nutraceutical Feed Additives for Improving Poultry Health and Production",
+      "authorsOrOrganization": "Khalid El-Sabrout and coauthors",
+      "publishedYear": "2023",
+      "sourceTier": "peer_reviewed_review",
+      "urlOrDoi": "https://doi.org/10.14202/vetworld.2023.369-379",
+      "speciesScopes": [
+        "chicken",
+        "poultry"
+      ],
+      "permittedUse": "Poultry feed-additive review context for botanical products, including herb preparation boundaries.",
+      "limitations": "Poultry review context does not independently establish an individual non-chicken outcome, dose, complete ration, or essential-oil equivalence.",
       "accessedAt": "2026-08-21"
     }
   ]
