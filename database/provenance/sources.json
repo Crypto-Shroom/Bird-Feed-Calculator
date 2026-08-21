@@ -1613,6 +1613,81 @@
       "permittedUse": "Poultry feed-additive review context for botanical products, including herb preparation boundaries.",
       "limitations": "Poultry review context does not independently establish an individual non-chicken outcome, dose, complete ration, or essential-oil equivalence.",
       "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "issue-168-research-log-2026",
+      "title": "Issue #168 six-form bird evidence research log",
+      "authorsOrOrganization": "Bird Feed Calculator project research",
+      "publishedYear": "2026",
+      "sourceTier": "historical_project",
+      "urlOrDoi": "database/provenance/evidence/issue-168-research-log.md",
+      "speciesScopes": [
+        "pigeon",
+        "parrot",
+        "african_grey",
+        "budgie",
+        "canary",
+        "chicken"
+      ],
+      "permittedUse": "Documents the independent first-pass and targeted second-pass searches, retained source candidates, exact form boundaries, and unresolved evidence gaps for Issue #168.",
+      "limitations": "A research log documents the search process and evidence gaps. It is not an external scientific source and cannot convert unresolved outcomes into approval or cross-species evidence.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "el-ghamry-karosah-2020-pigeon-chamomile-flowers",
+      "title": "Effect Of Some Feed additives (Yeast, Fenugreek seeds and Chamomile flowers) On Some Behavioral patterns and Productive Performance In Pigeons (Columba livia domestica)",
+      "authorsOrOrganization": "E. H. El-ghamry and M. M. Karosah",
+      "publishedYear": "2020",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://bvmj.journals.ekb.eg/article_116443.html",
+      "speciesScopes": [
+        "pigeon"
+      ],
+      "permittedUse": "Supports that a controlled pigeon study assessed chamomile flowers as a dietary feed additive in domestic pigeons.",
+      "limitations": "The study context does not establish a household serving amount, a complete ration, medical use, a formula, unrestricted use, an oil/extract outcome, or a result for another bird species.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "al-kaisse-khalel-2011-broiler-chamomile-flowers",
+      "title": "The Potency of Chamomile Flowers (Matericaria chamomilla L.) as Feed Supplements (Growth Promoters) on Productive Performance and Hematological Parameters Constituents of Broiler",
+      "authorsOrOrganization": "Galib A. M. Al-Kaisse and Eman K. Khalel",
+      "publishedYear": "2011",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.3923/ijps.2011.726.729",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "Supports a bounded broiler-ration finding for dried, milled chamomile flowers at defined trial inclusion levels.",
+      "limitations": "It does not establish a visitor household amount, a complete ration, medical benefit, unrestricted use, an oil/extract outcome, or a result for other birds.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "al-sagan-2020-broiler-fennel-seed-powder",
+      "title": "Effects of Fennel Seed Powder Supplementation on Growth Performance, Carcass Characteristics, Meat Quality, and Economic Efficiency of Broilers under Thermoneutral and Chronic Heat Stress Conditions",
+      "authorsOrOrganization": "Ahmed A. Al-Sagan, Shady Khalil, Elsayed O. S. Hussein, and Youssef A. Attia",
+      "publishedYear": "2020",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.3390/ani10020206",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "Supports a bounded broiler-ration finding for experimentally ground fennel seed powder at specified inclusion levels and environmental conditions.",
+      "limitations": "It does not establish a household serving amount, unrestricted use of whole seed, a complete ration, medical treatment, oil/extract equivalence, or a result for another bird species.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "ghonime-2025-broiler-fennel-seed-meal",
+      "title": "Evaluation of fennel seed meal in broiler chickens' diets: impacts on performance, carcass traits, digestive enzymes, intestinal microbiota, blood metabolites, and economic feasibility",
+      "authorsOrOrganization": "Mohammed E. Ghonime et al.",
+      "publishedYear": "2025",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.5194/aab-68-531-2025",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "Supports a bounded broiler-ration finding for fennel seed meal in formulated diets.",
+      "limitations": "The meal was obtained after oil extraction and ground. It cannot establish a household serving amount, ordinary whole-seed equivalence, unrestricted use, a complete ration, therapeutic use, or another bird species outcome.",
+      "accessedAt": "2026-08-21"
     }
   ]
 }

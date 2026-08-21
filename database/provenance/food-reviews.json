@@ -3363,6 +3363,869 @@
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-21"
+    },
+    {
+      "ingredientId": "great_northern_white_beans",
+      "ingredientDisplayName": "Great Northern white beans",
+      "form": "raw dried Great Northern white beans, plain and unseasoned",
+      "nutrition": {
+        "sourceIds": [
+          "issue-168-research-log-2026"
+        ],
+        "basis": "not asserted",
+        "notes": "No nutrient claim is asserted in this provenance-only review. The review concerns the exact raw dried bean form and evidence gaps."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried Great Northern white beans, plain and unseasoned and pigeon",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct pigeon-specific evidence for raw dried Great Northern white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "pigeon raw dried Great Northern white beans, plain and unseasoned veterinary",
+              "pigeon raw dried Great Northern white beans, plain and unseasoned feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct pigeon-specific raw dried Great Northern white beans, plain and unseasoned outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried Great Northern white beans, plain and unseasoned and parrot",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct parrot-specific evidence for raw dried Great Northern white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "parrot raw dried Great Northern white beans, plain and unseasoned veterinary",
+              "parrot raw dried Great Northern white beans, plain and unseasoned feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct parrot-specific raw dried Great Northern white beans, plain and unseasoned outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried Great Northern white beans, plain and unseasoned and african_grey",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct african_grey-specific evidence for raw dried Great Northern white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "african_grey raw dried Great Northern white beans, plain and unseasoned veterinary",
+              "african_grey raw dried Great Northern white beans, plain and unseasoned feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct african_grey-specific raw dried Great Northern white beans, plain and unseasoned outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried Great Northern white beans, plain and unseasoned and budgie",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct budgie-specific evidence for raw dried Great Northern white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "budgie raw dried Great Northern white beans, plain and unseasoned veterinary",
+              "budgie raw dried Great Northern white beans, plain and unseasoned feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct budgie-specific raw dried Great Northern white beans, plain and unseasoned outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried Great Northern white beans, plain and unseasoned and canary",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct canary-specific evidence for raw dried Great Northern white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "canary raw dried Great Northern white beans, plain and unseasoned veterinary",
+              "canary raw dried Great Northern white beans, plain and unseasoned feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct canary-specific raw dried Great Northern white beans, plain and unseasoned outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried Great Northern white beans, plain and unseasoned and chicken",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct chicken-specific evidence for raw dried Great Northern white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "chicken raw dried Great Northern white beans, plain and unseasoned veterinary",
+              "chicken raw dried Great Northern white beans, plain and unseasoned feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct chicken-specific raw dried Great Northern white beans, plain and unseasoned outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "issue-168-research-log-2026"
+        ],
+        "rule": "This evidence-only record does not approve raw dried Great Northern white beans for runtime use, stock inventory, a formula, a portion, a preparation method, or a complete ration. The exact species/form outcomes remain unresolved after documented first-pass and targeted second searches.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-21"
+    },
+    {
+      "ingredientId": "cannellini_white_beans",
+      "ingredientDisplayName": "Cannellini white beans",
+      "form": "raw dried cannellini white beans, plain and unseasoned",
+      "nutrition": {
+        "sourceIds": [
+          "issue-168-research-log-2026"
+        ],
+        "basis": "not asserted",
+        "notes": "No nutrient claim is asserted in this provenance-only review. The review concerns the exact raw dried bean form and evidence gaps."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried cannellini white beans, plain and unseasoned and pigeon",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct pigeon-specific evidence for raw dried cannellini white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "pigeon raw dried cannellini white beans, plain and unseasoned veterinary",
+              "pigeon raw dried cannellini white beans, plain and unseasoned feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct pigeon-specific raw dried cannellini white beans, plain and unseasoned outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried cannellini white beans, plain and unseasoned and parrot",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct parrot-specific evidence for raw dried cannellini white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "parrot raw dried cannellini white beans, plain and unseasoned veterinary",
+              "parrot raw dried cannellini white beans, plain and unseasoned feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct parrot-specific raw dried cannellini white beans, plain and unseasoned outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried cannellini white beans, plain and unseasoned and african_grey",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct african_grey-specific evidence for raw dried cannellini white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "african_grey raw dried cannellini white beans, plain and unseasoned veterinary",
+              "african_grey raw dried cannellini white beans, plain and unseasoned feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct african_grey-specific raw dried cannellini white beans, plain and unseasoned outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried cannellini white beans, plain and unseasoned and budgie",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct budgie-specific evidence for raw dried cannellini white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "budgie raw dried cannellini white beans, plain and unseasoned veterinary",
+              "budgie raw dried cannellini white beans, plain and unseasoned feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct budgie-specific raw dried cannellini white beans, plain and unseasoned outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried cannellini white beans, plain and unseasoned and canary",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct canary-specific evidence for raw dried cannellini white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "canary raw dried cannellini white beans, plain and unseasoned veterinary",
+              "canary raw dried cannellini white beans, plain and unseasoned feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct canary-specific raw dried cannellini white beans, plain and unseasoned outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for raw dried cannellini white beans, plain and unseasoned and chicken",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct chicken-specific evidence for raw dried cannellini white beans, plain and unseasoned. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "chicken raw dried cannellini white beans, plain and unseasoned veterinary",
+              "chicken raw dried cannellini white beans, plain and unseasoned feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct chicken-specific raw dried cannellini white beans, plain and unseasoned outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "issue-168-research-log-2026"
+        ],
+        "rule": "This evidence-only record does not approve raw dried cannellini white beans for runtime use, stock inventory, a formula, a portion, a preparation method, or a complete ration. The exact species/form outcomes remain unresolved after documented first-pass and targeted second searches.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-21"
+    },
+    {
+      "ingredientId": "chamomile",
+      "ingredientDisplayName": "Chamomile",
+      "form": "plain dried culinary chamomile flower",
+      "nutrition": {
+        "sourceIds": [
+          "issue-168-research-log-2026"
+        ],
+        "basis": "not asserted",
+        "notes": "No nutrient claim is asserted in this provenance-only review. It distinguishes the ordinary dried culinary flower from tea, extracts, oils, and therapeutic preparations."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "limited",
+          "sourceIds": [
+            "el-ghamry-karosah-2020-pigeon-chamomile-flowers"
+          ],
+          "locator": "Study title and abstract: domestic pigeons (Columba livia domestica) and chamomile flowers assessed as feed additives",
+          "evidenceScope": "species_specific",
+          "rationale": "The direct pigeon study supports only a bounded controlled feed-additive context for chamomile flowers. It does not establish a household amount, a formula, therapeutic use, a complete ration, oil/extract equivalence, or another bird outcome.",
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary chamomile flower and parrot",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct parrot-specific evidence for plain dried culinary chamomile flower. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "parrot plain dried culinary chamomile flower veterinary",
+              "parrot plain dried culinary chamomile flower feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct parrot-specific plain dried culinary chamomile flower outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary chamomile flower and african_grey",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct african_grey-specific evidence for plain dried culinary chamomile flower. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "african_grey plain dried culinary chamomile flower veterinary",
+              "african_grey plain dried culinary chamomile flower feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct african_grey-specific plain dried culinary chamomile flower outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary chamomile flower and budgie",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct budgie-specific evidence for plain dried culinary chamomile flower. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "budgie plain dried culinary chamomile flower veterinary",
+              "budgie plain dried culinary chamomile flower feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct budgie-specific plain dried culinary chamomile flower outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary chamomile flower and canary",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct canary-specific evidence for plain dried culinary chamomile flower. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "canary plain dried culinary chamomile flower veterinary",
+              "canary plain dried culinary chamomile flower feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct canary-specific plain dried culinary chamomile flower outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "al-kaisse-khalel-2011-broiler-chamomile-flowers"
+          ],
+          "locator": "Abstract and methods: 250 broilers received basal diets plus 0.25%, 0.50%, 0.75%, or 1% dried milled chamomile-flower powder for six weeks",
+          "evidenceScope": "species_specific",
+          "rationale": "The direct broiler study supports only its defined balanced-ration context using dried milled flower material. It does not establish an unrestricted household amount, a complete ration, therapeutic use, oil/extract equivalence, or another bird outcome.",
+          "reviewedAt": "2026-08-21"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "issue-168-research-log-2026",
+          "el-ghamry-karosah-2020-pigeon-chamomile-flowers",
+          "al-kaisse-khalel-2011-broiler-chamomile-flowers"
+        ],
+        "rule": "Treat this review as ordinary dried culinary flower only. Tea, extracts, oils, tinctures, blends, medicinal dosing, salted or flavoured products, and mould-contaminated material remain distinct. This record does not approve runtime inventory use, a formula, a portion, or a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-21"
+    },
+    {
+      "ingredientId": "lavender",
+      "ingredientDisplayName": "Lavender",
+      "form": "plain dried culinary lavender flower",
+      "nutrition": {
+        "sourceIds": [
+          "issue-168-research-log-2026"
+        ],
+        "basis": "not asserted",
+        "notes": "No nutrient claim is asserted in this provenance-only review. It distinguishes the ordinary dried culinary flower from oils, diffusers, extracts, and aromatic products."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary lavender flower and pigeon",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct pigeon-specific evidence for plain dried culinary lavender flower. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "pigeon plain dried culinary lavender flower veterinary",
+              "pigeon plain dried culinary lavender flower feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct pigeon-specific plain dried culinary lavender flower outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary lavender flower and parrot",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct parrot-specific evidence for plain dried culinary lavender flower. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "parrot plain dried culinary lavender flower veterinary",
+              "parrot plain dried culinary lavender flower feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct parrot-specific plain dried culinary lavender flower outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary lavender flower and african_grey",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct african_grey-specific evidence for plain dried culinary lavender flower. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "african_grey plain dried culinary lavender flower veterinary",
+              "african_grey plain dried culinary lavender flower feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct african_grey-specific plain dried culinary lavender flower outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary lavender flower and budgie",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct budgie-specific evidence for plain dried culinary lavender flower. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "budgie plain dried culinary lavender flower veterinary",
+              "budgie plain dried culinary lavender flower feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct budgie-specific plain dried culinary lavender flower outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary lavender flower and canary",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct canary-specific evidence for plain dried culinary lavender flower. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "canary plain dried culinary lavender flower veterinary",
+              "canary plain dried culinary lavender flower feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct canary-specific plain dried culinary lavender flower outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary lavender flower and chicken",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct chicken-specific evidence for plain dried culinary lavender flower. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "chicken plain dried culinary lavender flower veterinary",
+              "chicken plain dried culinary lavender flower feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct chicken-specific plain dried culinary lavender flower outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "issue-168-research-log-2026"
+        ],
+        "rule": "Essential oil, diffusers, spray, extracts, tinctures, blends, and scented/aromatic products remain distinct from this dried culinary-flower form. This evidence-only record does not approve runtime inventory use, a formula, a portion, or a complete ration; all exact outcomes remain unresolved.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-21"
+    },
+    {
+      "ingredientId": "fennel",
+      "ingredientDisplayName": "Fennel",
+      "form": "plain dried culinary fennel seed",
+      "nutrition": {
+        "sourceIds": [
+          "issue-168-research-log-2026"
+        ],
+        "basis": "not asserted",
+        "notes": "No nutrient claim is asserted in this provenance-only review. It distinguishes the dry culinary seed from essential oil, extracts, tea, and other concentrated preparations."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary fennel seed and pigeon",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct pigeon-specific evidence for plain dried culinary fennel seed. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "pigeon plain dried culinary fennel seed veterinary",
+              "pigeon plain dried culinary fennel seed feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct pigeon-specific plain dried culinary fennel seed outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary fennel seed and parrot",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct parrot-specific evidence for plain dried culinary fennel seed. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "parrot plain dried culinary fennel seed veterinary",
+              "parrot plain dried culinary fennel seed feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct parrot-specific plain dried culinary fennel seed outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary fennel seed and african_grey",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct african_grey-specific evidence for plain dried culinary fennel seed. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "african_grey plain dried culinary fennel seed veterinary",
+              "african_grey plain dried culinary fennel seed feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct african_grey-specific plain dried culinary fennel seed outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary fennel seed and budgie",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct budgie-specific evidence for plain dried culinary fennel seed. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "budgie plain dried culinary fennel seed veterinary",
+              "budgie plain dried culinary fennel seed feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct budgie-specific plain dried culinary fennel seed outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain dried culinary fennel seed and canary",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct canary-specific evidence for plain dried culinary fennel seed. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "canary plain dried culinary fennel seed veterinary",
+              "canary plain dried culinary fennel seed feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct canary-specific plain dried culinary fennel seed outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "al-sagan-2020-broiler-fennel-seed-powder",
+            "ghonime-2025-broiler-fennel-seed-meal"
+          ],
+          "locator": "Al-Sagan et al.: ground fennel seed powder at 0%, 1.6%, and 3.2% in Ross-308 broiler diets from day 19–41; Ghonime et al.: fennel seed meal at 5%, 10%, and 20% in formulated broiler diets",
+          "evidenceScope": "species_specific",
+          "rationale": "The direct chicken studies support only their defined formulated-ration contexts using ground seed powder or seed meal. They do not establish a household amount, unrestricted whole-seed use, a complete ration, medical use, essential-oil equivalence, or another bird outcome.",
+          "reviewedAt": "2026-08-21"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "issue-168-research-log-2026",
+          "al-sagan-2020-broiler-fennel-seed-powder",
+          "ghonime-2025-broiler-fennel-seed-meal"
+        ],
+        "rule": "This record is limited to plain dried culinary fennel seed. Oil, extract, tea, and other concentrated preparations remain distinct. The chicken evidence is restricted to study-specific ground-seed/meal formulated diets and does not approve runtime inventory use, a formula, a portion, or a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-21"
+    },
+    {
+      "ingredientId": "ginger",
+      "ingredientDisplayName": "Ginger",
+      "form": "plain fresh culinary ginger root",
+      "nutrition": {
+        "sourceIds": [
+          "issue-168-research-log-2026"
+        ],
+        "basis": "not asserted",
+        "notes": "No nutrient claim is asserted in this provenance-only review. It distinguishes the fresh culinary root from powders, tea, extracts, oils, and therapeutic preparations."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain fresh culinary ginger root and pigeon",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct pigeon-specific evidence for plain fresh culinary ginger root. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "pigeon plain fresh culinary ginger root veterinary",
+              "pigeon plain fresh culinary ginger root feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct pigeon-specific plain fresh culinary ginger root outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain fresh culinary ginger root and parrot",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct parrot-specific evidence for plain fresh culinary ginger root. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "parrot plain fresh culinary ginger root veterinary",
+              "parrot plain fresh culinary ginger root feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct parrot-specific plain fresh culinary ginger root outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain fresh culinary ginger root and african_grey",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct african_grey-specific evidence for plain fresh culinary ginger root. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "african_grey plain fresh culinary ginger root veterinary",
+              "african_grey plain fresh culinary ginger root feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct african_grey-specific plain fresh culinary ginger root outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain fresh culinary ginger root and budgie",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct budgie-specific evidence for plain fresh culinary ginger root. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "budgie plain fresh culinary ginger root veterinary",
+              "budgie plain fresh culinary ginger root feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct budgie-specific plain fresh culinary ginger root outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain fresh culinary ginger root and canary",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct canary-specific evidence for plain fresh culinary ginger root. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "canary plain fresh culinary ginger root veterinary",
+              "canary plain fresh culinary ginger root feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct canary-specific plain fresh culinary ginger root outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-168-research-log-2026"
+          ],
+          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for plain fresh culinary ginger root and chicken",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct chicken-specific evidence for plain fresh culinary ginger root. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "chicken plain fresh culinary ginger root veterinary",
+              "chicken plain fresh culinary ginger root feeding study"
+            ],
+            "sourceIds": [
+              "issue-168-research-log-2026"
+            ],
+            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct chicken-specific plain fresh culinary ginger root outcome was established."
+          },
+          "reviewedAt": "2026-08-21"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "issue-168-research-log-2026"
+        ],
+        "rule": "This evidence-only record does not approve fresh ginger root for runtime use, stock inventory, a formula, a portion, medical dosing, or a complete ration. Powders, tea, extracts, oils, and other processed preparations remain distinct; all exact species/form outcomes remain unresolved after documented searches.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-21"
     }
   ]
 }
