@@ -29,6 +29,10 @@
 | Brieftaubenshop Editor, [*What Do Pigeons Eat? Complete Guide to Pigeon Food & Diet*](https://www.brieftaubenshop.de/en/what-do-pigeons-eat/) | This commercial pigeon-retail guide says wild pigeons eat berries and small fruits. Its blueberry example concerns the **passenger pigeon** (*Ectopistes migratorius*), not *Columba livia*. | Useful pigeon-husbandry context only. It does not directly establish fresh-blueberry suitability for *Columba livia* and cannot be used for cross-species inference from passenger pigeons. |
 | Jiménez-Albarral, García & Miñarro (2025), [*Vertebrate frugivory in blueberry crops*](https://doi.org/10.1016/j.cropro.2025.107213), *Crop Protection* 193, 107213 | Eight northern-Spain blueberry orchards were studied over two years; 14 bird and four mammal species consumed blueberries, with common blackbirds accounting for most bird consumption events. | Peer-reviewed evidence that some wild vertebrates consume blueberry crops, but the article preview does not identify *Columba livia*. It cannot establish a pigeon outcome without a direct species record. |
 
+### Saved research-skill reconciliation — 21 August 2026
+
+The saved **Species-and-Form Evidence Research** workflow was applied before handoff. The active runtime catalog (`v3-webapp/client/src/lib/data.ts`) contains no blueberry entry, while the canonical provenance ledger contains the evidence-only fresh-blueberry review. The regression test protects the six-row `limited` outcomes, the direct-but-uncited pigeon source boundary, and the fact that neither owner-supplied contextual source is used as direct pigeon evidence. There is therefore no runtime/provenance conflict: this work remains governance-only and does not add blueberry to the calculator.
+
 ## Parrot
 
 ### First pass — 20 August 2026
