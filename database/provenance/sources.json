@@ -1613,6 +1613,84 @@
       "permittedUse": "Poultry feed-additive review context for botanical products, including herb preparation boundaries.",
       "limitations": "Poultry review context does not independently establish an individual non-chicken outcome, dose, complete ration, or essential-oil equivalence.",
       "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "zhu2025-tarim-pigeon-grit",
+      "title": "Investigation of the reproductive behavior of Tarim pigeons",
+      "authorsOrOrganization": "Lin Zhu; Mahmoud Kamal; Mengyue Sun; Yao Li; Rui Fu; Mohamed E. Abd El-Hack; Zewu Wang; Kailun Yang; Fengming Li; Yanfen Cheng",
+      "publishedYear": "2025",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.5194/aab-68-395-2025",
+      "speciesScopes": [
+        "pigeon",
+        "columba_livia",
+        "breeding_pigeon"
+      ],
+      "permittedUse": "Direct Tarim-pigeon breeding-context evidence on observed grit consumption and the article discussion’s calcareous-grit/calcium context during egg laying.",
+      "limitations": "The study does not test a named redstone product, shell-calcium dose, companion-pigeon care profile, or home lighting program.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "versele-neogrit-composition-2026",
+      "title": "Colombine Neo-Grit",
+      "authorsOrOrganization": "Versele",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.versele.com/en/de/colombine/products/colombine-neogrit",
+      "speciesScopes": [
+        "pigeon",
+        "racing_pigeon",
+        "ornamental_pigeon"
+      ],
+      "permittedUse": "Official pigeon-product composition record showing redstone, oyster shells, seashells, calcium components, and flint materials as separately listed ingredients.",
+      "limitations": "A commercial product record does not establish a medical recommendation, a universal composition for all redstone products, a dose, or a complete breeding-pigeon nutrition plan.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "merck-pet-bird-reproduction-2026",
+      "title": "Reproductive Diseases of Pet Birds",
+      "authorsOrOrganization": "Sharman M. Hoppes, DVM, DABVP (Avian); Merck Veterinary Manual",
+      "publishedYear": "2026",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.merckvetmanual.com/exotic-and-laboratory-animals/pet-birds/reproductive-diseases-of-pet-birds",
+      "speciesScopes": [
+        "companion_bird"
+      ],
+      "permittedUse": "Veterinary context that captive and pet-bird reproductive activity is affected by photoperiod, nutritional status, and mate or nest cues, with eggshell-calcium physiology context.",
+      "limitations": "General pet-bird guidance does not establish pigeon-specific reproductive status, a Pet/Companion profile rule, or a calcium-product recommendation.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "yan2024-white-king-pigeon-photoperiod",
+      "title": "Effect of different photoperiodic programs from rearing period on the reproductive performance and hormone secretion of White King pigeons",
+      "authorsOrOrganization": "Leyan Yan; Mengwen Feng; Zhe Chen; Binbin Guo; Chungang Feng; Huanxi Zhu",
+      "publishedYear": "2024",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1016/j.psj.2024.103544",
+      "speciesScopes": [
+        "pigeon",
+        "columba_livia",
+        "breeding_pigeon"
+      ],
+      "permittedUse": "Direct White King pigeon evidence that controlled photoperiod programs alter age at first egg, egg production, fertility, and reproductive hormone patterns under commercial breeding conditions.",
+      "limitations": "The commercial White King study does not prescribe household lighting, define a companion-pigeon profile, or establish an always-breeding state for individual pets.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "icwdm-pigeon-biology-2026",
+      "title": "Pigeon Biology",
+      "authorsOrOrganization": "Internet Center for Wildlife Damage Management",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://icwdm.org/species/birds/pigeons/pigeon-biology/",
+      "speciesScopes": [
+        "pigeon",
+        "columba_livia",
+        "feral_pigeon"
+      ],
+      "permittedUse": "Research-based pigeon biology context stating that breeding may occur in all seasons while reproduction has seasonal peaks and most broods are raised in spring and summer.",
+      "limitations": "Wildlife-management material is not companion-pigeon clinical guidance and cannot define a Pet/Companion profile, individual reproductive state, or husbandry plan.",
+      "accessedAt": "2026-08-21"
     }
   ]
 }

@@ -127,3 +127,5 @@
 - [x] Implement and validate Issue #148’s canonical split-lentil solver identity while preserving the visible catalog record, existing inventory keys, formulas, and public copy.
 - [x] Implement and validate Issue #151’s browser-local Worker executor, bounded solve protocol, strict result validation, and no-server-compute boundary without changing visitor-facing copy or current output defaults.
 - [x] Implement and validate Issue #153 active Worker integration with deterministic allocation back to actual ingredient forms, silent legacy fallback for every non-feasible/technical outcome, and local privacy-preserving diagnostics.
+- [x] Research and record the exact pigeon breeding-grit and shell-calcium boundary for Issue #75 in canonical provenance only, including the Pet/Companion seasonal claim and limitations; do not change active guidance, formulas, safety rules, runtime behavior, or public copy.
+- [x] Clarify the Issue #75 provenance and review record to preserve the owner-directed voluntary pigeon grit-use principle without changing any active guidance, formula, safety rule, runtime behavior, or visitor-visible copy.
