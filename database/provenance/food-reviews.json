@@ -114,7 +114,7 @@
       "form": "raw dried seeds",
       "nutrition": {
         "sourceIds": [
-          "eorganic-chickpeas-poultry-2014"
+          "danek-majewska-2021-raw-chickpea-broilers"
         ],
         "basis": "not_applicable",
         "notes": "This evidence-first record evaluates the raw dried form only. It does not add a nutrient value, a dry-mix ingredient instruction, or a complete-ration claim."
@@ -124,12 +124,24 @@
           "bird": "pigeon",
           "outcome": "unresolved",
           "sourceIds": [
+            "issue-162-research-log-2026",
             "vca-pigeon-dove-feeding"
           ],
-          "locator": "VCA 'Can I feed people food to my pigeon or dove?' section",
-          "evidenceScope": "species_specific",
-          "rationale": "The pigeon-specific veterinary source provides general small-quantity human-food context but does not name chickpeas or raw pulses. The poultry extension source cannot be used to infer a pigeon preparation outcome. Raw dried chickpeas therefore remain unresolved for pigeons pending a direct pigeon-specific chickpea or raw-pulse source.",
-          "reviewedAt": "2026-08-18"
+          "locator": "Issue #162 research log: first-pass and targeted second searches for raw dried chickpea seeds; VCA pigeon/dove general people-food guidance is retained only as a non-specific boundary",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct pigeon-specific evidence for raw dried chickpea seeds. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Columba livia domestica Cicer arietinum raw seed feeding",
+              "pigeon raw dried chickpeas avian veterinary nutrition"
+            ],
+            "sourceIds": [
+              "issue-162-research-log-2026",
+              "vca-pigeon-dove-feeding"
+            ],
+            "result": "The targeted search did not establish direct pigeon raw-dried chickpea ingestion, digestibility, safety, or preparation evidence; general chickpea chemistry and chicken trials were excluded from the pigeon outcome."
+          },
+          "reviewedAt": "2026-08-21"
         },
         {
           "bird": "parrot",
@@ -158,13 +170,12 @@
           "bird": "budgie",
           "outcome": "requires_preparation",
           "sourceIds": [
-            "vca-budgie-feeding",
             "exoticdirect-budgie-chickpeas-2019"
           ],
-          "locator": "VCA 'List of suitable fruits and vegetables for budgies' table; ExoticDirect list beginning 'These are suitable for budgies but do not ever feed raw'",
+          "locator": "ExoticDirect What can budgies eat?: legumes section explicitly naming chickpeas among foods that must not ever be fed raw",
           "evidenceScope": "species_specific",
-          "rationale": "The VCA source lists cooked beans in budgie feeding guidance. The budgie-specific owner guidance explicitly includes chickpeas among foods that should not be fed raw. Raw dried chickpeas therefore require preparation before any budgie use; the non-clinical source does not establish a cooking method, portion, formula inclusion, or complete ration.",
-          "reviewedAt": "2026-08-18"
+          "rationale": "Budgie-specific care guidance explicitly lists chickpeas among legumes that must not ever be fed raw and recommends sprouted legumes. This establishes a preparation boundary only; it does not prescribe a process, portion, formula use, or complete ration.",
+          "reviewedAt": "2026-08-21"
         },
         {
           "bird": "canary",
@@ -182,24 +193,25 @@
           "bird": "chicken",
           "outcome": "limited",
           "sourceIds": [
-            "eorganic-chickpeas-poultry-2014",
             "danek-majewska-2021-raw-chickpea-broilers"
           ],
-          "locator": "eOrganic 'Feeding Chickpeas to Poultry' section; Danek-Majewska et al. 2021 abstract, introduction, and methods describing Ross 308 broiler grower/finisher compound diets",
+          "locator": "Danek-Majewska et al.: raw unprocessed chickpea seed substituted for 50% of soybean-meal protein in Ross 308 grower/finisher diets",
           "evidenceScope": "species_specific",
-          "rationale": "Chicken evidence describes antinutritional factors and controlled broiler-ration studies of raw chickpea, including a formulated grower/finisher diet. This is limited to the studied poultry/ration context and does not establish unsupervised household feeding, a complete ration, or a rule for other birds.",
-          "reviewedAt": "2026-08-18"
+          "rationale": "The direct broiler study supports raw chickpea only in its defined balanced grower/finisher diets. It does not establish unrestricted feeding, a household amount, a complete ration, or another species outcome.",
+          "reviewedAt": "2026-08-21"
         }
       ],
       "processing": {
         "sourceIds": [
           "eorganic-chickpeas-poultry-2014",
-          "danek-majewska-2021-raw-chickpea-broilers"
+          "danek-majewska-2021-raw-chickpea-broilers",
+          "exoticdirect-budgie-chickpeas-2019",
+          "issue-162-research-log-2026"
         ],
-        "rule": "Parrot, African Grey, budgie, and canary records require preparation before use. Pigeon remains unresolved pending direct pigeon-specific chickpea or raw-pulse evidence. Chicken evidence is limited to a controlled formulated-ration context. This evidence record does not approve a preparation method, runtime use, formula inclusion, portion, or complete ration.",
+        "rule": "Parrot, African Grey, budgie, and canary records require preparation before use. Pigeon remains unresolved after documented first-pass and targeted searches. Chicken evidence is limited to controlled formulated-ration context. This evidence record does not approve a preparation method, runtime use, formula inclusion, portion, or complete ration.",
         "severity": "warning"
       },
-      "lastReviewedAt": "2026-08-18"
+      "lastReviewedAt": "2026-08-21"
     },
     {
       "ingredientId": "wheat",
@@ -963,12 +975,13 @@
           "vca-african-grey-feeding",
           "vca-budgie-feeding",
           "vca-canary-feeding",
-          "ciurescu-2017-raw-lentil-broilers"
+          "ciurescu-2017-raw-lentil-broilers",
+          "issue-162-research-log-2026"
         ],
-        "rule": "A mechanically split raw dried lentil inherits this raw dried base record. Keep materially processed lentils—dehulled, soaked, cooked, sprouted, fermented, milled into flour, or manufactured products—distinct. Companion-bird records require preparation; chicken evidence is limited to the cited balanced broiler-ration context; pigeon evidence is limited uncited owner guidance. This record does not approve runtime use, a formula, a portion, or a complete ration.",
+        "rule": "A mechanically split raw dried lentil inherits this raw dried base record. Keep materially processed lentils—dehulled, soaked, cooked, sprouted, fermented, milled into flour, or manufactured products—distinct. Companion-bird records require preparation; chicken evidence is limited to cited balanced broiler-ration context; pigeon evidence remains limited to named dried-lentil owner guidance. This evidence-only record does not approve runtime use, a formula, a portion, or a complete ration.",
         "severity": "warning"
       },
-      "lastReviewedAt": "2026-08-18"
+      "lastReviewedAt": "2026-08-21"
     },
     {
       "ingredientId": "split_peas",
@@ -1068,7 +1081,7 @@
       "form": "raw dried mung beans",
       "nutrition": {
         "sourceIds": [
-          "ftb-legume-safety-2018"
+          "creswell-1981-raw-mung-broilers"
         ],
         "basis": "not_applicable",
         "notes": "Evidence-only review of the raw dried mung-bean form. It does not add a nutrient value, a dry-mix instruction, or a complete-ration claim."
@@ -1111,12 +1124,12 @@
           "bird": "budgie",
           "outcome": "requires_preparation",
           "sourceIds": [
-            "vca-budgie-feeding"
+            "exoticdirect-budgie-chickpeas-2019"
           ],
-          "locator": "VCA Budgies suitable-food table’s ‘cooked beans (various)’ entry and balanced-diet guidance",
+          "locator": "ExoticDirect What can budgies eat?: legumes section explicitly naming mung beans among foods that must not ever be fed raw",
           "evidenceScope": "species_specific",
-          "rationale": "Budgie-specific veterinary guidance identifies cooked beans rather than raw dried mung beans. This supports a preparation requirement only; no raw form, portion, formula use, or complete ration is established.",
-          "reviewedAt": "2026-08-18"
+          "rationale": "Budgie-specific care guidance explicitly lists mung beans among legumes that must not ever be fed raw and recommends sprouted legumes. This establishes a preparation boundary only; it does not prescribe a process, portion, formula use, or complete ration.",
+          "reviewedAt": "2026-08-21"
         },
         {
           "bird": "canary",
@@ -1131,14 +1144,14 @@
         },
         {
           "bird": "chicken",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
-            "merck-poultry-2024"
+            "creswell-1981-raw-mung-broilers"
           ],
-          "locator": "Merck Nutritional Requirements of Poultry nutrient-balance and complete-ration sections",
+          "locator": "Creswell: young broiler trials of raw or boiled mung beans replacing soybean meal at graded levels up to 20% or 40% in corn-based diets",
           "evidenceScope": "species_specific",
-          "rationale": "A targeted search identified mung-bean broiler studies but accessible full text could not be verified; Merck establishes only the complete-ration boundary and does not identify raw dried mung bean. The chicken raw-mung record therefore remains unresolved rather than relying on snippets or cross-legume inference.",
-          "reviewedAt": "2026-08-18"
+          "rationale": "The direct broiler trials support raw mung beans only in their cited formulated corn-based diets with added oil, methionine, and lysine. They do not establish unrestricted feeding, a household amount, a complete ration, or another species outcome.",
+          "reviewedAt": "2026-08-21"
         }
       ],
       "processing": {
@@ -1147,12 +1160,15 @@
           "vca-african-grey-feeding",
           "vca-budgie-feeding",
           "vca-canary-feeding",
-          "merck-poultry-2024"
+          "merck-poultry-2024",
+          "exoticdirect-budgie-chickpeas-2019",
+          "creswell-1981-raw-mung-broilers",
+          "issue-162-research-log-2026"
         ],
-        "rule": "Keep raw dried mung beans distinct from sprouted mung beans, cooked mung beans, mung flour, and residues. Companion-bird records require preparation; chicken remains unresolved pending accessible direct raw-mung chicken evidence; pigeon evidence is limited uncited owner guidance. This record does not approve runtime use, a formula, a portion, or a complete ration.",
+        "rule": "Keep raw dried mung beans distinct from sprouted mung beans, cooked mung beans, mung flour, and residues. Companion-bird records require preparation; chicken evidence is limited to cited formulated broiler-ration context; pigeon evidence is limited to named mung-bean owner guidance. This record does not approve runtime use, a formula, a portion, or a complete ration.",
         "severity": "warning"
       },
-      "lastReviewedAt": "2026-08-18"
+      "lastReviewedAt": "2026-08-21"
     },
     {
       "ingredientId": "garden_peas",
@@ -1160,7 +1176,7 @@
       "form": "raw mature dried garden peas",
       "nutrition": {
         "sourceIds": [
-          "david-poultry-legumes-2024"
+          "hejdysz-2017-raw-pea-broilers"
         ],
         "basis": "not_applicable",
         "notes": "Evidence-only review of raw mature dried garden peas. It does not add a nutrient value, a dry-mix instruction, or a complete-ration claim."
@@ -1203,12 +1219,12 @@
           "bird": "budgie",
           "outcome": "requires_preparation",
           "sourceIds": [
-            "vca-budgie-feeding"
+            "exoticdirect-budgie-chickpeas-2019"
           ],
-          "locator": "VCA Budgies suitable-food table naming peas and ‘cooked beans (various)’",
+          "locator": "ExoticDirect What can budgies eat?: legumes section explicitly naming green peas among foods that must not ever be fed raw",
           "evidenceScope": "species_specific",
-          "rationale": "Budgie-specific veterinary guidance names peas and cooked beans, not raw mature dried garden peas. This supports a preparation requirement only; no raw form, portion, formula use, or complete ration is established.",
-          "reviewedAt": "2026-08-18"
+          "rationale": "Budgie-specific care guidance explicitly lists green peas among legumes that must not ever be fed raw and recommends sprouted legumes. This establishes a preparation boundary only; it does not prescribe a process, portion, formula use, or complete ration.",
+          "reviewedAt": "2026-08-21"
         },
         {
           "bird": "canary",
@@ -1225,12 +1241,12 @@
           "bird": "chicken",
           "outcome": "limited",
           "sourceIds": [
-            "david-poultry-legumes-2024"
+            "hejdysz-2017-raw-pea-broilers"
           ],
-          "locator": "David et al. abstract, grain-legume classification, and field-pea poultry feeding sections",
+          "locator": "Hejdysz et al.: Ross 308 broiler comparison of raw ground pea meal and extruded pea meal at 100–500 g/kg diet",
           "evidenceScope": "species_specific",
-          "rationale": "The poultry review addresses dry field peas and feed formulation with antinutritional-factor boundaries. This is limited chicken feed-context evidence only; it does not establish household feeding, a complete ration, or another species outcome.",
-          "reviewedAt": "2026-08-18"
+          "rationale": "The direct broiler study supports raw pea meal only in cited formulated diets and identifies better performance and digestibility after extrusion. It does not establish unrestricted feeding, a household amount, a complete ration, or another species outcome.",
+          "reviewedAt": "2026-08-21"
         }
       ],
       "processing": {
@@ -1239,12 +1255,15 @@
           "vca-african-grey-feeding",
           "vca-budgie-feeding",
           "vca-canary-feeding",
-          "david-poultry-legumes-2024"
+          "david-poultry-legumes-2024",
+          "exoticdirect-budgie-chickpeas-2019",
+          "hejdysz-2017-raw-pea-broilers",
+          "issue-162-research-log-2026"
         ],
-        "rule": "Keep raw mature dried garden peas distinct from fresh green peas, split peas, cooked peas, and sprouts. Companion-bird records require preparation; chicken evidence is limited to dry field-pea feed formulation; pigeon evidence is limited uncited owner guidance. This record does not approve runtime use, a formula, a portion, or a complete ration.",
+        "rule": "Keep raw mature dried garden peas distinct from fresh green peas, split peas, cooked peas, sprouts, meal, and extruded pea. Companion-bird records require preparation; chicken evidence is limited to cited raw-pea broiler-ration context; pigeon evidence is limited to named dried-pea owner guidance. This record does not approve runtime use, a formula, a portion, or a complete ration.",
         "severity": "warning"
       },
-      "lastReviewedAt": "2026-08-18"
+      "lastReviewedAt": "2026-08-21"
     },
     {
       "ingredientId": "kidney_beans",
@@ -3097,6 +3116,288 @@
           "ampode-2022-oregano-powder-broilers"
         ],
         "rule": "Keep dried culinary Origanum vulgare leaf distinct from sweet marjoram, fresh oregano, essential oil, extracts, tinctures, tea, blends, salted, flavoured, or mould-contaminated products. This evidence-only review does not approve runtime use, an inventory entry, a portion, a formula, or a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-21"
+    },
+    {
+      "ingredientId": "thyme",
+      "ingredientDisplayName": "Thyme",
+      "form": "dried culinary thyme leaf, plain and unsalted",
+      "nutrition": {
+        "sourceIds": [
+          "issue-162-research-log-2026",
+          "yalcin-2020-dried-thymus-vulgaris-hens"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only review of dried culinary thyme leaf, plain and unsalted. It does not add nutrient values, change active data, or claim an inventory formula."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-162-research-log-2026"
+          ],
+          "locator": "Issue #162 research log: first-pass and targeted second searches for dried culinary thyme leaf, plain and unsalted",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct pigeon-specific evidence for dried culinary thyme leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Columba livia Thymus vulgaris dried leaf diet",
+              "pigeon thyme leaf powder veterinary nutrition"
+            ],
+            "sourceIds": [
+              "issue-162-research-log-2026"
+            ],
+            "result": "No direct pigeon dried culinary thyme leaf, plain and unsalted ingestion evidence was established after documented first-pass and targeted second searches."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-162-research-log-2026"
+          ],
+          "locator": "Issue #162 research log: first-pass and targeted second searches for dried culinary thyme leaf, plain and unsalted",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct parrot-specific evidence for dried culinary thyme leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "psittacine Thymus vulgaris dried leaf feeding",
+              "parrot thyme dried leaf avian veterinary nutrition"
+            ],
+            "sourceIds": [
+              "issue-162-research-log-2026"
+            ],
+            "result": "No direct generic companion-parrot dried culinary thyme leaf, plain and unsalted ingestion evidence was established after documented first-pass and targeted second searches."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-162-research-log-2026"
+          ],
+          "locator": "Issue #162 research log: first-pass and targeted second searches for dried culinary thyme leaf, plain and unsalted",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct african_grey-specific evidence for dried culinary thyme leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Psittacus erithacus Thymus vulgaris dried leaf feeding",
+              "African Grey thyme dried leaf avian veterinary nutrition"
+            ],
+            "sourceIds": [
+              "issue-162-research-log-2026"
+            ],
+            "result": "No direct African-Grey dried culinary thyme leaf, plain and unsalted ingestion evidence was established after documented first-pass and targeted second searches."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-162-research-log-2026"
+          ],
+          "locator": "Issue #162 research log: first-pass and targeted second searches for dried culinary thyme leaf, plain and unsalted",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct budgie-specific evidence for dried culinary thyme leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Melopsittacus undulatus Thymus vulgaris dried leaf feeding",
+              "budgie thyme dried leaf avian veterinary nutrition"
+            ],
+            "sourceIds": [
+              "issue-162-research-log-2026"
+            ],
+            "result": "No direct budgerigar dried culinary thyme leaf, plain and unsalted ingestion evidence was established after documented first-pass and targeted second searches."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-162-research-log-2026"
+          ],
+          "locator": "Issue #162 research log: first-pass and targeted second searches for dried culinary thyme leaf, plain and unsalted",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct canary-specific evidence for dried culinary thyme leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Serinus canaria Thymus vulgaris dried leaf feeding",
+              "canary thyme dried leaf avian veterinary nutrition"
+            ],
+            "sourceIds": [
+              "issue-162-research-log-2026"
+            ],
+            "result": "No direct domestic-canary dried culinary thyme leaf, plain and unsalted ingestion evidence was established after documented first-pass and targeted second searches."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "yalcin-2020-dried-thymus-vulgaris-hens"
+          ],
+          "locator": "Yalçın et al.: dried and ground Thymus vulgaris leaves at 1% and 2% of 16-week laying-hen diets",
+          "evidenceScope": "species_specific",
+          "rationale": "The direct laying-hen study supports dried culinary Thymus vulgaris leaf only at studied formulated-diet inclusion. It does not prescribe a household amount, a complete ration, a different preparation, or another species outcome.",
+          "reviewedAt": "2026-08-21"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "issue-162-research-log-2026",
+          "yalcin-2020-dried-thymus-vulgaris-hens"
+        ],
+        "rule": "Keep dried culinary thyme leaf, plain and unsalted distinct from fresh herb, essential oil, extract, tincture, tea, blends, salted, flavoured, and mould-contaminated products. This evidence-only review does not approve runtime use, an inventory entry, a portion, a formula, or a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-21"
+    },
+    {
+      "ingredientId": "parsley",
+      "ingredientDisplayName": "Parsley",
+      "form": "dried culinary parsley leaf, plain and unsalted",
+      "nutrition": {
+        "sourceIds": [
+          "issue-162-research-log-2026",
+          "saeed-2024-dried-parsley-broilers"
+        ],
+        "basis": "not_applicable",
+        "notes": "Evidence-only review of dried culinary parsley leaf, plain and unsalted. It does not add nutrient values, change active data, or claim an inventory formula."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-162-research-log-2026"
+          ],
+          "locator": "Issue #162 research log: first-pass and targeted second searches for dried culinary parsley leaf, plain and unsalted",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct pigeon-specific evidence for dried culinary parsley leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Columba livia Petroselinum crispum dried leaf diet",
+              "pigeon parsley leaf powder veterinary nutrition"
+            ],
+            "sourceIds": [
+              "issue-162-research-log-2026"
+            ],
+            "result": "No direct pigeon dried culinary parsley leaf, plain and unsalted ingestion evidence was established after documented first-pass and targeted second searches."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-162-research-log-2026"
+          ],
+          "locator": "Issue #162 research log: first-pass and targeted second searches for dried culinary parsley leaf, plain and unsalted",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct parrot-specific evidence for dried culinary parsley leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "psittacine Petroselinum crispum dried leaf feeding",
+              "parrot parsley dried leaf avian veterinary nutrition"
+            ],
+            "sourceIds": [
+              "issue-162-research-log-2026"
+            ],
+            "result": "No direct generic companion-parrot dried culinary parsley leaf, plain and unsalted ingestion evidence was established after documented first-pass and targeted second searches."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-162-research-log-2026"
+          ],
+          "locator": "Issue #162 research log: first-pass and targeted second searches for dried culinary parsley leaf, plain and unsalted",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct african_grey-specific evidence for dried culinary parsley leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Psittacus erithacus Petroselinum crispum dried leaf feeding",
+              "African Grey parsley dried leaf avian veterinary nutrition"
+            ],
+            "sourceIds": [
+              "issue-162-research-log-2026"
+            ],
+            "result": "No direct African-Grey dried culinary parsley leaf, plain and unsalted ingestion evidence was established after documented first-pass and targeted second searches."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-162-research-log-2026"
+          ],
+          "locator": "Issue #162 research log: first-pass and targeted second searches for dried culinary parsley leaf, plain and unsalted",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct budgie-specific evidence for dried culinary parsley leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Melopsittacus undulatus Petroselinum crispum dried leaf feeding",
+              "budgie parsley dried leaf avian veterinary nutrition"
+            ],
+            "sourceIds": [
+              "issue-162-research-log-2026"
+            ],
+            "result": "No direct budgerigar dried culinary parsley leaf, plain and unsalted ingestion evidence was established after documented first-pass and targeted second searches."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-162-research-log-2026",
+            "vca-canary-feeding"
+          ],
+          "locator": "Issue #162 research log: first-pass and targeted second searches for dried culinary parsley leaf, plain and unsalted; VCA canary guidance names fresh parsley as green leafy vegetable context, not dried parsley",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct canary-specific evidence for dried culinary parsley leaf, plain and unsalted. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "Serinus canaria Petroselinum crispum dried leaf feeding",
+              "canary parsley dried leaf avian veterinary nutrition"
+            ],
+            "sourceIds": [
+              "issue-162-research-log-2026",
+              "vca-canary-feeding"
+            ],
+            "result": "No direct domestic-canary dried culinary parsley leaf, plain and unsalted ingestion evidence was established after documented first-pass and targeted second searches."
+          },
+          "reviewedAt": "2026-08-21"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "saeed-2024-dried-parsley-broilers"
+          ],
+          "locator": "Saeed: controlled Ross 308 broiler study of dried local parsley in a basal diet at three stated treatment levels",
+          "evidenceScope": "species_specific",
+          "rationale": "The direct broiler study supports dried parsley only in cited controlled basal-diet context. It does not prescribe an unrestricted dose, a household amount, a complete ration, a different preparation, or another species outcome.",
+          "reviewedAt": "2026-08-21"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "issue-162-research-log-2026",
+          "saeed-2024-dried-parsley-broilers"
+        ],
+        "rule": "Keep dried culinary parsley leaf, plain and unsalted distinct from fresh herb, essential oil, extract, tincture, tea, blends, salted, flavoured, and mould-contaminated products. This evidence-only review does not approve runtime use, an inventory entry, a portion, a formula, or a complete ration.",
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-21"
