@@ -22,6 +22,13 @@
 | --- | --- | --- |
 | `Columba livia fresh blueberry diet feeding`; `Tauben Heidelbeeren füttern Brieftauben`; `duiven blauwe bessen voeren voeding`; `pigeon blueberry veterinary rehabilitation diet` | Barbara Allen, [*Can Pigeons Eat Blueberries \| Safe Feeding Guide*](https://pigeoncaretips.com/can-pigeons-eat-blueberries/), dated 13 April 2026; VCA Animal Hospitals, [*Feeding Pigeons and Doves*](https://vcahospitals.com/know-your-pet/pigeons-and-doves-feeding) | The pigeon-specific keeper guide directly addresses plain fresh blueberries, framing them as a small occasional treat beside a grain-based main diet and describing washing, small/soft presentation, and prompt leftover removal. VCA supplies compatible pigeon/dove fruit-and-berry context but does not name blueberry. The direct article identifies no veterinary credential or citable evidence trail, so it changes the row only to **`limited` corroborative provenance**, not a runtime, nutrition, medicinal, formula, inventory, portion, or complete-ration approval. |
 
+### Owner-supplied source review — 21 August 2026
+
+| Source | Exact finding | Reconciliation boundary |
+| --- | --- | --- |
+| Brieftaubenshop Editor, [*What Do Pigeons Eat? Complete Guide to Pigeon Food & Diet*](https://www.brieftaubenshop.de/en/what-do-pigeons-eat/) | This commercial pigeon-retail guide says wild pigeons eat berries and small fruits. Its blueberry example concerns the **passenger pigeon** (*Ectopistes migratorius*), not *Columba livia*. | Useful pigeon-husbandry context only. It does not directly establish fresh-blueberry suitability for *Columba livia* and cannot be used for cross-species inference from passenger pigeons. |
+| Jiménez-Albarral, García & Miñarro (2025), [*Vertebrate frugivory in blueberry crops*](https://doi.org/10.1016/j.cropro.2025.107213), *Crop Protection* 193, 107213 | Eight northern-Spain blueberry orchards were studied over two years; 14 bird and four mammal species consumed blueberries, with common blackbirds accounting for most bird consumption events. | Peer-reviewed evidence that some wild vertebrates consume blueberry crops, but the article preview does not identify *Columba livia*. It cannot establish a pigeon outcome without a direct species record. |
+
 ## Parrot
 
 ### First pass — 20 August 2026

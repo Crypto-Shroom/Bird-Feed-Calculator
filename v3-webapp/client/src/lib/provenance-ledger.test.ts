@@ -96,6 +96,9 @@ describe("canonical provenance ledger", () => {
     expect(blueberry?.speciesEvidence[0].sourceIds).toEqual(
       expect.arrayContaining(["vca-pigeon-dove-feeding", "pigeoncaretips-blueberries-2026"]),
     );
+    expect(blueberry?.speciesEvidence[0].sourceIds).not.toEqual(
+      expect.arrayContaining(["brieftaubenshop-pigeon-diet-2026", "jimenez-albarral-blueberry-frugivory-2025"]),
+    );
     expect(blueberry?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
     expect(blueberry?.processing.severity).toBe("warning");
     expect(blueberry?.processing.rule).toContain("uncited owner guidance");
