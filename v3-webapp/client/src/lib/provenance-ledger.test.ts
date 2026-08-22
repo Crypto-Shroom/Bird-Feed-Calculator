@@ -391,7 +391,7 @@ describe("canonical provenance ledger", () => {
       { ingredientId: "great_northern_white_beans", form: "raw dried Great Northern white beans, plain and unseasoned", outcomes: ["requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation"] },
       { ingredientId: "cannellini_white_beans", form: "raw dried cannellini white beans, plain and unseasoned", outcomes: ["requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation"] },
       { ingredientId: "chamomile", form: "ordinary culinary chamomile flower, fresh or dried, plain", outcomes: ["limited", "limited", "limited", "limited", "limited", "limited"] },
-      { ingredientId: "lavender", form: "ordinary culinary lavender flower, fresh or dried, plain", outcomes: ["unresolved", "unresolved", "unresolved", "unresolved", "unresolved", "unresolved"] },
+      { ingredientId: "lavender", form: "ordinary culinary lavender flower, fresh or dried, plain", outcomes: ["limited", "unresolved", "unresolved", "unresolved", "unresolved", "unresolved"] },
       { ingredientId: "fennel", form: "ordinary culinary fennel seed, fresh or dried, plain", outcomes: ["limited", "limited", "limited", "limited", "limited", "limited"] },
       { ingredientId: "ginger", form: "ordinary culinary ginger root, fresh or dried, plain", outcomes: ["limited", "limited", "limited", "limited", "limited", "limited"] },
     ];
@@ -432,7 +432,13 @@ describe("canonical provenance ledger", () => {
     const lavender = ledger.ingredientReviews.find(
       (candidate) => candidate.ingredientId === "lavender" && candidate.form === "ordinary culinary lavender flower, fresh or dried, plain",
     );
-    expect(lavender?.speciesEvidence.every((entry) => entry.outcome === "unresolved")).toBe(true);
+    expect(lavender?.speciesEvidence[0]).toMatchObject({
+      bird: "pigeon",
+      outcome: "limited",
+      evidenceScope: "related_species",
+    });
+    expect(lavender?.speciesEvidence[0].sourceIds).toContain("koernerbude-lavender-flowers-2026");
+    expect(lavender?.speciesEvidence.slice(1).every((entry) => entry.outcome === "unresolved")).toBe(true);
   });
 
   it("documents two targeted queries for every Issue #160 unresolved form outcome", () => {

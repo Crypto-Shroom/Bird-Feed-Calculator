@@ -1703,6 +1703,24 @@
       "permittedUse": "Supports the botanical identity boundary: the University extension list states that its listed market classes are common beans, Phaseolus vulgaris L., and includes Great Northern, Small White/Navy, White Kidney/Cannellini, and Pinto classes.",
       "limitations": "A plant-variety source does not independently establish bird suitability, a safety outcome, preparation method, portion, formula, complete ration, or an outcome for a different bean species or a materially different product.",
       "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "koernerbude-lavender-flowers-2026",
+      "title": "Lavendelblüten",
+      "authorsOrOrganization": "Körnerbude GmbH",
+      "publishedYear": "2026",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.koernerbude.de/lavendelblueten-sw10267.4",
+      "speciesScopes": [
+        "budgie",
+        "canary",
+        "parrot",
+        "psittacine",
+        "finch"
+      ],
+      "permittedUse": "Commercial German bird-feed guidance for additive-free, gently dried whole lavender flowers used orally as a small supplementary food with normal feed for its named bird groups.",
+      "limitations": "This is commercial owner-facing guidance, not veterinary or primary research. It does not name pigeons/doves, establish pigeon-specific safety, transfer its named-bird percentage guidance to pigeons, establish fresh-flower evidence, support a therapeutic claim, establish a complete ration, or approve runtime use.",
+      "accessedAt": "2026-08-22"
     }
   ]
 }
