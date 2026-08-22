@@ -3520,6 +3520,173 @@
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-21"
+    },
+    {
+      "ingredientId": "raspberry",
+      "ingredientDisplayName": "Raspberry",
+      "form": "fresh, plain, ripe raspberry flesh, washed, unflavoured and unsweetened",
+      "nutrition": {
+        "sourceIds": [
+          "issue-173-raspberry-research-log-2026"
+        ],
+        "basis": "not_applicable",
+        "notes": "This evidence batch records species/form suitability and preparation boundaries only; it does not add a nutrient value, active inventory ingredient, dry-mix ingredient, or formula rule."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "issue-173-raspberry-research-log-2026",
+            "vca-pigeon-dove-feeding"
+          ],
+          "locator": "Issue #173 research log pigeon first-pass and targeted follow-up sections; VCA Pigeons and Doves general fresh-food boundary",
+          "evidenceScope": "historical_project",
+          "rationale": "Documented first-pass and targeted second searches did not establish direct pigeon-specific fresh-raspberry evidence. VCA is retained only as a non-specific pigeon/dove fresh-food boundary. This neutral unresolved outcome is not a safety approval, toxicity finding, or cross-species inference.",
+          "followUpSearch": {
+            "queries": [
+              "pigeon dove raspberry exotics veterinary",
+              "Columba livia raspberry feeding",
+              "pigeon rescue raspberry fruit diet"
+            ],
+            "sourceIds": [
+              "issue-173-raspberry-research-log-2026",
+              "vca-pigeon-dove-feeding"
+            ],
+            "result": "The targeted search found pigeon/dove diet context and broad berry references but did not establish direct domestic-pigeon fresh-raspberry evidence; generic pet-bird material was not transferred to pigeon."
+          },
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "limited",
+          "sourceIds": [
+            "lafeber-bird-food-guide-2026"
+          ],
+          "locator": "Lafeber Bird Food Guide 'Fruits & Veggies: Great Snack for Parrots, Finches & Canaries' section and fruit list",
+          "evidenceScope": "group_specific",
+          "rationale": "Lafeber explicitly scopes its fresh-fruit guidance to parrots and lists raspberry, while treating produce as an addition or snack rather than a base diet. This supports a limited generic-parrot outcome only; it does not set a serving amount, dry-mix role, nutrition value, processed-form outcome, or a separate African Grey/budgie outcome.",
+          "followUpSearch": {
+            "queries": [
+              "parrot raspberry avian veterinarian feeding",
+              "psittacine raspberry veterinary diet",
+              "loro frambuesas veterinario exóticos"
+            ],
+            "sourceIds": [
+              "lafeber-bird-food-guide-2026",
+              "issue-173-raspberry-research-log-2026"
+            ],
+            "result": "Veterinary and academic psittacine sources established fruit-category context but no retained generic-parrot raspberry listing; Lafeber provides the direct, group-scoped raspberry reference with a commercial-guidance limitation."
+          },
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "limited",
+          "sourceIds": [
+            "vca-african-grey-feeding"
+          ],
+          "locator": "VCA African Grey Parrots - Feeding, suggested-food list and Fruits and Vegetables section",
+          "evidenceScope": "species_specific",
+          "rationale": "Veterinarian-authored African Grey guidance directly lists raspberry, places fruit at 10% or less of daily diet, and requires washed manageable pieces. This supports limited fresh plain raspberry flesh only, not a formula ingredient, nutrient value, processed form, or another species outcome.",
+          "followUpSearch": {
+            "queries": [
+              "African Grey raspberry avian veterinarian",
+              "Psittacus erithacus raspberry veterinary feeding",
+              "African Grey parrot raspberry exotic vet"
+            ],
+            "sourceIds": [
+              "vca-african-grey-feeding",
+              "issue-173-raspberry-research-log-2026"
+            ],
+            "result": "The original targeted search did not surface direct evidence, but direct page search of the species-specific VCA source identified raspberry in its suggested-food list and supplied the retained boundary."
+          },
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "limited",
+          "sourceIds": [
+            "vca-budgie-feeding"
+          ],
+          "locator": "VCA Budgies - Feeding, suitable-fruit table and Fruits and Vegetables section",
+          "evidenceScope": "species_specific",
+          "rationale": "Veterinarian-authored budgie guidance directly lists raspberry and requires thoroughly washed, species-appropriate small pieces, separate-dish offering, prompt removal of fresh food, and fruit/vegetables at no more than 20–25% of daily diet. This supports limited fresh plain raspberry flesh only, not a formula role, nutrient value, or processed-form outcome.",
+          "followUpSearch": {
+            "queries": [
+              "budgie raspberry avian veterinarian",
+              "budgerigar raspberry veterinary feeding",
+              "Melopsittacus undulatus raspberry specialist"
+            ],
+            "sourceIds": [
+              "vca-budgie-feeding"
+            ],
+            "result": "The targeted search led to VCA's species-specific direct raspberry listing and fresh-food handling boundary."
+          },
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "canary",
+          "outcome": "limited",
+          "sourceIds": [
+            "lafeber-bird-food-guide-2026",
+            "vca-canary-feeding"
+          ],
+          "locator": "Lafeber Bird Food Guide 'Fruits & Veggies: Great Snack for Parrots, Finches & Canaries' section and fruit list; VCA Canaries - Feeding fresh-produce context",
+          "evidenceScope": "group_specific",
+          "rationale": "Lafeber explicitly includes canaries in the scope of its fresh-fruit section and lists raspberry, while treating fruit as an addition/snack. VCA provides separate canary fresh-produce context but does not name raspberry. This supports a qualified limited outcome only; it does not establish a serving size, dry-mix role, nutrition value, processed-form outcome, or another species result.",
+          "followUpSearch": {
+            "queries": [
+              "canary raspberry avian veterinarian",
+              "Serinus canaria raspberry veterinary feeding",
+              "canary raspberry finch specialist"
+            ],
+            "sourceIds": [
+              "lafeber-bird-food-guide-2026",
+              "vca-canary-feeding",
+              "issue-173-raspberry-research-log-2026"
+            ],
+            "result": "The targeted veterinary and finch searches did not find a direct species-specific raspberry source. A search snippet claiming VCA listed raspberry was rejected after direct page verification; Lafeber remains the retained direct but group-scoped canary reference."
+          },
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "vetverified-chicken-fruit-2026"
+          ],
+          "locator": "Vet Verified 'Safe Fruits for Chickens', 'Berries', and fruit preparation/frequency sections",
+          "evidenceScope": "species_specific",
+          "rationale": "Veterinary-sector chicken guidance directly lists raspberries among safe berries and frames them as occasional treats. It requires washing, bite-size preparation, prompt removal to prevent mould, and fruit at 5–10% of diet. This supports limited fresh plain raspberry flesh only, not a complete ration, formula ingredient, nutrient value, or processed-form outcome.",
+          "followUpSearch": {
+            "queries": [
+              "chicken raspberry poultry nutrition veterinary",
+              "laying hen raspberry treat extension",
+              "fresh raspberry chickens diet poultry"
+            ],
+            "sourceIds": [
+              "vetverified-chicken-fruit-2026",
+              "issue-173-raspberry-research-log-2026"
+            ],
+            "result": "The original targeted sources established complete-feed context but not direct raspberry evidence. An additional exact-form veterinarian-verified search located Vet Verified's direct raspberry listing and retained moderation boundary."
+          },
+          "reviewedAt": "2026-08-22"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "issue-173-raspberry-research-log-2026",
+          "lafeber-bird-food-guide-2026",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "vetverified-chicken-fruit-2026"
+        ],
+        "rule": "This record covers washed, fresh, plain, ripe raspberry flesh only. Keep leaves, stems/canes, separated seeds, frozen, dried, freeze-dried, cooked, preserved, sweetened, flavoured, chocolate-coated, juice, jam, syrup, mouldy, or spoiled products as separate evidence boundaries; use pieces appropriate to the bird and remove uneaten fresh material promptly.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-22"
     }
   ]
 }
