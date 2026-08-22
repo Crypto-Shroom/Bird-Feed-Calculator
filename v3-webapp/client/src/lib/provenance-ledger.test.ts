@@ -730,4 +730,70 @@ describe("canonical provenance ledger", () => {
       expect(counterpart?.reconciliationStatus).toBe(claim.reconciliationStatus);
     }
   });
+
+  it("records Issue #171 normal dry grain forms as allowed, except verified chicken-specific limits", () => {
+    const ledger = readJson("food-reviews.json") as {
+      requiredBirdOrder: string[];
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{
+          bird: string;
+          outcome: string;
+          evidenceScope: string;
+          sourceIds: string[];
+          rationale: string;
+        }>;
+        processing: { rule: string; severity: string };
+      }>;
+    };
+    const expected = [
+      ["sorghum_milo", "whole dry sorghum / milo grain, plain and unseasoned", ["allowed", "allowed", "allowed", "allowed", "allowed", "allowed"]],
+      ["white_rice", "plain dry white rice grain, uncooked and unseasoned", ["allowed", "allowed", "allowed", "allowed", "allowed", "allowed"]],
+      ["brown_rice", "plain dry brown rice grain, uncooked and unseasoned", ["allowed", "allowed", "allowed", "allowed", "allowed", "allowed"]],
+      ["rye", "whole dry rye grain, plain and unseasoned", ["allowed", "allowed", "allowed", "allowed", "allowed", "limited"]],
+      ["triticale", "whole dry triticale grain, plain and unseasoned", ["allowed", "allowed", "allowed", "allowed", "allowed", "allowed"]],
+      ["spelt", "whole dry spelt grain, plain and unseasoned", ["allowed", "allowed", "allowed", "allowed", "allowed", "allowed"]],
+      ["buckwheat", "whole dry buckwheat groats/seed, plain and unseasoned", ["allowed", "allowed", "allowed", "allowed", "allowed", "limited"]],
+    ] as const;
+
+    for (const [ingredientId, form, outcomes] of expected) {
+      const review = ledger.ingredientReviews.find(
+        (candidate) => candidate.ingredientId === ingredientId && candidate.form === form,
+      );
+      expect(review?.speciesEvidence.map((entry) => entry.bird)).toEqual(ledger.requiredBirdOrder);
+      expect(review?.speciesEvidence.map((entry) => entry.outcome)).toEqual(outcomes);
+      expect(review?.speciesEvidence.every((entry) => entry.sourceIds.includes("issue-171-research-log-2026"))).toBe(true);
+      expect(review?.processing.severity).toBe("warning");
+      expect(review?.processing.rule.length).toBeGreaterThan(0);
+      expect(review?.speciesEvidence.every((entry) => entry.rationale.includes("complete ration"))).toBe(true);
+    }
+  });
+
+  it("labels every Issue #171 cross-species row and preserves its evidentiary gap", () => {
+    const ledger = readJson("food-reviews.json") as {
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{
+          evidenceScope: string;
+          sourceIds: string[];
+          rationale: string;
+        }>;
+      }>;
+    };
+    const identifiers = new Set(["sorghum_milo", "white_rice", "brown_rice", "rye", "triticale", "spelt", "buckwheat"]);
+    const issue171Rows = ledger.ingredientReviews
+      .filter((review) => identifiers.has(review.ingredientId))
+      .flatMap((review) => review.speciesEvidence);
+    const inferredRows = issue171Rows.filter((entry) => entry.evidenceScope === "related_species");
+
+    expect(inferredRows.length).toBeGreaterThan(0);
+    for (const entry of inferredRows) {
+      expect(entry.sourceIds).toContain("issue-171-research-log-2026");
+      expect(entry.rationale).toContain("explicitly labelled related-species inference");
+      expect(entry.rationale).toContain("remains unproven");
+      expect(entry.rationale).toContain("does not transfer a dose, formula, complete ration");
+    }
+  });
 });

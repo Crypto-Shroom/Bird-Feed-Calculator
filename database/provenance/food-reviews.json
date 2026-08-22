@@ -3520,6 +3520,753 @@
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-21"
+    },
+    {
+      "ingredientId": "sorghum_milo",
+      "ingredientDisplayName": "Sorghum / milo",
+      "form": "whole dry sorghum / milo grain, plain and unseasoned",
+      "nutrition": {
+        "sourceIds": [
+          "issue-171-research-log-2026"
+        ],
+        "basis": "not_asserted",
+        "notes": "Evidence-only provenance record. It does not add or revise a nutrient value, active ingredient catalogue entry, inventory item, formula, profile, runtime compatibility rule, or visitor-visible copy."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "allowed",
+          "sourceIds": [
+            "shultz-grau-zweigart-1953-pigeon-milo",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Shultz, Grau and Zweigart: basal whole-grain ration lists 30% kafir and milo; Issue #171 full-source verification and counter-review",
+          "evidenceScope": "species_specific",
+          "rationale": "A direct domestic-pigeon production study used kafir and milo in a multi-grain ration with grit and supplements. This supports allowed ordinary dietary use of whole dry sorghum / milo grain, plain and unseasoned only within the cited context and stated boundaries. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "allowed",
+          "sourceIds": [
+            "shultz-grau-zweigart-1953-pigeon-milo",
+            "merck-psittacines-2025",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Shultz, Grau and Zweigart: whole-grain pigeon basal ration lists kafir and milo; Merck Veterinary Manual psittacine nutrition context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for parrot, not direct parrot-specific research. The direct source establishes whole milo exposure in pigeons, with no adverse ingredient-specific finding reported in that mixed-ration context. The shared material is whole dry sorghum / milo grain, plain and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. Merck Veterinary Manual psittacine nutrition context supplies the target-bird diet boundary, while direct evidence for this exact form in parrot remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "allowed",
+          "sourceIds": [
+            "shultz-grau-zweigart-1953-pigeon-milo",
+            "vca-african-grey-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Shultz, Grau and Zweigart: whole-grain pigeon basal ration lists kafir and milo; VCA African Grey pellet-led diet and seed-limit context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for african_grey, not direct african_grey-specific research. The direct source establishes whole milo exposure in pigeons, with no African-Grey trial, quantity, or complete-diet evidence. The shared material is whole dry sorghum / milo grain, plain and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. VCA African Grey pellet-led diet and seed-limit context supplies the target-bird diet boundary, while direct evidence for this exact form in african_grey remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "allowed",
+          "sourceIds": [
+            "shultz-grau-zweigart-1953-pigeon-milo",
+            "vca-budgie-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Shultz, Grau and Zweigart: whole-grain pigeon basal ration lists kafir and milo; VCA budgie pellet-led diet and seed-limit context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for budgie, not direct budgie-specific research. The direct source establishes whole milo exposure in pigeons; the target context confirms a seed-eating budgie diet structure but not sorghum-specific captive use. The shared material is whole dry sorghum / milo grain, plain and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. VCA budgie pellet-led diet and seed-limit context supplies the target-bird diet boundary, while direct evidence for this exact form in budgie remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "canary",
+          "outcome": "allowed",
+          "sourceIds": [
+            "shultz-grau-zweigart-1953-pigeon-milo",
+            "vca-canary-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Shultz, Grau and Zweigart: whole-grain pigeon basal ration lists kafir and milo; VCA canary balanced-diet and seed-limit context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for canary, not direct canary-specific research. The direct source establishes whole milo exposure in pigeons; the canary source supplies only balanced-diet/seed context, not a sorghum-specific trial. The shared material is whole dry sorghum / milo grain, plain and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. VCA canary balanced-diet and seed-limit context supplies the target-bird diet boundary, while direct evidence for this exact form in canary remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "allowed",
+          "sourceIds": [
+            "fernandes-2013-whole-sorghum-broilers",
+            "merck-poultry-2024",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Fernandes et al.: whole-sorghum treatments and conclusion; Merck poultry complete-ration context; Issue #171 full-source verification and counter-review",
+          "evidenceScope": "species_specific",
+          "rationale": "A 2,400-bird broiler trial tested 50% and 100% whole sorghum after a ground-grain pre-starter phase and found no performance detriment in its formulated-feed context. This supports allowed ordinary dietary use of whole dry sorghum / milo grain, plain and unseasoned only within the cited context and stated boundaries. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.",
+          "reviewedAt": "2026-08-22"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "issue-171-research-log-2026",
+          "shultz-grau-zweigart-1953-pigeon-milo",
+          "merck-psittacines-2025",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "fernandes-2013-whole-sorghum-broilers",
+          "merck-poultry-2024"
+        ],
+        "rule": "Keep whole dry sorghum/milo distinct from flour, syrup, cooked, soaked, sprouted, fermented, flavoured, salted, and mould-contaminated products. Study-based rows remain part-of-varied/balanced-diet evidence only; this record does not approve an amount, formula, complete ration, or runtime use.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-22"
+    },
+    {
+      "ingredientId": "white_rice",
+      "ingredientDisplayName": "White rice",
+      "form": "plain dry white rice grain, uncooked and unseasoned",
+      "nutrition": {
+        "sourceIds": [
+          "issue-171-research-log-2026"
+        ],
+        "basis": "not_asserted",
+        "notes": "Evidence-only provenance record. It does not add or revise a nutrient value, active ingredient catalogue entry, inventory item, formula, profile, runtime compatibility rule, or visitor-visible copy."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "allowed",
+          "sourceIds": [
+            "mchargue-roy-1931-pigeon-polished-rice",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "McHargue and Roy: title and article record identify a pigeon polished-rice diet; Issue #171 full-source verification and counter-review",
+          "evidenceScope": "species_specific",
+          "rationale": "The historical pigeon experiment identifies polished rice, which matches white-rice processing but was an exclusive-diet mineral-content study rather than a balanced-ration trial. This supports allowed ordinary dietary use of plain dry white rice grain, uncooked and unseasoned only within the cited context and stated boundaries. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "allowed",
+          "sourceIds": [
+            "mchargue-roy-1931-pigeon-polished-rice",
+            "merck-psittacines-2025",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "McHargue and Roy: pigeon polished-rice diet; Merck Veterinary Manual psittacine nutrition context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for parrot, not direct parrot-specific research. The direct source establishes the exact polished-rice material in pigeons, but its exclusive-diet design supplies no parrot amount or nutritional-adequacy evidence. The shared material is plain dry white rice grain, uncooked and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. Merck Veterinary Manual psittacine nutrition context supplies the target-bird diet boundary, while direct evidence for this exact form in parrot remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "allowed",
+          "sourceIds": [
+            "mchargue-roy-1931-pigeon-polished-rice",
+            "vca-african-grey-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "McHargue and Roy: pigeon polished-rice diet; VCA African Grey pellet-led diet and seed-limit context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for african_grey, not direct african_grey-specific research. The direct source establishes the exact polished-rice material in pigeons; the African-Grey source requires a pellet-led, balanced diet and does not directly name white rice. The shared material is plain dry white rice grain, uncooked and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. VCA African Grey pellet-led diet and seed-limit context supplies the target-bird diet boundary, while direct evidence for this exact form in african_grey remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "allowed",
+          "sourceIds": [
+            "mchargue-roy-1931-pigeon-polished-rice",
+            "vca-budgie-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "McHargue and Roy: pigeon polished-rice diet; VCA budgie pellet-led diet and seed-limit context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for budgie, not direct budgie-specific research. The direct source establishes the exact polished-rice material in pigeons; no budgie white-rice study or amount was located after two searches. The shared material is plain dry white rice grain, uncooked and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. VCA budgie pellet-led diet and seed-limit context supplies the target-bird diet boundary, while direct evidence for this exact form in budgie remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "canary",
+          "outcome": "allowed",
+          "sourceIds": [
+            "mchargue-roy-1931-pigeon-polished-rice",
+            "vca-canary-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "McHargue and Roy: pigeon polished-rice diet; VCA canary balanced-diet and seed-limit context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for canary, not direct canary-specific research. The direct source establishes the exact polished-rice material in pigeons; no canary white-rice study or amount was located after two searches. The shared material is plain dry white rice grain, uncooked and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. VCA canary balanced-diet and seed-limit context supplies the target-bird diet boundary, while direct evidence for this exact form in canary remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "allowed",
+          "sourceIds": [
+            "mchargue-roy-1931-pigeon-polished-rice",
+            "merck-poultry-2024",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "McHargue and Roy: pigeon polished-rice diet; Merck poultry complete-ration and life-stage context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for chicken, not direct chicken-specific research. The direct source establishes polished-rice material in pigeons. The separately inspected paddy-rice study is expressly excluded because paddy, brown, and polished white rice are materially distinct. The shared material is plain dry white rice grain, uncooked and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. Merck poultry complete-ration and life-stage context supplies the target-bird diet boundary, while direct evidence for this exact form in chicken remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "issue-171-research-log-2026",
+          "mchargue-roy-1931-pigeon-polished-rice",
+          "merck-psittacines-2025",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "merck-poultry-2024"
+        ],
+        "rule": "This record is confined to intact plain dry polished white rice. Do not substitute brown rice, paddy/rough rice, rice bran, rice meal, crushed rice, flour, cooked rice, puffed rice, seasoned rice, fermented products, or mould-contaminated material. The historical pigeon study must not be treated as nutritional-completeness evidence or as a complete ration instruction.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-22"
+    },
+    {
+      "ingredientId": "brown_rice",
+      "ingredientDisplayName": "Brown rice",
+      "form": "plain dry brown rice grain, uncooked and unseasoned",
+      "nutrition": {
+        "sourceIds": [
+          "issue-171-research-log-2026"
+        ],
+        "basis": "not_asserted",
+        "notes": "Evidence-only provenance record. It does not add or revise a nutrient value, active ingredient catalogue entry, inventory item, formula, profile, runtime compatibility rule, or visitor-visible copy."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "allowed",
+          "sourceIds": [
+            "darwati-2010-local-pigeon-brown-rice",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Darwati et al.: JKM ration is 50% corn, 30% commercial feed, and 20% brown rice; Issue #171 full-source verification and counter-review",
+          "evidenceScope": "species_specific",
+          "rationale": "A 15-pair local-pigeon study tested brown rice within a defined corn/commercial-feed mixed ration. This supports allowed ordinary dietary use of plain dry brown rice grain, uncooked and unseasoned only within the cited context and stated boundaries. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "allowed",
+          "sourceIds": [
+            "phoenix-landing-parrot-nutrition-2026",
+            "merck-psittacines-2025",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Phoenix Landing 'Grains' section lists brown rice and states grains can be fed dry; Merck psittacine nutrition context; Issue #171 full-source verification and counter-review",
+          "evidenceScope": "group_specific",
+          "rationale": "Generic companion-parrot guidance explicitly names dry-capable brown rice in a varied diet and is constrained by psittacine seed-diet limitations. This supports allowed ordinary dietary use of plain dry brown rice grain, uncooked and unseasoned only within the cited context and stated boundaries. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "allowed",
+          "sourceIds": [
+            "vca-african-grey-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "VCA African Grey suggested food-items table lists brown rice; Seeds and Pelleted Diets sections; Issue #171 full-source verification and counter-review",
+          "evidenceScope": "species_specific",
+          "rationale": "Species-specific exotics-vet guidance lists brown rice within a pellet-led diet and warns against predominantly seed-based feeding. This supports allowed ordinary dietary use of plain dry brown rice grain, uncooked and unseasoned only within the cited context and stated boundaries. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "allowed",
+          "sourceIds": [
+            "vca-budgie-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "VCA Budgies suitable fruits-and-vegetables table lists rice (brown); Pelleted Diets and Seeds sections; Issue #171 full-source verification and counter-review",
+          "evidenceScope": "species_specific",
+          "rationale": "Species-specific exotics-vet guidance lists brown rice while requiring a pellet-led varied diet and rejecting seed-only feeding. This supports allowed ordinary dietary use of plain dry brown rice grain, uncooked and unseasoned only within the cited context and stated boundaries. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "canary",
+          "outcome": "allowed",
+          "sourceIds": [
+            "darwati-2010-local-pigeon-brown-rice",
+            "vca-canary-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Darwati et al.: controlled pigeon JKM mixed ration includes brown rice; VCA canary balanced-diet and seed-limit context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for canary, not direct canary-specific research. The direct pigeon trial establishes plain brown rice in a mixed ration; the target canary guidance gives the balanced-diet boundary but does not directly name dry brown rice. The shared material is plain dry brown rice grain, uncooked and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. VCA canary balanced-diet and seed-limit context supplies the target-bird diet boundary, while direct evidence for this exact form in canary remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "allowed",
+          "sourceIds": [
+            "nanto-hara-2021-brown-rice-broilers",
+            "merck-poultry-2024",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Nanto-Hara et al.: brown-rice diet composition and broiler outcomes; Merck poultry complete-ration context; Issue #171 full-source verification and counter-review",
+          "evidenceScope": "species_specific",
+          "rationale": "A controlled Ross-308 study tested unpolished brown rice in a soybean-meal, vitamin-and-mineral complete diet under thermoneutral and heat-stress conditions. This supports allowed ordinary dietary use of plain dry brown rice grain, uncooked and unseasoned only within the cited context and stated boundaries. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.",
+          "reviewedAt": "2026-08-22"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "issue-171-research-log-2026",
+          "darwati-2010-local-pigeon-brown-rice",
+          "phoenix-landing-parrot-nutrition-2026",
+          "merck-psittacines-2025",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "nanto-hara-2021-brown-rice-broilers",
+          "merck-poultry-2024"
+        ],
+        "rule": "Keep plain dry unpolished brown rice distinct from polished white rice, paddy/rough rice, rice bran, flour, cooked rice, puffed rice, seasoned rice, fermented products, and rancid or mould-contaminated material. Evidence is bounded to varied or formulated diets, never a stand-alone ration or runtime instruction.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-22"
+    },
+    {
+      "ingredientId": "rye",
+      "ingredientDisplayName": "Rye",
+      "form": "whole dry rye grain, plain and unseasoned",
+      "nutrition": {
+        "sourceIds": [
+          "issue-171-research-log-2026"
+        ],
+        "basis": "not_asserted",
+        "notes": "Evidence-only provenance record. It does not add or revise a nutrient value, active ingredient catalogue entry, inventory item, formula, profile, runtime compatibility rule, or visitor-visible copy."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "allowed",
+          "sourceIds": [
+            "dilks-1975-feral-pigeon-broad-beans",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Dilks: crop-content table and rye/ryecorn discussion identify Secale cereale consumption; Issue #171 full-source verification and counter-review",
+          "evidenceScope": "species_specific",
+          "rationale": "Year-round crop-content observation documents feral Columba livia consuming ryecorn from newly sown crops. This supports allowed ordinary dietary use of whole dry rye grain, plain and unseasoned only within the cited context and stated boundaries. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "allowed",
+          "sourceIds": [
+            "phoenix-landing-parrot-nutrition-2026",
+            "merck-psittacines-2025",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Phoenix Landing 'Grains' and soaking sections list rye and state grains can be fed dry; Merck psittacine nutrition context; Issue #171 full-source verification and counter-review",
+          "evidenceScope": "group_specific",
+          "rationale": "Generic companion-parrot guidance explicitly names rye in its dry-capable grain guidance and places it within a varied diet. This supports allowed ordinary dietary use of whole dry rye grain, plain and unseasoned only within the cited context and stated boundaries. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "allowed",
+          "sourceIds": [
+            "phoenix-landing-parrot-nutrition-2026",
+            "vca-african-grey-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Phoenix Landing 'Grains' section lists rye and says grains can be fed dry; VCA African Grey pellet-led diet and seed-limit context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for african_grey, not direct african_grey-specific research. The direct generic-parrot source names the same dry rye form, while African-Grey-specific guidance requires a pellet-led balanced diet and provides no rye-specific trial. The shared material is whole dry rye grain, plain and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. VCA African Grey pellet-led diet and seed-limit context supplies the target-bird diet boundary, while direct evidence for this exact form in african_grey remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "allowed",
+          "sourceIds": [
+            "omlet-parakeet-food-list-2026",
+            "vca-budgie-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Omlet 'Parakeet Grains' and 'Parakeet-Friendly Grains' sections name fresh threshed/hulled rye; VCA budgie nutrition context; Issue #171 full-source verification and counter-review",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie/parakeet guidance names rye as a fresh threshed/hulled grain and distinguishes it from cooked or processed forms; veterinary context retains the mixed/pellet-led boundary. This supports allowed ordinary dietary use of whole dry rye grain, plain and unseasoned only within the cited context and stated boundaries. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "canary",
+          "outcome": "allowed",
+          "sourceIds": [
+            "dilks-1975-feral-pigeon-broad-beans",
+            "vca-canary-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Dilks: field consumption of Secale cereale ryecorn by feral Columba livia; VCA canary balanced-diet and seed-limit context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for canary, not direct canary-specific research. The direct pigeon observation establishes clean rye grain consumption; canary guidance supplies balanced-diet/seed context but no rye-specific trial, and poultry arabinoxylan findings are not transferred. The shared material is whole dry rye grain, plain and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. VCA canary balanced-diet and seed-limit context supplies the target-bird diet boundary, while direct evidence for this exact form in canary remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "poultry-extension-rye-diets-2026",
+            "merck-poultry-2024",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "University of Kentucky 'Including Rye in Poultry Diets' section; Merck poultry complete-ration context; Issue #171 full-source verification and counter-review",
+          "evidenceScope": "species_specific",
+          "rationale": "Chicken guidance excludes rye for growing birds, permits it for layers only after peak production and below 40% of diet, and requires clean grain because ergot may be highly toxic. This supports limited ordinary dietary use of whole dry rye grain, plain and unseasoned only within the cited context and stated boundaries. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.",
+          "reviewedAt": "2026-08-22"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "issue-171-research-log-2026",
+          "dilks-1975-feral-pigeon-broad-beans",
+          "phoenix-landing-parrot-nutrition-2026",
+          "merck-psittacines-2025",
+          "vca-african-grey-feeding",
+          "omlet-parakeet-food-list-2026",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "poultry-extension-rye-diets-2026",
+          "merck-poultry-2024"
+        ],
+        "rule": "Keep clean whole dry rye distinct from sprouted, fermented, milled/flour, cooked, flavoured, salted, and mould- or ergot-contaminated products. The chicken row has life-stage and inclusion boundaries; no row establishes an unrestricted or complete-ration use.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-22"
+    },
+    {
+      "ingredientId": "triticale",
+      "ingredientDisplayName": "Triticale",
+      "form": "whole dry triticale grain, plain and unseasoned",
+      "nutrition": {
+        "sourceIds": [
+          "issue-171-research-log-2026"
+        ],
+        "basis": "not_asserted",
+        "notes": "Evidence-only provenance record. It does not add or revise a nutrient value, active ingredient catalogue entry, inventory item, formula, profile, runtime compatibility rule, or visitor-visible copy."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "allowed",
+          "sourceIds": [
+            "savas-2007-pigeon-triticale",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Savas et al. indexed diet-composition description: wheat and triticale grain mixed on a fresh-weight basis; Issue #171 full-source verification and counter-review",
+          "evidenceScope": "species_specific",
+          "rationale": "A domestic-pigeon study used triticale grain with wheat while investigating feeding behaviour and beak-length welfare, not diet adequacy. This supports allowed ordinary dietary use of whole dry triticale grain, plain and unseasoned only within the cited context and stated boundaries. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "allowed",
+          "sourceIds": [
+            "savas-2007-pigeon-triticale",
+            "merck-psittacines-2025",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Savas et al. indexed diet-composition description: wheat and triticale grain; Merck Veterinary Manual psittacine nutrition context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for parrot, not direct parrot-specific research. The direct pigeon study establishes the same dry hybrid grain in an observed diet but does not supply generic-parrot triticale research or a quantity. The shared material is whole dry triticale grain, plain and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. Merck Veterinary Manual psittacine nutrition context supplies the target-bird diet boundary, while direct evidence for this exact form in parrot remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "allowed",
+          "sourceIds": [
+            "savas-2007-pigeon-triticale",
+            "vca-african-grey-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Savas et al. indexed diet-composition description: wheat and triticale grain; VCA African Grey pellet-led diet and seed-limit context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for african_grey, not direct african_grey-specific research. The direct pigeon study establishes the same dry hybrid grain; African-Grey guidance supplies only the target balanced-diet boundary, not a triticale trial. The shared material is whole dry triticale grain, plain and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. VCA African Grey pellet-led diet and seed-limit context supplies the target-bird diet boundary, while direct evidence for this exact form in african_grey remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "allowed",
+          "sourceIds": [
+            "savas-2007-pigeon-triticale",
+            "vca-budgie-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Savas et al. indexed diet-composition description: wheat and triticale grain; VCA budgie pellet-led diet and seed-limit context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for budgie, not direct budgie-specific research. The direct pigeon study establishes the same dry hybrid grain; no budgie triticale trial, constituent threshold, or amount was located after two searches. The shared material is whole dry triticale grain, plain and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. VCA budgie pellet-led diet and seed-limit context supplies the target-bird diet boundary, while direct evidence for this exact form in budgie remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "canary",
+          "outcome": "allowed",
+          "sourceIds": [
+            "savas-2007-pigeon-triticale",
+            "vca-canary-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Savas et al. indexed diet-composition description: wheat and triticale grain; VCA canary balanced-diet and seed-limit context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for canary, not direct canary-specific research. The direct pigeon study establishes the same dry hybrid grain; canary guidance supplies balanced-diet context, not a triticale trial or amount. The shared material is whole dry triticale grain, plain and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. VCA canary balanced-diet and seed-limit context supplies the target-bird diet boundary, while direct evidence for this exact form in canary remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "allowed",
+          "sourceIds": [
+            "poultry-extension-triticale-diets-2026",
+            "merck-poultry-2024",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "University of Kentucky 'Triticale in Poultry Diets' inclusion/enzyme discussion; Merck poultry complete-ration context; Issue #171 full-source verification and counter-review",
+          "evidenceScope": "species_specific",
+          "rationale": "Chicken guidance describes triticale as a wheat-rye hybrid and gives inclusion-level, non-starch-polysaccharide, and enzyme boundaries in formulated poultry diets. This supports allowed ordinary dietary use of whole dry triticale grain, plain and unseasoned only within the cited context and stated boundaries. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.",
+          "reviewedAt": "2026-08-22"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "issue-171-research-log-2026",
+          "savas-2007-pigeon-triticale",
+          "merck-psittacines-2025",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "poultry-extension-triticale-diets-2026",
+          "merck-poultry-2024"
+        ],
+        "rule": "Keep whole dry triticale distinct from wheat, rye, flour, cooked, soaked, sprouted, fermented, flavoured, salted, and mould-contaminated products. Do not presume that results for either parent grain are results for triticale, and do not treat it alone as a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-22"
+    },
+    {
+      "ingredientId": "spelt",
+      "ingredientDisplayName": "Spelt",
+      "form": "whole dry spelt grain, plain and unseasoned",
+      "nutrition": {
+        "sourceIds": [
+          "issue-171-research-log-2026"
+        ],
+        "basis": "not_asserted",
+        "notes": "Evidence-only provenance record. It does not add or revise a nutrient value, active ingredient catalogue entry, inventory item, formula, profile, runtime compatibility rule, or visitor-visible copy."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "allowed",
+          "sourceIds": [
+            "poultry-extension-spelt-diets-2026",
+            "merck-columbiformes-2025",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "University of Kentucky 'Spelt Wheat in Poultry Diets' grain and hull/feed-efficiency discussion; Merck Veterinary Manual pigeon/dove nutrition context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for pigeon, not direct pigeon-specific research. The direct chicken/poult guidance establishes spelt grain in animal-feed context and retains a hull/feed-efficiency boundary; no pigeon spelt study survived source verification. The shared material is whole dry spelt grain, plain and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. Merck Veterinary Manual pigeon/dove nutrition context supplies the target-bird diet boundary, while direct evidence for this exact form in pigeon remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "allowed",
+          "sourceIds": [
+            "phoenix-landing-parrot-nutrition-2026",
+            "merck-psittacines-2025",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Phoenix Landing 'Grains' and soaking sections list spelt and state grains can be fed dry; Merck psittacine nutrition context; Issue #171 full-source verification and counter-review",
+          "evidenceScope": "group_specific",
+          "rationale": "Generic companion-parrot guidance explicitly names spelt in dry-capable grain guidance and limits it to a varied diet. This supports allowed ordinary dietary use of whole dry spelt grain, plain and unseasoned only within the cited context and stated boundaries. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "allowed",
+          "sourceIds": [
+            "phoenix-landing-parrot-nutrition-2026",
+            "vca-african-grey-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Phoenix Landing 'Grains' section lists spelt and states grains can be fed dry; VCA African Grey pellet-led diet and seed-limit context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for african_grey, not direct african_grey-specific research. The direct generic-parrot source identifies the same spelt form; the African-Grey source supplies a pellet-led dietary boundary but no spelt-specific trial. The shared material is whole dry spelt grain, plain and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. VCA African Grey pellet-led diet and seed-limit context supplies the target-bird diet boundary, while direct evidence for this exact form in african_grey remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "allowed",
+          "sourceIds": [
+            "phoenix-landing-parrot-nutrition-2026",
+            "vca-budgie-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Phoenix Landing 'Grains' section lists spelt and states grains can be fed dry; VCA budgie pellet-led diet and seed-limit context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for budgie, not direct budgie-specific research. The direct generic-parrot source identifies the same dry spelt form; no budgie spelt study was recovered after the replacement search. The shared material is whole dry spelt grain, plain and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. VCA budgie pellet-led diet and seed-limit context supplies the target-bird diet boundary, while direct evidence for this exact form in budgie remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "canary",
+          "outcome": "allowed",
+          "sourceIds": [
+            "poultry-extension-spelt-diets-2026",
+            "vca-canary-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "University of Kentucky 'Spelt Wheat in Poultry Diets' grain/hull and chick/poult context; VCA canary balanced-diet and seed-limit context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for canary, not direct canary-specific research. The direct poultry source identifies spelt grain and its retained-hull/feed-efficiency boundary; the archived canary source is sprouted-only and is not substituted for this dry record. The shared material is whole dry spelt grain, plain and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. VCA canary balanced-diet and seed-limit context supplies the target-bird diet boundary, while direct evidence for this exact form in canary remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "allowed",
+          "sourceIds": [
+            "poultry-extension-spelt-diets-2026",
+            "merck-poultry-2024",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "University of Kentucky 'Spelt Wheat in Poultry Diets' grain, hull, chick/poult and feed-efficiency discussion; Merck poultry context; Issue #171 full-source verification and counter-review",
+          "evidenceScope": "species_specific",
+          "rationale": "Chicken/poult guidance identifies spelt grain and reports no significant growth difference in early studies but reduced feed efficiency, with hull and formulation boundaries. This supports allowed ordinary dietary use of whole dry spelt grain, plain and unseasoned only within the cited context and stated boundaries. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.",
+          "reviewedAt": "2026-08-22"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "issue-171-research-log-2026",
+          "poultry-extension-spelt-diets-2026",
+          "merck-columbiformes-2025",
+          "phoenix-landing-parrot-nutrition-2026",
+          "merck-psittacines-2025",
+          "vca-african-grey-feeding",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "merck-poultry-2024"
+        ],
+        "rule": "Keep whole dry spelt grain distinct from wheat, flour, cooked, soaked, sprouted, fermented, flavoured, salted, and mould-contaminated products. The canary sprouted-mix lead does not establish dry spelt. Every row remains a bounded varied/formulated-diet outcome only.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-22"
+    },
+    {
+      "ingredientId": "buckwheat",
+      "ingredientDisplayName": "Buckwheat",
+      "form": "whole dry buckwheat groats/seed, plain and unseasoned",
+      "nutrition": {
+        "sourceIds": [
+          "issue-171-research-log-2026"
+        ],
+        "basis": "not_asserted",
+        "notes": "Evidence-only provenance record. It does not add or revise a nutrient value, active ingredient catalogue entry, inventory item, formula, profile, runtime compatibility rule, or visitor-visible copy."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "allowed",
+          "sourceIds": [
+            "poultry-extension-buckwheat-diets-2026",
+            "merck-columbiformes-2025",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "University of Kentucky 'Buckwheat in Poultry Diets' feed-ingredient, antinutrient, and outdoor-poultry discussion; Merck Veterinary Manual pigeon/dove nutrition context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for pigeon, not direct pigeon-specific research. The direct chicken source establishes buckwheat as a formulated-feed ingredient with explicit high-inclusion and outdoor UV/fagopyrin limits; no inspectable pigeon groat study was recovered. The shared material is whole dry buckwheat groats/seed, plain and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. Merck Veterinary Manual pigeon/dove nutrition context supplies the target-bird diet boundary, while direct evidence for this exact form in pigeon remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "parrot",
+          "outcome": "allowed",
+          "sourceIds": [
+            "ullrey-1991-psittacine-seed-mixtures",
+            "merck-psittacines-2025",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Ullrey et al. abstract identifies buckwheat among common commercial psittacine seed-mixture ingredients; Merck psittacine nutrition context; Issue #171 full-source verification and counter-review",
+          "evidenceScope": "group_specific",
+          "rationale": "A peer-reviewed psittacine review names buckwheat in commercial seed mixtures while documenting their nutritional inadequacy; the evidence therefore supports ordinary use only within a varied diet, not as a complete ration. This supports allowed ordinary dietary use of whole dry buckwheat groats/seed, plain and unseasoned only within the cited context and stated boundaries. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "allowed",
+          "sourceIds": [
+            "ullrey-1991-psittacine-seed-mixtures",
+            "vca-african-grey-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Ullrey et al. abstract identifies buckwheat in common commercial psittacine seed mixtures; VCA African Grey pellet-led diet and seed-limit context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for african_grey, not direct african_grey-specific research. The direct psittacine source identifies buckwheat, but not an African-Grey-specific dose or trial; the African-Grey source supplies the pellet-led balanced-diet limit. The shared material is whole dry buckwheat groats/seed, plain and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. VCA African Grey pellet-led diet and seed-limit context supplies the target-bird diet boundary, while direct evidence for this exact form in african_grey remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "budgie",
+          "outcome": "allowed",
+          "sourceIds": [
+            "omlet-parakeet-food-list-2026",
+            "vca-budgie-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "Omlet 'Parakeet Grains' and 'Parakeet-Friendly Grains' sections name whole buckwheat; VCA budgie nutrition context; Issue #171 full-source verification and counter-review",
+          "evidenceScope": "species_specific",
+          "rationale": "Budgie/parakeet guidance explicitly names whole buckwheat while veterinary guidance retains the pellet-led and seed-only-diet limits. This supports allowed ordinary dietary use of whole dry buckwheat groats/seed, plain and unseasoned only within the cited context and stated boundaries. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "canary",
+          "outcome": "allowed",
+          "sourceIds": [
+            "poultry-extension-buckwheat-diets-2026",
+            "vca-canary-feeding",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "University of Kentucky 'Buckwheat in Poultry Diets' feed-ingredient and fagopyrin/outdoor boundary; VCA canary balanced-diet and seed-limit context; Issue #171 research log counter-review and documented targeted search",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for canary, not direct canary-specific research. The direct poultry source identifies buckwheat and its relevant constituent/husbandry limits; the archived canary source covers only a sprouted mix and is not treated as dry-form proof. The shared material is whole dry buckwheat groats/seed, plain and unseasoned; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. VCA canary balanced-diet and seed-limit context supplies the target-bird diet boundary, while direct evidence for this exact form in canary remains unproven. The resulting outcome is allowed for ordinary dietary use only, subject to the stated material and diet boundaries.",
+          "reviewedAt": "2026-08-22"
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "poultry-extension-buckwheat-diets-2026",
+            "merck-poultry-2024",
+            "issue-171-research-log-2026"
+          ],
+          "locator": "University of Kentucky 'Buckwheat in Poultry Diets' use-in-poultry-diets section; Merck poultry complete-ration context; Issue #171 full-source verification and counter-review",
+          "evidenceScope": "species_specific",
+          "rationale": "Chicken guidance identifies buckwheat feed-use context, protease inhibitors/tannins, reduced feed efficiency at high inclusion, and a maximum 30% outdoor-poultry boundary because of fagopyrin/UV sensitivity. This supports limited ordinary dietary use of whole dry buckwheat groats/seed, plain and unseasoned only within the cited context and stated boundaries. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.",
+          "reviewedAt": "2026-08-22"
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "issue-171-research-log-2026",
+          "poultry-extension-buckwheat-diets-2026",
+          "merck-columbiformes-2025",
+          "ullrey-1991-psittacine-seed-mixtures",
+          "merck-psittacines-2025",
+          "vca-african-grey-feeding",
+          "omlet-parakeet-food-list-2026",
+          "vca-budgie-feeding",
+          "vca-canary-feeding",
+          "merck-poultry-2024"
+        ],
+        "rule": "This record is for plain whole dry buckwheat groats/seed only. Do not equate it with buckwheat leaves, flowers, sprouts, flour, cooked groats, flavoured/salted products, or mould-contaminated material. The record preserves the separate outdoor-poultry fagopyrin boundary and never approves a complete ration or runtime use.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-22"
     }
   ]
 }
