@@ -1890,6 +1890,55 @@
       "permittedUse": "Poultry earthworm-meal context and distinction between meal and live forms.",
       "limitations": "Feed ingredient reference, not companion-bird guidance and not evidence for whole live earthworms as a household treat.",
       "accessedAt": "2026-08-22"
+    },
+    {
+      "id": "lafeber-bird-food-guide-2026",
+      "title": "Bird Food Guide",
+      "authorsOrOrganization": "Lafeber Pet Birds",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://lafeber.com/pet-birds/bird-food-guide/",
+      "speciesScopes": [
+        "parrot",
+        "canary",
+        "companion_bird"
+      ],
+      "permittedUse": "Direct companion-bird guide that scopes its fruit-and-vegetable section to parrots, finches, canaries, and other companion birds; it lists raspberry and frames fresh produce as an addition or snack rather than a base diet.",
+      "limitations": "Commercial companion-bird guidance, not an independent veterinary or controlled feeding study. Its group-level scope does not establish separate African Grey, budgie, pigeon, or chicken outcomes, a serving amount, nutrition value, formula inclusion, or processed-form safety.",
+      "accessedAt": "2026-08-22"
+    },
+    {
+      "id": "vetverified-chicken-fruit-2026",
+      "title": "What Fruits Can Chickens Eat?",
+      "authorsOrOrganization": "Vet Verified",
+      "publishedYear": "2026",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://vetverified.com/articles/what-fruits-can-chickens-eat",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "Veterinary-sector chicken guidance that directly lists raspberries among safe berries, frames berries as occasional treats, and gives washing, piece-size, spoilage-removal, and complete-feed boundaries.",
+      "limitations": "Consumer-facing veterinary-sector guidance, not a controlled raspberry-feeding study. It does not establish a nutrient value, formula role, universal serving size, processed-form safety, or another species outcome.",
+      "accessedAt": "2026-08-22"
+    },
+    {
+      "id": "issue-173-raspberry-research-log-2026",
+      "title": "Issue #173 Fresh Raspberry Six-Bird Research Log",
+      "authorsOrOrganization": "Bird Feed Calculator project research record",
+      "publishedYear": "2026",
+      "sourceTier": "historical_project",
+      "urlOrDoi": "database/provenance/evidence/issue-173-raspberry-research-log.md",
+      "speciesScopes": [
+        "pigeon",
+        "parrot",
+        "african_grey",
+        "budgie",
+        "canary",
+        "chicken"
+      ],
+      "permittedUse": "Audit trail for Issue #173 first-pass searches, targeted follow-up searches, public-source review, counter-review, source conflicts, and provenance-only fresh-raspberry outcomes.",
+      "limitations": "Project governance documentation, not independent biological, veterinary, nutritional, or active-calculator evidence.",
+      "accessedAt": "2026-08-22"
     }
   ]
 }
