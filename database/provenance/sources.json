@@ -1813,6 +1813,83 @@
       "permittedUse": "Audit trail for the documented first-pass searches, targeted follow-up searches, source-accessibility review, counter-review, and evidence-only fresh-strawberry outcomes.",
       "limitations": "Project governance documentation, not independent biological or veterinary evidence and not an active-calculator instruction.",
       "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "birdvetmelbourne-worms-in-birds-2023",
+      "title": "Worms In Birds",
+      "authorsOrOrganization": "Bird Vet Melbourne",
+      "publishedYear": "2023",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://birdvetmelbourne.com/worms-in-birds/",
+      "speciesScopes": [
+        "pigeon",
+        "parrot",
+        "african_grey",
+        "budgie",
+        "canary",
+        "chicken"
+      ],
+      "permittedUse": "Veterinary contamination and parasite-cycle boundary for earthworms and birds.",
+      "limitations": "Discusses parasitic worms and earthworms as carriers/intermediate hosts; does not establish edible commercially raised earthworm feeding safety or quantity.",
+      "accessedAt": "2026-08-22"
+    },
+    {
+      "id": "das-earthworm-broilers-2024",
+      "title": "Effects of feeding earthworm or vermicompost on early life performance of broilers under challenging dietary conditions",
+      "authorsOrOrganization": "Gürbüz Daş; John M. Brameld; Tim Parr; Mohammad M. Seyedalmoosavi; Solvig Görs; Cornelia C. Metges",
+      "publishedYear": "2024",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11490703/",
+      "speciesScopes": [
+        "chicken",
+        "broiler"
+      ],
+      "permittedUse": "Controlled broiler exposure to 1% earthworms in formulated feed for eight days.",
+      "limitations": "Broiler strain, age, dose, and formulated-feed conditions are specific; it does not establish free-choice feeding, pet-bird suitability, or a complete ration.",
+      "accessedAt": "2026-08-22"
+    },
+    {
+      "id": "mypetchicken-raising-worms-2012",
+      "title": "Part 2: Raising worms to feed your chickens",
+      "authorsOrOrganization": "My Pet Chicken",
+      "publishedYear": "2012",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.mypetchicken.com/blogs/our-blog/part-2-raising-worms-to-feed-your-chickens",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "Chicken husbandry context for raising red wigglers and managing bedding, moisture, and contamination boundaries.",
+      "limitations": "Does not specify an edible feeding dose and is not a controlled bird-feeding study.",
+      "accessedAt": "2026-08-22"
+    },
+    {
+      "id": "welli-livefood-worms-2009",
+      "title": "Würmer und Lebendfutter für Wellensittiche?",
+      "authorsOrOrganization": "Welli.net forum contributors",
+      "publishedYear": "2009",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://forum.welli.net/forum/alles-%C3%BCber-wellensittiche/ern%C3%A4hrung/224938-w%C3%BCrmer-und-lebendfutter-f%C3%BCr-wellensittiche",
+      "speciesScopes": [
+        "budgie"
+      ],
+      "permittedUse": "German budgie owner-discussion context that budgies are seed eaters and do not need worms.",
+      "limitations": "Informal discussion; it does not establish toxicity, nutrient adequacy, or a controlled feeding recommendation.",
+      "accessedAt": "2026-08-22"
+    },
+    {
+      "id": "feedipedia-earthworm-meal-2020",
+      "title": "Earthworm meal",
+      "authorsOrOrganization": "Feedipedia",
+      "publishedYear": "2020",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.feedipedia.org/node/665",
+      "speciesScopes": [
+        "chicken",
+        "poultry"
+      ],
+      "permittedUse": "Poultry earthworm-meal context and distinction between meal and live forms.",
+      "limitations": "Feed ingredient reference, not companion-bird guidance and not evidence for whole live earthworms as a household treat.",
+      "accessedAt": "2026-08-22"
     }
   ]
 }

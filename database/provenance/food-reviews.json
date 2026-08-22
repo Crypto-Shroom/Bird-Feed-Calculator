@@ -3520,6 +3520,225 @@
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-21"
+    },
+    {
+      "ingredientId": "earthworms",
+      "ingredientDisplayName": "Earthworms",
+      "form": "commercially raised live earthworms (Eisenia fetida), clean, appropriately sized, and not wild-caught or compost-contaminated",
+      "nutrition": {
+        "sourceIds": [],
+        "basis": "not_applicable",
+        "notes": "Evidence-only record. It does not add a runtime ingredient, nutrient value, or feeding quantity."
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "birdvetmelbourne-worms-in-birds-2023",
+            "valdes-exotic-insects-2022"
+          ],
+          "locator": "Issue #175 first-pass and mandatory targeted second-pass research log; source-specific earthworm and parasite sections",
+          "evidenceScope": "species_specific",
+          "rationale": "Pigeon-specific veterinary evidence identifies parasite transmission and earthworm carrier risks but does not establish feeding commercially raised earthworms. A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
+          "reviewedAt": "2026-08-22",
+          "firstPassSearch": {
+            "queries": [
+              "pigeon commercially raised live earthworms Eisenia fetida feeding safety veterinary"
+            ],
+            "sourceIds": [
+              "birdvetmelbourne-worms-in-birds-2023",
+              "valdes-exotic-insects-2022"
+            ],
+            "result": "The first-pass search separated edible earthworms from parasitic worms, worming medicines, mealworms, insect meal, and unrelated species. It did not establish a stronger exact-form outcome than recorded."
+          },
+          "followUpSearch": {
+            "queries": [
+              "pigeon live earthworms clean cultured not wild caught feeding; pigeon earthworm parasite risk",
+              "pigeon Regenwürmer Lebendfutter Zucht sauber nicht wild gefangen"
+            ],
+            "sourceIds": [
+              "birdvetmelbourne-worms-in-birds-2023",
+              "valdes-exotic-insects-2022"
+            ],
+            "result": "The targeted follow-up searched exact species/form terms and German equivalents. It did not establish direct exact-form evidence beyond the recorded boundary; no cross-species or cross-form inference was used."
+          }
+        },
+        {
+          "bird": "parrot",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "birdvetmelbourne-worms-in-birds-2023",
+            "valdes-exotic-insects-2022"
+          ],
+          "locator": "Issue #175 first-pass and mandatory targeted second-pass research log; source-specific earthworm and parasite sections",
+          "evidenceScope": "group_specific",
+          "rationale": "Parrot-relevant veterinary evidence discusses worm disease and intermediate hosts, not edible commercially raised earthworms. A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
+          "reviewedAt": "2026-08-22",
+          "firstPassSearch": {
+            "queries": [
+              "parrot commercially raised live earthworms Eisenia fetida feeding safety veterinary"
+            ],
+            "sourceIds": [
+              "birdvetmelbourne-worms-in-birds-2023",
+              "valdes-exotic-insects-2022"
+            ],
+            "result": "The first-pass search separated edible earthworms from parasitic worms, worming medicines, mealworms, insect meal, and unrelated species. It did not establish a stronger exact-form outcome than recorded."
+          },
+          "followUpSearch": {
+            "queries": [
+              "parrot live earthworms clean cultured not wild caught feeding; parrot earthworm parasite risk",
+              "parrot Regenwürmer Lebendfutter Zucht sauber nicht wild gefangen"
+            ],
+            "sourceIds": [
+              "birdvetmelbourne-worms-in-birds-2023",
+              "valdes-exotic-insects-2022"
+            ],
+            "result": "The targeted follow-up searched exact species/form terms and German equivalents. It did not establish direct exact-form evidence beyond the recorded boundary; no cross-species or cross-form inference was used."
+          }
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "birdvetmelbourne-worms-in-birds-2023",
+            "vca-african-grey-feeding"
+          ],
+          "locator": "Issue #175 first-pass and mandatory targeted second-pass research log; source-specific earthworm and parasite sections",
+          "evidenceScope": "species_specific",
+          "rationale": "No African Grey-specific edible-earthworm outcome was established; parasite guidance is not converted into food approval. A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
+          "reviewedAt": "2026-08-22",
+          "firstPassSearch": {
+            "queries": [
+              "african_grey commercially raised live earthworms Eisenia fetida feeding safety veterinary"
+            ],
+            "sourceIds": [
+              "birdvetmelbourne-worms-in-birds-2023",
+              "vca-african-grey-feeding"
+            ],
+            "result": "The first-pass search separated edible earthworms from parasitic worms, worming medicines, mealworms, insect meal, and unrelated species. It did not establish a stronger exact-form outcome than recorded."
+          },
+          "followUpSearch": {
+            "queries": [
+              "african_grey live earthworms clean cultured not wild caught feeding; african_grey earthworm parasite risk",
+              "african_grey Regenwürmer Lebendfutter Zucht sauber nicht wild gefangen"
+            ],
+            "sourceIds": [
+              "birdvetmelbourne-worms-in-birds-2023",
+              "vca-african-grey-feeding"
+            ],
+            "result": "The targeted follow-up searched exact species/form terms and German equivalents. It did not establish direct exact-form evidence beyond the recorded boundary; no cross-species or cross-form inference was used."
+          }
+        },
+        {
+          "bird": "budgie",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "welli-livefood-worms-2009",
+            "birdvetmelbourne-worms-in-birds-2023"
+          ],
+          "locator": "Issue #175 first-pass and mandatory targeted second-pass research log; source-specific earthworm and parasite sections",
+          "evidenceScope": "species_specific",
+          "rationale": "German budgie discussion says worms are unnecessary and may not be eaten, while veterinary evidence describes parasite risks; exact safe feeding is not established. A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
+          "reviewedAt": "2026-08-22",
+          "firstPassSearch": {
+            "queries": [
+              "budgie commercially raised live earthworms Eisenia fetida feeding safety veterinary"
+            ],
+            "sourceIds": [
+              "welli-livefood-worms-2009",
+              "birdvetmelbourne-worms-in-birds-2023"
+            ],
+            "result": "The first-pass search separated edible earthworms from parasitic worms, worming medicines, mealworms, insect meal, and unrelated species. It did not establish a stronger exact-form outcome than recorded."
+          },
+          "followUpSearch": {
+            "queries": [
+              "budgie live earthworms clean cultured not wild caught feeding; budgie earthworm parasite risk",
+              "budgie Regenwürmer Lebendfutter Zucht sauber nicht wild gefangen"
+            ],
+            "sourceIds": [
+              "welli-livefood-worms-2009",
+              "birdvetmelbourne-worms-in-birds-2023"
+            ],
+            "result": "The targeted follow-up searched exact species/form terms and German equivalents. It did not establish direct exact-form evidence beyond the recorded boundary; no cross-species or cross-form inference was used."
+          }
+        },
+        {
+          "bird": "canary",
+          "outcome": "unresolved",
+          "sourceIds": [
+            "lafeber-canary-mealworms-2020",
+            "birdvetmelbourne-worms-in-birds-2023"
+          ],
+          "locator": "Issue #175 first-pass and mandatory targeted second-pass research log; source-specific earthworm and parasite sections",
+          "evidenceScope": "species_specific",
+          "rationale": "Canary guidance supports dried mealworms only; it does not establish live earthworms, which remain a distinct form. A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
+          "reviewedAt": "2026-08-22",
+          "firstPassSearch": {
+            "queries": [
+              "canary commercially raised live earthworms Eisenia fetida feeding safety veterinary"
+            ],
+            "sourceIds": [
+              "lafeber-canary-mealworms-2020",
+              "birdvetmelbourne-worms-in-birds-2023"
+            ],
+            "result": "The first-pass search separated edible earthworms from parasitic worms, worming medicines, mealworms, insect meal, and unrelated species. It did not establish a stronger exact-form outcome than recorded."
+          },
+          "followUpSearch": {
+            "queries": [
+              "canary live earthworms clean cultured not wild caught feeding; canary earthworm parasite risk",
+              "canary Regenwürmer Lebendfutter Zucht sauber nicht wild gefangen"
+            ],
+            "sourceIds": [
+              "lafeber-canary-mealworms-2020",
+              "birdvetmelbourne-worms-in-birds-2023"
+            ],
+            "result": "The targeted follow-up searched exact species/form terms and German equivalents. It did not establish direct exact-form evidence beyond the recorded boundary; no cross-species or cross-form inference was used."
+          }
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "das-earthworm-broilers-2024",
+            "feedipedia-earthworm-meal-2020"
+          ],
+          "locator": "Issue #175 first-pass and mandatory targeted second-pass research log; source-specific earthworm and parasite sections",
+          "evidenceScope": "species_specific",
+          "rationale": "Controlled broiler evidence supports only a limited formulated-feed context for earthworms; it does not establish free-choice feeding or a household quantity. A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
+          "reviewedAt": "2026-08-22",
+          "firstPassSearch": {
+            "queries": [
+              "chicken commercially raised live earthworms Eisenia fetida feeding safety veterinary"
+            ],
+            "sourceIds": [
+              "das-earthworm-broilers-2024",
+              "feedipedia-earthworm-meal-2020"
+            ],
+            "result": "The first-pass search separated edible earthworms from parasitic worms, worming medicines, mealworms, insect meal, and unrelated species. It did not establish a stronger exact-form outcome than recorded."
+          },
+          "followUpSearch": {
+            "queries": [
+              "chicken live earthworms clean cultured not wild caught feeding; chicken earthworm parasite risk",
+              "chicken Regenwürmer Lebendfutter Zucht sauber nicht wild gefangen"
+            ],
+            "sourceIds": [
+              "das-earthworm-broilers-2024",
+              "feedipedia-earthworm-meal-2020"
+            ],
+            "result": "The targeted follow-up searched exact species/form terms and German equivalents. It did not establish direct exact-form evidence beyond the recorded boundary; no cross-species or cross-form inference was used."
+          }
+        }
+      ],
+      "processing": {
+        "sourceIds": [
+          "birdvetmelbourne-worms-in-birds-2023",
+          "das-earthworm-broilers-2024"
+        ],
+        "rule": "Keep commercially raised live earthworms distinct from wild-caught or compost-contaminated worms, parasitic worms, worming medicines, earthworm meal, vermicompost, dried earthworms, and mealworms. Never treat them as a complete ration.",
+        "severity": "warning"
+      },
+      "lastReviewedAt": "2026-08-22"
     }
   ]
 }
