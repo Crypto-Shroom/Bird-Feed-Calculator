@@ -5003,23 +5003,15 @@
       "speciesEvidence": [
         {
           "bird": "pigeon",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
+            "koernerbude-lavender-flowers-2026",
+            "merck-columbiformes-2025",
             "issue-168-research-log-2026"
           ],
-          "locator": "Issue #168 research log: documented independent first-pass and targeted second searches for ordinary culinary lavender flower, fresh or dried, plain and pigeon",
-          "evidenceScope": "historical_project",
-          "rationale": "The documented first-pass and targeted second searches did not establish direct pigeon-specific evidence for ordinary culinary lavender flower, fresh or dried, plain, and the retained sources did not meet the owner-confirmed standard for an explicit ingredient-level inference. This neutral unresolved outcome records an evidence gap only; it is not a safety approval, a toxicity finding, a preparation instruction, or a silent cross-species inference.",
-          "followUpSearch": {
-            "queries": [
-              "pigeon ordinary culinary lavender flower, fresh or dried, plain veterinary",
-              "pigeon ordinary culinary lavender flower, fresh or dried, plain feeding study"
-            ],
-            "sourceIds": [
-              "issue-168-research-log-2026"
-            ],
-            "result": "The targeted second-pass query set and its negative or form-limited result are documented in the Issue #168 research log; no direct pigeon-specific ordinary culinary lavender flower, fresh or dried, plain outcome or defensible ingredient-level inference was established."
-          },
+          "locator": "Körnerbude 'Lavendelblüten': additive-free gently dried whole flowers, offered orally as a small supplementary food with normal feed for named bird groups; Merck Veterinary Manual 'Nutrition in Pigeons and Doves': target-pigeon granivorous/balanced-diet context; Issue #168 reopened German-source search and counter-review",
+          "evidenceScope": "related_species",
+          "rationale": "This is an explicitly labelled related-species inference for pigeon, not a direct pigeon study. The German commercial guidance describes the same additive-free dried lavender-flower material as an oral supplementary food for named companion-bird groups, while Merck supplies the pigeon balanced-diet context. Under the owner-confirmed ordinary-culinary-herb form-continuity policy, fresh and dried household flower are one record; oils, diffusers, sprays, extracts, tinctures, essences, distillation residue, and scented-loft use remain distinct. Direct pigeon oral-use evidence was not recovered after the original and reopened German/botanical searches. This limited outcome does not transfer the source's percentage guidance, establish a pigeon dose, formula, complete ration, medical use, runtime approval, or a different preparation.",
           "reviewedAt": "2026-08-21"
         },
         {
@@ -5130,9 +5122,11 @@
       ],
       "processing": {
         "sourceIds": [
-          "issue-168-research-log-2026"
+          "issue-168-research-log-2026",
+          "koernerbude-lavender-flowers-2026",
+          "merck-columbiformes-2025"
         ],
-        "rule": "Treat ordinary culinary lavender flower as one fresh/dried household-use form. Essential oil, diffusers, spray, extracts, tinctures, blends, and scented/aromatic products remain distinct. This evidence-only record does not approve runtime inventory use, a formula, a portion, or a complete ration; the retained sources do not establish a defensible ingredient-level inference for any supported bird.",
+        "rule": "Treat ordinary culinary lavender flower as one fresh/dried household-use form. Essential oil, diffusers, spray, extracts, tinctures, blends, distillation residue, and scented/aromatic products remain distinct. The pigeon row is a low-authority related-species supplementary-food inference only; it does not establish a dose or a complete ration. The remaining five bird rows remain unresolved. This evidence-only record does not approve runtime inventory use, a formula, a portion, or a complete ration.",
         "severity": "warning"
       },
       "lastReviewedAt": "2026-08-21"

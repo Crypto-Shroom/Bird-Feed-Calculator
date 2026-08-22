@@ -81,6 +81,18 @@ const sourceRecords = [
     permittedUse: "Supports a bounded broiler-ration finding for fennel seed meal in formulated diets.",
     limitations: "The meal was obtained after oil extraction and ground. It cannot establish a household serving amount, ordinary whole-seed equivalence, unrestricted use, a complete ration, therapeutic use, or another bird species outcome.",
     accessedAt: reviewedAt
+  },
+  {
+    id: "koernerbude-lavender-flowers-2026",
+    title: "Lavendelblüten",
+    authorsOrOrganization: "Körnerbude GmbH",
+    publishedYear: "2026",
+    sourceTier: "owner_guidance_with_citations",
+    urlOrDoi: "https://www.koernerbude.de/lavendelblueten-sw10267.4",
+    speciesScopes: ["budgie", "canary", "parrot", "psittacine", "finch"],
+    permittedUse: "Commercial German bird-feed guidance for additive-free, gently dried whole lavender flowers used orally as a small supplementary food with normal feed for its named bird groups.",
+    limitations: "This is commercial owner-facing guidance, not veterinary or primary research. It does not name pigeons/doves, establish pigeon-specific safety, transfer its named-bird percentage guidance to pigeons, establish fresh-flower evidence, support a therapeutic claim, establish a complete ration, or approve runtime use.",
+    accessedAt: "2026-08-22"
   }
 ];
 
@@ -168,6 +180,17 @@ const beanOverrides = (label) => Object.fromEntries(
 const chamomileSources = [herbRegistrySource, "dardouri-2025-poultry-herbs-scoping-review", "elsabrout-2023-poultry-botanicals-review"];
 const fennelSources = [herbRegistrySource, "dardouri-2025-poultry-herbs-scoping-review"];
 const gingerSources = [herbRegistrySource, "elsabrout-2023-poultry-botanicals-review"];
+function lavenderPigeonEvidence() {
+  return {
+    bird: "pigeon",
+    outcome: "limited",
+    sourceIds: ["koernerbude-lavender-flowers-2026", "merck-columbiformes-2025", logSource],
+    locator: "Körnerbude 'Lavendelblüten': additive-free gently dried whole flowers, offered orally as a small supplementary food with normal feed for named bird groups; Merck Veterinary Manual 'Nutrition in Pigeons and Doves': target-pigeon granivorous/balanced-diet context; Issue #168 reopened German-source search and counter-review",
+    evidenceScope: "related_species",
+    rationale: "This is an explicitly labelled related-species inference for pigeon, not a direct pigeon study. The German commercial guidance describes the same additive-free dried lavender-flower material as an oral supplementary food for named companion-bird groups, while Merck supplies the pigeon balanced-diet context. Under the owner-confirmed ordinary-culinary-herb form-continuity policy, fresh and dried household flower are one record; oils, diffusers, sprays, extracts, tinctures, essences, distillation residue, and scented-loft use remain distinct. Direct pigeon oral-use evidence was not recovered after the original and reopened German/botanical searches. This limited outcome does not transfer the source's percentage guidance, establish a pigeon dose, formula, complete ration, medical use, runtime approval, or a different preparation.",
+    reviewedAt
+  };
+}
 
 const newReviews = [
   review({
@@ -206,7 +229,10 @@ const newReviews = [
     ingredientDisplayName: "Lavender",
     form: "ordinary culinary lavender flower, fresh or dried, plain",
     nutritionNotes: "No nutrient claim is asserted in this provenance-only review. The owner-confirmed ordinary-culinary-herb boundary treats fresh and dried household flower as one form; oils, diffusers, extracts, and aromatic products remain distinct.",
-    processingRule: "Treat ordinary culinary lavender flower as one fresh/dried household-use form. Essential oil, diffusers, spray, extracts, tinctures, blends, and scented/aromatic products remain distinct. This evidence-only record does not approve runtime inventory use, a formula, a portion, or a complete ration; the retained sources do not establish a defensible ingredient-level inference for any supported bird.",
+    evidenceOverrides: {
+      pigeon: lavenderPigeonEvidence(),
+    },
+    processingRule: "Treat ordinary culinary lavender flower as one fresh/dried household-use form. Essential oil, diffusers, spray, extracts, tinctures, blends, distillation residue, and scented/aromatic products remain distinct. The pigeon row is a low-authority related-species supplementary-food inference only; it does not establish a dose or a complete ration. The remaining five bird rows remain unresolved. This evidence-only record does not approve runtime inventory use, a formula, a portion, or a complete ration.",
   }),
   review({
     ingredientId: "fennel",
