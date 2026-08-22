@@ -685,12 +685,12 @@ The owner-approved inference policy is now applied only where the selected **sam
 
 | Exact form | Pigeon | Parrot | African Grey | Budgie | Canary | Chicken |
 | --- | --- | --- | --- | --- | --- | --- |
-| Whole dry sorghum/milo | limited/direct | limited/inferred | limited/inferred | limited/inferred | limited/inferred | limited/direct |
-| Plain dry white rice | limited/direct historical exclusive-diet boundary | limited/inferred | limited/inferred | limited/inferred | limited/inferred | limited/inferred |
-| Plain dry brown rice | limited/direct | limited/group guidance | limited/direct | limited/direct | limited/inferred | limited/direct |
-| Whole dry rye | limited/direct field consumption | limited/group guidance | limited/inferred | limited/direct guidance | limited/inferred | limited/direct |
-| Whole dry triticale | limited/direct study context | limited/inferred | limited/inferred | limited/inferred | limited/inferred | limited/direct |
-| Whole dry spelt | limited/inferred | limited/group guidance | limited/inferred | limited/inferred | limited/inferred | limited/direct |
-| Whole dry buckwheat groats/seed | limited/inferred | limited/group guidance | limited/inferred | limited/direct guidance | limited/inferred | limited/direct |
+| Whole dry sorghum/milo | allowed/direct | allowed/inferred | allowed/inferred | allowed/inferred | allowed/inferred | allowed/direct |
+| Plain dry white rice | allowed/direct historical polished-rice boundary | allowed/inferred | allowed/inferred | allowed/inferred | allowed/inferred | allowed/inferred |
+| Plain dry brown rice | allowed/direct | allowed/group guidance | allowed/direct | allowed/direct | allowed/inferred | allowed/direct |
+| Whole dry rye | allowed/direct field consumption | allowed/group guidance | allowed/inferred | allowed/direct guidance | allowed/inferred | limited/direct: mature layers only, <40%, clean grain |
+| Whole dry triticale | allowed/direct study context | allowed/inferred | allowed/inferred | allowed/inferred | allowed/inferred | allowed/direct |
+| Whole dry spelt | allowed/inferred | allowed/group guidance | allowed/inferred | allowed/inferred | allowed/inferred | allowed/direct |
+| Whole dry buckwheat groats/seed | allowed/inferred | allowed/group guidance | allowed/inferred | allowed/direct guidance | allowed/inferred | limited/direct: outdoor-chicken/inclusion boundary |
 
-**Unresolved status after final source reconciliation: none.** This does not mean every pair has a target-species feeding trial. The `related_species` rows are deliberately `limited`, not `allowed`; each will preserve the exact direct-evidence gap and the prohibition on drawing dose, formula, complete-ration, medical, runtime, or different-form conclusions.
+**Unresolved status after final source reconciliation: none.** This does not mean every pair has a target-species feeding trial. Ordinary normal dietary use may be `allowed` where the direct or explicitly justified related-species evidence supports the exact dry form; `related_species` still preserves the direct-evidence gap and never transfers a dose, formula, complete ration, medical, runtime, or different-form claim. `limited` is reserved for the two verified chicken-specific boundaries: rye for mature layers only below 40% and clean of ergot, and buckwheat where the high-inclusion/outdoor UV-fagopyrin boundary applies.
