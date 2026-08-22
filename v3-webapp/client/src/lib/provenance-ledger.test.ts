@@ -795,7 +795,7 @@ describe("canonical provenance ledger", () => {
     }
   });
 
-  it("records Issue #171 whole dry grain forms with explicit six-bird limited evidence only", () => {
+  it("records Issue #171 normal dry grain forms as allowed, except verified chicken-specific limits", () => {
     const ledger = readJson("food-reviews.json") as {
       requiredBirdOrder: string[];
       ingredientReviews: Array<{
@@ -812,23 +812,21 @@ describe("canonical provenance ledger", () => {
       }>;
     };
     const expected = [
-      ["sorghum_milo", "whole dry sorghum / milo grain, plain and unseasoned"],
-      ["white_rice", "plain dry white rice grain, uncooked and unseasoned"],
-      ["brown_rice", "plain dry brown rice grain, uncooked and unseasoned"],
-      ["rye", "whole dry rye grain, plain and unseasoned"],
-      ["triticale", "whole dry triticale grain, plain and unseasoned"],
-      ["spelt", "whole dry spelt grain, plain and unseasoned"],
-      ["buckwheat", "whole dry buckwheat groats/seed, plain and unseasoned"],
+      ["sorghum_milo", "whole dry sorghum / milo grain, plain and unseasoned", ["allowed", "allowed", "allowed", "allowed", "allowed", "allowed"]],
+      ["white_rice", "plain dry white rice grain, uncooked and unseasoned", ["allowed", "allowed", "allowed", "allowed", "allowed", "allowed"]],
+      ["brown_rice", "plain dry brown rice grain, uncooked and unseasoned", ["allowed", "allowed", "allowed", "allowed", "allowed", "allowed"]],
+      ["rye", "whole dry rye grain, plain and unseasoned", ["allowed", "allowed", "allowed", "allowed", "allowed", "limited"]],
+      ["triticale", "whole dry triticale grain, plain and unseasoned", ["allowed", "allowed", "allowed", "allowed", "allowed", "allowed"]],
+      ["spelt", "whole dry spelt grain, plain and unseasoned", ["allowed", "allowed", "allowed", "allowed", "allowed", "allowed"]],
+      ["buckwheat", "whole dry buckwheat groats/seed, plain and unseasoned", ["allowed", "allowed", "allowed", "allowed", "allowed", "limited"]],
     ] as const;
 
-    for (const [ingredientId, form] of expected) {
+    for (const [ingredientId, form, outcomes] of expected) {
       const review = ledger.ingredientReviews.find(
         (candidate) => candidate.ingredientId === ingredientId && candidate.form === form,
       );
       expect(review?.speciesEvidence.map((entry) => entry.bird)).toEqual(ledger.requiredBirdOrder);
-      expect(review?.speciesEvidence.map((entry) => entry.outcome)).toEqual([
-        "limited", "limited", "limited", "limited", "limited", "limited",
-      ]);
+      expect(review?.speciesEvidence.map((entry) => entry.outcome)).toEqual(outcomes);
       expect(review?.speciesEvidence.every((entry) => entry.sourceIds.includes("issue-171-research-log-2026"))).toBe(true);
       expect(review?.processing.severity).toBe("warning");
       expect(review?.processing.rule.length).toBeGreaterThan(0);

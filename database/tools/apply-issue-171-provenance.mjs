@@ -209,28 +209,30 @@ const targetContexts = {
   chicken: ["merck-poultry-2024", "Merck poultry complete-ration and life-stage context"],
 };
 
-function limited({ bird, sourceIds, locator, evidenceScope = "species_specific", rationale }) {
-  return { bird, outcome: "limited", sourceIds, locator, evidenceScope, rationale, reviewedAt };
+function limited({ bird, sourceIds, locator, evidenceScope = "species_specific", rationale, outcome = "allowed" }) {
+  return { bird, outcome, sourceIds, locator, evidenceScope, rationale, reviewedAt };
 }
 
-function inferredLimited({ bird, form, evidenceSourceId, evidenceLocator, evidenceSummary }) {
+function inferredLimited({ bird, form, evidenceSourceId, evidenceLocator, evidenceSummary, outcome = "allowed" }) {
   const [targetSourceId, targetContext] = targetContexts[bird];
   return limited({
     bird,
     sourceIds: [evidenceSourceId, targetSourceId, logSource],
     locator: `${evidenceLocator}; ${targetContext}; Issue #171 research log counter-review and documented targeted search`,
     evidenceScope: "related_species",
-    rationale: `This is an explicitly labelled related-species inference for ${bird}, not direct ${bird}-specific research. ${evidenceSummary} The shared material is ${form}; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. ${targetContext} supplies the target-bird diet boundary, while direct evidence for this exact form in ${bird} remains unproven. The resulting outcome is limited only.`,
+    rationale: `This is an explicitly labelled related-species inference for ${bird}, not direct ${bird}-specific research. ${evidenceSummary} The shared material is ${form}; the inference does not transfer a dose, formula, complete ration, therapeutic effect, runtime approval, or another preparation. ${targetContext} supplies the target-bird diet boundary, while direct evidence for this exact form in ${bird} remains unproven. The resulting outcome is ${outcome} for ordinary dietary use only, subject to the stated material and diet boundaries.`,
+    outcome,
   });
 }
 
-function directLimited({ bird, form, sourceIds, locator, scope = "species_specific", evidenceSummary }) {
+function directLimited({ bird, form, sourceIds, locator, scope = "species_specific", evidenceSummary, outcome = "allowed" }) {
   return limited({
     bird,
     sourceIds: [...sourceIds, logSource],
     locator: `${locator}; Issue #171 full-source verification and counter-review`,
     evidenceScope: scope,
-    rationale: `${evidenceSummary} This supports ${form} only in the cited bounded context. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.`,
+    rationale: `${evidenceSummary} This supports ${outcome} ordinary dietary use of ${form} only within the cited context and stated boundaries. It does not establish a dose, visitor formula, complete ration, medical use, runtime/inventory approval, another species, or a different preparation.`,
+    outcome,
   });
 }
 
@@ -313,11 +315,11 @@ const newReviews = [
     form: forms.rye,
     overrides: {
       pigeon: directLimited({ bird: "pigeon", form: forms.rye, sourceIds: ["dilks-1975-feral-pigeon-broad-beans"], locator: "Dilks: crop-content table and rye/ryecorn discussion identify Secale cereale consumption", evidenceSummary: "Year-round crop-content observation documents feral Columba livia consuming ryecorn from newly sown crops." }),
-      parrot: directLimited({ bird: "parrot", form: forms.rye, sourceIds: ["phoenix-landing-parrot-nutrition-2026", "merck-psittacines-2025"], locator: "Phoenix Landing 'Grains' and soaking sections list rye and state grains can be fed dry; Merck psittacine nutrition context", scope: "group_specific", evidenceSummary: "Generic companion-parrot guidance explicitly names rye in its dry-capable grain guidance and limits it to a varied diet." }),
+      parrot: directLimited({ bird: "parrot", form: forms.rye, sourceIds: ["phoenix-landing-parrot-nutrition-2026", "merck-psittacines-2025"], locator: "Phoenix Landing 'Grains' and soaking sections list rye and state grains can be fed dry; Merck psittacine nutrition context", scope: "group_specific", evidenceSummary: "Generic companion-parrot guidance explicitly names rye in its dry-capable grain guidance and places it within a varied diet." }),
       african_grey: inferredLimited({ bird: "african_grey", form: forms.rye, evidenceSourceId: "phoenix-landing-parrot-nutrition-2026", evidenceLocator: "Phoenix Landing 'Grains' section lists rye and says grains can be fed dry", evidenceSummary: "The direct generic-parrot source names the same dry rye form, while African-Grey-specific guidance requires a pellet-led balanced diet and provides no rye-specific trial." }),
       budgie: directLimited({ bird: "budgie", form: forms.rye, sourceIds: ["omlet-parakeet-food-list-2026", "vca-budgie-feeding"], locator: "Omlet 'Parakeet Grains' and 'Parakeet-Friendly Grains' sections name fresh threshed/hulled rye; VCA budgie nutrition context", evidenceSummary: "Budgie/parakeet guidance names rye as a fresh threshed/hulled grain and distinguishes it from cooked or processed forms; veterinary context retains the mixed/pellet-led boundary." }),
       canary: inferredLimited({ bird: "canary", form: forms.rye, evidenceSourceId: "dilks-1975-feral-pigeon-broad-beans", evidenceLocator: "Dilks: field consumption of Secale cereale ryecorn by feral Columba livia", evidenceSummary: "The direct pigeon observation establishes clean rye grain consumption; canary guidance supplies balanced-diet/seed context but no rye-specific trial, and poultry arabinoxylan findings are not transferred." }),
-      chicken: directLimited({ bird: "chicken", form: forms.rye, sourceIds: ["poultry-extension-rye-diets-2026", "merck-poultry-2024"], locator: "University of Kentucky 'Including Rye in Poultry Diets' section; Merck poultry complete-ration context", evidenceSummary: "Chicken guidance excludes rye for growing birds, permits it for layers only after peak production and below 40% of diet, and requires clean grain because ergot may be highly toxic." }),
+      chicken: directLimited({ bird: "chicken", form: forms.rye, sourceIds: ["poultry-extension-rye-diets-2026", "merck-poultry-2024"], locator: "University of Kentucky 'Including Rye in Poultry Diets' section; Merck poultry complete-ration context", evidenceSummary: "Chicken guidance excludes rye for growing birds, permits it for layers only after peak production and below 40% of diet, and requires clean grain because ergot may be highly toxic.", outcome: "limited" }),
     },
     processingRule: "Keep clean whole dry rye distinct from sprouted, fermented, milled/flour, cooked, flavoured, salted, and mould- or ergot-contaminated products. The chicken row has life-stage and inclusion boundaries; no row establishes an unrestricted or complete-ration use.",
   }),
@@ -355,11 +357,11 @@ const newReviews = [
     form: forms.buckwheat,
     overrides: {
       pigeon: inferredLimited({ bird: "pigeon", form: forms.buckwheat, evidenceSourceId: "poultry-extension-buckwheat-diets-2026", evidenceLocator: "University of Kentucky 'Buckwheat in Poultry Diets' feed-ingredient, antinutrient, and outdoor-poultry discussion", evidenceSummary: "The direct chicken source establishes buckwheat as a formulated-feed ingredient with explicit high-inclusion and outdoor UV/fagopyrin limits; no inspectable pigeon groat study was recovered." }),
-      parrot: directLimited({ bird: "parrot", form: forms.buckwheat, sourceIds: ["ullrey-1991-psittacine-seed-mixtures", "merck-psittacines-2025"], locator: "Ullrey et al. abstract identifies buckwheat among common commercial psittacine seed-mixture ingredients; Merck psittacine nutrition context", scope: "group_specific", evidenceSummary: "A peer-reviewed psittacine review names buckwheat in commercial seed mixtures while documenting their nutritional inadequacy, so the outcome remains limited to varied-diet context." }),
+      parrot: directLimited({ bird: "parrot", form: forms.buckwheat, sourceIds: ["ullrey-1991-psittacine-seed-mixtures", "merck-psittacines-2025"], locator: "Ullrey et al. abstract identifies buckwheat among common commercial psittacine seed-mixture ingredients; Merck psittacine nutrition context", scope: "group_specific", evidenceSummary: "A peer-reviewed psittacine review names buckwheat in commercial seed mixtures while documenting their nutritional inadequacy; the evidence therefore supports ordinary use only within a varied diet, not as a complete ration." }),
       african_grey: inferredLimited({ bird: "african_grey", form: forms.buckwheat, evidenceSourceId: "ullrey-1991-psittacine-seed-mixtures", evidenceLocator: "Ullrey et al. abstract identifies buckwheat in common commercial psittacine seed mixtures", evidenceSummary: "The direct psittacine source identifies buckwheat, but not an African-Grey-specific dose or trial; the African-Grey source supplies the pellet-led balanced-diet limit." }),
       budgie: directLimited({ bird: "budgie", form: forms.buckwheat, sourceIds: ["omlet-parakeet-food-list-2026", "vca-budgie-feeding"], locator: "Omlet 'Parakeet Grains' and 'Parakeet-Friendly Grains' sections name whole buckwheat; VCA budgie nutrition context", evidenceSummary: "Budgie/parakeet guidance explicitly names whole buckwheat while veterinary guidance retains the pellet-led and seed-only-diet limits." }),
       canary: inferredLimited({ bird: "canary", form: forms.buckwheat, evidenceSourceId: "poultry-extension-buckwheat-diets-2026", evidenceLocator: "University of Kentucky 'Buckwheat in Poultry Diets' feed-ingredient and fagopyrin/outdoor boundary", evidenceSummary: "The direct poultry source identifies buckwheat and its relevant constituent/husbandry limits; the archived canary source covers only a sprouted mix and is not treated as dry-form proof." }),
-      chicken: directLimited({ bird: "chicken", form: forms.buckwheat, sourceIds: ["poultry-extension-buckwheat-diets-2026", "merck-poultry-2024"], locator: "University of Kentucky 'Buckwheat in Poultry Diets' use-in-poultry-diets section; Merck poultry complete-ration context", evidenceSummary: "Chicken guidance identifies buckwheat feed-use context, protease inhibitors/tannins, reduced feed efficiency at high inclusion, and a maximum 30% outdoor-poultry boundary because of fagopyrin/UV sensitivity." }),
+      chicken: directLimited({ bird: "chicken", form: forms.buckwheat, sourceIds: ["poultry-extension-buckwheat-diets-2026", "merck-poultry-2024"], locator: "University of Kentucky 'Buckwheat in Poultry Diets' use-in-poultry-diets section; Merck poultry complete-ration context", evidenceSummary: "Chicken guidance identifies buckwheat feed-use context, protease inhibitors/tannins, reduced feed efficiency at high inclusion, and a maximum 30% outdoor-poultry boundary because of fagopyrin/UV sensitivity.", outcome: "limited" }),
     },
     processingRule: "This record is for plain whole dry buckwheat groats/seed only. Do not equate it with buckwheat leaves, flowers, sprouts, flour, cooked groats, flavoured/salted products, or mould-contaminated material. The record preserves the separate outdoor-poultry fagopyrin boundary and never approves a complete ration or runtime use.",
   }),
