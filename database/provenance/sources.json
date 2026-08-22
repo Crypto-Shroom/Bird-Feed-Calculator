@@ -547,9 +547,9 @@
         "budgie",
         "parakeet"
       ],
-      "permittedUse": "Budgie/parakeet food-form guidance that explicitly lists whole, threshed wheat among parakeet-friendly grains and distinguishes fresh hulled grain from cooked or processed forms.",
-      "limitations": "Owner guidance rather than a peer-reviewed feeding trial; it cannot approve wheat for parrots, African Greys, canaries, pigeons, or chickens and does not establish a complete ration.",
-      "accessedAt": "2026-08-18"
+      "permittedUse": "Budgie/parakeet food-form guidance that explicitly names fresh, threshed/hulled rye and whole buckwheat among parakeet-friendly grains and distinguishes them from cooked or processed forms.",
+      "limitations": "Owner guidance rather than a controlled feeding study; it cannot approve a complete ration, establish a quantity, establish a result for another species, or make a different preparation equivalent.",
+      "accessedAt": "2026-08-22"
     },
     {
       "id": "uk-poultry-extension-wheat-diets-2026",
@@ -1180,9 +1180,9 @@
         "columbiformes",
         "feral_pigeon"
       ],
-      "permittedUse": "Direct crop-content observation in free-ranging feral pigeons, including the named consumption of broad beans (Vicia faba) in a field-foraging context.",
-      "limitations": "The observational study does not identify processing, establish safety, prescribe a companion-pigeon amount or formula, or support another bean species or bird species.",
-      "accessedAt": "2026-08-20"
+      "permittedUse": "Direct crop-content observation in free-ranging feral pigeons, including named field consumption of broad beans and ryecorn (Secale cereale).",
+      "limitations": "The observational study does not identify processing, establish safety, prescribe a companion-pigeon amount or formula, establish nutritional adequacy, or support another bird species.",
+      "accessedAt": "2026-08-22"
     },
     {
       "id": "adebo-2023-lima-bean-review",
@@ -1343,15 +1343,15 @@
       "authorsOrOrganization": "D. E. Ullrey; M. E. Allen; D. J. Baer",
       "publishedYear": "1991",
       "sourceTier": "peer_reviewed_review",
-      "urlOrDoi": "https://pubmed.ncbi.nlm.nih.gov/1941226/",
+      "urlOrDoi": "https://doi.org/10.1093/jn/121.suppl_11.S193",
       "speciesScopes": [
         "parrot",
         "african_grey",
         "psittacine"
       ],
-      "permittedUse": "Peer-reviewed psittacine nutrition review of commercial seed mixtures, including safflower seed composition and seed-mixture nutritional limits.",
-      "limitations": "A psittacine review does not establish whole-hemp evidence for the generic parrot row, a portion, a complete ration, or any non-psittacine outcome.",
-      "accessedAt": "2026-08-21"
+      "permittedUse": "Peer-reviewed psittacine nutrition review identifying buckwheat among common commercial seed-mixture ingredients and documenting seed-mixture nutritional limitations.",
+      "limitations": "The review does not establish an individual species portion, a complete ration, a medical result, a different buckwheat form, or an outcome for non-psittacines.",
+      "accessedAt": "2026-08-22"
     },
     {
       "id": "vca-small-psittacine-nutrition-1998",
@@ -1813,6 +1813,191 @@
       "permittedUse": "Audit trail for the documented first-pass searches, targeted follow-up searches, source-accessibility review, counter-review, and evidence-only fresh-strawberry outcomes.",
       "limitations": "Project governance documentation, not independent biological or veterinary evidence and not an active-calculator instruction.",
       "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "issue-171-research-log-2026",
+      "title": "Issue #171 seven dry-grain evidence research log",
+      "authorsOrOrganization": "Bird Feed Calculator project research",
+      "publishedYear": "2026",
+      "sourceTier": "historical_project",
+      "urlOrDoi": "database/provenance/evidence/issue-171-research-log.md",
+      "speciesScopes": [
+        "pigeon",
+        "parrot",
+        "african_grey",
+        "budgie",
+        "canary",
+        "chicken"
+      ],
+      "permittedUse": "Documents independent first-pass and targeted second-pass searches for all 42 bird/form pairs, full-source verification, source-access limits, counter-review, and explicitly labelled related-species reasoning for Issue #171.",
+      "limitations": "The research log is an audit trail, not an external feeding study. It cannot silently approve an ingredient, establish a dose, formula, complete ration, medical claim, runtime approval, or a materially different preparation.",
+      "accessedAt": "2026-08-22"
+    },
+    {
+      "id": "shultz-grau-zweigart-1953-pigeon-milo",
+      "title": "Studies in Pigeon Nutrition: Addition of Vitamin Supplements to Commercial Pigeon Ration Investigated for Effect on Squab Production",
+      "authorsOrOrganization": "Fred T. Shultz; C. R. Grau; Phyllis Zweigart; University of California",
+      "publishedYear": "1953",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://californiaagriculture.org/article/114458-studies-in-pigeon-nutrition-addition-of-vitamin-supplements-to-commercial-pigeon-ration-investigated-for-effect-on-squab-production.pdf",
+      "speciesScopes": [
+        "pigeon",
+        "columbiformes"
+      ],
+      "permittedUse": "Direct whole-grain domestic-pigeon mixed-ration context that names kafir and milo among the basal ration ingredients.",
+      "limitations": "The historical White King pigeon production trial included multiple grains, grit, supplements, and molasses. It does not establish a household amount, complete ration, another species, a different sorghum preparation, or unrestricted use.",
+      "accessedAt": "2026-08-22"
+    },
+    {
+      "id": "mchargue-roy-1931-pigeon-polished-rice",
+      "title": "The Effect of a Diet of Polished Rice on the Mineral Content of the Carcasses of Pigeons",
+      "authorsOrOrganization": "J. S. McHargue; W. R. Roy",
+      "publishedYear": "1931",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1152/ajplegacy.1931.99.1.221",
+      "speciesScopes": [
+        "pigeon",
+        "columbiformes"
+      ],
+      "permittedUse": "Identifies a historical pigeon study of a polished-rice diet and establishes the exact polished/white-rice material distinction.",
+      "limitations": "The accessible record does not establish a balanced or safe companion-pigeon diet, an amount, a result for brown or paddy rice, a complete ration, or an outcome for another bird species.",
+      "accessedAt": "2026-08-22"
+    },
+    {
+      "id": "darwati-2010-local-pigeon-brown-rice",
+      "title": "Productivity, Repeatability of Productive and Reproductive Traits of Local Pigeon",
+      "authorsOrOrganization": "S. Darwati; H. Martojo; C. Sumantri; D. T. H. Sihombing; A. Mardiastuti",
+      "publishedYear": "2010",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.14710/jitaa.35.4.268-274",
+      "speciesScopes": [
+        "pigeon",
+        "columba_livia"
+      ],
+      "permittedUse": "Direct local-pigeon feeding trial context for a ration comprising 50% corn, 30% commercial broiler-finisher feed, and 20% brown rice.",
+      "limitations": "The study is a defined adult local-pigeon production ration. It does not make 20% a visitor formula, establish stand-alone feeding, validate white rice, or establish a result for another bird species.",
+      "accessedAt": "2026-08-22"
+    },
+    {
+      "id": "savas-2007-pigeon-triticale",
+      "title": "Effect of Beak Length on Feed Intake in Pigeons (Columba livia f. domestica)",
+      "authorsOrOrganization": "T. Savas; C. Konyali; G. Das; I. Y. Yurtman",
+      "publishedYear": "2007",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1017/S0962728600030955",
+      "speciesScopes": [
+        "pigeon",
+        "columba_livia"
+      ],
+      "permittedUse": "Direct domestic-pigeon study context whose indexed diet description identifies triticale grain mixed with wheat grain.",
+      "limitations": "The study investigates beak length and feed intake, not nutritional adequacy, portion, complete-ration design, another species, or a different triticale form.",
+      "accessedAt": "2026-08-22"
+    },
+    {
+      "id": "phoenix-landing-parrot-nutrition-2026",
+      "title": "Food and Nutrition for Parrots",
+      "authorsOrOrganization": "Phoenix Landing Foundation",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.phoenixlanding.org/nutrition.html",
+      "speciesScopes": [
+        "parrot",
+        "psittacine",
+        "companion_bird"
+      ],
+      "permittedUse": "Direct generic companion-parrot guidance that says grains can be fed dry and explicitly names brown rice, buckwheat/groats, spelt, and rye within a varied diet.",
+      "limitations": "Non-clinical welfare-organisation guidance. It does not provide a dose, formula, complete ration, African-Grey-specific result, medical claim, runtime approval, white-rice result, or evidence for a different grain form.",
+      "accessedAt": "2026-08-22"
+    },
+    {
+      "id": "poultry-extension-rye-diets-2026",
+      "title": "Rye in Poultry Diets",
+      "authorsOrOrganization": "Jacquie Jacob, DVM, PhD; University of Kentucky / Poultry Extension",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://poultry.extension.org/articles/feeds-and-feeding-of-poultry/feed-ingredients-for-poultry/cereals-in-poultry-diets/rye-in-poultry-diets/",
+      "speciesScopes": [
+        "chicken",
+        "poultry"
+      ],
+      "permittedUse": "Chicken guidance for rye grain in formulated diets, including the growing-bird exclusion, layer timing/inclusion boundary, arabinoxylan concern, and ergot contamination risk.",
+      "limitations": "Poultry guidance does not establish companion-bird suitability, a complete ration, a household amount, or use of contaminated rye.",
+      "accessedAt": "2026-08-22"
+    },
+    {
+      "id": "poultry-extension-triticale-diets-2026",
+      "title": "Triticale in Poultry Diets",
+      "authorsOrOrganization": "Jacquie Jacob, DVM, PhD; University of Kentucky / Poultry Extension",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://poultry.extension.org/articles/feeds-and-feeding-of-poultry/feed-ingredients-for-poultry/cereals-in-poultry-diets/triticale-in-poultry-diets-2/",
+      "speciesScopes": [
+        "chicken",
+        "poultry"
+      ],
+      "permittedUse": "Chicken/poultry feed context for triticale as a wheat-rye hybrid, including inclusion-level, enzyme, and non-starch-polysaccharide boundaries.",
+      "limitations": "Poultry feed guidance does not establish companion-bird suitability, a household amount, a complete ration, or use of a different grain form.",
+      "accessedAt": "2026-08-22"
+    },
+    {
+      "id": "poultry-extension-spelt-diets-2026",
+      "title": "Spelt Wheat in Poultry Diets",
+      "authorsOrOrganization": "Jacquie Jacob, DVM, PhD; University of Kentucky / Poultry Extension",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://poultry.extension.org/articles/feeds-and-feeding-of-poultry/feed-ingredients-for-poultry/cereals-in-poultry-diets/spelt-wheat-in-poultry-diets/",
+      "speciesScopes": [
+        "chicken",
+        "poultry"
+      ],
+      "permittedUse": "Chicken/poultry context for spelt grain, retained hulls, and the reported chick/poult growth and feed-efficiency boundary.",
+      "limitations": "Limited animal-feed evidence does not establish a companion-bird outcome, a household amount, a complete ration, or a different spelt preparation.",
+      "accessedAt": "2026-08-22"
+    },
+    {
+      "id": "poultry-extension-buckwheat-diets-2026",
+      "title": "Buckwheat in Poultry Diets",
+      "authorsOrOrganization": "Jacquie Jacob, DVM, PhD; University of Kentucky / Poultry Extension",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://poultry.extension.org/articles/feeds-and-feeding-of-poultry/feed-ingredients-for-poultry/cereals-in-poultry-diets/buckwheat-in-poultry-diets/",
+      "speciesScopes": [
+        "chicken",
+        "poultry"
+      ],
+      "permittedUse": "Chicken/poultry feed context for buckwheat, its protease-inhibitor/tannin boundary, high-inclusion feed-efficiency issue, and outdoor-poultry fagopyrin/UV boundary.",
+      "limitations": "The page does not treat buckwheat herb/green material as equivalent to hulled groats, and it does not establish a companion-bird outcome, a household amount, or a complete ration.",
+      "accessedAt": "2026-08-22"
+    },
+    {
+      "id": "fernandes-2013-whole-sorghum-broilers",
+      "title": "The Use of Whole Grain Sorghum in Broiler Feeds",
+      "authorsOrOrganization": "Evandro Abreu Fernandes; Welder Jorge Santana Pereira; Leandro Hackenhaar; Ricardo Moreira Rodrigues; Raonilson Viana Terra",
+      "publishedYear": "2013",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1590/S1516-635X2013000300008",
+      "speciesScopes": [
+        "chicken",
+        "broiler_chicken"
+      ],
+      "permittedUse": "Direct broiler study of ground, 50% whole, and 100% whole sorghum in nutritionally matched feeds, including the whole-grain age boundary.",
+      "limitations": "The study used formulated broiler feeds and ground pre-starter rations through day 8. It does not establish a household amount, a complete ration, another species, or a different sorghum product.",
+      "accessedAt": "2026-08-22"
+    },
+    {
+      "id": "nanto-hara-2021-brown-rice-broilers",
+      "title": "Effects of Dietary Brown Rice on the Growth Performance, Systemic Oxidative Status, and Splenic Inflammatory Responses of Broiler Chickens under Chronic Heat Stress",
+      "authorsOrOrganization": "Fumika Nanto-Hara; Haruhiko Ohtsu; Makoto Yamazaki; Tatsuya Hirakawa; Kan Sato; Hitoshi Murakami",
+      "publishedYear": "2021",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.2141/jpsa.0200063",
+      "speciesScopes": [
+        "chicken",
+        "broiler_chicken"
+      ],
+      "permittedUse": "Direct Ross-308 broiler evidence for unpolished brown rice in a corn-replacement, soybean-meal, vitamin-and-mineral formulated diet under thermoneutral and heat-stress conditions.",
+      "limitations": "The defined complete study diet does not establish a household amount, a complete ration made from brown rice alone, another rice form, or another bird species outcome.",
+      "accessedAt": "2026-08-22"
     }
   ]
 }
