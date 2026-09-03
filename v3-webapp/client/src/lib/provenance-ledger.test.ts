@@ -325,6 +325,33 @@ describe("canonical provenance ledger", () => {
     }
   });
 
+  it("records commercially raised live earthworms as a distinct six-bird form with two-pass evidence", () => {
+    const ledger = readJson("food-reviews.json") as {
+      requiredBirdOrder: string[];
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{ bird: string; outcome: string; sourceIds: string[]; firstPassSearch?: { queries: string[] }; followUpSearch?: { queries: string[]; sourceIds: string[]; result: string } }>;
+      }>;
+    };
+    const review = ledger.ingredientReviews.find(
+      (candidate) => candidate.ingredientId === "earthworms" && candidate.form === "commercially raised live earthworms (Eisenia fetida), clean, appropriately sized, and not wild-caught or compost-contaminated",
+    );
+    expect(review?.speciesEvidence.map((entry) => entry.bird)).toEqual(ledger.requiredBirdOrder);
+    expect(review?.speciesEvidence.map((entry) => entry.outcome)).toEqual([
+      "unresolved",
+      "unresolved",
+      "unresolved",
+      "unresolved",
+      "unresolved",
+      "limited",
+    ]);
+    expect(review?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
+    expect(review?.speciesEvidence.every((entry) => Boolean(entry.firstPassSearch?.queries.length))).toBe(true);
+    expect(review?.speciesEvidence.every((entry) => Boolean(entry.followUpSearch?.queries.length && entry.followUpSearch.sourceIds.length && entry.followUpSearch.result.length))).toBe(true);
+    expect(ledger.ingredientReviews.some((candidate) => candidate.ingredientId === "mealworms" && candidate.form === "live yellow mealworm larvae")).toBe(true);
+  });
+
   it("records Issue #160 seed and dried-herb forms with six explicit evidence outcomes", () => {
     const ledger = readJson("food-reviews.json") as {
       requiredBirdOrder: string[];
