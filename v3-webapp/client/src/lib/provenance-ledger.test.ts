@@ -330,7 +330,7 @@ describe("canonical provenance ledger", () => {
       {
         ingredientId: "wheat",
         form: "whole dry grain, threshed/hulled where applicable",
-        outcomes: ["limited", "limited", "unresolved", "limited", "unresolved", "limited"],
+        outcomes: ["unresolved", "unresolved", "unresolved", "limited", "unresolved", "limited"],
       },
       {
         ingredientId: "barley",
@@ -345,7 +345,7 @@ describe("canonical provenance ledger", () => {
       {
         ingredientId: "millet",
         form: "whole dry seed",
-        outcomes: ["limited", "limited", "unresolved", "limited", "limited", "limited"],
+        outcomes: ["unresolved", "unresolved", "unresolved", "limited", "limited", "unresolved"],
       },
       {
         ingredientId: "corn",
