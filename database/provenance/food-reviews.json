@@ -114,7 +114,7 @@
       "form": "raw dried seeds",
       "nutrition": {
         "sourceIds": [
-          "eorganic-chickpeas-poultry-2014"
+          "danek-majewska-2021-raw-chickpea-broilers"
         ],
         "basis": "not_applicable",
         "notes": "This evidence-first record evaluates the raw dried form only. It does not add a nutrient value, a dry-mix ingredient instruction, or a complete-ration claim."
@@ -124,12 +124,12 @@
           "bird": "pigeon",
           "outcome": "unresolved",
           "sourceIds": [
+            "issue-162-research-log-2026",
             "vca-pigeon-dove-feeding"
           ],
-          "locator": "VCA 'Can I feed people food to my pigeon or dove?' section",
-          "evidenceScope": "species_specific",
-          "rationale": "The pigeon-specific veterinary source provides general small-quantity human-food context but does not name chickpeas or raw pulses. The poultry extension source cannot be used to infer a pigeon preparation outcome. Raw dried chickpeas therefore remain unresolved for pigeons pending a direct pigeon-specific chickpea or raw-pulse source A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
-          "reviewedAt": "2026-08-18",
+          "locator": "Issue #162 research log: first-pass and targeted second searches for raw dried chickpea seeds; VCA pigeon/dove general people-food guidance is retained only as a non-specific boundary",
+          "evidenceScope": "historical_project",
+          "rationale": "The documented first-pass and targeted second searches did not establish direct pigeon-specific evidence for raw dried chickpea seeds. This neutral unresolved outcome records absence of sufficient direct evidence; it is not a safety approval, a toxicity finding, or a cross-species inference.",
           "followUpSearch": {
             "queries": [
               "pigeon raw dried chickpea seeds whole; Taube rohe getrocknete Kichererbsen"
@@ -140,6 +140,7 @@
             ],
             "result": "Pigeon-specific sources establish no exact raw-dried chickpea outcome; retain unresolved."
           },
+          "reviewedAt": "2026-08-21",
           "firstPassSearch": {
             "queries": [
               "pigeon raw dried chickpea seeds exact feeding veterinary; pigeon chickpeas preparation"
@@ -158,8 +159,17 @@
           ],
           "locator": "'Cautions' section: lists garbanzo beans (chickpeas) among legumes and states that legumes are not safe raw; requires sprouting until root tails are visible",
           "evidenceScope": "group_specific",
-          "rationale": "The replacement source directly addresses parrots, names garbanzo beans/chickpeas, and states that legumes are not safe raw. Raw dried chickpeas therefore require preparation before any parrot use. This experienced-keeper guidance is non-clinical, so it does not establish a cooking method, portion, recipe, formula inclusion, complete ration, runtime food approval, or a result for another species A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
+          "rationale": "The replacement source directly addresses parrots, names garbanzo beans/chickpeas, and states that legumes are not safe raw. Raw dried chickpeas therefore require preparation before any parrot use. This experienced-keeper guidance is non-clinical, so it does not establish a cooking method, portion, recipe, formula inclusion, complete ration, runtime food approval, or a result for another species.",
           "reviewedAt": "2026-08-18",
+          "firstPassSearch": {
+            "queries": [
+              "parrot raw dried chickpea seeds exact feeding veterinary; parrot chickpeas preparation"
+            ],
+            "sourceIds": [
+              "happy-cockatoo-parrot-sprouts-2012"
+            ],
+            "result": "Parrot sources favored cooked/soaked/sprouted forms."
+          },
           "followUpSearch": {
             "queries": [
               "parrot raw dried chickpeas avian veterinarian; cooked soaked chickpeas"
@@ -169,15 +179,6 @@
               "merck-psittacines-2025"
             ],
             "result": "Parrot sources recommend cooked/soaked/sprouted legumes and do not establish raw dry chickpeas; retain requires_preparation."
-          },
-          "firstPassSearch": {
-            "queries": [
-              "parrot raw dried chickpea seeds exact feeding veterinary; parrot chickpeas preparation"
-            ],
-            "sourceIds": [
-              "happy-cockatoo-parrot-sprouts-2012"
-            ],
-            "result": "Parrot sources favored cooked/soaked/sprouted forms."
           }
         },
         {
@@ -189,8 +190,17 @@
           ],
           "locator": "VCA 'Fruits and Vegetables' section and suggested-items table; eOrganic 'Composition' and 'Feeding Chickpeas to Poultry' sections",
           "evidenceScope": "species_specific",
-          "rationale": "The African Grey source names chickpeas and separately names cooked beans in a pellet-led companion diet. The chickpea-specific source identifies antinutritional factors and explains that heat treatment inactivates most of them. Raw dried chickpeas therefore require preparation before any African Grey use; this does not establish a portion, recipe, formula inclusion, or an unrestricted cooked-food outcome A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
+          "rationale": "The African Grey source names chickpeas and separately names cooked beans in a pellet-led companion diet. The chickpea-specific source identifies antinutritional factors and explains that heat treatment inactivates most of them. Raw dried chickpeas therefore require preparation before any African Grey use; this does not establish a portion, recipe, formula inclusion, or an unrestricted cooked-food outcome.",
           "reviewedAt": "2026-08-18",
+          "firstPassSearch": {
+            "queries": [
+              "african_grey raw dried chickpea seeds exact feeding veterinary; african_grey chickpeas preparation"
+            ],
+            "sourceIds": [
+              "vca-african-grey-feeding"
+            ],
+            "result": "African Grey exact raw-dry chickpea outcome was not established."
+          },
           "followUpSearch": {
             "queries": [
               "African Grey raw dried chickpeas; Psittacus erithacus chickpea feeding"
@@ -200,28 +210,28 @@
               "merck-psittacines-2025"
             ],
             "result": "No direct African Grey raw-dry chickpea outcome; preparation boundary only; retain requires_preparation."
-          },
-          "firstPassSearch": {
-            "queries": [
-              "african_grey raw dried chickpea seeds exact feeding veterinary; african_grey chickpeas preparation"
-            ],
-            "sourceIds": [
-              "vca-african-grey-feeding"
-            ],
-            "result": "African Grey exact raw-dry chickpea outcome was not established."
           }
         },
         {
           "bird": "budgie",
           "outcome": "requires_preparation",
           "sourceIds": [
-            "vca-budgie-feeding",
-            "exoticdirect-budgie-chickpeas-2019"
+            "exoticdirect-budgie-chickpeas-2019",
+            "vca-budgie-feeding"
           ],
-          "locator": "VCA 'List of suitable fruits and vegetables for budgies' table; ExoticDirect list beginning 'These are suitable for budgies but do not ever feed raw'",
+          "locator": "ExoticDirect What can budgies eat?: legumes section explicitly naming chickpeas among foods that must not ever be fed raw",
           "evidenceScope": "species_specific",
-          "rationale": "The VCA source lists cooked beans in budgie feeding guidance. The budgie-specific owner guidance explicitly includes chickpeas among foods that should not be fed raw. Raw dried chickpeas therefore require preparation before any budgie use; the non-clinical source does not establish a cooking method, portion, formula inclusion, or complete ration A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
-          "reviewedAt": "2026-08-18",
+          "rationale": "Budgie-specific care guidance explicitly lists chickpeas among legumes that must not ever be fed raw and recommends sprouted legumes. This establishes a preparation boundary only; it does not prescribe a process, portion, formula use, or complete ration.",
+          "reviewedAt": "2026-08-21",
+          "firstPassSearch": {
+            "queries": [
+              "budgie raw dried chickpea seeds exact feeding veterinary; budgie chickpeas preparation"
+            ],
+            "sourceIds": [
+              "vca-budgie-feeding"
+            ],
+            "result": "Budgie sources concerned prepared legumes or general diet context."
+          },
           "followUpSearch": {
             "queries": [
               "budgie raw dried chickpeas; dry chickpea feeding veterinary"
@@ -231,15 +241,6 @@
               "exoticdirect-budgie-chickpeas-2019"
             ],
             "result": "Budgie sources concern prepared legumes or generic diet context; retain requires_preparation."
-          },
-          "firstPassSearch": {
-            "queries": [
-              "budgie raw dried chickpea seeds exact feeding veterinary; budgie chickpeas preparation"
-            ],
-            "sourceIds": [
-              "vca-budgie-feeding"
-            ],
-            "result": "Budgie sources concerned prepared legumes or general diet context."
           }
         },
         {
@@ -251,8 +252,17 @@
           ],
           "locator": "VCA 'Fruits, vegetables, and legumes suitable for canaries include' table, where chickpeas appear under 'cooked beans'; eOrganic 'Composition' and 'Feeding Chickpeas to Poultry' sections",
           "evidenceScope": "species_specific",
-          "rationale": "The canary-specific veterinary source lists chickpeas under cooked beans, not as a raw dried food. The chickpea-specific source identifies antinutritional factors and explains that heat treatment inactivates most of them. Raw dried chickpeas therefore require preparation before any canary use; this does not establish a portion, recipe, formula inclusion, or complete ration A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
+          "rationale": "The canary-specific veterinary source lists chickpeas under cooked beans, not as a raw dried food. The chickpea-specific source identifies antinutritional factors and explains that heat treatment inactivates most of them. Raw dried chickpeas therefore require preparation before any canary use; this does not establish a portion, recipe, formula inclusion, or complete ration.",
           "reviewedAt": "2026-08-18",
+          "firstPassSearch": {
+            "queries": [
+              "canary raw dried chickpea seeds exact feeding veterinary; canary chickpeas preparation"
+            ],
+            "sourceIds": [
+              "vca-canary-feeding"
+            ],
+            "result": "Canary exact raw-dry chickpea outcome was not established."
+          },
           "followUpSearch": {
             "queries": [
               "canary raw dried chickpeas; finch chickpea feeding"
@@ -262,28 +272,28 @@
               "finchinfo-nutrition"
             ],
             "result": "No direct canary exact raw-dry chickpea outcome; retain unresolved."
-          },
-          "firstPassSearch": {
-            "queries": [
-              "canary raw dried chickpea seeds exact feeding veterinary; canary chickpeas preparation"
-            ],
-            "sourceIds": [
-              "vca-canary-feeding"
-            ],
-            "result": "Canary exact raw-dry chickpea outcome was not established."
           }
         },
         {
           "bird": "chicken",
           "outcome": "limited",
           "sourceIds": [
-            "eorganic-chickpeas-poultry-2014",
-            "danek-majewska-2021-raw-chickpea-broilers"
+            "danek-majewska-2021-raw-chickpea-broilers",
+            "eorganic-chickpeas-poultry-2014"
           ],
-          "locator": "eOrganic 'Feeding Chickpeas to Poultry' section; Danek-Majewska et al. 2021 abstract, introduction, and methods describing Ross 308 broiler grower/finisher compound diets",
+          "locator": "Danek-Majewska et al.: raw unprocessed chickpea seed substituted for 50% of soybean-meal protein in Ross 308 grower/finisher diets",
           "evidenceScope": "species_specific",
-          "rationale": "Chicken evidence describes antinutritional factors and controlled broiler-ration studies of raw chickpea, including a formulated grower/finisher diet. This is limited to the studied poultry/ration context and does not establish unsupervised household feeding, a complete ration, or a rule for other birds A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
-          "reviewedAt": "2026-08-18",
+          "rationale": "The direct broiler study supports raw chickpea only in its defined balanced grower/finisher diets. It does not establish unrestricted feeding, a household amount, a complete ration, or another species outcome.",
+          "reviewedAt": "2026-08-21",
+          "firstPassSearch": {
+            "queries": [
+              "chicken raw dried chickpea seeds exact feeding veterinary; chicken chickpeas preparation"
+            ],
+            "sourceIds": [
+              "eorganic-chickpeas-poultry-2014"
+            ],
+            "result": "Poultry extension and studies supported controlled diet inclusion with limits."
+          },
           "followUpSearch": {
             "queries": [
               "chicken raw dried chickpeas poultry extension; Cicer arietinum raw feed"
@@ -293,27 +303,20 @@
               "danek-majewska-2021-raw-chickpea-broilers"
             ],
             "result": "Poultry evidence supports controlled diet inclusion with limits, not unrestricted whole-bean feeding; retain limited."
-          },
-          "firstPassSearch": {
-            "queries": [
-              "chicken raw dried chickpea seeds exact feeding veterinary; chicken chickpeas preparation"
-            ],
-            "sourceIds": [
-              "eorganic-chickpeas-poultry-2014"
-            ],
-            "result": "Poultry extension and studies supported controlled diet inclusion with limits."
           }
         }
       ],
       "processing": {
         "sourceIds": [
           "eorganic-chickpeas-poultry-2014",
-          "danek-majewska-2021-raw-chickpea-broilers"
+          "danek-majewska-2021-raw-chickpea-broilers",
+          "exoticdirect-budgie-chickpeas-2019",
+          "issue-162-research-log-2026"
         ],
-        "rule": "Parrot, African Grey, budgie, and canary records require preparation before use. Pigeon remains unresolved pending direct pigeon-specific chickpea or raw-pulse evidence. Chicken evidence is limited to a controlled formulated-ration context. This evidence record does not approve a preparation method, runtime use, formula inclusion, portion, or complete ration.",
+        "rule": "Parrot, African Grey, budgie, and canary records require preparation before use. Pigeon remains unresolved after documented first-pass and targeted searches. Chicken evidence is limited to controlled formulated-ration context. This evidence record does not approve a preparation method, runtime use, formula inclusion, portion, or complete ration.",
         "severity": "warning"
       },
-      "lastReviewedAt": "2026-08-18"
+      "lastReviewedAt": "2026-08-21"
     },
     {
       "ingredientId": "wheat",
@@ -1012,8 +1015,17 @@
           ],
           "locator": "Pigeon Diet Guide ‘Treats’ and ‘Mixing Your Own Feed’ sections naming dried lentils",
           "evidenceScope": "species_specific",
-          "rationale": "Pigeon-specific owner guidance names dried lentils in feed/treat context. Its reference section is empty and it provides no raw-legume safety, portion, or nutrition rule, so this is limited context only and not a formula or runtime approval A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
+          "rationale": "Pigeon-specific owner guidance names dried lentils in feed/treat context. Its reference section is empty and it provides no raw-legume safety, portion, or nutrition rule, so this is limited context only and not a formula or runtime approval.",
           "reviewedAt": "2026-08-18",
+          "firstPassSearch": {
+            "queries": [
+              "pigeon raw dried lentil seeds exact feeding veterinary; pigeon lentils preparation"
+            ],
+            "sourceIds": [
+              "pigeon-guide-diet-2026"
+            ],
+            "result": "Pigeon guidance named dried lentils in feed context, but no controlled exact-form rule."
+          },
           "followUpSearch": {
             "queries": [
               "pigeon raw dried lentil seeds whole feeding; Taube rohe getrocknete Linsen"
@@ -1023,15 +1035,6 @@
               "panto-tauben-dried-peas-2026"
             ],
             "result": "German and racing-pigeon results name lentils in feed context but conflict on raw digestion and do not establish a controlled exact-form outcome; retain limited, not universal approval."
-          },
-          "firstPassSearch": {
-            "queries": [
-              "pigeon raw dried lentil seeds exact feeding veterinary; pigeon lentils preparation"
-            ],
-            "sourceIds": [
-              "pigeon-guide-diet-2026"
-            ],
-            "result": "Pigeon guidance named dried lentils in feed context, but no controlled exact-form rule."
           }
         },
         {
@@ -1042,17 +1045,8 @@
           ],
           "locator": "Petcraft opening pulse paragraph and list explicitly naming lentils among pulses that must be cooked",
           "evidenceScope": "group_specific",
-          "rationale": "Parrot-focused guidance explicitly names lentils among pulses that must be cooked. This establishes a preparation boundary only; it does not prescribe a method, portion, complete ration, or result for another species A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
+          "rationale": "Parrot-focused guidance explicitly names lentils among pulses that must be cooked. This establishes a preparation boundary only; it does not prescribe a method, portion, complete ration, or result for another species.",
           "reviewedAt": "2026-08-18",
-          "followUpSearch": {
-            "queries": [
-              "parrot raw dried lentils avian veterinarian; psittacine dry lentil seeds"
-            ],
-            "sourceIds": [
-              "petcraft-parrot-beans-2014"
-            ],
-            "result": "Parrot results repeatedly concern cooked or sprouted legumes; no direct exact raw-dried lentil outcome beyond a preparation boundary; retain requires_preparation."
-          },
           "firstPassSearch": {
             "queries": [
               "parrot raw dried lentil seeds exact feeding veterinary; parrot lentils preparation"
@@ -1061,6 +1055,15 @@
               "petcraft-parrot-beans-2014"
             ],
             "result": "Parrot sources discussed legumes but exact raw-dried lentils were not established."
+          },
+          "followUpSearch": {
+            "queries": [
+              "parrot raw dried lentils avian veterinarian; psittacine dry lentil seeds"
+            ],
+            "sourceIds": [
+              "petcraft-parrot-beans-2014"
+            ],
+            "result": "Parrot results repeatedly concern cooked or sprouted legumes; no direct exact raw-dried lentil outcome beyond a preparation boundary; retain requires_preparation."
           }
         },
         {
@@ -1071,17 +1074,8 @@
           ],
           "locator": "VCA African Grey suggested-food table, which separately lists lentils and ‘cooked beans (various types)’",
           "evidenceScope": "species_specific",
-          "rationale": "Grey-specific veterinary guidance lists lentils within a table that separately identifies cooked beans. The raw dried form therefore requires preparation before any Grey use; no portion, recipe, formula, or unrestricted approval is established A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
+          "rationale": "Grey-specific veterinary guidance lists lentils within a table that separately identifies cooked beans. The raw dried form therefore requires preparation before any Grey use; no portion, recipe, formula, or unrestricted approval is established.",
           "reviewedAt": "2026-08-18",
-          "followUpSearch": {
-            "queries": [
-              "African Grey raw dried lentil seeds veterinary; Psittacus erithacus dry lentils"
-            ],
-            "sourceIds": [
-              "vca-african-grey-feeding"
-            ],
-            "result": "African Grey guidance names lentils with cooked-bean context but does not approve the raw-dried form; retain requires_preparation."
-          },
           "firstPassSearch": {
             "queries": [
               "african_grey raw dried lentil seeds exact feeding veterinary; african_grey lentils preparation"
@@ -1090,6 +1084,15 @@
               "vca-african-grey-feeding"
             ],
             "result": "African Grey guidance placed lentils in prepared-legume context."
+          },
+          "followUpSearch": {
+            "queries": [
+              "African Grey raw dried lentil seeds veterinary; Psittacus erithacus dry lentils"
+            ],
+            "sourceIds": [
+              "vca-african-grey-feeding"
+            ],
+            "result": "African Grey guidance names lentils with cooked-bean context but does not approve the raw-dried form; retain requires_preparation."
           }
         },
         {
@@ -1100,8 +1103,17 @@
           ],
           "locator": "VCA Budgies suitable-food table listing ‘cooked beans (various)’ and its balanced-diet guidance",
           "evidenceScope": "species_specific",
-          "rationale": "Budgie-specific veterinary guidance identifies cooked beans, not raw dried lentils. This supports a preparation requirement only; it does not establish a method, portion, formula use, or complete ration A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
+          "rationale": "Budgie-specific veterinary guidance identifies cooked beans, not raw dried lentils. This supports a preparation requirement only; it does not establish a method, portion, formula use, or complete ration.",
           "reviewedAt": "2026-08-18",
+          "firstPassSearch": {
+            "queries": [
+              "budgie raw dried lentil seeds exact feeding veterinary; budgie lentils preparation"
+            ],
+            "sourceIds": [
+              "vca-budgie-feeding"
+            ],
+            "result": "Budgie guidance did not establish raw-dried lentils."
+          },
           "followUpSearch": {
             "queries": [
               "budgie raw dried lentils whole; Melopsittacus undulatus dry lentil seeds"
@@ -1111,15 +1123,6 @@
               "birds-online-mungbeans-2026"
             ],
             "result": "Budgie sources support cooked/processed legumes or distinguish hard dry pulses; no exact raw-dried lentil approval; retain requires_preparation."
-          },
-          "firstPassSearch": {
-            "queries": [
-              "budgie raw dried lentil seeds exact feeding veterinary; budgie lentils preparation"
-            ],
-            "sourceIds": [
-              "vca-budgie-feeding"
-            ],
-            "result": "Budgie guidance did not establish raw-dried lentils."
           }
         },
         {
@@ -1130,8 +1133,17 @@
           ],
           "locator": "VCA Canaries ‘Fruits, vegetables, and legumes suitable for canaries include’ table, where lentils are under ‘cooked beans’",
           "evidenceScope": "species_specific",
-          "rationale": "Canary-specific veterinary guidance explicitly lists lentils under cooked beans, not as raw dried food. This supports a preparation requirement only and does not establish a portion, formula use, or complete ration A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
+          "rationale": "Canary-specific veterinary guidance explicitly lists lentils under cooked beans, not as raw dried food. This supports a preparation requirement only and does not establish a portion, formula use, or complete ration.",
           "reviewedAt": "2026-08-18",
+          "firstPassSearch": {
+            "queries": [
+              "canary raw dried lentil seeds exact feeding veterinary; canary lentils preparation"
+            ],
+            "sourceIds": [
+              "vca-canary-feeding"
+            ],
+            "result": "Canary guidance placed lentils under cooked-bean context."
+          },
           "followUpSearch": {
             "queries": [
               "canary raw dried lentil seeds feeding; finch dry lentils veterinary"
@@ -1141,15 +1153,6 @@
               "finchinfo-nutrition"
             ],
             "result": "Canary guidance places lentils in cooked-bean or general diet contexts; exact raw-dried form remains unsupported; retain requires_preparation."
-          },
-          "firstPassSearch": {
-            "queries": [
-              "canary raw dried lentil seeds exact feeding veterinary; canary lentils preparation"
-            ],
-            "sourceIds": [
-              "vca-canary-feeding"
-            ],
-            "result": "Canary guidance placed lentils under cooked-bean context."
           }
         },
         {
@@ -1160,8 +1163,17 @@
           ],
           "locator": "Ciurescu et al. abstract: Cobb 500 broilers, raw lentil seed at 200 or 400 g/kg in balanced experimental diets",
           "evidenceScope": "species_specific",
-          "rationale": "Direct broiler evidence concerns raw lentil seed in specified balanced experimental rations. It supports only the studied chicken/ration context and does not establish unsupervised household feeding, a universal inclusion rate, or another species outcome A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
+          "rationale": "Direct broiler evidence concerns raw lentil seed in specified balanced experimental rations. It supports only the studied chicken/ration context and does not establish unsupervised household feeding, a universal inclusion rate, or another species outcome.",
           "reviewedAt": "2026-08-18",
+          "firstPassSearch": {
+            "queries": [
+              "chicken raw dried lentil seeds exact feeding veterinary; chicken lentils preparation"
+            ],
+            "sourceIds": [
+              "ciurescu-2017-raw-lentil-broilers"
+            ],
+            "result": "Poultry literature supplied controlled-feed context, not unrestricted whole seeds."
+          },
           "followUpSearch": {
             "queries": [
               "chicken raw dry lentils poultry study; uncooked lentils laying hens"
@@ -1171,15 +1183,6 @@
               "silverhomestead-dry-lentils-2026"
             ],
             "result": "Poultry results include diet studies and conflicting owner guidance; this supports only limited controlled-feed context, not unrestricted treat use; retain limited."
-          },
-          "firstPassSearch": {
-            "queries": [
-              "chicken raw dried lentil seeds exact feeding veterinary; chicken lentils preparation"
-            ],
-            "sourceIds": [
-              "ciurescu-2017-raw-lentil-broilers"
-            ],
-            "result": "Poultry literature supplied controlled-feed context, not unrestricted whole seeds."
           }
         }
       ],
@@ -1189,12 +1192,13 @@
           "vca-african-grey-feeding",
           "vca-budgie-feeding",
           "vca-canary-feeding",
-          "ciurescu-2017-raw-lentil-broilers"
+          "ciurescu-2017-raw-lentil-broilers",
+          "issue-162-research-log-2026"
         ],
-        "rule": "A mechanically split raw dried lentil inherits this raw dried base record. Keep materially processed lentils—dehulled, soaked, cooked, sprouted, fermented, milled into flour, or manufactured products—distinct. Companion-bird records require preparation; chicken evidence is limited to the cited balanced broiler-ration context; pigeon evidence is limited uncited owner guidance. This record does not approve runtime use, a formula, a portion, or a complete ration.",
+        "rule": "A mechanically split raw dried lentil inherits this raw dried base record. Keep materially processed lentils—dehulled, soaked, cooked, sprouted, fermented, milled into flour, or manufactured products—distinct. Companion-bird records require preparation; chicken evidence is limited to cited balanced broiler-ration context; pigeon evidence remains limited to named dried-lentil owner guidance. This evidence-only record does not approve runtime use, a formula, a portion, or a complete ration.",
         "severity": "warning"
       },
-      "lastReviewedAt": "2026-08-18"
+      "lastReviewedAt": "2026-08-21"
     },
     {
       "ingredientId": "split_peas",
@@ -1294,7 +1298,7 @@
       "form": "raw dried mung beans",
       "nutrition": {
         "sourceIds": [
-          "ftb-legume-safety-2018"
+          "creswell-1981-raw-mung-broilers"
         ],
         "basis": "not_applicable",
         "notes": "Evidence-only review of the raw dried mung-bean form. It does not add a nutrient value, a dry-mix instruction, or a complete-ration claim."
@@ -1308,8 +1312,17 @@
           ],
           "locator": "Pigeon Diet Guide ‘Treats’ section naming mung beans",
           "evidenceScope": "species_specific",
-          "rationale": "Pigeon-specific owner guidance names mung beans as treats, but does not specify form, preparation, portion, or a citation trail. This is limited ingredient context only and not an approval of raw dried use, a formula, or a runtime outcome A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
+          "rationale": "Pigeon-specific owner guidance names mung beans as treats, but does not specify form, preparation, portion, or a citation trail. This is limited ingredient context only and not an approval of raw dried use, a formula, or a runtime outcome.",
           "reviewedAt": "2026-08-18",
+          "firstPassSearch": {
+            "queries": [
+              "pigeon raw dried mung beans exact feeding veterinary; pigeon mung_beans preparation"
+            ],
+            "sourceIds": [
+              "historical-raw-legume-2025"
+            ],
+            "result": "Pigeon historical/owner sources named dry mung beans, without controlled exact-form proof."
+          },
           "followUpSearch": {
             "queries": [
               "pigeon raw dried mung beans whole; Taube trockene Mungbohnen"
@@ -1319,15 +1332,6 @@
               "merck-columbiformes-2025"
             ],
             "result": "Pigeon results include owner and historical raw-legume context but no direct controlled source; retain limited historical context only."
-          },
-          "firstPassSearch": {
-            "queries": [
-              "pigeon raw dried mung beans exact feeding veterinary; pigeon mung_beans preparation"
-            ],
-            "sourceIds": [
-              "historical-raw-legume-2025"
-            ],
-            "result": "Pigeon historical/owner sources named dry mung beans, without controlled exact-form proof."
           }
         },
         {
@@ -1338,8 +1342,17 @@
           ],
           "locator": "For the Birds ‘There are a few varieties of beans that are okay to sprout’ paragraph naming mung bean",
           "evidenceScope": "group_specific",
-          "rationale": "Parrot-rescue guidance identifies mung bean as sproutable, which establishes a preparation boundary rather than raw dried use. It does not prescribe a sprouting protocol, portion, complete ration, runtime approval, or another species outcome A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
+          "rationale": "Parrot-rescue guidance identifies mung bean as sproutable, which establishes a preparation boundary rather than raw dried use. It does not prescribe a sprouting protocol, portion, complete ration, runtime approval, or another species outcome.",
           "reviewedAt": "2026-08-18",
+          "firstPassSearch": {
+            "queries": [
+              "parrot raw dried mung beans exact feeding veterinary; parrot mung_beans preparation"
+            ],
+            "sourceIds": [
+              "ftb-legume-safety-2018"
+            ],
+            "result": "Parrot sources conflicted between raw mung beans and sprouting preparation."
+          },
           "followUpSearch": {
             "queries": [
               "parrot raw dried mung beans avian veterinarian; sprouted versus dry mung beans"
@@ -1349,15 +1362,6 @@
               "birds-online-mungbeans-2026"
             ],
             "result": "Parrot sources conflict between raw mung beans and sprouting guidance; exact dry form is not established as safe; retain requires_preparation."
-          },
-          "firstPassSearch": {
-            "queries": [
-              "parrot raw dried mung beans exact feeding veterinary; parrot mung_beans preparation"
-            ],
-            "sourceIds": [
-              "ftb-legume-safety-2018"
-            ],
-            "result": "Parrot sources conflicted between raw mung beans and sprouting preparation."
           }
         },
         {
@@ -1368,8 +1372,17 @@
           ],
           "locator": "VCA African Grey suggested-food table’s ‘cooked beans (various types)’ entry and balanced-diet guidance",
           "evidenceScope": "species_specific",
-          "rationale": "Grey-specific veterinary guidance identifies cooked beans rather than raw dried mung beans. This supports a preparation requirement only; no raw form, portion, formula use, or complete ration is established A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
+          "rationale": "Grey-specific veterinary guidance identifies cooked beans rather than raw dried mung beans. This supports a preparation requirement only; no raw form, portion, formula use, or complete ration is established.",
           "reviewedAt": "2026-08-18",
+          "firstPassSearch": {
+            "queries": [
+              "african_grey raw dried mung beans exact feeding veterinary; african_grey mung_beans preparation"
+            ],
+            "sourceIds": [
+              "vca-african-grey-feeding"
+            ],
+            "result": "No African Grey exact dry-mung source was found."
+          },
           "followUpSearch": {
             "queries": [
               "African Grey raw dried mung beans; Psittacus erithacus mung bean feeding"
@@ -1379,27 +1392,28 @@
               "birds-online-mungbeans-2026"
             ],
             "result": "No direct African Grey exact dry-mung outcome; generic legume guidance is not transferred; retain requires_preparation."
-          },
-          "firstPassSearch": {
-            "queries": [
-              "african_grey raw dried mung beans exact feeding veterinary; african_grey mung_beans preparation"
-            ],
-            "sourceIds": [
-              "vca-african-grey-feeding"
-            ],
-            "result": "No African Grey exact dry-mung source was found."
           }
         },
         {
           "bird": "budgie",
           "outcome": "requires_preparation",
           "sourceIds": [
+            "exoticdirect-budgie-chickpeas-2019",
             "vca-budgie-feeding"
           ],
-          "locator": "VCA Budgies suitable-food table’s ‘cooked beans (various)’ entry and balanced-diet guidance",
+          "locator": "ExoticDirect What can budgies eat?: legumes section explicitly naming mung beans among foods that must not ever be fed raw",
           "evidenceScope": "species_specific",
-          "rationale": "Budgie-specific veterinary guidance identifies cooked beans rather than raw dried mung beans. This supports a preparation requirement only; no raw form, portion, formula use, or complete ration is established A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
-          "reviewedAt": "2026-08-18",
+          "rationale": "Budgie-specific care guidance explicitly lists mung beans among legumes that must not ever be fed raw and recommends sprouted legumes. This establishes a preparation boundary only; it does not prescribe a process, portion, formula use, or complete ration.",
+          "reviewedAt": "2026-08-21",
+          "firstPassSearch": {
+            "queries": [
+              "budgie raw dried mung beans exact feeding veterinary; budgie mung_beans preparation"
+            ],
+            "sourceIds": [
+              "vca-budgie-feeding"
+            ],
+            "result": "Budgie sources distinguished hard dry beans from prepared forms."
+          },
           "followUpSearch": {
             "queries": [
               "budgie raw dried mung beans; dry mung beans hard small birds"
@@ -1409,15 +1423,6 @@
               "birds-online-mungbeans-2026"
             ],
             "result": "German small-bird guidance distinguishes hard dry beans from prepared forms; retain requires_preparation."
-          },
-          "firstPassSearch": {
-            "queries": [
-              "budgie raw dried mung beans exact feeding veterinary; budgie mung_beans preparation"
-            ],
-            "sourceIds": [
-              "vca-budgie-feeding"
-            ],
-            "result": "Budgie sources distinguished hard dry beans from prepared forms."
           }
         },
         {
@@ -1428,8 +1433,17 @@
           ],
           "locator": "VCA Canaries suitable-food table listing mung under ‘cooked beans’",
           "evidenceScope": "species_specific",
-          "rationale": "Canary-specific veterinary guidance explicitly lists mung under cooked beans, not raw dried food. This supports a preparation requirement only and does not establish a portion, formula use, or complete ration A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
+          "rationale": "Canary-specific veterinary guidance explicitly lists mung under cooked beans, not raw dried food. This supports a preparation requirement only and does not establish a portion, formula use, or complete ration.",
           "reviewedAt": "2026-08-18",
+          "firstPassSearch": {
+            "queries": [
+              "canary raw dried mung beans exact feeding veterinary; canary mung_beans preparation"
+            ],
+            "sourceIds": [
+              "vca-canary-feeding"
+            ],
+            "result": "No canary exact dry-mung source was found."
+          },
           "followUpSearch": {
             "queries": [
               "canary raw dried mung beans; finch mung bean feeding"
@@ -1439,27 +1453,28 @@
               "birds-online-mungbeans-2026"
             ],
             "result": "No direct canary exact dry-mung outcome; retain unresolved."
-          },
-          "firstPassSearch": {
-            "queries": [
-              "canary raw dried mung beans exact feeding veterinary; canary mung_beans preparation"
-            ],
-            "sourceIds": [
-              "vca-canary-feeding"
-            ],
-            "result": "No canary exact dry-mung source was found."
           }
         },
         {
           "bird": "chicken",
-          "outcome": "unresolved",
+          "outcome": "limited",
           "sourceIds": [
+            "creswell-1981-raw-mung-broilers",
             "merck-poultry-2024"
           ],
-          "locator": "Merck Nutritional Requirements of Poultry nutrient-balance and complete-ration sections",
+          "locator": "Creswell: young broiler trials of raw or boiled mung beans replacing soybean meal at graded levels up to 20% or 40% in corn-based diets",
           "evidenceScope": "species_specific",
-          "rationale": "A targeted search identified mung-bean broiler studies but accessible full text could not be verified; Merck establishes only the complete-ration boundary and does not identify raw dried mung bean. The chicken raw-mung record therefore remains unresolved rather than relying on snippets or cross-legume inference A documented second targeted search was completed; its query, sources, and result are recorded in followUpSearch.",
-          "reviewedAt": "2026-08-18",
+          "rationale": "The direct broiler trials support raw mung beans only in their cited formulated corn-based diets with added oil, methionine, and lysine. They do not establish unrestricted feeding, a household amount, a complete ration, or another species outcome.",
+          "reviewedAt": "2026-08-21",
+          "firstPassSearch": {
+            "queries": [
+              "chicken raw dried mung beans exact feeding veterinary; chicken mung_beans preparation"
+            ],
+            "sourceIds": [
+              "merck-poultry-2024"
+            ],
+            "result": "Poultry studies concerned formulated diets or sprouts."
+          },
           "followUpSearch": {
             "queries": [
               "chicken raw dried mung beans poultry study; Vigna radiata dry feed"
@@ -1469,15 +1484,6 @@
               "journals-ekb-mungbean-broilers-2021"
             ],
             "result": "Poultry studies concern formulated diets or supplemented mung beans, not free-choice whole dry beans; retain unresolved."
-          },
-          "firstPassSearch": {
-            "queries": [
-              "chicken raw dried mung beans exact feeding veterinary; chicken mung_beans preparation"
-            ],
-            "sourceIds": [
-              "merck-poultry-2024"
-            ],
-            "result": "Poultry studies concerned formulated diets or sprouts."
           }
         }
       ],
@@ -1487,12 +1493,15 @@
           "vca-african-grey-feeding",
           "vca-budgie-feeding",
           "vca-canary-feeding",
-          "merck-poultry-2024"
+          "merck-poultry-2024",
+          "exoticdirect-budgie-chickpeas-2019",
+          "creswell-1981-raw-mung-broilers",
+          "issue-162-research-log-2026"
         ],
-        "rule": "Keep raw dried mung beans distinct from sprouted mung beans, cooked mung beans, mung flour, and residues. Companion-bird records require preparation; chicken remains unresolved pending accessible direct raw-mung chicken evidence; pigeon evidence is limited uncited owner guidance. This record does not approve runtime use, a formula, a portion, or a complete ration.",
+        "rule": "Keep raw dried mung beans distinct from sprouted mung beans, cooked mung beans, mung flour, and residues. Companion-bird records require preparation; chicken evidence is limited to cited formulated broiler-ration context; pigeon evidence is limited to named mung-bean owner guidance. This record does not approve runtime use, a formula, a portion, or a complete ration.",
         "severity": "warning"
       },
-      "lastReviewedAt": "2026-08-18"
+      "lastReviewedAt": "2026-08-21"
     },
     {
       "ingredientId": "garden_peas",
@@ -1500,7 +1509,7 @@
       "form": "raw mature dried garden peas",
       "nutrition": {
         "sourceIds": [
-          "david-poultry-legumes-2024"
+          "hejdysz-2017-raw-pea-broilers"
         ],
         "basis": "not_applicable",
         "notes": "Evidence-only review of raw mature dried garden peas. It does not add a nutrient value, a dry-mix instruction, or a complete-ration claim."
@@ -1543,12 +1552,13 @@
           "bird": "budgie",
           "outcome": "requires_preparation",
           "sourceIds": [
+            "exoticdirect-budgie-chickpeas-2019",
             "vca-budgie-feeding"
           ],
-          "locator": "VCA Budgies suitable-food table naming peas and ‘cooked beans (various)’",
+          "locator": "ExoticDirect What can budgies eat?: legumes section explicitly naming green peas among foods that must not ever be fed raw",
           "evidenceScope": "species_specific",
-          "rationale": "Budgie-specific veterinary guidance names peas and cooked beans, not raw mature dried garden peas. This supports a preparation requirement only; no raw form, portion, formula use, or complete ration is established.",
-          "reviewedAt": "2026-08-18"
+          "rationale": "Budgie-specific care guidance explicitly lists green peas among legumes that must not ever be fed raw and recommends sprouted legumes. This establishes a preparation boundary only; it does not prescribe a process, portion, formula use, or complete ration.",
+          "reviewedAt": "2026-08-21"
         },
         {
           "bird": "canary",
@@ -1565,12 +1575,13 @@
           "bird": "chicken",
           "outcome": "limited",
           "sourceIds": [
+            "hejdysz-2017-raw-pea-broilers",
             "david-poultry-legumes-2024"
           ],
-          "locator": "David et al. abstract, grain-legume classification, and field-pea poultry feeding sections",
+          "locator": "Hejdysz et al.: Ross 308 broiler comparison of raw ground pea meal and extruded pea meal at 100–500 g/kg diet",
           "evidenceScope": "species_specific",
-          "rationale": "The poultry review addresses dry field peas and feed formulation with antinutritional-factor boundaries. This is limited chicken feed-context evidence only; it does not establish household feeding, a complete ration, or another species outcome.",
-          "reviewedAt": "2026-08-18"
+          "rationale": "The direct broiler study supports raw pea meal only in cited formulated diets and identifies better performance and digestibility after extrusion. It does not establish unrestricted feeding, a household amount, a complete ration, or another species outcome.",
+          "reviewedAt": "2026-08-21"
         }
       ],
       "processing": {
@@ -1579,12 +1590,15 @@
           "vca-african-grey-feeding",
           "vca-budgie-feeding",
           "vca-canary-feeding",
-          "david-poultry-legumes-2024"
+          "david-poultry-legumes-2024",
+          "exoticdirect-budgie-chickpeas-2019",
+          "hejdysz-2017-raw-pea-broilers",
+          "issue-162-research-log-2026"
         ],
-        "rule": "Keep raw mature dried garden peas distinct from fresh green peas, split peas, cooked peas, and sprouts. Companion-bird records require preparation; chicken evidence is limited to dry field-pea feed formulation; pigeon evidence is limited uncited owner guidance. This record does not approve runtime use, a formula, a portion, or a complete ration.",
+        "rule": "Keep raw mature dried garden peas distinct from fresh green peas, split peas, cooked peas, sprouts, meal, and extruded pea. Companion-bird records require preparation; chicken evidence is limited to cited raw-pea broiler-ration context; pigeon evidence is limited to named dried-pea owner guidance. This record does not approve runtime use, a formula, a portion, or a complete ration.",
         "severity": "warning"
       },
-      "lastReviewedAt": "2026-08-18"
+      "lastReviewedAt": "2026-08-21"
     },
     {
       "ingredientId": "kidney_beans",
