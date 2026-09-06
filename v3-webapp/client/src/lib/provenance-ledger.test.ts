@@ -70,6 +70,41 @@ describe("canonical provenance ledger", () => {
     expect(apple?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
   });
 
+  it("records fresh raw blueberry with six independent bird outcomes and a bounded corroborative pigeon source", () => {
+    const ledger = readJson("food-reviews.json") as {
+      requiredBirdOrder: string[];
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{ bird: string; outcome: string; sourceIds: string[] }>;
+        processing: { rule: string; severity: string };
+      }>;
+    };
+    const blueberry = ledger.ingredientReviews.find(
+      (review) => review.ingredientId === "blueberry" && review.form === "fresh raw plain berry, washed and unseasoned",
+    );
+
+    expect(blueberry?.speciesEvidence.map((entry) => entry.bird)).toEqual(ledger.requiredBirdOrder);
+    expect(blueberry?.speciesEvidence.map((entry) => entry.outcome)).toEqual([
+      "limited",
+      "limited",
+      "limited",
+      "limited",
+      "limited",
+      "limited",
+    ]);
+    expect(blueberry?.speciesEvidence[0].sourceIds).toEqual(
+      expect.arrayContaining(["vca-pigeon-dove-feeding", "pigeoncaretips-blueberries-2026"]),
+    );
+    expect(blueberry?.speciesEvidence[0].sourceIds).not.toEqual(
+      expect.arrayContaining(["brieftaubenshop-pigeon-diet-2026", "jimenez-albarral-blueberry-frugivory-2025"]),
+    );
+    expect(blueberry?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
+    expect(blueberry?.processing.severity).toBe("warning");
+    expect(blueberry?.processing.rule).toContain("uncited owner guidance");
+    expect(blueberry?.processing.rule).toContain("not a dry-mix");
+  });
+
   it("records raw dried chickpeas with explicit six-bird evidence and a historical raw-legume coverage link", () => {
     const foodLedger = readJson("food-reviews.json") as {
       ingredientReviews: Array<{
