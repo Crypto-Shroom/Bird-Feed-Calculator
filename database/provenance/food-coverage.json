@@ -41,6 +41,14 @@
           "historicalForm": "form not specified in the protected historical claim",
           "linkedFoodReviewKeys": [
             "lentils::raw dried lentil seeds"
+          ],
+          "selectedResearchForm": "raw dried lentil seeds",
+          "excludedForms": [
+            "raw/cooked/sprouted alternatives not matching the selected form",
+            "oils",
+            "extracts",
+            "blends",
+            "concentrated supplements"
           ]
         },
         {
@@ -48,7 +56,16 @@
           "displayName": "Peas",
           "historicalForm": "form not specified in the protected historical claim",
           "linkedFoodReviewKeys": [
-            "garden_peas::raw mature dried garden peas"
+            "garden_peas::raw mature dried garden peas",
+            "peas::raw dried whole peas"
+          ],
+          "selectedResearchForm": "raw dried whole peas",
+          "excludedForms": [
+            "raw/cooked/sprouted alternatives not matching the selected form",
+            "oils",
+            "extracts",
+            "blends",
+            "concentrated supplements"
           ]
         },
         {
@@ -57,6 +74,14 @@
           "historicalForm": "form not specified in the protected historical claim",
           "linkedFoodReviewKeys": [
             "mung_beans::raw dried mung beans"
+          ],
+          "selectedResearchForm": "raw dried mung beans",
+          "excludedForms": [
+            "raw/cooked/sprouted alternatives not matching the selected form",
+            "oils",
+            "extracts",
+            "blends",
+            "concentrated supplements"
           ]
         },
         {
@@ -65,6 +90,14 @@
           "historicalForm": "form not specified in the protected historical claim",
           "linkedFoodReviewKeys": [
             "chickpeas::raw dried seeds"
+          ],
+          "selectedResearchForm": "raw dried seeds",
+          "excludedForms": [
+            "raw/cooked/sprouted alternatives not matching the selected form",
+            "oils",
+            "extracts",
+            "blends",
+            "concentrated supplements"
           ]
         },
         {
@@ -112,7 +145,16 @@
           "displayName": "Thyme",
           "historicalForm": "form not specified in the protected historical claim",
           "linkedFoodReviewKeys": [
-            "thyme::dried culinary thyme leaf, plain and unsalted"
+            "thyme::dried culinary thyme leaf, plain and unsalted",
+            "thyme::fresh thyme leaves, washed and chopped"
+          ],
+          "selectedResearchForm": "fresh thyme leaves, washed and chopped",
+          "excludedForms": [
+            "raw/cooked/sprouted alternatives not matching the selected form",
+            "oils",
+            "extracts",
+            "blends",
+            "concentrated supplements"
           ]
         },
         {
@@ -120,7 +162,16 @@
           "displayName": "Parsley",
           "historicalForm": "form not specified in the protected historical claim",
           "linkedFoodReviewKeys": [
-            "parsley::dried culinary parsley leaf, plain and unsalted"
+            "parsley::dried culinary parsley leaf, plain and unsalted",
+            "parsley::fresh parsley leaves, washed and chopped"
+          ],
+          "selectedResearchForm": "fresh parsley leaves, washed and chopped",
+          "excludedForms": [
+            "raw/cooked/sprouted alternatives not matching the selected form",
+            "oils",
+            "extracts",
+            "blends",
+            "concentrated supplements"
           ]
         }
       ]
