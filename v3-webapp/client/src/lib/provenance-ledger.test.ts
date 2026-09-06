@@ -881,6 +881,50 @@ describe("canonical provenance ledger", () => {
     expect(pigeonGrit?.proposedCopyBoundary).toContain("does not authorize a change to the existing voluntary-use grit guidance");
   });
 
+  it("records whole raw mouse prey as an exact-form six-bird owner-policy boundary without inferring toxicity or denying chicken hunting", () => {
+    const ledger = readJson("food-reviews.json") as {
+      requiredBirdOrder: string[];
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{
+          bird: string;
+          outcome: string;
+          evidenceScope: string;
+          sourceIds: string[];
+          rationale: string;
+        }>;
+        processing: { rule: string; severity: string };
+        ownerPolicy?: { policySourceId: string; policyType: string; authority: string; rejectionNote: string };
+      }>;
+    };
+    const wholeMouse = ledger.ingredientReviews.find(
+      (review) => review.ingredientId === "whole_mouse" && review.form.startsWith("whole raw mouse"),
+    );
+
+    expect(wholeMouse?.speciesEvidence.map((entry) => entry.bird)).toEqual(ledger.requiredBirdOrder);
+    expect(wholeMouse?.speciesEvidence.map((entry) => entry.outcome)).toEqual([
+      "avoid",
+      "avoid",
+      "avoid",
+      "avoid",
+      "avoid",
+      "avoid",
+    ]);
+    expect(wholeMouse?.speciesEvidence.every((entry) => entry.evidenceScope === "owner_approved_policy")).toBe(true);
+    expect(wholeMouse?.speciesEvidence.every((entry) => entry.sourceIds.includes("issue-68-owner-whole-mouse-precaution-2026-08-21"))).toBe(true);
+    expect(wholeMouse?.ownerPolicy).toMatchObject({
+      policySourceId: "issue-68-owner-whole-mouse-precaution-2026-08-21",
+      policyType: "precautionary_avoid",
+      authority: "product_owner",
+    });
+    expect(wholeMouse?.ownerPolicy?.rejectionNote).toContain("not a claim of directly demonstrated toxicity");
+    expect(wholeMouse?.speciesEvidence.find((entry) => entry.bird === "chicken")?.rationale).toContain("does not claim chicken toxicity or deny occasional mouse hunting");
+    expect(wholeMouse?.processing.severity).toBe("warning");
+    expect(wholeMouse?.processing.rule).toContain("live hunting");
+    expect(wholeMouse?.processing.rule).toContain("commercial processed animal-protein products");
+  });
+
   it("keeps protected and runtime profile configuration claims paired without deciding which range is scientifically correct", () => {
     const ledger = readJson("profile-claims.json") as {
       profileClaims: Array<{
