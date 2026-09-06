@@ -699,6 +699,43 @@ describe("canonical provenance ledger", () => {
     expect(forms.every((review) => review.speciesEvidence.every((entry) => entry.followUpSearch.queries.length >= 2 && entry.followUpSearch.sourceIds.length > 0 && entry.followUpSearch.result.length > 0))).toBe(true);
   });
 
+  it("keeps fresh raspberry evidence six-bird, form-bound, and honest about pigeon uncertainty", () => {
+    const ledger = readJson("food-reviews.json") as {
+      requiredBirdOrder: string[];
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{
+          bird: string;
+          outcome: string;
+          sourceIds: string[];
+          followUpSearch: { queries: string[]; sourceIds: string[]; result: string };
+        }>;
+        processing: { severity: string; rule: string };
+      }>;
+    };
+    const raspberry = ledger.ingredientReviews.find((review) => review.ingredientId === "raspberry");
+
+    expect(raspberry?.form).toBe("fresh, plain, ripe raspberry flesh, washed, unflavoured and unsweetened");
+    expect(raspberry?.speciesEvidence.map((entry) => entry.bird)).toEqual(ledger.requiredBirdOrder);
+    expect(raspberry?.speciesEvidence.map((entry) => entry.outcome)).toEqual([
+      "unresolved",
+      "limited",
+      "limited",
+      "limited",
+      "limited",
+      "limited",
+    ]);
+    expect(raspberry?.speciesEvidence.find((entry) => entry.bird === "pigeon")?.sourceIds).toContain("issue-173-raspberry-research-log-2026");
+    expect(raspberry?.speciesEvidence.find((entry) => entry.bird === "budgie")?.sourceIds).toContain("vca-budgie-feeding");
+    expect(raspberry?.speciesEvidence.find((entry) => entry.bird === "chicken")?.sourceIds).toContain("vetverified-chicken-fruit-2026");
+    expect(raspberry?.speciesEvidence.every((entry) => entry.followUpSearch.queries.length >= 2)).toBe(true);
+    expect(raspberry?.speciesEvidence.every((entry) => entry.followUpSearch.sourceIds.length > 0)).toBe(true);
+    expect(raspberry?.processing.severity).toBe("warning");
+    expect(raspberry?.processing.rule).toContain("freeze-dried");
+    expect(raspberry?.processing.rule).toContain("mouldy");
+  });
+
   it("keeps light, fresh-produce, and pigeon breeding-grit care claims source-backed and non-runtime", () => {
     const ledger = readJson("care-claims.json") as {
       careClaims: Array<{
