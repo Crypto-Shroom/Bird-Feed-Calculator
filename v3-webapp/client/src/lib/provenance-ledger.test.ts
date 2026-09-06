@@ -399,6 +399,75 @@ describe("canonical provenance ledger", () => {
     }
   });
 
+  it("records Issue #168 white-bean and culinary-form reviews with exact six-bird outcomes and documented second searches", () => {
+    const ledger = readJson("food-reviews.json") as {
+      requiredBirdOrder: string[];
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{
+          bird: string;
+          outcome: string;
+          evidenceScope: string;
+          sourceIds: string[];
+          followUpSearch?: { queries: string[]; sourceIds: string[]; result: string };
+        }>;
+      }>;
+    };
+    const expected = [
+      { ingredientId: "great_northern_white_beans", form: "raw dried Great Northern white beans, plain and unseasoned", outcomes: ["requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation"] },
+      { ingredientId: "cannellini_white_beans", form: "raw dried cannellini white beans, plain and unseasoned", outcomes: ["requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation", "requires_preparation"] },
+      { ingredientId: "chamomile", form: "ordinary culinary chamomile flower, fresh or dried, plain", outcomes: ["limited", "limited", "limited", "limited", "limited", "limited"] },
+      { ingredientId: "lavender", form: "ordinary culinary lavender flower, fresh or dried, plain", outcomes: ["limited", "unresolved", "unresolved", "unresolved", "unresolved", "unresolved"] },
+      { ingredientId: "fennel", form: "ordinary culinary fennel seed, fresh or dried, plain", outcomes: ["limited", "limited", "limited", "limited", "limited", "limited"] },
+      { ingredientId: "ginger", form: "ordinary culinary ginger root, fresh or dried, plain", outcomes: ["limited", "limited", "limited", "limited", "limited", "limited"] },
+    ];
+
+    for (const expectedReview of expected) {
+      const review = ledger.ingredientReviews.find(
+        (candidate) => candidate.ingredientId === expectedReview.ingredientId && candidate.form === expectedReview.form,
+      );
+      expect(review?.speciesEvidence.map((entry) => entry.bird)).toEqual(ledger.requiredBirdOrder);
+      expect(review?.speciesEvidence.map((entry) => entry.outcome)).toEqual(expectedReview.outcomes);
+      expect(review?.speciesEvidence.every((entry) => entry.sourceIds.length > 0)).toBe(true);
+
+      for (const evidence of review?.speciesEvidence.filter((entry) => entry.outcome === "unresolved") ?? []) {
+        expect(evidence.followUpSearch?.queries.length).toBeGreaterThanOrEqual(2);
+        expect(evidence.followUpSearch?.sourceIds).toContain("issue-168-research-log-2026");
+        expect(evidence.followUpSearch?.result.length).toBeGreaterThan(0);
+      }
+    }
+
+    const greatNorthern = ledger.ingredientReviews.find(
+      (candidate) => candidate.ingredientId === "great_northern_white_beans",
+    );
+    expect(greatNorthern?.speciesEvidence.every((entry) => entry.evidenceScope === "related_species")).toBe(true);
+    expect(greatNorthern?.speciesEvidence.every((entry) => entry.sourceIds.includes("wsu-extension-common-bean-varieties-2026"))).toBe(true);
+
+    const chamomile = ledger.ingredientReviews.find(
+      (candidate) => candidate.ingredientId === "chamomile" && candidate.form === "ordinary culinary chamomile flower, fresh or dried, plain",
+    );
+    expect(chamomile?.speciesEvidence[0].sourceIds).toContain("el-ghamry-karosah-2020-pigeon-chamomile-flowers");
+    expect(chamomile?.speciesEvidence[5].sourceIds).toContain("al-kaisse-khalel-2011-broiler-chamomile-flowers");
+    expect(chamomile?.speciesEvidence.slice(1, 5).every((entry) => entry.evidenceScope === "related_species")).toBe(true);
+
+    const fennel = ledger.ingredientReviews.find(
+      (candidate) => candidate.ingredientId === "fennel" && candidate.form === "ordinary culinary fennel seed, fresh or dried, plain",
+    );
+    expect(fennel?.speciesEvidence[5].sourceIds).toContain("al-sagan-2020-broiler-fennel-seed-powder");
+
+    const lavender = ledger.ingredientReviews.find(
+      (candidate) => candidate.ingredientId === "lavender" && candidate.form === "ordinary culinary lavender flower, fresh or dried, plain",
+    );
+    expect(lavender?.speciesEvidence[0]).toMatchObject({
+      bird: "pigeon",
+      outcome: "limited",
+      evidenceScope: "related_species",
+    });
+    expect(lavender?.speciesEvidence[0].sourceIds).toContain("koernerbude-lavender-flowers-2026");
+    expect(lavender?.speciesEvidence.slice(1).every((entry) => entry.outcome === "unresolved")).toBe(true);
+  });
+
   it("documents two targeted queries for every Issue #160 unresolved form outcome", () => {
     const ledger = readJson("food-reviews.json") as {
       ingredientReviews: Array<{

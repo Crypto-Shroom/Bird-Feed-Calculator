@@ -1565,8 +1565,8 @@
         "canary",
         "chicken"
       ],
-      "permittedUse": "Records the existing all-supported-birds eligibility policy for ordinary culinary thyme and separates ordinary herb use from essential oils and other concentrated forms.",
-      "limitations": "This is an active project configuration, not an external feeding study or a dose, formula, complete-ration, or product approval. It cannot be represented as direct species-specific scientific evidence.",
+      "permittedUse": "Records the existing all-supported-birds eligibility configuration for ordinary culinary chamomile, fennel, ginger, and thyme, and separates ordinary herb use from essential oils and other concentrated forms.",
+      "limitations": "This is active project configuration, not an external feeding study, a dose, a formula, a complete-ration statement, or a product approval. It may explain an explicitly labelled related-species ledger boundary but cannot be represented as direct species-specific scientific evidence.",
       "accessedAt": "2026-08-21"
     },
     {
@@ -2123,6 +2123,114 @@
       ],
       "permittedUse": "Direct Ross-308 broiler evidence for unpolished brown rice in a corn-replacement, soybean-meal, vitamin-and-mineral formulated diet under thermoneutral and heat-stress conditions.",
       "limitations": "The defined complete study diet does not establish a household amount, a complete ration made from brown rice alone, another rice form, or another bird species outcome.",
+      "accessedAt": "2026-08-22"
+    },
+    {
+      "id": "issue-168-research-log-2026",
+      "title": "Issue #168 six-form bird evidence research log",
+      "authorsOrOrganization": "Bird Feed Calculator project research",
+      "publishedYear": "2026",
+      "sourceTier": "historical_project",
+      "urlOrDoi": "database/provenance/evidence/issue-168-research-log.md",
+      "speciesScopes": [
+        "pigeon",
+        "parrot",
+        "african_grey",
+        "budgie",
+        "canary",
+        "chicken"
+      ],
+      "permittedUse": "Documents the independent first-pass and targeted second-pass searches, retained source candidates, form-continuity reconciliation, and explicitly labelled shared-ingredient inference rationale for Issue #168.",
+      "limitations": "A research log documents search process, evidence gaps, and the limits of a stated inference. It is not an external scientific source, cannot silently approve an ingredient, and cannot establish a dose, formula, complete ration, medical use, runtime approval, or a different preparation.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "el-ghamry-karosah-2020-pigeon-chamomile-flowers",
+      "title": "Effect Of Some Feed additives (Yeast, Fenugreek seeds and Chamomile flowers) On Some Behavioral patterns and Productive Performance In Pigeons (Columba livia domestica)",
+      "authorsOrOrganization": "E. H. El-ghamry and M. M. Karosah",
+      "publishedYear": "2020",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://bvmj.journals.ekb.eg/article_116443.html",
+      "speciesScopes": [
+        "pigeon"
+      ],
+      "permittedUse": "Supports that a controlled pigeon study assessed chamomile flowers as a dietary feed additive in domestic pigeons.",
+      "limitations": "The study context does not establish a household serving amount, a complete ration, medical use, a formula, unrestricted use, an oil/extract outcome, or a result for another bird species.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "al-kaisse-khalel-2011-broiler-chamomile-flowers",
+      "title": "The Potency of Chamomile Flowers (Matericaria chamomilla L.) as Feed Supplements (Growth Promoters) on Productive Performance and Hematological Parameters Constituents of Broiler",
+      "authorsOrOrganization": "Galib A. M. Al-Kaisse and Eman K. Khalel",
+      "publishedYear": "2011",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.3923/ijps.2011.726.729",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "Supports a bounded broiler-ration finding for dried, milled chamomile flowers at defined trial inclusion levels.",
+      "limitations": "It does not establish a visitor household amount, a complete ration, medical benefit, unrestricted use, an oil/extract outcome, or a result for other birds.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "al-sagan-2020-broiler-fennel-seed-powder",
+      "title": "Effects of Fennel Seed Powder Supplementation on Growth Performance, Carcass Characteristics, Meat Quality, and Economic Efficiency of Broilers under Thermoneutral and Chronic Heat Stress Conditions",
+      "authorsOrOrganization": "Ahmed A. Al-Sagan, Shady Khalil, Elsayed O. S. Hussein, and Youssef A. Attia",
+      "publishedYear": "2020",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.3390/ani10020206",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "Supports a bounded broiler-ration finding for experimentally ground fennel seed powder at specified inclusion levels and environmental conditions.",
+      "limitations": "It does not establish a household serving amount, unrestricted use of whole seed, a complete ration, medical treatment, oil/extract equivalence, or a result for another bird species.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "ghonime-2025-broiler-fennel-seed-meal",
+      "title": "Evaluation of fennel seed meal in broiler chickens' diets: impacts on performance, carcass traits, digestive enzymes, intestinal microbiota, blood metabolites, and economic feasibility",
+      "authorsOrOrganization": "Mohammed E. Ghonime et al.",
+      "publishedYear": "2025",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.5194/aab-68-531-2025",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "Supports a bounded broiler-ration finding for fennel seed meal in formulated diets.",
+      "limitations": "The meal was obtained after oil extraction and ground. It cannot establish a household serving amount, ordinary whole-seed equivalence, unrestricted use, a complete ration, therapeutic use, or another bird species outcome.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "wsu-extension-common-bean-varieties-2026",
+      "title": "Dry Bean Varieties for Niche Markets in the USA",
+      "authorsOrOrganization": "Washington State University Vegetable Research and Extension",
+      "publishedYear": "2026",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://vegetables.wsu.edu/dry-bean-varieties-for-niche-markets-in-the-usa/",
+      "speciesScopes": [
+        "plant_taxonomy",
+        "phaseolus_vulgaris"
+      ],
+      "permittedUse": "Supports the botanical identity boundary: the University extension list states that its listed market classes are common beans, Phaseolus vulgaris L., and includes Great Northern, Small White/Navy, White Kidney/Cannellini, and Pinto classes.",
+      "limitations": "A plant-variety source does not independently establish bird suitability, a safety outcome, preparation method, portion, formula, complete ration, or an outcome for a different bean species or a materially different product.",
+      "accessedAt": "2026-08-21"
+    },
+    {
+      "id": "koernerbude-lavender-flowers-2026",
+      "title": "Lavendelblüten",
+      "authorsOrOrganization": "Körnerbude GmbH",
+      "publishedYear": "2026",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.koernerbude.de/lavendelblueten-sw10267.4",
+      "speciesScopes": [
+        "budgie",
+        "canary",
+        "parrot",
+        "psittacine",
+        "finch"
+      ],
+      "permittedUse": "Commercial German bird-feed guidance for additive-free, gently dried whole lavender flowers used orally as a small supplementary food with normal feed for its named bird groups.",
+      "limitations": "This is commercial owner-facing guidance, not veterinary or primary research. It does not name pigeons/doves, establish pigeon-specific safety, transfer its named-bird percentage guidance to pigeons, establish fresh-flower evidence, support a therapeutic claim, establish a complete ration, or approve runtime use.",
       "accessedAt": "2026-08-22"
     }
   ]
