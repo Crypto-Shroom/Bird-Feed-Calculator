@@ -16,13 +16,16 @@ export const HERB_LIBRARY_BIRD_FILTERS = [
 /**
  * Keeps the default library browse view intact while deriving a selected-bird
  * view exclusively from the canonical automatic-suggestion eligibility record.
+ *
+ * Optimization: Avoids array spread allocation when bird is 'all' by returning
+ * the original array directly without unnecessary array copying.
  */
 export function filterHerbLibraryEntries(
   entries: readonly HerbLibraryEntry[],
   bird: HerbLibraryBirdFilter,
 ): HerbLibraryEntry[] {
   if (bird === "all") {
-    return [...entries];
+    return entries as HerbLibraryEntry[];
   }
 
   return entries.filter(([name]) => isHerbEligibleForBird(name, bird));
