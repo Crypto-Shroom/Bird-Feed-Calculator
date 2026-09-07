@@ -5,6 +5,9 @@ import { INGREDIENTS } from "@/lib/data";
 import type { FormulaSource } from "@/lib/formula-display";
 import { getProcessingWarning, isToxicRaw } from "@/lib/safety";
 
+// Optimization: Cache ingredient names array statically to avoid extracting keys on every suggestion check.
+const ALL_INGREDIENT_NAMES = Object.keys(INGREDIENTS);
+
 export function selectDiversitySuggestionCandidate({
   bird,
   formulaSource,
@@ -18,7 +21,7 @@ export function selectDiversitySuggestionCandidate({
 }): string | null {
   if (formulaSource !== "inventory" || missingIngredients?.length || !Object.keys(mix).length) return null;
 
-  const candidates = Object.keys(INGREDIENTS)
+  const candidates = ALL_INGREDIENT_NAMES
     .filter((name) => !mix[name])
     .filter(
       (name) =>
