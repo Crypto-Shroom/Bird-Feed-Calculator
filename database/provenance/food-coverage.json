@@ -281,7 +281,18 @@
           "id": "white-beans-raw",
           "displayName": "White beans",
           "historicalForm": "raw",
-          "linkedFoodReviewKeys": []
+          "linkedFoodReviewKeys": [
+            "great_northern_white_beans::raw dried Great Northern white beans, plain and unseasoned",
+            "cannellini_white_beans::raw dried cannellini white beans, plain and unseasoned"
+          ],
+          "selectedResearchForm": "raw dried white beans (Great Northern / Cannellini)",
+          "excludedForms": [
+            "raw/cooked/sprouted alternatives not matching the selected form",
+            "oils",
+            "extracts",
+            "blends",
+            "concentrated supplements"
+          ]
         },
         {
           "id": "large-dried-beans-raw",
