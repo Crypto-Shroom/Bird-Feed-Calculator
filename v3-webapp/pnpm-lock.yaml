@@ -226,7 +226,7 @@ importers:
         specifier: 1.15.2
         version: 1.15.2
       pnpm:
-        specifier: ^10.34.5
+        specifier: ^11.25.0
         version: 11.25.0
       postcss:
         specifier: ^8.5.26
