@@ -1,4 +1,5 @@
 // Design contract: Modern Agrarian / Organic Tech — clear botanical reference cards with warm, calm hierarchy and no dashboard-density styling.
+import { memo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import type { Herb } from "@/lib/data";
@@ -20,7 +21,8 @@ interface HerbCardProps {
   showCompatibleBirds?: boolean;
 }
 
-export function HerbCard({ name, herb, showSources = false, showCompatibleBirds = false }: HerbCardProps) {
+// Optimization: HerbCard is wrapped in React.memo to prevent unnecessary re-renders when parent states change without changing herb props.
+export const HerbCard = memo(function HerbCard({ name, herb, showSources = false, showCompatibleBirds = false }: HerbCardProps) {
   const evidence = getHerbEvidence(name);
   const sourceEntries = evidence.sourceIds.map((sourceId) => HERB_SOURCES[sourceId]);
   const safetyLabel = evidence.eligibility === "eligible"
@@ -75,4 +77,4 @@ export function HerbCard({ name, herb, showSources = false, showCompatibleBirds 
       </CardContent>
     </Card>
   );
-}
+});

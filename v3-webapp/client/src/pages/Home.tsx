@@ -1,6 +1,6 @@
 // Design contract: Modern Agrarian / Organic Tech — a warm, editorial feed workshop that communicates scope and safety clearly without overstating nutrition precision.
 // Design contract: Modern Agrarian / Organic Tech — retain the practical calculator rhythm while keeping contribution prompts compact, friendly, and safety-aware.
-import { useEffect, useMemo, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 import {
   AlertTriangle,
   Bird,
@@ -497,11 +497,12 @@ export default function Home() {
   );
 }
 
-function CareNote({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
+// Optimization: CareNote, FreshProduceCareNote, ReportIssueLink, NutritionCard, and CategoryBar are wrapped in React.memo to avoid re-renders on unrelated parent state updates.
+const CareNote = memo(function CareNote({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
   return <div className="flex items-start gap-3"><div className="mt-0.5 shrink-0">{icon}</div><div><p className="font-medium text-foreground">{title}</p><p className="text-xs leading-relaxed text-muted-foreground">{text}</p></div></div>;
-}
+});
 
-function FreshProduceCareNote({ text, guidance }: { text: string; guidance?: NonNullable<typeof BIRD_CARE.pigeon.freshProduceGuidance> }) {
+const FreshProduceCareNote = memo(function FreshProduceCareNote({ text, guidance }: { text: string; guidance?: NonNullable<typeof BIRD_CARE.pigeon.freshProduceGuidance> }) {
   return (
     <div className="flex items-start gap-3">
       <div className="mt-0.5 shrink-0"><Leaf className="h-5 w-5 text-emerald-600" /></div>
@@ -557,9 +558,9 @@ function FreshProduceCareNote({ text, guidance }: { text: string; guidance?: Non
       </div>
     </div>
   );
-}
+});
 
-function ReportIssueLink({ section, bird, profile }: { section: string; bird: string; profile: string }) {
+const ReportIssueLink = memo(function ReportIssueLink({ section, bird, profile }: { section: string; bird: string; profile: string }) {
   const title = `[Information report] ${section}`;
   const body = [
     "## Location in the calculator",
@@ -589,14 +590,14 @@ function ReportIssueLink({ section, bird, profile }: { section: string; bird: st
       <p className="mt-2 text-xs text-muted-foreground">Submits a research request assigned to the project owner. Nothing in the calculator changes automatically.</p>
     </div>
   );
-}
+});
 
 function buildGitHubIssueUrl(template: string, title: string, body: string) {
   const query = new URLSearchParams({ template, title, body });
   return `https://github.com/Crypto-Shroom/Bird-Feed-Calculator/issues/new?${query.toString()}`;
 }
 
-function NutritionCard({ label, value, target, color }: { label: string; value: number; target: [number, number]; color: string }) {
+const NutritionCard = memo(function NutritionCard({ label, value, target, color }: { label: string; value: number; target: [number, number]; color: string }) {
   const [min, max] = target;
   const isGood = value >= min && value <= max;
   const isLow = value < min;
@@ -611,9 +612,9 @@ function NutritionCard({ label, value, target, color }: { label: string; value: 
   const status = isGood ? "within the target range" : isLow ? "below the target range" : "above the target range";
 
   return <Card className="border-none bg-card shadow-md"><CardContent className="p-4"><div className="mb-1 text-sm text-muted-foreground">{label}</div><div className="mb-2 flex items-baseline gap-1"><span className={cn("font-mono text-2xl font-bold", !isGood && (isLow ? "text-blue-600" : "text-orange-600"))}>{value.toFixed(1)}</span><span className="text-xs font-medium text-muted-foreground">%</span></div><div className="relative h-3 overflow-hidden rounded-full bg-muted" role="img" aria-label={`${label}: ${value.toFixed(1)}%, ${status}; target range ${min} to ${max} percent.`}><div aria-hidden="true" className="absolute inset-y-0 border-x border-emerald-600/70 bg-emerald-100/80" style={{ left: "40%", width: "20%" }} /><div aria-hidden="true" className={cn("absolute left-0 top-0 h-full opacity-65 transition-[width] duration-300 motion-reduce:transition-none", color)} style={{ width: `${markerPosition}%` }} /><div aria-hidden="true" className={cn("absolute top-0 h-full w-1 rounded-full shadow-sm transition-[left] duration-300 motion-reduce:transition-none", isGood ? "bg-emerald-800" : isLow ? "bg-blue-700" : "bg-orange-700")} style={{ left: `calc(${markerPosition}% - 2px)` }} /></div><div className="mt-2 flex justify-between text-[10px] text-muted-foreground"><span className={cn("font-medium", isGood ? "text-emerald-700" : isLow ? "text-blue-700" : "text-orange-700")}>{status}</span><span>Target: <span className="font-medium">{min}-{max}%</span></span></div></CardContent></Card>;
-}
+});
 
-function CategoryBar({ label, value, target, color }: { label: string; value: number; target: [number, number]; color: string }) {
+const CategoryBar = memo(function CategoryBar({ label, value, target, color }: { label: string; value: number; target: [number, number]; color: string }) {
   const [min, max] = target;
   return <div className="space-y-1"><div className="flex justify-between text-sm"><span className="font-medium">{label}</span><span className="text-muted-foreground">{value.toFixed(1)}% <span className="text-xs opacity-70">(Target: {min}-{max}%)</span></span></div><div className="relative h-4 overflow-hidden rounded-full bg-muted"><div className="absolute top-0 h-full bg-black/5 dark:bg-white/10" style={{ left: `${min}%`, width: `${max - min}%` }} /><div className={cn("absolute top-0 left-0 h-full opacity-80", color)} style={{ width: `${Math.min(value, 100)}%` }} /></div></div>;
-}
+});

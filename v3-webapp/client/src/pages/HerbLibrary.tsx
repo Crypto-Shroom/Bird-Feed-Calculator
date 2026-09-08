@@ -1,5 +1,5 @@
 // Design contract: Modern Agrarian / Organic Tech — a calm, browseable botanical catalogue distinct from the calculator dashboard, using warm grain neutrals and deep greens.
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ArrowLeft, Leaf } from "lucide-react";
 import { Link } from "wouter";
 import { Badge } from "@/components/ui/badge";
@@ -31,13 +31,35 @@ const birdLabels: Record<HerbBirdKey, string> = {
   chicken: "Chicken",
 };
 
+// Optimization: Move static HERBS_SUPPLEMENTS entry filtering/sorting to module scope to avoid re-sorting on every render frame.
+// Product-owner decision: do not surface apple cider vinegar in newly added app copy until its wording is explicitly approved.
+const STATIC_HERB_ENTRIES = Object.entries(HERBS_SUPPLEMENTS)
+  .filter(([name]) => name !== "apple_cider_vinegar")
+  .sort(([left], [right]) => left.localeCompare(right));
+
 export default function HerbLibrary() {
-  // Product-owner decision: do not surface apple cider vinegar in newly added app copy until its wording is explicitly approved.
-  const herbEntries = Object.entries(HERBS_SUPPLEMENTS)
-    .filter(([name]) => name !== "apple_cider_vinegar")
-    .sort(([left], [right]) => left.localeCompare(right));
   const [birdFilter, setBirdFilter] = useState<HerbLibraryBirdFilter>("all");
-  const visibleHerbEntries = filterHerbLibraryEntries(herbEntries, birdFilter);
+
+  // Optimization: Memoize filtered herb entries and pre-group by category to replace 5 repeated .filter() array traversals with a single O(N) grouping pass.
+  const { visibleHerbEntries, groupedByCategory } = useMemo(() => {
+    const visible = filterHerbLibraryEntries(STATIC_HERB_ENTRIES, birdFilter);
+    const grouped = categoryOrder.reduce<Record<Herb["category"], typeof visible>>((accumulator, cat) => {
+      accumulator[cat] = [];
+      return accumulator;
+    }, {
+      herb_seed: [],
+      herb_spice: [],
+      herb_dried: [],
+      liquid_supplement: [],
+      powder_supplement: [],
+    });
+
+    for (const entry of visible) {
+      grouped[entry[1].category].push(entry);
+    }
+
+    return { visibleHerbEntries: visible, groupedByCategory: grouped };
+  }, [birdFilter]);
 
   return (
     <div className="min-h-screen bg-[#f9f7f2] text-foreground">
@@ -80,7 +102,7 @@ export default function HerbLibrary() {
         </section> :
         <div className="space-y-14">
           {categoryOrder.map((category) => {
-            const herbs = visibleHerbEntries.filter(([, herb]) => herb.category === category);
+            const herbs = groupedByCategory[category];
             if (!herbs.length) return null;
 
             return (
