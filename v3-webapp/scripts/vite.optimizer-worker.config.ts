@@ -10,6 +10,6 @@ export default defineConfig({
       formats: ["es"],
       fileName: "optimizer-worker",
     },
-    outDir: resolve(import.meta.dirname, "../../../worker-bundle-proof"),
+    outDir: resolve(import.meta.dirname, "../dist/worker-bundle-proof"),
   },
 });
