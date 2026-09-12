@@ -1,5 +1,5 @@
 // Design contract: Modern Agrarian / Organic Tech — a gentle, transparent guided-browsing panel that keeps user choices clear without implying medical calculation.
-import { useMemo, useState } from "react";
+import { memo, useMemo, useState } from "react";
 import { Leaf } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
@@ -22,19 +22,36 @@ const supplementFormats = [
   { value: "supplement", label: "Liquid & powder supplements", categories: ["liquid_supplement", "powder_supplement"] },
 ] as const;
 
-export function PersonalizedSupplementMix({ bird }: { bird: BirdType }) {
+export const PersonalizedSupplementMix = memo(function PersonalizedSupplementMix({ bird }: { bird: BirdType }) {
   const [supplementGoal, setSupplementGoal] = useState<(typeof supplementGoals)[number]["value"]>("digestion");
   const [supplementFormat, setSupplementFormat] = useState<(typeof supplementFormats)[number]["value"]>("all");
 
   const goal = supplementGoals.find((entry) => entry.value === supplementGoal)!;
   const format = supplementFormats.find((entry) => entry.value === supplementFormat)!;
-  const matches = useMemo(() => Object.entries(HERBS_SUPPLEMENTS)
-    // Product-owner decision: do not surface apple cider vinegar in newly added app copy until its wording is explicitly approved.
-    .filter(([name]) => name !== "apple_cider_vinegar")
-    .filter(([name]) => isHerbEligibleForBird(name, bird))
-    .filter(([, herb]) => herb.benefits.includes(goal.benefit))
-    .filter(([, herb]) => !format.categories || (format.categories as readonly string[]).includes(herb.category))
-    .sort(([left], [right]) => left.localeCompare(right)), [bird, format, goal]);
+
+  // Single-pass filtering in useMemo eliminates intermediate array allocations on selection change.
+  const matches = useMemo(() => {
+    const entries = Object.entries(HERBS_SUPPLEMENTS);
+    const targetBenefit = goal.benefit;
+    const allowedCategories = format.categories as readonly string[] | null;
+    const result: typeof entries = [];
+
+    for (let i = 0; i < entries.length; i++) {
+      const entry = entries[i];
+      const name = entry[0];
+      const herb = entry[1];
+
+      // Product-owner decision: do not surface apple cider vinegar in newly added app copy until its wording is explicitly approved.
+      if (name === "apple_cider_vinegar") continue;
+      if (!isHerbEligibleForBird(name, bird)) continue;
+      if (!herb.benefits.includes(targetBenefit)) continue;
+      if (allowedCategories && !allowedCategories.includes(herb.category)) continue;
+
+      result.push(entry);
+    }
+
+    return result.sort(([left], [right]) => left.localeCompare(right));
+  }, [bird, format, goal]);
 
   return (
     <section aria-labelledby="personalized-supplement-heading" className="border-t border-emerald-100 pt-8">
@@ -76,4 +93,4 @@ export function PersonalizedSupplementMix({ bird }: { bird: BirdType }) {
       </div>
     </section>
   );
-}
+});
