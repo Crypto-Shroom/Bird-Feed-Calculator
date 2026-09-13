@@ -1,5 +1,20 @@
 import { describe, expect, it } from "vitest";
-import { BIRD_CARE, BIRD_TYPES } from "./birds";
+import { BIRD_CARE, BIRD_PROFILES, BIRD_TYPES, getAvailableSituations } from "./birds";
+
+describe("canonical bird profiles and governance invariants", () => {
+  it("ensures 'Pet/Companion' profile exists for all birds and is default opening profile for non-pigeon birds", () => {
+    for (const bird of BIRD_TYPES) {
+      const birdProfile = BIRD_PROFILES[bird];
+      expect(birdProfile.profiles.pet).toBeDefined();
+      expect(birdProfile.profiles.pet.name).toBe("Pet/Companion");
+
+      if (bird !== "pigeon") {
+        const availableSituations = getAvailableSituations(bird);
+        expect(availableSituations[0]).toBe("pet");
+      }
+    }
+  });
+});
 
 describe("canonical bird care guidance", () => {
   it("provides the approved indoor-light care note for each supported bird", () => {
