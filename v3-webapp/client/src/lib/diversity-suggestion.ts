@@ -5,6 +5,31 @@ import { INGREDIENTS } from "@/lib/data";
 import type { FormulaSource } from "@/lib/formula-display";
 import { getProcessingWarning, isToxicRaw } from "@/lib/safety";
 
+/**
+ * Performance optimization:
+ * For a given bird species, the set of compatible, safe candidate ingredients in INGREDIENTS
+ * is static. We memoize this per bird to avoid iterating all ingredients, executing
+ * 4 safety check functions per ingredient, and sorting the array on every candidate selection pass.
+ */
+const compatibleCandidatesCache = new Map<BirdType, string[]>();
+
+function getCompatibleCandidatesForBird(bird: BirdType): string[] {
+  let cached = compatibleCandidatesCache.get(bird);
+  if (!cached) {
+    cached = Object.keys(INGREDIENTS)
+      .filter(
+        (name) =>
+          isIngredientCompatible(name, bird) &&
+          !isToxicRaw(name) &&
+          !checkBirdToxicity(name, bird) &&
+          !getProcessingWarning(name),
+      )
+      .sort();
+    compatibleCandidatesCache.set(bird, cached);
+  }
+  return cached;
+}
+
 export function selectDiversitySuggestionCandidate({
   bird,
   formulaSource,
@@ -18,16 +43,8 @@ export function selectDiversitySuggestionCandidate({
 }): string | null {
   if (formulaSource !== "inventory" || missingIngredients?.length || !Object.keys(mix).length) return null;
 
-  const candidates = Object.keys(INGREDIENTS)
-    .filter((name) => !mix[name])
-    .filter(
-      (name) =>
-        isIngredientCompatible(name, bird) &&
-        !isToxicRaw(name) &&
-        !checkBirdToxicity(name, bird) &&
-        !getProcessingWarning(name),
-    )
-    .sort();
+  const compatible = getCompatibleCandidatesForBird(bird);
+  const candidates = compatible.filter((name) => !mix[name]);
 
   if (!candidates.length) return null;
 
