@@ -147,9 +147,21 @@ export function getHerbEvidence(name: string): HerbEvidence {
   return HERB_EVIDENCE[name] ?? libraryOnly([], "No evidence record has been linked to this planner entry.");
 }
 
+// Precomputed O(1) set index of eligible herbs per bird species
+const ELIGIBLE_HERBS_BY_BIRD = new Map<HerbBirdKey, Set<string>>();
+for (const bird of allSupportedBirds) {
+  ELIGIBLE_HERBS_BY_BIRD.set(bird, new Set<string>());
+}
+for (const [name, evidence] of Object.entries(HERB_EVIDENCE)) {
+  if (evidence.eligibility === "eligible") {
+    for (const bird of evidence.compatibleBirds) {
+      ELIGIBLE_HERBS_BY_BIRD.get(bird)?.add(name);
+    }
+  }
+}
+
 export function isHerbEligibleForBird(name: string, bird: HerbBirdKey): boolean {
-  const evidence = getHerbEvidence(name);
-  return evidence.eligibility === "eligible" && evidence.compatibleBirds.includes(bird);
+  return ELIGIBLE_HERBS_BY_BIRD.get(bird)?.has(name) ?? false;
 }
 
 export function getEligibleHerbNames(recommendedNames: readonly string[], bird: HerbBirdKey): string[] {
