@@ -1,7 +1,16 @@
 import { describe, expect, it } from "vitest";
-import { BIRD_CARE, BIRD_TYPES } from "./birds";
+import { BIRD_CARE, BIRD_PROFILES, BIRD_TYPES, getAvailableSituations } from "./birds";
 
 describe("canonical bird care guidance", () => {
+  it("returns stable static situation array references for each supported bird species", () => {
+    BIRD_TYPES.forEach((bird) => {
+      const situations1 = getAvailableSituations(bird);
+      const situations2 = getAvailableSituations(bird);
+      expect(situations1).toBe(situations2);
+      expect(situations1).toEqual(Object.keys(BIRD_PROFILES[bird].profiles));
+    });
+  });
+
   it("provides the approved indoor-light care note for each supported bird", () => {
     const approvedLightText = "For indoor birds, provide safe natural daylight or a species-appropriate avian UVB setup with a shaded retreat.";
 

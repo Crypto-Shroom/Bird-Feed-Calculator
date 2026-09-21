@@ -444,8 +444,17 @@ export function getSituationProfile(bird: BirdType, situation: string): Situatio
   return profile.profiles[situation] || null;
 }
 
+const AVAILABLE_SITUATIONS_BY_BIRD: Record<BirdType, string[]> = {
+  pigeon: Object.keys(BIRD_PROFILES.pigeon.profiles),
+  parrot: Object.keys(BIRD_PROFILES.parrot.profiles),
+  african_grey: Object.keys(BIRD_PROFILES.african_grey.profiles),
+  budgie: Object.keys(BIRD_PROFILES.budgie.profiles),
+  canary: Object.keys(BIRD_PROFILES.canary.profiles),
+  chicken: Object.keys(BIRD_PROFILES.chicken.profiles),
+};
+
 export function getAvailableSituations(bird: BirdType): string[] {
-  return Object.keys(BIRD_PROFILES[bird].profiles);
+  return AVAILABLE_SITUATIONS_BY_BIRD[bird];
 }
 
 export function getCategoryTargets(bird: BirdType): CategoryTargets {
