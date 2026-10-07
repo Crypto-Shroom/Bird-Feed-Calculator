@@ -1,6 +1,7 @@
 import type { BestAttainableExplanation } from "./optimizer-explain";
 import type { OptimizerCategory, OptimizerMacro, OptimizerModel, OptimizerRange } from "./optimizer-model";
 import type { OptimizerWorkerRawResult } from "./optimizer-protocol";
+import type { SmallInclusionResolve } from "./optimizer-serial-solver";
 
 const macroKeys: readonly OptimizerMacro[] = ["protein", "carbs", "fat", "fiber"];
 const categoryKeys: readonly OptimizerCategory[] = ["grain", "legume", "seed"];
@@ -16,6 +17,8 @@ export interface OptimizerAdapterDiagnostics {
   requestedTargetGrams: number;
   achievableTargetGrams: number;
   inventoryCapped: boolean;
+  /** Outcome of the one re-solve without sub-threshold ingredients, when it ran. */
+  smallInclusion?: SmallInclusionResolve;
 }
 
 export interface AdaptedOptimizerResult {
@@ -158,6 +161,7 @@ export function adaptExactFeasibilityResult(
       requestedTargetGrams,
       achievableTargetGrams: model.achievableTargetGrams,
       inventoryCapped: model.achievableTargetGrams < requestedTargetGrams,
+      ...(raw.smallInclusion ? { smallInclusion: raw.smallInclusion } : {}),
     },
     violations: [],
     ...(bestAttainable ? { rangeMisses } : {}),

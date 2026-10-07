@@ -16,10 +16,13 @@ import { BIRD_PROFILES, getCategoryTargets } from "../client/src/lib/birds.ts";
 import { MultibirMixCalculator } from "../client/src/lib/calculator-multi-bird.ts";
 import { INGREDIENTS } from "../client/src/lib/data.ts";
 import { getProfileDefaultIngredients } from "../client/src/lib/inventory-presets.ts";
+import { formatOptimizerFallbackMiss } from "../client/src/lib/optimizer-copy.ts";
 import { bridgeFeasibleWorkerMixToMixResult } from "../client/src/lib/optimizer-mix-result-bridge.ts";
 import { BROWSER_SOLVER_TIME_LIMIT_MS, BROWSER_WORKER_WALL_TIMEOUT_MS, OPTIMIZER_POLICY } from "../client/src/lib/optimizer-policy.ts";
-import { startBrowserLocalOptimizerSolve } from "../client/src/lib/optimizer-runtime.ts";
-import { createSerialSolverExecutor } from "../client/src/lib/optimizer-serial-solver.ts";
+import { buildExactFeasibilityModel } from "../client/src/lib/optimizer-model.ts";
+import { buildBrowserOptimizerCandidates, createBrowserOptimizerSession, startBrowserLocalOptimizerSolve } from "../client/src/lib/optimizer-runtime.ts";
+import { createSerialSolverExecutor, solveSerialStages } from "../client/src/lib/optimizer-serial-solver.ts";
+import { evaluateSerialObjectives } from "../client/src/lib/optimizer-stages.ts";
 import { OptimizerWorkerController } from "../client/src/lib/optimizer-worker-controller.ts";
 
 const scriptDirectory = dirname(fileURLToPath(import.meta.url));
@@ -62,9 +65,12 @@ for (const [bird, birdProfile] of Object.entries(BIRD_PROFILES)) {
 
 // ---------------------------------------------------------------- production path, in process
 
-const highs = await createHighs();
+// HiGHS is loaded lazily by the first solve, exactly as in the browser Worker,
+// so the first run measures a cold start (wasm instantiate plus solve).
+let highsPromise;
+const loadHighs = () => (highsPromise ??= createHighs());
 const browserExecutor = createSerialSolverExecutor({
-  loadSolver: async () => highs,
+  loadSolver: loadHighs,
   timeLimitMs: BROWSER_SOLVER_TIME_LIMIT_MS,
   now: () => performance.now(),
 });
@@ -72,7 +78,7 @@ const browserExecutor = createSerialSolverExecutor({
 // show how long the full stage sequence needs and what it would return.
 const unboundedBudgetMs = 120_000;
 const unboundedExecutor = createSerialSolverExecutor({
-  loadSolver: async () => highs,
+  loadSolver: loadHighs,
   timeLimitMs: unboundedBudgetMs,
   now: () => performance.now(),
 });
@@ -92,8 +98,21 @@ function createInProcessWorker(executor = browserExecutor, wallTimeoutMs = BROWS
   return worker;
 }
 
+// One reused Worker session for every browser-budget solve, as Home.tsx does.
+let browserWorkersCreated = 0;
+const browserSession = createBrowserOptimizerSession({
+  createWorker: () => {
+    browserWorkersCreated += 1;
+    return createInProcessWorker(browserExecutor);
+  },
+});
+const unboundedSession = createBrowserOptimizerSession({
+  createWorker: () => createInProcessWorker(unboundedExecutor, unboundedBudgetMs + 10_000),
+  responseTimeoutMs: unboundedBudgetMs + 20_000,
+});
+
 let requestCounter = 0;
-async function runOptimizer(scenario, greedy, createWorker = () => createInProcessWorker()) {
+async function runOptimizer(scenario, greedy, session = browserSession) {
   const profile = BIRD_PROFILES[scenario.bird].profiles[scenario.situation];
   const startedAt = performance.now();
   const handle = startBrowserLocalOptimizerSolve({
@@ -103,7 +122,7 @@ async function runOptimizer(scenario, greedy, createWorker = () => createInProce
     requestedTargetGrams: targetWeight,
     macroRanges: profile.nutrition,
     categoryRanges: getCategoryTargets(scenario.bird),
-  }, { createWorker });
+  }, { session });
   const adapted = await handle.result;
   const wallMs = performance.now() - startedAt;
   const hasMix = adapted.status === "feasible" || adapted.status === "best_attainable";
@@ -148,22 +167,37 @@ function rangeCheck(result, bird, situation) {
   };
 }
 
-function verdict(greedyCheck, optimizerCheck) {
+const deviationTolerance = 1e-6;
+/**
+ * Owner-approved comparison rules:
+ * - `best_attainable` (no mix meets every range): the approved fallback
+ *   priority, i.e. lower D_macro first, then lower D_category. The number of
+ *   ranges met is not the criterion.
+ * - `feasible`: more of the 7 ranges met first, then more meaningful
+ *   ingredients (diversity).
+ */
+function verdict(greedyCheck, optimizerCheck, status) {
   if (!optimizerCheck) return "no_result";
-  if (optimizerCheck.met > greedyCheck.met) return "improves";
-  if (optimizerCheck.met < greedyCheck.met) return "worse";
-  return "same";
+  const lowerIsBetter = (optimizer, greedy) => (optimizer < greedy - deviationTolerance ? "improves" : optimizer > greedy + deviationTolerance ? "worse" : undefined);
+  const higherIsBetter = (optimizer, greedy) => (optimizer > greedy ? "improves" : optimizer < greedy ? "worse" : undefined);
+  if (status === "best_attainable") {
+    return lowerIsBetter(optimizerCheck.macroDeviation, greedyCheck.macroDeviation)
+      ?? lowerIsBetter(optimizerCheck.categoryDeviation, greedyCheck.categoryDeviation)
+      ?? "same";
+  }
+  return higherIsBetter(optimizerCheck.met, greedyCheck.met) ?? higherIsBetter(optimizerCheck.meaningful, greedyCheck.meaningful) ?? "same";
 }
 
 const results = [];
-let coldLoadMs;
+let coldRun;
+let warmRun;
 for (const scenario of scenarios) {
   const greedy = new MultibirMixCalculator(scenario.inventory, scenario.bird, scenario.situation).calculate(targetWeight);
   const runs = [];
   for (let attempt = 0; attempt < repeats; attempt += 1) {
-    const loadStartedAt = performance.now();
     runs.push(await runOptimizer(scenario, greedy));
-    if (coldLoadMs === undefined) coldLoadMs = performance.now() - loadStartedAt;
+    if (!coldRun) coldRun = { scenario: scenario.id, ...runs[0] };
+    else if (!warmRun) warmRun = { scenario: scenario.id, ...runs[1] };
   }
   const signature = (run) => `${run.adapted.status}|${JSON.stringify(Object.entries(run.adapted.mix).sort(([left], [right]) => left.localeCompare(right)))}`;
   // A run near the time budget can complete on one attempt and time out on the
@@ -176,7 +210,7 @@ for (const scenario of scenarios) {
   const first = runs.find((run) => run.adapted.status === "timeout") ?? runs[0];
   const greedyCheck = rangeCheck(greedy, scenario.bird, scenario.situation);
   const optimizerCheck = first.bridged ? rangeCheck(first.bridged, scenario.bird, scenario.situation) : undefined;
-  const displayed = first.adapted.status === "feasible" ? "optimizer" : "greedy";
+  const displayed = first.bridged && first.bridged !== greedy ? "optimizer" : "greedy";
   results.push({
     scenario,
     greedy,
@@ -188,15 +222,83 @@ for (const scenario of scenarios) {
     completedSolveMs: completed.length ? Math.max(...completed.map((run) => run.adapted.diagnostics.elapsedMs)) : undefined,
     solveMs: Math.max(...runs.map((run) => run.adapted.diagnostics.elapsedMs)),
     wallMs: Math.max(...runs.map((run) => run.wallMs)),
-    verdict: verdict(greedyCheck, optimizerCheck),
+    verdict: verdict(greedyCheck, optimizerCheck, first.adapted.status),
     displayed,
+    smallInclusion: completed[0]?.adapted.diagnostics.smallInclusion,
   });
 }
 
 for (const row of results.filter((entry) => entry.optimizer.adapted.status === "timeout")) {
-  const unbounded = await runOptimizer(row.scenario, row.greedy, () => createInProcessWorker(unboundedExecutor, unboundedBudgetMs + 10_000));
+  const unbounded = await runOptimizer(row.scenario, row.greedy, unboundedSession);
   const check = unbounded.bridged ? rangeCheck(unbounded.bridged, row.scenario.bird, row.scenario.situation) : undefined;
-  row.unbounded = { ...unbounded, check, verdict: verdict(row.greedyCheck, check) };
+  row.unbounded = { ...unbounded, check, verdict: verdict(row.greedyCheck, check, unbounded.adapted.status) };
+}
+browserSession.dispose();
+unboundedSession.dispose();
+
+// ---------------------------------------------------------------- tolerance sweep
+
+// Evidence for the diversity tolerance band in optimizer-policy.ts: the same
+// serial solver on the 21 profile-default inventories and the #85 stock under
+// every profile, with a generous budget so no variant times out.
+const sweepScenarios = [];
+for (const [bird, birdProfile] of Object.entries(BIRD_PROFILES)) {
+  for (const situation of Object.keys(birdProfile.profiles)) {
+    sweepScenarios.push({ bird, situation, inventory: getProfileDefaultIngredients(bird, situation) });
+    sweepScenarios.push({ bird, situation, inventory: issue85Inventory });
+  }
+}
+const zeroBand = { exactMarginTolerance: 0, exactMarginRelativeTolerance: 0, macroDistanceTolerance: 0, categoryDistanceTolerance: 0, maximumShareToleranceGrams: 0 };
+const sweepVariants = [
+  { label: "all exact (proof-of-concept)", band: {} },
+  { label: "ε_r = 0.01 (absolute)", band: { exactMarginTolerance: 0.01 } },
+  { label: "ε_r = 0.02 (absolute)", band: { exactMarginTolerance: 0.02 } },
+  { label: "ε_r = 0.05 (absolute)", band: { exactMarginTolerance: 0.05 } },
+  { label: "ε_r = 5% of r*", band: { exactMarginRelativeTolerance: 0.05 } },
+  { label: "ε_r = 10% of r*", band: { exactMarginRelativeTolerance: 0.1 } },
+  { label: "ε_r = 20% of r*", band: { exactMarginRelativeTolerance: 0.2 } },
+  { label: "τ_M = 25 g only", band: { maximumShareToleranceGrams: 25 } },
+  { label: "ε_r 0.01 abs, ε_macro 0.02, ε_category 0.05, τ_M 25 g", band: { exactMarginTolerance: 0.01, macroDistanceTolerance: 0.02, categoryDistanceTolerance: 0.05, maximumShareToleranceGrams: 25 } },
+  { label: "ε_r 5%, ε_macro 0.05, ε_category 0.05, τ_M 25 g", band: { exactMarginRelativeTolerance: 0.05, macroDistanceTolerance: 0.05, categoryDistanceTolerance: 0.05, maximumShareToleranceGrams: 25 } },
+  { label: "ε_r 10%, ε_macro 0.02, ε_category 0.02, τ_M 10 g", band: { exactMarginRelativeTolerance: 0.1, macroDistanceTolerance: 0.02, categoryDistanceTolerance: 0.02, maximumShareToleranceGrams: 10 } },
+  { label: "**chosen:** ε_r 10%, ε_macro 0.02, ε_category 0.05, τ_M 25 g", band: { exactMarginRelativeTolerance: 0.1, macroDistanceTolerance: 0.02, categoryDistanceTolerance: 0.05, maximumShareToleranceGrams: 25 }, chosen: true },
+  { label: "ε_r 10%, ε_macro 0.1, ε_category 0.1, τ_M 50 g", band: { exactMarginRelativeTolerance: 0.1, macroDistanceTolerance: 0.1, categoryDistanceTolerance: 0.1, maximumShareToleranceGrams: 50 } },
+];
+const chosenVariant = sweepVariants.find((variant) => variant.chosen);
+const chosenMatchesPolicy = Object.entries({ ...zeroBand, ...chosenVariant.band }).every(([key, value]) => OPTIMIZER_POLICY[key] === value);
+const sweepHighs = await loadHighs();
+const sweepRows = [];
+for (const variant of sweepVariants) {
+  const policy = { ...OPTIMIZER_POLICY, ...zeroBand, ...variant.band };
+  const outcomes = [];
+  for (const scenario of sweepScenarios) {
+    const model = buildExactFeasibilityModel({
+      candidates: buildBrowserOptimizerCandidates(scenario.inventory, scenario.bird),
+      requestedTargetGrams: targetWeight,
+      macroRanges: BIRD_PROFILES[scenario.bird].profiles[scenario.situation].nutrition,
+      categoryRanges: getCategoryTargets(scenario.bird),
+      policy,
+    });
+    const solved = await solveSerialStages(sweepHighs, model, { timeBudgetMs: unboundedBudgetMs, now: () => performance.now() });
+    outcomes.push({ status: solved.status, values: evaluateSerialObjectives(model, solved.quantities), smallInclusion: solved.smallInclusion });
+  }
+  const average = (rows, pick) => rows.reduce((total, row) => total + pick(row), 0) / rows.length;
+  const exact = outcomes.filter(({ status }) => status === "optimal");
+  const fallback = outcomes.filter(({ status }) => status === "best_attainable");
+  sweepRows.push({
+    variant,
+    exact: exact.length,
+    fallback: fallback.length,
+    margin: average(exact, ({ values }) => values.macroMargin),
+    minimumMargin: Math.min(...exact.map(({ values }) => values.macroMargin)),
+    exactMeaningful: average(exact, ({ values }) => values.meaningfulIngredientCount),
+    fallbackMeaningful: average(fallback, ({ values }) => values.meaningfulIngredientCount),
+    macroDeviation: average(fallback, ({ values }) => values.macroDeviation),
+    categoryDeviation: average(fallback, ({ values }) => values.categoryDeviation),
+    exactShare: average(exact, ({ values }) => values.maximumShareGrams),
+    resolvesAccepted: outcomes.filter(({ smallInclusion }) => smallInclusion?.accepted).length,
+    resolves: outcomes.filter(({ smallInclusion }) => smallInclusion).length,
+  });
 }
 
 // ---------------------------------------------------------------- reporting
@@ -227,6 +329,7 @@ function statusTally(rows) {
 }
 
 const allCounts = tally(results);
+const byStatusCount = (status) => results.filter((row) => row.displayed === "optimizer" && row.optimizer.adapted.status === status).length;
 const completedRows = results.filter((row) => row.completedSolveMs !== undefined);
 const worst = completedRows.reduce((slowest, row) => (row.completedSolveMs > slowest.completedSolveMs ? row : slowest), completedRows[0]);
 const budgetSensitive = results.filter((row) => row.budgetSensitive);
@@ -247,11 +350,14 @@ lines.push("");
 lines.push(`- **Greedy**: \`MultibirMixCalculator(inventory, bird, situation).calculate(${targetWeight})\`, unchanged.`);
 lines.push(`- **Optimizer**: the production browser path, with real HiGHS ${highsVersion} (WebAssembly) in Node: \`startBrowserLocalOptimizerSolve\` (safety gate, canonical identity, model) → \`OptimizerWorkerController\` (wall timeout ${BROWSER_WORKER_WALL_TIMEOUT_MS} ms) → serial staged executor (shared in-solver budget ${BROWSER_SOLVER_TIME_LIMIT_MS} ms) → strict adapter → inventory-form allocation → \`bridgeFeasibleWorkerMixToMixResult\`. Only the Worker \`postMessage\` hop is replaced by an in-process \`structuredClone\`.`);
 lines.push("- **D_macro / D_category**: the spec §5.1 normalized deviation — the sum, over the 4 macros (or 3 categories), of how far the mix lies outside each range, measured in range widths. 0 means every range in that group is met.");
-lines.push("- **Targets met**: the number of the 7 configured ranges (4 macros, 3 categories) the mix satisfies. A scenario *improves* when the optimizer meets more ranges than greedy, is the *same* when equal, and is *worse* when it meets fewer.");
+lines.push("- **Targets met**: the number of the 7 configured ranges (4 macros, 3 categories) the mix satisfies.");
+lines.push("- **Verdict** (owner-approved rules): for a `best_attainable` scenario (no mix meets every range), the optimizer *improves* on greedy when its D_macro is lower, or D_macro is equal and its D_category is lower; *worse* in the opposite case; otherwise *same*. The number of ranges met is not the criterion there. For a `feasible` scenario, more ranges met wins; with equal ranges met, more meaningful ingredients (diversity) wins.");
 lines.push(`- **Ingredients used** counts every ingredient above 0 g; **meaningful** counts those at or above the ${OPTIMIZER_POLICY.meaningfulInclusionGrams} g meaningful-inclusion threshold.`);
-lines.push(`- **Solve time** is the Worker-reported elapsed time (maximum of ${repeats} runs). The same HiGHS instance is reused, as in one Worker session; the first run (cold wasm instantiate plus first solve) took ${format(coldLoadMs, 1)} ms.`);
+lines.push(`- **Solve time** is the Worker-reported elapsed time (maximum of ${repeats} runs). Every browser-budget solve runs through **one reused Worker session** (${browserWorkersCreated} in-process Worker created for ${results.length * repeats} solves) and one lazily loaded HiGHS instance, as Home.tsx does. Cold first solve (HiGHS wasm instantiate plus solve, ${coldRun.scenario}): ${format(coldRun.wallMs, 1)} ms wall; the same scenario warm in the reused Worker: ${format(warmRun.wallMs, 1)} ms wall.`);
+lines.push(`- **Diversity tolerance band** (\`optimizer-policy.ts\`): macro-margin lock r ≥ r* − ${OPTIMIZER_POLICY.exactMarginTolerance} − ${OPTIMIZER_POLICY.exactMarginRelativeTolerance}·r*, macro midpoint ε = ${OPTIMIZER_POLICY.macroDistanceTolerance}, category midpoint ε = ${OPTIMIZER_POLICY.categoryDistanceTolerance}, maximum share τ = ${OPTIMIZER_POLICY.maximumShareToleranceGrams} g; the fallback D_macro and D_category locks stay exact. See the tolerance sweep below.`);
+lines.push(`- **No hard minimum amount**: a completed mix with an ingredient between 0 g and ${OPTIMIZER_POLICY.meaningfulInclusionGrams} g is re-solved once with those ingredients fixed to 0 g, inside the same budget; the re-solve is kept only if it stays within every primary lock's tolerance.`);
 lines.push(`- **Determinism**: every scenario is solved ${repeats} times; every run that completes must return the identical mix. A scenario whose runs straddle the time budget (some complete, some time out) is reported as budget-sensitive and counted as a timeout, because Home would keep the greedy mix whenever it times out.`);
-lines.push(`- **Displayed today**: Home.tsx replaces the greedy mix only for \`feasible\` (all ranges met). A \`best_attainable\` fallback is computed and validated but is **not** shown until the owner approves its presentation (spec §5.2: a fallback must never be presented as "optimized" without saying it is best attainable).`);
+lines.push(`- **Displayed**: Home.tsx replaces the greedy mix with a validated \`feasible\` mix, or with the \`best_attainable\` fallback plus the draft "Closest possible mix" notice. Timeout, cancellation, and errors keep the greedy mix.`);
 lines.push("- Issue #73 has no recorded inventory in the repository, so the pigeon Winter profile-default inventory stands in for it, plus a variant using the #85 stock.");
 lines.push("");
 lines.push("## Summary");
@@ -267,7 +373,7 @@ for (const group of [...groups, { key: undefined, title: "**All**" }]) {
 }
 lines.push("");
 const displayedRows = results.filter((row) => row.displayed === "optimizer");
-lines.push(`With today's Home gating, visitors would see the optimizer mix in ${displayedRows.length} of ${results.length} scenarios (every one meets all 7 ranges); every other scenario keeps the greedy mix.`);
+lines.push(`Visitors see the optimizer mix in ${displayedRows.length} of ${results.length} scenarios (${byStatusCount("feasible")} meeting all 7 ranges, ${byStatusCount("best_attainable")} best-attainable fallbacks with the notice); the other ${results.length - displayedRows.length} keep the greedy mix.`);
 lines.push("");
 lines.push(`- Worst completed solve time within the browser budget: **${format(worst.completedSolveMs, 1)} ms** (${worst.scenario.id}). Budget: ${BROWSER_SOLVER_TIME_LIMIT_MS} ms in-solver, ${BROWSER_WORKER_WALL_TIMEOUT_MS} ms wall.`);
 const slowestRealistic = results.filter((row) => row.scenario.group !== "full-catalog").reduce((slowest, row) => (row.solveMs > slowest.solveMs ? row : slowest));
@@ -281,13 +387,32 @@ const byStatus = (status) => results.filter((row) => row.optimizer.adapted.statu
 const feasibleRows = byStatus("feasible");
 const fallbackRows = byStatus("best_attainable");
 const fallbackCounts = tally(fallbackRows);
-const fallbackMacroNoWorse = fallbackRows.filter((row) => row.optimizerCheck.macroDeviation <= row.greedyCheck.macroDeviation + 1e-9).length;
-const fallbackWorseCategoryLoss = fallbackRows.filter((row) => row.verdict === "worse" && row.optimizerCheck.categoriesMet < row.greedyCheck.categoriesMet).length;
+const fallbackMacroNoWorse = fallbackRows.filter((row) => row.optimizerCheck.macroDeviation <= row.greedyCheck.macroDeviation + deviationTolerance).length;
+const fallbackFewerRanges = fallbackRows.filter((row) => row.optimizerCheck.met < row.greedyCheck.met).length;
+const feasibleCounts = tally(feasibleRows);
+const feasibleMoreDiverse = feasibleRows.filter((row) => row.optimizerCheck.met === row.greedyCheck.met && row.optimizerCheck.meaningful > row.greedyCheck.meaningful).length;
+const resolveRows = results.filter((row) => row.smallInclusion);
+const resolveAccepted = resolveRows.filter((row) => row.smallInclusion.accepted);
+const timeoutGroups = Array.from(new Set(timeouts.map((row) => row.scenario.group)));
 lines.push("## Interpretation");
 lines.push("");
-lines.push(`- **\`feasible\` (${feasibleRows.length} scenarios):** every optimizer mix meets all 7 ranges. ${tally(feasibleRows).improves} improve on greedy; ${tally(feasibleRows).same} tie because greedy already met all 7. These are the only optimizer results Home shows today.`);
-lines.push(`- **\`best_attainable\` (${fallbackRows.length} scenarios):** ${fallbackCounts.improves} improve, ${fallbackCounts.same} stay the same, and ${fallbackCounts.worse} get worse on targets met. The fallback does what spec §5.2 asks: its normalized macro deviation D_macro is no larger than greedy's in ${fallbackMacroNoWorse} of ${fallbackRows.length} scenarios, because it minimizes D_macro first over every whole-gram mix. In ${fallbackWorseCategoryLoss} of the ${fallbackCounts.worse} worse cases the loss comes from category shares: once macro deviation is locked at its minimum, the category ranges that greedy fills first can no longer be met. Minimizing the *size* of the macro miss is not the same as minimizing the *number* of missed ranges.`);
-lines.push(`- **Timeouts (${timeouts.length} scenarios):** only the full-catalog stress inventories (60+ eligible ingredients) exceed the ${BROWSER_SOLVER_TIME_LIMIT_MS} ms budget; Home keeps the greedy mix and no partial result is used. No profile-default or reported-issue inventory timed out. Full-catalog scenarios that finish within about 10% of the budget can complete on one run and time out on the next, so the exact timeout list varies with machine speed and load.`);
+lines.push(`- **\`feasible\` (${feasibleRows.length} scenarios):** every optimizer mix meets all 7 ranges. By ranges met, then diversity: ${feasibleCounts.improves} improve on greedy, ${feasibleCounts.same} are the same, ${feasibleCounts.worse} are worse. ${feasibleMoreDiverse} of the improvements tie greedy on ranges met and win on meaningful ingredients.`);
+lines.push(`- **\`best_attainable\` (${fallbackRows.length} scenarios):** judged by the approved priority (D_macro first, then D_category): ${fallbackCounts.improves} improve, ${fallbackCounts.same} are the same, ${fallbackCounts.worse} are worse. D_macro is no larger than greedy's in ${fallbackMacroNoWorse} of ${fallbackRows.length}, because the fallback minimizes D_macro first over every whole-gram mix. ${fallbackFewerRanges} of these fallbacks meet fewer of the 7 ranges than greedy: once D_macro is locked at its minimum, category ranges that greedy fills first can no longer all be met. That is the approved priority, not a regression; the notice names every missed range and why.`);
+lines.push(`- **Small-inclusion re-solve:** ran in ${resolveRows.length} scenarios and was kept in ${resolveAccepted.length}${resolveAccepted.length ? ` (${resolveAccepted.map((row) => row.scenario.id).join(", ")})` : ""}. Where it was rejected, removing the sub-${OPTIMIZER_POLICY.meaningfulInclusionGrams} g ingredient would have worsened a locked value (usually the exact fallback D_macro), so the few grams stay.`);
+lines.push(`- **Timeouts (${timeouts.length} scenarios):** ${timeouts.length ? `only in ${timeoutGroups.map((key) => groups.find((group) => group.key === key)?.title ?? key).join("; ")}; ` : ""}Home keeps the greedy mix and no partial result is used. Scenarios that finish within about 10% of the ${BROWSER_SOLVER_TIME_LIMIT_MS} ms budget can complete on one run and time out on the next, so the exact timeout list varies with machine speed and load. A small-inclusion re-solve that runs out of budget keeps the primary mix, so on a slower device such a scenario can keep a sub-${OPTIMIZER_POLICY.meaningfulInclusionGrams} g ingredient.`);
+lines.push("");
+
+lines.push("## Tolerance sweep (diversity tolerance band)");
+lines.push("");
+lines.push(`The serial solver on the ${sweepScenarios.length} sweep scenarios (21 profile-default inventories and the #85 stock under all 21 profiles), with a ${unboundedBudgetMs / 1000} s budget so no variant times out. Unlisted tolerances are 0. Margin r is in normalized range widths; meaningful = ingredients at or above ${OPTIMIZER_POLICY.meaningfulInclusionGrams} g. The chosen row ${chosenMatchesPolicy ? "matches" : "does **not** match"} \`OPTIMIZER_POLICY\`.`);
+lines.push("");
+lines.push("| Tolerances | Feasible / fallback | Feasible: mean r (min r) | Feasible: meaningful | Feasible: mean max share g | Fallback: meaningful | Fallback: mean D_macro / D_category | Re-solves kept / run |");
+lines.push("| --- | --- | --- | ---: | ---: | ---: | --- | --- |");
+for (const row of sweepRows) {
+  lines.push(`| ${row.variant.label} | ${row.exact} / ${row.fallback} | ${format(row.margin, 4)} (${format(row.minimumMargin, 4)}) | ${format(row.exactMeaningful)} | ${format(row.exactShare, 1)} | ${format(row.fallbackMeaningful)} | ${format(row.macroDeviation, 3)} / ${format(row.categoryDeviation, 3)} | ${row.resolvesAccepted} / ${row.resolves} |`);
+}
+lines.push("");
+lines.push("Reading: tightening only the macro margin by an absolute amount buys diversity but can drive the smallest margin to 0 (a mix touching a range wall); a relative margin tolerance keeps every mix at 90% of its own best margin. Margin tolerance alone mostly improves balance, because the exact category-distance and maximum-share locks still leave the diversity stage no choice; adding small balance tolerances is what lets it pick the more diverse mix. The fallback D_macro and D_category stay identical in every variant because those locks remain exact.");
 lines.push("");
 
 function scenarioTable(rows) {
@@ -326,10 +451,17 @@ for (const row of results) {
   const profile = BIRD_PROFILES[row.scenario.bird].profiles[row.scenario.situation];
   lines.push(`### ${row.scenario.id}${row.scenario.issue ? ` (${row.scenario.issue})` : ""}`);
   lines.push("");
-  lines.push(`Profile: ${BIRD_PROFILES[row.scenario.bird].name} → ${profile.name}. Optimizer status \`${row.optimizer.adapted.status}\`; verdict **${row.verdict}**; displayed today: ${row.displayed}; completed runs identical: ${row.deterministic ? "yes" : "NO"}${row.budgetSensitive ? "; budget-sensitive (some runs timed out)" : ""}.`);
+  lines.push(`Profile: ${BIRD_PROFILES[row.scenario.bird].name} → ${profile.name}. Optimizer status \`${row.optimizer.adapted.status}\`; verdict **${row.verdict}**; displayed: ${row.displayed}; completed runs identical: ${row.deterministic ? "yes" : "NO"}${row.budgetSensitive ? "; budget-sensitive (some runs timed out)" : ""}.`);
   lines.push("");
   lines.push(`- Greedy mix: ${formatMix(row.greedy.mix)}`);
   lines.push(`- Optimizer mix: ${row.optimizer.bridged ? formatMix(row.optimizer.bridged.mix) : `(none — ${row.optimizer.adapted.violations.join("; ") || row.optimizer.adapted.status})`}`);
+  if (row.smallInclusion) {
+    lines.push(`- Small-inclusion re-solve (removed ${row.smallInclusion.removedIds.join(", ")}): ${row.smallInclusion.accepted ? "kept" : `rejected — ${row.smallInclusion.reason}`}`);
+  }
+  const misses = row.displayed === "optimizer" ? row.optimizer.adapted.fallbackExplanation?.misses : undefined;
+  if (misses) {
+    lines.push(`- Draft notice lines shown: ${misses.length ? misses.map((miss) => `“${formatOptimizerFallbackMiss(miss)}”`).join(" ") : "(none)"}`);
+  }
   lines.push("");
   lines.push("| Range | Greedy | Optimizer |");
   lines.push("| --- | --- | --- |");
@@ -355,11 +487,18 @@ console.log(JSON.stringify({
   worstUnboundedMs: worstUnbounded ? Math.round(worstUnbounded.unbounded.adapted.diagnostics.elapsedMs) : null,
   unboundedVerdicts: tally(unboundedRows.map((row) => ({ verdict: row.unbounded.verdict }))),
   budgetSensitive: budgetSensitive.map((row) => row.scenario.id),
-  coldFirstRunMs: Math.round(coldLoadMs * 10) / 10,
+  coldFirstRunMs: Math.round(coldRun.wallMs * 10) / 10,
+  warmRunMs: Math.round(warmRun.wallMs * 10) / 10,
+  coldWarmScenario: coldRun.scenario,
+  browserWorkersCreated,
+  smallInclusionResolves: resolveRows.length,
+  smallInclusionKept: resolveAccepted.map((row) => row.scenario.id),
+  toleranceSweep: sweepRows.map((row) => ({ variant: row.variant.label, meanMargin: Number(row.margin.toFixed(4)), minimumMargin: Number(row.minimumMargin.toFixed(4)), feasibleMeaningful: Number(row.exactMeaningful.toFixed(2)), fallbackMeaningful: Number(row.fallbackMeaningful.toFixed(2)) })),
+  chosenToleranceMatchesPolicy: chosenMatchesPolicy,
   timeouts: timeouts.map((row) => row.scenario.id),
   nonDeterministic: nonDeterministic.map((row) => row.scenario.id),
   issue85GreedyMatchesReport: issue85MatchesReport,
   wrote: writeMarkdown ? outputPath : null,
 }, null, 2));
 
-if (nonDeterministic.length > 0 || !issue85MatchesReport) process.exitCode = 1;
+if (nonDeterministic.length > 0 || !issue85MatchesReport || !chosenMatchesPolicy) process.exitCode = 1;
