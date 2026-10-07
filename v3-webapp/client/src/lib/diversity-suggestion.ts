@@ -3,7 +3,7 @@ import type { BirdType } from "@/lib/birds";
 import type { MixResult } from "@/lib/calculator-multi-bird";
 import { INGREDIENTS } from "@/lib/data";
 import type { FormulaSource } from "@/lib/formula-display";
-import { getProcessingWarning, isToxicRaw } from "@/lib/safety";
+import { getProcessingWarning, hasSafetyPreparationWarning, isToxicRaw } from "@/lib/safety";
 
 /**
  * Performance optimization:
@@ -22,7 +22,8 @@ function getCompatibleCandidatesForBird(bird: BirdType): readonly string[] {
           isIngredientCompatible(name, bird) &&
           !isToxicRaw(name) &&
           !checkBirdToxicity(name, bird) &&
-          !getProcessingWarning(name),
+          !getProcessingWarning(name) &&
+          !hasSafetyPreparationWarning(name),
       )
       .sort();
     compatibleCandidatesCache.set(bird, cached);

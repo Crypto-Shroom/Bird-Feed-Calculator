@@ -1,7 +1,9 @@
 import { describe, expect, it } from "vitest";
 import { checkBirdToxicity, isIngredientCompatible } from "@/lib/bird-safety";
 import { selectDiversitySuggestionCandidate } from "@/lib/diversity-suggestion";
-import { getProcessingWarning, isToxicRaw } from "@/lib/safety";
+import { INGREDIENTS } from "@/lib/data";
+import { getProcessingWarning, INGREDIENTS_WITH_SAFETY_PREPARATION_WARNINGS, isToxicRaw } from "@/lib/safety";
+import { BIRD_TYPES } from "@/lib/birds";
 
 describe("selectDiversitySuggestionCandidate", () => {
   const mix = { corn_yellow: 600, peas: 250, safflower: 150 };
@@ -38,5 +40,19 @@ describe("selectDiversitySuggestionCandidate", () => {
         missingIngredients: ["safe grain"],
       }),
     ).toBeNull();
+  });
+  it("never proposes an ingredient whose preparation carries a safety warning (#212)", () => {
+    for (const name of INGREDIENTS_WITH_SAFETY_PREPARATION_WARNINGS) expect(INGREDIENTS[name]).toBeDefined();
+
+    // Reported case: this pigeon inventory previously suggested raw-toxic adzuki beans.
+    const reported = { wheat: 1000, barley: 600, corn_yellow: 200, peas: 150, safflower: 50 };
+    const names = Object.keys(INGREDIENTS);
+    for (const bird of BIRD_TYPES) {
+      for (let offset = 0; offset < names.length; offset += 1) {
+        const mix = { ...reported, [names[offset]]: 10 };
+        const suggestion = selectDiversitySuggestionCandidate({ bird, formulaSource: "inventory", mix });
+        if (suggestion) expect(INGREDIENTS_WITH_SAFETY_PREPARATION_WARNINGS.has(suggestion)).toBe(false);
+      }
+    }
   });
 });

@@ -94,6 +94,20 @@ export const INGREDIENTS_REQUIRING_VERIFIED_PROCESSING = new Set([
   "soybeans",
 ]);
 
+// Ingredients whose preparation guidance carries a safety warning (cooking required,
+// sweet feed-grade cultivar only, heat treatment, or aflatoxin/mould control). They stay
+// usable in the calculator with their warnings, but are never proposed as an unprompted
+// diversity tip, which shows no preparation guidance (#212).
+export const INGREDIENTS_WITH_SAFETY_PREPARATION_WARNINGS = new Set([
+  "adzuki_beans",
+  "chickpeas",
+  "lupins",
+  "vetch",
+  "peanuts",
+  "peanuts_raw",
+  "peanuts_roasted",
+]);
+
 // Grains that should not be the only grain in a mix
 export const GRAINS_NEEDING_PAIRING = new Set([
   "corn_yellow",
@@ -255,6 +269,10 @@ export function getProcessingWarning(ingredientName: string): string | null {
   return "Excluded until feed-grade processing, cultivar, and safe inclusion guidance are confirmed.";
 }
 
+export function hasSafetyPreparationWarning(ingredientName: string): boolean {
+  return INGREDIENTS_WITH_SAFETY_PREPARATION_WARNINGS.has(ingredientName);
+}
+
 // Check if a grain needs pairing
 export function grainNeedsPairing(grainName: string): boolean {
   return GRAINS_NEEDING_PAIRING.has(grainName);
@@ -268,4 +286,23 @@ export function getGrainPairings(grainName: string): string[] {
 // Get preparation instructions for an ingredient
 export function getPreparationInstructions(ingredientName: string): IngredientPrep | null {
   return INGREDIENT_PREP[ingredientName] || null;
+}
+
+// Lines for the downloaded recipe, so it carries the same preparation guidance the page
+// shows (#213). Ingredients with a safety preparation warning are marked "WARNING".
+export function getPreparationExportLines(ingredientNames: readonly string[], bird: BirdType): string[] {
+  const lines = ingredientNames
+    .filter((name) => getPreparationInstructions(name))
+    .flatMap((name) => {
+      const prep = getPreparationInstructions(name)!;
+      const label = name.replace(/_/g, " ");
+      const safety = hasSafetyPreparationWarning(name);
+      const guidance = prep.birdGuidance?.[bird];
+      return [
+        `${safety ? "WARNING – " : ""}${label}: ${prep.preparation}`,
+        ...(guidance ? [`  ${guidance}`] : []),
+        ...(safety && prep.notes ? [`  ${prep.notes}`] : []),
+      ];
+    });
+  return lines.length ? ["", "PREPARATION INSTRUCTIONS AND WARNINGS", ...lines] : [];
 }

@@ -44,7 +44,7 @@ import {
   type BirdType,
 } from "@/lib/birds";
 import { MultibirMixCalculator, type MixResult } from "@/lib/calculator-multi-bird";
-import { getPreparationInstructions, getProcessingWarning, isToxicRaw } from "@/lib/safety";
+import { getPreparationExportLines, getPreparationInstructions, getProcessingWarning, isToxicRaw } from "@/lib/safety";
 import { getProfileDefaultIngredients } from "@/lib/inventory-presets";
 import { resolveDisplayedFormula } from "@/lib/formula-display";
 import { selectDiversitySuggestionCandidate } from "@/lib/diversity-suggestion";
@@ -52,6 +52,9 @@ import { bridgeFeasibleWorkerMixToMixResult } from "@/lib/optimizer-mix-result-b
 import { startBrowserLocalOptimizerSolve } from "@/lib/optimizer-runtime";
 import { cn } from "@/lib/utils";
 import { Link } from "wouter";
+
+// Only pigeons and chickens are advised to receive grit; the other birds' care notes advise against routine grit (#215).
+const BIRDS_NEEDING_GRIT_REMINDER: ReadonlySet<BirdType> = new Set<BirdType>(["pigeon", "chicken"]);
 
 export default function Home() {
   const [selectedBird, setSelectedBird] = useState<BirdType>("pigeon");
@@ -67,6 +70,7 @@ export default function Home() {
   const birdProfile = BIRD_PROFILES[selectedBird];
   const currentProfile = birdProfile.profiles[situation] || birdProfile.profiles[availableSituations[0]];
   const care = BIRD_CARE[selectedBird];
+  const birdDisplayName = selectedBird === "african_grey" ? birdProfile.name : birdProfile.name.toLowerCase();
   const gritText = care.gritBySituation?.[situation] ? `${care.grit} ${care.gritBySituation[situation]}` : care.grit;
   const herbRecommendation = useMemo(() => {
     const recommendation = HERB_RECOMMENDATIONS[situation];
@@ -254,6 +258,7 @@ export default function Home() {
       care.scope,
       care.baseDiet,
       ...result.warnings.map((warning) => `${warning.level}: ${warning.message}`),
+      ...getPreparationExportLines(Object.keys(result.mix), selectedBird),
     ];
     const file = new Blob([lines.join("\n")], { type: "text/plain;charset=utf-8" });
     const link = document.createElement("a");
@@ -514,7 +519,7 @@ export default function Home() {
           </section>
         </div>
 
-        <section className="mt-16 border-t pt-8" aria-label="Safety reminders"><Alert className="border-amber-200 bg-amber-50"><AlertTriangle className="h-4 w-4 text-amber-600" /><AlertTitle className="font-bold text-amber-900">Important Safety Reminders</AlertTitle><AlertDescription className="mt-2 space-y-2 text-sm text-amber-800"><p>Fresh Water: Always provide clean, fresh water available at all times</p><p>Grit: Pigeons need grit to properly digest seeds and grains</p><p>Toxic Legumes: Never feed raw kidney beans, lima beans, fava beans, navy beans, pinto beans, or black beans</p><p>Preparation: Follow preparation instructions for each ingredient carefully</p><p>Exotics Vet Care: If your pigeon shows signs of illness, contact an exotics vet immediately</p></AlertDescription></Alert></section>
+        <section className="mt-16 border-t pt-8" aria-label="Safety reminders"><Alert className="border-amber-200 bg-amber-50"><AlertTriangle className="h-4 w-4 text-amber-600" /><AlertTitle className="font-bold text-amber-900">Important Safety Reminders</AlertTitle><AlertDescription className="mt-2 space-y-2 text-sm text-amber-800"><p>Fresh Water: Always provide clean, fresh water available at all times</p>{BIRDS_NEEDING_GRIT_REMINDER.has(selectedBird) && <p>Grit: {care.grit}</p>}<p>Toxic Legumes: Never feed raw kidney beans, lima beans, fava beans, navy beans, pinto beans, or black beans</p><p>Preparation: Follow preparation instructions for each ingredient carefully</p><p>Exotics Vet Care: If your {birdDisplayName} shows signs of illness, contact an exotics vet immediately</p></AlertDescription></Alert></section>
       </main>
     </div>
   );
