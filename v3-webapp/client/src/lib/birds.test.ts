@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { BIRD_CARE, BIRD_PROFILES, BIRD_TYPES, getAvailableSituations } from "./birds";
+import { BIRD_CARE, BIRD_PROFILES, BIRD_TYPES, getAvailableSituations, getDefaultSituation } from "./birds";
 
 describe("canonical bird profiles and governance invariants", () => {
   it("ensures 'Pet/Companion' profile exists for all birds and is default opening profile for non-pigeon birds", () => {
@@ -12,6 +12,12 @@ describe("canonical bird profiles and governance invariants", () => {
         const availableSituations = getAvailableSituations(bird);
         expect(availableSituations[0]).toBe("pet");
       }
+    }
+  });
+
+  it("ensures getDefaultSituation(bird) returns 'pet' for every bird in BIRD_TYPES", () => {
+    for (const bird of BIRD_TYPES) {
+      expect(getDefaultSituation(bird)).toBe("pet");
     }
   });
 });
