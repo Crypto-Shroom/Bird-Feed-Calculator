@@ -193,49 +193,35 @@ export class MultibirMixCalculator {
 
   private createFeasibleCategoryPlans(ingredients: AvailableIngredient[], targetWeight: number): CategorySummary[] {
     const targets = getCategoryTargets(this.bird);
-    const capacity: CategorySummary = { grain: 0, legume: 0, seed: 0 };
-    for (let i = 0; i < ingredients.length; i++) {
-      const ing = ingredients[i];
-      if (ing.category in capacity) {
-        capacity[ing.category as keyof CategorySummary] += ing.amount;
-      }
-    }
-    const invTargetPct = 100 / targetWeight;
-    capacity.grain *= invTargetPct;
-    capacity.legume *= invTargetPct;
-    capacity.seed *= invTargetPct;
+    const capacity = categoryKeys.reduce((summary, category) => {
+      summary[category] = ingredients
+        .filter((ingredient) => ingredient.category === category)
+        .reduce((total, ingredient) => total + ingredient.amount, 0) / targetWeight * 100;
+      return summary;
+    }, { grain: 0, legume: 0, seed: 0 } as CategorySummary);
 
     const priorities: Array<keyof CategorySummary | null> = [null, "grain", "legume", "seed"];
     return priorities.map((priority) => {
       const plan = { grain: 0, legume: 0, seed: 0 } as CategorySummary;
 
-      for (let i = 0; i < categoryKeys.length; i++) {
-        const category = categoryKeys[i];
+      categoryKeys.forEach((category) => {
         if (capacity[category] > 0) {
           plan[category] = Math.min(targets[category][0], capacity[category]);
         }
-      }
+      });
 
-      let remaining = 100 - (plan.grain + plan.legume + plan.seed);
+      let remaining = 100 - Object.values(plan).reduce((total, value) => total + value, 0);
       while (remaining > 0.001) {
-        let bestCategory: keyof CategorySummary | null = null;
-        let bestScore = -Infinity;
+        const viable = categoryKeys.filter((category) => capacity[category] - plan[category] > 0.001);
+        if (!viable.length) break;
 
-        for (let i = 0; i < categoryKeys.length; i++) {
-          const category = categoryKeys[i];
-          if (capacity[category] - plan[category] > 0.001) {
-            const score = this.categoryAllocationScore(category, plan[category], targets[category], priority);
-            if (score > bestScore || (score === bestScore && bestCategory && category.localeCompare(bestCategory) < 0)) {
-              bestScore = score;
-              bestCategory = category;
-            }
-          }
-        }
-
-        if (!bestCategory) break;
-
-        const increment = Math.min(1, remaining, capacity[bestCategory] - plan[bestCategory]);
-        plan[bestCategory] += increment;
+        const selected = [...viable].sort((left, right) => {
+          const leftScore = this.categoryAllocationScore(left, plan[left], targets[left], priority);
+          const rightScore = this.categoryAllocationScore(right, plan[right], targets[right], priority);
+          return rightScore - leftScore || left.localeCompare(right);
+        })[0];
+        const increment = Math.min(1, remaining, capacity[selected] - plan[selected]);
+        plan[selected] += increment;
         remaining -= increment;
       }
 
@@ -294,38 +280,14 @@ export class MultibirMixCalculator {
 
     while (added < requestedWeight - 0.001) {
       const amountToAdd = Math.min(step, requestedWeight - added);
-      let winner: { ingredient: AvailableIngredient; addAmount: number; score: number } | null = null;
-
-      for (let i = 0; i < choices.length; i++) {
-        const ingredient = choices[i];
-        const available = remaining.get(ingredient.name) || 0;
-        if (available <= 0) continue;
-
-        const addAmount = Math.min(amountToAdd, available);
-        const name = ingredient.name;
-        const originalAmount = mix[name];
-        mix[name] = (originalAmount || 0) + addAmount;
-        const score = this.selectionScore(mix, target, categoryPlan);
-
-        if (originalAmount === undefined) {
-          delete mix[name];
-        } else {
-          mix[name] = originalAmount;
-        }
-
-        if (!winner) {
-          winner = { ingredient, addAmount, score };
-        } else {
-          const diff = score - winner.score;
-          if (diff < -1e-12) {
-            winner = { ingredient, addAmount, score };
-          } else if (Math.abs(diff) <= 1e-12) {
-            if (ingredient.name.localeCompare(winner.ingredient.name) < 0) {
-              winner = { ingredient, addAmount, score };
-            }
-          }
-        }
-      }
+      const winner = choices
+        .filter((ingredient) => (remaining.get(ingredient.name) || 0) > 0)
+        .map((ingredient) => {
+          const addAmount = Math.min(amountToAdd, remaining.get(ingredient.name) || 0);
+          const candidate = { ...mix, [ingredient.name]: (mix[ingredient.name] || 0) + addAmount };
+          return { ingredient, addAmount, score: this.selectionScore(candidate, target, categoryPlan) };
+        })
+        .sort((left, right) => left.score - right.score || left.ingredient.name.localeCompare(right.ingredient.name))[0];
 
       if (!winner) break;
       mix[winner.ingredient.name] = (mix[winner.ingredient.name] || 0) + winner.addAmount;
@@ -336,7 +298,7 @@ export class MultibirMixCalculator {
 
   private selectionScore(mix: Record<string, number>, target: NutritionTarget, categoryPlan: CategorySummary): number {
     const objective = this.objectiveScore(mix, target);
-    const categories = objective.categories;
+    const categories = this.calculateCategoryRatios(mix);
     const planDistance = categoryKeys.reduce((total, category) => total + Math.abs(categories[category] - categoryPlan[category]) / 100, 0);
     return objective.macroDistance * 0.7 + planDistance * 0.25 + objective.diversityPenalty * 0.05;
   }
@@ -356,8 +318,9 @@ export class MultibirMixCalculator {
     return this.mixSignature(left).localeCompare(this.mixSignature(right));
   }
 
-  private objectiveScore(mix: Record<string, number>, target: NutritionTarget): OptimizationSummary & { categories: CategorySummary } {
-    const { nutrition, categories } = this.calculateMetrics(mix);
+  private objectiveScore(mix: Record<string, number>, target: NutritionTarget): OptimizationSummary {
+    const nutrition = this.calculateNutrition(mix);
+    const categories = this.calculateCategoryRatios(mix);
     const categoryTargets = getCategoryTargets(this.bird);
 
     const macroDistance = nutritionKeys.reduce((total, key) => {
@@ -384,7 +347,6 @@ export class MultibirMixCalculator {
       targetMisses,
       diversityPenalty,
       total: macroDistance * 0.55 + categoryDistance * 0.25 + diversityPenalty * 0.1 + targetMisses * 0.1,
-      categories,
     };
   }
 
@@ -395,62 +357,25 @@ export class MultibirMixCalculator {
       .join("|");
   }
 
-  private calculateMetrics(mix: Record<string, number>): { nutrition: NutritionSummary; categories: CategorySummary } {
-    let totalWeight = 0;
-    let protein = 0;
-    let carbs = 0;
-    let fat = 0;
-    let fiber = 0;
-    let grain = 0;
-    let legume = 0;
-    let seed = 0;
-
-    for (const name in mix) {
-      const amount = mix[name];
-      if (amount <= 0) continue;
-      const ing = INGREDIENTS[name];
-      if (!ing) continue;
-
-      totalWeight += amount;
-      protein += ing.protein * amount;
-      carbs += ing.carbs * amount;
-      fat += ing.fat * amount;
-      fiber += ing.fiber * amount;
-
-      if (ing.category === "grain") grain += amount;
-      else if (ing.category === "legume") legume += amount;
-      else if (ing.category === "seed") seed += amount;
-    }
-
-    if (!totalWeight) {
-      return {
-        nutrition: { protein: 0, carbs: 0, fat: 0, fiber: 0 },
-        categories: { grain: 0, legume: 0, seed: 0 },
-      };
-    }
-
-    const invTotal = 1 / totalWeight;
-    return {
-      nutrition: {
-        protein: protein * invTotal,
-        carbs: carbs * invTotal,
-        fat: fat * invTotal,
-        fiber: fiber * invTotal,
-      },
-      categories: {
-        grain: grain * invTotal * 100,
-        legume: legume * invTotal * 100,
-        seed: seed * invTotal * 100,
-      },
-    };
-  }
-
   private calculateNutrition(mix: Record<string, number>): NutritionSummary {
-    return this.calculateMetrics(mix).nutrition;
+    const totalWeight = Object.values(mix).reduce((total, amount) => total + amount, 0);
+    if (!totalWeight) return { protein: 0, carbs: 0, fat: 0, fiber: 0 };
+
+    return nutritionKeys.reduce((nutrition, key) => {
+      nutrition[key] = Object.entries(mix).reduce((total, [name, amount]) => total + (INGREDIENTS[name]?.[key] || 0) * amount, 0) / totalWeight;
+      return nutrition;
+    }, { protein: 0, carbs: 0, fat: 0, fiber: 0 } as NutritionSummary);
   }
 
   private calculateCategoryRatios(mix: Record<string, number>): CategorySummary {
-    return this.calculateMetrics(mix).categories;
+    const totalWeight = Object.values(mix).reduce((total, amount) => total + amount, 0);
+    if (!totalWeight) return { grain: 0, legume: 0, seed: 0 };
+
+    return Object.entries(mix).reduce((categories, [name, amount]) => {
+      const category = INGREDIENTS[name]?.category;
+      if (category) categories[category] += (amount / totalWeight) * 100;
+      return categories;
+    }, { grain: 0, legume: 0, seed: 0 } as CategorySummary);
   }
 
   // Preserved audit analysis helper. It is intentionally not invoked by the restored
