@@ -444,7 +444,7 @@ export function getSituationProfile(bird: BirdType, situation: string): Situatio
   return profile.profiles[situation] || null;
 }
 
-const AVAILABLE_SITUATIONS_BY_BIRD: Record<BirdType, string[]> = {
+const AVAILABLE_SITUATIONS_BY_BIRD: Record<BirdType, readonly string[]> = {
   pigeon: Object.keys(BIRD_PROFILES.pigeon.profiles),
   parrot: Object.keys(BIRD_PROFILES.parrot.profiles),
   african_grey: Object.keys(BIRD_PROFILES.african_grey.profiles),
@@ -453,7 +453,7 @@ const AVAILABLE_SITUATIONS_BY_BIRD: Record<BirdType, string[]> = {
   chicken: Object.keys(BIRD_PROFILES.chicken.profiles),
 };
 
-export function getAvailableSituations(bird: BirdType): string[] {
+export function getAvailableSituations(bird: BirdType): readonly string[] {
   return AVAILABLE_SITUATIONS_BY_BIRD[bird];
 }
 
