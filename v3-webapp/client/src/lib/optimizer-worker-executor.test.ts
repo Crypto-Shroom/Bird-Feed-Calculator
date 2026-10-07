@@ -1,7 +1,12 @@
+import { createRequire } from "node:module";
 import { describe, expect, it } from "vitest";
 
+import { adaptExactFeasibilityResult } from "./optimizer-adapter";
 import { buildExactFeasibilityModel } from "./optimizer-model";
 import { createBrowserLocalSolverExecutor } from "./optimizer-worker-executor";
+
+const require = createRequire(import.meta.url);
+const createNodeHighs = require("highs") as () => Promise<{ solve: (problem: string, options?: object) => { Status: string; Columns: Record<string, { Primal: number } | undefined> } }>;
 
 const model = buildExactFeasibilityModel({
   candidates: [
@@ -19,7 +24,7 @@ function request() {
 }
 
 describe("browser-local optimizer Worker executor", () => {
-  it("loads the local wasm resolver once and returns named raw quantities for an optimal solve", async () => {
+  it("loads the local wasm resolver once and returns quantities read from the model's x_<id> LP columns", async () => {
     const locateFiles: string[] = [];
     let loadCount = 0;
     const executor = createBrowserLocalSolverExecutor({
@@ -29,10 +34,12 @@ describe("browser-local optimizer Worker executor", () => {
         return {
           solve: () => ({
             Status: "Optimal",
+            // HiGHS names columns exactly as the LP declares them.
             Columns: {
-              barley: { Primal: 500 },
-              peas: { Primal: 400 },
-              sunflower: { Primal: 100 },
+              x_barley: { Primal: 500 },
+              x_peas: { Primal: 400 },
+              x_sunflower: { Primal: 100 },
+              M: { Primal: 500 },
             },
           }),
         };
@@ -42,10 +49,34 @@ describe("browser-local optimizer Worker executor", () => {
     const first = await executor(request(), { isCancelled: () => false });
     const second = await executor({ ...request(), requestId: "runtime-test-2" }, { isCancelled: () => false });
 
+    expect(model.candidates.map(({ quantityVariable }) => quantityVariable)).toEqual(["x_barley", "x_peas", "x_sunflower"]);
     expect(first).toMatchObject({ status: "optimal", quantities: { barley: 500, peas: 400, sunflower: 100 }, solverStatus: "Optimal" });
     expect(second.status).toBe("optimal");
     expect(loadCount).toBe(1);
     expect(locateFiles[0]).toMatch(/highs\.wasm/);
+  });
+
+  it("solves a small model with real Node HiGHS through the production executor and returns finite whole grams (issue #211)", async () => {
+    const executor = createBrowserLocalSolverExecutor({ loadHighs: () => createNodeHighs() });
+    const result = await executor(request(), { isCancelled: () => false });
+
+    expect(result.status).toBe("optimal");
+    const quantities = model.candidates.map(({ id }) => result.quantities[id]);
+    expect(quantities).toHaveLength(3);
+    quantities.forEach((quantity) => {
+      expect(Number.isFinite(quantity)).toBe(true);
+      expect(Math.abs(quantity - Math.round(quantity))).toBeLessThan(1e-6);
+    });
+    expect(quantities.reduce((total, quantity) => total + Math.round(quantity), 0)).toBe(1_000);
+
+    const adapted = adaptExactFeasibilityResult(
+      { type: "result", requestId: "runtime-test", elapsedMs: 1, ...result, quantities: Object.fromEntries(Object.entries(result.quantities).map(([id, grams]) => [id, Math.round(grams)])) },
+      model,
+      1_000,
+      { protein: [0, 100], carbs: [0, 100], fat: [0, 100], fiber: [0, 100] },
+      { grain: [0, 100], legume: [0, 100], seed: [0, 100] },
+    );
+    expect(adapted.status).toBe("feasible");
   });
 
   it("maps infeasible, bounded-time, and unsupported solver statuses without manufacturing quantities", async () => {

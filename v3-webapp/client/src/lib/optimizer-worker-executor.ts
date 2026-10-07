@@ -40,8 +40,13 @@ function mapSolutionStatus(status: string): OptimizerWorkerExecutorResult["statu
   return "error";
 }
 
+/**
+ * Reads each candidate's quantity from the LP column the model actually
+ * declared (`x_<id>`), and reports it under the candidate id. Reading the bare
+ * id returned NaN for every candidate (issue #211).
+ */
 function quantitiesFromSolution(solution: HighsSolution, model: OptimizerModel): Record<string, number> {
-  return Object.fromEntries(model.candidates.map(({ id }) => [id, solution.Columns[id]?.Primal ?? Number.NaN]));
+  return Object.fromEntries(model.candidates.map(({ id, quantityVariable }) => [id, solution.Columns[quantityVariable]?.Primal ?? Number.NaN]));
 }
 
 /**
