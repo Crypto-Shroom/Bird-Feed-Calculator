@@ -20,6 +20,20 @@ function assertCatalogIngredient(id: string): NonNullable<typeof INGREDIENTS[str
   return ingredient;
 }
 
+export function assertCanonicalFormNutritionParity(aliasId: string, canonicalId: string): void {
+  const alias = assertCatalogIngredient(aliasId);
+  const canonical = assertCatalogIngredient(canonicalId);
+  if (
+    alias.category !== canonical.category ||
+    alias.protein !== canonical.protein ||
+    alias.carbs !== canonical.carbs ||
+    alias.fat !== canonical.fat ||
+    alias.fiber !== canonical.fiber
+  ) {
+    throw new Error(`alias ingredient '${aliasId}' nutrition profile diverges from canonical ingredient '${canonicalId}'`);
+  }
+}
+
 function nutritionFor(id: string): Record<OptimizerMacro, number> {
   const ingredient = assertCatalogIngredient(id);
   return {
@@ -53,6 +67,9 @@ export function canonicalizeOptimizerCandidates(
     }
 
     const canonicalId = resolveSolverCanonicalIngredientId(candidate.id);
+    if (candidate.id !== canonicalId) {
+      assertCanonicalFormNutritionParity(candidate.id, canonicalId);
+    }
     const canonicalIngredient = assertCatalogIngredient(canonicalId);
     const existing = aggregated.get(canonicalId);
     const nextSourceIds = Array.from(new Set([...(existing?.sourceIngredientIds ?? []), candidate.id])).sort();
