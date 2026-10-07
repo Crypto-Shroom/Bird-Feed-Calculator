@@ -40,6 +40,7 @@ import {
   BIRD_PROFILES,
   BIRD_TYPES,
   getAvailableSituations,
+  getDefaultSituation,
   getCategoryTargets,
   type BirdType,
 } from "@/lib/birds";
@@ -68,7 +69,7 @@ export default function Home() {
 
   const availableSituations = useMemo(() => getAvailableSituations(selectedBird), [selectedBird]);
   const birdProfile = BIRD_PROFILES[selectedBird];
-  const currentProfile = birdProfile.profiles[situation] || birdProfile.profiles[availableSituations[0]];
+  const currentProfile = birdProfile.profiles[situation] || birdProfile.profiles[getDefaultSituation(selectedBird)];
   const care = BIRD_CARE[selectedBird];
   const birdDisplayName = selectedBird === "african_grey" ? birdProfile.name : birdProfile.name.toLowerCase();
   const gritText = care.gritBySituation?.[situation] ? `${care.grit} ${care.gritBySituation[situation]}` : care.grit;
@@ -84,8 +85,8 @@ export default function Home() {
   }, [selectedBird, situation]);
 
   useEffect(() => {
-    if (!availableSituations.includes(situation)) setSituation(availableSituations[0]);
-  }, [availableSituations, situation]);
+    if (!availableSituations.includes(situation)) setSituation(getDefaultSituation(selectedBird));
+  }, [availableSituations, selectedBird, situation]);
 
   const profileDefaultResult = useMemo(
     () => new MultibirMixCalculator(getProfileDefaultIngredients(selectedBird, situation), selectedBird, situation).calculate(targetWeight),
