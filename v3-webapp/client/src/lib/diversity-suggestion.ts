@@ -11,9 +11,9 @@ import { getProcessingWarning, isToxicRaw } from "@/lib/safety";
  * is static. We memoize this per bird to avoid iterating all ingredients, executing
  * 4 safety check functions per ingredient, and sorting the array on every candidate selection pass.
  */
-const compatibleCandidatesCache = new Map<BirdType, string[]>();
+const compatibleCandidatesCache = new Map<BirdType, readonly string[]>();
 
-function getCompatibleCandidatesForBird(bird: BirdType): string[] {
+function getCompatibleCandidatesForBird(bird: BirdType): readonly string[] {
   let cached = compatibleCandidatesCache.get(bird);
   if (!cached) {
     cached = Object.keys(INGREDIENTS)
