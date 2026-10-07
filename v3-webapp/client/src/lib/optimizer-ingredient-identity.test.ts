@@ -4,7 +4,7 @@ import { describe, expect, it } from "vitest";
 
 import { BIRD_PROFILES, getCategoryTargets } from "./birds";
 import { INGREDIENTS } from "./data";
-import { canonicalizeOptimizerCandidates, resolveSolverCanonicalIngredientId } from "./optimizer-ingredient-identity";
+import { assertCanonicalFormNutritionParity, canonicalizeOptimizerCandidates, resolveSolverCanonicalIngredientId } from "./optimizer-ingredient-identity";
 import { buildExactFeasibilityModel, type OptimizerCandidate } from "./optimizer-model";
 
 const rootPath = resolve(import.meta.dirname, "../../../../");
@@ -44,6 +44,24 @@ describe("canonical optimizer ingredient identity", () => {
     });
     expect(resolveSolverCanonicalIngredientId("split_lentils")).toBe("lentils");
     expect(resolveSolverCanonicalIngredientId("lentils")).toBe("lentils");
+    expect(resolveSolverCanonicalIngredientId("wheat")).toBe("wheat");
+    expect(resolveSolverCanonicalIngredientId("peas")).toBe("peas");
+    expect(() => assertCanonicalFormNutritionParity("split_lentils", "lentils")).not.toThrow();
+  });
+
+  it("canonicalizes split_lentils to lentils even when whole lentils are not in inventory", () => {
+    const canonical = canonicalizeOptimizerCandidates([
+      candidate("split_lentils", 150),
+    ]);
+
+    expect(canonical).toEqual([{
+      id: "lentils",
+      category: "legume",
+      availableGrams: 150,
+      nutrition: { protein: 25, carbs: 63, fat: 1, fiber: 8 },
+      safetyState: "eligible",
+      sourceIngredientIds: ["split_lentils"],
+    }]);
   });
 
   it("aggregates whole and split actual stock under one canonical solver candidate", () => {
@@ -85,5 +103,13 @@ describe("canonical optimizer ingredient identity", () => {
 
   it("does not use canonicalization to bypass a failed safety gate", () => {
     expect(() => canonicalizeOptimizerCandidates([candidate("split_lentils", 125, "excluded")])).toThrow("did not pass the safety gate");
+  });
+
+  it("throws an error when candidate has invalid available grams", () => {
+    const invalidCandidate = {
+      ...candidate("split_lentils", 100),
+      availableGrams: -10,
+    };
+    expect(() => canonicalizeOptimizerCandidates([invalidCandidate])).toThrow("invalid available grams");
   });
 });

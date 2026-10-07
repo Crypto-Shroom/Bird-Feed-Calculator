@@ -448,6 +448,11 @@ export function getAvailableSituations(bird: BirdType): string[] {
   return Object.keys(BIRD_PROFILES[bird].profiles);
 }
 
+export function getDefaultSituation(bird: BirdType): string {
+  const availableSituations = getAvailableSituations(bird);
+  return availableSituations.includes('pet') ? 'pet' : availableSituations[0];
+}
+
 export function getCategoryTargets(bird: BirdType): CategoryTargets {
   return DEFAULT_CATEGORY_TARGETS[bird];
 }
