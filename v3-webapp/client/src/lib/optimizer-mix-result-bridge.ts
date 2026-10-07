@@ -4,7 +4,9 @@ import { MultibirMixCalculator, type MixResult } from "./calculator-multi-bird";
 const weightTolerance = 1e-9;
 
 /**
- * Replaces the synchronous mix with a strictly validated Worker mix and
+ * Replaces the synchronous mix with a strictly validated Worker mix (a
+ * `feasible` mix, or the `best_attainable` fallback when no mix meets every
+ * range) and
  * recomputes every mix-derived field from that mix, so the analysis shown
  * beside it describes the mix actually shown:
  *

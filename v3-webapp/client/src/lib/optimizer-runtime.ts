@@ -2,6 +2,7 @@ import { adaptExactFeasibilityResult, type AdaptedOptimizerResult } from "./opti
 import { checkBirdToxicity, isIngredientCompatible } from "./bird-safety";
 import type { BirdType } from "./birds";
 import { INGREDIENTS } from "./data";
+import { explainBestAttainable } from "./optimizer-explain";
 import { allocateCanonicalMixToInventoryForms } from "./optimizer-form-allocation";
 import { canonicalizeOptimizerCandidates } from "./optimizer-ingredient-identity";
 import { buildExactFeasibilityModel, type OptimizerCategory, type OptimizerMacro, type OptimizerModel, type OptimizerRange } from "./optimizer-model";
@@ -305,7 +306,19 @@ export function startBrowserLocalOptimizerSolve(
     const allocated = adapted.status === "feasible" || adapted.status === "best_attainable"
       ? (() => {
         try {
-          return { ...adapted, mix: allocateCanonicalMixToInventoryForms(adapted.mix, input.inventory, eligibleSourceIds) };
+          const fallbackExplanation = adapted.status === "best_attainable"
+            ? explainBestAttainable({
+              model,
+              mix: adapted.mix,
+              requestedTargetGrams: input.requestedTargetGrams,
+              safetyExcludedIds: Object.keys(input.inventory).filter((id) => !eligibleSourceIds.has(id)),
+            })
+            : undefined;
+          return {
+            ...adapted,
+            mix: allocateCanonicalMixToInventoryForms(adapted.mix, input.inventory, eligibleSourceIds),
+            ...(fallbackExplanation ? { fallbackExplanation } : {}),
+          };
         } catch (error) {
           return {
             ...adapted,

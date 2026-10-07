@@ -135,6 +135,29 @@ describe("browser-local optimizer runtime adapter", () => {
   });
 });
 
+describe("best-attainable runtime result", () => {
+  it("returns the fallback mix in the visitor's variants with a proven explanation of every missed range", async () => {
+    const worker = new FakeWorker();
+    const handle = startBrowserLocalOptimizerSolve({
+      requestId: "pigeon-grains",
+      bird: "pigeon",
+      inventory: { wheat: 600, corn_yellow: 400 },
+      requestedTargetGrams: 1_000,
+      macroRanges: BIRD_PROFILES.pigeon.profiles.pet.nutrition,
+      categoryRanges: getCategoryTargets("pigeon"),
+    }, { createWorker: () => worker });
+    worker.respond({ type: "result", requestId: worker.solveId(), status: "best_attainable", quantities: { corn_red: 400, wheat: 600 }, elapsedMs: 5 });
+
+    const result = await handle.result;
+    expect(result).toMatchObject({ status: "best_attainable", mix: { corn_yellow: 400, wheat: 600 } });
+    expect(result.fallbackExplanation?.misses.map(({ key, reason }) => `${key}:${reason}`)).toEqual(expect.arrayContaining([
+      "carbs:no_ingredient_reaches",
+      "legume:not_enough_stock",
+      "seed:not_enough_stock",
+    ]));
+  });
+});
+
 describe("reused browser optimizer Worker session", () => {
   afterEach(() => {
     vi.useRealTimers();

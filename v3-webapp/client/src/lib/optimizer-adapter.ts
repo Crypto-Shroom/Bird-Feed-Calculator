@@ -1,3 +1,4 @@
+import type { BestAttainableExplanation } from "./optimizer-explain";
 import type { OptimizerCategory, OptimizerMacro, OptimizerModel, OptimizerRange } from "./optimizer-model";
 import type { OptimizerWorkerRawResult } from "./optimizer-protocol";
 
@@ -31,6 +32,11 @@ export interface AdaptedOptimizerResult {
    * macro/category range the completed fallback mix still misses. Not visitor copy.
    */
   rangeMisses?: string[];
+  /**
+   * For a `best_attainable` mix: every missed range with its proven reason,
+   * attached by the browser runtime (see optimizer-explain.ts).
+   */
+  fallbackExplanation?: BestAttainableExplanation;
 }
 
 function emptyResult(
