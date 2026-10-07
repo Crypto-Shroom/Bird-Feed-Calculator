@@ -68,7 +68,7 @@ export const INGREDIENTS: Record<string, Ingredient> = {
     "beans": {"category": "legume", "protein": 22, "carbs": 62, "fat": 1, "fiber": 4.6, "notes": "WARNING: Check bean type - kidney, lima, fava, navy, pinto beans contain hemagglutinin (TOXIC if raw). Only feed if cooked thoroughly. Safe raw: mung, black-eyed peas, chickpeas (cooked)."},
     "mung_beans": {"category": "legume", "protein": 24, "carbs": 63, "fat": 1, "fiber": 5.7, "notes": "Safe uncooked"},
     "black_eyed_peas": {"category": "legume", "protein": 24, "carbs": 60, "fat": 1, "fiber": 5.0, "notes": "Safe dry, high protein"},
-    "chickpeas": {"category": "legume", "protein": 19, "carbs": 61, "fat": 6, "fiber": 9.3, "notes": "Cooked or properly processed; high fiber"},
+    "chickpeas": {"category": "legume", "protein": 19, "carbs": 61, "fat": 6, "fiber": 3.5, "notes": "Cooked or properly processed; high fiber"},
     "fava_beans": {"category": "legume", "protein": 26, "carbs": 58, "fat": 1.5, "fiber": 7.9, "notes": "Must be cooked"},
     "navy_beans": {"category": "legume", "protein": 22, "carbs": 60, "fat": 1.5, "fiber": 4.6, "notes": "Must be cooked"},
     "kidney_beans": {"category": "legume", "protein": 24, "carbs": 60, "fat": 1, "fiber": 4.6, "notes": "Must be cooked, toxic raw"},
