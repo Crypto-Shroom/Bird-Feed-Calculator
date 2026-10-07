@@ -1,6 +1,6 @@
 // Design contract: Modern Agrarian / Organic Tech — a warm, editorial feed workshop that communicates scope and safety clearly without overstating nutrition precision.
 // Design contract: Modern Agrarian / Organic Tech — retain the practical calculator rhythm while keeping contribution prompts compact, friendly, and safety-aware.
-import { useEffect, useMemo, useState } from "react";
+import { memo, useEffect, useMemo, useState } from "react";
 import {
   AlertTriangle,
   Bird,
@@ -152,28 +152,51 @@ export default function Home() {
     return candidate ? `Try offering ${candidate.replace(/_/g, " ")} alongside this mix to increase diversity for your bird.` : null;
   }, [formulaSource, result, selectedBird]);
 
-  const ingredientOptions = useMemo(() => {
-    const query = ingredientSearch.trim().toLowerCase();
+  // Pre-classify ingredient compatibility & safety checks for selected bird to avoid repetitive evaluation per search keypress
+  const classifiedIngredients = useMemo(() => {
     return Object.keys(INGREDIENTS)
-      .filter((name) => !inventory[name])
-      .filter((name) => !query || name.replace(/_/g, " ").includes(query))
       .sort()
-      .reduce<{ available: string[]; blocked: Array<{ name: string; reason: string; severity: "critical" | "review" }> }>((groups, name) => {
+      .map((name) => {
         const rawSafety = isToxicRaw(name);
         const speciesToxicity = checkBirdToxicity(name, selectedBird);
         const processingWarning = getProcessingWarning(name);
-        if (isIngredientCompatible(name, selectedBird) && !rawSafety && !speciesToxicity && !processingWarning) {
-          groups.available.push(name);
-        } else {
-          groups.blocked.push({
-            name,
-            reason: speciesToxicity?.description || rawSafety?.message || processingWarning || `Not compatible with ${birdProfile.name}.`,
-            severity: rawSafety || speciesToxicity ? "critical" : "review",
-          });
-        }
-        return groups;
-      }, { available: [], blocked: [] });
-  }, [birdProfile.name, ingredientSearch, inventory, selectedBird]);
+        const isCompatible = isIngredientCompatible(name, selectedBird);
+        const isAvailable = isCompatible && !rawSafety && !speciesToxicity && !processingWarning;
+        const displayName = name.replace(/_/g, " ");
+
+        return {
+          name,
+          displayName,
+          isAvailable,
+          blockedInfo: isAvailable
+            ? null
+            : {
+                name,
+                reason: speciesToxicity?.description || rawSafety?.message || processingWarning || `Not compatible with ${birdProfile.name}.`,
+                severity: (rawSafety || speciesToxicity ? "critical" : "review") as "critical" | "review",
+              },
+        };
+      });
+  }, [birdProfile.name, selectedBird]);
+
+  const ingredientOptions = useMemo(() => {
+    const query = ingredientSearch.trim().toLowerCase();
+    const available: string[] = [];
+    const blocked: Array<{ name: string; reason: string; severity: "critical" | "review" }> = [];
+
+    for (const item of classifiedIngredients) {
+      if (inventory[item.name]) continue;
+      if (query && !item.displayName.includes(query)) continue;
+
+      if (item.isAvailable) {
+        available.push(item.name);
+      } else if (item.blockedInfo) {
+        blocked.push(item.blockedInfo);
+      }
+    }
+
+    return { available, blocked };
+  }, [classifiedIngredients, ingredientSearch, inventory]);
 
   const ingredientTitle = ingredientSearch.trim() ? `[Ingredient research] ${ingredientSearch.trim()}` : "[Ingredient research]";
   const ingredientBody = ingredientSearch.trim() ? [
@@ -497,9 +520,9 @@ export default function Home() {
   );
 }
 
-function CareNote({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
+const CareNote = memo(function CareNote({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
   return <div className="flex items-start gap-3"><div className="mt-0.5 shrink-0">{icon}</div><div><p className="font-medium text-foreground">{title}</p><p className="text-xs leading-relaxed text-muted-foreground">{text}</p></div></div>;
-}
+});
 
 function FreshProduceCareNote({ text, guidance }: { text: string; guidance?: NonNullable<typeof BIRD_CARE.pigeon.freshProduceGuidance> }) {
   return (
@@ -596,7 +619,7 @@ function buildGitHubIssueUrl(template: string, title: string, body: string) {
   return `https://github.com/Crypto-Shroom/Bird-Feed-Calculator/issues/new?${query.toString()}`;
 }
 
-function NutritionCard({ label, value, target, color }: { label: string; value: number; target: [number, number]; color: string }) {
+const NutritionCard = memo(function NutritionCard({ label, value, target, color }: { label: string; value: number; target: [number, number]; color: string }) {
   const [min, max] = target;
   const isGood = value >= min && value <= max;
   const isLow = value < min;
@@ -611,9 +634,9 @@ function NutritionCard({ label, value, target, color }: { label: string; value: 
   const status = isGood ? "within the target range" : isLow ? "below the target range" : "above the target range";
 
   return <Card className="border-none bg-card shadow-md"><CardContent className="p-4"><div className="mb-1 text-sm text-muted-foreground">{label}</div><div className="mb-2 flex items-baseline gap-1"><span className={cn("font-mono text-2xl font-bold", !isGood && (isLow ? "text-blue-600" : "text-orange-600"))}>{value.toFixed(1)}</span><span className="text-xs font-medium text-muted-foreground">%</span></div><div className="relative h-3 overflow-hidden rounded-full bg-muted" role="img" aria-label={`${label}: ${value.toFixed(1)}%, ${status}; target range ${min} to ${max} percent.`}><div aria-hidden="true" className="absolute inset-y-0 border-x border-emerald-600/70 bg-emerald-100/80" style={{ left: "40%", width: "20%" }} /><div aria-hidden="true" className={cn("absolute left-0 top-0 h-full opacity-65 transition-[width] duration-300 motion-reduce:transition-none", color)} style={{ width: `${markerPosition}%` }} /><div aria-hidden="true" className={cn("absolute top-0 h-full w-1 rounded-full shadow-sm transition-[left] duration-300 motion-reduce:transition-none", isGood ? "bg-emerald-800" : isLow ? "bg-blue-700" : "bg-orange-700")} style={{ left: `calc(${markerPosition}% - 2px)` }} /></div><div className="mt-2 flex justify-between text-[10px] text-muted-foreground"><span className={cn("font-medium", isGood ? "text-emerald-700" : isLow ? "text-blue-700" : "text-orange-700")}>{status}</span><span>Target: <span className="font-medium">{min}-{max}%</span></span></div></CardContent></Card>;
-}
+});
 
-function CategoryBar({ label, value, target, color }: { label: string; value: number; target: [number, number]; color: string }) {
+const CategoryBar = memo(function CategoryBar({ label, value, target, color }: { label: string; value: number; target: [number, number]; color: string }) {
   const [min, max] = target;
   return <div className="space-y-1"><div className="flex justify-between text-sm"><span className="font-medium">{label}</span><span className="text-muted-foreground">{value.toFixed(1)}% <span className="text-xs opacity-70">(Target: {min}-{max}%)</span></span></div><div className="relative h-4 overflow-hidden rounded-full bg-muted"><div className="absolute top-0 h-full bg-black/5 dark:bg-white/10" style={{ left: `${min}%`, width: `${max - min}%` }} /><div className={cn("absolute top-0 left-0 h-full opacity-80", color)} style={{ width: `${Math.min(value, 100)}%` }} /></div></div>;
-}
+});
