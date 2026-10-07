@@ -1,14 +1,21 @@
 import { resolveSolverCanonicalIngredientId } from "./optimizer-ingredient-identity";
 
 /**
- * Restores a canonical solver quantity to the actual ingredient forms supplied
- * by the visitor. Allocation is proportional to available whole/split stock,
- * then resolves integral remainder by fractional share and stable identifier.
- * It never introduces a form the visitor did not enter or exceeds its stock.
+ * Restores a canonical solver quantity to the actual ingredient variants
+ * supplied by the visitor (whole/split lentils, corn colours, millet types,
+ * and every other exact-identical-nutrition group). Allocation is proportional
+ * to each variant's available stock, then resolves the integral remainder by
+ * fractional share and stable identifier. It never introduces a variant the
+ * visitor did not enter or exceeds its stock.
+ *
+ * `eligibleSourceIds`, when given, is the set of inventory keys that passed the
+ * safety gates; any other key in the same group (for example a raw form that a
+ * gate excluded) never receives grams.
  */
 export function allocateCanonicalMixToInventoryForms(
   canonicalMix: Readonly<Record<string, number>>,
   inventory: Readonly<Record<string, number>>,
+  eligibleSourceIds?: ReadonlySet<string>,
 ): Record<string, number> {
   const allocated: Record<string, number> = {};
 
@@ -17,7 +24,12 @@ export function allocateCanonicalMixToInventoryForms(
     if (rawQuantity === 0) continue;
 
     const sources = Object.entries(inventory)
-      .filter(([id, available]) => resolveSolverCanonicalIngredientId(id) === canonicalId && Number.isFinite(available) && available > 0)
+      .filter(([id, available]) => (
+        resolveSolverCanonicalIngredientId(id) === canonicalId
+        && (!eligibleSourceIds || eligibleSourceIds.has(id))
+        && Number.isFinite(available)
+        && available > 0
+      ))
       .map(([id, available]) => ({ id, available: Math.floor(available) }))
       .filter(({ available }) => available > 0)
       .sort((left, right) => left.id.localeCompare(right.id));

@@ -22,4 +22,14 @@ describe("canonical optimizer form allocation", () => {
   it("rejects a canonical quantity that cannot be restored within actual source stock", () => {
     expect(() => allocateCanonicalMixToInventoryForms({ lentils: 401 }, { lentils: 275, split_lentils: 125 })).toThrow("exceeds actual source-form stock");
   });
+
+  it("splits a merged corn quantity across the visitor's actual corn variants in proportion to their stock", () => {
+    expect(allocateCanonicalMixToInventoryForms({ corn_red: 300, wheat: 700 }, { corn_yellow: 600, maize: 200, wheat: 1_000 }))
+      .toEqual({ corn_yellow: 225, maize: 75, wheat: 700 });
+  });
+
+  it("never allocates to an inventory variant outside the safety-gated source set", () => {
+    expect(allocateCanonicalMixToInventoryForms({ peanuts: 40 }, { peanuts: 100, peanuts_raw: 100 }, new Set(["peanuts"])))
+      .toEqual({ peanuts: 40 });
+  });
 });

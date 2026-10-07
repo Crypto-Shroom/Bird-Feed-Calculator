@@ -115,8 +115,10 @@ export function startBrowserLocalOptimizerSolve(
   const startedAtMs = Date.now();
   let model;
   let worker: BrowserOptimizerWorker;
+  let eligibleSourceIds: ReadonlySet<string>;
   try {
     const candidates = buildBrowserOptimizerCandidates(input.inventory, input.bird);
+    eligibleSourceIds = new Set(candidates.flatMap(({ sourceIngredientIds }) => sourceIngredientIds));
     model = buildExactFeasibilityModel({
       candidates,
       requestedTargetGrams: input.requestedTargetGrams,
@@ -162,7 +164,7 @@ export function startBrowserLocalOptimizerSolve(
     const allocated = adapted.status === "feasible" || adapted.status === "best_attainable"
       ? (() => {
         try {
-          return { ...adapted, mix: allocateCanonicalMixToInventoryForms(adapted.mix, input.inventory) };
+          return { ...adapted, mix: allocateCanonicalMixToInventoryForms(adapted.mix, input.inventory, eligibleSourceIds) };
         } catch (error) {
           return {
             ...adapted,

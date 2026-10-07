@@ -4,7 +4,12 @@ import { describe, expect, it } from "vitest";
 
 import { BIRD_PROFILES, getCategoryTargets } from "./birds";
 import { INGREDIENTS } from "./data";
-import { assertCanonicalFormNutritionParity, canonicalizeOptimizerCandidates, resolveSolverCanonicalIngredientId } from "./optimizer-ingredient-identity";
+import {
+  IDENTICAL_NUTRITION_GROUPS,
+  assertCanonicalFormNutritionParity,
+  canonicalizeOptimizerCandidates,
+  resolveSolverCanonicalIngredientId,
+} from "./optimizer-ingredient-identity";
 import { buildExactFeasibilityModel, type OptimizerCandidate } from "./optimizer-model";
 
 const rootPath = resolve(import.meta.dirname, "../../../../");
@@ -111,5 +116,42 @@ describe("canonical optimizer ingredient identity", () => {
       availableGrams: -10,
     };
     expect(() => canonicalizeOptimizerCandidates([invalidCandidate])).toThrow("invalid available grams");
+  });
+
+  it("derives identical-nutrition groups from the catalog by exact equality of category and macros", () => {
+    const signature = (id: string) => {
+      const { category, protein, carbs, fat, fiber } = INGREDIENTS[id];
+      return [category, protein, carbs, fat, fiber];
+    };
+    expect(IDENTICAL_NUTRITION_GROUPS).toContainEqual(["corn_red", "corn_white", "corn_yellow", "maize"]);
+    expect(IDENTICAL_NUTRITION_GROUPS).toContainEqual(["lentils", "lentils_brown", "lentils_green", "split_lentils"]);
+
+    const grouped = new Set(IDENTICAL_NUTRITION_GROUPS.flat());
+    for (const group of IDENTICAL_NUTRITION_GROUPS) {
+      expect(group.length).toBeGreaterThan(1);
+      expect([...group]).toEqual([...group].sort());
+      for (const id of group) expect(signature(id)).toEqual(signature(group[0]));
+    }
+    // No two ungrouped catalog keys share an exact signature, and no group could absorb an ungrouped key.
+    const ungroupedSignatures = Object.keys(INGREDIENTS).filter((id) => !grouped.has(id)).map((id) => JSON.stringify(signature(id)));
+    expect(new Set(ungroupedSignatures).size).toBe(ungroupedSignatures.length);
+    for (const group of IDENTICAL_NUTRITION_GROUPS) expect(ungroupedSignatures).not.toContain(JSON.stringify(signature(group[0])));
+    expect(resolveSolverCanonicalIngredientId("maize")).toBe("corn_red");
+    expect(resolveSolverCanonicalIngredientId("corn_yellow")).toBe("corn_red");
+    expect(resolveSolverCanonicalIngredientId("corn_red")).toBe("corn_red");
+  });
+
+  it("merges identical-nutrition variants into one solver candidate with their combined stock", () => {
+    const canonical = canonicalizeOptimizerCandidates([
+      candidate("corn_yellow", 600),
+      candidate("maize", 400),
+      candidate("wheat", 500),
+    ]);
+
+    expect(canonical.map(({ id, availableGrams, sourceIngredientIds }) => ({ id, availableGrams, sourceIngredientIds }))).toEqual([
+      { id: "corn_red", availableGrams: 1_000, sourceIngredientIds: ["corn_yellow", "maize"] },
+      { id: "wheat", availableGrams: 500, sourceIngredientIds: ["wheat"] },
+    ]);
+    expect(canonical[0].nutrition).toEqual({ protein: 9, carbs: 72, fat: 4.5, fiber: 2 });
   });
 });

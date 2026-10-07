@@ -99,4 +99,17 @@ describe("browser-local optimizer runtime adapter", () => {
 
     await expect(handle.result).resolves.toMatchObject({ status: "cancelled", mix: {} });
   });
+
+  it("solves identical-nutrition variants as one candidate and still shows each entered variant in the mix", async () => {
+    const worker = new FakeWorker();
+    const handle = startBrowserLocalOptimizerSolve(
+      { ...input, requestId: "corn-variants", inventory: { corn_yellow: 300, maize: 300, peas: 400 } },
+      { createWorker: () => worker },
+    );
+    const solveMessage = worker.sent[0] as { model: { candidates: Array<{ id: string; availableGrams: number }> } };
+    expect(solveMessage.model.candidates.map(({ id, availableGrams }) => [id, availableGrams])).toEqual([["corn_red", 600], ["peas", 400]]);
+    worker.respond({ type: "result", requestId: "corn-variants", status: "optimal", quantities: { corn_red: 600, peas: 400 }, elapsedMs: 3 });
+
+    await expect(handle.result).resolves.toMatchObject({ status: "feasible", mix: { corn_yellow: 300, maize: 300, peas: 400 } });
+  });
 });
