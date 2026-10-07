@@ -39,14 +39,14 @@ function getToxicityByBird(name: string): Partial<Record<BirdType, ToxicFood>> {
   ) as Partial<Record<BirdType, ToxicFood>>;
 }
 
-let cachedEntries: IngredientLibraryEntry[] | null = null;
+let cachedEntries: readonly IngredientLibraryEntry[] | null = null;
 let cachedEntriesMap: Map<string, IngredientLibraryEntry> | null = null;
 
 /**
  * Returns all ingredient library entries.
  * Optimization: Memoized at module scope to avoid re-sorting and object creation overhead on repeated invocations.
  */
-export function getIngredientLibraryEntries(): IngredientLibraryEntry[] {
+export function getIngredientLibraryEntries(): readonly IngredientLibraryEntry[] {
   if (!cachedEntries) {
     cachedEntries = Object.entries(INGREDIENTS)
       .sort(([left], [right]) => left.localeCompare(right))
