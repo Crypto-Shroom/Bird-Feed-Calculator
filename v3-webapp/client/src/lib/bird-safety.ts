@@ -332,15 +332,30 @@ export const INGREDIENT_COMPATIBILITY: Record<string, IngredientCompatibility> =
   },
 };
 
+// Indexed O(1) Map lookups for bird toxicity checks
+const TOXICITY_MAP_BY_BIRD: Record<BirdType, Map<string, ToxicFood>> = (
+  Object.keys(BIRD_TOXICITY) as BirdType[]
+).reduce((acc, bird) => {
+  acc[bird] = new Map(BIRD_TOXICITY[bird].map((item) => [item.name, item]));
+  return acc;
+}, {} as Record<BirdType, Map<string, ToxicFood>>);
+
+// Indexed O(1) Set lookups for ingredient compatibility checks
+const COMPATIBLE_BIRDS_BY_INGREDIENT: Record<string, Set<BirdType>> = Object.entries(
+  INGREDIENT_COMPATIBILITY
+).reduce((acc, [ingredient, data]) => {
+  acc[ingredient] = new Set(data.compatibleBirds);
+  return acc;
+}, {} as Record<string, Set<BirdType>>);
+
 export function checkBirdToxicity(ingredientName: string, bird: BirdType): ToxicFood | null {
-  const toxicFoods = BIRD_TOXICITY[bird];
-  return toxicFoods.find(f => f.name === ingredientName) || null;
+  return TOXICITY_MAP_BY_BIRD[bird]?.get(ingredientName) || null;
 }
 
 export function isIngredientCompatible(ingredientName: string, bird: BirdType): boolean {
-  const compatibility = INGREDIENT_COMPATIBILITY[ingredientName];
-  if (!compatibility) return true; // If not in compatibility map, assume compatible
-  return compatibility.compatibleBirds.includes(bird);
+  const set = COMPATIBLE_BIRDS_BY_INGREDIENT[ingredientName];
+  if (!set) return true; // If not in compatibility map, assume compatible
+  return set.has(bird);
 }
 
 export function getIncompatibleBirds(ingredientName: string): BirdType[] {
