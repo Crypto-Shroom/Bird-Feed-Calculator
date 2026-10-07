@@ -248,7 +248,7 @@ for (const [bird, birdProfile] of Object.entries(BIRD_PROFILES)) {
     sweepScenarios.push({ bird, situation, inventory: issue85Inventory });
   }
 }
-const zeroBand = { exactMarginTolerance: 0, exactMarginRelativeTolerance: 0, macroDistanceTolerance: 0, categoryDistanceTolerance: 0, maximumShareToleranceGrams: 0 };
+const zeroBand = { exactMarginTolerance: 0, exactMarginRelativeTolerance: 0, maximumShareToleranceGrams: 0 };
 const sweepVariants = [
   { label: "all exact (proof-of-concept)", band: {} },
   { label: "ε_r = 0.01 (absolute)", band: { exactMarginTolerance: 0.01 } },
@@ -258,11 +258,12 @@ const sweepVariants = [
   { label: "ε_r = 10% of r*", band: { exactMarginRelativeTolerance: 0.1 } },
   { label: "ε_r = 20% of r*", band: { exactMarginRelativeTolerance: 0.2 } },
   { label: "τ_M = 25 g only", band: { maximumShareToleranceGrams: 25 } },
-  { label: "ε_r 0.01 abs, ε_macro 0.02, ε_category 0.05, τ_M 25 g", band: { exactMarginTolerance: 0.01, macroDistanceTolerance: 0.02, categoryDistanceTolerance: 0.05, maximumShareToleranceGrams: 25 } },
-  { label: "ε_r 5%, ε_macro 0.05, ε_category 0.05, τ_M 25 g", band: { exactMarginRelativeTolerance: 0.05, macroDistanceTolerance: 0.05, categoryDistanceTolerance: 0.05, maximumShareToleranceGrams: 25 } },
-  { label: "ε_r 10%, ε_macro 0.02, ε_category 0.02, τ_M 10 g", band: { exactMarginRelativeTolerance: 0.1, macroDistanceTolerance: 0.02, categoryDistanceTolerance: 0.02, maximumShareToleranceGrams: 10 } },
-  { label: "**chosen:** ε_r 10%, ε_macro 0.02, ε_category 0.05, τ_M 25 g", band: { exactMarginRelativeTolerance: 0.1, macroDistanceTolerance: 0.02, categoryDistanceTolerance: 0.05, maximumShareToleranceGrams: 25 }, chosen: true },
-  { label: "ε_r 10%, ε_macro 0.1, ε_category 0.1, τ_M 50 g", band: { exactMarginRelativeTolerance: 0.1, macroDistanceTolerance: 0.1, categoryDistanceTolerance: 0.1, maximumShareToleranceGrams: 50 } },
+  { label: "ε_r 0.01 abs, τ_M 25 g", band: { exactMarginTolerance: 0.01, maximumShareToleranceGrams: 25 } },
+  { label: "ε_r 5%, τ_M 25 g", band: { exactMarginRelativeTolerance: 0.05, maximumShareToleranceGrams: 25 } },
+  { label: "ε_r 10%, τ_M 10 g", band: { exactMarginRelativeTolerance: 0.1, maximumShareToleranceGrams: 10 } },
+  { label: "**chosen:** ε_r 10%, τ_M 25 g", band: { exactMarginRelativeTolerance: 0.1, maximumShareToleranceGrams: 25 }, chosen: true },
+  { label: "ε_r 10%, τ_M 50 g", band: { exactMarginRelativeTolerance: 0.1, maximumShareToleranceGrams: 50 } },
+  { label: "ε_r 20%, τ_M 25 g", band: { exactMarginRelativeTolerance: 0.2, maximumShareToleranceGrams: 25 } },
 ];
 const chosenVariant = sweepVariants.find((variant) => variant.chosen);
 const chosenMatchesPolicy = Object.entries({ ...zeroBand, ...chosenVariant.band }).every(([key, value]) => OPTIMIZER_POLICY[key] === value);
@@ -296,6 +297,8 @@ for (const variant of sweepVariants) {
     macroDeviation: average(fallback, ({ values }) => values.macroDeviation),
     categoryDeviation: average(fallback, ({ values }) => values.categoryDeviation),
     exactShare: average(exact, ({ values }) => values.maximumShareGrams),
+    exactSmallest: average(exact, ({ values }) => values.smallestMeaningfulGrams),
+    fallbackSmallest: average(fallback, ({ values }) => values.smallestMeaningfulGrams),
     resolvesAccepted: outcomes.filter(({ smallInclusion }) => smallInclusion?.accepted).length,
     resolves: outcomes.filter(({ smallInclusion }) => smallInclusion).length,
   });
@@ -354,7 +357,8 @@ lines.push("- **Targets met**: the number of the 7 configured ranges (4 macros, 
 lines.push("- **Verdict** (owner-approved rules): for a `best_attainable` scenario (no mix meets every range), the optimizer *improves* on greedy when its D_macro is lower, or D_macro is equal and its D_category is lower; *worse* in the opposite case; otherwise *same*. The number of ranges met is not the criterion there. For a `feasible` scenario, more ranges met wins; with equal ranges met, more meaningful ingredients (diversity) wins.");
 lines.push(`- **Ingredients used** counts every ingredient above 0 g; **meaningful** counts those at or above the ${OPTIMIZER_POLICY.meaningfulInclusionGrams} g meaningful-inclusion threshold.`);
 lines.push(`- **Solve time** is the Worker-reported elapsed time (maximum of ${repeats} runs). Every browser-budget solve runs through **one reused Worker session** (${browserWorkersCreated} in-process Worker created for ${results.length * repeats} solves) and one lazily loaded HiGHS instance, as Home.tsx does. Cold first solve (HiGHS wasm instantiate plus solve, ${coldRun.scenario}): ${format(coldRun.wallMs, 1)} ms wall; the same scenario warm in the reused Worker: ${format(warmRun.wallMs, 1)} ms wall.`);
-lines.push(`- **Diversity tolerance band** (\`optimizer-policy.ts\`): macro-margin lock r ≥ r* − ${OPTIMIZER_POLICY.exactMarginTolerance} − ${OPTIMIZER_POLICY.exactMarginRelativeTolerance}·r*, macro midpoint ε = ${OPTIMIZER_POLICY.macroDistanceTolerance}, category midpoint ε = ${OPTIMIZER_POLICY.categoryDistanceTolerance}, maximum share τ = ${OPTIMIZER_POLICY.maximumShareToleranceGrams} g; the fallback D_macro and D_category locks stay exact. See the tolerance sweep below.`);
+lines.push("- **Stage order** (owner decisions 2026-10-07, #234: no midpoint stages; \"bigger chunks is better\"): feasible — macro margin r → maximum share M → meaningful count → smallest meaningful amount S → quantity tie-break; fallback — D_macro → D_category → M → meaningful count → S → tie-break.");
+lines.push(`- **Diversity tolerance band** (\`optimizer-policy.ts\`): macro-margin lock r ≥ r* − ${OPTIMIZER_POLICY.exactMarginTolerance} − ${OPTIMIZER_POLICY.exactMarginRelativeTolerance}·r*, maximum share τ = ${OPTIMIZER_POLICY.maximumShareToleranceGrams} g; the fallback D_macro and D_category locks stay exact. See the tolerance sweep below.`);
 lines.push(`- **No hard minimum amount**: a completed mix with an ingredient between 0 g and ${OPTIMIZER_POLICY.meaningfulInclusionGrams} g is re-solved once with those ingredients fixed to 0 g, inside the same budget; the re-solve is kept only if it stays within every primary lock's tolerance.`);
 lines.push(`- **Determinism**: every scenario is solved ${repeats} times; every run that completes must return the identical mix. A scenario whose runs straddle the time budget (some complete, some time out) is reported as budget-sensitive and counted as a timeout, because Home would keep the greedy mix whenever it times out.`);
 lines.push(`- **Displayed**: Home.tsx replaces the greedy mix with a validated \`feasible\` mix, or with the \`best_attainable\` fallback plus the draft "Closest possible mix" notice. Timeout, cancellation, and errors keep the greedy mix.`);
@@ -406,13 +410,13 @@ lines.push("## Tolerance sweep (diversity tolerance band)");
 lines.push("");
 lines.push(`The serial solver on the ${sweepScenarios.length} sweep scenarios (21 profile-default inventories and the #85 stock under all 21 profiles), with a ${unboundedBudgetMs / 1000} s budget so no variant times out. Unlisted tolerances are 0. Margin r is in normalized range widths; meaningful = ingredients at or above ${OPTIMIZER_POLICY.meaningfulInclusionGrams} g. The chosen row ${chosenMatchesPolicy ? "matches" : "does **not** match"} \`OPTIMIZER_POLICY\`.`);
 lines.push("");
-lines.push("| Tolerances | Feasible / fallback | Feasible: mean r (min r) | Feasible: meaningful | Feasible: mean max share g | Fallback: meaningful | Fallback: mean D_macro / D_category | Re-solves kept / run |");
-lines.push("| --- | --- | --- | ---: | ---: | ---: | --- | --- |");
+lines.push("| Tolerances | Feasible / fallback | Feasible: mean r (min r) | Feasible: meaningful | Feasible: mean max share g | Feasible: mean smallest meaningful g | Fallback: meaningful | Fallback: mean smallest meaningful g | Fallback: mean D_macro / D_category | Re-solves kept / run |");
+lines.push("| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | --- | --- |");
 for (const row of sweepRows) {
-  lines.push(`| ${row.variant.label} | ${row.exact} / ${row.fallback} | ${format(row.margin, 4)} (${format(row.minimumMargin, 4)}) | ${format(row.exactMeaningful)} | ${format(row.exactShare, 1)} | ${format(row.fallbackMeaningful)} | ${format(row.macroDeviation, 3)} / ${format(row.categoryDeviation, 3)} | ${row.resolvesAccepted} / ${row.resolves} |`);
+  lines.push(`| ${row.variant.label} | ${row.exact} / ${row.fallback} | ${format(row.margin, 4)} (${format(row.minimumMargin, 4)}) | ${format(row.exactMeaningful)} | ${format(row.exactShare, 1)} | ${format(row.exactSmallest, 1)} | ${format(row.fallbackMeaningful)} | ${format(row.fallbackSmallest, 1)} | ${format(row.macroDeviation, 3)} / ${format(row.categoryDeviation, 3)} | ${row.resolvesAccepted} / ${row.resolves} |`);
 }
 lines.push("");
-lines.push("Reading: tightening only the macro margin by an absolute amount buys diversity but can drive the smallest margin to 0 (a mix touching a range wall); a relative margin tolerance keeps every mix at 90% of its own best margin. Margin tolerance alone mostly improves balance, because the exact category-distance and maximum-share locks still leave the diversity stage no choice; adding small balance tolerances is what lets it pick the more diverse mix. The fallback D_macro and D_category stay identical in every variant because those locks remain exact.");
+lines.push("Reading: tightening only the macro margin by an absolute amount buys diversity but can drive the smallest margin to 0 (a mix touching a range wall); a relative margin tolerance keeps every mix at 90% of its own best margin. Margin tolerance alone helps less, because the exact maximum-share lock still leaves the diversity stage little choice; adding the τ_M allowance is what lets it pick the more diverse mix. More meaningful ingredients lowers the smallest meaningful amount, because the bigger-chunks stage runs after the meaningful count. The fallback D_macro and D_category stay identical in every variant because those locks remain exact.");
 lines.push("");
 
 function scenarioTable(rows) {

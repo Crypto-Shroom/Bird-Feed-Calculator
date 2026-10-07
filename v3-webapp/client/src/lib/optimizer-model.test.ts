@@ -39,8 +39,6 @@ describe("pure constrained optimizer model", () => {
       meaningfulInclusionGrams: 5,
       exactMarginTolerance: 0,
       exactMarginRelativeTolerance: 0.1,
-      macroDistanceTolerance: 0.02,
-      categoryDistanceTolerance: 0.05,
       maximumShareToleranceGrams: 25,
       canonicalCandidateOrder: "ingredient_id_ascending",
     });

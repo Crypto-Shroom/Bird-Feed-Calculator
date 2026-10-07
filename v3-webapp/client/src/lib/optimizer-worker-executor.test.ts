@@ -113,7 +113,7 @@ describe("browser-local optimizer Worker executor", () => {
     const result = await executor(request(), { isCancelled: () => false });
 
     expect(result).toMatchObject({ status: "timeout", quantities: {} });
-    expect(result.stages?.map(({ stage }) => stage)).toEqual(["macro_margin", "category_midpoint", "maximum_share"]);
+    expect(result.stages?.map(({ stage }) => stage)).toEqual(["macro_margin", "maximum_share", "meaningful_diversity"]);
   });
 
   it("stops with timeout once the shared stage budget is spent, even if each stage reports Optimal", async () => {

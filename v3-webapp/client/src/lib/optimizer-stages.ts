@@ -9,11 +9,16 @@ import {
 const macroKeys: readonly OptimizerMacro[] = ["protein", "carbs", "fat", "fiber"];
 const categoryKeys: readonly OptimizerCategory[] = ["grain", "legume", "seed"];
 
+/**
+ * Exact-feasible order. The configured macro and category ranges are hard
+ * rows in every stage and are the only range guidance: the earlier
+ * category-midpoint stage was removed by owner decision (2026-10-07, #234).
+ */
 export const EXACT_SERIAL_STAGE_ORDER = [
   "macro_margin",
-  "category_midpoint",
   "maximum_share",
   "meaningful_diversity",
+  "smallest_meaningful_amount",
   "quantity_tie_break",
 ] as const;
 
@@ -22,16 +27,15 @@ export type ExactSerialStage = typeof EXACT_SERIAL_STAGE_ORDER[number];
 /**
  * Spec §5.2 fallback order when Stage 1 proves that no mix meets every macro and
  * category range jointly: macro deviation (2A), then category deviation (2A),
- * then macro midpoint distance (Stage 3, infeasible branch), then the shared
- * Stage 4–6 composition stages.
+ * then the shared composition stages. The macro- and category-midpoint stages
+ * were removed by owner decision (2026-10-07, #234).
  */
 export const FALLBACK_SERIAL_STAGE_ORDER = [
   "macro_deviation",
   "category_deviation",
-  "macro_midpoint",
-  "category_midpoint",
   "maximum_share",
   "meaningful_diversity",
+  "smallest_meaningful_amount",
   "quantity_tie_break",
 ] as const;
 
@@ -40,18 +44,17 @@ export type FallbackSerialStage = typeof FALLBACK_SERIAL_STAGE_ORDER[number];
 export interface FallbackSerialLocks {
   macroDeviation?: number;
   categoryDeviation?: number;
-  macroDistance?: number;
-  categoryDistance?: number;
   maximumShareGrams?: number;
   meaningfulIngredientCount?: number;
+  smallestMeaningfulGrams?: number;
   quantityById?: Record<string, number>;
 }
 
 export interface ExactSerialLocks {
   macroMargin?: number;
-  categoryDistance?: number;
   maximumShareGrams?: number;
   meaningfulIngredientCount?: number;
+  smallestMeaningfulGrams?: number;
   quantityById?: Record<string, number>;
 }
 
@@ -128,44 +131,6 @@ function macroMarginConstraints(model: OptimizerModel, ranges: Record<OptimizerM
   });
 }
 
-/**
- * Category midpoint distance T (spec §4.3): |100·Cc − W·Hc| ≤ W·(Uc − Lc)·T for
- * every category. Each category term is scaled individually, so a category
- * with several ingredients is measured on its full gram total.
- */
-function categoryMidpointConstraints(model: OptimizerModel, ranges: Record<OptimizerCategory, OptimizerRange>): string[] {
-  return categoryKeys.flatMap((category) => {
-    const [minimum, maximum] = ranges[category];
-    assertPositiveWidth(ranges[category], `${category} range`);
-    const midpoint = (minimum + maximum) / 2;
-    const scaledWidth = model.achievableTargetGrams * (maximum - minimum);
-    const scaledMidpoint = model.achievableTargetGrams * midpoint;
-    return [
-      ` category_distance_${category}_positive: ${rowExpression([...categoryTerms(model, category, 100), { coefficient: -scaledWidth, variable: "T" }])} <= ${formatNumber(scaledMidpoint)}`,
-      ` category_distance_${category}_negative: ${rowExpression([...categoryTerms(model, category, -100), { coefficient: -scaledWidth, variable: "T" }])} <= ${formatNumber(-scaledMidpoint)}`,
-    ];
-  });
-}
-
-/**
- * Macro midpoint distance V for the best-attainable branch (spec §5.2 Stage 3,
- * infeasible row): |Pm − W·Hm| ≤ W·(Um − Lm)·V for every macro, the same
- * max-normalized form as the category distance T.
- */
-function macroMidpointConstraints(model: OptimizerModel, ranges: Record<OptimizerMacro, OptimizerRange>): string[] {
-  return macroKeys.flatMap((macro) => {
-    const [minimum, maximum] = ranges[macro];
-    assertPositiveWidth(ranges[macro], `${macro} range`);
-    const midpoint = (minimum + maximum) / 2;
-    const scaledWidth = model.achievableTargetGrams * (maximum - minimum);
-    const scaledMidpoint = model.achievableTargetGrams * midpoint;
-    return [
-      ` macro_distance_${macro}_positive: ${rowExpression([...macroTerms(model, macro), { coefficient: -scaledWidth, variable: "V" }])} <= ${formatNumber(scaledMidpoint)}`,
-      ` macro_distance_${macro}_negative: ${rowExpression([...macroTerms(model, macro, -1), { coefficient: -scaledWidth, variable: "V" }])} <= ${formatNumber(-scaledMidpoint)}`,
-    ];
-  });
-}
-
 const macroSlackVariables = macroKeys.flatMap((macro) => [`macro_under_${macro}`, `macro_over_${macro}`]);
 const categorySlackVariables = categoryKeys.flatMap((category) => [`category_under_${category}`, `category_over_${category}`]);
 
@@ -209,9 +174,31 @@ function meaningfulCountDefinition(model: OptimizerModel): string {
   return ` meaningful_count_definition: ${rowExpression(terms)} = 0`;
 }
 
+/**
+ * Smallest meaningful amount S (owner decision 2026-10-07, #234: "bigger
+ * chunks is better"): S ≤ x_i for every ingredient counted as meaningful
+ * (z_i = 1); an ingredient with z_i = 0 relaxes its row by W. Maximizing S
+ * after the meaningful count is locked prefers fewer small inclusions among
+ * the included ingredients. S is capped at W so it stays bounded when no
+ * ingredient is meaningful.
+ */
+function smallestMeaningfulConstraints(model: OptimizerModel): string[] {
+  const weight = model.achievableTargetGrams;
+  return [
+    ...model.candidates.flatMap((candidate) => candidate.meaningfulInclusionVariable
+      ? [` smallest_meaningful_${candidate.id}: ${rowExpression([
+        { coefficient: 1, variable: candidate.quantityVariable },
+        { coefficient: -1, variable: "S" },
+        { coefficient: -weight, variable: candidate.meaningfulInclusionVariable },
+      ])} >= ${formatNumber(-weight)}`]
+      : []),
+    ` smallest_meaningful_cap: S <= ${formatNumber(weight)}`,
+  ];
+}
+
 function compositionLocks(
   model: OptimizerModel,
-  locks: Pick<ExactSerialLocks, "maximumShareGrams" | "meaningfulIngredientCount" | "quantityById">,
+  locks: Pick<ExactSerialLocks, "maximumShareGrams" | "meaningfulIngredientCount" | "smallestMeaningfulGrams" | "quantityById">,
 ): string[] {
   const constraints: string[] = [];
   if (locks.maximumShareGrams !== undefined) {
@@ -220,6 +207,11 @@ function compositionLocks(
   if (locks.meaningfulIngredientCount !== undefined) {
     constraints.push(meaningfulCountDefinition(model));
     constraints.push(...lockBand("meaningful_count", locks.meaningfulIngredientCount, 0, "meaningful_count"));
+  }
+  if (locks.smallestMeaningfulGrams !== undefined) {
+    if (!Number.isFinite(locks.smallestMeaningfulGrams)) throw new Error("smallest_meaningful lock requires a finite value");
+    constraints.push(...smallestMeaningfulConstraints(model));
+    constraints.push(` smallest_meaningful_lock: S >= ${formatNumber(locks.smallestMeaningfulGrams)}`);
   }
   for (const [id, quantity] of Object.entries(locks.quantityById ?? {}).sort(([left], [right]) => left.localeCompare(right))) {
     const candidate = model.candidates.find((entry) => entry.id === id);
@@ -249,9 +241,6 @@ function priorExactLocks(model: OptimizerModel, locks: ExactSerialLocks): string
     if (!Number.isFinite(locks.macroMargin)) throw new Error("macro_margin lock requires a finite value");
     constraints.push(` macro_margin_lower_lock: r >= ${formatNumber(locks.macroMargin)}`);
   }
-  if (locks.categoryDistance !== undefined) {
-    constraints.push(...lockBand("T", locks.categoryDistance, model.policy.categoryDistanceTolerance, "category_distance"));
-  }
   constraints.push(...compositionLocks(model, locks));
   return constraints;
 }
@@ -261,8 +250,8 @@ function priorExactLocks(model: OptimizerModel, locks: ExactSerialLocks): string
  * serial stage. It does not invoke a solver, Worker, or calculator runtime.
  *
  * A locked stage value is only meaningful together with the rows that define
- * it, so the defining rows for r (macro margin) and T (category distance) are
- * re-emitted in every later stage that carries their lock.
+ * it, so the defining rows for r (macro margin) and S (smallest meaningful
+ * amount) are re-emitted in every later stage that carries their lock.
  */
 export function buildExactSerialObjectivePlan(
   model: OptimizerModel,
@@ -274,21 +263,20 @@ export function buildExactSerialObjectivePlan(
 ): SerialObjectivePlan {
   const constraints = [...priorExactLocks(model, locks)];
   if (stage === "macro_margin" || locks.macroMargin !== undefined) constraints.push(...macroMarginConstraints(model, macroRanges));
-  if (stage === "category_midpoint" || locks.categoryDistance !== undefined) constraints.push(...categoryMidpointConstraints(model, categoryRanges));
+  // The category ranges are already hard target rows of every exact stage.
+  void categoryRanges;
   switch (stage) {
     case "macro_margin":
       return { stage, sense: "maximize", expression: "r", constraints };
-    case "category_midpoint":
-      if (locks.macroMargin === undefined) throw new Error("category midpoint stage requires a locked macro margin");
-      return { stage, sense: "minimize", expression: "T", constraints };
     case "maximum_share":
-      if (locks.macroMargin === undefined || locks.categoryDistance === undefined) {
-        throw new Error("maximum-share stage requires locked macro margin and category distance");
-      }
+      if (locks.macroMargin === undefined) throw new Error("maximum-share stage requires a locked macro margin");
       return { stage, sense: "minimize", expression: "M", constraints };
     case "meaningful_diversity":
       if (locks.maximumShareGrams === undefined) throw new Error("meaningful-diversity stage requires a locked maximum share");
       return { stage, sense: "maximize", expression: meaningfulIndicatorExpression(model), constraints };
+    case "smallest_meaningful_amount":
+      if (locks.meaningfulIngredientCount === undefined) throw new Error("smallest-meaningful-amount stage requires a locked meaningful ingredient count");
+      return { stage, sense: "maximize", expression: "S", constraints: [...constraints, ...smallestMeaningfulConstraints(model)] };
     case "quantity_tie_break":
       return { stage, sense: "minimize", expression: tieBreakExpression(model, locks, tieBreakId), constraints };
   }
@@ -298,8 +286,9 @@ function meaningfulIndicatorExpression(model: OptimizerModel): string {
   return sumExpression(model.candidates.flatMap((candidate) => candidate.meaningfulInclusionVariable ? [candidate.meaningfulInclusionVariable] : []));
 }
 
-function tieBreakExpression(model: OptimizerModel, locks: { meaningfulIngredientCount?: number }, tieBreakId: string | undefined): string {
+function tieBreakExpression(model: OptimizerModel, locks: { meaningfulIngredientCount?: number; smallestMeaningfulGrams?: number }, tieBreakId: string | undefined): string {
   if (locks.meaningfulIngredientCount === undefined) throw new Error("quantity tie-break stage requires a locked meaningful ingredient count");
+  if (locks.smallestMeaningfulGrams === undefined) throw new Error("quantity tie-break stage requires a locked smallest meaningful amount");
   const candidate = model.candidates.find((entry) => entry.id === tieBreakId);
   if (!candidate) throw new Error("quantity tie-break stage requires one canonical model candidate id");
   return candidate.quantityVariable;
@@ -309,7 +298,7 @@ function tieBreakExpression(model: OptimizerModel, locks: { meaningfulIngredient
  * Produces one best-attainable serial stage (spec §5.1–§5.2, Stage 1
  * infeasible). The hard macro/category rows are replaced by normalized slack
  * rows; D_macro is minimized and locked before D_category, and both locks are
- * carried into every later stage together with any locked midpoint distance.
+ * carried into every later stage.
  */
 export function buildFallbackSerialObjectivePlan(
   model: OptimizerModel,
@@ -325,10 +314,6 @@ export function buildFallbackSerialObjectivePlan(
   if (locks.categoryDeviation !== undefined) {
     constraints.push(upperLock(sumExpression(categorySlackVariables), locks.categoryDeviation, tolerance, "category_deviation"));
   }
-  if (stage === "macro_midpoint" || locks.macroDistance !== undefined) constraints.push(...macroMidpointConstraints(model, model.macroRanges));
-  if (locks.macroDistance !== undefined) constraints.push(upperLock("V", locks.macroDistance, model.policy.macroDistanceTolerance + tolerance, "macro_distance"));
-  if (stage === "category_midpoint" || locks.categoryDistance !== undefined) constraints.push(...categoryMidpointConstraints(model, model.categoryRanges));
-  if (locks.categoryDistance !== undefined) constraints.push(upperLock("T", locks.categoryDistance, model.policy.categoryDistanceTolerance + tolerance, "category_distance"));
   constraints.push(...compositionLocks(model, locks));
 
   const requireLocks = (required: ReadonlyArray<keyof FallbackSerialLocks>): void => {
@@ -342,20 +327,17 @@ export function buildFallbackSerialObjectivePlan(
     case "category_deviation":
       requireLocks(["macroDeviation"]);
       return { stage, sense: "minimize", expression: sumExpression(categorySlackVariables), constraints };
-    case "macro_midpoint":
-      requireLocks(["macroDeviation", "categoryDeviation"]);
-      return { stage, sense: "minimize", expression: "V", constraints };
-    case "category_midpoint":
-      requireLocks(["macroDeviation", "categoryDeviation", "macroDistance"]);
-      return { stage, sense: "minimize", expression: "T", constraints };
     case "maximum_share":
-      requireLocks(["macroDeviation", "categoryDeviation", "macroDistance", "categoryDistance"]);
+      requireLocks(["macroDeviation", "categoryDeviation"]);
       return { stage, sense: "minimize", expression: "M", constraints };
     case "meaningful_diversity":
-      requireLocks(["macroDeviation", "categoryDeviation", "macroDistance", "categoryDistance", "maximumShareGrams"]);
+      requireLocks(["macroDeviation", "categoryDeviation", "maximumShareGrams"]);
       return { stage, sense: "maximize", expression: meaningfulIndicatorExpression(model), constraints };
+    case "smallest_meaningful_amount":
+      requireLocks(["macroDeviation", "categoryDeviation", "maximumShareGrams", "meaningfulIngredientCount"]);
+      return { stage, sense: "maximize", expression: "S", constraints: [...constraints, ...smallestMeaningfulConstraints(model)] };
     case "quantity_tie_break":
-      requireLocks(["macroDeviation", "categoryDeviation", "macroDistance", "categoryDistance", "maximumShareGrams"]);
+      requireLocks(["macroDeviation", "categoryDeviation", "maximumShareGrams", "meaningfulIngredientCount", "smallestMeaningfulGrams"]);
       return { stage, sense: "minimize", expression: tieBreakExpression(model, locks, tieBreakId), constraints };
   }
 }
@@ -374,12 +356,10 @@ export interface EvaluatedSerialObjectives {
   macroDeviation: number;
   /** D_category (spec §5.1). */
   categoryDeviation: number;
-  /** Maximum normalized macro midpoint distance (fallback Stage 3). */
-  macroDistance: number;
-  /** T, maximum normalized category midpoint distance (spec §4.3). */
-  categoryDistance: number;
   maximumShareGrams: number;
   meaningfulIngredientCount: number;
+  /** S, the smallest amount among meaningful ingredients; 0 when none is meaningful. */
+  smallestMeaningfulGrams: number;
 }
 
 /**
@@ -403,20 +383,18 @@ export function evaluateSerialObjectives(model: OptimizerModel, quantities: Read
   const deviation = (entries: typeof macros) => entries.reduce((total, { value, range: [minimum, maximum] }) => (
     total + (Math.max(0, minimum - value) + Math.max(0, value - maximum)) / (maximum - minimum)
   ), 0);
-  const midpointDistance = (entries: typeof macros) => Math.max(...entries.map(({ value, range: [minimum, maximum] }) => (
-    Math.abs(value - (minimum + maximum) / 2) / (maximum - minimum)
-  )));
+
+  const meaningfulGrams = model.candidates.flatMap((candidate, index) => (
+    candidate.meaningfulInclusionVariable !== undefined && grams[index] >= model.policy.meaningfulInclusionGrams ? [grams[index]] : []
+  ));
 
   return {
     macroMargin: Math.min(...macros.map(({ value, range: [minimum, maximum] }) => Math.min(value - minimum, maximum - value) / (maximum - minimum))),
     macroDeviation: deviation(macros),
     categoryDeviation: deviation(categories),
-    macroDistance: midpointDistance(macros),
-    categoryDistance: midpointDistance(categories),
     maximumShareGrams: Math.max(0, ...grams),
-    meaningfulIngredientCount: model.candidates.filter((candidate, index) => (
-      candidate.meaningfulInclusionVariable !== undefined && grams[index] >= model.policy.meaningfulInclusionGrams
-    )).length,
+    meaningfulIngredientCount: meaningfulGrams.length,
+    smallestMeaningfulGrams: meaningfulGrams.length ? Math.min(...meaningfulGrams) : 0,
   };
 }
 

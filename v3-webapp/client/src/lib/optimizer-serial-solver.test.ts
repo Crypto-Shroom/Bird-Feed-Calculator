@@ -54,7 +54,7 @@ function enumerateMixes(model: OptimizerModel): number[][] {
 interface ReferenceOutcome {
   branch: "exact" | "fallback";
   quantities: Record<string, number>;
-  optimum: { margin?: number; macroDeviation?: number; categoryDeviation?: number; macroDistance?: number; categoryDistance: number; maximum: number; meaningful: number };
+  optimum: { margin?: number; macroDeviation?: number; categoryDeviation?: number; maximum: number; meaningful: number; smallest: number };
 }
 
 /**
@@ -74,16 +74,15 @@ function referenceSerialOptimum(model: OptimizerModel, fixedZero: readonly strin
     const macroValues = macroKeys.map((macro) => ({ value: percent(macro), range: model.macroRanges[macro] }));
     const categoryValues = categoryKeys.map((category) => ({ value: share(category), range: model.categoryRanges[category] }));
     const deviation = (entries: typeof macroValues) => entries.reduce((total, { value, range: [lower, upper] }) => total + (Math.max(0, lower - value) + Math.max(0, value - upper)) / (upper - lower), 0);
-    const midpointDistance = (entries: typeof macroValues) => Math.max(...entries.map(({ value, range: [lower, upper] }) => Math.abs(value - (lower + upper) / 2) / (upper - lower)));
+    const meaningfulGrams = mix.filter((grams, index) => model.candidates[index].availableGrams >= model.policy.meaningfulInclusionGrams && grams >= model.policy.meaningfulInclusionGrams);
     return {
       mix,
       macroDeviation: deviation(macroValues),
       categoryDeviation: deviation(categoryValues),
       margin: Math.min(...macroValues.map(({ value, range: [lower, upper] }) => Math.min(value - lower, upper - value) / (upper - lower))),
-      macroDistance: midpointDistance(macroValues),
-      categoryDistance: midpointDistance(categoryValues),
       maximum: Math.max(...mix),
-      meaningful: mix.filter((grams, index) => model.candidates[index].availableGrams >= model.policy.meaningfulInclusionGrams && grams >= model.policy.meaningfulInclusionGrams).length,
+      meaningful: meaningfulGrams.length,
+      smallest: meaningfulGrams.length ? Math.min(...meaningfulGrams) : 0,
     };
   });
 
@@ -110,16 +109,14 @@ function referenceSerialOptimum(model: OptimizerModel, fixedZero: readonly strin
     optimum.macroDeviation = step.best;
     step = keepBest(step.pool, (entry) => entry.categoryDeviation, "min");
     optimum.categoryDeviation = step.best;
-    step = keepBest(step.pool, (entry) => entry.macroDistance, "min", policy.macroDistanceTolerance);
-    optimum.macroDistance = step.best;
     pool = step.pool;
   }
-  let step = keepBest(pool, (entry) => entry.categoryDistance, "min", policy.categoryDistanceTolerance);
-  optimum.categoryDistance = step.best;
-  step = keepBest(step.pool, (entry) => entry.maximum, "min", policy.maximumShareToleranceGrams);
+  let step = keepBest(pool, (entry) => entry.maximum, "min", policy.maximumShareToleranceGrams);
   optimum.maximum = step.best;
   step = keepBest(step.pool, (entry) => entry.meaningful, "max");
   optimum.meaningful = step.best;
+  step = keepBest(step.pool, (entry) => entry.smallest, "max");
+  optimum.smallest = step.best;
   pool = step.pool;
   model.candidates.forEach((_, index) => {
     pool = keepBest(pool, (entry) => entry.mix[index], "min").pool;
@@ -143,11 +140,10 @@ function referenceSerialOptimum(model: OptimizerModel, fixedZero: readonly strin
     && (outcome.branch === "exact"
       ? evaluated.margin >= Math.max(0, locked.margin! - policy.exactMarginTolerance - policy.exactMarginRelativeTolerance * locked.margin!) - slack
       : evaluated.macroDeviation <= locked.macroDeviation! + slack
-        && evaluated.categoryDeviation <= locked.categoryDeviation! + slack
-        && evaluated.macroDistance <= locked.macroDistance! + policy.macroDistanceTolerance + slack)
-    && evaluated.categoryDistance <= locked.categoryDistance + policy.categoryDistanceTolerance + slack
+        && evaluated.categoryDeviation <= locked.categoryDeviation! + slack)
     && evaluated.maximum <= locked.maximum + policy.maximumShareToleranceGrams
-    && evaluated.meaningful >= locked.meaningful;
+    && evaluated.meaningful >= locked.meaningful
+    && evaluated.smallest >= locked.smallest;
   return accepted ? resolved : outcome;
 }
 
@@ -203,14 +199,13 @@ describe("serial staged optimizer with real HiGHS", () => {
     const result = await solve(model);
 
     expect(result.status).toBe("best_attainable");
-    expect(result.stages.filter(({ skipped }) => !skipped).map(({ stage }) => stage).slice(0, 7)).toEqual([
+    expect(result.stages.filter(({ skipped }) => !skipped).map(({ stage }) => stage).slice(0, 6)).toEqual([
       "macro_margin",
       "macro_deviation",
       "category_deviation",
-      "macro_midpoint",
-      "category_midpoint",
       "maximum_share",
       "meaningful_diversity",
+      "smallest_meaningful_amount",
     ]);
     const adapted = adaptExactFeasibilityResult(
       { type: "result", requestId: "pigeon-racing", elapsedMs: 1, status: "best_attainable", quantities: result.quantities },
@@ -239,7 +234,7 @@ describe("serial staged optimizer with real HiGHS", () => {
   );
   const exactPolicy = (model: OptimizerModel): OptimizerModel => ({
     ...model,
-    policy: { ...model.policy, exactMarginRelativeTolerance: 0, macroDistanceTolerance: 0, categoryDistanceTolerance: 0, maximumShareToleranceGrams: 0 },
+    policy: { ...model.policy, exactMarginRelativeTolerance: 0, maximumShareToleranceGrams: 0 },
   });
 
   it("uses the diversity tolerance band to pick a more diverse mix while keeping at least 90% of the best macro margin", async () => {
@@ -257,7 +252,7 @@ describe("serial staged optimizer with real HiGHS", () => {
 
   it("re-solves once without sub-threshold ingredients and keeps the re-solve only when no locked value worsens beyond its tolerance", async () => {
     const meaningful = 5;
-    const accepted = await solve(profileModel("parrot", "pet", issue85Inventory, 1_000));
+    const accepted = await solve(profileModel("chicken", "egg_laying", { barley_pearled: 1_000, corn_yellow: 1_000, flaxseed: 1_000, oat_groats: 1_000, rice: 1_000, vetch: 1_000 }, 1_000));
     expect(accepted.smallInclusion?.accepted).toBe(true);
     expect(Object.values(accepted.quantities).every((grams) => grams === 0 || grams >= meaningful)).toBe(true);
     expect(accepted.stages.some(({ pass }) => pass === "small_inclusion_resolve")).toBe(true);

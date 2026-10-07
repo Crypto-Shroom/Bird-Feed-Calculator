@@ -76,10 +76,9 @@ export interface SerialStageObjectives {
   macroMargin?: number;
   macroDeviation?: number;
   categoryDeviation?: number;
-  macroDistance?: number;
-  categoryDistance?: number;
   maximumShareGrams?: number;
   meaningfulIngredientCount?: number;
+  smallestMeaningfulGrams?: number;
 }
 
 export interface SerialSolveResult {
@@ -119,7 +118,7 @@ const infeasibleStatuses = new Set(["Infeasible", "Primal infeasible or unbounde
  * admit a valid z for every x, so omitting them leaves the feasible quantity
  * set and every earlier stage optimum unchanged while removing binaries.
  */
-const inclusionStages = new Set<string>(["meaningful_diversity", "quantity_tie_break"]);
+const inclusionStages = new Set<string>(["meaningful_diversity", "smallest_meaningful_amount", "quantity_tie_break"]);
 
 /** Whole grams; `+ 0` turns a solver's -0 (from -1e-9 noise) into 0. */
 function roundQuantity(value: number): number {
@@ -153,11 +152,10 @@ function smallInclusionRejection(model: OptimizerModel, primary: SequenceOutcome
   } else {
     checks.push(["macro deviation", evaluated.macroDeviation <= (locked.macroDeviation ?? 0) + lockTolerance + 1e-9]);
     checks.push(["category deviation", evaluated.categoryDeviation <= (locked.categoryDeviation ?? 0) + lockTolerance + 1e-9]);
-    checks.push(["macro midpoint distance", evaluated.macroDistance <= (locked.macroDistance ?? 0) + policy.macroDistanceTolerance + lockTolerance + 1e-9]);
   }
-  checks.push(["category midpoint distance", evaluated.categoryDistance <= (locked.categoryDistance ?? 0) + policy.categoryDistanceTolerance + lockTolerance + 1e-9]);
   checks.push(["maximum share", evaluated.maximumShareGrams <= (locked.maximumShareGrams ?? 0) + policy.maximumShareToleranceGrams]);
   checks.push(["meaningful ingredient count", evaluated.meaningfulIngredientCount >= (locked.meaningfulIngredientCount ?? 0)]);
+  checks.push(["smallest meaningful amount", evaluated.smallestMeaningfulGrams >= (locked.smallestMeaningfulGrams ?? 0)]);
   const failed = checks.filter(([, ok]) => !ok).map(([name]) => name);
   return failed.length ? `worsens ${failed.join(", ")} beyond its tolerance` : undefined;
 }
@@ -331,20 +329,20 @@ export async function solveSerialStages(
       objectives.macroMargin = Math.max(0, optimizedValue(feasibility, "macro_margin", "macroMargin").value);
       locks.macroMargin = Math.max(0, macroMarginLockFloor(model.policy, objectives.macroMargin) - tolerance);
 
-      const category = await solveStage("exact", buildExactSerialObjectivePlan(model, "category_midpoint", ...ranges, locks));
-      objectives.categoryDistance = optimizedValue(category, "category_midpoint", "categoryDistance").value;
-      locks.categoryDistance = objectives.categoryDistance + tolerance;
-
       const share = await solveStage("exact", buildExactSerialObjectivePlan(model, "maximum_share", ...ranges, locks));
       objectives.maximumShareGrams = optimizedValue(share, "maximum_share", "maximumShareGrams").value;
       locks.maximumShareGrams = objectives.maximumShareGrams;
 
       const diversity = await solveStage("exact", buildExactSerialObjectivePlan(model, "meaningful_diversity", ...ranges, locks));
-      const diversityResult = optimizedValue(diversity, "meaningful_diversity", "meaningfulIngredientCount");
-      objectives.meaningfulIngredientCount = diversityResult.value;
+      objectives.meaningfulIngredientCount = optimizedValue(diversity, "meaningful_diversity", "meaningfulIngredientCount").value;
       locks.meaningfulIngredientCount = objectives.meaningfulIngredientCount;
 
-      const quantities = await quantityTieBreak("exact", diversityResult.quantities, (quantityById, id) => (
+      const chunks = await solveStage("exact", buildExactSerialObjectivePlan(model, "smallest_meaningful_amount", ...ranges, locks));
+      const chunksResult = optimizedValue(chunks, "smallest_meaningful_amount", "smallestMeaningfulGrams");
+      objectives.smallestMeaningfulGrams = chunksResult.value;
+      locks.smallestMeaningfulGrams = objectives.smallestMeaningfulGrams;
+
+      const quantities = await quantityTieBreak("exact", chunksResult.quantities, (quantityById, id) => (
         buildExactSerialObjectivePlan(model, "quantity_tie_break", ...ranges, { ...locks, quantityById: { ...quantityById } }, id)
       ));
       return { branch: "exact", quantities, objectives };
@@ -355,7 +353,7 @@ export async function solveSerialStages(
 
     currentBranch = "fallback";
     const locks: FallbackSerialLocks = {};
-    const [macroStage, categoryStage, macroMidpointStage, categoryMidpointStage, shareStage, diversityStage] = FALLBACK_SERIAL_STAGE_ORDER;
+    const [macroStage, categoryStage, shareStage, diversityStage, chunksStage] = FALLBACK_SERIAL_STAGE_ORDER;
 
     const macro = await solveStage("fallback", buildFallbackSerialObjectivePlan(model, macroStage, locks));
     objectives.macroDeviation = optimizedValue(macro, macroStage, "macroDeviation").value;
@@ -365,24 +363,20 @@ export async function solveSerialStages(
     objectives.categoryDeviation = optimizedValue(category, categoryStage, "categoryDeviation").value;
     locks.categoryDeviation = objectives.categoryDeviation;
 
-    const macroMidpoint = await solveStage("fallback", buildFallbackSerialObjectivePlan(model, macroMidpointStage, locks));
-    objectives.macroDistance = optimizedValue(macroMidpoint, macroMidpointStage, "macroDistance").value;
-    locks.macroDistance = objectives.macroDistance;
-
-    const categoryMidpoint = await solveStage("fallback", buildFallbackSerialObjectivePlan(model, categoryMidpointStage, locks));
-    objectives.categoryDistance = optimizedValue(categoryMidpoint, categoryMidpointStage, "categoryDistance").value;
-    locks.categoryDistance = objectives.categoryDistance;
-
     const share = await solveStage("fallback", buildFallbackSerialObjectivePlan(model, shareStage, locks));
     objectives.maximumShareGrams = optimizedValue(share, shareStage, "maximumShareGrams").value;
     locks.maximumShareGrams = objectives.maximumShareGrams;
 
     const diversity = await solveStage("fallback", buildFallbackSerialObjectivePlan(model, diversityStage, locks));
-    const diversityResult = optimizedValue(diversity, diversityStage, "meaningfulIngredientCount");
-    objectives.meaningfulIngredientCount = diversityResult.value;
+    objectives.meaningfulIngredientCount = optimizedValue(diversity, diversityStage, "meaningfulIngredientCount").value;
     locks.meaningfulIngredientCount = objectives.meaningfulIngredientCount;
 
-    const quantities = await quantityTieBreak("fallback", diversityResult.quantities, (quantityById, id) => (
+    const chunks = await solveStage("fallback", buildFallbackSerialObjectivePlan(model, chunksStage, locks));
+    const chunksResult = optimizedValue(chunks, chunksStage, "smallestMeaningfulGrams");
+    objectives.smallestMeaningfulGrams = chunksResult.value;
+    locks.smallestMeaningfulGrams = objectives.smallestMeaningfulGrams;
+
+    const quantities = await quantityTieBreak("fallback", chunksResult.quantities, (quantityById, id) => (
       buildFallbackSerialObjectivePlan(model, "quantity_tie_break", { ...locks, quantityById: { ...quantityById } }, id)
     ));
     return { branch: "fallback", quantities, objectives };
