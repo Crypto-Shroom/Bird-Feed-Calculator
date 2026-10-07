@@ -79,7 +79,7 @@ if (!parrotVetchResult.warnings.some((warning) => warning.message.includes("Do n
 }
 
 const popcorn = INGREDIENTS.popcorn;
-if (!popcorn || popcorn.category !== "grain" || popcorn.protein !== 13 || popcorn.carbs !== 74 || popcorn.fat !== 4 || popcorn.fiber !== 15) {
+if (!popcorn || popcorn.category !== "grain" || popcorn.protein !== 13 || popcorn.carbs !== 74 || popcorn.fat !== 4 || popcorn.fiber !== 2.1) {
   throw new Error("popcorn did not retain its approved independent grain nutrition profile");
 }
 if (popcorn.notes !== "Popcorn is not the same as corn nutritionally.") {

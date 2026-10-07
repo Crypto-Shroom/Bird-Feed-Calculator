@@ -2641,6 +2641,34 @@
       "permittedUse": "Chicken whole corn, wheat, and barley scratch-grain trials supplied with mash, water, oyster shell, and grit.",
       "limitations": "Historical study; not an oats/millet result or sole-grain approval.",
       "accessedAt": "2026-08-20"
+    },
+    {
+      "id": "feedipedia-feed-composition-crude-fibre-2026",
+      "title": "Feedipedia: Animal Feed Resources Information System, feed composition tables (crude fibre and dry matter)",
+      "authorsOrOrganization": "Feedipedia; Association Française de Zootechnie, CIRAD, FAO, INRAE",
+      "publishedYear": "2026",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.feedipedia.org/",
+      "speciesScopes": [
+        "livestock_feed_composition_not_bird_specific"
+      ],
+      "permittedUse": "Main-analysis crude fibre (% dry matter) and dry matter (%) for the matching grain, legume-seed and oilseed entries, used to compute the as-fed crude fibre values stored in INGREDIENTS[key].fiber (see issue #237 and its pull request for the per-ingredient Feedipedia node, sample size and match quality).",
+      "limitations": "animal feed composition database; values are as-fed crude fibre computed from %DM × DM%; not bird-specific requirements. Several entries are single-sample or small-sample, and some ingredient forms (for example popcorn, pearled barley, red rice, split peas, adzuki beans, spelt) have no exact Feedipedia entry and use a stated approximation. It does not establish a pigeon, parrot, African Grey, budgie, canary or chicken fibre requirement, nor any food-safety outcome.",
+      "accessedAt": "2026-10-07"
+    },
+    {
+      "id": "issue-237-owner-pigeon-crude-fibre-range-2026-10-07",
+      "title": "Owner decision: pigeon crude fibre target range 2.5 to 5 percent for all six pigeon profiles",
+      "authorsOrOrganization": "Bird Feed Calculator product owner",
+      "publishedYear": "2026",
+      "sourceTier": "owner_approved_policy",
+      "urlOrDoi": "https://github.com/Crypto-Shroom/Bird-Feed-Calculator/issues/237",
+      "speciesScopes": [
+        "pigeon"
+      ],
+      "permittedUse": "Records the owner's explicit decision to set the crude fibre target range of the maintenance, racing, breeding, molting, winter and pet pigeon profiles to 2.5 to 5 percent, as a seed/grain batch estimate on the as-fed crude fibre basis.",
+      "limitations": "Owner decision 2026-10-07 on practitioner and commercial evidence; no academic pigeon crude-fibre range found; see #237, provisional until #238. This is a product decision, not a peer-reviewed pigeon requirement, and does not apply to any other bird.",
+      "accessedAt": "2026-10-07"
     }
   ]
 }
