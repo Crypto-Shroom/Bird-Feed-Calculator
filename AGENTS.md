@@ -24,6 +24,24 @@
 - Run the relevant checks before opening a pull request: `pnpm --dir v3-webapp check`, `pnpm --dir v3-webapp test:calculator`, `pnpm --dir v3-webapp test:herb-safety`, and `pnpm --dir v3-webapp build` when applicable.
 - Do not merge a pull request without explicit product-owner approval.
 
+## Team roles and delegation
+
+| Role | Who | Responsibility |
+|---|---|---|
+| Product owner | Repository owner | Sets priorities, approves protected-data and wording changes, approves every merge and deletion. |
+| Senior developer | Claude Code | Reviews all PRs, writes focused issue specs for delegated work, integrates and validates changes, reports findings to the owner. |
+| Medior developer | Manus | Larger research or implementation tasks. Credits are limited, so Manus tasks are routed only through the product owner; other agents propose a Manus task to the owner instead of starting one. |
+| Junior developer | Jules | Focused, well-specified code tasks. Bolt (Jules's scheduled performance task) proposes small optimizations. |
+
+Rules for delegated work, especially Jules:
+
+- A Jules task starts when the `jules` label is added to an issue; the issue body is the whole specification. Only label a focused issue that states the exact files, acceptance criteria, and checks to run. Never label a parent issue, an issue whose work has already merged, or a research issue that needs new external sources.
+- Before starting, check that the issue's work is not already on `main` or in an open PR. If it is, comment on the issue instead of opening a PR.
+- Do not open a PR with no file changes. Use `Relates to #<issue>` when the PR does not finish the whole issue; `Closes`/`Fixes` would close it on merge.
+- Do not commit build output (`v3-webapp/dist/`), and do not touch V0–V2 or `archive/`.
+- A performance change must keep calculator output identical. Do not change tie-breaking, rounding, or the result shape.
+- Never invent a source title, author, portion size, or claim. Provenance text must match `database/provenance/sources.json` and `food-reviews.json` exactly.
+
 ## Review focus
 
 - Flag inconsistencies between active code, visible safety warnings, and keeper-facing documentation.
@@ -47,3 +65,41 @@
 
 - Explain review findings in plain, concrete terms. State the exact file, field, string, value, or behavior that changed; distinguish a validation result from a review-quality concern and distinguish runtime impact from governance-only impact.
 - Do not hide a specific change behind abstract labels such as "formatting churn", "dependency risk", or "clean". Name the concrete before-and-after change and why it matters to the owner’s review decision.
+
+## Commands
+
+Use pnpm 10.4.1 (pinned in `packageManager`); CI uses Node 22. Run commands from the repository root with `--dir v3-webapp`, or from inside `v3-webapp/`.
+
+```bash
+pnpm --dir v3-webapp install --frozen-lockfile
+pnpm --dir v3-webapp dev              # Vite web on :3000 + Express API on :3001 (/api proxied)
+pnpm --dir v3-webapp check            # tsc --noEmit (test files are excluded from tsconfig)
+pnpm --dir v3-webapp test:calculator  # every bird × situation, raw-legume exclusion
+pnpm --dir v3-webapp test:herb-safety
+pnpm --dir v3-webapp test:care-guidance
+pnpm --dir v3-webapp exec vitest run  # all unit tests in client/src/lib/*.test.ts
+pnpm --dir v3-webapp build            # vite → dist/public, esbuild server → dist/index.js
+pnpm test:provenance                  # (repository root) provenance ledger validation and tests
+```
+
+- CI (`.github/workflows/validate.yml`) runs `check`, `test:calculator`, `test:care-guidance`, `test:provenance`, and `build`. It does not yet run the Vitest unit tests, so run them yourself.
+- `scripts/verify-*.mjs` are plain assertion scripts run with `tsx`.
+- Vitest unit tests sit next to the code as `client/src/lib/*.test.ts`. Run one with `pnpm --dir v3-webapp exec vitest run client/src/lib/<name>.test.ts`. Server and script tests have their own configs: `test:server` and `test:report-queue`.
+
+## Architecture
+
+The data flow is **Research → `database/` → runtime data → calculator → website** (see `governance/ARCHITECTURE.md`). A provenance record documents evidence only. Changing calculator behaviour is a separate step that needs owner approval.
+
+- **`database/provenance/`** holds `sources.json` (the source register) and `food-reviews.json` (one record per exact food form, with six bird rows that point to source IDs). It also holds `historical-claims.json`, `care-claims.json`, and `profile-claims.json`. `SCHEMA.md` describes the files, and `database/tools/validate-provenance-ledger.mjs` validates them. The app imports `database/herb-provenance.mts` through `client/src/lib/herb-evidence.ts`.
+- **Protected runtime data** lives in `v3-webapp/client/src/lib/`:
+  - `data.ts`: ingredients and herbs
+  - `birds.ts`: profiles, targets, and care copy
+  - `safety.ts`: shared raw-toxicity and preparation rules
+  - `bird-safety.ts`: species toxicity and compatibility
+- **There are two calculation paths**, both wired in `client/src/pages/Home.tsx`:
+  1. `calculator-multi-bird.ts` (`MultibirMixCalculator`) is the deterministic, greedy, inventory-aware calculator. It always runs.
+  2. The optimizer is a browser-local HiGHS (WASM) solve in a Web Worker. The path is `optimizer-runtime.ts` (safety gating, identity canonicalization, model build) → `optimizer-worker.ts` → `optimizer-adapter` / `optimizer-form-allocation` → `optimizer-mix-result-bridge`, which returns the same `MixResult` shape. Specs are in `docs/optimization/`.
+
+  `calculator.ts` is the preserved legacy pigeon-only engine; keep it.
+- **UI**: React 19, Vite (root `client/`), Tailwind 4, shadcn/Radix, `wouter` routes `/` and `/herbs`. Path aliases: `@/` → `client/src/`, `@shared/` → `shared/`.
+- **In-app issue reports**: `server/index.ts` (`POST /api/submit-issue`, through `server/github.ts`). In production, `functions/src/index.ts` (a separate npm package) and a Firestore queue take this role; `process-reports.yml` drains the queue daily. Firebase Hosting deploys `dist/public` on every push to `main` (`firebase-deploy.yml`).
