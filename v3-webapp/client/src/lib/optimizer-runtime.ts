@@ -103,9 +103,10 @@ export function buildBrowserOptimizerCandidates(
 }
 
 /**
- * Creates but does not automatically invoke the browser-local solver. Home.tsx
- * continues using its present synchronous calculator output until a later,
- * separately reviewed display-integration change calls this adapter.
+ * Starts one browser-local serial staged solve. Home.tsx shows its synchronous
+ * calculator output first and replaces it only with a validated `feasible` or
+ * `best_attainable` result for the same inputs; every other status keeps the
+ * synchronous mix.
  */
 export function startBrowserLocalOptimizerSolve(
   input: BrowserOptimizerSolveInput,
@@ -158,7 +159,7 @@ export function startBrowserLocalOptimizerSolve(
       input.macroRanges,
       input.categoryRanges,
     );
-    const allocated = adapted.status === "feasible"
+    const allocated = adapted.status === "feasible" || adapted.status === "best_attainable"
       ? (() => {
         try {
           return { ...adapted, mix: allocateCanonicalMixToInventoryForms(adapted.mix, input.inventory) };

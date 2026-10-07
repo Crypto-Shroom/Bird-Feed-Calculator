@@ -120,6 +120,9 @@ export default function Home() {
       categoryRanges: getCategoryTargets(selectedBird),
     });
     void handle.result.then((workerResult) => {
+      // Only a mix that meets every configured range replaces the greedy mix.
+      // A `best_attainable` fallback is not shown until the owner approves how
+      // it is presented (issue #122 spec §5.2); timeout and error keep greedy.
       if (!active || workerResult.status !== "feasible") return;
       setWorkerInventoryResult({
         key: inventoryCalculationKey,
