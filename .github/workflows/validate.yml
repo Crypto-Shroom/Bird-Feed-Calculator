@@ -41,6 +41,9 @@ jobs:
       - name: Verify care guidance
         run: pnpm --dir v3-webapp test:care-guidance
 
+      - name: Run unit tests
+        run: pnpm --dir v3-webapp exec vitest run
+
       - name: Validate provenance ledger
         run: pnpm test:provenance
 
