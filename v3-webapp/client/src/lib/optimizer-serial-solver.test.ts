@@ -7,6 +7,7 @@ import { getProfileDefaultIngredients } from "./inventory-presets";
 import { adaptExactFeasibilityResult } from "./optimizer-adapter";
 import { buildExactFeasibilityModel, type OptimizerCandidate, type OptimizerModel } from "./optimizer-model";
 import { solveSerialStages, type HighsSolverLike } from "./optimizer-serial-solver";
+import { evaluateSerialObjectives } from "./optimizer-stages";
 
 const require = createRequire(import.meta.url);
 const createNodeHighs = require("highs") as () => Promise<HighsSolverLike>;
@@ -50,14 +51,24 @@ function enumerateMixes(model: OptimizerModel): number[][] {
   return mixes;
 }
 
+interface ReferenceOutcome {
+  branch: "exact" | "fallback";
+  quantities: Record<string, number>;
+  optimum: { margin?: number; macroDeviation?: number; categoryDeviation?: number; macroDistance?: number; categoryDistance: number; maximum: number; meaningful: number };
+}
+
 /**
  * Independent lexicographic reference for spec §5.2, written directly from the
- * definitions (no LP): it scores every complete mix and filters stage by stage.
+ * definitions (no LP): it scores every complete mix and filters stage by stage,
+ * keeping every mix within each stage's documented policy tolerance, then
+ * applies the small-inclusion re-solve rule.
  */
-function referenceSerialOptimum(model: OptimizerModel): { branch: "exact" | "fallback"; quantities: Record<string, number> } {
+function referenceSerialOptimum(model: OptimizerModel, fixedZero: readonly string[] = []): ReferenceOutcome {
   const W = model.achievableTargetGrams;
+  const policy = model.policy;
   const tolerance = 1e-7;
-  const scored = enumerateMixes(model).map((mix) => {
+  const zeroIndexes = model.candidates.flatMap(({ id }, index) => fixedZero.includes(id) ? [index] : []);
+  const scored = enumerateMixes(model).filter((mix) => zeroIndexes.every((index) => mix[index] === 0)).map((mix) => {
     const percent = (macro: (typeof macroKeys)[number]) => mix.reduce((total, grams, index) => total + grams * model.candidates[index].nutrition[macro], 0) / W;
     const share = (category: (typeof categoryKeys)[number]) => mix.reduce((total, grams, index) => total + (model.candidates[index].category === category ? grams : 0), 0) / W * 100;
     const macroValues = macroKeys.map((macro) => ({ value: percent(macro), range: model.macroRanges[macro] }));
@@ -76,31 +87,68 @@ function referenceSerialOptimum(model: OptimizerModel): { branch: "exact" | "fal
     };
   });
 
-  const keepBest = (pool: typeof scored, key: (entry: (typeof scored)[number]) => number, sense: "min" | "max") => {
+  type Scored = (typeof scored)[number];
+  const keepBest = (pool: Scored[], key: (entry: Scored) => number, sense: "min" | "max", slack = 0) => {
     const values = pool.map(key);
-    const best = sense === "min" ? Math.min(...values) : Math.max(...values);
-    return pool.filter((entry) => sense === "min" ? key(entry) <= best + tolerance : key(entry) >= best - tolerance);
+    const best = values.reduce((left, right) => sense === "min" ? Math.min(left, right) : Math.max(left, right));
+    return { best, pool: pool.filter((entry) => sense === "min" ? key(entry) <= best + slack + tolerance : key(entry) >= best - slack - tolerance) };
   };
 
   const exact = scored.filter((entry) => entry.macroDeviation <= 1e-9 && entry.categoryDeviation <= 1e-9);
-  let pool: typeof scored;
+  let pool: Scored[];
   let branch: "exact" | "fallback";
+  const optimum: Partial<ReferenceOutcome["optimum"]> = {};
   if (exact.length > 0) {
     branch = "exact";
-    pool = keepBest(exact, (entry) => entry.margin, "max");
+    const margin = keepBest(exact, (entry) => entry.margin, "max");
+    optimum.margin = Math.max(0, margin.best);
+    const floor = Math.max(0, optimum.margin - policy.exactMarginTolerance - policy.exactMarginRelativeTolerance * optimum.margin);
+    pool = exact.filter((entry) => entry.margin >= floor - tolerance);
   } else {
     branch = "fallback";
-    pool = keepBest(scored, (entry) => entry.macroDeviation, "min");
-    pool = keepBest(pool, (entry) => entry.categoryDeviation, "min");
-    pool = keepBest(pool, (entry) => entry.macroDistance, "min");
+    let step = keepBest(scored, (entry) => entry.macroDeviation, "min");
+    optimum.macroDeviation = step.best;
+    step = keepBest(step.pool, (entry) => entry.categoryDeviation, "min");
+    optimum.categoryDeviation = step.best;
+    step = keepBest(step.pool, (entry) => entry.macroDistance, "min", policy.macroDistanceTolerance);
+    optimum.macroDistance = step.best;
+    pool = step.pool;
   }
-  pool = keepBest(pool, (entry) => entry.categoryDistance, "min");
-  pool = keepBest(pool, (entry) => entry.maximum, "min");
-  pool = keepBest(pool, (entry) => entry.meaningful, "max");
+  let step = keepBest(pool, (entry) => entry.categoryDistance, "min", policy.categoryDistanceTolerance);
+  optimum.categoryDistance = step.best;
+  step = keepBest(step.pool, (entry) => entry.maximum, "min", policy.maximumShareToleranceGrams);
+  optimum.maximum = step.best;
+  step = keepBest(step.pool, (entry) => entry.meaningful, "max");
+  optimum.meaningful = step.best;
+  pool = step.pool;
   model.candidates.forEach((_, index) => {
-    pool = keepBest(pool, (entry) => entry.mix[index], "min");
+    pool = keepBest(pool, (entry) => entry.mix[index], "min").pool;
   });
-  return { branch, quantities: Object.fromEntries(model.candidates.map(({ id }, index) => [id, pool[0].mix[index]])) };
+  const outcome: ReferenceOutcome = {
+    branch,
+    quantities: Object.fromEntries(model.candidates.map(({ id }, index) => [id, pool[0].mix[index]])),
+    optimum: optimum as ReferenceOutcome["optimum"],
+  };
+  if (fixedZero.length > 0) return outcome;
+
+  const small = model.candidates.filter(({ id }) => outcome.quantities[id] > 0 && outcome.quantities[id] < policy.meaningfulInclusionGrams).map(({ id }) => id);
+  if (small.length === 0) return outcome;
+  const zeroed = model.candidates.map(({ id }) => id).filter((id) => small.includes(id));
+  if (enumerateMixes(model).every((mix) => model.candidates.some(({ id }, index) => zeroed.includes(id) && mix[index] !== 0))) return outcome;
+  const resolved = referenceSerialOptimum(model, zeroed);
+  const evaluated = scored.find((entry) => model.candidates.every(({ id }, index) => entry.mix[index] === resolved.quantities[id]))!;
+  const locked = outcome.optimum;
+  const slack = tolerance + 1e-9;
+  const accepted = resolved.branch === outcome.branch
+    && (outcome.branch === "exact"
+      ? evaluated.margin >= Math.max(0, locked.margin! - policy.exactMarginTolerance - policy.exactMarginRelativeTolerance * locked.margin!) - slack
+      : evaluated.macroDeviation <= locked.macroDeviation! + slack
+        && evaluated.categoryDeviation <= locked.categoryDeviation! + slack
+        && evaluated.macroDistance <= locked.macroDistance! + policy.macroDistanceTolerance + slack)
+    && evaluated.categoryDistance <= locked.categoryDistance + policy.categoryDistanceTolerance + slack
+    && evaluated.maximum <= locked.maximum + policy.maximumShareToleranceGrams
+    && evaluated.meaningful >= locked.meaningful;
+  return accepted ? resolved : outcome;
 }
 
 describe("serial staged optimizer with real HiGHS", () => {
@@ -119,6 +167,8 @@ describe("serial staged optimizer with real HiGHS", () => {
       profileModel("pigeon", "pet", { corn_yellow: 25, lentils: 10, peas: 25, safflower: 8, wheat: 25 }, 25),
       profileModel("canary", "breeding", { canola: 6, millet: 20, oats: 20, peas: 20, safflower: 6, wheat: 20 }, 20),
       profileModel("chicken", "egg_laying", { barley: 15, corn_yellow: 30, lentils: 15, oats: 15, peas: 15 }, 30),
+      // Sensitive to the diversity tolerance band: with every lock exact the reference picks a different mix.
+      profileModel("chicken", "pet", { barley: 30, corn_yellow: 30, lentils: 30, oats: 30, peas: 30, wheat: 30 }, 30),
     ];
     const branches = new Set<string>();
     for (const model of corpus) {
@@ -182,5 +232,41 @@ describe("serial staged optimizer with real HiGHS", () => {
     expect(second.quantities).toEqual(first.quantities);
     expect(reordered.quantities).toEqual(first.quantities);
     expect(JSON.stringify(Object.entries(reordered.quantities))).toBe(JSON.stringify(Object.entries(first.quantities)));
+  });
+
+  const issue85Inventory = Object.fromEntries(
+    ["hemp", "wheat", "peas", "chickpeas", "lentils", "chia", "canola", "corn_yellow", "hemp_hearts", "lentils_brown", "milo", "niger"].map((id) => [id, 1_000]),
+  );
+  const exactPolicy = (model: OptimizerModel): OptimizerModel => ({
+    ...model,
+    policy: { ...model.policy, exactMarginRelativeTolerance: 0, macroDistanceTolerance: 0, categoryDistanceTolerance: 0, maximumShareToleranceGrams: 0 },
+  });
+
+  it("uses the diversity tolerance band to pick a more diverse mix while keeping at least 90% of the best macro margin", async () => {
+    const model = profileModel("chicken", "pet", issue85Inventory, 1_000);
+    const banded = await solve(model);
+    const exact = await solve(exactPolicy(model));
+
+    expect(banded.status).toBe("optimal");
+    expect(exact.status).toBe("optimal");
+    const bandedValues = evaluateSerialObjectives(model, banded.quantities);
+    const exactValues = evaluateSerialObjectives(model, exact.quantities);
+    expect(bandedValues.meaningfulIngredientCount).toBeGreaterThan(exactValues.meaningfulIngredientCount);
+    expect(bandedValues.macroMargin).toBeGreaterThanOrEqual(0.9 * exact.objectives.macroMargin! - 1e-6);
+  });
+
+  it("re-solves once without sub-threshold ingredients and keeps the re-solve only when no locked value worsens beyond its tolerance", async () => {
+    const meaningful = 5;
+    const accepted = await solve(profileModel("parrot", "pet", issue85Inventory, 1_000));
+    expect(accepted.smallInclusion?.accepted).toBe(true);
+    expect(Object.values(accepted.quantities).every((grams) => grams === 0 || grams >= meaningful)).toBe(true);
+    expect(accepted.stages.some(({ pass }) => pass === "small_inclusion_resolve")).toBe(true);
+
+    // Pigeon/Pet defaults need a few grams of wheat to reach the smallest macro deviation, so the primary mix is kept.
+    const rejected = await solve(profileModel("pigeon", "pet", getProfileDefaultIngredients("pigeon", "pet"), 1_000));
+    expect(rejected.status).toBe("best_attainable");
+    expect(rejected.smallInclusion).toMatchObject({ accepted: false });
+    expect(rejected.smallInclusion?.reason).toContain("macro deviation");
+    expect(rejected.smallInclusion?.removedIds.every((id) => rejected.quantities[id] > 0 && rejected.quantities[id] < meaningful)).toBe(true);
   });
 });

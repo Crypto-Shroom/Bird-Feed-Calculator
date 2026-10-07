@@ -8,6 +8,7 @@ export interface OptimizerWorkerExecutorResult {
   errorMessage?: string;
   stages?: OptimizerWorkerRawResult["stages"];
   objectives?: OptimizerWorkerRawResult["objectives"];
+  smallInclusion?: OptimizerWorkerRawResult["smallInclusion"];
 }
 
 export interface OptimizerWorkerExecutionContext {

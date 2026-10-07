@@ -1,5 +1,5 @@
 import type { OptimizerModel } from "./optimizer-model";
-import type { SerialStageObjectives, SerialStageTrace } from "./optimizer-serial-solver";
+import type { SerialStageObjectives, SerialStageTrace, SmallInclusionResolve } from "./optimizer-serial-solver";
 
 export interface OptimizerWorkerSolveRequest {
   type: "solve";
@@ -35,6 +35,8 @@ export interface OptimizerWorkerRawResult {
   stages?: SerialStageTrace[];
   /** The locked optimum of each completed stage. */
   objectives?: SerialStageObjectives;
+  /** Outcome of the one re-solve without sub-threshold ingredients, when it ran. */
+  smallInclusion?: SmallInclusionResolve;
 }
 
 export interface OptimizerWorkerCancelled {

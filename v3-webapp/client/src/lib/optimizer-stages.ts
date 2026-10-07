@@ -229,10 +229,25 @@ function compositionLocks(
   return constraints;
 }
 
+/**
+ * Lowest macro margin a later exact stage may accept once Stage 3 found the
+ * optimum r*: r* minus the policy's margin tolerance (an absolute part in
+ * normalized range-width units plus a part relative to r*), never below 0.
+ * The solver's numerical lock tolerance is applied separately by the caller.
+ */
+export function macroMarginLockFloor(policy: OptimizerModel["policy"], optimum: number): number {
+  const allowance = policy.exactMarginTolerance + policy.exactMarginRelativeTolerance * Math.max(0, optimum);
+  if (!Number.isFinite(allowance) || allowance < 0) throw new Error("macro margin tolerance must be finite and non-negative");
+  return Math.max(0, optimum - allowance);
+}
+
 function priorExactLocks(model: OptimizerModel, locks: ExactSerialLocks): string[] {
   const constraints: string[] = [];
   if (locks.macroMargin !== undefined) {
-    constraints.push(...lockBand("r", locks.macroMargin, model.policy.exactMarginTolerance, "macro_margin"));
+    // The value is already the tolerance floor (see macroMarginLockFloor); r may
+    // be anywhere at or above it, so only the lower side is locked.
+    if (!Number.isFinite(locks.macroMargin)) throw new Error("macro_margin lock requires a finite value");
+    constraints.push(` macro_margin_lower_lock: r >= ${formatNumber(locks.macroMargin)}`);
   }
   if (locks.categoryDistance !== undefined) {
     constraints.push(...lockBand("T", locks.categoryDistance, model.policy.categoryDistanceTolerance, "category_distance"));

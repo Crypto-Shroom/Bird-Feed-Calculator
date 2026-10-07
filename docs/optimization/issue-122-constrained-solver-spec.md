@@ -176,6 +176,8 @@ The denominators are the target-range width at the current achievable weight `W`
 | 5B | Maximize `Σ zᵢ` under all prior locks. | Lock the resulting inclusion count exactly. |
 | 6 | Apply serial quantity-vector tie-break to the remaining full-mix solutions. For canonically sorted ingredient IDs `i₁…iₙ`, minimize `xᵢ₁`, lock it, then minimize `xᵢ₂`, lock it, and continue through `xᵢₙ`. | This is collision-free because it compares the full ordered quantity vector component by component, rather than using an alphabetical weighted score. |
 
+**Implementation note (owner-approved follow-up, issue #125):** the proof-of-concept zero tolerances left the diversity stage no choice. `optimizer-policy.ts` now sets a named diversity tolerance band — `ε_r` as 10% of `r*` (`r ≥ 0.9·r*`), `ε_macro = 0.02`, `ε_category = 0.05`, and `τ_M = 25 g` — while the fallback `D_macro` and `D_category` locks stay exact. There is no hard minimum amount: if a completed mix contains an ingredient above 0 g but below `d`, the whole sequence is re-solved once with those ingredients fixed to 0 g, and the re-solve is kept only if it stays on the same branch and satisfies every lock above within these tolerances. The chosen values and their measured effect are in `issue-211-optimizer-comparison.md`.
+
 The fallback result must expose the signed deficit or excess for each macro/category and identify the safe eligible ingredient/category capacities that prevented exact feasibility. It must never say “optimized” without indicating `feasible` versus `best_attainable`.
 
 ### 5.1 Proposed status contract
