@@ -1,5 +1,5 @@
 // Design contract: Modern Agrarian / Organic Tech — a calm, browseable botanical catalogue distinct from the calculator dashboard, using warm grain neutrals and deep greens.
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { ArrowLeft, Leaf } from "lucide-react";
 import { Link } from "wouter";
 import { Badge } from "@/components/ui/badge";
@@ -33,11 +33,18 @@ const birdLabels: Record<HerbBirdKey, string> = {
 
 export default function HerbLibrary() {
   // Product-owner decision: do not surface apple cider vinegar in newly added app copy until its wording is explicitly approved.
-  const herbEntries = Object.entries(HERBS_SUPPLEMENTS)
-    .filter(([name]) => name !== "apple_cider_vinegar")
-    .sort(([left], [right]) => left.localeCompare(right));
+  const herbEntries = useMemo(
+    () =>
+      Object.entries(HERBS_SUPPLEMENTS)
+        .filter(([name]) => name !== "apple_cider_vinegar")
+        .sort(([left], [right]) => left.localeCompare(right)),
+    []
+  );
   const [birdFilter, setBirdFilter] = useState<HerbLibraryBirdFilter>("all");
-  const visibleHerbEntries = filterHerbLibraryEntries(herbEntries, birdFilter);
+  const visibleHerbEntries = useMemo(
+    () => filterHerbLibraryEntries(herbEntries, birdFilter),
+    [herbEntries, birdFilter]
+  );
 
   return (
     <div className="min-h-screen bg-[#f9f7f2] text-foreground">
