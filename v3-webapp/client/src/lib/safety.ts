@@ -15,6 +15,13 @@ export interface IngredientPrep {
   preparation: string;
   notes: string;
   birdGuidance?: Partial<Record<BirdType, string>>;
+  /**
+   * True when the preparation is a safety requirement (cooking required, sweet
+   * feed-grade cultivar only, heat treatment, or aflatoxin/mould control) rather
+   * than a handling tip. Such foods are never offered as an unprompted diversity
+   * tip (#212) and are marked "WARNING" in the downloaded recipe (#213).
+   */
+  safetyWarning?: true;
 }
 
 // Toxic ingredients that should NEVER be fed raw
@@ -94,20 +101,6 @@ export const INGREDIENTS_REQUIRING_VERIFIED_PROCESSING = new Set([
   "soybeans",
 ]);
 
-// Ingredients whose preparation guidance carries a safety warning (cooking required,
-// sweet feed-grade cultivar only, heat treatment, or aflatoxin/mould control). They stay
-// usable in the calculator with their warnings, but are never proposed as an unprompted
-// diversity tip, which shows no preparation guidance (#212).
-export const INGREDIENTS_WITH_SAFETY_PREPARATION_WARNINGS = new Set([
-  "adzuki_beans",
-  "chickpeas",
-  "lupins",
-  "vetch",
-  "peanuts",
-  "peanuts_raw",
-  "peanuts_roasted",
-]);
-
 // Grains that should not be the only grain in a mix
 export const GRAINS_NEEDING_PAIRING = new Set([
   "corn_yellow",
@@ -132,16 +125,19 @@ export const GRAIN_PAIRINGS: Record<string, string[]> = {
 // Ingredient preparation instructions
 export const INGREDIENT_PREP: Record<string, IngredientPrep> = {
   "peanuts": {
+    safetyWarning: true,
     name: "Peanuts",
     preparation: "Remove shells before feeding",
     notes: "Use fresh, plain, unsalted bird-feed peanuts from a reputable aflatoxin-controlled source. Discard damaged, musty, or mouldy nuts. High-fat treat; the calculator balances it when other inventory is available."
   },
   "peanuts_raw": {
+    safetyWarning: true,
     name: "Raw Peanuts",
     preparation: "Remove shells before feeding",
     notes: "Use fresh, plain, unsalted bird-feed peanuts from a reputable aflatoxin-controlled source. Discard damaged, musty, or mouldy nuts. High-fat treat; the calculator balances it when other inventory is available."
   },
   "peanuts_roasted": {
+    safetyWarning: true,
     name: "Roasted Peanuts",
     preparation: "Remove shells before feeding",
     notes: "Use fresh, plain, unsalted dry-roasted bird-feed peanuts from a reputable aflatoxin-controlled source. Discard damaged, musty, or mouldy nuts. High-fat treat; the calculator balances it when other inventory is available."
@@ -187,6 +183,7 @@ export const INGREDIENT_PREP: Record<string, IngredientPrep> = {
     notes: "Hulled pumpkin seeds, high protein. Less fiber than whole seeds."
   },
   "chickpeas": {
+    safetyWarning: true,
     name: "Chickpeas",
     preparation: "Soak, then boil until completely soft; drain and cool before feeding",
     notes: "Cooked or properly processed chickpeas only. Their antinutritional factors are reduced by heat treatment.",
@@ -200,6 +197,7 @@ export const INGREDIENT_PREP: Record<string, IngredientPrep> = {
     }
   },
   "adzuki_beans": {
+    safetyWarning: true,
     name: "Adzuki Beans",
     preparation: "Soak, then boil until completely soft; drain and cool before feeding",
     notes: "RAW ADZUKI BEANS ARE TOXIC. Soak and boil until completely soft before feeding; never offer raw or undercooked beans.",
@@ -213,6 +211,7 @@ export const INGREDIENT_PREP: Record<string, IngredientPrep> = {
     }
   },
   "lupins": {
+    safetyWarning: true,
     name: "Lupins",
     preparation: "Use only feed-grade sweet lupins (low-alkaloid); do not use bitter garden lupins",
     notes: "Sweet lupins are the low-alkaloid feed type. Bitter lupins can contain high alkaloid levels and must not be used.",
@@ -226,6 +225,7 @@ export const INGREDIENT_PREP: Record<string, IngredientPrep> = {
     }
   },
   "vetch": {
+    safetyWarning: true,
     name: "Common Vetch",
     preparation: "Use feed-grade common vetch that has been heat-treated; do not feed raw vetch seed",
     notes: "Common vetch contains antinutritional factors. Heat treatment improves usable inclusion in poultry diets.",
@@ -270,7 +270,7 @@ export function getProcessingWarning(ingredientName: string): string | null {
 }
 
 export function hasSafetyPreparationWarning(ingredientName: string): boolean {
-  return INGREDIENTS_WITH_SAFETY_PREPARATION_WARNINGS.has(ingredientName);
+  return INGREDIENT_PREP[ingredientName]?.safetyWarning === true;
 }
 
 // Check if a grain needs pairing
