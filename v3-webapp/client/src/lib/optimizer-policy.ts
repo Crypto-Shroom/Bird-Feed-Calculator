@@ -56,3 +56,11 @@ export type OptimizerPolicy = typeof OPTIMIZER_POLICY;
 export const BROWSER_SOLVER_TIME_LIMIT_MS = 500;
 /** Independent Worker wall-clock guard, including the first HiGHS wasm load. */
 export const BROWSER_WORKER_WALL_TIMEOUT_MS = 1_000;
+/**
+ * Main-thread guard for the reused Worker. The Worker's own wall timeout can
+ * only fire between solver stages; if no answer arrives within this time the
+ * Worker is presumed stuck inside one HiGHS call, so it is terminated and the
+ * next request starts a fresh Worker. It is deliberately longer than the
+ * in-Worker wall timeout so that guard normally answers first.
+ */
+export const BROWSER_WORKER_RESPONSE_TIMEOUT_MS = 2_500;
