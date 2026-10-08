@@ -74,7 +74,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
           protein: [13.5, 15],
           carbs: [60, 70],
           fat: [2.5, 4],
-          fiber: [0.5, 2],
+          fiber: [0, 5],
         },
       },
       racing: {
@@ -86,7 +86,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
           protein: [16, 18],
           carbs: [55, 65],
           fat: [3, 5],
-          fiber: [0.5, 1.5],
+          fiber: [0, 5],
         },
       },
       breeding: {
@@ -98,7 +98,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
           protein: [14, 16],
           carbs: [58, 68],
           fat: [3, 4.5],
-          fiber: [0.5, 2],
+          fiber: [0, 5],
         },
       },
       molting: {
@@ -110,7 +110,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
           protein: [16, 18],
           carbs: [55, 65],
           fat: [3.5, 5],
-          fiber: [0.5, 1.5],
+          fiber: [0, 5],
         },
       },
       winter: {
@@ -122,7 +122,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
           protein: [12, 14],
           carbs: [55, 65],
           fat: [4, 6],
-          fiber: [0.5, 2],
+          fiber: [0, 5],
         },
       },
       pet: {
@@ -134,7 +134,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
           protein: [12, 14],
           carbs: [60, 70],
           fat: [2.5, 4],
-          fiber: [1, 2.5],
+          fiber: [0, 5],
         },
       },
     },

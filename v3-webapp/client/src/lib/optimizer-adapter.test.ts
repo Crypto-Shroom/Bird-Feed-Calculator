@@ -37,7 +37,7 @@ describe("non-integrated optimizer result adapter", () => {
     type: "result" as const,
     requestId: "chicken-pet-1",
     status: "optimal" as const,
-    quantities: { wheat: 200, peas: 200, oats: 200, corn_yellow: 200, barley: 200 },
+    quantities: { wheat: 250, peas: 200, oats: 150, corn_yellow: 200, barley: 200 },
     elapsedMs: 12.5,
     mipGap: 0,
     solverStatus: "Optimal",
@@ -48,10 +48,10 @@ describe("non-integrated optimizer result adapter", () => {
 
     expect(adapted).toMatchObject({
       status: "feasible",
-      mix: { barley: 200, corn_yellow: 200, oats: 200, peas: 200, wheat: 200 },
-      nutrition: { protein: 13.9, carbs: 68.4, fat: 3.2, fiber: 5 },
+      mix: { barley: 200, corn_yellow: 200, oats: 150, peas: 200, wheat: 250 },
+      nutrition: { protein: 13.925, carbs: 68.65, fat: 3, fiber: 4.765 },
       categories: { grain: 80, legume: 20, seed: 0 },
-      maximumShareGrams: 200,
+      maximumShareGrams: 250,
       meaningfulIngredientIds: ["barley", "corn_yellow", "oats", "peas", "wheat"],
       violations: [],
     });

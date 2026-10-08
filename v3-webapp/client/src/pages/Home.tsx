@@ -264,7 +264,7 @@ export default function Home() {
       `Protein: ${result.nutrition.protein.toFixed(1)}%`,
       `Carbohydrates: ${result.nutrition.carbs.toFixed(1)}%`,
       `Fat: ${result.nutrition.fat.toFixed(1)}%`,
-      `Fiber: ${result.nutrition.fiber.toFixed(1)}%`,
+      `Crude fiber: ${result.nutrition.fiber.toFixed(1)}%`,
       "",
       "SAFETY SCOPE",
       care.scope,
@@ -474,7 +474,7 @@ export default function Home() {
                 <NutritionCard label="Protein" value={result.nutrition.protein} target={currentProfile.nutrition.protein} color="bg-[var(--chart-1)]" />
                 <NutritionCard label="Carbs" value={result.nutrition.carbs} target={currentProfile.nutrition.carbs} color="bg-[var(--chart-2)]" />
                 <NutritionCard label="Fat" value={result.nutrition.fat} target={currentProfile.nutrition.fat} color="bg-[var(--chart-3)]" />
-                <NutritionCard label="Fiber" value={result.nutrition.fiber} target={currentProfile.nutrition.fiber} color="bg-[var(--chart-4)]" />
+                <NutritionCard label="Crude fiber" value={result.nutrition.fiber} target={currentProfile.nutrition.fiber} color="bg-[var(--chart-4)]" />
               </div>
 
               <Card className="border-none shadow-xl">

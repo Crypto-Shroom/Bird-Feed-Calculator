@@ -145,9 +145,9 @@
       ],
       "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.maintenance.fiber",
       "evidenceScope": "historical_project",
-      "reconciliationStatus": "matches_pre_audit_configuration",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.maintenance.fiber.runtime_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-07"
     },
     {
       "id": "profile.pigeon.maintenance.fiber.runtime_configuration",
@@ -157,18 +157,21 @@
       "profileName": "Maintenance/Rest",
       "nutrient": "fiber",
       "range": [
-        0.5,
-        2
+        0,
+        5
       ],
       "unit": "percent_of_dry_seed_grain_batch_estimate",
       "sourceIds": [
-        "runtime-v3-profile-config"
+        "runtime-v3-profile-config",
+        "historical-pigeon-research-2025",
+        "issue-237-owner-pigeon-crude-fibre-range-2026-10-07",
+        "feedipedia-feed-composition-crude-fibre-2026"
       ],
       "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.maintenance.nutrition.fiber",
-      "evidenceScope": "historical_project",
-      "reconciliationStatus": "matches_pre_audit_configuration",
+      "evidenceScope": "owner_approved_policy",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.maintenance.fiber.historical_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "profile.pigeon.racing.protein.historical_configuration",
@@ -313,9 +316,9 @@
       ],
       "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.racing.fiber",
       "evidenceScope": "historical_project",
-      "reconciliationStatus": "matches_pre_audit_configuration",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.racing.fiber.runtime_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-07"
     },
     {
       "id": "profile.pigeon.racing.fiber.runtime_configuration",
@@ -325,18 +328,21 @@
       "profileName": "Racing/Competition",
       "nutrient": "fiber",
       "range": [
-        0.5,
-        1.5
+        0,
+        5
       ],
       "unit": "percent_of_dry_seed_grain_batch_estimate",
       "sourceIds": [
-        "runtime-v3-profile-config"
+        "runtime-v3-profile-config",
+        "historical-pigeon-research-2025",
+        "issue-237-owner-pigeon-crude-fibre-range-2026-10-07",
+        "feedipedia-feed-composition-crude-fibre-2026"
       ],
       "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.racing.nutrition.fiber",
-      "evidenceScope": "historical_project",
-      "reconciliationStatus": "matches_pre_audit_configuration",
+      "evidenceScope": "owner_approved_policy",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.racing.fiber.historical_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "profile.pigeon.breeding.protein.historical_configuration",
@@ -481,9 +487,9 @@
       ],
       "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.breeding.fiber",
       "evidenceScope": "historical_project",
-      "reconciliationStatus": "matches_pre_audit_configuration",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.breeding.fiber.runtime_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-07"
     },
     {
       "id": "profile.pigeon.breeding.fiber.runtime_configuration",
@@ -493,18 +499,21 @@
       "profileName": "Breeding",
       "nutrient": "fiber",
       "range": [
-        0.5,
-        2
+        0,
+        5
       ],
       "unit": "percent_of_dry_seed_grain_batch_estimate",
       "sourceIds": [
-        "runtime-v3-profile-config"
+        "runtime-v3-profile-config",
+        "historical-pigeon-research-2025",
+        "issue-237-owner-pigeon-crude-fibre-range-2026-10-07",
+        "feedipedia-feed-composition-crude-fibre-2026"
       ],
       "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.breeding.nutrition.fiber",
-      "evidenceScope": "historical_project",
-      "reconciliationStatus": "matches_pre_audit_configuration",
+      "evidenceScope": "owner_approved_policy",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.breeding.fiber.historical_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "profile.pigeon.molting.protein.historical_configuration",
@@ -649,9 +658,9 @@
       ],
       "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.molting.fiber",
       "evidenceScope": "historical_project",
-      "reconciliationStatus": "matches_pre_audit_configuration",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.molting.fiber.runtime_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-07"
     },
     {
       "id": "profile.pigeon.molting.fiber.runtime_configuration",
@@ -661,18 +670,21 @@
       "profileName": "Molting Season",
       "nutrient": "fiber",
       "range": [
-        0.5,
-        1.5
+        0,
+        5
       ],
       "unit": "percent_of_dry_seed_grain_batch_estimate",
       "sourceIds": [
-        "runtime-v3-profile-config"
+        "runtime-v3-profile-config",
+        "historical-pigeon-research-2025",
+        "issue-237-owner-pigeon-crude-fibre-range-2026-10-07",
+        "feedipedia-feed-composition-crude-fibre-2026"
       ],
       "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.molting.nutrition.fiber",
-      "evidenceScope": "historical_project",
-      "reconciliationStatus": "matches_pre_audit_configuration",
+      "evidenceScope": "owner_approved_policy",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.molting.fiber.historical_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "profile.pigeon.winter.protein.historical_configuration",
@@ -817,9 +829,9 @@
       ],
       "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.winter.fiber",
       "evidenceScope": "historical_project",
-      "reconciliationStatus": "matches_pre_audit_configuration",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.winter.fiber.runtime_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-07"
     },
     {
       "id": "profile.pigeon.winter.fiber.runtime_configuration",
@@ -829,18 +841,21 @@
       "profileName": "Winter Season",
       "nutrient": "fiber",
       "range": [
-        0.5,
-        2
+        0,
+        5
       ],
       "unit": "percent_of_dry_seed_grain_batch_estimate",
       "sourceIds": [
-        "runtime-v3-profile-config"
+        "runtime-v3-profile-config",
+        "historical-pigeon-research-2025",
+        "issue-237-owner-pigeon-crude-fibre-range-2026-10-07",
+        "feedipedia-feed-composition-crude-fibre-2026"
       ],
       "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.winter.nutrition.fiber",
-      "evidenceScope": "historical_project",
-      "reconciliationStatus": "matches_pre_audit_configuration",
+      "evidenceScope": "owner_approved_policy",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.winter.fiber.historical_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "profile.pigeon.pet.protein.historical_configuration",
@@ -987,7 +1002,7 @@
       "evidenceScope": "historical_project",
       "reconciliationStatus": "differs_from_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.pet.fiber.runtime_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-07"
     },
     {
       "id": "profile.pigeon.pet.fiber.runtime_configuration",
@@ -997,18 +1012,21 @@
       "profileName": "Pet/Companion",
       "nutrient": "fiber",
       "range": [
-        1,
-        2.5
+        0,
+        5
       ],
       "unit": "percent_of_dry_seed_grain_batch_estimate",
       "sourceIds": [
-        "runtime-v3-profile-config"
+        "runtime-v3-profile-config",
+        "historical-pigeon-research-2025",
+        "issue-237-owner-pigeon-crude-fibre-range-2026-10-07",
+        "feedipedia-feed-composition-crude-fibre-2026"
       ],
       "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.pet.nutrition.fiber",
-      "evidenceScope": "historical_project",
+      "evidenceScope": "owner_approved_policy",
       "reconciliationStatus": "differs_from_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.pet.fiber.historical_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-08"
     },
     {
       "id": "profile.parrot.pet.protein.historical_configuration",
