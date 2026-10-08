@@ -2658,7 +2658,7 @@
     },
     {
       "id": "issue-237-owner-pigeon-crude-fibre-range-2026-10-07",
-      "title": "Owner decision: pigeon crude fibre target range 2.5 to 5 percent for all six pigeon profiles",
+      "title": "Owner decision: restore the original pigeon research crude fibre target of 0 to 5 percent for all six pigeon profiles",
       "authorsOrOrganization": "Bird Feed Calculator product owner",
       "publishedYear": "2026",
       "sourceTier": "owner_approved_policy",
@@ -2666,9 +2666,9 @@
       "speciesScopes": [
         "pigeon"
       ],
-      "permittedUse": "Records the owner's explicit decision to set the crude fibre target range of the maintenance, racing, breeding, molting, winter and pet pigeon profiles to 2.5 to 5 percent, as a seed/grain batch estimate on the as-fed crude fibre basis.",
-      "limitations": "Owner decision 2026-10-07 on practitioner and commercial evidence; no academic pigeon crude-fibre range found; see #237, provisional until #238. This is a product decision, not a peer-reviewed pigeon requirement, and does not apply to any other bird.",
-      "accessedAt": "2026-10-07"
+      "permittedUse": "Records the owner's explicit decision (2026-10-08) to restore the original V0/V1 pigeon research fibre target, under 5 percent, as a 0 to 5 percent range for the maintenance, racing, breeding, molting, winter and pet pigeon profiles, on the as-fed crude fibre basis.",
+      "limitations": "Restores the owner's original research value (V0 RESEARCH_REFERENCES.md and v1-original/pigeon_nutrition_research.md: 'Fiber: Under 5% (pigeons don't utilize fiber well)', citing Mire 2013, Pigeon Vitality), which the later multi-bird configuration had replaced with unsourced 0.5-2.5 percent values. Practitioner-level evidence; Sales & Janssens 2003 sets no fibre range. Provisional until #238. Does not apply to any other bird.",
+      "accessedAt": "2026-10-08"
     }
   ]
 }
