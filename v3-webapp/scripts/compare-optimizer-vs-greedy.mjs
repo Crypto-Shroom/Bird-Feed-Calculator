@@ -45,7 +45,13 @@ const repeats = 3;
 const issue85Inventory = Object.fromEntries(
   ["hemp", "wheat", "peas", "chickpeas", "lentils", "chia", "canola", "corn_yellow", "hemp_hearts", "lentils_brown", "milo", "niger"].map((id) => [id, 1000]),
 );
+// The mix reported in #85 came from the pre-#239 catalog (moisture-free fibre values);
+// the unchanged greedy calculator reproduced it exactly on that data. #239 replaced
+// ingredient fibre with Feedipedia as-fed crude fibre, so greedy now picks chia over
+// canola and drops peas. The current greedy output is pinned here so the comparison
+// still fails if the #85 scenario inventory or the greedy calculator drifts.
 const issue85ReportedGreedy = { wheat: 610, chickpeas: 190, canola: 100, corn_yellow: 80, milo: 10, peas: 10 };
+const issue85CurrentGreedy = { wheat: 610, chickpeas: 200, chia: 100, corn_yellow: 80, milo: 10 };
 const fullCatalogInventory = Object.fromEntries(Object.keys(INGREDIENTS).sort().map((id) => [id, 1000]));
 
 const scenarios = [];
@@ -341,7 +347,7 @@ const worstUnbounded = unboundedRows.reduce((slowest, row) => (!slowest || row.u
 const nonDeterministic = results.filter((row) => !row.deterministic);
 const timeouts = results.filter((row) => row.optimizer.adapted.status === "timeout");
 const issue85 = results.find((row) => row.scenario.id === "issue85:pigeon/pet");
-const issue85MatchesReport = JSON.stringify(Object.entries(issue85.greedy.mix).sort()) === JSON.stringify(Object.entries(issue85ReportedGreedy).sort());
+const issue85MatchesReport = JSON.stringify(Object.entries(issue85.greedy.mix).sort()) === JSON.stringify(Object.entries(issue85CurrentGreedy).sort());
 
 const lines = [];
 lines.push("# Issue #211 / #125 — optimizer versus greedy comparison");
@@ -384,7 +390,7 @@ const slowestRealistic = results.filter((row) => row.scenario.group !== "full-ca
 lines.push(`- Worst solve time outside the full-catalog stress group: **${format(slowestRealistic.solveMs, 1)} ms** (${slowestRealistic.scenario.id}).`);
 lines.push(`- Timeouts (Home keeps greedy): ${timeouts.length}${timeouts.length ? ` — ${timeouts.map((row) => row.scenario.id).join(", ")}` : ""}. Budget-sensitive: ${budgetSensitive.length}${budgetSensitive.length ? ` (${budgetSensitive.map((row) => row.scenario.id).join(", ")})` : ""}. Completed runs that disagreed: ${nonDeterministic.length}.`);
 if (worstUnbounded) lines.push(`- Without the browser budget, the timed-out scenarios need up to **${format(worstUnbounded.unbounded.adapted.diagnostics.elapsedMs, 0)} ms** in Node (${worstUnbounded.scenario.id}); see the last section.`);
-lines.push(`- #85 greedy output ${issue85MatchesReport ? "matches" : "does **not** match"} the reported mix (${formatMix(issue85ReportedGreedy)}).`);
+lines.push(`- #85 greedy output ${issue85MatchesReport ? "matches" : "does **not** match"} the pinned current-catalog mix (${formatMix(issue85CurrentGreedy)}). The mix reported in #85 (${formatMix(issue85ReportedGreedy)}) was produced on the pre-#239 fibre values, which reproduce it exactly.`);
 lines.push("");
 
 const byStatus = (status) => results.filter((row) => row.optimizer.adapted.status === status);
@@ -501,7 +507,7 @@ console.log(JSON.stringify({
   chosenToleranceMatchesPolicy: chosenMatchesPolicy,
   timeouts: timeouts.map((row) => row.scenario.id),
   nonDeterministic: nonDeterministic.map((row) => row.scenario.id),
-  issue85GreedyMatchesReport: issue85MatchesReport,
+  issue85GreedyMatchesPinned: issue85MatchesReport,
   wrote: writeMarkdown ? outputPath : null,
 }, null, 2));
 

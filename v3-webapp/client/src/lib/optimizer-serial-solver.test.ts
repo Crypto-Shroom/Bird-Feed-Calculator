@@ -182,7 +182,7 @@ describe("serial staged optimizer with real HiGHS", () => {
     const result = await solve(model);
 
     expect(result.status).toBe("optimal");
-    expect(result.objectives.macroMargin).toBeCloseTo(0.1382, 4);
+    expect(result.objectives.macroMargin).toBeCloseTo(0.1259, 4);
     const adapted = adaptExactFeasibilityResult(
       { type: "result", requestId: "chicken-pet", elapsedMs: 1, status: "optimal", quantities: result.quantities },
       model,
@@ -252,13 +252,13 @@ describe("serial staged optimizer with real HiGHS", () => {
 
   it("re-solves once without sub-threshold ingredients and keeps the re-solve only when no locked value worsens beyond its tolerance", async () => {
     const meaningful = 5;
-    const accepted = await solve(profileModel("chicken", "egg_laying", { barley_pearled: 1_000, corn_yellow: 1_000, flaxseed: 1_000, oat_groats: 1_000, rice: 1_000, vetch: 1_000 }, 1_000));
+    const accepted = await solve(profileModel("chicken", "egg_laying", { barley: 1_000, barley_pearled: 1_000, corn_yellow: 1_000, flaxseed: 1_000, oat_groats: 1_000, rice: 1_000, vetch: 1_000 }, 1_000));
     expect(accepted.smallInclusion?.accepted).toBe(true);
     expect(Object.values(accepted.quantities).every((grams) => grams === 0 || grams >= meaningful)).toBe(true);
     expect(accepted.stages.some(({ pass }) => pass === "small_inclusion_resolve")).toBe(true);
 
-    // Pigeon/Pet defaults need a few grams of wheat to reach the smallest macro deviation, so the primary mix is kept.
-    const rejected = await solve(profileModel("pigeon", "pet", getProfileDefaultIngredients("pigeon", "pet"), 1_000));
+    // Parrot/Pet defaults need a few grams of wheat to reach the smallest macro deviation, so the primary mix is kept.
+    const rejected = await solve(profileModel("parrot", "pet", getProfileDefaultIngredients("parrot", "pet"), 1_000));
     expect(rejected.status).toBe("best_attainable");
     expect(rejected.smallInclusion).toMatchObject({ accepted: false });
     expect(rejected.smallInclusion?.reason).toContain("macro deviation");

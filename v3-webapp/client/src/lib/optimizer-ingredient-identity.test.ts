@@ -123,7 +123,10 @@ describe("canonical optimizer ingredient identity", () => {
       const { category, protein, carbs, fat, fiber } = INGREDIENTS[id];
       return [category, protein, carbs, fat, fiber];
     };
-    expect(IDENTICAL_NUTRITION_GROUPS).toContainEqual(["corn_red", "corn_white", "corn_yellow", "maize"]);
+    expect(IDENTICAL_NUTRITION_GROUPS).toContainEqual(["corn_red", "corn_yellow", "maize"]);
+    // corn_white has its own Feedipedia crude fibre value (1.9), so it is not merged with the 2.1 corn group.
+    expect(IDENTICAL_NUTRITION_GROUPS.flat()).not.toContain("corn_white");
+    expect(resolveSolverCanonicalIngredientId("corn_white")).toBe("corn_white");
     expect(IDENTICAL_NUTRITION_GROUPS).toContainEqual(["lentils", "lentils_brown", "lentils_green", "split_lentils"]);
 
     const grouped = new Set(IDENTICAL_NUTRITION_GROUPS.flat());
@@ -152,6 +155,6 @@ describe("canonical optimizer ingredient identity", () => {
       { id: "corn_red", availableGrams: 1_000, sourceIngredientIds: ["corn_yellow", "maize"] },
       { id: "wheat", availableGrams: 500, sourceIngredientIds: ["wheat"] },
     ]);
-    expect(canonical[0].nutrition).toEqual({ protein: 9, carbs: 72, fat: 4.5, fiber: 2 });
+    expect(canonical[0].nutrition).toEqual({ protein: 9, carbs: 72, fat: 4.5, fiber: 2.1 });
   });
 });

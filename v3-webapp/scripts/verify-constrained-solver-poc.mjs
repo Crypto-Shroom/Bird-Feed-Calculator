@@ -194,7 +194,10 @@ for (const { name, amount } of eligible) {
 }
 assertRangeSummary(calculateNutrition(realMix), profile.nutrition, "real-data macro");
 assertRangeSummary(calculateCategories(realMix), categoryTarget, "real-data category");
-assert.equal(Math.max(...Object.values(realMix)), 200, "real-data global concentration optimum should retain the documented 200g maximum share");
+// With the Feedipedia crude-fibre values (#239), an even 200 g of each of the five
+// items gives 5.26% crude fibre, above the 0-5% Chicken/Pet range. The continuous
+// relaxation's minimum maximum share is 209.39 g, so 210 g is the whole-gram optimum.
+assert.equal(Math.max(...Object.values(realMix)), 210, "real-data global concentration optimum should be the 210g whole-gram maximum share");
 
 // Canonical ordering is deliberate: reordering a visitor inventory object cannot
 // change the pure proof-of-concept model or silently add a separately named form.
@@ -249,8 +252,11 @@ for (const [profileBird, birdProfile] of Object.entries(BIRD_PROFILES)) {
 }
 assert.ok(profileCorpus.feasible.length > 0, "profile fixture corpus did not contain an exact-feasible scenario");
 assert.ok(profileCorpus.infeasible.length > 0, "profile fixture corpus did not exercise an infeasible scenario");
-assert.deepEqual(profileCorpus.feasible, ["parrot/pet", "canary/breeding", "chicken/pet"], "the active fixture feasibility baseline changed; review the runtime targets or catalog before accepting a solver comparison");
-assert.equal(profileCorpus.infeasible.length, 18, "the active fixture infeasibility baseline changed; review the runtime targets or catalog before accepting a solver comparison");
+// Baseline reviewed after the #239 crude-fibre catalog and pigeon 0-5% fibre targets:
+// pigeon maintenance/breeding, budgie breeding/molting and canary molting became exactly
+// feasible; parrot/pet no longer is (its defaults now resolve to best_attainable).
+assert.deepEqual(profileCorpus.feasible, ["pigeon/maintenance", "pigeon/breeding", "budgie/breeding", "budgie/molting", "canary/breeding", "canary/molting", "chicken/pet"], "the active fixture feasibility baseline changed; review the runtime targets or catalog before accepting a solver comparison");
+assert.equal(profileCorpus.infeasible.length, 14, "the active fixture infeasibility baseline changed; review the runtime targets or catalog before accepting a solver comparison");
 
 const splitLentilCatalogRecord = INGREDIENTS.split_lentils;
 assert.deepEqual(
@@ -261,7 +267,7 @@ assert.deepEqual(
     fat: splitLentilCatalogRecord?.fat,
     fiber: splitLentilCatalogRecord?.fiber,
   },
-  { category: "legume", protein: 25, carbs: 63, fat: 1, fiber: 8 },
+  { category: "legume", protein: 25, carbs: 63, fat: 1, fiber: 4.3 },
   "the active split_lentils catalog record changed; reconcile it with the base lentils record and provenance before solver adoption",
 );
 
