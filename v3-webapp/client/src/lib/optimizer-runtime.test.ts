@@ -57,7 +57,7 @@ describe("browser-local optimizer runtime adapter", () => {
       id: "lentils",
       category: "legume",
       availableGrams: 400,
-      nutrition: { protein: 25, carbs: 63, fat: 1, fiber: 8 },
+      nutrition: { protein: 25, carbs: 63, fat: 1, fiber: 4.3 },
       safetyState: "eligible",
       sourceIngredientIds: ["lentils", "split_lentils"],
     }]);
