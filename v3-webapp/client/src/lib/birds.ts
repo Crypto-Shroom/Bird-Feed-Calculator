@@ -84,8 +84,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         contextNote: 'Performance birds have individual energy and recovery needs. Use a veterinarian- or specialist-reviewed performance diet as the foundation.',
         nutrition: {
           protein: [16, 18],
-          carbs: [55, 65],
-          fat: [3, 5],
+          carbs: [58, 68],
+          fat: [4, 6],
           fiber: [0, 5],
         },
       },
@@ -108,8 +108,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         contextNote: 'Molting support should be based on body condition and a complete diet; this seed/grain estimate does not assess amino-acid adequacy.',
         nutrition: {
           protein: [16, 18],
-          carbs: [55, 65],
-          fat: [3.5, 5],
+          carbs: [58, 68],
+          fat: [4, 6],
           fiber: [0, 5],
         },
       },
@@ -120,8 +120,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         contextNote: 'Cold-weather feeding needs vary with housing, weather, activity, and body condition. Avoid increasing high-fat seeds without professional guidance.',
         nutrition: {
           protein: [12, 14],
-          carbs: [55, 65],
-          fat: [4, 6],
+          carbs: [62, 72],
+          fat: [5, 8],
           fiber: [0, 5],
         },
       },
@@ -133,7 +133,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         nutrition: {
           protein: [12, 14],
           carbs: [60, 70],
-          fat: [2.5, 4],
+          fat: [2.5, 5],
           fiber: [0, 5],
         },
       },

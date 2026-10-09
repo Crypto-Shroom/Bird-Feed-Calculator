@@ -6,6 +6,9 @@ export interface OptimizerWorkerExecutorResult {
   mipGap?: number;
   solverStatus?: string;
   errorMessage?: string;
+  stages?: OptimizerWorkerRawResult["stages"];
+  objectives?: OptimizerWorkerRawResult["objectives"];
+  smallInclusion?: OptimizerWorkerRawResult["smallInclusion"];
 }
 
 export interface OptimizerWorkerExecutionContext {

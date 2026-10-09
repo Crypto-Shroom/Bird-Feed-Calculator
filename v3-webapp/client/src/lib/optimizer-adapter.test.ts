@@ -99,6 +99,24 @@ describe("non-integrated optimizer result adapter", () => {
     expect(adapted.violations.some((violation) => violation.startsWith("macro:"))).toBe(true);
   });
 
+  it("accepts a completed best_attainable mix with its range misses recorded, but still enforces stock and weight", () => {
+    const fallback = adaptExactFeasibilityResult({
+      ...exactRawResult,
+      status: "best_attainable",
+      quantities: { wheat: 0, peas: 0, oats: 0, corn_yellow: 1000, barley: 0 },
+    }, model, 1000, profile.nutrition, getCategoryTargets(bird));
+    const overStock = adaptExactFeasibilityResult({
+      ...exactRawResult,
+      status: "best_attainable",
+      quantities: { wheat: 0, peas: 1001, oats: 0, corn_yellow: 0, barley: 0 },
+    }, model, 1000, profile.nutrition, getCategoryTargets(bird));
+
+    expect(fallback.status).toBe("best_attainable");
+    expect(fallback.violations).toEqual([]);
+    expect(fallback.rangeMisses).toEqual(expect.arrayContaining([expect.stringMatching(/^macro:fiber:/), expect.stringMatching(/^category:grain:/)]));
+    expect(overStock.status).toBe("invalid_result");
+  });
+
   it("preserves explicit non-optimal solver states without inventing a fallback mix", () => {
     const timeout = adaptExactFeasibilityResult({
       ...exactRawResult,

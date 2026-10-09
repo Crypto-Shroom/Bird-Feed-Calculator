@@ -1,11 +1,13 @@
+import type { BestAttainableExplanation } from "./optimizer-explain";
 import type { OptimizerCategory, OptimizerMacro, OptimizerModel, OptimizerRange } from "./optimizer-model";
 import type { OptimizerWorkerRawResult } from "./optimizer-protocol";
+import type { SmallInclusionResolve } from "./optimizer-serial-solver";
 
 const macroKeys: readonly OptimizerMacro[] = ["protein", "carbs", "fat", "fiber"];
 const categoryKeys: readonly OptimizerCategory[] = ["grain", "legume", "seed"];
 const numericTolerance = 1e-6;
 
-export type OptimizerAdapterStatus = "feasible" | "infeasible" | "timeout" | "cancelled" | "solver_error" | "invalid_result";
+export type OptimizerAdapterStatus = "feasible" | "best_attainable" | "infeasible" | "timeout" | "cancelled" | "solver_error" | "invalid_result";
 
 export interface OptimizerAdapterDiagnostics {
   requestId: string;
@@ -15,6 +17,8 @@ export interface OptimizerAdapterDiagnostics {
   requestedTargetGrams: number;
   achievableTargetGrams: number;
   inventoryCapped: boolean;
+  /** Outcome of the one re-solve without sub-threshold ingredients, when it ran. */
+  smallInclusion?: SmallInclusionResolve;
 }
 
 export interface AdaptedOptimizerResult {
@@ -26,6 +30,16 @@ export interface AdaptedOptimizerResult {
   meaningfulIngredientIds?: string[];
   diagnostics: OptimizerAdapterDiagnostics;
   violations: string[];
+  /**
+   * Internal range-check record for a `best_attainable` mix: each configured
+   * macro/category range the completed fallback mix still misses. Not visitor copy.
+   */
+  rangeMisses?: string[];
+  /**
+   * For a `best_attainable` mix: every missed range with its proven reason,
+   * attached by the browser runtime (see optimizer-explain.ts).
+   */
+  fallbackExplanation?: BestAttainableExplanation;
 }
 
 function emptyResult(
@@ -78,8 +92,11 @@ function rangeViolations<T extends string>(summary: Record<T, number>, ranges: R
 }
 
 /**
- * Validates an exact-feasibility result from an eventual Worker without importing
- * calculator runtime modules or manufacturing fallback explanations.
+ * Validates a completed serial Worker result without importing calculator
+ * runtime modules or manufacturing fallback explanations. An `optimal` result
+ * must meet every configured range or it is rejected. A `best_attainable`
+ * result passes the same identity, whole-gram, stock, and exact-weight checks;
+ * its remaining range misses are recorded, not hidden.
  */
 export function adaptExactFeasibilityResult(
   raw: OptimizerWorkerRawResult,
@@ -117,9 +134,12 @@ export function adaptExactFeasibilityResult(
 
   const nutrition = calculateNutrition(model, mix);
   const categories = calculateCategories(model, mix);
-  violations.push(...rangeViolations(nutrition, macroRanges, "macro"));
-  violations.push(...rangeViolations(categories, categoryRanges, "category"));
-  if (violations.length > 0) return emptyResult("invalid_result", raw, model, requestedTargetGrams, violations);
+  const rangeMisses = [
+    ...rangeViolations(nutrition, macroRanges, "macro"),
+    ...rangeViolations(categories, categoryRanges, "category"),
+  ];
+  const bestAttainable = raw.status === "best_attainable";
+  if (!bestAttainable && rangeMisses.length > 0) return emptyResult("invalid_result", raw, model, requestedTargetGrams, rangeMisses);
 
   const maximumShareGrams = Math.max(...Object.values(mix));
   const meaningfulIngredientIds = model.candidates
@@ -127,7 +147,7 @@ export function adaptExactFeasibilityResult(
     .map(({ id }) => id);
 
   return {
-    status: "feasible",
+    status: bestAttainable ? "best_attainable" : "feasible",
     mix,
     nutrition,
     categories,
@@ -141,7 +161,9 @@ export function adaptExactFeasibilityResult(
       requestedTargetGrams,
       achievableTargetGrams: model.achievableTargetGrams,
       inventoryCapped: model.achievableTargetGrams < requestedTargetGrams,
+      ...(raw.smallInclusion ? { smallInclusion: raw.smallInclusion } : {}),
     },
     violations: [],
+    ...(bestAttainable ? { rangeMisses } : {}),
   };
 }
