@@ -4,12 +4,6 @@ No values are changed by this document. The product owner decides each differenc
 
 Note: V0 used one fiber value for all profiles (0–5). The current fiber values come from #239 (2026-10-08).
 
-Note: the Pre-audit config grain %, legume % and seed % cells come from the preserved pre-audit file `archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/birds.ts` (`category_ratios`, lines 79, 89, 99, 109, 119, 129). That file is the source registered as `historical-preaudit-profile-config`. `database/provenance/profile-claims.json` has no category rows, so these ranges are not yet in the ledger. The Pre-audit config protein, carbs, fat and fiber cells come from `profile-claims.json`; the same values appear in that archive file.
-
-Note: the V1 research column quotes `v1-original/pigeon_nutrition_research.md` with line numbers. V1 gives no separate maintenance profile, so its "Standard Mix (13.5% protein)" ratios (lines 47–50) are shown in the Maintenance table. A dash means V1 states no target value for that row.
-
-Note on sources: the pre-audit `birds.ts` carries no source, citation or reference fields. `historical-preaudit-profile-config` records that these were the implemented values and states that it is not a scientific source. `v1-original/RESEARCH_REFERENCES.md` (identical to `v2-vite-fix/RESEARCH_REFERENCES.md`) lists named references and, at lines 109–123, attributes some targets to them (for example, "Maintenance: 13.5-15% (Mire, 2013)" and "Winter: 12-14% (Brieftaubenshop, 2024)"). This document does not verify those attributions or map them to individual cells.
-
 ## Profiles Comparison
 
 ### 1. Maintenance / Rest
@@ -19,10 +13,10 @@ Note on sources: the pre-audit `birds.ts` carries no source, citation or referen
 | protein | 13.5–15 | 13.5–15 (line 6, 145) | 13.5–15 | 13.5–15 | yes |
 | carbs | 60–70 | 60–70 (line 7) | 60–70 | 60–70 | yes |
 | fat | 2–5 | 2–5 (line 8) | 2.5–4 | 2.5–4 | no |
-| crude fibre | 0–5 | Under 5% (line 9) | 0.5–2 | 0–5 | yes |
-| grain % | 60–70 | 60–70 (line 48) | 50–60 (line 79) | 55–70 | no |
-| legume % | 15–20 | 15–20 (line 49) | 20–30 (line 79) | 15–25 | no |
-| seed % | 10–15 | 10–15 (line 50) | 15–25 (line 79) | 5–15 | no |
+| crude fibre | 0–5 | <5 (line 9) | 0.5–2 | 0–5 | yes |
+| grain % | 60–70 | 60–70 (line 48) | — | 55–70 | no |
+| legume % | 15–20 | 15–20 (line 49) | — | 15–25 | no |
+| seed % | 10–15 | 10–15 (line 50) | — | 5–15 | no |
 
 ### 2. Racing / Competition
 
@@ -32,9 +26,9 @@ Note on sources: the pre-audit `birds.ts` carries no source, citation or referen
 | carbs | 60–65 | ~62 (line 54, 138) | 58–68 | 55–65 | no |
 | fat | 2–5 | — | 4–6 | 3–5 | no |
 | crude fibre | 0–5 | — | 0.5–1.5 | 0–5 | yes |
-| grain % | 40–50 | — | 45–55 (line 89) | 55–70 | no |
-| legume % | 40–50 | up to 50 (line 53, 137) | 25–35 (line 89) | 15–25 | no |
-| seed % | 5–10 | — | 15–25 (line 89) | 5–15 | no |
+| grain % | 40–50 | — | — | 55–70 | no |
+| legume % | 40–50 | 50 (line 53, 86, 137) | — | 15–25 | no |
+| seed % | 5–10 | — | — | 5–15 | no |
 
 ### 3. Breeding / Brooding
 
@@ -44,35 +38,33 @@ Note on sources: the pre-audit `birds.ts` carries no source, citation or referen
 | carbs | 60–70 | — | 60–68 | 58–68 | no |
 | fat | 3–6 | — | 3–5 | 3–4.5 | no |
 | crude fibre | 0–5 | — | 0.5–2 | 0–5 | yes |
-| grain % | 60–65 | — | 50–60 (line 99) | 55–70 | no |
-| legume % | 20–25 | — | 20–30 (line 99) | 15–25 | no |
-| seed % | 10–15 | — | 15–25 (line 99) | 5–15 | no |
+| grain % | 60–65 | — | — | 55–70 | no |
+| legume % | 20–25 | — | — | 15–25 | no |
+| seed % | 10–15 | — | — | 5–15 | no |
 
 ### 4. Molting Season
 
 | Nutrient | V0 original | V1 research | Pre-audit config | Current V3 | Same as V0? |
 | --- | --- | --- | --- | --- | --- |
-| protein | 16–18 | minimum 16 (line 102) | 16–18 | 16–18 | yes |
+| protein | 16–18 | 16 (line 102) | 16–18 | 16–18 | yes |
 | carbs | 55–65 | — | 58–68 | 55–65 | yes |
 | fat | 3–6 | — | 4–6 | 3.5–5 | no |
 | crude fibre | 0–5 | — | 0.5–1.5 | 0–5 | yes |
-| grain % | 55–60 | — | 45–55 (line 109) | 55–70 | no |
-| legume % | 25–30 | — | 25–35 (line 109) | 15–25 | no |
-| seed % | 10–15 | — | 15–25 (line 109) | 5–15 | no |
+| grain % | 55–60 | — | — | 55–70 | no |
+| legume % | 25–30 | — | — | 15–25 | no |
+| seed % | 10–15 | — | — | 5–15 | no |
 
 ### 5. Winter Season
 
 | Nutrient | V0 original | V1 research | Pre-audit config | Current V3 | Same as V0? |
 | --- | --- | --- | --- | --- | --- |
-| protein | 12–14 | — | 12–14 | 12–14 | yes |
+| protein | 12–14 | 10 (line 119) | 12–14 | 12–14 | yes |
 | carbs | 65–75 | — | 62–72 | 55–65 | no |
 | fat | 5–8 | — | 5–8 | 4–6 | no |
 | crude fibre | 0–5 | — | 0.5–2 | 0–5 | yes |
-| grain % | 70–75 | — | 50–65 (line 119) | 55–70 | no |
-| legume % | 10–15 | — | 15–25 (line 119) | 15–25 | no |
-| seed % | 10–15 | — | 15–25 (line 119) | 5–15 | no |
-
-V1 lines 115–121 give an example winter mix: "50% Barley", "20% Maize/Corn", "10% Wheat", "10% Peas", "5% Safflower", "5% Linseed/Flaxseed". It is a recipe, not a category target, so no V1 value is entered for winter protein, grain %, legume % or seed %. The winter protein line in V1 (line 114) says only "moderate protein".
+| grain % | 70–75 | 80 (line 116–118) | — | 55–70 | no |
+| legume % | 10–15 | 10 (line 119) | — | 15–25 | no |
+| seed % | 10–15 | 10 (line 120–121) | — | 5–15 | no |
 
 ### 6. Pet / Companion
 
@@ -82,9 +74,9 @@ V1 lines 115–121 give an example winter mix: "50% Barley", "20% Maize/Corn", "
 | carbs | — | — | 62–70 | 60–70 | no |
 | fat | — | — | 2.5–4 | 2.5–4 | no |
 | crude fibre | — | — | 0.5–2 | 0–5 | no |
-| grain % | — | — | 50–60 (line 129) | 55–70 | no |
-| legume % | — | — | 20–30 (line 129) | 15–25 | no |
-| seed % | — | — | 15–25 (line 129) | 5–15 | no |
+| grain % | — | — | — | 55–70 | no |
+| legume % | — | — | — | 15–25 | no |
+| seed % | — | — | — | 5–15 | no |
 
 ## Summary of Differences (Current V3 ≠ V0)
 
