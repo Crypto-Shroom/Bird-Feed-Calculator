@@ -133,7 +133,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         nutrition: {
           protein: [12, 14],
           carbs: [60, 70],
-          fat: [2.5, 4],
+          fat: [2.5, 5],
           fiber: [0, 5],
         },
       },

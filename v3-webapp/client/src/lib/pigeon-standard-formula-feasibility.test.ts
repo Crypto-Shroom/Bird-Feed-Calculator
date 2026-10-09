@@ -24,10 +24,9 @@ function candidatesFor(situation: string): OptimizerCandidate[] {
 }
 
 // Guards against a profile's own nutrient targets contradicting its mix targets, which previously left
-// racing, molting and winter without any valid mix (issue #247). Pet is the one known near miss and is
-// intentionally not asserted here.
+// racing, molting, winter and pet without any valid mix (issue #247).
 describe("pigeon standard formulas can meet their own targets", () => {
-  it.each(["maintenance", "racing", "breeding", "molting", "winter"])("%s has a feasible mix on its standard ingredient list", async (situation) => {
+  it.each(["maintenance", "racing", "breeding", "molting", "winter", "pet"])("%s has a feasible mix on its standard ingredient list", async (situation) => {
     const highs = await createHighs();
     const model = buildExactFeasibilityModel({
       candidates: candidatesFor(situation),
@@ -38,10 +37,11 @@ describe("pigeon standard formulas can meet their own targets", () => {
     expect(highs.solve(model.lp).Status).toBe("Optimal");
   });
 
-  it("keeps the restored pre-audit carbohydrate and fat ranges for racing, molting and winter", () => {
-    const { racing, molting, winter } = BIRD_PROFILES.pigeon.profiles;
+  it("keeps the widened carbohydrate and fat ranges for racing, molting, winter and pet", () => {
+    const { racing, molting, winter, pet } = BIRD_PROFILES.pigeon.profiles;
     expect([racing.nutrition.carbs, racing.nutrition.fat]).toEqual([[58, 68], [4, 6]]);
     expect([molting.nutrition.carbs, molting.nutrition.fat]).toEqual([[58, 68], [4, 6]]);
     expect([winter.nutrition.carbs, winter.nutrition.fat]).toEqual([[62, 72], [5, 8]]);
+    expect([pet.nutrition.carbs, pet.nutrition.fat]).toEqual([[60, 70], [2.5, 5]]);
   });
 });

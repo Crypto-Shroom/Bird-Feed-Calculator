@@ -958,9 +958,9 @@
       ],
       "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.pet.fat",
       "evidenceScope": "historical_project",
-      "reconciliationStatus": "matches_pre_audit_configuration",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.pet.fat.runtime_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-09"
     },
     {
       "id": "profile.pigeon.pet.fat.runtime_configuration",
@@ -971,7 +971,7 @@
       "nutrient": "fat",
       "range": [
         2.5,
-        4
+        5
       ],
       "unit": "percent_of_dry_seed_grain_batch_estimate",
       "sourceIds": [
@@ -979,9 +979,9 @@
       ],
       "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.pet.nutrition.fat",
       "evidenceScope": "historical_project",
-      "reconciliationStatus": "matches_pre_audit_configuration",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.pet.fat.historical_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-09"
     },
     {
       "id": "profile.pigeon.pet.fiber.historical_configuration",

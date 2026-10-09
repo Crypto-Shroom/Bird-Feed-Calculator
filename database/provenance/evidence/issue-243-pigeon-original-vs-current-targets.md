@@ -2,7 +2,7 @@
 
 No values are changed by this document. The product owner decides each difference separately.
 
-Note: the Current V3 column shows the values as of 2026-10-09, before PR #248 restored the pre-audit carbohydrate and fat ranges for racing (58–68, 4–6), molting (58–68, 4–6) and winter (62–72, 5–8). The Pre-audit config column is unchanged.
+Note: the Current V3 column shows the values as of 2026-10-09, before PR #248 changed the carbohydrate and fat ranges for racing (58–68, 4–6), molting (58–68, 4–6) and winter (62–72, 5–8), and widened pet fat to 2.5–5. The Pre-audit config column is unchanged.
 
 Note: V0 used one fiber value for all profiles (0–5). The current fiber values come from #239 (2026-10-08).
 
