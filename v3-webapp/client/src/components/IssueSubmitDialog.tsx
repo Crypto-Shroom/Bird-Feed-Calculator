@@ -16,6 +16,7 @@ import { AlertCircle, CheckCircle2, ExternalLink, Loader2, Send } from "lucide-r
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import { parseIssueCreationResponse } from "@/lib/issue-submission";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface IssueSubmitDialogProps {
   triggerLabel: React.ReactNode;
@@ -36,6 +37,7 @@ export function IssueSubmitDialog({
   labels = ["needs-research"],
   helperText,
 }: IssueSubmitDialogProps) {
+  const { t } = useLanguage();
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState(defaultTitle);
   const [body, setBody] = useState(defaultBody);
@@ -109,10 +111,10 @@ export function IssueSubmitDialog({
   };
 
   const successCopy = submissionMode === "created"
-    ? "Your suggestion or report has been created as a tracked GitHub issue."
+    ? t("reportDialog.successCreatedText")
     : submissionMode === "queued"
-      ? "Your submission has been saved to the secure queue. It will be reviewed and converted to a GitHub issue during our once-daily processor run. You can also open it directly on GitHub immediately below."
-      : "Your request is ready as a pre-filled GitHub issue. It was not submitted automatically because the in-app reporting service was unavailable.";
+      ? t("reportDialog.successQueuedText")
+      : t("reportDialog.successFallbackText");
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -123,9 +125,9 @@ export function IssueSubmitDialog({
       </DialogTrigger>
       <DialogContent className="sm:max-w-xl">
         <DialogHeader>
-          <DialogTitle>Submit Request to Project Owner</DialogTitle>
+          <DialogTitle>{t("reportDialog.title")}</DialogTitle>
           <DialogDescription>
-            Your report stays in the calculator.
+            {t("reportDialog.description")}
           </DialogDescription>
         </DialogHeader>
 
@@ -134,30 +136,30 @@ export function IssueSubmitDialog({
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
               <CheckCircle2 className="h-6 w-6" />
             </div>
-            <h3 className="text-lg font-bold">{submissionMode === "created" ? "Request Successfully Submitted" : submissionMode === "queued" ? "Request Queued Successfully" : "Request Prepared"}</h3>
+            <h3 className="text-lg font-bold">{submissionMode === "created" ? t("reportDialog.successSubmittedTitle") : submissionMode === "queued" ? t("reportDialog.queuedSubmittedTitle") : t("reportDialog.preparedTitle")}</h3>
             <p className="text-sm text-muted-foreground">{successCopy}</p>
             {githubUrl && <a href={githubUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1.5 rounded-md bg-emerald-700 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-800">
-              {submissionMode === "created" ? "View Created GitHub Issue" : "Open Pre-filled GitHub Issue"} <ExternalLink className="h-4 w-4" />
+              {submissionMode === "created" ? t("reportDialog.viewGithubIssue") : t("reportDialog.openPrefilledIssue")} <ExternalLink className="h-4 w-4" />
             </a>}
-            <div className="pt-2"><Button type="button" variant="outline" onClick={handleReset}>Close</Button></div>
+            <div className="pt-2"><Button type="button" variant="outline" onClick={handleReset}>{t("reportDialog.closeButton")}</Button></div>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4 py-2">
             {error && <div className="flex items-center gap-2 rounded-md border border-red-200 bg-red-50 p-3 text-sm text-red-900"><AlertCircle className="h-4 w-4 shrink-0 text-red-600" /><span>{error}</span></div>}
             <div className="space-y-2">
-              <Label htmlFor="issue-title">Issue Title</Label>
+              <Label htmlFor="issue-title">{t("reportDialog.issueTitleLabel")}</Label>
               <Input id="issue-title" value={title} onChange={(event) => setTitle(event.target.value)} required />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="issue-body">Description & Research Notes</Label>
+              <Label htmlFor="issue-body">{t("reportDialog.descriptionNotesLabel")}</Label>
               <Textarea id="issue-body" rows={8} value={body} onChange={(event) => setBody(event.target.value)} required className="font-mono text-xs" />
             </div>
             {helperText && <p className="text-xs text-muted-foreground">{helperText}</p>}
             <DialogFooter className="pt-2">
-              <Button type="button" variant="outline" onClick={() => setOpen(false)}>Cancel</Button>
+              <Button type="button" variant="outline" onClick={() => setOpen(false)}>{t("reportDialog.cancelButton")}</Button>
               <Button type="submit" disabled={loading} className="gap-2 bg-emerald-700 text-white hover:bg-emerald-800">
                 {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
-                {loading ? "Submitting..." : "Submit Request"}
+                {loading ? t("reportDialog.submittingButton") : t("reportDialog.submitButton")}
               </Button>
             </DialogFooter>
           </form>

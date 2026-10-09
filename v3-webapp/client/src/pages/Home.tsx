@@ -54,11 +54,13 @@ import { OPTIMIZER_FALLBACK_COPY, formatOptimizerFallbackMiss } from "@/lib/opti
 import { startBrowserLocalOptimizerSolve } from "@/lib/optimizer-runtime";
 import { cn } from "@/lib/utils";
 import { Link } from "wouter";
+import { useLanguage, LanguageSwitcher } from "@/contexts/LanguageContext";
 
 // Only pigeons and chickens are advised to receive grit; the other birds' care notes advise against routine grit (#215).
 const BIRDS_NEEDING_GRIT_REMINDER: ReadonlySet<BirdType> = new Set<BirdType>(["pigeon", "chicken"]);
 
 export default function Home() {
+  const { t } = useLanguage();
   const [selectedBird, setSelectedBird] = useState<BirdType>("pigeon");
   const [situation, setSituation] = useState("pet");
   const [targetWeight, setTargetWeight] = useState(1000);
@@ -289,16 +291,19 @@ export default function Home() {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-stone-950/65" />
+        <div className="absolute right-4 top-4 z-20">
+          <LanguageSwitcher />
+        </div>
         <div className="container relative flex h-full flex-col justify-center text-white">
-          <Badge className="mb-4 w-fit border-none bg-emerald-700/95 px-3 py-1 text-sm text-white">v3.0 Multi-Bird Calculator</Badge>
-          <h1 className="max-w-3xl font-display text-4xl font-bold leading-tight md:text-6xl">Precision Nutrition <br />for All Birds</h1>
-          <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">Scientifically optimized seed mixes for pigeons, parrots, budgies, canaries, and more.</p>
+          <Badge className="mb-4 w-fit border-none bg-emerald-700/95 px-3 py-1 text-sm text-white">{t("nav.badge")}</Badge>
+          <h1 className="max-w-3xl font-display text-4xl font-bold leading-tight md:text-6xl">{t("nav.title")}</h1>
+          <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">{t("nav.subtitle")}</p>
         </div>
       </header>
 
       <main className="container relative z-10 -mt-14 pb-16">
         <section aria-labelledby="bird-selector-heading" className="mb-8 rounded-xl border bg-card p-5 shadow-lg">
-          <h2 id="bird-selector-heading" className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Choose a bird</h2>
+          <h2 id="bird-selector-heading" className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">{t("nav.chooseBird")}</h2>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-7">
             {BIRD_TYPES.map((bird) => {
               const profile = BIRD_PROFILES[bird];
@@ -320,7 +325,7 @@ export default function Home() {
               );
             })}
             <IssueSubmitDialog
-              triggerLabel={<><Plus className="h-6 w-6" aria-hidden="true" /><span className="text-sm font-semibold">Suggest bird</span></>}
+              triggerLabel={<><Plus className="h-6 w-6" aria-hidden="true" /><span className="text-sm font-semibold">{t("nav.suggestBird")}</span></>}
               triggerClassName="flex aspect-square min-h-[108px] flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-emerald-300 bg-emerald-50/40 p-4 text-center text-emerald-900 transition-colors hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               defaultTitle="[Bird research] Suggest a bird"
               defaultBody={[
@@ -334,7 +339,7 @@ export default function Home() {
                 "Please research nutrition targets, safe ingredients, toxicity boundaries, and suitable profiles before any calculator data is added.",
               ].join("\n")}
               labels={["needs-research", "bird-request"]}
-              helperText="Suggestions are queued for research and product-owner review. They never add a live calculator bird automatically."
+              helperText={t("reportDialog.footerNote")}
             />
           </div>
         </section>
@@ -344,13 +349,13 @@ export default function Home() {
             <Card className="border-none shadow-xl">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-2xl"><Bird className="h-6 w-6 text-primary" />{birdProfile.name} profile</CardTitle>
-                <CardDescription>Configure your {birdProfile.name.toLowerCase()}'s current situation to get optimized targets.</CardDescription>
+                <CardDescription>{t("profiles.description", { bird: birdProfile.name.toLowerCase() })}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-2">
                   <div className="flex items-end gap-3">
                     <div className="min-w-0 flex-1 space-y-2">
-                      <label htmlFor="situation" className="text-sm font-medium text-muted-foreground">Current situation</label>
+                      <label htmlFor="situation" className="text-sm font-medium text-muted-foreground">{t("profiles.situationLabel")}</label>
                       <Select value={situation} onValueChange={setSituation}>
                         <SelectTrigger id="situation" className="h-12 text-base"><SelectValue /></SelectTrigger>
                         <SelectContent>
@@ -361,7 +366,7 @@ export default function Home() {
                       </Select>
                     </div>
                     <IssueSubmitDialog
-                      triggerLabel={<><Plus className="h-5 w-5" aria-hidden="true" /><span className="sr-only">Suggest profile</span></>}
+                      triggerLabel={<><Plus className="h-5 w-5" aria-hidden="true" /><span className="sr-only">{t("profiles.suggestProfile")}</span></>}
                       triggerClassName="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-md border-2 border-dashed border-emerald-300 bg-emerald-50 text-emerald-900 transition-colors hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                       defaultTitle={`[Profile research] ${birdProfile.name}`}
                       defaultBody={[
@@ -375,7 +380,7 @@ export default function Home() {
                         "Please research nutrition targets, suitability, safety boundaries, and source support before any calculator profile is added.",
                       ].join("\n")}
                       labels={["needs-research", "profile-request"]}
-                      helperText="Suggestions are queued for research and product-owner review. They never alter an existing profile automatically."
+                      helperText={t("reportDialog.footerNote")}
                     />
                   </div>
                   <div className="rounded-md border bg-muted/40 p-3">
@@ -386,7 +391,7 @@ export default function Home() {
 
                 <div className="space-y-2">
                   <div className="flex justify-between">
-                    <label htmlFor="batch-size" className="text-sm font-medium text-muted-foreground">Target batch size</label>
+                    <label htmlFor="batch-size" className="text-sm font-medium text-muted-foreground">{t("profiles.targetBatchSize")}</label>
                     <span className="font-mono font-bold">{targetWeight}g</span>
                   </div>
                   <Slider id="batch-size" value={[targetWeight]} min={500} max={10000} step={100} onValueChange={(values) => setTargetWeight(values[0])} className="py-4" />
@@ -471,19 +476,19 @@ export default function Home() {
           <section className="lg:col-span-7" aria-live="polite">
             {result && <div className="space-y-6">
               <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-                <NutritionCard label="Protein" value={result.nutrition.protein} target={currentProfile.nutrition.protein} color="bg-[var(--chart-1)]" />
-                <NutritionCard label="Carbs" value={result.nutrition.carbs} target={currentProfile.nutrition.carbs} color="bg-[var(--chart-2)]" />
-                <NutritionCard label="Fat" value={result.nutrition.fat} target={currentProfile.nutrition.fat} color="bg-[var(--chart-3)]" />
-                <NutritionCard label="Crude fiber" value={result.nutrition.fiber} target={currentProfile.nutrition.fiber} color="bg-[var(--chart-4)]" />
+                <NutritionCard label={t("nutrition.protein")} value={result.nutrition.protein} target={currentProfile.nutrition.protein} color="bg-[var(--chart-1)]" />
+                <NutritionCard label={t("nutrition.carbs")} value={result.nutrition.carbs} target={currentProfile.nutrition.carbs} color="bg-[var(--chart-2)]" />
+                <NutritionCard label={t("nutrition.fat")} value={result.nutrition.fat} target={currentProfile.nutrition.fat} color="bg-[var(--chart-3)]" />
+                <NutritionCard label={t("nutrition.fiber")} value={result.nutrition.fiber} target={currentProfile.nutrition.fiber} color="bg-[var(--chart-4)]" />
               </div>
 
               <Card className="border-none shadow-xl">
                 <Tabs value={activeTab} onValueChange={setActiveTab}>
                   <div className="overflow-x-auto border-b bg-muted/30 p-2" aria-label="Calculator sections">
                     <TabsList className="flex h-auto min-w-[510px] w-full justify-stretch bg-transparent">
-                      <TabsTrigger value="calculator" className="flex-1 whitespace-nowrap">Optimized Mix</TabsTrigger>
-                      <TabsTrigger value="herbs" className="flex-1 whitespace-nowrap">Herbs & Supplements</TabsTrigger>
-                      <TabsTrigger value="analysis" className="flex-1 whitespace-nowrap">Detailed Analysis</TabsTrigger>
+                      <TabsTrigger value="calculator" className="flex-1 whitespace-nowrap">{t("calculator.tabOptimizedMix")}</TabsTrigger>
+                      <TabsTrigger value="herbs" className="flex-1 whitespace-nowrap">{t("calculator.tabHerbsSupplements")}</TabsTrigger>
+                      <TabsTrigger value="analysis" className="flex-1 whitespace-nowrap">{t("calculator.tabDetailedAnalysis")}</TabsTrigger>
                     </TabsList>
                   </div>
                 </Tabs>
@@ -600,6 +605,7 @@ function FreshProduceCareNote({ text, guidance }: { text: string; guidance?: Non
 }
 
 function ReportIssueLink({ section, bird, profile }: { section: string; bird: string; profile: string }) {
+  const { t } = useLanguage();
   const title = `[Information report] ${section}`;
   const body = [
     "## Location in the calculator",
@@ -620,13 +626,13 @@ function ReportIssueLink({ section, bird, profile }: { section: string; bird: st
   return (
     <div className="border-t border-dashed pt-6">
       <IssueSubmitDialog
-        triggerLabel={<><ExternalLink className="h-4 w-4" />Report wrong info / issue</>}
+        triggerLabel={<><ExternalLink className="h-4 w-4" />{t("reportDialog.triggerLabel")}</>}
         triggerClassName="inline-flex items-center justify-center gap-2 rounded-md border border-stone-300 bg-white px-3 py-2 text-sm font-medium text-stone-700 shadow-sm hover:bg-stone-50 transition-colors"
         defaultTitle={title}
         defaultBody={body}
-        helperText="Submits a research request directly to the repository without leaving the calculator."
+        helperText={t("reportDialog.helperNote")}
       />
-      <p className="mt-2 text-xs text-muted-foreground">Submits a research request assigned to the project owner. Nothing in the calculator changes automatically.</p>
+      <p className="mt-2 text-xs text-muted-foreground">{t("reportDialog.footerNote")}</p>
     </div>
   );
 }
@@ -637,6 +643,7 @@ function buildGitHubIssueUrl(template: string, title: string, body: string) {
 }
 
 const NutritionCard = memo(function NutritionCard({ label, value, target, color }: { label: string; value: number; target: [number, number]; color: string }) {
+  const { t } = useLanguage();
   const [min, max] = target;
   const isGood = value >= min && value <= max;
   const isLow = value < min;
@@ -648,9 +655,9 @@ const NutritionCard = memo(function NutritionCard({ label, value, target, color 
       ? 40 + ((value - min) / targetRange) * 20
       : 60 + ((value - max) / Math.max(upperDisplayLimit - max, 0.5)) * 40;
   const markerPosition = Math.max(0, Math.min(100, position));
-  const status = isGood ? "within the target range" : isLow ? "below the target range" : "above the target range";
+  const status = isGood ? t("nutrition.withinTarget") : isLow ? t("nutrition.belowTarget") : t("nutrition.aboveTarget");
 
-  return <Card className="border-none bg-card shadow-md"><CardContent className="p-4"><div className="mb-1 text-sm text-muted-foreground">{label}</div><div className="mb-2 flex items-baseline gap-1"><span className={cn("font-mono text-2xl font-bold", !isGood && (isLow ? "text-blue-600" : "text-orange-600"))}>{value.toFixed(1)}</span><span className="text-xs font-medium text-muted-foreground">%</span></div><div className="relative h-3 overflow-hidden rounded-full bg-muted" role="img" aria-label={`${label}: ${value.toFixed(1)}%, ${status}; target range ${min} to ${max} percent.`}><div aria-hidden="true" className="absolute inset-y-0 border-x border-emerald-600/70 bg-emerald-100/80" style={{ left: "40%", width: "20%" }} /><div aria-hidden="true" className={cn("absolute left-0 top-0 h-full opacity-65 transition-[width] duration-300 motion-reduce:transition-none", color)} style={{ width: `${markerPosition}%` }} /><div aria-hidden="true" className={cn("absolute top-0 h-full w-1 rounded-full shadow-sm transition-[left] duration-300 motion-reduce:transition-none", isGood ? "bg-emerald-800" : isLow ? "bg-blue-700" : "bg-orange-700")} style={{ left: `calc(${markerPosition}% - 2px)` }} /></div><div className="mt-2 flex justify-between text-[10px] text-muted-foreground"><span className={cn("font-medium", isGood ? "text-emerald-700" : isLow ? "text-blue-700" : "text-orange-700")}>{status}</span><span>Target: <span className="font-medium">{min}-{max}%</span></span></div></CardContent></Card>;
+  return <Card className="border-none bg-card shadow-md"><CardContent className="p-4"><div className="mb-1 text-sm text-muted-foreground">{label}</div><div className="mb-2 flex items-baseline gap-1"><span className={cn("font-mono text-2xl font-bold", !isGood && (isLow ? "text-blue-600" : "text-orange-600"))}>{value.toFixed(1)}</span><span className="text-xs font-medium text-muted-foreground">%</span></div><div className="relative h-3 overflow-hidden rounded-full bg-muted" role="img" aria-label={`${label}: ${value.toFixed(1)}%, ${status}; target range ${min} to ${max} percent.`}><div aria-hidden="true" className="absolute inset-y-0 border-x border-emerald-600/70 bg-emerald-100/80" style={{ left: "40%", width: "20%" }} /><div aria-hidden="true" className={cn("absolute left-0 top-0 h-full opacity-65 transition-[width] duration-300 motion-reduce:transition-none", color)} style={{ width: `${markerPosition}%` }} /><div aria-hidden="true" className={cn("absolute top-0 h-full w-1 rounded-full shadow-sm transition-[left] duration-300 motion-reduce:transition-none", isGood ? "bg-emerald-800" : isLow ? "bg-blue-700" : "bg-orange-700")} style={{ left: `calc(${markerPosition}% - 2px)` }} /></div><div className="mt-2 flex justify-between text-[10px] text-muted-foreground"><span className={cn("font-medium", isGood ? "text-emerald-700" : isLow ? "text-blue-700" : "text-orange-700")}>{status}</span><span>{t("nutrition.target")} <span className="font-medium">{min}-{max}%</span></span></div></CardContent></Card>;
 });
 
 const CategoryBar = memo(function CategoryBar({ label, value, target, color }: { label: string; value: number; target: [number, number]; color: string }) {
