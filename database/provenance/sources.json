@@ -2669,6 +2669,30 @@
       "permittedUse": "Records the owner's explicit decision (2026-10-08) to restore the original V0/V1 pigeon research fibre target, under 5 percent, as a 0 to 5 percent range for the maintenance, racing, breeding, molting, winter and pet pigeon profiles, on the as-fed crude fibre basis.",
       "limitations": "Restores the owner's original research value (V0 RESEARCH_REFERENCES.md and v1-original/pigeon_nutrition_research.md: 'Fiber: Under 5% (pigeons don't utilize fiber well)', citing Mire 2013, Pigeon Vitality), which the later multi-bird configuration had replaced with unsourced 0.5-2.5 percent values. Practitioner-level evidence; Sales & Janssens 2003 sets no fibre range. Provisional until #238. Does not apply to any other bird.",
       "accessedAt": "2026-10-08"
+    },
+    {
+      "id": "vermeyen-belgian-carrier-pigeon-early-1900s",
+      "title": "The Belgian Carrier Pigeon and its practical treatment",
+      "authorsOrOrganization": "Louis Vermeyen (Antwerp)",
+      "publishedYear": "Undated English edition, early 20th century (Cornell University Library copy)",
+      "sourceTier": "practitioner_book",
+      "urlOrDoi": "http://www.archive.org/details/cu31924000042154",
+      "speciesScopes": ["pigeon"],
+      "permittedUse": "Historical Belgian racing-pigeon feeding practice: grain, legume and seed proportions for rearing (beans, peas and tares 45 percent), the racing season (about 50 percent legumes) and the moult (about 35 percent legumes). Context for the original V0 and V1 mix targets only.",
+      "limitations": "A practitioner's manual, not a study. The author says the proportions are only an indication and should not be taken literally. It gives no protein, fat, carbohydrate or fibre percentages and uses 1900s ingredient names. It cannot set a calculator target or approve any ingredient.",
+      "accessedAt": "2026-10-09"
+    },
+    {
+      "id": "lang-pigeon-passion-2013",
+      "title": "Pigeon Passion. The Complete Pigeon and Racing Pigeon Guide",
+      "authorsOrOrganization": "Elliott Lang; IMB Publishing",
+      "publishedYear": "2013",
+      "sourceTier": "practitioner_book",
+      "urlOrDoi": "IMB Publishing, 2013 (e-book supplied by the product owner; no public URL recorded)",
+      "speciesScopes": ["pigeon"],
+      "permittedUse": "General pigeon-keeping and moult-management background only.",
+      "limitations": "A popular guide. It was searched for feed composition and nutrient percentages and contains no protein, fat or carbohydrate figures, so it is not evidence for any target.",
+      "accessedAt": "2026-10-09"
     }
   ]
 }
