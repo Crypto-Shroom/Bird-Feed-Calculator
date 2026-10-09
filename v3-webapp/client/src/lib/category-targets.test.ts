@@ -9,7 +9,7 @@ import { buildExactFeasibilityModel, type OptimizerCandidate } from "./optimizer
 const require = createRequire(import.meta.url);
 const createHighs = require("highs") as () => Promise<{ solve: (model: string) => { Status: string } }>;
 
-const PIGEON_HIGH_LEGUME = { grain: [40, 50], legume: [40, 50], seed: [5, 10] };
+const PIGEON_RACING = { grain: [40, 50], legume: [40, 50], seed: [5, 10] };
 const SHARED_PIGEON = { grain: [55, 70], legume: [15, 25], seed: [5, 15] };
 const categoryKeys = ["grain", "legume", "seed"] as const;
 
@@ -29,33 +29,33 @@ function candidatesFor(situation: string): OptimizerCandidate[] {
 }
 
 describe("per-profile mix (grain / legume / seed) targets", () => {
-  it("keeps today's per-bird mix target for every profile except pigeon racing and molting", () => {
+  it("keeps today's per-bird mix target for every profile except pigeon racing", () => {
     for (const bird of BIRD_TYPES) {
       for (const situation of Object.keys(BIRD_PROFILES[bird].profiles)) {
-        const overridden = bird === "pigeon" && (situation === "racing" || situation === "molting");
+        const overridden = bird === "pigeon" && situation === "racing";
         if (overridden) continue;
         expect(getCategoryTargets(bird, situation), `${bird}/${situation}`).toEqual(DEFAULT_CATEGORY_TARGETS[bird]);
       }
     }
   });
 
-  it("gives pigeon racing and molting the high-legume mix target (issue #247)", () => {
-    expect(getCategoryTargets("pigeon", "racing")).toEqual(PIGEON_HIGH_LEGUME);
-    expect(getCategoryTargets("pigeon", "molting")).toEqual(PIGEON_HIGH_LEGUME);
+  it("gives pigeon racing the original V0 racing mix target (issue #247)", () => {
+    expect(getCategoryTargets("pigeon", "racing")).toEqual(PIGEON_RACING);
   });
 
   it("leaves the shared pigeon default and the situation-less call unchanged", () => {
     expect(DEFAULT_CATEGORY_TARGETS.pigeon).toEqual(SHARED_PIGEON);
     expect(getCategoryTargets("pigeon")).toEqual(SHARED_PIGEON);
     expect(getCategoryTargets("pigeon", "unknown-situation")).toEqual(SHARED_PIGEON);
-    for (const situation of ["maintenance", "breeding", "winter", "pet"]) {
+    // Molting deliberately keeps the shared target: no pigeon source found supports a 40-50% legume molting mix (issue #247).
+    for (const situation of ["maintenance", "breeding", "molting", "winter", "pet"]) {
       expect(getCategoryTargets("pigeon", situation)).toEqual(SHARED_PIGEON);
     }
   });
 
-  it("makes the exact optimizer model feasible for the standard racing and molting formulas, which the shared target did not", async () => {
+  it("makes the exact optimizer model feasible for the standard racing formula, which the shared target did not", async () => {
     const highs = await createHighs();
-    for (const situation of ["racing", "molting"]) {
+    for (const situation of ["racing"]) {
       const build = (categoryRanges: typeof SHARED_PIGEON | ReturnType<typeof getCategoryTargets>) => buildExactFeasibilityModel({
         candidates: candidatesFor(situation),
         requestedTargetGrams: 1000,
@@ -67,14 +67,14 @@ describe("per-profile mix (grain / legume / seed) targets", () => {
     }
   });
 
-  it("makes the greedy fallback calculator land inside the racing and molting mix targets for the standard formulas", () => {
-    for (const situation of ["racing", "molting"]) {
+  it("makes the greedy fallback calculator land inside the racing mix target for the standard formula", () => {
+    for (const situation of ["racing"]) {
       const result = new MultibirMixCalculator(getProfileDefaultIngredients("pigeon", situation), "pigeon", situation).calculate(1000);
       const mixTargets = getCategoryTargets("pigeon", situation);
       const detail = `${situation} mix=${JSON.stringify(result.mix)} categories=${JSON.stringify(result.categories)}`;
 
       // Only the mix targets are asserted: this fallback engine can slightly overshoot a nutrient range
-      // (racing fibre 5.48% against 0-5%, molting protein 18.26% against 16-18%); the exact optimizer
+      // (racing fibre 5.48% against 0-5%); the exact optimizer
       // above is the engine that finds the fully feasible mix.
       for (const key of categoryKeys) {
         expect(result.categories[key], `${key}: ${detail}`).toBeGreaterThanOrEqual(mixTargets[key][0] - 0.001);

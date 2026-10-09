@@ -60,10 +60,9 @@ export interface BirdCareGuidance {
   freshProduceGuidance?: FreshProduceGuidance;
 }
 
-// Racing and molting need protein of 16-18%, which the shared pigeon mix target (legumes 15-25%)
-// cannot reach. Racing uses the original V0 racing mix target (v0-python-only/pigeon_mix_calculator.py);
-// molting reuses it. See issue #247.
-const PIGEON_HIGH_LEGUME_CATEGORY_TARGETS: CategoryTargets = {
+// Racing needs protein of 16-18%, which the shared pigeon mix target (legumes 15-25%) cannot reach.
+// This is the original V0 racing mix target (v0-python-only/pigeon_mix_calculator.py). See issue #247.
+const PIGEON_RACING_CATEGORY_TARGETS: CategoryTargets = {
   grain: [40, 50],
   legume: [40, 50],
   seed: [5, 10],
@@ -99,7 +98,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
           fat: [3, 5],
           fiber: [0, 5],
         },
-        categoryTargets: PIGEON_HIGH_LEGUME_CATEGORY_TARGETS,
+        categoryTargets: PIGEON_RACING_CATEGORY_TARGETS,
       },
       breeding: {
         name: 'Breeding',
@@ -124,7 +123,6 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
           fat: [3.5, 5],
           fiber: [0, 5],
         },
-        categoryTargets: PIGEON_HIGH_LEGUME_CATEGORY_TARGETS,
       },
       winter: {
         name: 'Winter Season',
