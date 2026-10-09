@@ -27,11 +27,49 @@ export interface NormalizedOptimizerCandidate extends Omit<OptimizerCandidate, "
   meaningfulInclusionVariable?: string;
 }
 
+/**
+ * Named CPLEX-LP fragments of the full-mix model. Serial stages re-render the
+ * same variables and structural rows with their own objective and locks; the
+ * hard macro/category target rows are kept separate so a best-attainable
+ * fallback can replace them with normalized slack rows.
+ */
+export interface OptimizerModelSections {
+  /** Exact weight and maximum-share links. */
+  structuralRows: readonly string[];
+  /**
+   * Meaningful-inclusion links between x_i and binary z_i. Before the
+   * diversity stage they never restrict x (any x has a valid z), so earlier
+   * stages may omit them together with the binaries without changing the
+   * feasible quantity set.
+   */
+  inclusionRows: readonly string[];
+  /** Hard macro and category range rows (Stage 1 exact feasibility). */
+  targetRows: readonly string[];
+  bounds: readonly string[];
+  generals: readonly string[];
+  binaries: readonly string[];
+}
+
 export interface OptimizerModel {
   lp: string;
   candidates: readonly NormalizedOptimizerCandidate[];
   achievableTargetGrams: number;
   policy: OptimizerPolicy;
+  macroRanges: Record<OptimizerMacro, OptimizerRange>;
+  categoryRanges: Record<OptimizerCategory, OptimizerRange>;
+  sections: OptimizerModelSections;
+}
+
+export interface OptimizerLpRenderRequest {
+  sense: "minimize" | "maximize";
+  objectiveName: string;
+  objective: string;
+  /** Exact-feasible stages keep the hard target rows; fallback stages omit them. */
+  includeTargetRows: boolean;
+  /** Include the meaningful-inclusion rows and binaries (required once diversity is optimized or locked). */
+  includeInclusionLinks: boolean;
+  extraRows?: readonly string[];
+  extraBounds?: readonly string[];
 }
 
 const macroKeys: readonly OptimizerMacro[] = ["protein", "carbs", "fat", "fiber"];
@@ -39,7 +77,7 @@ const categoryKeys: readonly OptimizerCategory[] = ["grain", "legume", "seed"];
 const identifierPattern = /^[a-z][a-z0-9_]*$/;
 const numericTolerance = 1e-9;
 
-function formatNumber(value: number): string {
+export function formatNumber(value: number): string {
   const normalized = Math.abs(value) < numericTolerance ? 0 : value;
   if (!Number.isFinite(normalized)) throw new Error(`Cannot format non-finite model value: ${value}`);
   return Number.isInteger(normalized)
@@ -47,7 +85,7 @@ function formatNumber(value: number): string {
     : normalized.toFixed(9).replace(/0+$/, "").replace(/\.$/, "");
 }
 
-function formatExpression(terms: ReadonlyArray<{ coefficient: number; variable: string }>): string {
+export function formatExpression(terms: ReadonlyArray<{ coefficient: number; variable: string }>): string {
   const nonZeroTerms = terms.filter(({ coefficient }) => Math.abs(coefficient) >= numericTolerance);
   if (nonZeroTerms.length === 0) return "0";
 
@@ -121,44 +159,93 @@ export function buildExactFeasibilityModel(request: OptimizerModelRequest): Opti
 
   if (achievableTargetGrams === 0) throw new Error("no positive, safe eligible inventory is available for the model");
 
-  const lines = ["Minimize", " exact_feasibility: 0", "Subject To"];
-  lines.push(` exact_weight: ${formatExpression(candidates.map(({ quantityVariable }) => ({ coefficient: 1, variable: quantityVariable })))} = ${formatNumber(achievableTargetGrams)}`);
+  const exactWeightRow = ` exact_weight: ${formatExpression(candidates.map(({ quantityVariable }) => ({ coefficient: 1, variable: quantityVariable })))} = ${formatNumber(achievableTargetGrams)}`;
+  const targetRows: string[] = [];
 
   for (const macro of macroKeys) {
     const [minimum, maximum] = request.macroRanges[macro];
     const expression = formatExpression(candidates.map(({ nutrition, quantityVariable }) => ({ coefficient: nutrition[macro], variable: quantityVariable })));
-    lines.push(` ${macro}_minimum: ${expression} >= ${formatNumber(minimum * achievableTargetGrams)}`);
-    lines.push(` ${macro}_maximum: ${expression} <= ${formatNumber(maximum * achievableTargetGrams)}`);
+    targetRows.push(` ${macro}_minimum: ${expression} >= ${formatNumber(minimum * achievableTargetGrams)}`);
+    targetRows.push(` ${macro}_maximum: ${expression} <= ${formatNumber(maximum * achievableTargetGrams)}`);
   }
 
   for (const category of categoryKeys) {
     const [minimum, maximum] = request.categoryRanges[category];
     const expression = formatExpression(candidates.filter((candidate) => candidate.category === category).map(({ quantityVariable }) => ({ coefficient: 1, variable: quantityVariable })));
-    lines.push(` ${category}_minimum: ${expression} >= ${formatNumber((minimum / 100) * achievableTargetGrams)}`);
-    lines.push(` ${category}_maximum: ${expression} <= ${formatNumber((maximum / 100) * achievableTargetGrams)}`);
+    targetRows.push(` ${category}_minimum: ${expression} >= ${formatNumber((minimum / 100) * achievableTargetGrams)}`);
+    targetRows.push(` ${category}_maximum: ${expression} <= ${formatNumber((maximum / 100) * achievableTargetGrams)}`);
   }
 
+  const candidateRows: string[] = [];
+  const shareRows: string[] = [];
+  const inclusionRows: string[] = [];
   for (const candidate of candidates) {
-    lines.push(` maximum_share_${candidate.id}: ${candidate.quantityVariable} - M <= 0`);
+    const shareRow = ` maximum_share_${candidate.id}: ${candidate.quantityVariable} - M <= 0`;
+    candidateRows.push(shareRow);
+    shareRows.push(shareRow);
     if (candidate.meaningfulInclusionVariable) {
       const inactiveMaximum = policy.meaningfulInclusionGrams - policy.gramIncrement;
       const activeAllowance = candidate.availableGrams - policy.meaningfulInclusionGrams + policy.gramIncrement;
-      lines.push(` meaningful_lower_${candidate.id}: ${candidate.quantityVariable} - ${formatNumber(policy.meaningfulInclusionGrams)} ${candidate.meaningfulInclusionVariable} >= 0`);
-      lines.push(` meaningful_upper_${candidate.id}: ${candidate.quantityVariable} - ${formatNumber(activeAllowance)} ${candidate.meaningfulInclusionVariable} <= ${formatNumber(inactiveMaximum)}`);
+      const links = [
+        ` meaningful_lower_${candidate.id}: ${candidate.quantityVariable} - ${formatNumber(policy.meaningfulInclusionGrams)} ${candidate.meaningfulInclusionVariable} >= 0`,
+        ` meaningful_upper_${candidate.id}: ${candidate.quantityVariable} - ${formatNumber(activeAllowance)} ${candidate.meaningfulInclusionVariable} <= ${formatNumber(inactiveMaximum)}`,
+      ];
+      candidateRows.push(...links);
+      inclusionRows.push(...links);
     }
   }
 
-  lines.push("Bounds");
-  for (const candidate of candidates) lines.push(` 0 <= ${candidate.quantityVariable} <= ${formatNumber(candidate.availableGrams)}`);
-  lines.push(` 0 <= M <= ${formatNumber(achievableTargetGrams)}`);
-  lines.push("Generals");
-  lines.push(...candidates.map(({ quantityVariable }) => ` ${quantityVariable}`));
-  const meaningfulVariables = candidates.flatMap(({ meaningfulInclusionVariable }) => meaningfulInclusionVariable ? [meaningfulInclusionVariable] : []);
-  if (meaningfulVariables.length > 0) {
-    lines.push("Binaries");
-    lines.push(...meaningfulVariables.map((variable) => ` ${variable}`));
-  }
+  const bounds = [
+    ...candidates.map((candidate) => ` 0 <= ${candidate.quantityVariable} <= ${formatNumber(candidate.availableGrams)}`),
+    ` 0 <= M <= ${formatNumber(achievableTargetGrams)}`,
+  ];
+  const generals = candidates.map(({ quantityVariable }) => ` ${quantityVariable}`);
+  const binaries = candidates.flatMap(({ meaningfulInclusionVariable }) => meaningfulInclusionVariable ? [` ${meaningfulInclusionVariable}`] : []);
+
+  const lines = ["Minimize", " exact_feasibility: 0", "Subject To", exactWeightRow, ...targetRows, ...candidateRows, "Bounds", ...bounds, "Generals", ...generals];
+  if (binaries.length > 0) lines.push("Binaries", ...binaries);
   lines.push("End");
 
-  return { lp: lines.join("\n"), candidates, achievableTargetGrams, policy };
+  return {
+    lp: lines.join("\n"),
+    candidates,
+    achievableTargetGrams,
+    policy,
+    macroRanges: request.macroRanges,
+    categoryRanges: request.categoryRanges,
+    sections: {
+      structuralRows: [exactWeightRow, ...shareRows],
+      inclusionRows,
+      targetRows,
+      bounds,
+      generals,
+      binaries,
+    },
+  };
+}
+
+/**
+ * Renders one serial stage as a complete CPLEX-LP problem over the same
+ * full-mix variables. It never carries a partial recipe between stages; prior
+ * stage results enter only as explicit lock rows supplied by the caller.
+ */
+export function renderOptimizerStageLp(model: OptimizerModel, request: OptimizerLpRenderRequest): string {
+  if (!identifierPattern.test(request.objectiveName)) throw new Error(`objective name '${request.objectiveName}' is not a safe identifier`);
+  const lines = [
+    request.sense === "maximize" ? "Maximize" : "Minimize",
+    ` ${request.objectiveName}: ${request.objective}`,
+    "Subject To",
+    ...model.sections.structuralRows,
+    ...(request.includeInclusionLinks ? model.sections.inclusionRows : []),
+    ...(request.includeTargetRows ? model.sections.targetRows : []),
+    ...(request.extraRows ?? []),
+    "Bounds",
+    ...model.sections.bounds,
+    ...(request.extraBounds ?? []),
+    "Generals",
+    ...model.sections.generals,
+  ];
+  if (request.includeInclusionLinks && model.sections.binaries.length > 0) lines.push("Binaries", ...model.sections.binaries);
+  lines.push("End");
+  return lines.join("\n");
 }

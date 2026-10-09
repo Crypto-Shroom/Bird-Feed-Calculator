@@ -33,12 +33,13 @@ describe("pure constrained optimizer model", () => {
   const inventory = getProfileDefaultIngredients(bird, "pet");
   const candidates = Object.entries(inventory).map(([id, grams]) => activeCandidate(id, grams));
 
-  it("uses the owner-approved, named, one-gram proof-of-concept policy", () => {
+  it("uses the named one-gram policy with the documented diversity tolerance band", () => {
     expect(OPTIMIZER_POLICY).toMatchObject({
       gramIncrement: 1,
       meaningfulInclusionGrams: 5,
       exactMarginTolerance: 0,
-      maximumShareToleranceGrams: 0,
+      exactMarginRelativeTolerance: 0.1,
+      maximumShareToleranceGrams: 25,
       canonicalCandidateOrder: "ingredient_id_ascending",
     });
   });

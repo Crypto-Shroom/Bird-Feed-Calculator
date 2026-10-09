@@ -50,6 +50,7 @@ import { getProfileDefaultIngredients } from "@/lib/inventory-presets";
 import { resolveDisplayedFormula } from "@/lib/formula-display";
 import { selectDiversitySuggestionCandidate } from "@/lib/diversity-suggestion";
 import { bridgeFeasibleWorkerMixToMixResult } from "@/lib/optimizer-mix-result-bridge";
+import { OPTIMIZER_FALLBACK_COPY, formatOptimizerFallbackMiss } from "@/lib/optimizer-copy";
 import { startBrowserLocalOptimizerSolve } from "@/lib/optimizer-runtime";
 import { cn } from "@/lib/utils";
 import { Link } from "wouter";
@@ -62,7 +63,8 @@ export default function Home() {
   const [situation, setSituation] = useState("pet");
   const [targetWeight, setTargetWeight] = useState(1000);
   const [inventory, setInventory] = useState<Record<string, number>>({});
-  const [workerInventoryResult, setWorkerInventoryResult] = useState<{ key: string; result: MixResult } | null>(null);
+  // `fallbackMisses` is set only for a best-attainable mix: one sentence per missed range.
+  const [workerInventoryResult, setWorkerInventoryResult] = useState<{ key: string; result: MixResult; fallbackMisses: string[] | null } | null>(null);
   const [activeTab, setActiveTab] = useState("calculator");
   const [ingredientSearch, setIngredientSearch] = useState("");
   const [addOpen, setAddOpen] = useState(false);
@@ -125,10 +127,19 @@ export default function Home() {
       categoryRanges: getCategoryTargets(selectedBird),
     });
     void handle.result.then((workerResult) => {
-      if (!active || workerResult.status !== "feasible") return;
+      // A validated mix that meets every configured range replaces the greedy
+      // mix. When no mix can, the best-attainable fallback (macro deviation
+      // first, then category deviation; spec §5.2) replaces it too and is shown
+      // with the fallback notice. Timeout, cancellation, and errors keep greedy.
+      if (!active || (workerResult.status !== "feasible" && workerResult.status !== "best_attainable")) return;
+      const bridged = bridgeFeasibleWorkerMixToMixResult(inventoryResult, workerResult.mix, inventory, selectedBird, situation);
+      if (bridged === inventoryResult) return;
       setWorkerInventoryResult({
         key: inventoryCalculationKey,
-        result: bridgeFeasibleWorkerMixToMixResult(inventoryResult, workerResult.mix, inventory, selectedBird, situation),
+        result: bridged,
+        fallbackMisses: workerResult.status === "best_attainable"
+          ? (workerResult.fallbackExplanation?.misses ?? []).map(formatOptimizerFallbackMiss)
+          : null,
       });
     });
     return () => {
@@ -137,14 +148,14 @@ export default function Home() {
     };
   }, [currentProfile.nutrition, inventory, inventoryCalculationKey, inventoryResult, selectedBird, situation, targetWeight]);
 
-  const displayedInventoryResult = workerInventoryResult?.key === inventoryCalculationKey
-    ? workerInventoryResult.result
-    : inventoryResult;
+  const currentWorkerResult = workerInventoryResult?.key === inventoryCalculationKey ? workerInventoryResult : null;
+  const displayedInventoryResult = currentWorkerResult ? currentWorkerResult.result : inventoryResult;
 
   const { result, source: formulaSource } = useMemo(
     () => resolveDisplayedFormula(inventory, profileDefaultResult, displayedInventoryResult),
     [displayedInventoryResult, inventory, profileDefaultResult],
   );
+  const fallbackMisses = formulaSource === "profile-default" ? null : currentWorkerResult?.fallbackMisses ?? null;
 
   const diversitySuggestion = useMemo(() => {
     const candidate = selectDiversitySuggestionCandidate({
@@ -490,7 +501,7 @@ export default function Home() {
 
                     {result.missingIngredients?.length ? <div className="mb-6 space-y-3 rounded-lg border border-red-200 bg-red-50 p-4 text-red-900"><div className="flex items-start gap-3"><AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" /><div className="flex-1"><h3 className="mb-2 font-bold">Missing Essential Ingredients</h3>{result.missingIngredients.map((item) => <div key={item.category} className="mb-3 last:mb-0"><p className="mb-1 text-sm font-medium text-red-800">{item.category}</p><p className="mb-2 text-sm text-red-700">{item.reason}</p><div className="flex flex-wrap gap-2">{item.recommendations.map((recommendation) => <Badge key={recommendation} variant="outline" className="border-red-300 bg-red-100 text-red-900">{recommendation}</Badge>)}</div></div>)}</div></div></div> : null}
 
-                    {Object.keys(result.mix).length ? <>{diversitySuggestion && <div className="flex items-start gap-3 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-950"><Leaf className="mt-0.5 h-4 w-4 shrink-0 text-emerald-700" /><p><strong className="font-semibold">Ingredient diversity:</strong> {diversitySuggestion}</p></div>}<div className="rounded-lg border"><div className="overflow-x-auto"><table className="min-w-[560px] w-full text-sm"><thead className="bg-muted/50 text-muted-foreground"><tr><th className="px-4 py-3 text-left">Ingredient</th><th className="px-4 py-3 text-right">Amount</th><th className="px-4 py-3 text-right">Batch share</th><th className="px-4 py-3 text-left">Category</th></tr></thead><tbody className="divide-y">{Object.entries(result.mix).sort(([, left], [, right]) => right - left).map(([name, amount]) => <tr key={name}><td className="px-4 py-3 font-medium capitalize">{name.replace(/_/g, " ")}</td><td className="px-4 py-3 text-right font-mono">{Math.round(amount)}g</td><td className="px-4 py-3 text-right">{((amount / result.targetWeight) * 100).toFixed(1)}%</td><td className="px-4 py-3"><Badge variant="secondary" className={cn("capitalize font-normal", INGREDIENTS[name].category === "grain" && "bg-amber-100 text-amber-800 hover:bg-amber-200", INGREDIENTS[name].category === "legume" && "bg-emerald-100 text-emerald-800 hover:bg-emerald-200", INGREDIENTS[name].category === "seed" && "bg-stone-100 text-stone-800 hover:bg-stone-200")}>{INGREDIENTS[name].category}</Badge></td></tr>)}</tbody></table></div></div><p className="text-xs text-muted-foreground sm:hidden">Swipe the formula table sideways to view all columns.</p>{Object.entries(result.mix).some(([name]) => getPreparationInstructions(name)) && <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><h3 className="mb-2 flex items-center gap-2 font-semibold"><Info className="h-4 w-4" />Preparation instructions</h3><ul className="space-y-2">{Object.keys(result.mix).filter((name) => getPreparationInstructions(name)).map((name) => { const preparation = getPreparationInstructions(name); const birdGuidance = preparation?.birdGuidance?.[selectedBird]; return <li key={name}><strong className="capitalize">{name.replace(/_/g, " ")}:</strong> {preparation?.preparation}{birdGuidance && <span className="block pl-1 text-amber-900">{birdGuidance}</span>}</li>; })}</ul></div>}</> : <p className="rounded-lg border border-dashed p-10 text-center text-sm text-muted-foreground">There is no safe, compatible ingredient combination to estimate yet.</p>}<ReportIssueLink section="Optimized Mix" bird={birdProfile.name} profile={currentProfile.name} />
+                    {Object.keys(result.mix).length ? <>{fallbackMisses && <div role="status" className="flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><Info className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" /><div><p><strong className="font-semibold">{OPTIMIZER_FALLBACK_COPY.title}:</strong> {OPTIMIZER_FALLBACK_COPY.intro}</p>{fallbackMisses.length > 0 && <><p className="mt-2 font-medium">{OPTIMIZER_FALLBACK_COPY.missesHeading}</p><ul className="mt-1 list-disc space-y-1 pl-5">{fallbackMisses.map((line) => <li key={line}>{line}</li>)}</ul></>}</div></div>}{diversitySuggestion && <div className="flex items-start gap-3 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-950"><Leaf className="mt-0.5 h-4 w-4 shrink-0 text-emerald-700" /><p><strong className="font-semibold">Ingredient diversity:</strong> {diversitySuggestion}</p></div>}<div className="rounded-lg border"><div className="overflow-x-auto"><table className="min-w-[560px] w-full text-sm"><thead className="bg-muted/50 text-muted-foreground"><tr><th className="px-4 py-3 text-left">Ingredient</th><th className="px-4 py-3 text-right">Amount</th><th className="px-4 py-3 text-right">Batch share</th><th className="px-4 py-3 text-left">Category</th></tr></thead><tbody className="divide-y">{Object.entries(result.mix).sort(([, left], [, right]) => right - left).map(([name, amount]) => <tr key={name}><td className="px-4 py-3 font-medium capitalize">{name.replace(/_/g, " ")}</td><td className="px-4 py-3 text-right font-mono">{Math.round(amount)}g</td><td className="px-4 py-3 text-right">{((amount / result.targetWeight) * 100).toFixed(1)}%</td><td className="px-4 py-3"><Badge variant="secondary" className={cn("capitalize font-normal", INGREDIENTS[name].category === "grain" && "bg-amber-100 text-amber-800 hover:bg-amber-200", INGREDIENTS[name].category === "legume" && "bg-emerald-100 text-emerald-800 hover:bg-emerald-200", INGREDIENTS[name].category === "seed" && "bg-stone-100 text-stone-800 hover:bg-stone-200")}>{INGREDIENTS[name].category}</Badge></td></tr>)}</tbody></table></div></div><p className="text-xs text-muted-foreground sm:hidden">Swipe the formula table sideways to view all columns.</p>{Object.entries(result.mix).some(([name]) => getPreparationInstructions(name)) && <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><h3 className="mb-2 flex items-center gap-2 font-semibold"><Info className="h-4 w-4" />Preparation instructions</h3><ul className="space-y-2">{Object.keys(result.mix).filter((name) => getPreparationInstructions(name)).map((name) => { const preparation = getPreparationInstructions(name); const birdGuidance = preparation?.birdGuidance?.[selectedBird]; return <li key={name}><strong className="capitalize">{name.replace(/_/g, " ")}:</strong> {preparation?.preparation}{birdGuidance && <span className="block pl-1 text-amber-900">{birdGuidance}</span>}</li>; })}</ul></div>}</> : <p className="rounded-lg border border-dashed p-10 text-center text-sm text-muted-foreground">There is no safe, compatible ingredient combination to estimate yet.</p>}<ReportIssueLink section="Optimized Mix" bird={birdProfile.name} profile={currentProfile.name} />
 
                   </div>}
 

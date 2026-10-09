@@ -431,6 +431,25 @@ export class MultibirMixCalculator {
     return suggestions;
   }
 
+  /**
+   * Recomputes every mix-derived field for a mix produced elsewhere (the
+   * browser optimizer) with this calculator's own helpers and existing
+   * suggestion wording, so the displayed analysis describes the displayed mix.
+   * It does not run or change calculate().
+   */
+  summarizeMix(mix: Record<string, number>): Pick<MixResult, "nutrition" | "categories" | "optimization" | "suggestions"> | null {
+    const profile = BIRD_PROFILES[this.bird].profiles[this.situation];
+    if (!profile) return null;
+    const nutrition = this.calculateNutrition(mix);
+    const categories = this.calculateCategoryRatios(mix);
+    return {
+      nutrition,
+      categories,
+      optimization: this.objectiveScore(mix, profile.nutrition),
+      suggestions: this.buildSuggestions(mix, nutrition, categories, profile.nutrition),
+    };
+  }
+
   getPreparationInstructions(ingredientName: string): string | undefined {
     return getPreparationInstructions(ingredientName)?.preparation;
   }
