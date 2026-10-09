@@ -3547,6 +3547,762 @@
       "reconciliationStatus": "differs_from_pre_audit_configuration",
       "comparedClaimId": "profile.chicken.molting.fiber.historical_configuration",
       "reviewedAt": "2026-08-17"
+    },
+    {
+      "id": "profile.pigeon.maintenance.grain.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "maintenance",
+      "profileName": "Maintenance/Rest",
+      "nutrient": "grain",
+      "range": [
+        50,
+        60
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/birds.ts → PIGEON_PROFILES.maintenance.category_ratios.grain (line 79)",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.maintenance.grain.runtime_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.maintenance.grain.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "maintenance",
+      "profileName": "Maintenance/Rest",
+      "nutrient": "grain",
+      "range": [
+        55,
+        70
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → DEFAULT_CATEGORY_TARGETS.pigeon.grain",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.maintenance.grain.historical_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.maintenance.legume.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "maintenance",
+      "profileName": "Maintenance/Rest",
+      "nutrient": "legume",
+      "range": [
+        20,
+        30
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/birds.ts → PIGEON_PROFILES.maintenance.category_ratios.legume (line 79)",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.maintenance.legume.runtime_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.maintenance.legume.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "maintenance",
+      "profileName": "Maintenance/Rest",
+      "nutrient": "legume",
+      "range": [
+        15,
+        25
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → DEFAULT_CATEGORY_TARGETS.pigeon.legume",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.maintenance.legume.historical_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.maintenance.seed.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "maintenance",
+      "profileName": "Maintenance/Rest",
+      "nutrient": "seed",
+      "range": [
+        15,
+        25
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/birds.ts → PIGEON_PROFILES.maintenance.category_ratios.seed (line 79)",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.maintenance.seed.runtime_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.maintenance.seed.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "maintenance",
+      "profileName": "Maintenance/Rest",
+      "nutrient": "seed",
+      "range": [
+        5,
+        15
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → DEFAULT_CATEGORY_TARGETS.pigeon.seed",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.maintenance.seed.historical_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.racing.grain.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "racing",
+      "profileName": "Racing/Competition",
+      "nutrient": "grain",
+      "range": [
+        45,
+        55
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/birds.ts → PIGEON_PROFILES.racing.category_ratios.grain (line 89)",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.racing.grain.runtime_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.racing.grain.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "racing",
+      "profileName": "Racing/Competition",
+      "nutrient": "grain",
+      "range": [
+        55,
+        70
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → DEFAULT_CATEGORY_TARGETS.pigeon.grain",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.racing.grain.historical_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.racing.legume.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "racing",
+      "profileName": "Racing/Competition",
+      "nutrient": "legume",
+      "range": [
+        25,
+        35
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/birds.ts → PIGEON_PROFILES.racing.category_ratios.legume (line 89)",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.racing.legume.runtime_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.racing.legume.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "racing",
+      "profileName": "Racing/Competition",
+      "nutrient": "legume",
+      "range": [
+        15,
+        25
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → DEFAULT_CATEGORY_TARGETS.pigeon.legume",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.racing.legume.historical_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.racing.seed.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "racing",
+      "profileName": "Racing/Competition",
+      "nutrient": "seed",
+      "range": [
+        15,
+        25
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/birds.ts → PIGEON_PROFILES.racing.category_ratios.seed (line 89)",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.racing.seed.runtime_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.racing.seed.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "racing",
+      "profileName": "Racing/Competition",
+      "nutrient": "seed",
+      "range": [
+        5,
+        15
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → DEFAULT_CATEGORY_TARGETS.pigeon.seed",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.racing.seed.historical_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.breeding.grain.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "breeding",
+      "profileName": "Breeding/Brooding",
+      "nutrient": "grain",
+      "range": [
+        50,
+        60
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/birds.ts → PIGEON_PROFILES.breeding.category_ratios.grain (line 99)",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.breeding.grain.runtime_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.breeding.grain.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "grain",
+      "range": [
+        55,
+        70
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → DEFAULT_CATEGORY_TARGETS.pigeon.grain",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.breeding.grain.historical_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.breeding.legume.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "breeding",
+      "profileName": "Breeding/Brooding",
+      "nutrient": "legume",
+      "range": [
+        20,
+        30
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/birds.ts → PIGEON_PROFILES.breeding.category_ratios.legume (line 99)",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.breeding.legume.runtime_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.breeding.legume.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "legume",
+      "range": [
+        15,
+        25
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → DEFAULT_CATEGORY_TARGETS.pigeon.legume",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.breeding.legume.historical_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.breeding.seed.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "breeding",
+      "profileName": "Breeding/Brooding",
+      "nutrient": "seed",
+      "range": [
+        15,
+        25
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/birds.ts → PIGEON_PROFILES.breeding.category_ratios.seed (line 99)",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.breeding.seed.runtime_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.breeding.seed.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "breeding",
+      "profileName": "Breeding",
+      "nutrient": "seed",
+      "range": [
+        5,
+        15
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → DEFAULT_CATEGORY_TARGETS.pigeon.seed",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.breeding.seed.historical_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.molting.grain.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "grain",
+      "range": [
+        45,
+        55
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/birds.ts → PIGEON_PROFILES.molting.category_ratios.grain (line 109)",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.molting.grain.runtime_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.molting.grain.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "grain",
+      "range": [
+        55,
+        70
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → DEFAULT_CATEGORY_TARGETS.pigeon.grain",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.molting.grain.historical_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.molting.legume.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "legume",
+      "range": [
+        25,
+        35
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/birds.ts → PIGEON_PROFILES.molting.category_ratios.legume (line 109)",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.molting.legume.runtime_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.molting.legume.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "legume",
+      "range": [
+        15,
+        25
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → DEFAULT_CATEGORY_TARGETS.pigeon.legume",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.molting.legume.historical_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.molting.seed.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "seed",
+      "range": [
+        15,
+        25
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/birds.ts → PIGEON_PROFILES.molting.category_ratios.seed (line 109)",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.molting.seed.runtime_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.molting.seed.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "molting",
+      "profileName": "Molting Season",
+      "nutrient": "seed",
+      "range": [
+        5,
+        15
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → DEFAULT_CATEGORY_TARGETS.pigeon.seed",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.molting.seed.historical_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.winter.grain.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "winter",
+      "profileName": "Winter Season",
+      "nutrient": "grain",
+      "range": [
+        50,
+        65
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/birds.ts → PIGEON_PROFILES.winter.category_ratios.grain (line 119)",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.winter.grain.runtime_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.winter.grain.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "winter",
+      "profileName": "Winter Season",
+      "nutrient": "grain",
+      "range": [
+        55,
+        70
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → DEFAULT_CATEGORY_TARGETS.pigeon.grain",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.winter.grain.historical_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.winter.legume.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "winter",
+      "profileName": "Winter Season",
+      "nutrient": "legume",
+      "range": [
+        15,
+        25
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/birds.ts → PIGEON_PROFILES.winter.category_ratios.legume (line 119)",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.winter.legume.runtime_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.winter.legume.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "winter",
+      "profileName": "Winter Season",
+      "nutrient": "legume",
+      "range": [
+        15,
+        25
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → DEFAULT_CATEGORY_TARGETS.pigeon.legume",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "matches_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.winter.legume.historical_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.winter.seed.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "winter",
+      "profileName": "Winter Season",
+      "nutrient": "seed",
+      "range": [
+        15,
+        25
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/birds.ts → PIGEON_PROFILES.winter.category_ratios.seed (line 119)",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.winter.seed.runtime_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.winter.seed.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "winter",
+      "profileName": "Winter Season",
+      "nutrient": "seed",
+      "range": [
+        5,
+        15
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → DEFAULT_CATEGORY_TARGETS.pigeon.seed",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.winter.seed.historical_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.pet.grain.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "grain",
+      "range": [
+        50,
+        60
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/birds.ts → PIGEON_PROFILES.pet.category_ratios.grain (line 129)",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.pet.grain.runtime_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.pet.grain.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "grain",
+      "range": [
+        55,
+        70
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → DEFAULT_CATEGORY_TARGETS.pigeon.grain",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.pet.grain.historical_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.pet.legume.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "legume",
+      "range": [
+        20,
+        30
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/birds.ts → PIGEON_PROFILES.pet.category_ratios.legume (line 129)",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.pet.legume.runtime_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.pet.legume.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "legume",
+      "range": [
+        15,
+        25
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → DEFAULT_CATEGORY_TARGETS.pigeon.legume",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.pet.legume.historical_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.pet.seed.historical_configuration",
+      "claimKind": "protected_historical_configuration",
+      "bird": "pigeon",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "seed",
+      "range": [
+        15,
+        25
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "historical-preaudit-profile-config"
+      ],
+      "locator": "archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/birds.ts → PIGEON_PROFILES.pet.category_ratios.seed (line 129)",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.pet.seed.runtime_configuration",
+      "reviewedAt": "2026-10-09"
+    },
+    {
+      "id": "profile.pigeon.pet.seed.runtime_configuration",
+      "claimKind": "runtime_configuration_snapshot",
+      "bird": "pigeon",
+      "profile": "pet",
+      "profileName": "Pet/Companion",
+      "nutrient": "seed",
+      "range": [
+        5,
+        15
+      ],
+      "unit": "percent_of_dry_seed_grain_batch_estimate",
+      "sourceIds": [
+        "runtime-v3-profile-config"
+      ],
+      "locator": "v3-webapp/client/src/lib/birds.ts → DEFAULT_CATEGORY_TARGETS.pigeon.seed",
+      "evidenceScope": "historical_project",
+      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "comparedClaimId": "profile.pigeon.pet.seed.historical_configuration",
+      "reviewedAt": "2026-10-09"
     }
   ]
 }
