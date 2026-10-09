@@ -232,9 +232,9 @@
       ],
       "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.racing.carbs",
       "evidenceScope": "historical_project",
-      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "reconciliationStatus": "matches_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.racing.carbs.runtime_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-09"
     },
     {
       "id": "profile.pigeon.racing.carbs.runtime_configuration",
@@ -244,8 +244,8 @@
       "profileName": "Racing/Competition",
       "nutrient": "carbs",
       "range": [
-        55,
-        65
+        58,
+        68
       ],
       "unit": "percent_of_dry_seed_grain_batch_estimate",
       "sourceIds": [
@@ -253,9 +253,9 @@
       ],
       "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.racing.nutrition.carbs",
       "evidenceScope": "historical_project",
-      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "reconciliationStatus": "matches_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.racing.carbs.historical_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-09"
     },
     {
       "id": "profile.pigeon.racing.fat.historical_configuration",
@@ -274,9 +274,9 @@
       ],
       "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.racing.fat",
       "evidenceScope": "historical_project",
-      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "reconciliationStatus": "matches_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.racing.fat.runtime_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-09"
     },
     {
       "id": "profile.pigeon.racing.fat.runtime_configuration",
@@ -286,8 +286,8 @@
       "profileName": "Racing/Competition",
       "nutrient": "fat",
       "range": [
-        3,
-        5
+        4,
+        6
       ],
       "unit": "percent_of_dry_seed_grain_batch_estimate",
       "sourceIds": [
@@ -295,9 +295,9 @@
       ],
       "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.racing.nutrition.fat",
       "evidenceScope": "historical_project",
-      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "reconciliationStatus": "matches_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.racing.fat.historical_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-09"
     },
     {
       "id": "profile.pigeon.racing.fiber.historical_configuration",
@@ -574,9 +574,9 @@
       ],
       "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.molting.carbs",
       "evidenceScope": "historical_project",
-      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "reconciliationStatus": "matches_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.molting.carbs.runtime_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-09"
     },
     {
       "id": "profile.pigeon.molting.carbs.runtime_configuration",
@@ -586,8 +586,8 @@
       "profileName": "Molting Season",
       "nutrient": "carbs",
       "range": [
-        55,
-        65
+        58,
+        68
       ],
       "unit": "percent_of_dry_seed_grain_batch_estimate",
       "sourceIds": [
@@ -595,9 +595,9 @@
       ],
       "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.molting.nutrition.carbs",
       "evidenceScope": "historical_project",
-      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "reconciliationStatus": "matches_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.molting.carbs.historical_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-09"
     },
     {
       "id": "profile.pigeon.molting.fat.historical_configuration",
@@ -616,9 +616,9 @@
       ],
       "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.molting.fat",
       "evidenceScope": "historical_project",
-      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "reconciliationStatus": "matches_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.molting.fat.runtime_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-09"
     },
     {
       "id": "profile.pigeon.molting.fat.runtime_configuration",
@@ -628,8 +628,8 @@
       "profileName": "Molting Season",
       "nutrient": "fat",
       "range": [
-        3.5,
-        5
+        4,
+        6
       ],
       "unit": "percent_of_dry_seed_grain_batch_estimate",
       "sourceIds": [
@@ -637,9 +637,9 @@
       ],
       "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.molting.nutrition.fat",
       "evidenceScope": "historical_project",
-      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "reconciliationStatus": "matches_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.molting.fat.historical_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-09"
     },
     {
       "id": "profile.pigeon.molting.fiber.historical_configuration",
@@ -745,9 +745,9 @@
       ],
       "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.winter.carbs",
       "evidenceScope": "historical_project",
-      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "reconciliationStatus": "matches_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.winter.carbs.runtime_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-09"
     },
     {
       "id": "profile.pigeon.winter.carbs.runtime_configuration",
@@ -757,8 +757,8 @@
       "profileName": "Winter Season",
       "nutrient": "carbs",
       "range": [
-        55,
-        65
+        62,
+        72
       ],
       "unit": "percent_of_dry_seed_grain_batch_estimate",
       "sourceIds": [
@@ -766,9 +766,9 @@
       ],
       "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.winter.nutrition.carbs",
       "evidenceScope": "historical_project",
-      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "reconciliationStatus": "matches_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.winter.carbs.historical_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-09"
     },
     {
       "id": "profile.pigeon.winter.fat.historical_configuration",
@@ -787,9 +787,9 @@
       ],
       "locator": "client/src/lib/birds.ts → ALL_PROFILES.pigeon.winter.fat",
       "evidenceScope": "historical_project",
-      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "reconciliationStatus": "matches_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.winter.fat.runtime_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-09"
     },
     {
       "id": "profile.pigeon.winter.fat.runtime_configuration",
@@ -799,8 +799,8 @@
       "profileName": "Winter Season",
       "nutrient": "fat",
       "range": [
-        4,
-        6
+        5,
+        8
       ],
       "unit": "percent_of_dry_seed_grain_batch_estimate",
       "sourceIds": [
@@ -808,9 +808,9 @@
       ],
       "locator": "v3-webapp/client/src/lib/birds.ts → BIRD_PROFILES.pigeon.profiles.winter.nutrition.fat",
       "evidenceScope": "historical_project",
-      "reconciliationStatus": "differs_from_pre_audit_configuration",
+      "reconciliationStatus": "matches_pre_audit_configuration",
       "comparedClaimId": "profile.pigeon.winter.fat.historical_configuration",
-      "reviewedAt": "2026-08-17"
+      "reviewedAt": "2026-10-09"
     },
     {
       "id": "profile.pigeon.winter.fiber.historical_configuration",

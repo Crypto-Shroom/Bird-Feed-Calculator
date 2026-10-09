@@ -2,6 +2,8 @@
 
 No values are changed by this document. The product owner decides each difference separately.
 
+Note: the Current V3 column shows the values as of 2026-10-09, before PR #248 restored the pre-audit carbohydrate and fat ranges for racing (58–68, 4–6), molting (58–68, 4–6) and winter (62–72, 5–8). The Pre-audit config column is unchanged.
+
 Note: V0 used one fiber value for all profiles (0–5). The current fiber values come from #239 (2026-10-08).
 
 Note: the Pre-audit config grain %, legume % and seed % cells come from the preserved pre-audit file `archive/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/pigeon-mix-web-multi-bird/client/src/lib/birds.ts` (`category_ratios`, lines 79, 89, 99, 109, 119, 129). That file is the source registered as `historical-preaudit-profile-config`. `database/provenance/profile-claims.json` has no category rows, so these ranges are not yet in the ledger. The Pre-audit config protein, carbs, fat and fiber cells come from `profile-claims.json`; the same values appear in that archive file.

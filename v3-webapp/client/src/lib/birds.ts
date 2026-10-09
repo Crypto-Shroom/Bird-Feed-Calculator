@@ -14,8 +14,6 @@ export interface SituationProfile {
   feedingNotes: string;
   contextNote?: string;
   nutrition: NutritionTarget;
-  /** Grain/legume/seed shares for this profile only. Without it, the bird's default mix targets apply. */
-  categoryTargets?: CategoryTargets;
 }
 
 export interface BirdProfile {
@@ -60,14 +58,6 @@ export interface BirdCareGuidance {
   freshProduceGuidance?: FreshProduceGuidance;
 }
 
-// Racing needs protein of 16-18%, which the shared pigeon mix target (legumes 15-25%) cannot reach.
-// This is the original V0 racing mix target (v0-python-only/pigeon_mix_calculator.py). See issue #247.
-const PIGEON_RACING_CATEGORY_TARGETS: CategoryTargets = {
-  grain: [40, 50],
-  legume: [40, 50],
-  seed: [5, 10],
-};
-
 export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
   pigeon: {
     name: 'Pigeon',
@@ -94,11 +84,10 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         contextNote: 'Performance birds have individual energy and recovery needs. Use a veterinarian- or specialist-reviewed performance diet as the foundation.',
         nutrition: {
           protein: [16, 18],
-          carbs: [55, 65],
-          fat: [3, 5],
+          carbs: [58, 68],
+          fat: [4, 6],
           fiber: [0, 5],
         },
-        categoryTargets: PIGEON_RACING_CATEGORY_TARGETS,
       },
       breeding: {
         name: 'Breeding',
@@ -119,8 +108,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         contextNote: 'Molting support should be based on body condition and a complete diet; this seed/grain estimate does not assess amino-acid adequacy.',
         nutrition: {
           protein: [16, 18],
-          carbs: [55, 65],
-          fat: [3.5, 5],
+          carbs: [58, 68],
+          fat: [4, 6],
           fiber: [0, 5],
         },
       },
@@ -131,8 +120,8 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         contextNote: 'Cold-weather feeding needs vary with housing, weather, activity, and body condition. Avoid increasing high-fat seeds without professional guidance.',
         nutrition: {
           protein: [12, 14],
-          carbs: [55, 65],
-          fat: [4, 6],
+          carbs: [62, 72],
+          fat: [5, 8],
           fiber: [0, 5],
         },
       },
@@ -464,7 +453,6 @@ export function getDefaultSituation(bird: BirdType): string {
   return availableSituations.includes('pet') ? 'pet' : availableSituations[0];
 }
 
-export function getCategoryTargets(bird: BirdType, situation?: string): CategoryTargets {
-  const profileTargets = situation ? BIRD_PROFILES[bird].profiles[situation]?.categoryTargets : undefined;
-  return profileTargets ?? DEFAULT_CATEGORY_TARGETS[bird];
+export function getCategoryTargets(bird: BirdType): CategoryTargets {
+  return DEFAULT_CATEGORY_TARGETS[bird];
 }
