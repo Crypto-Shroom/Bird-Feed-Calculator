@@ -114,7 +114,7 @@
     "typescript": "5.6.3",
     "vite": "^7.3.6",
     "vite-plugin-manus-runtime": "^0.0.56",
-    "vitest": "^3.2.6"
+    "vitest": "^5.0.3"
   },
   "packageManager": "pnpm@10.4.1+sha512.c753b6c3ad7afa13af388fa6d808035a008e30ea9993f58c6663e2bc5ff21679aa834db094987129aa4d488b86df57f7b634981b2f827cdcacc698cc0cfb88af",
   "pnpm": {
@@ -123,7 +123,10 @@
     },
     "overrides": {
       "tailwindcss>nanoid": "3.3.7",
-      "uuid": "11.1.1"
+      "uuid": "11.1.1",
+      "tar": ">=7.5.21",
+      "proxy-addr": ">=2.0.8",
+      "shell-quote": ">=1.11.0"
     }
   }
 }
