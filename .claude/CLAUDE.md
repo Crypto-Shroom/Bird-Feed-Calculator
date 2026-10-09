@@ -19,4 +19,5 @@ When the product owner states a general way of working, add it to this section i
 - **Research flow.** A Sonnet researcher drafts the evidence. Then a scripted cross-check verifies every source ID against `database/provenance/sources.json` and `food-reviews.json`. Then Claude Code reviews it. Manus is only for occasional deep multilingual research, and only started by the owner.
 - **Jules specs.** Write the real issue number into every spec; never write a placeholder like `#<this issue>`. Label an issue `jules` only when it is focused and its work has not already been done.
 - **Merging.** The owner approves each merge PR by PR. Keep one branch and PR per independent change.
+- **PR follow-through.** After opening a PR, subscribe to its activity. Always read every review comment, bot finding and failed check on it, and answer or fix each one.
 - **Explaining.** Explain git and GitHub concepts plainly when they come up; the owner is learning them.
