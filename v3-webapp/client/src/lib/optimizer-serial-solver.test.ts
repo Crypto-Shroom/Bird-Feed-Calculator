@@ -154,6 +154,8 @@ describe("serial staged optimizer with real HiGHS", () => {
   });
   const solve = (model: OptimizerModel) => solveSerialStages(highs, model, { timeBudgetMs: 30_000 });
 
+  // Enumerates every whole-gram mix for a reference answer. It takes a few seconds on a slow CI runner and once exceeded
+  // Vitest's 5 s default (PR #251 CI), so it gets an explicit timeout instead of relying on the default.
   it("agrees with an exhaustive whole-gram lexicographic reference on both the exact and the fallback branch", async () => {
     const corpus = [
       profileModel("chicken", "pet", { barley: 20, corn_yellow: 20, oats: 20, peas: 20, wheat: 20 }, 40),
@@ -175,7 +177,7 @@ describe("serial staged optimizer with real HiGHS", () => {
       expect(result.quantities).toEqual(reference.quantities);
     }
     expect([...branches].sort()).toEqual(["exact", "fallback"]);
-  });
+  }, 60_000);
 
   it("reproduces the documented Chicken/Pet macro margin and returns a validated, range-compliant 1 g mix", async () => {
     const model = profileModel("chicken", "pet", getProfileDefaultIngredients("chicken", "pet"), 1_000);
