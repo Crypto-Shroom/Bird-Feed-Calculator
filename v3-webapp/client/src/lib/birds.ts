@@ -14,6 +14,8 @@ export interface SituationProfile {
   feedingNotes: string;
   contextNote?: string;
   nutrition: NutritionTarget;
+  /** Grain/legume/seed shares for this profile only. Without it, the bird's default mix targets apply. */
+  categoryTargets?: CategoryTargets;
 }
 
 export interface BirdProfile {
@@ -58,6 +60,15 @@ export interface BirdCareGuidance {
   freshProduceGuidance?: FreshProduceGuidance;
 }
 
+// Racing and molting need protein of 16-18%, which the shared pigeon mix target (legumes 15-25%)
+// cannot reach. Racing uses the original V0 racing mix target (v0-python-only/pigeon_mix_calculator.py);
+// molting reuses it. See issue #247.
+const PIGEON_HIGH_LEGUME_CATEGORY_TARGETS: CategoryTargets = {
+  grain: [40, 50],
+  legume: [40, 50],
+  seed: [5, 10],
+};
+
 export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
   pigeon: {
     name: 'Pigeon',
@@ -88,6 +99,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
           fat: [3, 5],
           fiber: [0, 5],
         },
+        categoryTargets: PIGEON_HIGH_LEGUME_CATEGORY_TARGETS,
       },
       breeding: {
         name: 'Breeding',
@@ -112,6 +124,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
           fat: [3.5, 5],
           fiber: [0, 5],
         },
+        categoryTargets: PIGEON_HIGH_LEGUME_CATEGORY_TARGETS,
       },
       winter: {
         name: 'Winter Season',
@@ -453,6 +466,7 @@ export function getDefaultSituation(bird: BirdType): string {
   return availableSituations.includes('pet') ? 'pet' : availableSituations[0];
 }
 
-export function getCategoryTargets(bird: BirdType): CategoryTargets {
-  return DEFAULT_CATEGORY_TARGETS[bird];
+export function getCategoryTargets(bird: BirdType, situation?: string): CategoryTargets {
+  const profileTargets = situation ? BIRD_PROFILES[bird].profiles[situation]?.categoryTargets : undefined;
+  return profileTargets ?? DEFAULT_CATEGORY_TARGETS[bird];
 }

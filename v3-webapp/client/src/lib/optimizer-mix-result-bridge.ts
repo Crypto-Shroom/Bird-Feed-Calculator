@@ -29,10 +29,11 @@ function calculateOptimization(
   inventory: Readonly<Record<string, number>>,
   target: NutritionTarget,
   bird: BirdType,
+  situation: string,
 ) {
   const nutrition = calculateNutrition(mix);
   const categories = calculateCategories(mix);
-  const categoryTargets = getCategoryTargets(bird);
+  const categoryTargets = getCategoryTargets(bird, situation);
   const macroDistance = nutritionKeys.reduce((total, key) => {
     const [minimum, maximum] = target[key];
     return total + Math.abs(nutrition[key] - (minimum + maximum) / 2) / Math.max(0.5, maximum - minimum);
@@ -75,6 +76,6 @@ export function bridgeFeasibleWorkerMixToMixResult(
     targetWeight,
     nutrition: calculateNutrition(mix),
     categories: calculateCategories(mix),
-    optimization: calculateOptimization(mix, inventory, target, bird),
+    optimization: calculateOptimization(mix, inventory, target, bird, situation),
   };
 }

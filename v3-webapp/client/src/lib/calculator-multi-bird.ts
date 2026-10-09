@@ -192,7 +192,7 @@ export class MultibirMixCalculator {
   }
 
   private createFeasibleCategoryPlans(ingredients: AvailableIngredient[], targetWeight: number): CategorySummary[] {
-    const targets = getCategoryTargets(this.bird);
+    const targets = getCategoryTargets(this.bird, this.situation);
     const capacity = categoryKeys.reduce((summary, category) => {
       summary[category] = ingredients
         .filter((ingredient) => ingredient.category === category)
@@ -321,7 +321,7 @@ export class MultibirMixCalculator {
   private objectiveScore(mix: Record<string, number>, target: NutritionTarget): OptimizationSummary {
     const nutrition = this.calculateNutrition(mix);
     const categories = this.calculateCategoryRatios(mix);
-    const categoryTargets = getCategoryTargets(this.bird);
+    const categoryTargets = getCategoryTargets(this.bird, this.situation);
 
     const macroDistance = nutritionKeys.reduce((total, key) => {
       const [min, max] = target[key];
@@ -397,7 +397,7 @@ export class MultibirMixCalculator {
       }
     });
 
-    const categoryTargets = getCategoryTargets(this.bird);
+    const categoryTargets = getCategoryTargets(this.bird, this.situation);
     categoryKeys.forEach((key) => {
       const [min, max] = categoryTargets[key];
       if (categories[key] < min || categories[key] > max) {
@@ -421,7 +421,7 @@ export class MultibirMixCalculator {
     if (grains.length === 1 && grainNeedsPairing(grains[0])) {
       suggestions.push(`Pair ${grains[0].replace(/_/g, " ")} with another grain such as wheat, barley, or oats for greater ingredient diversity.`);
     }
-    if (nutrition.protein < target.protein[0] && categories.legume < getCategoryTargets(this.bird).legume[1]) {
+    if (nutrition.protein < target.protein[0] && categories.legume < getCategoryTargets(this.bird, this.situation).legume[1]) {
       suggestions.push("Consider a compatible, safely prepared protein ingredient only after confirming its processing and suitability for your bird.");
     }
     if (nutrition.fat > target.fat[1]) {
