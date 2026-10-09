@@ -998,6 +998,47 @@ describe("canonical provenance ledger", () => {
     }
   });
 
+  it("records pine_nuts forms across six birds with exact evidence and safety boundaries", () => {
+    const ledger = readJson("food-reviews.json") as {
+      requiredBirdOrder: string[];
+      ingredientReviews: Array<{
+        ingredientId: string;
+        form: string;
+        speciesEvidence: Array<{ bird: string; outcome: string; sourceIds: string[] }>;
+        processing: { rule: string; severity: string };
+      }>;
+    };
+    const shelled = ledger.ingredientReviews.find(
+      (review) => review.ingredientId === "pine_nuts" && review.form === "plain shelled pine nut kernel, raw or dry-roasted, unsalted and unflavoured",
+    );
+    const inShell = ledger.ingredientReviews.find(
+      (review) => review.ingredientId === "pine_nuts" && review.form === "whole in-shell pine nuts, raw or dry, plain and unseasoned",
+    );
+
+    expect(shelled?.speciesEvidence.map((entry) => entry.bird)).toEqual(ledger.requiredBirdOrder);
+    expect(shelled?.speciesEvidence.map((entry) => entry.outcome)).toEqual([
+      "limited",
+      "limited",
+      "limited",
+      "unresolved",
+      "unresolved",
+      "unresolved",
+    ]);
+
+    expect(inShell?.speciesEvidence.map((entry) => entry.bird)).toEqual(ledger.requiredBirdOrder);
+    expect(inShell?.speciesEvidence.map((entry) => entry.outcome)).toEqual([
+      "avoid",
+      "limited",
+      "limited",
+      "avoid",
+      "avoid",
+      "avoid",
+    ]);
+    expect(inShell?.speciesEvidence.find((entry) => entry.bird === "parrot")?.sourceIds).toContain("theparrotclub-pinenut-warning-2015");
+    expect(inShell?.processing.severity).toBe("warning");
+    expect(inShell?.processing.rule).toContain("Avoid for pigeons, budgies, canaries, and chickens");
+  });
+
   it("records Issue #171 normal dry grain forms as allowed, except verified chicken-specific limits", () => {
     const ledger = readJson("food-reviews.json") as {
       requiredBirdOrder: string[];
