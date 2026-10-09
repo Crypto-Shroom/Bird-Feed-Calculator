@@ -19,6 +19,7 @@ const sourceTiers = new Set([
   "peer_reviewed_review",
   "veterinary_reference",
   "academic_book",
+  "practitioner_book",
   "owner_guidance_with_citations",
   "owner_approved_policy",
   "historical_project",
