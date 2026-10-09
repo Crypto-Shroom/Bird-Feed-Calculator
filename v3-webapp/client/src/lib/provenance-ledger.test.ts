@@ -986,9 +986,9 @@ describe("canonical provenance ledger", () => {
     };
     const claimsById = new Map(ledger.profileClaims.map((claim) => [claim.id, claim]));
 
-    expect(ledger.profileClaims).toHaveLength(168);
-    expect(ledger.profileClaims.filter((claim) => claim.claimKind === "protected_historical_configuration")).toHaveLength(84);
-    expect(ledger.profileClaims.filter((claim) => claim.claimKind === "runtime_configuration_snapshot")).toHaveLength(84);
+    expect(ledger.profileClaims).toHaveLength(204);
+    expect(ledger.profileClaims.filter((claim) => claim.claimKind === "protected_historical_configuration")).toHaveLength(102);
+    expect(ledger.profileClaims.filter((claim) => claim.claimKind === "runtime_configuration_snapshot")).toHaveLength(102);
 
     for (const claim of ledger.profileClaims) {
       const counterpart = claimsById.get(claim.comparedClaimId);
