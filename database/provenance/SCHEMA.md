@@ -10,7 +10,7 @@ Every reusable source is defined once in `sources.json`.
 | `title` | Yes | Source title. |
 | `authorsOrOrganization` | Yes | Named authors or responsible organization. |
 | `publishedYear` | Yes | Publication/update year; `unknown` is permitted only for protected historical project files. |
-| `sourceTier` | Yes | `primary`, `systematic_review`, `peer_reviewed_review`, `veterinary_reference`, `academic_book`, `owner_guidance_with_citations`, `owner_approved_policy`, `historical_project`, or `runtime_configuration`. An `owner_approved_policy` records an explicit owner safety decision and must not be presented as an external scientific source. |
+| `sourceTier` | Yes | `primary`, `systematic_review`, `peer_reviewed_review`, `veterinary_reference`, `academic_book`, `practitioner_book`, `owner_guidance_with_citations`, `owner_approved_policy`, `historical_project`, or `runtime_configuration`. An `owner_approved_policy` records an explicit owner safety decision and must not be presented as an external scientific source. A `practitioner_book` is a non-peer-reviewed book by a pigeon keeper or fancier (historical or popular); it gives context only and cannot set a target. |
 | `urlOrDoi` | Yes | Stable public URL or DOI; repository-relative path for protected project evidence. |
 | `speciesScopes` | Yes | Species or species groups the source actually covers. |
 | `permittedUse` | Yes | What the source can substantiate. |

@@ -60,6 +60,8 @@ The first ledger release is intentionally **no-runtime-change**. It preserves or
 | `finchinfo-nutrition` | Canary/finch/passserine nutrition context | Owner guidance with cited research |
 | `merck-columbiformes-2025` | Pigeon and dove nutrition | Peer-reviewed veterinary reference |
 | `sales-janssens-2003` | Domestic pigeon nutrition review | Peer-reviewed review |
+| `vermeyen-belgian-carrier-pigeon-early-1900s` | Historical Belgian racing-pigeon mixes (rearing, racing, moulting) | Practitioner book (historical) |
+| `lang-pigeon-passion-2013` | General pigeon-keeping guide; no nutrient figures | Practitioner book (popular) |
 | `merck-psittacines-2025` | Parrot, African Grey, Budgie nutrition | Peer-reviewed veterinary reference |
 | `koutsos-2001-psittacines` | Psittacine diet physiology/method | Peer-reviewed review |
 | `peron-grosset-2013` | Adult psittacine diet limitations | Peer-reviewed review |
