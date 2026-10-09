@@ -10,7 +10,7 @@
 - **Targets met**: the number of the 7 configured ranges (4 macros, 3 categories) the mix satisfies.
 - **Verdict** (owner-approved rules): for a `best_attainable` scenario (no mix meets every range), the optimizer *improves* on greedy when its D_macro is lower, or D_macro is equal and its D_category is lower; *worse* in the opposite case; otherwise *same*. The number of ranges met is not the criterion there. For a `feasible` scenario, more ranges met wins; with equal ranges met, more meaningful ingredients (diversity) wins.
 - **Ingredients used** counts every ingredient above 0 g; **meaningful** counts those at or above the 5 g meaningful-inclusion threshold.
-- **Solve time** is the Worker-reported elapsed time (maximum of 3 runs). Every browser-budget solve runs through **one reused Worker session** (1 in-process Worker created for 132 solves) and one lazily loaded HiGHS instance, as Home.tsx does. Cold first solve (HiGHS wasm instantiate plus solve, default:pigeon/maintenance): 186.4 ms wall; the same scenario warm in the reused Worker: 61.1 ms wall.
+- **Solve time** is the Worker-reported elapsed time (maximum of 3 runs). Every browser-budget solve runs through **one reused Worker session** (1 in-process Worker created for 132 solves) and one lazily loaded HiGHS instance, as Home.tsx does. Cold first solve (HiGHS wasm instantiate plus solve, default:pigeon/maintenance): 170.2 ms wall; the same scenario warm in the reused Worker: 72.4 ms wall.
 - **Stage order** (owner decisions 2026-10-07, #234: no midpoint stages; "bigger chunks is better"): feasible — macro margin r → maximum share M → meaningful count → smallest meaningful amount S → quantity tie-break; fallback — D_macro → D_category → M → meaningful count → S → tie-break.
 - **Diversity tolerance band** (`optimizer-policy.ts`): macro-margin lock r ≥ r* − 0 − 0.1·r*, maximum share τ = 25 g; the fallback D_macro and D_category locks stay exact. See the tolerance sweep below.
 - **No hard minimum amount**: a completed mix with an ingredient between 0 g and 5 g is re-solved once with those ingredients fixed to 0 g, inside the same budget; the re-solve is kept only if it stays within every primary lock's tolerance.
@@ -22,23 +22,23 @@
 
 | Group | Scenarios | Optimizer `feasible` | `best_attainable` | timeout/error | Improves | Same | Worse | No optimizer result |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Profile-default inventories (21 bird/situation profiles) | 21 | 7 | 14 | 0 | 21 | 0 | 0 | 0 |
-| Reported issue inventories | 2 | 1 | 1 | 0 | 2 | 0 | 0 | 0 |
+| Profile-default inventories (21 bird/situation profiles) | 21 | 11 | 10 | 0 | 21 | 0 | 0 | 0 |
+| Reported issue inventories | 2 | 2 | 0 | 0 | 2 | 0 | 0 | 0 |
 | Largest inventory: full active catalog at 1,000 g each (safety-gated per bird) | 21 | 0 | 0 | 21 | 0 | 0 | 0 | 21 |
-| **All** | 44 | 8 | 15 | 21 | 23 | 0 | 0 | 21 |
+| **All** | 44 | 13 | 10 | 21 | 23 | 0 | 0 | 21 |
 
-Visitors see the optimizer mix in 23 of 44 scenarios (8 meeting all 7 ranges, 15 best-attainable fallbacks with the notice); the other 21 keep the greedy mix.
+Visitors see the optimizer mix in 23 of 44 scenarios (13 meeting all 7 ranges, 10 best-attainable fallbacks with the notice); the other 21 keep the greedy mix.
 
-- Worst completed solve time within the browser budget: **243.0 ms** (issue85-stock:pigeon/winter). Budget: 500 ms in-solver, 1000 ms wall.
-- Worst solve time outside the full-catalog stress group: **243.0 ms** (issue85-stock:pigeon/winter).
+- Worst completed solve time within the browser budget: **168.0 ms** (default:african_grey/pet). Budget: 500 ms in-solver, 1000 ms wall.
+- Worst solve time outside the full-catalog stress group: **168.0 ms** (default:african_grey/pet).
 - Timeouts (Home keeps greedy): 21 — catalog:pigeon/maintenance, catalog:pigeon/racing, catalog:pigeon/breeding, catalog:pigeon/molting, catalog:pigeon/winter, catalog:pigeon/pet, catalog:parrot/pet, catalog:parrot/breeding, catalog:parrot/molting, catalog:african_grey/pet, catalog:african_grey/breeding, catalog:african_grey/molting, catalog:budgie/pet, catalog:budgie/breeding, catalog:budgie/molting, catalog:canary/pet, catalog:canary/breeding, catalog:canary/molting, catalog:chicken/pet, catalog:chicken/egg_laying, catalog:chicken/molting. Budget-sensitive: 0. Completed runs that disagreed: 0.
-- Without the browser budget, the timed-out scenarios need up to **11425 ms** in Node (catalog:african_grey/breeding); see the last section.
-- #85 greedy output matches the pinned current-catalog mix (wheat 610, chickpeas 200, chia 100, corn_yellow 80, milo 10). The mix reported in #85 (wheat 610, chickpeas 190, canola 100, corn_yellow 80, milo 10, peas 10) was produced on the pre-#239 fibre values, which reproduce it exactly.
+- Without the browser budget, the timed-out scenarios need up to **11423 ms** in Node (catalog:african_grey/breeding); see the last section.
+- #85 greedy output matches the pinned current-catalog mix (wheat 570, chickpeas 200, milo 120, canola 90, chia 10, corn_yellow 10). The mix reported in #85 (wheat 610, chickpeas 190, canola 100, corn_yellow 80, milo 10, peas 10) was produced on the pre-#239 fibre values, which reproduce it exactly.
 
 ## Interpretation
 
-- **`feasible` (8 scenarios):** every optimizer mix meets all 7 ranges. By ranges met, then diversity: 8 improve on greedy, 0 are the same, 0 are worse. 0 of the improvements tie greedy on ranges met and win on meaningful ingredients.
-- **`best_attainable` (15 scenarios):** judged by the approved priority (D_macro first, then D_category): 15 improve, 0 are the same, 0 are worse. D_macro is no larger than greedy's in 15 of 15, because the fallback minimizes D_macro first over every whole-gram mix. 8 of these fallbacks meet fewer of the 7 ranges than greedy: once D_macro is locked at its minimum, category ranges that greedy fills first can no longer all be met. That is the approved priority, not a regression; the notice names every missed range and why.
+- **`feasible` (13 scenarios):** every optimizer mix meets all 7 ranges. By ranges met, then diversity: 13 improve on greedy, 0 are the same, 0 are worse. 0 of the improvements tie greedy on ranges met and win on meaningful ingredients.
+- **`best_attainable` (10 scenarios):** judged by the approved priority (D_macro first, then D_category): 10 improve, 0 are the same, 0 are worse. D_macro is no larger than greedy's in 10 of 10, because the fallback minimizes D_macro first over every whole-gram mix. 8 of these fallbacks meet fewer of the 7 ranges than greedy: once D_macro is locked at its minimum, category ranges that greedy fills first can no longer all be met. That is the approved priority, not a regression; the notice names every missed range and why.
 - **Small-inclusion re-solve:** ran in 3 scenarios and was kept in 0. Where it was rejected, removing the sub-5 g ingredient would have worsened a locked value (usually the exact fallback D_macro), so the few grams stay.
 - **Timeouts (21 scenarios):** only in Largest inventory: full active catalog at 1,000 g each (safety-gated per bird); Home keeps the greedy mix and no partial result is used. Scenarios that finish within about 10% of the 500 ms budget can complete on one run and time out on the next, so the exact timeout list varies with machine speed and load. A small-inclusion re-solve that runs out of budget keeps the primary mix, so on a slower device such a scenario can keep a sub-5 g ingredient.
 
@@ -48,20 +48,20 @@ The serial solver on the 42 sweep scenarios (21 profile-default inventories and 
 
 | Tolerances | Feasible / fallback | Feasible: mean r (min r) | Feasible: meaningful | Feasible: mean max share g | Feasible: mean smallest meaningful g | Fallback: meaningful | Fallback: mean smallest meaningful g | Fallback: mean D_macro / D_category | Re-solves kept / run |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | --- | --- |
-| all exact (proof-of-concept) | 21 / 21 | 0.0976 (0.0094) | 4.38 | 563.0 | 46.9 | 3.86 | 51.7 | 0.212 / 1.174 | 1 / 20 |
-| ε_r = 0.01 (absolute) | 21 / 21 | 0.0877 (0.0000) | 5.19 | 486.2 | 35.6 | 3.86 | 51.7 | 0.212 / 1.174 | 1 / 20 |
-| ε_r = 0.02 (absolute) | 21 / 21 | 0.0783 (0.0000) | 5.43 | 456.2 | 30.4 | 3.86 | 51.7 | 0.212 / 1.174 | 1 / 12 |
-| ε_r = 0.05 (absolute) | 21 / 21 | 0.0539 (0.0000) | 5.67 | 399.8 | 43.5 | 3.86 | 51.7 | 0.212 / 1.174 | 1 / 17 |
-| ε_r = 5% of r* | 21 / 21 | 0.0929 (0.0090) | 5.19 | 513.4 | 28.3 | 3.86 | 51.7 | 0.212 / 1.174 | 1 / 16 |
-| ε_r = 10% of r* | 21 / 21 | 0.0880 (0.0085) | 5.24 | 492.7 | 29.6 | 3.86 | 51.7 | 0.212 / 1.174 | 1 / 16 |
-| ε_r = 20% of r* | 21 / 21 | 0.0784 (0.0078) | 5.43 | 458.7 | 32.1 | 3.86 | 51.7 | 0.212 / 1.174 | 2 / 16 |
-| τ_M = 25 g only | 21 / 21 | 0.0976 (0.0094) | 4.38 | 563.0 | 46.9 | 4.29 | 39.8 | 0.212 / 1.174 | 1 / 18 |
-| ε_r 0.01 abs, τ_M 25 g | 21 / 21 | 0.0878 (0.0000) | 6.90 | 505.0 | 24.2 | 4.29 | 39.8 | 0.212 / 1.174 | 0 / 8 |
-| ε_r 5%, τ_M 25 g | 21 / 21 | 0.0930 (0.0090) | 6.38 | 526.0 | 19.3 | 4.29 | 39.8 | 0.212 / 1.174 | 2 / 10 |
-| ε_r 10%, τ_M 10 g | 21 / 21 | 0.0880 (0.0085) | 6.29 | 500.2 | 23.1 | 4.14 | 40.9 | 0.212 / 1.174 | 3 / 11 |
-| **chosen:** ε_r 10%, τ_M 25 g | 21 / 21 | 0.0880 (0.0085) | 6.90 | 510.0 | 23.0 | 4.29 | 39.8 | 0.212 / 1.174 | 1 / 8 |
-| ε_r 10%, τ_M 50 g | 21 / 21 | 0.0880 (0.0085) | 7.29 | 519.9 | 21.6 | 4.33 | 40.4 | 0.212 / 1.174 | 1 / 8 |
-| ε_r 20%, τ_M 25 g | 21 / 21 | 0.0784 (0.0076) | 7.19 | 478.2 | 28.4 | 4.29 | 39.8 | 0.212 / 1.174 | 3 / 10 |
+| all exact (proof-of-concept) | 26 / 16 | 0.1351 (0.0225) | 4.50 | 569.4 | 42.8 | 3.75 | 58.9 | 0.276 / 1.379 | 1 / 19 |
+| ε_r = 0.01 (absolute) | 26 / 16 | 0.1252 (0.0125) | 5.42 | 491.6 | 29.5 | 3.75 | 58.9 | 0.276 / 1.379 | 1 / 18 |
+| ε_r = 0.02 (absolute) | 26 / 16 | 0.1153 (0.0025) | 5.62 | 460.3 | 24.0 | 3.75 | 58.9 | 0.276 / 1.379 | 1 / 12 |
+| ε_r = 0.05 (absolute) | 26 / 16 | 0.0897 (0.0000) | 5.73 | 400.8 | 36.5 | 3.75 | 58.9 | 0.276 / 1.379 | 2 / 16 |
+| ε_r = 5% of r* | 26 / 16 | 0.1286 (0.0225) | 5.31 | 505.5 | 30.2 | 3.75 | 58.9 | 0.276 / 1.379 | 1 / 14 |
+| ε_r = 10% of r* | 26 / 16 | 0.1218 (0.0213) | 5.42 | 481.7 | 28.4 | 3.75 | 58.9 | 0.276 / 1.379 | 2 / 16 |
+| ε_r = 20% of r* | 26 / 16 | 0.1083 (0.0180) | 5.50 | 442.3 | 31.9 | 3.75 | 58.9 | 0.276 / 1.379 | 2 / 16 |
+| τ_M = 25 g only | 26 / 16 | 0.1351 (0.0225) | 4.50 | 569.4 | 42.8 | 4.25 | 43.3 | 0.276 / 1.379 | 1 / 18 |
+| ε_r 0.01 abs, τ_M 25 g | 26 / 16 | 0.1253 (0.0125) | 6.85 | 509.5 | 23.3 | 4.25 | 43.3 | 0.276 / 1.379 | 0 / 8 |
+| ε_r 5%, τ_M 25 g | 26 / 16 | 0.1286 (0.0225) | 6.65 | 520.5 | 21.1 | 4.25 | 43.3 | 0.276 / 1.379 | 2 / 9 |
+| ε_r 10%, τ_M 10 g | 26 / 16 | 0.1218 (0.0220) | 6.50 | 489.3 | 24.0 | 4.06 | 46.1 | 0.276 / 1.379 | 3 / 11 |
+| **chosen:** ε_r 10%, τ_M 25 g | 26 / 16 | 0.1218 (0.0219) | 7.00 | 499.0 | 24.8 | 4.25 | 43.3 | 0.276 / 1.379 | 1 / 8 |
+| ε_r 10%, τ_M 50 g | 26 / 16 | 0.1219 (0.0223) | 7.35 | 510.7 | 24.0 | 4.31 | 44.2 | 0.276 / 1.379 | 1 / 8 |
+| ε_r 20%, τ_M 25 g | 26 / 16 | 0.1084 (0.0190) | 7.27 | 462.1 | 29.3 | 4.25 | 43.3 | 0.276 / 1.379 | 3 / 11 |
 
 Reading: tightening only the macro margin by an absolute amount buys diversity but can drive the smallest margin to 0 (a mix touching a range wall); a relative margin tolerance keeps every mix at 90% of its own best margin. Margin tolerance alone helps less, because the exact maximum-share lock still leaves the diversity stage little choice; adding the τ_M allowance is what lets it pick the more diverse mix. More meaningful ingredients lowers the smallest meaningful amount, because the bigger-chunks stage runs after the meaningful count. The fallback D_macro and D_category stay identical in every variant because those locks remain exact.
 
@@ -69,60 +69,60 @@ Reading: tightening only the macro margin by an absolute amount buys diversity b
 
 | Scenario | Greedy targets met | Optimizer status | Optimizer targets met | Verdict | D_macro (greedy → opt) | D_category (greedy → opt) | Used (greedy → opt) | Meaningful (greedy → opt) | Max share % (greedy → opt) | Solve ms |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---: |
-| default:pigeon/maintenance | 4/7 (macros 1/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 1.55 → 0.00 | 0.00 → 0.00 | 3 → 5 | 3 → 5 | 70.0 → 37.3 | 181.0 |
-| default:pigeon/racing | 5/7 (macros 2/4, categories 3/3) | `best_attainable` | 6/7 (macros 4/4, categories 2/3) | improves | 0.62 → 0.00 | 0.00 → 0.81 | 3 → 4 | 3 → 4 | 64.0 → 59.6 | 85.0 |
-| default:pigeon/breeding | 5/7 (macros 2/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 0.75 → 0.00 | 0.00 → 0.00 | 5 → 6 | 5 → 6 | 69.0 → 43.3 | 73.0 |
-| default:pigeon/molting | 5/7 (macros 2/4, categories 3/3) | `best_attainable` | 6/7 (macros 4/4, categories 2/3) | improves | 0.65 → 0.00 | 0.00 → 0.81 | 5 → 4 | 5 → 4 | 63.0 → 59.6 | 102.0 |
-| default:pigeon/winter (#73) | 4/7 (macros 1/4, categories 3/3) | `best_attainable` | 4/7 (macros 2/4, categories 2/3) | improves | 0.81 → 0.05 | 0.00 → 0.72 | 5 → 3 | 5 → 3 | 59.0 → 60.8 | 92.0 |
-| default:pigeon/pet | 4/7 (macros 1/4, categories 3/3) | `best_attainable` | 5/7 (macros 4/4, categories 1/3) | improves | 1.89 → 0.00 | 0.00 → 0.12 | 5 → 6 | 5 → 6 | 61.0 → 39.8 | 112.0 |
-| default:parrot/pet | 5/7 (macros 2/4, categories 3/3) | `best_attainable` | 4/7 (macros 3/4, categories 1/3) | improves | 2.04 → 0.15 | 0.00 → 0.82 | 5 → 4 | 5 → 3 | 39.0 → 69.2 | 169.0 |
-| default:parrot/breeding | 5/7 (macros 2/4, categories 3/3) | `best_attainable` | 3/7 (macros 2/4, categories 1/3) | improves | 2.00 → 0.77 | 0.00 → 2.88 | 5 → 4 | 5 → 2 | 51.0 → 93.3 | 152.0 |
-| default:parrot/molting | 5/7 (macros 2/4, categories 3/3) | `best_attainable` | 2/7 (macros 1/4, categories 1/3) | improves | 1.92 → 0.88 | 0.00 → 2.58 | 5 → 4 | 5 → 4 | 51.0 → 90.8 | 118.0 |
-| default:african_grey/pet | 5/7 (macros 2/4, categories 3/3) | `best_attainable` | 4/7 (macros 3/4, categories 1/3) | improves | 2.28 → 0.15 | 0.00 → 0.82 | 5 → 4 | 5 → 3 | 33.0 → 69.2 | 136.0 |
-| default:african_grey/breeding | 5/7 (macros 2/4, categories 3/3) | `best_attainable` | 2/7 (macros 1/4, categories 1/3) | improves | 2.39 → 0.92 | 0.00 → 2.94 | 5 → 2 | 5 → 2 | 51.0 → 93.7 | 64.0 |
-| default:african_grey/molting | 4/7 (macros 1/4, categories 3/3) | `best_attainable` | 2/7 (macros 1/4, categories 1/3) | improves | 2.20 → 1.02 | 0.00 → 2.94 | 5 → 2 | 5 → 2 | 51.0 → 93.7 | 67.0 |
+| default:pigeon/maintenance | 4/7 (macros 1/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 1.55 → 0.00 | 0.00 → 0.00 | 3 → 5 | 3 → 5 | 70.0 → 37.3 | 165.0 |
+| default:pigeon/racing | 6/7 (macros 3/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 0.20 → 0.00 | 0.00 → 0.00 | 3 → 3 | 3 → 3 | 64.0 → 68.2 | 44.0 |
+| default:pigeon/breeding | 5/7 (macros 2/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 0.75 → 0.00 | 0.00 → 0.00 | 5 → 6 | 5 → 6 | 69.0 → 43.3 | 67.0 |
+| default:pigeon/molting | 6/7 (macros 3/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 0.16 → 0.00 | 0.00 → 0.00 | 4 → 6 | 4 → 6 | 64.0 → 61.0 | 66.0 |
+| default:pigeon/winter (#73) | 5/7 (macros 2/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 0.80 → 0.00 | 0.00 → 0.00 | 5 → 5 | 5 → 5 | 59.0 → 65.9 | 58.0 |
+| default:pigeon/pet | 4/7 (macros 1/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 1.04 → 0.00 | 0.00 → 0.00 | 5 → 6 | 5 → 6 | 59.0 → 43.8 | 65.0 |
+| default:parrot/pet | 5/7 (macros 2/4, categories 3/3) | `best_attainable` | 4/7 (macros 3/4, categories 1/3) | improves | 2.04 → 0.15 | 0.00 → 0.82 | 5 → 4 | 5 → 3 | 39.0 → 69.2 | 153.0 |
+| default:parrot/breeding | 5/7 (macros 2/4, categories 3/3) | `best_attainable` | 3/7 (macros 2/4, categories 1/3) | improves | 2.00 → 0.77 | 0.00 → 2.88 | 5 → 4 | 5 → 2 | 51.0 → 93.3 | 158.0 |
+| default:parrot/molting | 5/7 (macros 2/4, categories 3/3) | `best_attainable` | 2/7 (macros 1/4, categories 1/3) | improves | 1.92 → 0.88 | 0.00 → 2.58 | 5 → 4 | 5 → 4 | 51.0 → 90.8 | 107.0 |
+| default:african_grey/pet | 5/7 (macros 2/4, categories 3/3) | `best_attainable` | 4/7 (macros 3/4, categories 1/3) | improves | 2.28 → 0.15 | 0.00 → 0.82 | 5 → 4 | 5 → 3 | 33.0 → 69.2 | 168.0 |
+| default:african_grey/breeding | 5/7 (macros 2/4, categories 3/3) | `best_attainable` | 2/7 (macros 1/4, categories 1/3) | improves | 2.39 → 0.92 | 0.00 → 2.94 | 5 → 2 | 5 → 2 | 51.0 → 93.7 | 63.0 |
+| default:african_grey/molting | 4/7 (macros 1/4, categories 3/3) | `best_attainable` | 2/7 (macros 1/4, categories 1/3) | improves | 2.20 → 1.02 | 0.00 → 2.94 | 5 → 2 | 5 → 2 | 51.0 → 93.7 | 64.0 |
 | default:budgie/pet | 3/7 (macros 3/4, categories 0/3) | `best_attainable` | 5/7 (macros 4/4, categories 1/3) | improves | 0.18 → 0.00 | 1.65 → 1.25 | 4 → 5 | 4 → 5 | 67.0 → 76.0 | 73.0 |
-| default:budgie/breeding | 6/7 (macros 3/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 0.25 → 0.00 | 0.00 → 0.00 | 5 → 4 | 5 → 4 | 60.0 → 65.0 | 57.0 |
-| default:budgie/molting | 5/7 (macros 2/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 0.23 → 0.00 | 0.00 → 0.00 | 6 → 5 | 6 → 5 | 60.0 → 65.0 | 53.0 |
-| default:canary/pet | 3/7 (macros 3/4, categories 0/3) | `best_attainable` | 5/7 (macros 4/4, categories 1/3) | improves | 0.05 → 0.00 | 1.35 → 1.25 | 4 → 5 | 4 → 5 | 72.0 → 75.2 | 67.0 |
-| default:canary/breeding | 6/7 (macros 3/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 0.21 → 0.00 | 0.00 → 0.00 | 5 → 4 | 5 → 4 | 60.0 → 65.0 | 45.0 |
-| default:canary/molting | 6/7 (macros 3/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 0.16 → 0.00 | 0.00 → 0.00 | 6 → 5 | 6 → 5 | 60.0 → 65.0 | 64.0 |
-| default:chicken/pet (#111) | 6/7 (macros 3/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 0.34 → 0.00 | 0.00 → 0.00 | 5 → 5 | 5 → 5 | 57.0 → 28.5 | 62.0 |
-| default:chicken/egg_laying | 4/7 (macros 1/4, categories 3/3) | `best_attainable` | 3/7 (macros 2/4, categories 1/3) | improves | 0.95 → 0.26 | 0.00 → 2.88 | 5 → 3 | 5 → 3 | 65.0 → 45.9 | 156.0 |
-| default:chicken/molting | 4/7 (macros 1/4, categories 3/3) | `best_attainable` | 3/7 (macros 2/4, categories 1/3) | improves | 0.95 → 0.26 | 0.00 → 2.88 | 5 → 3 | 5 → 3 | 65.0 → 45.9 | 154.0 |
+| default:budgie/breeding | 6/7 (macros 3/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 0.25 → 0.00 | 0.00 → 0.00 | 5 → 4 | 5 → 4 | 60.0 → 65.0 | 38.0 |
+| default:budgie/molting | 5/7 (macros 2/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 0.23 → 0.00 | 0.00 → 0.00 | 6 → 5 | 6 → 5 | 60.0 → 65.0 | 61.0 |
+| default:canary/pet | 3/7 (macros 3/4, categories 0/3) | `best_attainable` | 5/7 (macros 4/4, categories 1/3) | improves | 0.05 → 0.00 | 1.35 → 1.25 | 4 → 5 | 4 → 5 | 72.0 → 75.2 | 93.0 |
+| default:canary/breeding | 6/7 (macros 3/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 0.21 → 0.00 | 0.00 → 0.00 | 5 → 4 | 5 → 4 | 60.0 → 65.0 | 44.0 |
+| default:canary/molting | 6/7 (macros 3/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 0.16 → 0.00 | 0.00 → 0.00 | 6 → 5 | 6 → 5 | 60.0 → 65.0 | 74.0 |
+| default:chicken/pet (#111) | 6/7 (macros 3/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 0.34 → 0.00 | 0.00 → 0.00 | 5 → 5 | 5 → 5 | 57.0 → 28.5 | 53.0 |
+| default:chicken/egg_laying | 4/7 (macros 1/4, categories 3/3) | `best_attainable` | 3/7 (macros 2/4, categories 1/3) | improves | 0.95 → 0.26 | 0.00 → 2.88 | 5 → 3 | 5 → 3 | 65.0 → 45.9 | 133.0 |
+| default:chicken/molting | 4/7 (macros 1/4, categories 3/3) | `best_attainable` | 3/7 (macros 2/4, categories 1/3) | improves | 0.95 → 0.26 | 0.00 → 2.88 | 5 → 3 | 5 → 3 | 65.0 → 45.9 | 110.0 |
 
 ## Reported issue inventories
 
 | Scenario | Greedy targets met | Optimizer status | Optimizer targets met | Verdict | D_macro (greedy → opt) | D_category (greedy → opt) | Used (greedy → opt) | Meaningful (greedy → opt) | Max share % (greedy → opt) | Solve ms |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---: |
-| issue85:pigeon/pet (#85) | 4/7 (macros 1/4, categories 3/3) | `best_attainable` | 5/7 (macros 4/4, categories 1/3) | improves | 1.69 → 0.00 | 0.00 → 0.13 | 5 → 5 | 5 → 5 | 61.0 → 55.7 | 144.0 |
-| issue85-stock:pigeon/winter (#73 (variant)) | 5/7 (macros 2/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 0.82 → 0.00 | 0.00 → 0.00 | 5 → 6 | 5 → 6 | 57.0 → 51.9 | 243.0 |
+| issue85:pigeon/pet (#85) | 5/7 (macros 2/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 1.10 → 0.00 | 0.00 → 0.00 | 6 → 10 | 6 → 8 | 57.0 → 33.7 | 146.0 |
+| issue85-stock:pigeon/winter (#73 (variant)) | 6/7 (macros 3/4, categories 3/3) | `feasible` | 7/7 (macros 4/4, categories 3/3) | improves | 0.44 → 0.00 | 0.00 → 0.00 | 6 → 10 | 6 → 8 | 57.0 → 33.8 | 153.0 |
 
 ## Largest inventory: full active catalog at 1,000 g each (safety-gated per bird)
 
 | Scenario | Greedy targets met | Optimizer status | Optimizer targets met | Verdict | D_macro (greedy → opt) | D_category (greedy → opt) | Used (greedy → opt) | Meaningful (greedy → opt) | Max share % (greedy → opt) | Solve ms |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---: |
-| catalog:pigeon/maintenance | 7/7 (macros 4/4, categories 3/3) | `timeout` | — | no_result | 0.00 → — | 0.00 → — | 10 → — | 10 → — | 40.0 → — | 507.0 |
-| catalog:pigeon/racing | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.18 → — | 0.00 → — | 9 → — | 9 → — | 43.0 → — | 506.0 |
-| catalog:pigeon/breeding | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.06 → — | 0.00 → — | 9 → — | 9 → — | 38.0 → — | 508.0 |
-| catalog:pigeon/molting | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.18 → — | 0.00 → — | 10 → — | 10 → — | 39.0 → — | 511.0 |
-| catalog:pigeon/winter | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.44 → — | 0.00 → — | 8 → — | 8 → — | 29.0 → — | 507.0 |
-| catalog:pigeon/pet | 5/7 (macros 2/4, categories 3/3) | `timeout` | — | no_result | 0.12 → — | 0.00 → — | 9 → — | 9 → — | 36.0 → — | 508.0 |
-| catalog:parrot/pet | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.12 → — | 0.00 → — | 9 → — | 9 → — | 30.0 → — | 511.0 |
-| catalog:parrot/breeding | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.20 → — | 0.00 → — | 9 → — | 9 → — | 30.0 → — | 510.0 |
+| catalog:pigeon/maintenance | 7/7 (macros 4/4, categories 3/3) | `timeout` | — | no_result | 0.00 → — | 0.00 → — | 10 → — | 10 → — | 40.0 → — | 513.0 |
+| catalog:pigeon/racing | 7/7 (macros 4/4, categories 3/3) | `timeout` | — | no_result | 0.00 → — | 0.00 → — | 11 → — | 11 → — | 39.0 → — | 507.0 |
+| catalog:pigeon/breeding | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.06 → — | 0.00 → — | 9 → — | 9 → — | 38.0 → — | 509.0 |
+| catalog:pigeon/molting | 7/7 (macros 4/4, categories 3/3) | `timeout` | — | no_result | 0.00 → — | 0.00 → — | 11 → — | 11 → — | 39.0 → — | 507.0 |
+| catalog:pigeon/winter | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.15 → — | 0.00 → — | 10 → — | 10 → — | 46.0 → — | 507.0 |
+| catalog:pigeon/pet | 5/7 (macros 2/4, categories 3/3) | `timeout` | — | no_result | 0.14 → — | 0.00 → — | 12 → — | 12 → — | 54.0 → — | 506.0 |
+| catalog:parrot/pet | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.12 → — | 0.00 → — | 9 → — | 9 → — | 30.0 → — | 510.0 |
+| catalog:parrot/breeding | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.20 → — | 0.00 → — | 9 → — | 9 → — | 30.0 → — | 508.0 |
 | catalog:parrot/molting | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.06 → — | 0.00 → — | 8 → — | 8 → — | 30.0 → — | 505.0 |
 | catalog:african_grey/pet | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.24 → — | 0.00 → — | 8 → — | 8 → — | 30.0 → — | 507.0 |
-| catalog:african_grey/breeding | 5/7 (macros 2/4, categories 3/3) | `timeout` | — | no_result | 0.25 → — | 0.00 → — | 12 → — | 12 → — | 30.0 → — | 507.0 |
-| catalog:african_grey/molting | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.29 → — | 0.00 → — | 11 → — | 11 → — | 31.0 → — | 505.0 |
-| catalog:budgie/pet | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.00 → — | 0.00 → — | 9 → — | 9 → — | 56.0 → — | 507.0 |
-| catalog:budgie/breeding | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.06 → — | 0.00 → — | 9 → — | 9 → — | 37.0 → — | 506.0 |
-| catalog:budgie/molting | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.18 → — | 0.00 → — | 9 → — | 9 → — | 36.0 → — | 505.0 |
-| catalog:canary/pet | 7/7 (macros 4/4, categories 3/3) | `timeout` | — | no_result | 0.00 → — | 0.00 → — | 11 → — | 11 → — | 24.0 → — | 507.0 |
-| catalog:canary/breeding | 7/7 (macros 4/4, categories 3/3) | `timeout` | — | no_result | 0.00 → — | 0.00 → — | 9 → — | 9 → — | 37.0 → — | 506.0 |
-| catalog:canary/molting | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.00 → — | 0.00 → — | 10 → — | 10 → — | 36.0 → — | 505.0 |
-| catalog:chicken/pet | 7/7 (macros 4/4, categories 3/3) | `timeout` | — | no_result | 0.00 → — | 0.00 → — | 9 → — | 9 → — | 37.0 → — | 507.0 |
-| catalog:chicken/egg_laying | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.09 → — | 0.00 → — | 10 → — | 10 → — | 68.0 → — | 507.0 |
-| catalog:chicken/molting | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.09 → — | 0.00 → — | 10 → — | 10 → — | 68.0 → — | 508.0 |
+| catalog:african_grey/breeding | 5/7 (macros 2/4, categories 3/3) | `timeout` | — | no_result | 0.25 → — | 0.00 → — | 12 → — | 12 → — | 30.0 → — | 506.0 |
+| catalog:african_grey/molting | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.29 → — | 0.00 → — | 11 → — | 11 → — | 31.0 → — | 507.0 |
+| catalog:budgie/pet | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.00 → — | 0.00 → — | 9 → — | 9 → — | 56.0 → — | 510.0 |
+| catalog:budgie/breeding | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.06 → — | 0.00 → — | 9 → — | 9 → — | 37.0 → — | 511.0 |
+| catalog:budgie/molting | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.18 → — | 0.00 → — | 9 → — | 9 → — | 36.0 → — | 506.0 |
+| catalog:canary/pet | 7/7 (macros 4/4, categories 3/3) | `timeout` | — | no_result | 0.00 → — | 0.00 → — | 11 → — | 11 → — | 24.0 → — | 508.0 |
+| catalog:canary/breeding | 7/7 (macros 4/4, categories 3/3) | `timeout` | — | no_result | 0.00 → — | 0.00 → — | 9 → — | 9 → — | 37.0 → — | 515.0 |
+| catalog:canary/molting | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.00 → — | 0.00 → — | 10 → — | 10 → — | 36.0 → — | 508.0 |
+| catalog:chicken/pet | 7/7 (macros 4/4, categories 3/3) | `timeout` | — | no_result | 0.00 → — | 0.00 → — | 9 → — | 9 → — | 37.0 → — | 516.0 |
+| catalog:chicken/egg_laying | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.09 → — | 0.00 → — | 10 → — | 10 → — | 68.0 → — | 509.0 |
+| catalog:chicken/molting | 6/7 (macros 3/4, categories 3/3) | `timeout` | — | no_result | 0.09 → — | 0.00 → — | 10 → — | 10 → — | 68.0 → — | 506.0 |
 
 ## Timed-out scenarios re-solved without the browser budget (diagnostic only)
 
@@ -130,27 +130,27 @@ These runs use a 120 s budget instead of 500 ms. They are not what visitors see 
 
 | Scenario | Status | Solve ms | Greedy targets met | Optimizer targets met | Verdict | D_macro (greedy → opt) | Used (greedy → opt) | Max share % (greedy → opt) |
 | --- | --- | ---: | --- | --- | --- | --- | --- | --- |
-| catalog:pigeon/maintenance | `feasible` | 1202 | 7/7 (macros 4/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.00 → 0.00 | 10 → 35 | 40.0 → 16.8 |
-| catalog:pigeon/racing | `feasible` | 2166 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.18 → 0.00 | 9 → 29 | 43.0 → 21.8 |
-| catalog:pigeon/breeding | `feasible` | 1504 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.06 → 0.00 | 9 → 31 | 38.0 → 16.4 |
-| catalog:pigeon/molting | `feasible` | 1650 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.18 → 0.00 | 10 → 31 | 39.0 → 21.9 |
-| catalog:pigeon/winter | `feasible` | 1491 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.44 → 0.00 | 8 → 17 | 29.0 → 48.9 |
-| catalog:pigeon/pet | `feasible` | 2449 | 5/7 (macros 2/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.12 → 0.00 | 9 → 26 | 36.0 → 26.5 |
-| catalog:parrot/pet | `feasible` | 1139 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.12 → 0.00 | 9 → 39 | 30.0 → 19.2 |
-| catalog:parrot/breeding | `feasible` | 1400 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.20 → 0.00 | 9 → 42 | 30.0 → 22.8 |
-| catalog:parrot/molting | `feasible` | 3127 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.06 → 0.00 | 8 → 42 | 30.0 → 16.8 |
-| catalog:african_grey/pet | `feasible` | 2932 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.24 → 0.00 | 8 → 34 | 30.0 → 16.7 |
-| catalog:african_grey/breeding | `feasible` | 11425 | 5/7 (macros 2/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.25 → 0.00 | 12 → 28 | 30.0 → 19.9 |
-| catalog:african_grey/molting | `feasible` | 1186 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.29 → 0.00 | 11 → 26 | 31.0 → 22.5 |
-| catalog:budgie/pet | `feasible` | 1484 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.00 → 0.00 | 9 → 53 | 56.0 → 9.7 |
-| catalog:budgie/breeding | `feasible` | 3169 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.06 → 0.00 | 9 → 48 | 37.0 → 12.1 |
-| catalog:budgie/molting | `feasible` | 1686 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.18 → 0.00 | 9 → 39 | 36.0 → 17.6 |
-| catalog:canary/pet | `feasible` | 1183 | 7/7 (macros 4/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.00 → 0.00 | 11 → 57 | 24.0 → 12.3 |
-| catalog:canary/breeding | `feasible` | 897 | 7/7 (macros 4/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.00 → 0.00 | 9 → 53 | 37.0 → 11.5 |
-| catalog:canary/molting | `feasible` | 1681 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.00 → 0.00 | 10 → 46 | 36.0 → 15.2 |
-| catalog:chicken/pet | `feasible` | 2095 | 7/7 (macros 4/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.00 → 0.00 | 9 → 39 | 37.0 → 11.4 |
-| catalog:chicken/egg_laying | `feasible` | 10659 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.09 → 0.00 | 10 → 42 | 68.0 → 17.4 |
-| catalog:chicken/molting | `feasible` | 11355 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.09 → 0.00 | 10 → 42 | 68.0 → 17.4 |
+| catalog:pigeon/maintenance | `feasible` | 1292 | 7/7 (macros 4/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.00 → 0.00 | 10 → 35 | 40.0 → 16.8 |
+| catalog:pigeon/racing | `feasible` | 1731 | 7/7 (macros 4/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.00 → 0.00 | 11 → 48 | 39.0 → 16.2 |
+| catalog:pigeon/breeding | `feasible` | 1367 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.06 → 0.00 | 9 → 31 | 38.0 → 16.4 |
+| catalog:pigeon/molting | `feasible` | 1677 | 7/7 (macros 4/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.00 → 0.00 | 11 → 48 | 39.0 → 16.2 |
+| catalog:pigeon/winter | `feasible` | 2637 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.15 → 0.00 | 10 → 60 | 46.0 → 8.7 |
+| catalog:pigeon/pet | `feasible` | 1238 | 5/7 (macros 2/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.14 → 0.00 | 12 → 28 | 54.0 → 20.3 |
+| catalog:parrot/pet | `feasible` | 1230 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.12 → 0.00 | 9 → 39 | 30.0 → 19.2 |
+| catalog:parrot/breeding | `feasible` | 1432 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.20 → 0.00 | 9 → 42 | 30.0 → 22.8 |
+| catalog:parrot/molting | `feasible` | 3167 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.06 → 0.00 | 8 → 42 | 30.0 → 16.8 |
+| catalog:african_grey/pet | `feasible` | 2733 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.24 → 0.00 | 8 → 34 | 30.0 → 16.7 |
+| catalog:african_grey/breeding | `feasible` | 11423 | 5/7 (macros 2/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.25 → 0.00 | 12 → 28 | 30.0 → 19.9 |
+| catalog:african_grey/molting | `feasible` | 1362 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.29 → 0.00 | 11 → 26 | 31.0 → 22.5 |
+| catalog:budgie/pet | `feasible` | 1410 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.00 → 0.00 | 9 → 53 | 56.0 → 9.7 |
+| catalog:budgie/breeding | `feasible` | 3154 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.06 → 0.00 | 9 → 48 | 37.0 → 12.1 |
+| catalog:budgie/molting | `feasible` | 1757 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.18 → 0.00 | 9 → 39 | 36.0 → 17.6 |
+| catalog:canary/pet | `feasible` | 1236 | 7/7 (macros 4/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.00 → 0.00 | 11 → 57 | 24.0 → 12.3 |
+| catalog:canary/breeding | `feasible` | 895 | 7/7 (macros 4/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.00 → 0.00 | 9 → 53 | 37.0 → 11.5 |
+| catalog:canary/molting | `feasible` | 1839 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.00 → 0.00 | 10 → 46 | 36.0 → 15.2 |
+| catalog:chicken/pet | `feasible` | 1983 | 7/7 (macros 4/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.00 → 0.00 | 9 → 39 | 37.0 → 11.4 |
+| catalog:chicken/egg_laying | `feasible` | 11191 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.09 → 0.00 | 10 → 42 | 68.0 → 17.4 |
+| catalog:chicken/molting | `feasible` | 11379 | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) | improves | 0.09 → 0.00 | 10 → 42 | 68.0 → 17.4 |
 
 ## Per-scenario detail
 
@@ -173,29 +173,28 @@ Profile: Pigeon → Maintenance/Rest. Optimizer status `feasible`; verdict **imp
 | Targets met | 4/7 (macros 1/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) |
 | D_macro / D_category | 1.55 / 0.00 | 0.00 / 0.00 |
 | Ingredients used / meaningful | 3 / 3 | 5 / 5 |
-| Solve time | — | 181.0 ms |
+| Solve time | — | 165.0 ms |
 
 ### default:pigeon/racing
 
-Profile: Pigeon → Racing/Competition. Optimizer status `best_attainable`; verdict **improves**; displayed: optimizer; completed runs identical: yes.
+Profile: Pigeon → Racing/Competition. Optimizer status `feasible`; verdict **improves**; displayed: optimizer; completed runs identical: yes.
 
 - Greedy mix: wheat 640, peas 250, safflower 110
-- Optimizer mix: wheat 596, peas 331, safflower 64, corn_yellow 9
-- Draft notice lines shown: “Legumes (above range): your ingredients can't meet it together with the other ranges.”
+- Optimizer mix: wheat 682, peas 250, safflower 68
 
 | Range | Greedy | Optimizer |
 | --- | --- | --- |
-| Protein % | 16.15 (16–18) ok | 16.76 (16–18) ok |
-| Carbs % | 64.18 (55–65) ok | 65.00 (55–65) ok |
-| Fat % | **5.83** (3–5) MISS | 4.16 (3–5) ok |
-| Fiber % | **6.02** (0–5) MISS | 5.00 (0–5) ok |
-| Grain share % | 64.0 (55–70) ok | 60.5 (55–70) ok |
-| Legume share % | 25.0 (15–25) ok | **33.1** (15–25) MISS |
-| Seed share % | 11.0 (5–15) ok | 6.4 (5–15) ok |
-| Targets met | 5/7 (macros 2/4, categories 3/3) | 6/7 (macros 4/4, categories 2/3) |
-| D_macro / D_category | 0.62 / 0.00 | 0.00 / 0.81 |
-| Ingredients used / meaningful | 3 / 3 | 4 / 4 |
-| Solve time | — | 85.0 ms |
+| Protein % | 16.15 (16–18) ok | 16.05 (16–18) ok |
+| Carbs % | 64.18 (58–68) ok | 65.73 (58–68) ok |
+| Fat % | 5.83 (4–6) ok | 4.32 (4–6) ok |
+| Fiber % | **6.02** (0–5) MISS | 4.87 (0–5) ok |
+| Grain share % | 64.0 (55–70) ok | 68.2 (55–70) ok |
+| Legume share % | 25.0 (15–25) ok | 25.0 (15–25) ok |
+| Seed share % | 11.0 (5–15) ok | 6.8 (5–15) ok |
+| Targets met | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) |
+| D_macro / D_category | 0.20 / 0.00 | 0.00 / 0.00 |
+| Ingredients used / meaningful | 3 / 3 | 3 / 3 |
+| Solve time | — | 44.0 ms |
 
 ### default:pigeon/breeding
 
@@ -216,73 +215,70 @@ Profile: Pigeon → Breeding. Optimizer status `feasible`; verdict **improves**;
 | Targets met | 5/7 (macros 2/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) |
 | D_macro / D_category | 0.75 / 0.00 | 0.00 / 0.00 |
 | Ingredients used / meaningful | 5 / 5 | 6 / 6 |
-| Solve time | — | 73.0 ms |
+| Solve time | — | 67.0 ms |
 
 ### default:pigeon/molting
 
-Profile: Pigeon → Molting Season. Optimizer status `best_attainable`; verdict **improves**; displayed: optimizer; completed runs identical: yes.
+Profile: Pigeon → Molting Season. Optimizer status `feasible`; verdict **improves**; displayed: optimizer; completed runs identical: yes.
 
-- Greedy mix: wheat 630, lentils 240, safflower 110, corn_yellow 10, peas 10
-- Optimizer mix: wheat 596, peas 331, safflower 64, corn_yellow 9
-- Draft notice lines shown: “Legumes (above range): your ingredients can't meet it together with the other ranges.”
+- Greedy mix: wheat 640, lentils 240, safflower 110, peas 10
+- Optimizer mix: wheat 610, lentils 234, safflower 63, corn_yellow 62, peas 16, barley 15
 
 | Range | Greedy | Optimizer |
 | --- | --- | --- |
-| Protein % | 16.59 (16–18) ok | 16.76 (16–18) ok |
-| Carbs % | 64.91 (55–65) ok | 65.00 (55–65) ok |
-| Fat % | **5.74** (3.5–5) MISS | 4.16 (3.5–5) ok |
-| Fiber % | **5.80** (0–5) MISS | 5.00 (0–5) ok |
-| Grain share % | 64.0 (55–70) ok | 60.5 (55–70) ok |
-| Legume share % | 25.0 (15–25) ok | **33.1** (15–25) MISS |
-| Seed share % | 11.0 (5–15) ok | 6.4 (5–15) ok |
-| Targets met | 5/7 (macros 2/4, categories 3/3) | 6/7 (macros 4/4, categories 2/3) |
-| D_macro / D_category | 0.65 / 0.00 | 0.00 / 0.81 |
-| Ingredients used / meaningful | 5 / 5 | 4 / 4 |
-| Solve time | — | 102.0 ms |
+| Protein % | 16.63 (16–18) ok | 16.18 (16–18) ok |
+| Carbs % | 64.90 (58–68) ok | 66.71 (58–68) ok |
+| Fat % | 5.71 (4–6) ok | 4.18 (4–6) ok |
+| Fiber % | **5.80** (0–5) MISS | 4.55 (0–5) ok |
+| Grain share % | 64.0 (55–70) ok | 68.7 (55–70) ok |
+| Legume share % | 25.0 (15–25) ok | 25.0 (15–25) ok |
+| Seed share % | 11.0 (5–15) ok | 6.3 (5–15) ok |
+| Targets met | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) |
+| D_macro / D_category | 0.16 / 0.00 | 0.00 / 0.00 |
+| Ingredients used / meaningful | 4 / 4 | 6 / 6 |
+| Solve time | — | 66.0 ms |
 
 ### default:pigeon/winter (#73)
 
-Profile: Pigeon → Winter Season. Optimizer status `best_attainable`; verdict **improves**; displayed: optimizer; completed runs identical: yes.
+Profile: Pigeon → Winter Season. Optimizer status `feasible`; verdict **improves**; displayed: optimizer; completed runs identical: yes.
 
-- Greedy mix: wheat 590, peas 200, safflower 100, barley 60, corn_yellow 50
-- Optimizer mix: corn_yellow 608, peas 322, safflower 70
-- Draft notice lines shown: “Carbs (above range): your ingredients can't meet it together with the other ranges.” “Fiber (above range): your ingredients can't meet it together with the other ranges.” “Legumes (above range): your ingredients can't meet it together with the other ranges.”
+- Greedy mix: wheat 590, peas 200, safflower 100, barley 70, corn_yellow 40
+- Optimizer mix: corn_yellow 659, peas 248, safflower 52, wheat 23, barley 18
 
 | Range | Greedy | Optimizer |
 | --- | --- | --- |
-| Protein % | **15.28** (12–14) MISS | 14.00 (12–14) ok |
-| Carbs % | **65.27** (55–65) MISS | **65.48** (55–65) MISS |
-| Fat % | 5.63 (4–6) ok | 5.88 (4–6) ok |
-| Fiber % | **5.72** (0–5) MISS | **5.02** (0–5) MISS |
-| Grain share % | 70.0 (55–70) ok | 60.8 (55–70) ok |
-| Legume share % | 20.0 (15–25) ok | **32.2** (15–25) MISS |
-| Seed share % | 10.0 (5–15) ok | 7.0 (5–15) ok |
-| Targets met | 4/7 (macros 1/4, categories 3/3) | 4/7 (macros 2/4, categories 2/3) |
-| D_macro / D_category | 0.81 / 0.00 | 0.05 / 0.72 |
-| Ingredients used / meaningful | 5 / 5 | 3 / 3 |
-| Solve time | — | 92.0 ms |
+| Protein % | **15.29** (12–14) MISS | 12.98 (12–14) ok |
+| Carbs % | 65.28 (62–72) ok | 67.04 (62–72) ok |
+| Fat % | 5.60 (5–8) ok | 5.40 (5–8) ok |
+| Fiber % | **5.75** (0–5) MISS | 4.34 (0–5) ok |
+| Grain share % | 70.0 (55–70) ok | 70.0 (55–70) ok |
+| Legume share % | 20.0 (15–25) ok | 24.8 (15–25) ok |
+| Seed share % | 10.0 (5–15) ok | 5.2 (5–15) ok |
+| Targets met | 5/7 (macros 2/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) |
+| D_macro / D_category | 0.80 / 0.00 | 0.00 / 0.00 |
+| Ingredients used / meaningful | 5 / 5 | 5 / 5 |
+| Solve time | — | 58.0 ms |
 
 ### default:pigeon/pet
 
-Profile: Pigeon → Pet/Companion. Optimizer status `best_attainable`; verdict **improves**; displayed: optimizer; completed runs identical: yes.
+Profile: Pigeon → Pet/Companion. Optimizer status `feasible`; verdict **improves**; displayed: optimizer; completed runs identical: yes.
 
-- Greedy mix: wheat 610, peas 200, safflower 100, corn_yellow 80, barley 10
-- Optimizer mix: barley 398, corn_yellow 239, peas 207, wheat 70, lentils 43, safflower 43
-- Draft notice lines shown: “Grains (above range): your ingredients can't meet it together with the other ranges.” “Seeds (below range): your ingredients can't meet it together with the other ranges.”
+- Greedy mix: wheat 590, peas 200, safflower 100, barley 70, corn_yellow 40
+- Optimizer mix: corn_yellow 438, peas 198, wheat 142, barley 120, lentils 51, safflower 51
 
 | Range | Greedy | Optimizer |
 | --- | --- | --- |
-| Protein % | **15.27** (12–14) MISS | 14.00 (12–14) ok |
-| Carbs % | 65.20 (60–70) ok | 67.82 (60–70) ok |
-| Fat % | **5.70** (2.5–4) MISS | 4.00 (2.5–4) ok |
-| Fiber % | **5.61** (0–5) MISS | 4.98 (0–5) ok |
-| Grain share % | 70.0 (55–70) ok | **70.7** (55–70) MISS |
-| Legume share % | 20.0 (15–25) ok | 25.0 (15–25) ok |
-| Seed share % | 10.0 (5–15) ok | **4.3** (5–15) MISS |
-| Targets met | 4/7 (macros 1/4, categories 3/3) | 5/7 (macros 4/4, categories 1/3) |
-| D_macro / D_category | 1.89 / 0.00 | 0.00 / 0.12 |
+| Protein % | **15.29** (12–14) MISS | 13.82 (12–14) ok |
+| Carbs % | 65.28 (60–70) ok | 67.20 (60–70) ok |
+| Fat % | **5.60** (2.5–5) MISS | 4.78 (2.5–5) ok |
+| Fiber % | **5.75** (0–5) MISS | 4.54 (0–5) ok |
+| Grain share % | 70.0 (55–70) ok | 70.0 (55–70) ok |
+| Legume share % | 20.0 (15–25) ok | 24.9 (15–25) ok |
+| Seed share % | 10.0 (5–15) ok | 5.1 (5–15) ok |
+| Targets met | 4/7 (macros 1/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) |
+| D_macro / D_category | 1.04 / 0.00 | 0.00 / 0.00 |
 | Ingredients used / meaningful | 5 / 5 | 6 / 6 |
-| Solve time | — | 112.0 ms |
+| Solve time | — | 65.0 ms |
 
 ### default:parrot/pet
 
@@ -305,7 +301,7 @@ Profile: Parrot → Pet/Companion. Optimizer status `best_attainable`; verdict *
 | Targets met | 5/7 (macros 2/4, categories 3/3) | 4/7 (macros 3/4, categories 1/3) |
 | D_macro / D_category | 2.04 / 0.00 | 0.15 / 0.82 |
 | Ingredients used / meaningful | 5 / 5 | 4 / 3 |
-| Solve time | — | 169.0 ms |
+| Solve time | — | 153.0 ms |
 
 ### default:parrot/breeding
 
@@ -328,7 +324,7 @@ Profile: Parrot → Breeding. Optimizer status `best_attainable`; verdict **impr
 | Targets met | 5/7 (macros 2/4, categories 3/3) | 3/7 (macros 2/4, categories 1/3) |
 | D_macro / D_category | 2.00 / 0.00 | 0.77 / 2.88 |
 | Ingredients used / meaningful | 5 / 5 | 4 / 2 |
-| Solve time | — | 152.0 ms |
+| Solve time | — | 158.0 ms |
 
 ### default:parrot/molting
 
@@ -350,7 +346,7 @@ Profile: Parrot → Molting Season. Optimizer status `best_attainable`; verdict 
 | Targets met | 5/7 (macros 2/4, categories 3/3) | 2/7 (macros 1/4, categories 1/3) |
 | D_macro / D_category | 1.92 / 0.00 | 0.88 / 2.58 |
 | Ingredients used / meaningful | 5 / 5 | 4 / 4 |
-| Solve time | — | 118.0 ms |
+| Solve time | — | 107.0 ms |
 
 ### default:african_grey/pet
 
@@ -373,7 +369,7 @@ Profile: African Grey → Pet/Companion. Optimizer status `best_attainable`; ver
 | Targets met | 5/7 (macros 2/4, categories 3/3) | 4/7 (macros 3/4, categories 1/3) |
 | D_macro / D_category | 2.28 / 0.00 | 0.15 / 0.82 |
 | Ingredients used / meaningful | 5 / 5 | 4 / 3 |
-| Solve time | — | 136.0 ms |
+| Solve time | — | 168.0 ms |
 
 ### default:african_grey/breeding
 
@@ -395,7 +391,7 @@ Profile: African Grey → Breeding. Optimizer status `best_attainable`; verdict 
 | Targets met | 5/7 (macros 2/4, categories 3/3) | 2/7 (macros 1/4, categories 1/3) |
 | D_macro / D_category | 2.39 / 0.00 | 0.92 / 2.94 |
 | Ingredients used / meaningful | 5 / 5 | 2 / 2 |
-| Solve time | — | 64.0 ms |
+| Solve time | — | 63.0 ms |
 
 ### default:african_grey/molting
 
@@ -417,7 +413,7 @@ Profile: African Grey → Molting Season. Optimizer status `best_attainable`; ve
 | Targets met | 4/7 (macros 1/4, categories 3/3) | 2/7 (macros 1/4, categories 1/3) |
 | D_macro / D_category | 2.20 / 0.00 | 1.02 / 2.94 |
 | Ingredients used / meaningful | 5 / 5 | 2 / 2 |
-| Solve time | — | 67.0 ms |
+| Solve time | — | 64.0 ms |
 
 ### default:budgie/pet
 
@@ -460,7 +456,7 @@ Profile: Budgie → Breeding. Optimizer status `feasible`; verdict **improves**;
 | Targets met | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) |
 | D_macro / D_category | 0.25 / 0.00 | 0.00 / 0.00 |
 | Ingredients used / meaningful | 5 / 5 | 4 / 4 |
-| Solve time | — | 57.0 ms |
+| Solve time | — | 38.0 ms |
 
 ### default:budgie/molting
 
@@ -481,7 +477,7 @@ Profile: Budgie → Molting Season. Optimizer status `feasible`; verdict **impro
 | Targets met | 5/7 (macros 2/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) |
 | D_macro / D_category | 0.23 / 0.00 | 0.00 / 0.00 |
 | Ingredients used / meaningful | 6 / 6 | 5 / 5 |
-| Solve time | — | 53.0 ms |
+| Solve time | — | 61.0 ms |
 
 ### default:canary/pet
 
@@ -503,7 +499,7 @@ Profile: Canary → Pet/Companion. Optimizer status `best_attainable`; verdict *
 | Targets met | 3/7 (macros 3/4, categories 0/3) | 5/7 (macros 4/4, categories 1/3) |
 | D_macro / D_category | 0.05 / 1.35 | 0.00 / 1.25 |
 | Ingredients used / meaningful | 4 / 4 | 5 / 5 |
-| Solve time | — | 67.0 ms |
+| Solve time | — | 93.0 ms |
 
 ### default:canary/breeding
 
@@ -524,7 +520,7 @@ Profile: Canary → Breeding. Optimizer status `feasible`; verdict **improves**;
 | Targets met | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) |
 | D_macro / D_category | 0.21 / 0.00 | 0.00 / 0.00 |
 | Ingredients used / meaningful | 5 / 5 | 4 / 4 |
-| Solve time | — | 45.0 ms |
+| Solve time | — | 44.0 ms |
 
 ### default:canary/molting
 
@@ -545,7 +541,7 @@ Profile: Canary → Molting Season. Optimizer status `feasible`; verdict **impro
 | Targets met | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) |
 | D_macro / D_category | 0.16 / 0.00 | 0.00 / 0.00 |
 | Ingredients used / meaningful | 6 / 6 | 5 / 5 |
-| Solve time | — | 64.0 ms |
+| Solve time | — | 74.0 ms |
 
 ### default:chicken/pet (#111)
 
@@ -566,7 +562,7 @@ Profile: Chicken → Pet/Companion. Optimizer status `feasible`; verdict **impro
 | Targets met | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) |
 | D_macro / D_category | 0.34 / 0.00 | 0.00 / 0.00 |
 | Ingredients used / meaningful | 5 / 5 | 5 / 5 |
-| Solve time | — | 62.0 ms |
+| Solve time | — | 53.0 ms |
 
 ### default:chicken/egg_laying
 
@@ -588,7 +584,7 @@ Profile: Chicken → Egg-laying. Optimizer status `best_attainable`; verdict **i
 | Targets met | 4/7 (macros 1/4, categories 3/3) | 3/7 (macros 2/4, categories 1/3) |
 | D_macro / D_category | 0.95 / 0.00 | 0.26 / 2.88 |
 | Ingredients used / meaningful | 5 / 5 | 3 / 3 |
-| Solve time | — | 156.0 ms |
+| Solve time | — | 133.0 ms |
 
 ### default:chicken/molting
 
@@ -610,50 +606,49 @@ Profile: Chicken → Molting Season. Optimizer status `best_attainable`; verdict
 | Targets met | 4/7 (macros 1/4, categories 3/3) | 3/7 (macros 2/4, categories 1/3) |
 | D_macro / D_category | 0.95 / 0.00 | 0.26 / 2.88 |
 | Ingredients used / meaningful | 5 / 5 | 3 / 3 |
-| Solve time | — | 154.0 ms |
+| Solve time | — | 110.0 ms |
 
 ### issue85:pigeon/pet (#85)
 
-Profile: Pigeon → Pet/Companion. Optimizer status `best_attainable`; verdict **improves**; displayed: optimizer; completed runs identical: yes.
+Profile: Pigeon → Pet/Companion. Optimizer status `feasible`; verdict **improves**; displayed: optimizer; completed runs identical: yes.
 
-- Greedy mix: wheat 610, chickpeas 200, chia 100, corn_yellow 80, milo 10
-- Optimizer mix: milo 557, peas 250, corn_yellow 140, chia 42, wheat 11
-- Draft notice lines shown: “Grains (above range): your ingredients can't meet it together with the other ranges.” “Seeds (below range): your ingredients can't meet it together with the other ranges.”
+- Greedy mix: wheat 570, chickpeas 200, milo 120, canola 90, chia 10, corn_yellow 10
+- Optimizer mix: milo 337, corn_yellow 335, peas 236, chia 35, wheat 28, niger 8, canola 7, chickpeas 7, lentils 4, lentils_brown 3
 
 | Range | Greedy | Optimizer |
 | --- | --- | --- |
-| Protein % | **14.56** (12–14) MISS | 14.00 (12–14) ok |
-| Carbs % | 66.20 (60–70) ok | 68.29 (60–70) ok |
-| Fat % | **5.91** (2.5–4) MISS | 4.00 (2.5–4) ok |
-| Fiber % | **5.70** (0–5) MISS | 4.38 (0–5) ok |
-| Grain share % | 70.0 (55–70) ok | **70.8** (55–70) MISS |
+| Protein % | **14.88** (12–14) MISS | 13.73 (12–14) ok |
+| Carbs % | 64.73 (60–70) ok | 67.52 (60–70) ok |
+| Fat % | **6.66** (2.5–5) MISS | 4.66 (2.5–5) ok |
+| Fiber % | 3.50 (0–5) ok | 4.23 (0–5) ok |
+| Grain share % | 70.0 (55–70) ok | 70.0 (55–70) ok |
 | Legume share % | 20.0 (15–25) ok | 25.0 (15–25) ok |
-| Seed share % | 10.0 (5–15) ok | **4.2** (5–15) MISS |
-| Targets met | 4/7 (macros 1/4, categories 3/3) | 5/7 (macros 4/4, categories 1/3) |
-| D_macro / D_category | 1.69 / 0.00 | 0.00 / 0.13 |
-| Ingredients used / meaningful | 5 / 5 | 5 / 5 |
-| Solve time | — | 144.0 ms |
+| Seed share % | 10.0 (5–15) ok | 5.0 (5–15) ok |
+| Targets met | 5/7 (macros 2/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) |
+| D_macro / D_category | 1.10 / 0.00 | 0.00 / 0.00 |
+| Ingredients used / meaningful | 6 / 6 | 10 / 8 |
+| Solve time | — | 146.0 ms |
 
 ### issue85-stock:pigeon/winter (#73 (variant))
 
 Profile: Pigeon → Winter Season. Optimizer status `feasible`; verdict **improves**; displayed: optimizer; completed runs identical: yes.
 
-- Greedy mix: wheat 570, chickpeas 200, milo 120, canola 100, corn_yellow 10
-- Optimizer mix: corn_yellow 519, peas 245, wheat 153, niger 73, chickpeas 5, milo 5
+- Greedy mix: wheat 570, chickpeas 200, milo 120, canola 90, chia 10, corn_yellow 10
+- Optimizer mix: corn_yellow 338, milo 338, chickpeas 231, canola 25, wheat 24, hemp_hearts 20, niger 8, peas 8, lentils 4, lentils_brown 4
 
 | Range | Greedy | Optimizer |
 | --- | --- | --- |
-| Protein % | **14.90** (12–14) MISS | 13.98 (12–14) ok |
-| Carbs % | 64.55 (55–65) ok | 64.92 (55–65) ok |
-| Fat % | **6.75** (4–6) MISS | 5.97 (4–6) ok |
-| Fiber % | 3.25 (0–5) ok | 3.83 (0–5) ok |
-| Grain share % | 70.0 (55–70) ok | 67.7 (55–70) ok |
-| Legume share % | 20.0 (15–25) ok | 25.0 (15–25) ok |
-| Seed share % | 10.0 (5–15) ok | 7.3 (5–15) ok |
-| Targets met | 5/7 (macros 2/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) |
-| D_macro / D_category | 0.82 / 0.00 | 0.00 / 0.00 |
-| Ingredients used / meaningful | 5 / 5 | 6 / 6 |
-| Solve time | — | 243.0 ms |
+| Protein % | **14.88** (12–14) MISS | 13.16 (12–14) ok |
+| Carbs % | 64.73 (62–72) ok | 67.09 (62–72) ok |
+| Fat % | 6.66 (5–8) ok | 6.29 (5–8) ok |
+| Fiber % | 3.50 (0–5) ok | 2.89 (0–5) ok |
+| Grain share % | 70.0 (55–70) ok | 70.0 (55–70) ok |
+| Legume share % | 20.0 (15–25) ok | 24.7 (15–25) ok |
+| Seed share % | 10.0 (5–15) ok | 5.3 (5–15) ok |
+| Targets met | 6/7 (macros 3/4, categories 3/3) | 7/7 (macros 4/4, categories 3/3) |
+| D_macro / D_category | 0.44 / 0.00 | 0.00 / 0.00 |
+| Ingredients used / meaningful | 6 / 6 | 10 / 8 |
+| Solve time | — | 153.0 ms |
 
 ### catalog:pigeon/maintenance
 
@@ -674,28 +669,28 @@ Profile: Pigeon → Maintenance/Rest. Optimizer status `timeout`; verdict **no_r
 | Targets met | 7/7 (macros 4/4, categories 3/3) | — |
 | D_macro / D_category | 0.00 / 0.00 | — |
 | Ingredients used / meaningful | 10 / 10 | — |
-| Solve time | — | 507.0 ms |
+| Solve time | — | 513.0 ms |
 
 ### catalog:pigeon/racing
 
 Profile: Pigeon → Racing/Competition. Optimizer status `timeout`; verdict **no_result**; displayed: greedy; completed runs identical: yes.
 
-- Greedy mix: spelt 430, oat_groats 240, adzuki_beans 100, millet 100, chickpeas 50, lupins 50, rye 10, wheat 10, wheat_hard_red 10
+- Greedy mix: oat_groats 390, spelt 280, chickpeas 120, millet 90, adzuki_beans 40, lupins 30, pepitas 10, rye 10, split_peas 10, wheat 10, wheat_hard_red 10
 - Optimizer mix: (none — timeout)
 
 | Range | Greedy | Optimizer |
 | --- | --- | --- |
-| Protein % | 16.80 (16–18) ok | — |
-| Carbs % | **66.77** (55–65) MISS | — |
-| Fat % | 4.01 (3–5) ok | — |
-| Fiber % | 3.73 (0–5) ok | — |
+| Protein % | 16.95 (16–18) ok | — |
+| Carbs % | 65.86 (58–68) ok | — |
+| Fat % | 5.35 (4–6) ok | — |
+| Fiber % | 3.72 (0–5) ok | — |
 | Grain share % | 70.0 (55–70) ok | — |
 | Legume share % | 20.0 (15–25) ok | — |
 | Seed share % | 10.0 (5–15) ok | — |
-| Targets met | 6/7 (macros 3/4, categories 3/3) | — |
-| D_macro / D_category | 0.18 / 0.00 | — |
-| Ingredients used / meaningful | 9 / 9 | — |
-| Solve time | — | 506.0 ms |
+| Targets met | 7/7 (macros 4/4, categories 3/3) | — |
+| D_macro / D_category | 0.00 / 0.00 | — |
+| Ingredients used / meaningful | 11 / 11 | — |
+| Solve time | — | 507.0 ms |
 
 ### catalog:pigeon/breeding
 
@@ -716,70 +711,70 @@ Profile: Pigeon → Breeding. Optimizer status `timeout`; verdict **no_result**;
 | Targets met | 6/7 (macros 3/4, categories 3/3) | — |
 | D_macro / D_category | 0.06 / 0.00 | — |
 | Ingredients used / meaningful | 9 / 9 | — |
-| Solve time | — | 508.0 ms |
+| Solve time | — | 509.0 ms |
 
 ### catalog:pigeon/molting
 
 Profile: Pigeon → Molting Season. Optimizer status `timeout`; verdict **no_result**; displayed: greedy; completed runs identical: yes.
 
-- Greedy mix: spelt 390, oat_groats 280, millet 100, adzuki_beans 80, chickpeas 70, lupins 40, lentils_red 10, rye 10, wheat 10, wheat_hard_red 10
+- Greedy mix: oat_groats 390, spelt 280, chickpeas 120, millet 90, adzuki_beans 40, lupins 30, pepitas 10, rye 10, split_peas 10, wheat 10, wheat_hard_red 10
 - Optimizer mix: (none — timeout)
 
 | Range | Greedy | Optimizer |
 | --- | --- | --- |
-| Protein % | 16.76 (16–18) ok | — |
-| Carbs % | **66.80** (55–65) MISS | — |
-| Fat % | 4.22 (3.5–5) ok | — |
-| Fiber % | 3.70 (0–5) ok | — |
+| Protein % | 16.95 (16–18) ok | — |
+| Carbs % | 65.86 (58–68) ok | — |
+| Fat % | 5.35 (4–6) ok | — |
+| Fiber % | 3.72 (0–5) ok | — |
 | Grain share % | 70.0 (55–70) ok | — |
 | Legume share % | 20.0 (15–25) ok | — |
 | Seed share % | 10.0 (5–15) ok | — |
-| Targets met | 6/7 (macros 3/4, categories 3/3) | — |
-| D_macro / D_category | 0.18 / 0.00 | — |
-| Ingredients used / meaningful | 10 / 10 | — |
-| Solve time | — | 511.0 ms |
+| Targets met | 7/7 (macros 4/4, categories 3/3) | — |
+| D_macro / D_category | 0.00 / 0.00 | — |
+| Ingredients used / meaningful | 11 / 11 | — |
+| Solve time | — | 507.0 ms |
 
 ### catalog:pigeon/winter
 
 Profile: Pigeon → Winter Season. Optimizer status `timeout`; verdict **no_result**; displayed: greedy; completed runs identical: yes.
 
-- Greedy mix: popcorn 290, chickpeas 180, oat_groats 170, corn_white 160, millet 150, adzuki_beans 30, corn_red 10, oats 10
+- Greedy mix: popcorn 460, chickpeas 200, oat_groats 110, corn_red 100, millet 60, sesame 30, canola 10, corn_yellow 10, oats 10, triticale 10
 - Optimizer mix: (none — timeout)
 
 | Range | Greedy | Optimizer |
 | --- | --- | --- |
-| Protein % | 13.99 (12–14) ok | — |
-| Carbs % | **69.40** (55–65) MISS | — |
-| Fat % | 4.87 (4–6) ok | — |
-| Fiber % | 3.41 (0–5) ok | — |
-| Grain share % | 64.0 (55–70) ok | — |
-| Legume share % | 21.0 (15–25) ok | — |
-| Seed share % | 15.0 (5–15) ok | — |
+| Protein % | **14.30** (12–14) MISS | — |
+| Carbs % | 68.11 (62–72) ok | — |
+| Fat % | 6.53 (5–8) ok | — |
+| Fiber % | 3.19 (0–5) ok | — |
+| Grain share % | 70.0 (55–70) ok | — |
+| Legume share % | 20.0 (15–25) ok | — |
+| Seed share % | 10.0 (5–15) ok | — |
 | Targets met | 6/7 (macros 3/4, categories 3/3) | — |
-| D_macro / D_category | 0.44 / 0.00 | — |
-| Ingredients used / meaningful | 8 / 8 | — |
+| D_macro / D_category | 0.15 / 0.00 | — |
+| Ingredients used / meaningful | 10 / 10 | — |
 | Solve time | — | 507.0 ms |
 
 ### catalog:pigeon/pet
 
 Profile: Pigeon → Pet/Companion. Optimizer status `timeout`; verdict **no_result**; displayed: greedy; completed runs identical: yes.
 
-- Greedy mix: popcorn 360, triticale 130, adzuki_beans 100, chickpeas 100, millet 100, kaffir_corn 90, spelt 90, buckwheat 20, wheat 10
+- Greedy mix: popcorn 540, chickpeas 120, millet 100, adzuki_beans 80, spelt 50, kaffir_corn 40, oats 20, barley 10, buckwheat 10, triticale 10, wheat 10, wheat_hard_red 10
 - Optimizer mix: (none — timeout)
 
 | Range | Greedy | Optimizer |
 | --- | --- | --- |
-| Protein % | **14.11** (12–14) MISS | — |
-| Carbs % | **70.72** (60–70) MISS | — |
-| Fat % | 3.33 (2.5–4) ok | — |
-| Fiber % | 3.12 (0–5) ok | — |
+| Protein % | **14.09** (12–14) MISS | — |
+| Carbs % | **70.95** (60–70) MISS | — |
+| Fat % | 3.79 (2.5–5) ok | — |
+| Fiber % | 3.19 (0–5) ok | — |
 | Grain share % | 70.0 (55–70) ok | — |
 | Legume share % | 20.0 (15–25) ok | — |
 | Seed share % | 10.0 (5–15) ok | — |
 | Targets met | 5/7 (macros 2/4, categories 3/3) | — |
-| D_macro / D_category | 0.12 / 0.00 | — |
-| Ingredients used / meaningful | 9 / 9 | — |
-| Solve time | — | 508.0 ms |
+| D_macro / D_category | 0.14 / 0.00 | — |
+| Ingredients used / meaningful | 12 / 12 | — |
+| Solve time | — | 506.0 ms |
 
 ### catalog:parrot/pet
 
@@ -800,7 +795,7 @@ Profile: Parrot → Pet/Companion. Optimizer status `timeout`; verdict **no_resu
 | Targets met | 6/7 (macros 3/4, categories 3/3) | — |
 | D_macro / D_category | 0.12 / 0.00 | — |
 | Ingredients used / meaningful | 9 / 9 | — |
-| Solve time | — | 511.0 ms |
+| Solve time | — | 510.0 ms |
 
 ### catalog:parrot/breeding
 
@@ -821,7 +816,7 @@ Profile: Parrot → Breeding. Optimizer status `timeout`; verdict **no_result**;
 | Targets met | 6/7 (macros 3/4, categories 3/3) | — |
 | D_macro / D_category | 0.20 / 0.00 | — |
 | Ingredients used / meaningful | 9 / 9 | — |
-| Solve time | — | 510.0 ms |
+| Solve time | — | 508.0 ms |
 
 ### catalog:parrot/molting
 
@@ -884,7 +879,7 @@ Profile: African Grey → Breeding. Optimizer status `timeout`; verdict **no_res
 | Targets met | 5/7 (macros 2/4, categories 3/3) | — |
 | D_macro / D_category | 0.25 / 0.00 | — |
 | Ingredients used / meaningful | 12 / 12 | — |
-| Solve time | — | 507.0 ms |
+| Solve time | — | 506.0 ms |
 
 ### catalog:african_grey/molting
 
@@ -905,7 +900,7 @@ Profile: African Grey → Molting Season. Optimizer status `timeout`; verdict **
 | Targets met | 6/7 (macros 3/4, categories 3/3) | — |
 | D_macro / D_category | 0.29 / 0.00 | — |
 | Ingredients used / meaningful | 11 / 11 | — |
-| Solve time | — | 505.0 ms |
+| Solve time | — | 507.0 ms |
 
 ### catalog:budgie/pet
 
@@ -926,7 +921,7 @@ Profile: Budgie → Pet/Companion. Optimizer status `timeout`; verdict **no_resu
 | Targets met | 6/7 (macros 3/4, categories 3/3) | — |
 | D_macro / D_category | 0.00 / 0.00 | — |
 | Ingredients used / meaningful | 9 / 9 | — |
-| Solve time | — | 507.0 ms |
+| Solve time | — | 510.0 ms |
 
 ### catalog:budgie/breeding
 
@@ -947,7 +942,7 @@ Profile: Budgie → Breeding. Optimizer status `timeout`; verdict **no_result**;
 | Targets met | 6/7 (macros 3/4, categories 3/3) | — |
 | D_macro / D_category | 0.06 / 0.00 | — |
 | Ingredients used / meaningful | 9 / 9 | — |
-| Solve time | — | 506.0 ms |
+| Solve time | — | 511.0 ms |
 
 ### catalog:budgie/molting
 
@@ -968,7 +963,7 @@ Profile: Budgie → Molting Season. Optimizer status `timeout`; verdict **no_res
 | Targets met | 6/7 (macros 3/4, categories 3/3) | — |
 | D_macro / D_category | 0.18 / 0.00 | — |
 | Ingredients used / meaningful | 9 / 9 | — |
-| Solve time | — | 505.0 ms |
+| Solve time | — | 506.0 ms |
 
 ### catalog:canary/pet
 
@@ -989,7 +984,7 @@ Profile: Canary → Pet/Companion. Optimizer status `timeout`; verdict **no_resu
 | Targets met | 7/7 (macros 4/4, categories 3/3) | — |
 | D_macro / D_category | 0.00 / 0.00 | — |
 | Ingredients used / meaningful | 11 / 11 | — |
-| Solve time | — | 507.0 ms |
+| Solve time | — | 508.0 ms |
 
 ### catalog:canary/breeding
 
@@ -1010,7 +1005,7 @@ Profile: Canary → Breeding. Optimizer status `timeout`; verdict **no_result**;
 | Targets met | 7/7 (macros 4/4, categories 3/3) | — |
 | D_macro / D_category | 0.00 / 0.00 | — |
 | Ingredients used / meaningful | 9 / 9 | — |
-| Solve time | — | 506.0 ms |
+| Solve time | — | 515.0 ms |
 
 ### catalog:canary/molting
 
@@ -1031,7 +1026,7 @@ Profile: Canary → Molting Season. Optimizer status `timeout`; verdict **no_res
 | Targets met | 6/7 (macros 3/4, categories 3/3) | — |
 | D_macro / D_category | 0.00 / 0.00 | — |
 | Ingredients used / meaningful | 10 / 10 | — |
-| Solve time | — | 505.0 ms |
+| Solve time | — | 508.0 ms |
 
 ### catalog:chicken/pet
 
@@ -1052,7 +1047,7 @@ Profile: Chicken → Pet/Companion. Optimizer status `timeout`; verdict **no_res
 | Targets met | 7/7 (macros 4/4, categories 3/3) | — |
 | D_macro / D_category | 0.00 / 0.00 | — |
 | Ingredients used / meaningful | 9 / 9 | — |
-| Solve time | — | 507.0 ms |
+| Solve time | — | 516.0 ms |
 
 ### catalog:chicken/egg_laying
 
@@ -1073,7 +1068,7 @@ Profile: Chicken → Egg-laying. Optimizer status `timeout`; verdict **no_result
 | Targets met | 6/7 (macros 3/4, categories 3/3) | — |
 | D_macro / D_category | 0.09 / 0.00 | — |
 | Ingredients used / meaningful | 10 / 10 | — |
-| Solve time | — | 507.0 ms |
+| Solve time | — | 509.0 ms |
 
 ### catalog:chicken/molting
 
@@ -1094,5 +1089,5 @@ Profile: Chicken → Molting Season. Optimizer status `timeout`; verdict **no_re
 | Targets met | 6/7 (macros 3/4, categories 3/3) | — |
 | D_macro / D_category | 0.09 / 0.00 | — |
 | Ingredients used / meaningful | 10 / 10 | — |
-| Solve time | — | 508.0 ms |
+| Solve time | — | 506.0 ms |
 

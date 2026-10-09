@@ -50,8 +50,10 @@ const issue85Inventory = Object.fromEntries(
 // ingredient fibre with Feedipedia as-fed crude fibre, so greedy now picks chia over
 // canola and drops peas. The current greedy output is pinned here so the comparison
 // still fails if the #85 scenario inventory or the greedy calculator drifts.
+// Re-pinned after #248 widened the pigeon/pet fat ceiling (2.5-4% to 2.5-5%), which changes the greedy
+// mix for this pigeon/pet inventory (wheat 570, milo 120, corn_yellow 10, chickpeas 200, canola 90, chia 10).
 const issue85ReportedGreedy = { wheat: 610, chickpeas: 190, canola: 100, corn_yellow: 80, milo: 10, peas: 10 };
-const issue85CurrentGreedy = { wheat: 610, chickpeas: 200, chia: 100, corn_yellow: 80, milo: 10 };
+const issue85CurrentGreedy = { wheat: 570, milo: 120, corn_yellow: 10, chickpeas: 200, canola: 90, chia: 10 };
 const fullCatalogInventory = Object.fromEntries(Object.keys(INGREDIENTS).sort().map((id) => [id, 1000]));
 
 const scenarios = [];

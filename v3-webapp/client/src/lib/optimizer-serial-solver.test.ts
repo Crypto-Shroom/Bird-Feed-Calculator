@@ -195,7 +195,9 @@ describe("serial staged optimizer with real HiGHS", () => {
   });
 
   it("returns best_attainable with locked macro deviation before category deviation when ranges cannot all be met", async () => {
-    const model = profileModel("pigeon", "racing", getProfileDefaultIngredients("pigeon", "racing"), 1_000);
+    // Racing needs at least 16% protein; with only 30 g of peas in stock no mix can reach it, so the ranges cannot all be met.
+    // (The standard racing formula itself became feasible when #248 widened the pigeon carbohydrate and fat ranges.)
+    const model = profileModel("pigeon", "racing", { wheat: 1_000, corn_yellow: 1_000, peas: 30 }, 1_000);
     const result = await solve(model);
 
     expect(result.status).toBe("best_attainable");

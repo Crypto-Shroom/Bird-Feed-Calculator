@@ -1,7 +1,7 @@
 import { createRequire } from "node:module";
 import { beforeAll, describe, expect, it } from "vitest";
 
-import { BIRD_PROFILES, getCategoryTargets, type BirdType } from "./birds";
+import { BIRD_PROFILES, getCategoryTargets, type BirdType, type NutritionTarget } from "./birds";
 import { adaptExactFeasibilityResult } from "./optimizer-adapter";
 import { OPTIMIZER_FALLBACK_COPY, formatOptimizerFallbackMiss } from "./optimizer-copy";
 import { explainBestAttainable } from "./optimizer-explain";
@@ -12,11 +12,15 @@ import { solveSerialStages, type HighsSolverLike } from "./optimizer-serial-solv
 const require = createRequire(import.meta.url);
 const createNodeHighs = require("highs") as () => Promise<HighsSolverLike>;
 
-function modelFor(bird: BirdType, situation: string, inventory: Record<string, number>): OptimizerModel {
+// The pigeon/pet fixtures below need a scenario with no valid mix. Pigeon pet became feasible when #248 widened its fat
+// ceiling, so they pin the earlier ceiling (2.5-4%) explicitly instead of relying on the live profile.
+const PET_FAT_BEFORE_248: Partial<NutritionTarget> = { fat: [2.5, 4] };
+
+function modelFor(bird: BirdType, situation: string, inventory: Record<string, number>, macroOverride: Partial<NutritionTarget> = {}): OptimizerModel {
   return buildExactFeasibilityModel({
     candidates: buildBrowserOptimizerCandidates(inventory, bird),
     requestedTargetGrams: 1_000,
-    macroRanges: BIRD_PROFILES[bird].profiles[situation].nutrition,
+    macroRanges: { ...BIRD_PROFILES[bird].profiles[situation].nutrition, ...macroOverride },
     categoryRanges: getCategoryTargets(bird),
   });
 }
@@ -27,15 +31,15 @@ describe("best-attainable fallback explanation", () => {
     highs = await createNodeHighs();
   });
 
-  const solveFallback = async (bird: BirdType, situation: string, inventory: Record<string, number>) => {
-    const model = modelFor(bird, situation, inventory);
+  const solveFallback = async (bird: BirdType, situation: string, inventory: Record<string, number>, macroOverride: Partial<NutritionTarget> = {}) => {
+    const model = modelFor(bird, situation, inventory, macroOverride);
     const result = await solveSerialStages(highs, model, { timeBudgetMs: 30_000 });
     expect(result.status).toBe("best_attainable");
     return { model, result, explanation: explainBestAttainable({ model, mix: result.quantities, requestedTargetGrams: 1_000, safetyExcludedIds: [] }) };
   };
 
   it("names exactly the ranges the fallback mix misses, matching the adapter's range check", async () => {
-    const { model, result, explanation } = await solveFallback("pigeon", "pet", { wheat: 1_000, corn_yellow: 1_000, peas: 1_000, safflower: 1_000 });
+    const { model, result, explanation } = await solveFallback("pigeon", "pet", { wheat: 1_000, corn_yellow: 1_000, peas: 1_000, safflower: 1_000 }, PET_FAT_BEFORE_248);
     const adapted = adaptExactFeasibilityResult(
       { type: "result", requestId: "pigeon-pet", status: "best_attainable", quantities: result.quantities, elapsedMs: 1 },
       model,
@@ -65,7 +69,7 @@ describe("best-attainable fallback explanation", () => {
   });
 
   it("marks a range as 'not together' when the inventory could meet it alone", async () => {
-    const { explanation } = await solveFallback("pigeon", "pet", { wheat: 1_000, corn_yellow: 1_000, peas: 1_000, safflower: 1_000 });
+    const { explanation } = await solveFallback("pigeon", "pet", { wheat: 1_000, corn_yellow: 1_000, peas: 1_000, safflower: 1_000 }, PET_FAT_BEFORE_248);
     const seed = explanation.misses.find(({ key }) => key === "seed");
     expect(seed).toMatchObject({ direction: "below", reason: "not_together" });
   });
