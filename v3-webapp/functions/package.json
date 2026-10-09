@@ -19,7 +19,7 @@
     "jsonwebtoken": "^9.0.3"
   },
   "devDependencies": {
-    "typescript": "^5.4.0"
+    "typescript": "^7.0.2"
   },
   "private": true
 }
