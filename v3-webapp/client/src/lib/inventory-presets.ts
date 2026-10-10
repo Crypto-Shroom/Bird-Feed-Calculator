@@ -25,15 +25,15 @@ const africanGrey: Record<string, Inventory> = {
 };
 
 const budgie: Record<string, Inventory> = {
-  pet: { millet: 1800, millet_red: 600, millet_silver: 500, oats: 800, linseed: 150, niger: 100 },
-  breeding: { millet: 1600, millet_red: 500, oats: 800, lentils: 300, hemp_hearts: 200, niger: 150, linseed: 150 },
-  molting: { millet: 1600, millet_red: 500, oats: 800, lentils: 300, hemp_hearts: 200, niger: 150, linseed: 150 },
+  pet: { millet: 1000, canary_seed: 800, millet_red: 600, millet_silver: 500, oats: 800, linseed: 150, niger: 100 },
+  breeding: { millet: 800, canary_seed: 800, millet_red: 500, oats: 800, lentils: 300, hemp_hearts: 200, niger: 150, linseed: 150 },
+  molting: { millet: 800, canary_seed: 800, millet_red: 500, oats: 800, lentils: 300, hemp_hearts: 200, niger: 150, linseed: 150 },
 };
 
 const canary: Record<string, Inventory> = {
-  pet: { millet: 1800, oats: 900, niger: 500, canola: 500, linseed: 300, hemp_hearts: 200 },
-  breeding: { millet: 1500, oats: 900, niger: 600, canola: 600, linseed: 300, hemp_hearts: 500 },
-  molting: { millet: 1500, oats: 900, niger: 600, canola: 600, linseed: 300, hemp_hearts: 500 },
+  pet: { canary_seed: 1200, millet: 600, oats: 900, niger: 500, canola: 500, linseed: 300, hemp_hearts: 200 },
+  breeding: { canary_seed: 1000, millet: 500, oats: 900, niger: 600, canola: 600, linseed: 300, hemp_hearts: 500 },
+  molting: { canary_seed: 1000, millet: 500, oats: 900, niger: 600, canola: 600, linseed: 300, hemp_hearts: 500 },
 };
 
 const chicken: Record<string, Inventory> = {

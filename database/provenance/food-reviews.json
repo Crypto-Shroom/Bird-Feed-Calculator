@@ -7396,6 +7396,114 @@
           }
         }
       ]
+    },
+    {
+      "ingredientId": "canary_seed",
+      "ingredientDisplayName": "Canary seed",
+      "form": "plain whole canary seed (Phalaris canariensis), hulled, unflavoured",
+      "lastReviewedAt": "2026-10-10",
+      "nutrition": {
+        "sourceIds": [
+          "urbizo-reyes-hairless-canaryseed-2021",
+          "conestogo-canary-seed-2026"
+        ],
+        "basis": "not_asserted",
+        "notes": "Per 100 g as fed, whole hairless canary seed: protein 15.63, lipids 5.24, carbohydrate by difference 62.88 (Urbizo-Reyes et al. Table 1). No crude-fibre figure exists; the manufacturer label's 7.5% fibre is not identified as crude or dietary. Ordinary hairy bird-seed canary seed has no published full analysis found."
+      },
+      "processing": {
+        "sourceIds": [
+          "conestogo-canary-seed-2026"
+        ],
+        "rule": "Review plain whole canary seed only, free of mould, dust and additives. Canary seed is a small grass seed, not an oil seed. The label warns that an abundance of canary seed in a low-fat diet may lead to deficiencies in some species and individuals.",
+        "severity": "warning"
+      },
+      "speciesEvidence": [
+        {
+          "bird": "pigeon",
+          "outcome": "limited",
+          "sourceIds": [
+            "versele-premium-super-condition-2026",
+            "vca-pigeon-dove-feeding"
+          ],
+          "locator": "Versele-Laga Premium Super Condition racing-pigeon mix lists canary seed 4%; VCA pigeon/dove feeding (general seed guidance)",
+          "evidenceScope": "species_specific",
+          "rationale": "A manufacturer racing mix contains canary seed as a minor component. No veterinary source names canary seed for pigeons and no harm report was found. Owner decision 2026-10-10 (#288): no cap is applied because no harm to birds was found; manufacturer-only evidence would otherwise support only a capped limited outcome.",
+          "reviewedAt": "2026-10-10",
+          "firstPassSearch": null,
+          "followUpSearch": null
+        },
+        {
+          "bird": "parrot",
+          "outcome": "limited",
+          "sourceIds": [
+            "conestogo-canary-seed-2026",
+            "merck-psittacines-2025"
+          ],
+          "locator": "Conestogo label: most species up to 20%; Merck psittacine seed-diet context",
+          "evidenceScope": "group_specific",
+          "rationale": "Only a retailer label names a share (up to 20% for most species). Veterinary sources warn that seed-heavy diets lack vitamins and amino acids but do not name canary seed. No harm report was found. Owner decision 2026-10-10 (#288): no cap is applied because no harm to birds was found; manufacturer-only evidence would otherwise support only a capped limited outcome.",
+          "reviewedAt": "2026-10-10",
+          "firstPassSearch": null,
+          "followUpSearch": null
+        },
+        {
+          "bird": "african_grey",
+          "outcome": "limited",
+          "sourceIds": [
+            "vca-african-grey-feeding",
+            "conestogo-canary-seed-2026"
+          ],
+          "locator": "VCA African Grey feeding: seeds should only be 20-40% of a balanced diet; Conestogo label share for most species",
+          "evidenceScope": "group_specific",
+          "rationale": "VCA limits seed overall (20-40% of the diet) and does not name canary seed; the retailer label is not specific to African Greys. No harm report was found. Owner decision 2026-10-10 (#288): no cap is applied because no harm to birds was found; manufacturer-only evidence would otherwise support only a capped limited outcome.",
+          "reviewedAt": "2026-10-10",
+          "firstPassSearch": null,
+          "followUpSearch": null
+        },
+        {
+          "bird": "budgie",
+          "outcome": "limited",
+          "sourceIds": [
+            "versele-budgies-english-mixture-5050-2026",
+            "vca-budgie-feeding"
+          ],
+          "locator": "Versele-Laga Prestige Budgies English Mixture: blend of 50% canary seed and 50% millet; VCA budgie feeding (seed is high in fat)",
+          "evidenceScope": "species_specific",
+          "rationale": "A manufacturer budgie mix is half canary seed. VCA warns that seed mixes are high in fat and low in protein but does not name canary seed. No harm report was found. Owner decision 2026-10-10 (#288): no cap is applied because no harm to birds was found; manufacturer-only evidence would otherwise support only a capped limited outcome.",
+          "reviewedAt": "2026-10-10",
+          "firstPassSearch": null,
+          "followUpSearch": null
+        },
+        {
+          "bird": "canary",
+          "outcome": "allowed",
+          "sourceIds": [
+            "merck-passerines-2025",
+            "vlaanderen-kanarie-2026",
+            "vca-canary-feeding"
+          ],
+          "locator": "Merck: commercial canary seed mixtures often contain canary seed with rapeseed, niger, hemp, linseed and oats; Flemish government pet guide lists canary seed as a daily food",
+          "evidenceScope": "species_specific",
+          "rationale": "A veterinary reference and a government pet guide name canary seed as a normal canary food. Seed-based diets are high in fat; no share is given.",
+          "reviewedAt": "2026-10-10",
+          "firstPassSearch": null,
+          "followUpSearch": null
+        },
+        {
+          "bird": "chicken",
+          "outcome": "limited",
+          "sourceIds": [
+            "thepoultrysite-hairless-canary-seed-broilers-2015",
+            "merck-poultry-2024"
+          ],
+          "locator": "Broiler trial (summary of Classen et al. 2014): hulled hairless canary seed at 0, 15, 30 and 45% of the diet",
+          "evidenceScope": "species_specific",
+          "rationale": "A University of Saskatchewan broiler trial tested up to 45% of the diet and concluded hairless canary seed is safe for poultry feeding. Broilers only, hairless hulled seed, no layer data. The runtime cap is 45%, the tested maximum.",
+          "reviewedAt": "2026-10-10",
+          "firstPassSearch": null,
+          "followUpSearch": null
+        }
+      ]
     }
   ]
 }

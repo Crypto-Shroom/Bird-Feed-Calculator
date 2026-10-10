@@ -3,9 +3,9 @@ import { INGREDIENTS } from "./ingredient-records";
 import baselineFixture from "./ingredient-records-baseline.fixture.json";
 
 describe("Ingredient Records Parity & Completeness Tests", () => {
-  it("adapter output deep-equals frozen baseline fixture for all 73 ingredients", () => {
+  it("adapter output deep-equals frozen baseline fixture for all 74 ingredients", () => {
     expect(INGREDIENTS).toEqual(baselineFixture);
-    expect(Object.keys(INGREDIENTS)).toHaveLength(73);
+    expect(Object.keys(INGREDIENTS)).toHaveLength(74);
   });
 
   it("every record fulfills completeness requirements", () => {

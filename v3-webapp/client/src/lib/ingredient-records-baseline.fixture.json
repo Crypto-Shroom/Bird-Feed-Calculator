@@ -479,6 +479,18 @@
     "fiber": 6.7,
     "notes": "Silver millet"
   },
+  "canary_seed": {
+    "category": "grain",
+    "protein": 15.6,
+    "carbs": 62.9,
+    "fat": 5.2,
+    "fiber": 7.5,
+    "notes": "Plain canary seed; small grain-like seed, staple of canary and budgie mixes",
+    "maxSharePercent": {
+      "chicken": 45
+    },
+    "maxShareBasis": "sourced"
+  },
   "canola": {
     "category": "seed",
     "protein": 20,
