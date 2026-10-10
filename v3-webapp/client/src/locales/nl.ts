@@ -24,7 +24,7 @@ export const nl: TranslationKeys = {
     description: "Stel de huidige situatie van je {bird} in om geoptimaliseerde doelen te krijgen.",
     situationLabel: "Huidige situatie",
     suggestProfile: "Profiel voorstellen",
-    targetBatchSize: "Gewenste hoeveelheid",
+    targetBatchSize: "Doelhoeveelheid",
     water: "Water",
     grit: "Maagkiezel (Grit)",
     light: "Licht",
