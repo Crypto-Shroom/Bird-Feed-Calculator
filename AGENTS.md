@@ -36,6 +36,7 @@
 Rules for delegated work, especially Jules:
 
 - A Jules task starts when the `jules` label is added to an issue; the issue body is the whole specification. Only label a focused issue that states the exact files, acceptance criteria, and checks to run. Never label a parent issue, an issue whose work has already merged, or a research issue that needs new external sources.
+- A Jules issue states its deliverable: "implementation" (with the files, the exact before-and-after text, and the checks) or "research only". A report that needs both stays in one issue: research and options first, then the owner's approval comment on that same issue authorizes the implementation, with no second issue. A research-only PR uses `Relates to #<issue>` and the issue stays open until the change is merged.
 - Before starting, check that the issue's work is not already on `main` or in an open PR. If it is, comment on the issue instead of opening a PR.
 - Do not open a PR with no file changes. Use `Relates to #<issue>` when the PR does not finish the whole issue; `Closes`/`Fixes` would close it on merge.
 - Do not commit build output (`v3-webapp/dist/`), and do not touch V0–V2 or `archive/`.
