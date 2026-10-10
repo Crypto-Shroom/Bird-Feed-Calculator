@@ -43,6 +43,7 @@ export const de: TranslationKeys = {
     suggestNote: "Sendet eine Zutaten-Rechercheanfrage direkt an das Repository.",
     suggestHelpNote: "Reicht eine Rechercheanfrage an den Projektinhaber ein; es werden keine Zutatendaten automatisch geändert.",
     popcornNote: "Popcorn ist nährstoffmäßig nicht dasselbe wie Mais.",
+    canaryLegumeNote: "Hülsenfrüchte werden Kanarienvögeln normalerweise nicht gefüttert",
     emptyPrompt: "Füge kompatible Zutaten hinzu, um eine Mengenschätzung zu erstellen.",
     amountInGrams: "{name}-Menge in Gramm",
     removeIngredient: "{name} entfernen",

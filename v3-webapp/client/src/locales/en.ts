@@ -41,6 +41,7 @@ export const en = {
     suggestNote: "Submits an ingredient research request directly to the repository.",
     suggestHelpNote: "Submits a research request assigned to the project owner; no ingredient data changes automatically.",
     popcornNote: "Popcorn is not the same as corn nutritionally.",
+    canaryLegumeNote: "Legumes are usually not fed to canaries",
     emptyPrompt: "Add compatible ingredients to create a batch estimate.",
     amountInGrams: "{name} amount in grams",
     removeIngredient: "Remove {name}",

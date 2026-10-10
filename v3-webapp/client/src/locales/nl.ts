@@ -43,6 +43,7 @@ export const nl: TranslationKeys = {
     suggestNote: "Stuurt direct een onderzoeksverzoek over een ingrediënt naar de repository.",
     suggestHelpNote: "Stuurt een onderzoeksverzoek dat aan de projecteigenaar wordt toegewezen; er verandert niet automatisch iets aan ingrediëntgegevens.",
     popcornNote: "Popcorn is qua voedingswaarde niet hetzelfde als maïs.",
+    canaryLegumeNote: "Peulvruchten worden aan kanaries meestal niet gevoerd",
     emptyPrompt: "Voeg geschikte ingrediënten toe om een batchschatting te maken.",
     amountInGrams: "{name} hoeveelheid in gram",
     removeIngredient: "Verwijder {name}",
