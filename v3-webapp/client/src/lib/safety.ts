@@ -142,6 +142,18 @@ export const INGREDIENT_PREP: Record<string, IngredientPrep> = {
     preparation: "Remove shells before feeding",
     notes: "Use fresh, plain, unsalted dry-roasted bird-feed peanuts from a reputable aflatoxin-controlled source. Discard damaged, musty, or mouldy nuts. High-fat treat; the calculator balances it when other inventory is available."
   },
+  "almonds": {
+    safetyWarning: true,
+    name: "Almonds",
+    preparation: "Use plain sweet almond kernels only: raw or dry-roasted, unsalted and unflavoured. Never bitter or wild almonds.",
+    notes: "Very high in fat (about 50 %). Treat only, not a staple. Discard rancid nuts."
+  },
+  "pine_nuts": {
+    safetyWarning: true,
+    name: "Pine Nuts",
+    preparation: "Use plain shelled pine nut kernels: raw or dry-roasted, unsalted and unflavoured. Chop to small-seed size for pigeons.",
+    notes: "Very high in fat (about 50-68 %). Treat only, not a staple. Discard rancid or mouldy kernels."
+  },
   "sunflower": {
     name: "Sunflower Seeds",
     preparation: "Can feed with or without hulls",

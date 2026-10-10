@@ -43,7 +43,7 @@ describe("selectDiversitySuggestionCandidate", () => {
   });
   it("never proposes an ingredient whose preparation carries a safety warning (#212)", () => {
     const flagged = Object.keys(INGREDIENT_PREP).filter(hasSafetyPreparationWarning).sort();
-    expect(flagged).toEqual(["adzuki_beans", "chickpeas", "lupins", "peanuts", "peanuts_raw", "peanuts_roasted", "vetch"]);
+    expect(flagged).toEqual(["adzuki_beans", "almonds", "chickpeas", "lupins", "peanuts", "peanuts_raw", "peanuts_roasted", "pine_nuts", "vetch"]);
     for (const name of flagged) expect(INGREDIENTS[name]).toBeDefined();
 
     // Reported case: this pigeon inventory previously suggested raw-toxic adzuki beans.
