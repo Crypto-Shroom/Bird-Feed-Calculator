@@ -54,11 +54,13 @@ import { OPTIMIZER_FALLBACK_COPY, formatOptimizerFallbackMiss } from "@/lib/opti
 import { startBrowserLocalOptimizerSolve } from "@/lib/optimizer-runtime";
 import { cn } from "@/lib/utils";
 import { Link } from "wouter";
+import { useLanguage, LanguageSwitcher } from "@/contexts/LanguageContext";
 
 // Only pigeons and chickens are advised to receive grit; the other birds' care notes advise against routine grit (#215).
 const BIRDS_NEEDING_GRIT_REMINDER: ReadonlySet<BirdType> = new Set<BirdType>(["pigeon", "chicken"]);
 
 export default function Home() {
+  const { t } = useLanguage();
   const [selectedBird, setSelectedBird] = useState<BirdType>("pigeon");
   const [situation, setSituation] = useState("pet");
   const [targetWeight, setTargetWeight] = useState(1000);
@@ -289,20 +291,24 @@ export default function Home() {
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-stone-950/65" />
+        <div className="absolute right-4 top-4 z-20">
+          <LanguageSwitcher />
+        </div>
         <div className="container relative flex h-full flex-col justify-center text-white">
-          <Badge className="mb-4 w-fit border-none bg-emerald-700/95 px-3 py-1 text-sm text-white">v3.0 Multi-Bird Calculator</Badge>
-          <h1 className="max-w-3xl font-display text-4xl font-bold leading-tight md:text-6xl">Precision Nutrition <br />for All Birds</h1>
-          <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">Scientifically optimized seed mixes for pigeons, parrots, budgies, canaries, and more.</p>
+          <Badge className="mb-4 w-fit border-none bg-emerald-700/95 px-3 py-1 text-sm text-white">{t("nav.badge")}</Badge>
+          <h1 className="max-w-3xl font-display text-4xl font-bold leading-tight md:text-6xl">{t("nav.title")}</h1>
+          <p className="mt-4 max-w-2xl text-base text-white/90 md:text-lg">{t("nav.subtitle")}</p>
         </div>
       </header>
 
       <main className="container relative z-10 -mt-14 pb-16">
         <section aria-labelledby="bird-selector-heading" className="mb-8 rounded-xl border bg-card p-5 shadow-lg">
-          <h2 id="bird-selector-heading" className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">Choose a bird</h2>
+          <h2 id="bird-selector-heading" className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">{t("nav.chooseBird")}</h2>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-7">
             {BIRD_TYPES.map((bird) => {
               const profile = BIRD_PROFILES[bird];
               const selected = bird === selectedBird;
+              const birdTranslationKey = bird === "african_grey" ? "common.africanGrey" : `common.${bird}` as const;
               return (
                 <button
                   key={bird}
@@ -315,12 +321,12 @@ export default function Home() {
                   )}
                 >
                   <span aria-hidden="true" className="mb-2 block text-2xl">{profile.icon}</span>
-                  {profile.name}
+                  {t(birdTranslationKey) || profile.name}
                 </button>
               );
             })}
             <IssueSubmitDialog
-              triggerLabel={<><Plus className="h-6 w-6" aria-hidden="true" /><span className="text-sm font-semibold">Suggest bird</span></>}
+              triggerLabel={<><Plus className="h-6 w-6" aria-hidden="true" /><span className="text-sm font-semibold">{t("nav.suggestBird")}</span></>}
               triggerClassName="flex aspect-square min-h-[108px] flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-emerald-300 bg-emerald-50/40 p-4 text-center text-emerald-900 transition-colors hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               defaultTitle="[Bird research] Suggest a bird"
               defaultBody={[
@@ -334,7 +340,7 @@ export default function Home() {
                 "Please research nutrition targets, safe ingredients, toxicity boundaries, and suitable profiles before any calculator data is added.",
               ].join("\n")}
               labels={["needs-research", "bird-request"]}
-              helperText="Suggestions are queued for research and product-owner review. They never add a live calculator bird automatically."
+              helperText={t("reportDialog.footerNote")}
             />
           </div>
         </section>
@@ -343,14 +349,14 @@ export default function Home() {
           <aside className="space-y-6 lg:col-span-5">
             <Card className="border-none shadow-xl">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-2xl"><Bird className="h-6 w-6 text-primary" />{birdProfile.name} profile</CardTitle>
-                <CardDescription>Configure your {birdProfile.name.toLowerCase()}'s current situation to get optimized targets.</CardDescription>
+                <CardTitle className="flex items-center gap-2"><Bird className="h-6 w-6 text-primary" />{t("profiles.heading", { bird: birdProfile.name })}</CardTitle>
+                <CardDescription>{t("profiles.description", { bird: birdProfile.name.toLowerCase() })}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-2">
                   <div className="flex items-end gap-3">
                     <div className="min-w-0 flex-1 space-y-2">
-                      <label htmlFor="situation" className="text-sm font-medium text-muted-foreground">Current situation</label>
+                      <label htmlFor="situation" className="text-sm font-medium text-muted-foreground">{t("profiles.situationLabel")}</label>
                       <Select value={situation} onValueChange={setSituation}>
                         <SelectTrigger id="situation" className="h-12 text-base"><SelectValue /></SelectTrigger>
                         <SelectContent>
@@ -361,7 +367,7 @@ export default function Home() {
                       </Select>
                     </div>
                     <IssueSubmitDialog
-                      triggerLabel={<><Plus className="h-5 w-5" aria-hidden="true" /><span className="sr-only">Suggest profile</span></>}
+                      triggerLabel={<><Plus className="h-5 w-5" aria-hidden="true" /><span className="sr-only">{t("profiles.suggestProfile")}</span></>}
                       triggerClassName="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-md border-2 border-dashed border-emerald-300 bg-emerald-50 text-emerald-900 transition-colors hover:bg-emerald-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                       defaultTitle={`[Profile research] ${birdProfile.name}`}
                       defaultBody={[
@@ -375,7 +381,7 @@ export default function Home() {
                         "Please research nutrition targets, suitability, safety boundaries, and source support before any calculator profile is added.",
                       ].join("\n")}
                       labels={["needs-research", "profile-request"]}
-                      helperText="Suggestions are queued for research and product-owner review. They never alter an existing profile automatically."
+                      helperText={t("reportDialog.footerNote")}
                     />
                   </div>
                   <div className="rounded-md border bg-muted/40 p-3">
@@ -386,7 +392,7 @@ export default function Home() {
 
                 <div className="space-y-2">
                   <div className="flex justify-between">
-                    <label htmlFor="batch-size" className="text-sm font-medium text-muted-foreground">Target batch size</label>
+                    <label htmlFor="batch-size" className="text-sm font-medium text-muted-foreground">{t("profiles.targetBatchSize")}</label>
                     <span className="font-mono font-bold">{targetWeight}g</span>
                   </div>
                   <Slider id="batch-size" value={[targetWeight]} min={500} max={10000} step={100} onValueChange={(values) => setTargetWeight(values[0])} className="py-4" />
@@ -394,10 +400,10 @@ export default function Home() {
 
                 <Separator />
                 <div className="space-y-4 text-sm">
-                  <CareNote icon={<Droplets className="h-5 w-5 text-blue-600" />} title="Water" text={care.water} />
-                  <CareNote icon={<Scale className="h-5 w-5 text-amber-700" />} title="Grit" text={gritText} />
-                  <CareNote icon={<Sun className="h-5 w-5 text-amber-500" />} title="Light" text={care.light} />
-                  <CareNote icon={<BookOpen className="h-5 w-5 text-emerald-600" />} title="Base Diet" text={care.baseDiet} />
+                  <CareNote icon={<Droplets className="h-5 w-5 text-blue-600" />} title={t("profiles.water")} text={care.water} />
+                  <CareNote icon={<Scale className="h-5 w-5 text-amber-700" />} title={t("profiles.grit")} text={gritText} />
+                  <CareNote icon={<Sun className="h-5 w-5 text-amber-500" />} title={t("profiles.light")} text={care.light} />
+                  <CareNote icon={<BookOpen className="h-5 w-5 text-emerald-600" />} title={t("profiles.baseDiet")} text={care.baseDiet} />
                   {care.freshProduce && <FreshProduceCareNote text={care.freshProduce} guidance={care.freshProduceGuidance} />}
                 </div>
               </CardContent>
@@ -405,29 +411,29 @@ export default function Home() {
 
             <Card className="border-none shadow-xl">
               <CardHeader className="pb-3">
-                <CardTitle className="flex items-center gap-2"><Wheat className="h-5 w-5" />Your inventory</CardTitle>
-                <CardDescription>Enter the available amount of each ingredient in grams. Unsafe or incompatible ingredients are not offered for this bird.</CardDescription>
+                <CardTitle className="flex items-center gap-2"><Wheat className="h-5 w-5" />{t("inventory.title")}</CardTitle>
+                <CardDescription>{t("inventory.description")}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <Popover open={addOpen} onOpenChange={setAddOpen}>
                   <PopoverTrigger asChild>
-                    <Button type="button" variant="outline" className="w-full justify-start gap-2"><Plus className="h-4 w-4" />Add compatible ingredient</Button>
+                    <Button type="button" variant="outline" className="w-full justify-start gap-2"><Plus className="h-4 w-4" />{t("inventory.addIngredient")}</Button>
                   </PopoverTrigger>
                   <PopoverContent align="start" className="w-[min(92vw,380px)] p-3">
                     <div className="relative mb-3">
                       <Search className="absolute left-3 top-2.5 h-4 w-4 text-muted-foreground" />
-                      <Input autoFocus value={ingredientSearch} onChange={(event) => setIngredientSearch(event.target.value)} placeholder="Search compatible ingredients" className="pl-9" />
+                      <Input autoFocus value={ingredientSearch} onChange={(event) => setIngredientSearch(event.target.value)} placeholder={t("inventory.searchPlaceholder")} className="pl-9" />
                     </div>
                     <ScrollArea className="h-72 pr-3">
-                      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-emerald-700">Compatible choices</p>
+                      <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-emerald-700">{t("inventory.compatibleChoices")}</p>
                       {ingredientOptions.available.length ? ingredientOptions.available.map((name) => (
                         <button key={name} type="button" onClick={() => addIngredient(name)} className="flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-sm hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                          <span><span className="block capitalize">{name.replace(/_/g, " ")}</span>{name === "popcorn" && <span className="block text-xs text-muted-foreground">Popcorn is not the same as corn nutritionally.</span>}</span><Plus className="h-4 w-4 shrink-0 text-emerald-700" />
+                          <span><span className="block capitalize">{name.replace(/_/g, " ")}</span>{name === "popcorn" && <span className="block text-xs text-muted-foreground">{t("inventory.popcornNote")}</span>}</span><Plus className="h-4 w-4 shrink-0 text-emerald-700" />
                         </button>
-                      )) : <div className="px-2 py-3"><p className="text-sm text-muted-foreground">No compatible ingredients match this search.</p>{ingredientSearch.trim() && <div className="mt-3"><IssueSubmitDialog triggerLabel={<><ExternalLink className="h-3.5 w-3.5" />Suggest to add</>} defaultTitle={ingredientTitle} defaultBody={ingredientBody} helperText="Submits an ingredient research request directly to the repository." /></div>}<p className="mt-1 text-xs leading-relaxed text-muted-foreground">Submits a research request assigned to the project owner; no ingredient data changes automatically.</p></div>}
+                      )) : <div className="px-2 py-3"><p className="text-sm text-muted-foreground">{t("inventory.noMatch")}</p>{ingredientSearch.trim() && <div className="mt-3"><IssueSubmitDialog triggerLabel={<><ExternalLink className="h-3.5 w-3.5" />{t("inventory.suggestAdd")}</>} defaultTitle={ingredientTitle} defaultBody={ingredientBody} helperText={t("inventory.suggestHelpNote")} /></div>}<p className="mt-1 text-xs leading-relaxed text-muted-foreground">{t("inventory.suggestNote")}</p></div>}
                       {ingredientOptions.blocked.length > 0 && <>
                         <Separator className="my-3" />
-                        <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">Not offered for this bird</p>
+                        <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{t("inventory.notOffered")}</p>
                         {ingredientOptions.blocked.map(({ name, reason, severity }) => (
                           <div key={name} className={cn("mb-1 rounded-md px-2 py-2 text-sm", severity === "critical" ? "border border-red-200 bg-red-50 text-red-950" : "bg-amber-50 text-amber-950")}><p className="capitalize line-through">{name.replace(/_/g, " ")}</p><p className="mt-0.5 text-xs">{reason}</p></div>
                         ))}
@@ -450,19 +456,19 @@ export default function Home() {
                       <div key={name} className={cn("group rounded-lg border p-3", hasConcern || adzukiSafety ? "border-red-300 bg-red-50" : "bg-card")}>
                         <div className="mb-2 flex items-start justify-between gap-3">
                           <div>
-                            <label htmlFor={`amount-${name}`} className="text-sm font-medium capitalize">{name.replace(/_/g, " ")}{preparation && <span className="ml-1 text-xs font-normal text-muted-foreground">(Preparation: {preparation})</span>}</label>
+                            <label htmlFor={`amount-${name}`} className="text-sm font-medium capitalize">{name.replace(/_/g, " ")}{preparation && <span className="ml-1 text-xs font-normal text-muted-foreground">({t("inventory.preparation")}: {preparation})</span>}</label>
                           </div>
-                          <Button type="button" variant="ghost" size="icon" aria-label={`Remove ${name.replace(/_/g, " ")}`} onClick={() => removeIngredient(name)} className="h-8 w-8 text-muted-foreground hover:text-destructive"><Trash2 className="h-4 w-4" /></Button>
+                          <Button type="button" variant="ghost" size="icon" aria-label={t("inventory.removeIngredient", { name: name.replace(/_/g, " ") })} onClick={() => removeIngredient(name)} className="h-8 w-8 text-muted-foreground hover:text-destructive"><Trash2 className="h-4 w-4" /></Button>
                         </div>
-                        {hasConcern && <p className="mb-2 rounded bg-red-100 p-2 text-xs font-medium text-red-900">Excluded from the formula: {speciesToxicity?.description || rawSafety?.message || processingWarning || `not compatible with ${birdProfile.name}`}.</p>}
-                        {adzukiSafety && <p className="mb-2 flex items-start gap-1.5 rounded border border-red-300 bg-red-100 p-2 text-xs font-semibold text-red-950"><AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />{adzukiSafety}</p>}
-                        {peanutGuidance && <p className="mb-2 rounded border border-amber-200 bg-amber-50 p-2 text-xs font-medium text-amber-950"><strong>Peanut treat:</strong> {peanutGuidance}</p>}
+                        {hasConcern && <p className="mb-2 rounded bg-red-100 p-2 text-xs font-medium text-red-900">{t("inventory.excludedFromFormula")}: {speciesToxicity?.description || rawSafety?.message || processingWarning || `not compatible with ${birdProfile.name}`}.</p>}
+                        {adzukiSafety && <p className="mb-2 flex items-start gap-1.5 rounded border border-red-300 bg-red-100 p-2 text-xs font-semibold text-red-950"><AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />{t("inventory.adzukiWarning")}</p>}
+                        {peanutGuidance && <p className="mb-2 rounded border border-amber-200 bg-amber-50 p-2 text-xs font-medium text-amber-950">{t("inventory.peanutTreat", { notes: peanutGuidance })}</p>}
                         {popcornGuidance && <p className="mb-2 flex items-start gap-1.5 rounded border border-blue-200 bg-blue-50 p-2 text-xs font-medium text-blue-950"><Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />{popcornGuidance}</p>}
-                        <Input id={`amount-${name}`} type="number" min="0" value={amount} onChange={(event) => updateAmount(name, Number(event.target.value))} aria-label={`${name.replace(/_/g, " ")} amount in grams`} />
+                        <Input id={`amount-${name}`} type="number" min="0" value={amount} onChange={(event) => updateAmount(name, Number(event.target.value))} aria-label={t("inventory.amountInGrams", { name: name.replace(/_/g, " ") })} />
                       </div>
                     );
                   })}
-                  {!Object.keys(inventory).length && <p className="rounded-md border border-dashed p-6 text-center text-sm text-muted-foreground">Add compatible ingredients to create a batch estimate.</p>}
+                  {!Object.keys(inventory).length && <p className="rounded-md border border-dashed p-6 text-center text-sm text-muted-foreground">{t("inventory.emptyPrompt")}</p>}
                 </div>
               </CardContent>
             </Card>
@@ -471,19 +477,19 @@ export default function Home() {
           <section className="lg:col-span-7" aria-live="polite">
             {result && <div className="space-y-6">
               <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-                <NutritionCard label="Protein" value={result.nutrition.protein} target={currentProfile.nutrition.protein} color="bg-[var(--chart-1)]" />
-                <NutritionCard label="Carbs" value={result.nutrition.carbs} target={currentProfile.nutrition.carbs} color="bg-[var(--chart-2)]" />
-                <NutritionCard label="Fat" value={result.nutrition.fat} target={currentProfile.nutrition.fat} color="bg-[var(--chart-3)]" />
-                <NutritionCard label="Crude fiber" value={result.nutrition.fiber} target={currentProfile.nutrition.fiber} color="bg-[var(--chart-4)]" />
+                <NutritionCard label={t("nutrition.protein")} value={result.nutrition.protein} target={currentProfile.nutrition.protein} color="bg-[var(--chart-1)]" />
+                <NutritionCard label={t("nutrition.carbs")} value={result.nutrition.carbs} target={currentProfile.nutrition.carbs} color="bg-[var(--chart-2)]" />
+                <NutritionCard label={t("nutrition.fat")} value={result.nutrition.fat} target={currentProfile.nutrition.fat} color="bg-[var(--chart-3)]" />
+                <NutritionCard label={t("nutrition.fiber")} value={result.nutrition.fiber} target={currentProfile.nutrition.fiber} color="bg-[var(--chart-4)]" />
               </div>
 
               <Card className="border-none shadow-xl">
                 <Tabs value={activeTab} onValueChange={setActiveTab}>
                   <div className="overflow-x-auto border-b bg-muted/30 p-2" aria-label="Calculator sections">
                     <TabsList className="flex h-auto min-w-[510px] w-full justify-stretch bg-transparent">
-                      <TabsTrigger value="calculator" className="flex-1 whitespace-nowrap">Optimized Mix</TabsTrigger>
-                      <TabsTrigger value="herbs" className="flex-1 whitespace-nowrap">Herbs & Supplements</TabsTrigger>
-                      <TabsTrigger value="analysis" className="flex-1 whitespace-nowrap">Detailed Analysis</TabsTrigger>
+                      <TabsTrigger value="calculator" className="flex-1 whitespace-nowrap">{t("calculator.tabOptimizedMix")}</TabsTrigger>
+                      <TabsTrigger value="herbs" className="flex-1 whitespace-nowrap">{t("calculator.tabHerbsSupplements")}</TabsTrigger>
+                      <TabsTrigger value="analysis" className="flex-1 whitespace-nowrap">{t("calculator.tabDetailedAnalysis")}</TabsTrigger>
                     </TabsList>
                   </div>
                 </Tabs>
@@ -491,17 +497,17 @@ export default function Home() {
                 <CardContent className="min-h-[520px] p-6">
                   {activeTab === "calculator" && <div className="space-y-6">
                     <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
-                      <div><h2 className="text-xl font-bold">Recommended Formula</h2><p className="mt-1 text-sm text-muted-foreground">{formulaSource === "profile-default" ? `Profile standard formula for ${birdProfile.name} — ${currentProfile.name}. Add your actual inventory to calculate from it instead.` : "Calculated from the inventory you entered."}</p></div>
-                      <Button type="button" variant="outline" size="sm" className="gap-2" onClick={exportRecipe} disabled={!Object.keys(result.mix).length}><Download className="h-4 w-4" />Export recipe</Button>
+                      <div><h2 className="text-xl font-bold">{t("calculator.recommendedFormula")}</h2><p className="mt-1 text-sm text-muted-foreground">{formulaSource === "profile-default" ? t("calculator.standardFormulaNote", { bird: birdProfile.name, profile: currentProfile.name }) : t("calculator.calculatedFromInventory")}</p></div>
+                      <Button type="button" variant="outline" size="sm" className="gap-2" onClick={exportRecipe} disabled={!Object.keys(result.mix).length}><Download className="h-4 w-4" />{t("calculator.exportRecipe")}</Button>
                     </div>
 
                     {result.warnings.length > 0 && <div className="space-y-2">{result.warnings.map((warning, index) => <Alert key={`${warning.message}-${index}`} variant={warning.level === "CRITICAL" ? "destructive" : "default"} className={cn("border-l-4", warning.level === "CRITICAL" ? "border-l-destructive bg-destructive/5" : "border-l-yellow-500 bg-yellow-500/10 text-yellow-700 dark:text-yellow-400")}>
-                      <AlertTriangle className="h-4 w-4" /><AlertTitle>{warning.level === "CRITICAL" ? "Critical Issue" : "Advisory"}</AlertTitle><AlertDescription>{warning.message}</AlertDescription>
+                      <AlertTriangle className="h-4 w-4" /><AlertTitle>{warning.level === "CRITICAL" ? t("calculator.criticalIssue") : t("calculator.advisory")}</AlertTitle><AlertDescription>{warning.message}</AlertDescription>
                     </Alert>)}</div>}
 
-                    {result.missingIngredients?.length ? <div className="mb-6 space-y-3 rounded-lg border border-red-200 bg-red-50 p-4 text-red-900"><div className="flex items-start gap-3"><AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" /><div className="flex-1"><h3 className="mb-2 font-bold">Missing Essential Ingredients</h3>{result.missingIngredients.map((item) => <div key={item.category} className="mb-3 last:mb-0"><p className="mb-1 text-sm font-medium text-red-800">{item.category}</p><p className="mb-2 text-sm text-red-700">{item.reason}</p><div className="flex flex-wrap gap-2">{item.recommendations.map((recommendation) => <Badge key={recommendation} variant="outline" className="border-red-300 bg-red-100 text-red-900">{recommendation}</Badge>)}</div></div>)}</div></div></div> : null}
+                    {result.missingIngredients?.length ? <div className="mb-6 space-y-3 rounded-lg border border-red-200 bg-red-50 p-4 text-red-900"><div className="flex items-start gap-3"><AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" /><div className="flex-1"><h3 className="mb-2 font-bold">{t("calculator.missingEssentialIngredients")}</h3>{result.missingIngredients.map((item) => <div key={item.category} className="mb-3 last:mb-0"><p className="mb-1 text-sm font-medium text-red-800">{item.category}</p><p className="mb-2 text-sm text-red-700">{item.reason}</p><div className="flex flex-wrap gap-2">{item.recommendations.map((recommendation) => <Badge key={recommendation} variant="outline" className="border-red-300 bg-red-100 text-red-900">{recommendation}</Badge>)}</div></div>)}</div></div></div> : null}
 
-                    {Object.keys(result.mix).length ? <>{fallbackMisses && <div role="status" className="flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><Info className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" /><div><p><strong className="font-semibold">{OPTIMIZER_FALLBACK_COPY.title}:</strong> {OPTIMIZER_FALLBACK_COPY.intro}</p>{fallbackMisses.length > 0 && <><p className="mt-2 font-medium">{OPTIMIZER_FALLBACK_COPY.missesHeading}</p><ul className="mt-1 list-disc space-y-1 pl-5">{fallbackMisses.map((line) => <li key={line}>{line}</li>)}</ul></>}</div></div>}{diversitySuggestion && <div className="flex items-start gap-3 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-950"><Leaf className="mt-0.5 h-4 w-4 shrink-0 text-emerald-700" /><p><strong className="font-semibold">Ingredient diversity:</strong> {diversitySuggestion}</p></div>}<div className="rounded-lg border"><div className="overflow-x-auto"><table className="min-w-[560px] w-full text-sm"><thead className="bg-muted/50 text-muted-foreground"><tr><th className="px-4 py-3 text-left">Ingredient</th><th className="px-4 py-3 text-right">Amount</th><th className="px-4 py-3 text-right">Batch share</th><th className="px-4 py-3 text-left">Category</th></tr></thead><tbody className="divide-y">{Object.entries(result.mix).sort(([, left], [, right]) => right - left).map(([name, amount]) => <tr key={name}><td className="px-4 py-3 font-medium capitalize">{name.replace(/_/g, " ")}</td><td className="px-4 py-3 text-right font-mono">{Math.round(amount)}g</td><td className="px-4 py-3 text-right">{((amount / result.targetWeight) * 100).toFixed(1)}%</td><td className="px-4 py-3"><Badge variant="secondary" className={cn("capitalize font-normal", INGREDIENTS[name].category === "grain" && "bg-amber-100 text-amber-800 hover:bg-amber-200", INGREDIENTS[name].category === "legume" && "bg-emerald-100 text-emerald-800 hover:bg-emerald-200", INGREDIENTS[name].category === "seed" && "bg-stone-100 text-stone-800 hover:bg-stone-200")}>{INGREDIENTS[name].category}</Badge></td></tr>)}</tbody></table></div></div><p className="text-xs text-muted-foreground sm:hidden">Swipe the formula table sideways to view all columns.</p>{Object.entries(result.mix).some(([name]) => getPreparationInstructions(name)) && <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><h3 className="mb-2 flex items-center gap-2 font-semibold"><Info className="h-4 w-4" />Preparation instructions</h3><ul className="space-y-2">{Object.keys(result.mix).filter((name) => getPreparationInstructions(name)).map((name) => { const preparation = getPreparationInstructions(name); const birdGuidance = preparation?.birdGuidance?.[selectedBird]; return <li key={name}><strong className="capitalize">{name.replace(/_/g, " ")}:</strong> {preparation?.preparation}{birdGuidance && <span className="block pl-1 text-amber-900">{birdGuidance}</span>}</li>; })}</ul></div>}</> : <p className="rounded-lg border border-dashed p-10 text-center text-sm text-muted-foreground">There is no safe, compatible ingredient combination to estimate yet.</p>}<ReportIssueLink section="Optimized Mix" bird={birdProfile.name} profile={currentProfile.name} />
+                    {Object.keys(result.mix).length ? <>{fallbackMisses && <div role="status" className="flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><Info className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" /><div><p><strong className="font-semibold">{t("calculator.closestMixTitle")}:</strong> {t("calculator.closestMixIntro")}</p>{fallbackMisses.length > 0 && <><p className="mt-2 font-medium">{t("calculator.rangesCannotMeet")}</p><ul className="mt-1 list-disc space-y-1 pl-5">{fallbackMisses.map((line) => <li key={line}>{line}</li>)}</ul></>}</div></div>}{diversitySuggestion && <div className="flex items-start gap-3 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-950"><Leaf className="mt-0.5 h-4 w-4 shrink-0 text-emerald-700" /><p><strong className="font-semibold">{t("calculator.ingredientDiversity")}:</strong> {diversitySuggestion}</p></div>}<div className="rounded-lg border"><div className="overflow-x-auto"><table className="min-w-[560px] w-full text-sm"><thead className="bg-muted/50 text-muted-foreground"><tr><th className="px-4 py-3 text-left">{t("calculator.colIngredient")}</th><th className="px-4 py-3 text-right">{t("calculator.colAmount")}</th><th className="px-4 py-3 text-right">{t("calculator.colBatchShare")}</th><th className="px-4 py-3 text-left">{t("calculator.colCategory")}</th></tr></thead><tbody className="divide-y">{Object.entries(result.mix).sort(([, left], [, right]) => right - left).map(([name, amount]) => <tr key={name}><td className="px-4 py-3 font-medium capitalize">{name.replace(/_/g, " ")}</td><td className="px-4 py-3 text-right font-mono">{Math.round(amount)}g</td><td className="px-4 py-3 text-right">{((amount / result.targetWeight) * 100).toFixed(1)}%</td><td className="px-4 py-3"><Badge variant="secondary" className={cn("capitalize font-normal", INGREDIENTS[name].category === "grain" && "bg-amber-100 text-amber-800 hover:bg-amber-200", INGREDIENTS[name].category === "legume" && "bg-emerald-100 text-emerald-800 hover:bg-emerald-200", INGREDIENTS[name].category === "seed" && "bg-stone-100 text-stone-800 hover:bg-stone-200")}>{INGREDIENTS[name].category === "grain" ? t("calculator.grains") : INGREDIENTS[name].category === "legume" ? t("calculator.legumes") : t("calculator.seeds")}</Badge></td></tr>)}</tbody></table></div></div><p className="text-xs text-muted-foreground sm:hidden">{t("calculator.tableSwipeNote")}</p>{Object.entries(result.mix).some(([name]) => getPreparationInstructions(name)) && <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><h3 className="mb-2 flex items-center gap-2 font-semibold"><Info className="h-4 w-4" />{t("calculator.prepInstructions")}</h3><ul className="space-y-2">{Object.keys(result.mix).filter((name) => getPreparationInstructions(name)).map((name) => { const preparation = getPreparationInstructions(name); const birdGuidance = preparation?.birdGuidance?.[selectedBird]; return <li key={name}><strong className="capitalize">{name.replace(/_/g, " ")}:</strong> {preparation?.preparation}{birdGuidance && <span className="block pl-1 text-amber-900">{birdGuidance}</span>}</li>; })}</ul></div>}</> : <p className="rounded-lg border border-dashed p-10 text-center text-sm text-muted-foreground">{t("calculator.noCombination")}</p>}<ReportIssueLink section="Optimized Mix" bird={birdProfile.name} profile={currentProfile.name} />
 
                   </div>}
 
@@ -511,27 +517,27 @@ export default function Home() {
                         <div className="flex gap-4">
                           <div className="rounded-full bg-emerald-100 p-3"><Leaf className="h-6 w-6 text-emerald-700" /></div>
                           <div>
-                            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-800">Herbs & supplements</p>
-                            <h2 className="mt-1 text-xl font-bold">Profile</h2>
-                            <p className="mt-1 text-muted-foreground">{herbRecommendation?.notes || "No specific herb recommendations are recorded for this profile."}</p>
+                            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-800">{t("herbs.title")}</p>
+                            <h2 className="mt-1 text-xl font-bold">{t("herbs.profileSubtitle")}</h2>
+                            <p className="mt-1 text-muted-foreground">{herbRecommendation?.notes || t("herbs.noRecommendations")}</p>
                           </div>
                         </div>
-                        <Link href="/herbs" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-md border border-emerald-200 bg-white px-3 py-2 text-sm font-medium text-emerald-900 transition-colors hover:bg-emerald-50"><BookOpen className="h-4 w-4" />Browse herb library</Link>
+                        <Link href="/herbs" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-md border border-emerald-200 bg-white px-3 py-2 text-sm font-medium text-emerald-900 transition-colors hover:bg-emerald-50"><BookOpen className="h-4 w-4" />{t("herbs.browseLibrary")}</Link>
                       </div>
-                      {herbRecommendation?.herbs.length ? <div className="grid gap-4 md:grid-cols-2">{herbRecommendation.herbs.map(({ name, herb }) => <HerbCard key={name} name={name} herb={herb} />)}</div> : <p className="rounded-lg border border-dashed p-8 text-center text-sm text-muted-foreground">No specific herb recommendations are recorded for this profile.</p>}
+                      {herbRecommendation?.herbs.length ? <div className="grid gap-4 md:grid-cols-2">{herbRecommendation.herbs.map(({ name, herb }) => <HerbCard key={name} name={name} herb={herb} />)}</div> : <p className="rounded-lg border border-dashed p-8 text-center text-sm text-muted-foreground">{t("herbs.noRecommendations")}</p>}
                     </section>
                     <PersonalizedSupplementMix bird={selectedBird} />
                     <ReportIssueLink section="Herbs & Supplements" bird={birdProfile.name} profile={currentProfile.name} />
                   </div>}
 
-                  {activeTab === "analysis" && <div className="space-y-8"><div><h2 className="mb-4 text-lg font-bold">Category Breakdown</h2><div className="space-y-4"><CategoryBar label="Grains" value={result.categories.grain} target={getCategoryTargets(selectedBird).grain} color="bg-amber-400" /><CategoryBar label="Legumes" value={result.categories.legume} target={getCategoryTargets(selectedBird).legume} color="bg-emerald-500" /><CategoryBar label="Seeds" value={result.categories.seed} target={getCategoryTargets(selectedBird).seed} color="bg-stone-500" /></div></div><Separator /><div><h2 className="mb-3 text-lg font-bold">Detailed analysis</h2><p className="text-sm text-muted-foreground mb-3">Detailed analysis of the recommended seed mix based on nutritional targets and ingredient properties.</p><div className="mt-4 grid gap-3 sm:grid-cols-2">{result.suggestions.map((suggestion) => <div key={suggestion} className="rounded-lg border bg-muted/20 p-4 text-sm"><CheckCircle2 className="mb-2 h-4 w-4 text-emerald-700" />{suggestion}</div>)}</div><p className="mt-4 text-xs text-muted-foreground">Optimizer note: The optimizer favours the selected profile’s estimated macronutrient and category ranges using the inventory you supplied. It is deterministic: identical inventory and settings produce the same batch estimate.</p></div><div className="rounded-lg border border-blue-200 bg-blue-50 p-4"><h3 className="font-semibold text-blue-950">Profile: {currentProfile.name}</h3><p className="mt-1 text-sm text-blue-900">{currentProfile.feedingNotes}</p></div><div className="rounded-lg border border-amber-200 bg-amber-50 p-4"><h3 className="flex items-center gap-2 font-semibold text-amber-950"><Sun className="h-4 w-4 text-amber-600" aria-hidden="true" />Environmental Support</h3><p className="mt-1 text-sm text-amber-900">Daylight through closed window glass does not provide useful UVB. UVB supports vitamin-D metabolism and calcium use.</p></div><ReportIssueLink section="Detailed Analysis" bird={birdProfile.name} profile={currentProfile.name} /></div>}
+                  {activeTab === "analysis" && <div className="space-y-8"><div><h2 className="mb-4 text-lg font-bold">{t("analysis.categoryBreakdown")}</h2><div className="space-y-4"><CategoryBar label={t("analysis.grains")} value={result.categories.grain} target={getCategoryTargets(selectedBird).grain} color="bg-amber-400" /><CategoryBar label={t("analysis.legumes")} value={result.categories.legume} target={getCategoryTargets(selectedBird).legume} color="bg-emerald-500" /><CategoryBar label={t("analysis.seeds")} value={result.categories.seed} target={getCategoryTargets(selectedBird).seed} color="bg-stone-500" /></div></div><Separator /><div><h2 className="mb-3 text-lg font-bold">{t("analysis.detailedTitle")}</h2><p className="text-sm text-muted-foreground mb-3">{t("analysis.detailedDesc")}</p><div className="mt-4 grid gap-3 sm:grid-cols-2">{result.suggestions.map((suggestion) => <div key={suggestion} className="rounded-lg border bg-muted/20 p-4 text-sm"><CheckCircle2 className="mb-2 h-4 w-4 text-emerald-700" />{suggestion}</div>)}</div><p className="mt-4 text-xs text-muted-foreground">{t("analysis.optimizerNote")}</p></div><div className="rounded-lg border border-blue-200 bg-blue-50 p-4"><h3 className="font-semibold text-blue-950">Profile: {currentProfile.name}</h3><p className="mt-1 text-sm text-blue-900">{currentProfile.feedingNotes}</p></div><div className="rounded-lg border border-amber-200 bg-amber-50 p-4"><h3 className="flex items-center gap-2 font-semibold text-amber-950"><Sun className="h-4 w-4 text-amber-600" aria-hidden="true" />{t("analysis.environmentalSupport")}</h3><p className="mt-1 text-sm text-amber-900">{t("analysis.uvbNote")}</p></div><ReportIssueLink section="Detailed Analysis" bird={birdProfile.name} profile={currentProfile.name} /></div>}
                 </CardContent>
               </Card>
             </div>}
           </section>
         </div>
 
-        <section className="mt-16 border-t pt-8" aria-label="Safety reminders"><Alert className="border-amber-200 bg-amber-50"><AlertTriangle className="h-4 w-4 text-amber-600" /><AlertTitle className="font-bold text-amber-900">Important Safety Reminders</AlertTitle><AlertDescription className="mt-2 space-y-2 text-sm text-amber-800"><p>Fresh Water: Always provide clean, fresh water available at all times</p>{BIRDS_NEEDING_GRIT_REMINDER.has(selectedBird) && <p>Grit: {care.grit}</p>}<p>Toxic Legumes: Never feed raw kidney beans, lima beans, fava beans, navy beans, pinto beans, or black beans</p><p>Preparation: Follow preparation instructions for each ingredient carefully</p><p>Exotics Vet Care: If your {birdDisplayName} shows signs of illness, contact an exotics vet immediately</p></AlertDescription></Alert></section>
+        <section className="mt-16 border-t pt-8" aria-label="Safety reminders"><Alert className="border-amber-200 bg-amber-50"><AlertTriangle className="h-4 w-4 text-amber-600" /><AlertTitle className="font-bold text-amber-900">{t("safetyBanner.title")}</AlertTitle><AlertDescription className="mt-2 space-y-2 text-sm text-amber-800"><p>{t("safetyBanner.water")}</p>{BIRDS_NEEDING_GRIT_REMINDER.has(selectedBird) && <p>Grit: {care.grit}</p>}<p>{t("safetyBanner.toxicLegumes")}</p><p>{t("safetyBanner.prep")}</p><p>{t("safetyBanner.vetCare", { bird: birdDisplayName })}</p></AlertDescription></Alert></section>
       </main>
     </div>
   );
@@ -542,11 +548,12 @@ const CareNote = memo(function CareNote({ icon, title, text }: { icon: React.Rea
 });
 
 function FreshProduceCareNote({ text, guidance }: { text: string; guidance?: NonNullable<typeof BIRD_CARE.pigeon.freshProduceGuidance> }) {
+  const { t } = useLanguage();
   return (
     <div className="flex items-start gap-3">
       <div className="mt-0.5 shrink-0"><Leaf className="h-5 w-5 text-emerald-600" /></div>
       <div className="min-w-0">
-        <p className="font-medium text-foreground">Fresh Produce</p>
+        <p className="font-medium text-foreground">{t("profiles.freshProduce")}</p>
         <p className="text-xs leading-relaxed text-muted-foreground">{text}</p>
         {guidance && (
           <Popover>
@@ -600,6 +607,7 @@ function FreshProduceCareNote({ text, guidance }: { text: string; guidance?: Non
 }
 
 function ReportIssueLink({ section, bird, profile }: { section: string; bird: string; profile: string }) {
+  const { t } = useLanguage();
   const title = `[Information report] ${section}`;
   const body = [
     "## Location in the calculator",
@@ -620,13 +628,13 @@ function ReportIssueLink({ section, bird, profile }: { section: string; bird: st
   return (
     <div className="border-t border-dashed pt-6">
       <IssueSubmitDialog
-        triggerLabel={<><ExternalLink className="h-4 w-4" />Report wrong info / issue</>}
+        triggerLabel={<><ExternalLink className="h-4 w-4" />{t("reportDialog.triggerLabel")}</>}
         triggerClassName="inline-flex items-center justify-center gap-2 rounded-md border border-stone-300 bg-white px-3 py-2 text-sm font-medium text-stone-700 shadow-sm hover:bg-stone-50 transition-colors"
         defaultTitle={title}
         defaultBody={body}
-        helperText="Submits a research request directly to the repository without leaving the calculator."
+        helperText={t("reportDialog.helperNote")}
       />
-      <p className="mt-2 text-xs text-muted-foreground">Submits a research request assigned to the project owner. Nothing in the calculator changes automatically.</p>
+      <p className="mt-2 text-xs text-muted-foreground">{t("reportDialog.footerNote")}</p>
     </div>
   );
 }
@@ -637,6 +645,7 @@ function buildGitHubIssueUrl(template: string, title: string, body: string) {
 }
 
 const NutritionCard = memo(function NutritionCard({ label, value, target, color }: { label: string; value: number; target: [number, number]; color: string }) {
+  const { t } = useLanguage();
   const [min, max] = target;
   const isGood = value >= min && value <= max;
   const isLow = value < min;
@@ -648,9 +657,9 @@ const NutritionCard = memo(function NutritionCard({ label, value, target, color 
       ? 40 + ((value - min) / targetRange) * 20
       : 60 + ((value - max) / Math.max(upperDisplayLimit - max, 0.5)) * 40;
   const markerPosition = Math.max(0, Math.min(100, position));
-  const status = isGood ? "within the target range" : isLow ? "below the target range" : "above the target range";
+  const status = isGood ? t("nutrition.withinTarget") : isLow ? t("nutrition.belowTarget") : t("nutrition.aboveTarget");
 
-  return <Card className="border-none bg-card shadow-md"><CardContent className="p-4"><div className="mb-1 text-sm text-muted-foreground">{label}</div><div className="mb-2 flex items-baseline gap-1"><span className={cn("font-mono text-2xl font-bold", !isGood && (isLow ? "text-blue-600" : "text-orange-600"))}>{value.toFixed(1)}</span><span className="text-xs font-medium text-muted-foreground">%</span></div><div className="relative h-3 overflow-hidden rounded-full bg-muted" role="img" aria-label={`${label}: ${value.toFixed(1)}%, ${status}; target range ${min} to ${max} percent.`}><div aria-hidden="true" className="absolute inset-y-0 border-x border-emerald-600/70 bg-emerald-100/80" style={{ left: "40%", width: "20%" }} /><div aria-hidden="true" className={cn("absolute left-0 top-0 h-full opacity-65 transition-[width] duration-300 motion-reduce:transition-none", color)} style={{ width: `${markerPosition}%` }} /><div aria-hidden="true" className={cn("absolute top-0 h-full w-1 rounded-full shadow-sm transition-[left] duration-300 motion-reduce:transition-none", isGood ? "bg-emerald-800" : isLow ? "bg-blue-700" : "bg-orange-700")} style={{ left: `calc(${markerPosition}% - 2px)` }} /></div><div className="mt-2 flex justify-between text-[10px] text-muted-foreground"><span className={cn("font-medium", isGood ? "text-emerald-700" : isLow ? "text-blue-700" : "text-orange-700")}>{status}</span><span>Target: <span className="font-medium">{min}-{max}%</span></span></div></CardContent></Card>;
+  return <Card className="border-none bg-card shadow-md"><CardContent className="p-4"><div className="mb-1 text-sm text-muted-foreground">{label}</div><div className="mb-2 flex items-baseline gap-1"><span className={cn("font-mono text-2xl font-bold", !isGood && (isLow ? "text-blue-600" : "text-orange-600"))}>{value.toFixed(1)}</span><span className="text-xs font-medium text-muted-foreground">%</span></div><div className="relative h-3 overflow-hidden rounded-full bg-muted" role="img" aria-label={`${label}: ${value.toFixed(1)}%, ${status}; target range ${min} to ${max} percent.`}><div aria-hidden="true" className="absolute inset-y-0 border-x border-emerald-600/70 bg-emerald-100/80" style={{ left: "40%", width: "20%" }} /><div aria-hidden="true" className={cn("absolute left-0 top-0 h-full opacity-65 transition-[width] duration-300 motion-reduce:transition-none", color)} style={{ width: `${markerPosition}%` }} /><div aria-hidden="true" className={cn("absolute top-0 h-full w-1 rounded-full shadow-sm transition-[left] duration-300 motion-reduce:transition-none", isGood ? "bg-emerald-800" : isLow ? "bg-blue-700" : "bg-orange-700")} style={{ left: `calc(${markerPosition}% - 2px)` }} /></div><div className="mt-2 flex justify-between text-[10px] text-muted-foreground"><span className={cn("font-medium", isGood ? "text-emerald-700" : isLow ? "text-blue-700" : "text-orange-700")}>{status}</span><span>{t("nutrition.target")} <span className="font-medium">{min}-{max}%</span></span></div></CardContent></Card>;
 });
 
 const CategoryBar = memo(function CategoryBar({ label, value, target, color }: { label: string; value: number; target: [number, number]; color: string }) {

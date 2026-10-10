@@ -11,6 +11,7 @@ import {
   type HerbLibraryBirdFilter,
 } from "@/lib/herb-library-filter";
 import type { HerbBirdKey } from "@/lib/herb-evidence";
+import { useLanguage, LanguageSwitcher } from "@/contexts/LanguageContext";
 
 const categoryLabels: Record<Herb["category"], string> = {
   herb_seed: "Herb seeds",
@@ -32,6 +33,7 @@ const birdLabels: Record<HerbBirdKey, string> = {
 };
 
 export default function HerbLibrary() {
+  const { t } = useLanguage();
   // Product-owner decision: do not surface apple cider vinegar in newly added app copy until its wording is explicitly approved.
   const herbEntries = useMemo(
     () =>
@@ -51,12 +53,15 @@ export default function HerbLibrary() {
       <header className="relative overflow-hidden bg-stone-950 text-white">
         <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(74,132,94,0.48),transparent_43%),radial-gradient(circle_at_bottom_left,rgba(201,161,74,0.22),transparent_40%)]" />
         <div className="container relative py-12 sm:py-16">
-          <Link href="/" className="inline-flex items-center gap-2 text-sm font-medium text-white/75 transition-colors hover:text-white">
-            <ArrowLeft className="h-4 w-4" />Back to calculator
-          </Link>
-          <Badge className="mt-8 border-none bg-emerald-700/95 px-3 py-1 text-sm text-white">Herb & supplement library</Badge>
-          <h1 className="mt-4 max-w-3xl font-display text-4xl font-bold leading-tight sm:text-5xl">Browse the recorded collection</h1>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">A separate reference page for the planner’s existing herb and supplement records. Dosage values are shown per 1 kg batch.</p>
+          <div className="flex items-center justify-between">
+            <Link href="/" className="inline-flex items-center gap-2 text-sm font-medium text-white/75 transition-colors hover:text-white">
+              <ArrowLeft className="h-4 w-4" />{t("nav.backToCalculator")}
+            </Link>
+            <LanguageSwitcher />
+          </div>
+          <Badge className="mt-8 border-none bg-emerald-700/95 px-3 py-1 text-sm text-white">{t("herbs.libraryTitle")}</Badge>
+          <h1 className="mt-4 max-w-3xl font-display text-4xl font-bold leading-tight sm:text-5xl">{t("herbs.browseRecordedCollection")}</h1>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg">{t("herbs.librarySubtitle")}</p>
         </div>
       </header>
 
@@ -64,26 +69,26 @@ export default function HerbLibrary() {
         <section className="mb-12 grid gap-5 rounded-2xl border border-emerald-100 bg-white p-6 shadow-sm md:grid-cols-[auto_1fr] md:items-center">
           <div className="w-fit rounded-full bg-emerald-100 p-3"><Leaf className="h-6 w-6 text-emerald-800" /></div>
           <div>
-            <h2 className="font-display text-2xl font-bold">Reference, not a calculator input</h2>
-            <p className="mt-1 max-w-3xl text-sm leading-relaxed text-muted-foreground">Use the calculator’s Herbs & Supplements tab for profile-based suggestions. This library keeps the full collection easy to browse without crowding the mix dashboard.</p>
+            <h2 className="font-display text-2xl font-bold">{t("herbs.referenceNotInputTitle")}</h2>
+            <p className="mt-1 max-w-3xl text-sm leading-relaxed text-muted-foreground">{t("herbs.referenceNotInputText")}</p>
           </div>
         </section>
 
         <section className="mb-12 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-emerald-100 bg-white p-5 shadow-sm" aria-labelledby="herb-filter-heading">
-          <h2 id="herb-filter-heading" className="font-display text-xl font-bold text-stone-900">Filter compatibility</h2>
+          <h2 id="herb-filter-heading" className="font-display text-xl font-bold text-stone-900">{t("herbs.filterCompatibility")}</h2>
           <select
-            aria-label="Filter compatibility"
+            aria-label={t("herbs.filterCompatibility")}
             className="min-h-10 rounded-lg border border-emerald-200 bg-white px-3 py-2 text-sm font-medium text-stone-900 shadow-sm outline-none transition-colors focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/25"
             value={birdFilter}
             onChange={(event) => setBirdFilter(event.target.value as HerbLibraryBirdFilter)}
           >
-            <option value="all">All birds</option>
+            <option value="all">{t("herbs.allBirds")}</option>
             {HERB_LIBRARY_BIRD_FILTERS.map((bird) => <option key={bird} value={bird}>{birdLabels[bird]}</option>)}
           </select>
         </section>
 
         {!visibleHerbEntries.length ? <section className="rounded-2xl border border-emerald-100 bg-white p-6 text-sm leading-relaxed text-muted-foreground shadow-sm">
-          No automatically compatible herb or supplement records are currently shown for this bird.
+          {t("herbs.noRecordsShown")}
         </section> :
         <div className="space-y-14">
           {categoryOrder.map((category) => {
@@ -94,10 +99,10 @@ export default function HerbLibrary() {
               <section key={category} aria-labelledby={`herb-category-${category}`}>
                 <div className="mb-5 flex items-end justify-between gap-4 border-b border-stone-200 pb-3">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-800">Collection</p>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-emerald-800">{t("herbs.collection")}</p>
                     <h2 id={`herb-category-${category}`} className="mt-1 font-display text-3xl font-bold text-stone-900">{categoryLabels[category]}</h2>
                   </div>
-                  <span className="font-mono text-sm text-muted-foreground">{herbs.length} entries</span>
+                  <span className="font-mono text-sm text-muted-foreground">{t("herbs.entriesCount", { count: herbs.length })}</span>
                 </div>
                 <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
                   {herbs.map(([name, herb]) => <HerbCard key={name} name={name} herb={herb} showSources showCompatibleBirds />)}
