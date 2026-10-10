@@ -518,7 +518,7 @@ export default function Home() {
                           <div className="rounded-full bg-emerald-100 p-3"><Leaf className="h-6 w-6 text-emerald-700" /></div>
                           <div>
                             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-800">{t("herbs.title")}</p>
-                            <h2 className="mt-1 text-xl font-bold">{t("herbs.profileSubtitle")}</h2>
+                            <h2 className="mt-1 text-xl font-bold">{t("herbs.profileSubtitle", { profile: currentProfile.name })}</h2>
                             <p className="mt-1 text-muted-foreground">{herbRecommendation?.notes || t("herbs.noRecommendations")}</p>
                           </div>
                         </div>

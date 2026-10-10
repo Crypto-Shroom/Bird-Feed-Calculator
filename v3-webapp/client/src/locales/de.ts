@@ -100,7 +100,7 @@ export const de: TranslationKeys = {
   },
   herbs: {
     title: "Kräuter & Ergänzungen",
-    profileSubtitle: "Profil",
+    profileSubtitle: "Profil: {profile}",
     browseLibrary: "Kräuterbibliothek durchsuchen",
     noRecommendations: "Für dieses Profil sind keine spezifischen Kräuterempfehlungen erfasst.",
     libraryTitle: "Kräuter- & Ergänzungsbibliothek",

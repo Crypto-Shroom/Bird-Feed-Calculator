@@ -98,7 +98,7 @@ export const en = {
   },
   herbs: {
     title: "Herbs & supplements",
-    profileSubtitle: "Profile",
+    profileSubtitle: "Profile: {profile}",
     browseLibrary: "Browse herb library",
     noRecommendations: "No specific herb recommendations are recorded for this profile.",
     libraryTitle: "Herb & supplement library",

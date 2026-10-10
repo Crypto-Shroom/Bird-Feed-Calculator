@@ -100,7 +100,7 @@ export const nl: TranslationKeys = {
   },
   herbs: {
     title: "Kruiden & supplementen",
-    profileSubtitle: "Profiel",
+    profileSubtitle: "Profiel: {profile}",
     browseLibrary: "Kruidenbibliotheek bekijken",
     noRecommendations: "Er zijn geen specifieke kruidenaanbevelingen vastgelegd voor dit profiel.",
     libraryTitle: "Kruiden- & supplementenbibliotheek",
