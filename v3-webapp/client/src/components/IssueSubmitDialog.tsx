@@ -37,10 +37,17 @@ export function IssueSubmitDialog({
   labels = ["needs-research"],
   helperText,
 }: IssueSubmitDialogProps) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState(defaultTitle);
   const [body, setBody] = useState(defaultBody);
+
+  React.useEffect(() => {
+    if (!open) {
+      setTitle(defaultTitle);
+      setBody(defaultBody);
+    }
+  }, [defaultTitle, defaultBody, open]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [submissionMode, setSubmissionMode] = useState<SubmissionMode>(null);
@@ -65,7 +72,7 @@ export function IssueSubmitDialog({
       const response = await fetch("/api/submit-issue", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title, body, labels }),
+        body: JSON.stringify({ title, body, labels, language }),
       });
       const text = await response.text();
       const data = parseIssueCreationResponse({
@@ -88,6 +95,7 @@ export function IssueSubmitDialog({
         title,
         body,
         labels,
+        language,
         status: "new",
         createdAt: serverTimestamp(),
       });

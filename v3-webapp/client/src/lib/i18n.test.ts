@@ -89,6 +89,30 @@ describe("i18n localization foundation", () => {
     expect(getNestedTranslation(nl, "nav.title")).toBe("Precisievoeding voor alle vogels");
   });
 
+  it("includes active language code in prelogged report markdown structure for all supported languages", () => {
+    const supportedLanguages = ["en", "de", "nl"] as const;
+
+    for (const lang of supportedLanguages) {
+      const locationBody = [
+        "## Location in the calculator",
+        "Section: Optimized Mix",
+        "Bird: Pigeon",
+        "Profile: Pet/Companion",
+        `Language: ${lang}`,
+      ].join("\n");
+
+      const plannerContextBody = [
+        "## Planner context",
+        "Bird: Pigeon",
+        "Profile: Pet/Companion",
+        `Language: ${lang}`,
+      ].join("\n");
+
+      expect(locationBody).toContain(`Language: ${lang}`);
+      expect(plannerContextBody).toContain(`Language: ${lang}`);
+    }
+  });
+
   it("ensures every locale key defined in en.ts is referenced in client/src source files", () => {
     const srcDir = path.resolve(__dirname, "..");
     const sourceFiles: string[] = [];
