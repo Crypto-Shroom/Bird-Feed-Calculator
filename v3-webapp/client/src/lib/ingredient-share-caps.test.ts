@@ -13,7 +13,7 @@ const createHighs = require("highs") as () => Promise<{
 }>;
 
 const birds: BirdType[] = ["pigeon", "parrot", "african_grey", "budgie", "canary", "chicken"];
-const cappedIds = Object.keys(INGREDIENTS).filter((id) => INGREDIENTS[id].maxSharePercent);
+const cappedTreatIds = ["almonds", "pine_nuts"];
 
 // Owner-approved 2026-10-10 (#43, #205): almond and pine nuts are capped treats.
 describe("capped treats (almonds, pine nuts)", () => {
@@ -23,7 +23,7 @@ describe("capped treats (almonds, pine nuts)", () => {
   });
 
   it("offers a capped food to a bird exactly when the record has a cap for it", () => {
-    for (const id of cappedIds) {
+    for (const id of cappedTreatIds) {
       for (const bird of birds) {
         expect([id, bird, isIngredientCompatible(id, bird)]).toEqual([id, bird, INGREDIENTS[id].maxSharePercent?.[bird] !== undefined]);
       }
@@ -71,5 +71,27 @@ describe("capped treats (almonds, pine nuts)", () => {
     expect(canary.warnings.some(({ message }) => message.includes("almonds was excluded"))).toBe(true);
     const grey = new MultibirMixCalculator({ wheat: 500, sunflower: 300, pine_nuts: 200 }, "african_grey", "pet").calculate(500);
     expect(grey.mix.pine_nuts).toBeUndefined();
+  });
+
+  it("canary seed is a grain offered to every bird, capped only for chicken at the tested 45 %", () => {
+    expect(INGREDIENTS.canary_seed.category).toBe("grain");
+    expect(INGREDIENTS.canary_seed.maxSharePercent).toEqual({ chicken: 45 });
+    for (const bird of birds) expect(isIngredientCompatible("canary_seed", bird)).toBe(true);
+
+    const chicken = buildExactFeasibilityModel({
+      candidates: buildBrowserOptimizerCandidates({ canary_seed: 1000, wheat: 600 }, "chicken"),
+      requestedTargetGrams: 1000,
+      macroRanges: { protein: [0, 100], carbs: [0, 100], fat: [0, 100], fiber: [0, 100] },
+      categoryRanges: { grain: [0, 100], legume: [0, 100], seed: [0, 100] },
+    });
+    expect(chicken.candidates.find(({ id }) => id === "canary_seed")?.availableGrams).toBe(450);
+
+    const canary = buildExactFeasibilityModel({
+      candidates: buildBrowserOptimizerCandidates({ canary_seed: 1000, wheat: 600 }, "canary"),
+      requestedTargetGrams: 1000,
+      macroRanges: { protein: [0, 100], carbs: [0, 100], fat: [0, 100], fiber: [0, 100] },
+      categoryRanges: { grain: [0, 100], legume: [0, 100], seed: [0, 100] },
+    });
+    expect(canary.candidates.find(({ id }) => id === "canary_seed")?.availableGrams).toBe(1000);
   });
 });

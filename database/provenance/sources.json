@@ -2712,6 +2712,112 @@
       "permittedUse": "Avicultural community guidance documenting mechanical lower-mandible shell wedging/entrapment hazard in parrots and Aspergillus fungal risk from in-shell pine nuts.",
       "limitations": "Community discussion forum; does not establish controlled feeding trials, nutrient composition, or universal serving sizes.",
       "accessedAt": "2026-10-09"
+    },
+    {
+      "id": "urbizo-reyes-hairless-canaryseed-2021",
+      "title": "Hairless canary seeds (Phalaris canariensis L.) as a potential source of antioxidant, antihypertensive, antidiabetic, and antiobesity biopeptides",
+      "authorsOrOrganization": "Urbizo-Reyes, U. C.; Aguilar-Toalá, J. E.; Liceaga, A. M.",
+      "publishedYear": "2021",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1186/s43014-020-00050-w",
+      "speciesScopes": [
+        "pigeon",
+        "parrot",
+        "african_grey",
+        "budgie",
+        "canary",
+        "chicken"
+      ],
+      "permittedUse": "Table 1: proximate composition of whole hairless canary seed, wet basis, g/100 g: moisture 12.13, lipids 5.24, protein 15.63, ash 4.40, carbohydrate by difference 62.88.",
+      "limitations": "Hairless (glabrous) cultivar, a food-science paper on human-food biopeptides; ordinary hairy bird-seed canary seed has no published full analysis found. Gives no crude-fibre figure. Not a feeding study.",
+      "accessedAt": "2026-10-10"
+    },
+    {
+      "id": "merck-passerines-2025",
+      "title": "Nutrition in Passerines",
+      "authorsOrOrganization": "Joeke Nijboer, PhD; Anouk Fens, MSc; Merck (MSD) Veterinary Manual",
+      "publishedYear": "2025",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.msdvetmanual.com/management-and-nutrition/nutrition-exotic-and-zoo-animals/nutrition-in-passerines",
+      "speciesScopes": [
+        "canary"
+      ],
+      "permittedUse": "States that commercial seed mixtures for canaries often contain canary seed with rapeseed, niger, hemp, linseed and oats, and warns that high fat in seed-based diets can lead to obesity.",
+      "limitations": "Names canary seed as a normal canary mix component but gives no share or amount.",
+      "accessedAt": "2026-10-10"
+    },
+    {
+      "id": "vlaanderen-kanarie-2026",
+      "title": "Kanarie",
+      "authorsOrOrganization": "Vlaanderen.be (Flemish government), pet guide",
+      "publishedYear": "2026",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.vlaanderen.be/huisdierinfo/huisdierwijzers/vogels/kanarie",
+      "speciesScopes": [
+        "canary"
+      ],
+      "permittedUse": "Government pet guide that lists canary seed (kanariezaad) as a daily canary food.",
+      "limitations": "Owner-facing guide; no amount or composition given.",
+      "accessedAt": "2026-10-10"
+    },
+    {
+      "id": "versele-budgies-english-mixture-5050-2026",
+      "title": "Prestige Budgies English Mixture 50/50",
+      "authorsOrOrganization": "Versele-Laga (manufacturer)",
+      "publishedYear": "2026",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.versele.com/en/gb/prestige/products/prestige-budgiesenglishmixture5050",
+      "speciesScopes": [
+        "budgie"
+      ],
+      "permittedUse": "Manufacturer budgie mix described as a blend of 50% canary seed and 50% millet.",
+      "limitations": "Manufacturer product page; shows common practice, not a feeding trial or a veterinary recommendation.",
+      "accessedAt": "2026-10-10"
+    },
+    {
+      "id": "versele-premium-super-condition-2026",
+      "title": "Premium Super Condition",
+      "authorsOrOrganization": "Versele-Laga (manufacturer)",
+      "publishedYear": "2026",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.versele.com/en/gb/traditional/products/traditional-premiumsupercondition",
+      "speciesScopes": [
+        "pigeon"
+      ],
+      "permittedUse": "Manufacturer racing-pigeon mix that lists canary seed at 4%.",
+      "limitations": "Manufacturer product page; shows common practice for a minor mix component, not a veterinary recommendation.",
+      "accessedAt": "2026-10-10"
+    },
+    {
+      "id": "conestogo-canary-seed-2026",
+      "title": "Canary Seed by Conestogo Bird Seed Company",
+      "authorsOrOrganization": "Conestogo Bird Seed Company, sold by Exotic Wings (retailer label)",
+      "publishedYear": "2026",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.exoticwings.ca/products/canary-seed-by-conestogo-bird-seed-company",
+      "speciesScopes": [
+        "parrot",
+        "african_grey",
+        "budgie",
+        "canary"
+      ],
+      "permittedUse": "Label for 100% canary seed: approximate per 100 g calories 399, protein 21%, fats 5.5%, fibre 7.5%; feeding guideline most species up to 20%, high-energy species up to 25%.",
+      "limitations": "Retailer/manufacturer label: basis and methods not stated, fibre not identified as crude or dietary, not specific to African Greys.",
+      "accessedAt": "2026-10-10"
+    },
+    {
+      "id": "thepoultrysite-hairless-canary-seed-broilers-2015",
+      "title": "Performance, Health and Tissue Weights of Broilers Fed Graded Levels of Hairless Hulled Canary Seed (summary of Classen et al. 2014, Canadian Journal of Animal Science)",
+      "authorsOrOrganization": "The Poultry Site (Jackie Linden), summarising Classen, Cho, Hucl, Gomis and Patterson (University of Saskatchewan)",
+      "publishedYear": "2015",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.thepoultrysite.com/articles/performance-health-and-tissue-weights-of-broilers-fed-graded-levels-of-hairless-hulled-canary-seed",
+      "speciesScopes": [
+        "chicken"
+      ],
+      "permittedUse": "Summary of a broiler trial with hulled hairless yellow and brown canary seed at 0, 15, 30 and 45% of the diet, concluding the seeds have merit and are safe for poultry feeding.",
+      "limitations": "Trade-press summary of the paper; the paper itself was not read. Broilers only (no layers), hairless hulled seed.",
+      "accessedAt": "2026-10-10"
     }
   ]
 }

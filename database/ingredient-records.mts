@@ -102,6 +102,9 @@ export const INGREDIENTS: Record<string, Ingredient> = {
   millet_white: { category: "grain", protein: 11, carbs: 73, fat: 4, fiber: 6.7, notes: "White proso millet" },
   millet_red: { category: "grain", protein: 11, carbs: 73, fat: 4, fiber: 6.7, notes: "Red millet variety" },
   millet_silver: { category: "grain", protein: 11, carbs: 73, fat: 4, fiber: 6.7, notes: "Silver millet" },
+  // Owner decisions 2026-10-10 (#288): whole canary seed is a grain-like seed offered to every bird; the only cap is chicken 45 % (the tested maximum in a broiler trial).
+  // Protein, fat and carbs: Urbizo-Reyes et al. 2021, Table 1, whole hairless canary seed (wet basis). Fibre: 7.5 % from a manufacturer label (not identified as crude or dietary); no crude-fibre source exists.
+  canary_seed: { category: "grain", protein: 15.6, carbs: 62.9, fat: 5.2, fiber: 7.5, notes: "Plain canary seed; small grain-like seed, staple of canary and budgie mixes", maxSharePercent: { chicken: 45 }, maxShareBasis: "sourced" },
 
   canola: { category: "seed", protein: 20, carbs: 24, fat: 40, fiber: 9.3, notes: "Rapeseed, oil seed" },
   rapeseed: { category: "seed", protein: 20, carbs: 24, fat: 40, fiber: 9.3, notes: "Same as canola" },
