@@ -320,6 +320,17 @@ export const INGREDIENT_COMPATIBILITY: Record<string, IngredientCompatibility> =
     compatibleBirds: ['pigeon', 'parrot', 'african_grey', 'budgie', 'canary', 'chicken'],
     incompatibleBirds: [],
   },
+  // Capped treats: a bird is listed as compatible only where the ingredient record has a cap for it.
+  almonds: {
+    ingredient: 'almonds',
+    compatibleBirds: ['pigeon', 'parrot', 'african_grey', 'budgie', 'chicken'],
+    incompatibleBirds: ['canary'],
+  },
+  pine_nuts: {
+    ingredient: 'pine_nuts',
+    compatibleBirds: ['pigeon', 'parrot', 'budgie', 'chicken'],
+    incompatibleBirds: ['african_grey', 'canary'],
+  },
   avocado: {
     ingredient: 'avocado',
     compatibleBirds: [],

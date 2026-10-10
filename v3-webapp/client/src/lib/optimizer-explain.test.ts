@@ -93,7 +93,7 @@ describe("draft fallback notice copy", () => {
     expect(formatOptimizerFallbackMiss({ kind: "category", key: "legume", direction: "below", value: 0, range: [15, 25], reason: "not_enough_stock" }))
       .toBe("Legumes (below range): you don't have enough legumes in your inventory.");
     expect(formatOptimizerFallbackMiss({ kind: "category", key: "seed", direction: "below", value: 0, range: [5, 15], reason: "not_together" }))
-      .toBe("Seeds (below range): with the available ingredients it is not possible to get a perfect distribution.");
+      .toBe("Oily seeds (below range): with the available ingredients it is not possible to get a perfect distribution.");
   });
 
   it("uses no avian, poultry, or veterinary terminology", () => {

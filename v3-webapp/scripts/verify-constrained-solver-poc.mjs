@@ -257,8 +257,8 @@ assert.ok(profileCorpus.infeasible.length > 0, "profile fixture corpus did not e
 // feasible; parrot/pet no longer is (its defaults now resolve to best_attainable).
 // Updated after #248 widened the pigeon racing, molting, winter and pet carbohydrate/fat ranges:
 // all six pigeon profiles are now exactly feasible on their default ingredients.
-assert.deepEqual(profileCorpus.feasible, ["pigeon/maintenance", "pigeon/racing", "pigeon/breeding", "pigeon/molting", "pigeon/winter", "pigeon/pet", "budgie/breeding", "budgie/molting", "canary/breeding", "canary/molting", "chicken/pet"], "the active fixture feasibility baseline changed; review the runtime targets or catalog before accepting a solver comparison");
-assert.equal(profileCorpus.infeasible.length, 10, "the active fixture infeasibility baseline changed; review the runtime targets or catalog before accepting a solver comparison");
+assert.deepEqual(profileCorpus.feasible, ["pigeon/maintenance", "pigeon/racing", "pigeon/breeding", "pigeon/molting", "pigeon/winter", "pigeon/pet", "budgie/pet", "budgie/breeding", "budgie/molting", "canary/pet", "canary/breeding", "canary/molting", "chicken/pet"], "the active fixture feasibility baseline changed; review the runtime targets or catalog before accepting a solver comparison");
+assert.equal(profileCorpus.infeasible.length, 8, "the active fixture infeasibility baseline changed; review the runtime targets or catalog before accepting a solver comparison");
 
 const splitLentilCatalogRecord = INGREDIENTS.split_lentils;
 assert.deepEqual(

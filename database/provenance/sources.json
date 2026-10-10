@@ -2677,7 +2677,9 @@
       "publishedYear": "Undated English edition, early 20th century (Cornell University Library copy)",
       "sourceTier": "practitioner_book",
       "urlOrDoi": "http://www.archive.org/details/cu31924000042154",
-      "speciesScopes": ["pigeon"],
+      "speciesScopes": [
+        "pigeon"
+      ],
       "permittedUse": "Historical Belgian racing-pigeon feeding practice: grain, legume and seed proportions for rearing (beans, peas and tares 45 percent), the racing season (about 50 percent legumes) and the moult (about 35 percent legumes). Context for the original V0 and V1 mix targets only.",
       "limitations": "A practitioner's manual, not a study. The author says the proportions are only an indication and should not be taken literally. It gives no protein, fat, carbohydrate or fibre percentages and uses 1900s ingredient names. It cannot set a calculator target or approve any ingredient.",
       "accessedAt": "2026-10-09"
@@ -2689,9 +2691,26 @@
       "publishedYear": "2013",
       "sourceTier": "practitioner_book",
       "urlOrDoi": "IMB Publishing, 2013 (e-book supplied by the product owner; no public URL recorded)",
-      "speciesScopes": ["pigeon"],
+      "speciesScopes": [
+        "pigeon"
+      ],
       "permittedUse": "General pigeon-keeping and moult-management background only.",
       "limitations": "A popular guide. It was searched for feed composition and nutrient percentages and contains no protein, fat or carbohydrate figures, so it is not evidence for any target.",
+      "accessedAt": "2026-10-09"
+    },
+    {
+      "id": "theparrotclub-pinenut-warning-2015",
+      "title": "Word Of Warning On Pinenuts",
+      "authorsOrOrganization": "CaptainHowdy; The Parrot Club",
+      "publishedYear": "2015",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://theparrotclub.co.uk/community/index.php?threads/word-of-warning-on-pinenuts.15095/",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Avicultural community guidance documenting mechanical lower-mandible shell wedging/entrapment hazard in parrots and Aspergillus fungal risk from in-shell pine nuts.",
+      "limitations": "Community discussion forum; does not establish controlled feeding trials, nutrient composition, or universal serving sizes.",
       "accessedAt": "2026-10-09"
     }
   ]

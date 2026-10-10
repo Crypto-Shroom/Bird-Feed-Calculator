@@ -25,15 +25,15 @@ const africanGrey: Record<string, Inventory> = {
 };
 
 const budgie: Record<string, Inventory> = {
-  pet: { millet: 2500, oats: 1200, wheat: 1000, canola: 250, safflower: 200 },
-  breeding: { millet: 2200, oats: 1200, wheat: 1000, peas: 700, canola: 300, safflower: 250 },
-  molting: { millet: 2000, oats: 1400, wheat: 1000, peas: 1000, lentils: 600, canola: 250 },
+  pet: { millet: 1800, millet_red: 600, millet_silver: 500, oats: 800, linseed: 150, niger: 100 },
+  breeding: { millet: 1600, millet_red: 500, oats: 800, lentils: 300, hemp_hearts: 200, niger: 150, linseed: 150 },
+  molting: { millet: 1600, millet_red: 500, oats: 800, lentils: 300, hemp_hearts: 200, niger: 150, linseed: 150 },
 };
 
 const canary: Record<string, Inventory> = {
-  pet: { millet: 2500, oats: 1200, wheat: 1000, canola: 300, safflower: 200 },
-  breeding: { millet: 2200, oats: 1200, wheat: 1000, peas: 700, canola: 350, safflower: 250 },
-  molting: { millet: 2100, oats: 1400, wheat: 1000, peas: 900, lentils: 600, canola: 300 },
+  pet: { millet: 1800, oats: 900, niger: 500, canola: 500, linseed: 300, hemp_hearts: 200 },
+  breeding: { millet: 1500, oats: 900, niger: 600, canola: 600, linseed: 300, hemp_hearts: 500 },
+  molting: { millet: 1500, oats: 900, niger: 600, canola: 600, linseed: 300, hemp_hearts: 500 },
 };
 
 const chicken: Record<string, Inventory> = {

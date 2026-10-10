@@ -448,7 +448,7 @@
     "notes": "Hulled hemp seeds"
   },
   "millet": {
-    "category": "seed",
+    "category": "grain",
     "protein": 11,
     "carbs": 73,
     "fat": 4,
@@ -456,7 +456,7 @@
     "notes": "Small seed, good carbs"
   },
   "millet_white": {
-    "category": "seed",
+    "category": "grain",
     "protein": 11,
     "carbs": 73,
     "fat": 4,
@@ -464,7 +464,7 @@
     "notes": "White proso millet"
   },
   "millet_red": {
-    "category": "seed",
+    "category": "grain",
     "protein": 11,
     "carbs": 73,
     "fat": 4,
@@ -472,7 +472,7 @@
     "notes": "Red millet variety"
   },
   "millet_silver": {
-    "category": "seed",
+    "category": "grain",
     "protein": 11,
     "carbs": 73,
     "fat": 4,
@@ -566,5 +566,36 @@
     "fat": 49,
     "fiber": 4.2,
     "notes": "Plain bird-feed dry-roasted peanuts; high-fat treat, not a staple"
+  },
+  "almonds": {
+    "category": "seed",
+    "protein": 21.2,
+    "carbs": 21.6,
+    "fat": 49.9,
+    "fiber": 2.4,
+    "notes": "Very high in fat (about 50 %). Treat only, not a staple. Discard rancid nuts.",
+    "maxSharePercent": {
+      "pigeon": 2,
+      "parrot": 5,
+      "african_grey": 5,
+      "budgie": 5,
+      "chicken": 5
+    },
+    "maxShareBasis": "keeper_practice"
+  },
+  "pine_nuts": {
+    "category": "seed",
+    "protein": 13.7,
+    "carbs": 13.1,
+    "fat": 68.4,
+    "fiber": 3.7,
+    "notes": "Very high in fat (about 50-68 %). Treat only, not a staple. Discard rancid or mouldy kernels.",
+    "maxSharePercent": {
+      "pigeon": 2,
+      "parrot": 5,
+      "budgie": 5,
+      "chicken": 5
+    },
+    "maxShareBasis": "keeper_practice"
   }
 }

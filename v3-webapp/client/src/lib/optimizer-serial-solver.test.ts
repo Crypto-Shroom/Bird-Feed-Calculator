@@ -161,9 +161,9 @@ describe("serial staged optimizer with real HiGHS", () => {
       profileModel("chicken", "pet", { barley: 20, corn_yellow: 20, oats: 20, peas: 20, wheat: 20 }, 40),
       profileModel("parrot", "pet", { corn_yellow: 30, oats: 30, peas: 30, safflower: 30, wheat: 30 }, 40),
       profileModel("pigeon", "racing", { barley: 30, corn_yellow: 30, peas: 30, safflower: 30 }, 30),
-      profileModel("budgie", "pet", { canola: 10, millet: 30, oats: 30, safflower: 10 }, 30),
+      profileModel("budgie", "pet", { linseed: 4, millet: 30, niger: 3, oats: 20 }, 30),
       profileModel("pigeon", "pet", { corn_yellow: 25, lentils: 10, peas: 25, safflower: 8, wheat: 25 }, 25),
-      profileModel("canary", "breeding", { canola: 6, millet: 20, oats: 20, peas: 20, safflower: 6, wheat: 20 }, 20),
+      profileModel("canary", "breeding", { canola: 10, hemp_hearts: 10, millet: 20, niger: 10, oats: 10 }, 20),
       profileModel("chicken", "egg_laying", { barley: 15, corn_yellow: 30, lentils: 15, oats: 15, peas: 15 }, 30),
       // Sensitive to the diversity tolerance band: with every lock exact the reference picks a different mix.
       profileModel("chicken", "pet", { barley: 30, corn_yellow: 30, lentils: 30, oats: 30, peas: 30, wheat: 30 }, 30),
