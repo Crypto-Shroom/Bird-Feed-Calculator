@@ -24,7 +24,7 @@ export const de: TranslationKeys = {
     description: "Konfiguriere die aktuelle Situation deines Vogels ({bird}), um optimierte Zielwerte zu erhalten.",
     situationLabel: "Aktuelle Situation",
     suggestProfile: "Profil vorschlagen",
-    targetBatchSize: "Gewünschte Menge",
+    targetBatchSize: "Zielmenge",
     water: "Wasser",
     grit: "Magenkiesel (Grit)",
     light: "Licht",
