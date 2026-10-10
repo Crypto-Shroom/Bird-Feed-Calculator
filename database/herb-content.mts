@@ -84,7 +84,7 @@ export const HERBS_SUPPLEMENTS: Record<string, Herb> = {
     benefits: ["Antimicrobial", "Antifungal", "Circulation"],
     dosage_per_kg: "0.5-1g",
     frequency: "2-3 times per week",
-    notes: "Ground cinnamon, improves circulation",
+    notes: "Ground Ceylon cinnamon preferred (low coumarin); improves circulation",
   },
   ginger: {
     category: "herb_spice",
