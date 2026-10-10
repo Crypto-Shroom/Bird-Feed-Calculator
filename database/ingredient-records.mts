@@ -89,10 +89,10 @@ export const INGREDIENTS: Record<string, Ingredient> = {
   hemp: { category: "seed", protein: 31, carbs: 28, fat: 49, fiber: 14.9, notes: "Omega-3 rich, excellent" },
   hemp_hearts: { category: "seed", protein: 32, carbs: 28, fat: 49, fiber: 4, notes: "Hulled hemp seeds" },
 
-  millet: { category: "seed", protein: 11, carbs: 73, fat: 4, fiber: 6.7, notes: "Small seed, good carbs" },
-  millet_white: { category: "seed", protein: 11, carbs: 73, fat: 4, fiber: 6.7, notes: "White proso millet" },
-  millet_red: { category: "seed", protein: 11, carbs: 73, fat: 4, fiber: 6.7, notes: "Red millet variety" },
-  millet_silver: { category: "seed", protein: 11, carbs: 73, fat: 4, fiber: 6.7, notes: "Silver millet" },
+  millet: { category: "grain", protein: 11, carbs: 73, fat: 4, fiber: 6.7, notes: "Small seed, good carbs" },
+  millet_white: { category: "grain", protein: 11, carbs: 73, fat: 4, fiber: 6.7, notes: "White proso millet" },
+  millet_red: { category: "grain", protein: 11, carbs: 73, fat: 4, fiber: 6.7, notes: "Red millet variety" },
+  millet_silver: { category: "grain", protein: 11, carbs: 73, fat: 4, fiber: 6.7, notes: "Silver millet" },
 
   canola: { category: "seed", protein: 20, carbs: 24, fat: 40, fiber: 9.3, notes: "Rapeseed, oil seed" },
   rapeseed: { category: "seed", protein: 20, carbs: 24, fat: 40, fiber: 9.3, notes: "Same as canola" },

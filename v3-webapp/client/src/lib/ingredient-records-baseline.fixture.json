@@ -448,7 +448,7 @@
     "notes": "Hulled hemp seeds"
   },
   "millet": {
-    "category": "seed",
+    "category": "grain",
     "protein": 11,
     "carbs": 73,
     "fat": 4,
@@ -456,7 +456,7 @@
     "notes": "Small seed, good carbs"
   },
   "millet_white": {
-    "category": "seed",
+    "category": "grain",
     "protein": 11,
     "carbs": 73,
     "fat": 4,
@@ -464,7 +464,7 @@
     "notes": "White proso millet"
   },
   "millet_red": {
-    "category": "seed",
+    "category": "grain",
     "protein": 11,
     "carbs": 73,
     "fat": 4,
@@ -472,7 +472,7 @@
     "notes": "Red millet variety"
   },
   "millet_silver": {
-    "category": "seed",
+    "category": "grain",
     "protein": 11,
     "carbs": 73,
     "fat": 4,
