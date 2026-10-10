@@ -1017,7 +1017,7 @@ describe("canonical provenance ledger", () => {
 
     expect(shelled?.speciesEvidence.map((entry) => entry.bird)).toEqual(ledger.requiredBirdOrder);
     expect(shelled?.speciesEvidence.map((entry) => entry.outcome)).toEqual([
-      "limited",
+      "unresolved",
       "limited",
       "limited",
       "unresolved",

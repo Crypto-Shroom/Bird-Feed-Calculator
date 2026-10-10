@@ -6986,14 +6986,14 @@
       "speciesEvidence": [
         {
           "bird": "pigeon",
-          "outcome": "limited",
+          "outcome": "unresolved",
           "sourceIds": [
             "petco-pigeon-cashew-2019",
             "vca-pigeon-dove-feeding"
           ],
-          "locator": "Petco DVM pigeon mechanical size guidance; VCA pigeon/dove feeding guidance",
-          "evidenceScope": "species_specific",
-          "rationale": "Pigeons swallow seeds whole without chewing. Plain shelled pine nut kernels must be chopped to small-seed size to prevent esophageal or crop obstruction, and offered only as occasional treats.",
+          "locator": "Petco DVM page on cashew nuts for pigeons (kept only as a cited limitation); VCA pigeon/dove feeding guidance (general)",
+          "evidenceScope": "historical_project",
+          "rationale": "The only pigeon-specific source found, petco-pigeon-cashew-2019, concerns cashew nuts, not pine nuts, so it is kept only as a cited limitation and does not support an outcome. No direct pigeon evidence for plain shelled pine nut kernels was found. Absence of evidence is not a toxicity finding or a safety approval; pigeons swallow seeds whole, so any use needs small-seed-size chopping (see the processing rule).",
           "reviewedAt": "2026-10-09",
           "firstPassSearch": {
             "queries": [
@@ -7013,7 +7013,7 @@
               "petco-pigeon-cashew-2019",
               "vca-pigeon-dove-feeding"
             ],
-            "result": "Petco DVM guidance supports small-seed-size preparation for nut meats; limited treat use."
+            "result": "Only a cashew-nut page (Petco DVM) was found for pigeons; no pine-nut-specific pigeon evidence."
           }
         },
         {
