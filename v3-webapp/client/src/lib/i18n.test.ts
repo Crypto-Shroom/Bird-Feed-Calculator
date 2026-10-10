@@ -85,7 +85,7 @@ describe("i18n localization foundation", () => {
 
   it("returns nested translation paths correctly", () => {
     expect(getNestedTranslation(en, "nav.title")).toBe("Precision Nutrition for All Birds");
-    expect(getNestedTranslation(de, "nav.title")).toBe("Präzisionsernährung für alle Vögel");
+    expect(getNestedTranslation(de, "nav.title")).toBe("Präzisionsfutter für alle Vögel");
     expect(getNestedTranslation(nl, "nav.title")).toBe("Precisievoeding voor alle vogels");
   });
 
