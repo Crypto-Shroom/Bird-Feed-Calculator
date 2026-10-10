@@ -6,6 +6,8 @@
  * The V3 application imports it through client/src/lib/ingredient-records.ts.
  */
 
+export type IngredientBird = "pigeon" | "parrot" | "african_grey" | "budgie" | "canary" | "chicken";
+
 export interface Ingredient {
   category: "grain" | "legume" | "seed";
   protein: number;
@@ -13,6 +15,13 @@ export interface Ingredient {
   fat: number;
   fiber: number;
   notes: string;
+  /**
+   * Maximum share of the finished mix, in percent by weight, per bird. Only
+   * the birds listed may be offered this ingredient as a capped treat.
+   */
+  maxSharePercent?: Partial<Record<IngredientBird, number>>;
+  /** Why the caps are set: `sourced` (a study or vet figure) or `keeper_practice` (keeper experience, shown to visitors as such). */
+  maxShareBasis?: "sourced" | "keeper_practice";
 }
 
 export const INGREDIENTS: Record<string, Ingredient> = {
@@ -107,4 +116,9 @@ export const INGREDIENTS: Record<string, Ingredient> = {
   peanuts: { category: "seed", protein: 26, carbs: 16, fat: 49, fiber: 4.2, notes: "Bird-feed source; high-fat treat, not a staple" },
   peanuts_raw: { category: "seed", protein: 26, carbs: 16, fat: 49, fiber: 4.2, notes: "Plain bird-feed source; high-fat treat, not a staple" },
   peanuts_roasted: { category: "seed", protein: 26, carbs: 16, fat: 49, fiber: 4.2, notes: "Plain bird-feed dry-roasted peanuts; high-fat treat, not a staple" },
+  // Owner-approved 2026-10-10 (#43, #205). Caps are keeper-practice estimates; birds not listed are not offered the food.
+  // Almond: USDA SR Legacy "Nuts, almonds" (FDC 170567); fibre is crude fibre from Feedipedia "Almond kernels".
+  almonds: { category: "seed", protein: 21.2, carbs: 21.6, fat: 49.9, fiber: 2.4, notes: "Very high in fat (about 50 %). Treat only, not a staple. Discard rancid nuts.", maxSharePercent: { pigeon: 2, parrot: 5, african_grey: 5, budgie: 5, chicken: 5 }, maxShareBasis: "keeper_practice" },
+  // Pine nuts: USDA SR Legacy "Nuts, pine nuts, dried" (FDC 170591; species not named). Fibre is USDA dietary fibre; no crude-fibre source found.
+  pine_nuts: { category: "seed", protein: 13.7, carbs: 13.1, fat: 68.4, fiber: 3.7, notes: "Very high in fat (about 50-68 %). Treat only, not a staple. Discard rancid or mouldy kernels.", maxSharePercent: { pigeon: 2, parrot: 5, budgie: 5, chicken: 5 }, maxShareBasis: "keeper_practice" },
 };

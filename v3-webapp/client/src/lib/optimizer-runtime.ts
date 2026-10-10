@@ -242,6 +242,7 @@ export function buildBrowserOptimizerCandidates(
           fiber: ingredient.fiber,
         },
         safetyState: "eligible" as const,
+        ...(ingredient.maxSharePercent?.[bird] !== undefined ? { maxSharePercent: ingredient.maxSharePercent[bird] } : {}),
       }];
     });
 

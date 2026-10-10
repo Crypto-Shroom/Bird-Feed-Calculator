@@ -103,7 +103,16 @@ export class MultibirMixCalculator {
       warnings.push({ level: "WARNING", message: `Only ${Math.round(availableWeight)}g of eligible inventory is available, so the recipe is scaled to that amount.` });
     }
 
-    const mix = this.optimizeMix(eligible, actualTarget, profile.nutrition);
+    // Capped treats (nuts) may fill at most their cap of the finished mix.
+    const capped = eligible.map((ingredient) => {
+      const cap = ingredient.maxSharePercent?.[this.bird];
+      return cap === undefined ? ingredient : { ...ingredient, amount: Math.min(ingredient.amount, (cap / 100) * actualTarget) };
+    });
+    const mix = this.optimizeMix(capped, actualTarget, profile.nutrition);
+    const mixedWeight = Object.values(mix).reduce((total, amount) => total + amount, 0);
+    if (capped.some((ingredient, index) => ingredient.amount < eligible[index].amount) && mixedWeight < actualTarget - 0.5) {
+      warnings.push({ level: "WARNING", message: `Only ${Math.round(mixedWeight)}g could be mixed: some ingredients are limited to a maximum share of the mix for this bird.` });
+    }
     const nutrition = this.calculateNutrition(mix);
     const categories = this.calculateCategoryRatios(mix);
     const optimization = this.objectiveScore(mix, profile.nutrition);

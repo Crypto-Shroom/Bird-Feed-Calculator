@@ -110,6 +110,10 @@ export function canonicalizeOptimizerCandidates(
       availableGrams: (existing?.availableGrams ?? 0) + candidate.availableGrams,
       nutrition: nutritionFor(canonicalId),
       safetyState: "eligible",
+      // Variants of one ingredient share its cap; the stricter value wins if they ever differ.
+      ...(candidate.maxSharePercent !== undefined || existing?.maxSharePercent !== undefined
+        ? { maxSharePercent: Math.min(candidate.maxSharePercent ?? 100, existing?.maxSharePercent ?? 100) }
+        : {}),
       sourceIngredientIds: nextSourceIds,
     });
   }

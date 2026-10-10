@@ -171,6 +171,14 @@ export default function Home() {
     return candidate ? `Try offering ${candidate.replace(/_/g, " ")} alongside this mix to increase diversity for your bird.` : null;
   }, [formulaSource, result, selectedBird]);
 
+  // Capped treats (nuts) show their maximum share and an evidence-basis hint for the selected bird.
+  const capHint = (name: string) => {
+    const percent = INGREDIENTS[name]?.maxSharePercent?.[selectedBird];
+    if (percent === undefined) return null;
+    const text = selectedBird === "pigeon" ? t("inventory.capHintPigeon", { ingredient: name.replace(/_/g, " ") }) : t("inventory.capHintTreat");
+    return { percent, text };
+  };
+
   // Pre-classify ingredient compatibility & safety checks for selected bird to avoid repetitive evaluation per search keypress
   const classifiedIngredients = useMemo(() => {
     return Object.keys(INGREDIENTS)
@@ -429,7 +437,7 @@ export default function Home() {
                       <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-emerald-700">{t("inventory.compatibleChoices")}</p>
                       {ingredientOptions.available.length ? ingredientOptions.available.map((name) => (
                         <button key={name} type="button" onClick={() => addIngredient(name)} className="flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-sm hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                          <span><span className="block capitalize">{name.replace(/_/g, " ")}</span>{name === "popcorn" && <span className="block text-xs text-muted-foreground">{t("inventory.popcornNote")}</span>}{selectedBird === "canary" && INGREDIENTS[name]?.category === "legume" && <span className="block text-xs text-muted-foreground">{t("inventory.canaryLegumeNote")}</span>}</span><Plus className="h-4 w-4 shrink-0 text-emerald-700" />
+                          <span><span className="block capitalize">{name.replace(/_/g, " ")}</span>{name === "popcorn" && <span className="block text-xs text-muted-foreground">{t("inventory.popcornNote")}</span>}{selectedBird === "canary" && INGREDIENTS[name]?.category === "legume" && <span className="block text-xs text-muted-foreground">{t("inventory.canaryLegumeNote")}</span>}{capHint(name) && <span className="block text-xs text-muted-foreground">{capHint(name)?.text}</span>}</span><Plus className="h-4 w-4 shrink-0 text-emerald-700" />
                         </button>
                       )) : <div className="px-2 py-3"><p className="text-sm text-muted-foreground">{t("inventory.noMatch")}</p>{ingredientSearch.trim() && <div className="mt-3"><IssueSubmitDialog triggerLabel={<><ExternalLink className="h-3.5 w-3.5" />{t("inventory.suggestAdd")}</>} defaultTitle={ingredientTitle} defaultBody={ingredientBody} helperText={t("inventory.suggestHelpNote")} /></div>}<p className="mt-1 text-xs leading-relaxed text-muted-foreground">{t("inventory.suggestNote")}</p></div>}
                       {ingredientOptions.blocked.length > 0 && <>
@@ -464,6 +472,7 @@ export default function Home() {
                         {hasConcern && <p className="mb-2 rounded bg-red-100 p-2 text-xs font-medium text-red-900">{t("inventory.excludedFromFormula")}: {speciesToxicity?.description || rawSafety?.message || processingWarning || `not compatible with ${birdProfile.name}`}.</p>}
                         {adzukiSafety && <p className="mb-2 flex items-start gap-1.5 rounded border border-red-300 bg-red-100 p-2 text-xs font-semibold text-red-950"><AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />{t("inventory.adzukiWarning")}</p>}
                         {selectedBird === "canary" && INGREDIENTS[name]?.category === "legume" && <p className="mb-2 rounded border border-amber-200 bg-amber-50 p-2 text-xs font-medium text-amber-950">{t("inventory.canaryLegumeNote")}</p>}
+                        {capHint(name) && <p className="mb-2 rounded border border-amber-200 bg-amber-50 p-2 text-xs font-medium text-amber-950">{t("inventory.capLimit", { percent: capHint(name)?.percent ?? 0 })}. {capHint(name)?.text}</p>}
                         {peanutGuidance && <p className="mb-2 rounded border border-amber-200 bg-amber-50 p-2 text-xs font-medium text-amber-950">{t("inventory.peanutTreat", { notes: peanutGuidance })}</p>}
                         {popcornGuidance && <p className="mb-2 flex items-start gap-1.5 rounded border border-blue-200 bg-blue-50 p-2 text-xs font-medium text-blue-950"><Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />{popcornGuidance}</p>}
                         <Input id={`amount-${name}`} type="number" min="0" value={amount} onChange={(event) => updateAmount(name, Number(event.target.value))} aria-label={t("inventory.amountInGrams", { name: name.replace(/_/g, " ") })} />

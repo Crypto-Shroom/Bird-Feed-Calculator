@@ -11,6 +11,8 @@ export interface OptimizerCandidate {
   availableGrams: number;
   nutrition: Record<OptimizerMacro, number>;
   safetyState: "eligible" | "excluded";
+  /** Maximum share of the finished mix in percent by weight (capped treats such as nuts). */
+  maxSharePercent?: number;
 }
 
 export interface OptimizerModelRequest {
@@ -129,15 +131,25 @@ function normalizeCandidates(candidates: readonly OptimizerCandidate[], policy: 
         if (!Number.isFinite(candidate.nutrition[macro])) throw new Error(`candidate '${candidate.id}' has invalid ${macro} nutrition`);
       }
 
+      if (candidate.maxSharePercent !== undefined && (!Number.isFinite(candidate.maxSharePercent) || candidate.maxSharePercent < 0 || candidate.maxSharePercent > 100)) {
+        throw new Error(`candidate '${candidate.id}' has an invalid maximum share`);
+      }
       const availableGrams = Math.floor(candidate.availableGrams / policy.gramIncrement) * policy.gramIncrement;
-      const quantityVariable = `x_${candidate.id}`;
-      return {
-        ...candidate,
-        availableGrams,
-        quantityVariable,
-        ...(availableGrams >= policy.meaningfulInclusionGrams ? { meaningfulInclusionVariable: `z_${candidate.id}` } : {}),
-      };
+      return withAvailableGrams({ ...candidate, quantityVariable: `x_${candidate.id}` }, availableGrams, policy);
     });
+}
+
+function withAvailableGrams<T extends OptimizerCandidate & { quantityVariable: string; meaningfulInclusionVariable?: string }>(
+  candidate: T,
+  availableGrams: number,
+  policy: OptimizerPolicy,
+): NormalizedOptimizerCandidate {
+  const { meaningfulInclusionVariable: _previous, ...rest } = candidate;
+  return {
+    ...rest,
+    availableGrams,
+    ...(availableGrams >= policy.meaningfulInclusionGrams ? { meaningfulInclusionVariable: `z_${candidate.id}` } : {}),
+  };
 }
 
 export function buildExactFeasibilityModel(request: OptimizerModelRequest): OptimizerModel {
@@ -153,11 +165,18 @@ export function buildExactFeasibilityModel(request: OptimizerModelRequest): Opti
   for (const macro of macroKeys) assertRange(request.macroRanges[macro], `${macro} range`);
   for (const category of categoryKeys) assertRange(request.categoryRanges[category], `${category} range`);
 
-  const candidates = normalizeCandidates(request.candidates, policy);
-  const availableTotal = candidates.reduce((total, candidate) => total + candidate.availableGrams, 0);
+  const uncapped = normalizeCandidates(request.candidates, policy);
+  const availableTotal = uncapped.reduce((total, candidate) => total + candidate.availableGrams, 0);
   const achievableTargetGrams = Math.min(request.requestedTargetGrams, availableTotal);
 
   if (achievableTargetGrams === 0) throw new Error("no positive, safe eligible inventory is available for the model");
+
+  // A per-ingredient share cap becomes a hard upper limit on its grams in every stage.
+  const candidates = uncapped.map((candidate) => {
+    if (candidate.maxSharePercent === undefined) return candidate;
+    const capGrams = Math.floor(((candidate.maxSharePercent / 100) * achievableTargetGrams) / policy.gramIncrement) * policy.gramIncrement;
+    return withAvailableGrams(candidate, Math.min(candidate.availableGrams, capGrams), policy);
+  });
 
   const exactWeightRow = ` exact_weight: ${formatExpression(candidates.map(({ quantityVariable }) => ({ coefficient: 1, variable: quantityVariable })))} = ${formatNumber(achievableTargetGrams)}`;
   const targetRows: string[] = [];
