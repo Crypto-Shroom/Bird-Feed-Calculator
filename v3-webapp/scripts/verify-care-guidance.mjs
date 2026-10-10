@@ -18,6 +18,6 @@ assert.equal(BIRD_CARE.chicken.baseDiet.includes("insects as occasional enrichme
 
 const homeSource = readFileSync(resolve(import.meta.dirname, "../client/src/pages/Home.tsx"), "utf8");
 assert.match(homeSource, /const gritText = care\.gritBySituation\?\.\[situation\]/);
-assert.match(homeSource, /title="Grit" text=\{gritText\}/);
+assert.match(homeSource, /title=(?:"Grit"|\{t\("profiles\.grit"\)\}) text=\{gritText\}/);
 
 console.log("Care guidance checks passed.");
