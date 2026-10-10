@@ -234,6 +234,7 @@ export default function Home() {
     "## Planner context",
     `Bird: ${birdProfile.name}`,
     `Profile: ${currentProfile.name}`,
+    `Language: ${language}`,
     "",
     "## Research needed",
     "This request requires research before any ingredient value, safety rule, compatibility decision, or feeding guidance can change.",
@@ -346,6 +347,9 @@ export default function Home() {
                 "",
                 "## Known dietary considerations or source links",
                 "",
+                "## Context",
+                `Language: ${language}`,
+                "",
                 "## Research request",
                 "Please research nutrition targets, safe ingredients, toxicity boundaries, and suitable profiles before any calculator data is added.",
               ].join("\n")}
@@ -386,6 +390,9 @@ export default function Home() {
                         "## Suggested profile name",
                         "",
                         "## Intended use, life stage, or condition",
+                        "",
+                        "## Context",
+                        `Language: ${language}`,
                         "",
                         "## Research request",
                         "Please research nutrition targets, suitability, safety boundaries, and source support before any calculator profile is added.",
@@ -619,13 +626,14 @@ function FreshProduceCareNote({ text, guidance }: { text: string; guidance?: Non
 }
 
 function ReportIssueLink({ section, bird, profile }: { section: string; bird: string; profile: string }) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const title = `[Information report] ${section}`;
   const body = [
     "## Location in the calculator",
     `Section: ${section}`,
     `Bird: ${bird}`,
     `Profile: ${profile}`,
+    `Language: ${language}`,
     "",
     "## What seems incorrect, incomplete, or unclear?",
     "Please describe the information that needs review.",
