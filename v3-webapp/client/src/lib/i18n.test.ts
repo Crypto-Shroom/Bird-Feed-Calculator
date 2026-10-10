@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { de } from "../locales/de";
 import { en } from "../locales/en";
@@ -76,14 +78,51 @@ describe("i18n localization foundation", () => {
   });
 
   it("uses exotics vet terminology in every locale", () => {
-    expect(en.safetyBanner.exoticsVetCare.toLowerCase()).toContain("exotics vet");
-    expect(de.safetyBanner.exoticsVetCare.toLowerCase()).toContain("exoten-tierarzt");
-    expect(nl.safetyBanner.exoticsVetCare.toLowerCase()).toContain("dierenarts voor exoten");
+    expect(en.safetyBanner.vetCare.toLowerCase()).toContain("exotics vet");
+    expect(de.safetyBanner.vetCare.toLowerCase()).toContain("exoten-tierarzt");
+    expect(nl.safetyBanner.vetCare.toLowerCase()).toContain("dierenarts voor exoten");
   });
 
   it("returns nested translation paths correctly", () => {
     expect(getNestedTranslation(en, "nav.title")).toBe("Precision Nutrition for All Birds");
     expect(getNestedTranslation(de, "nav.title")).toBe("Präzisionsernährung für alle Vögel");
     expect(getNestedTranslation(nl, "nav.title")).toBe("Precisievoeding voor alle vogels");
+  });
+
+  it("ensures every locale key defined in en.ts is referenced in client/src source files", () => {
+    const srcDir = path.resolve(__dirname, "..");
+    const sourceFiles: string[] = [];
+
+    function collectFiles(dir: string) {
+      const entries = fs.readdirSync(dir, { withFileTypes: true });
+      for (const entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+          if (entry.name !== "locales" && entry.name !== "node_modules") {
+            collectFiles(fullPath);
+          }
+        } else if (entry.isFile() && (entry.name.endsWith(".ts") || entry.name.endsWith(".tsx"))) {
+          if (!entry.name.endsWith(".test.ts") && !entry.name.endsWith(".test.tsx")) {
+            sourceFiles.push(fullPath);
+          }
+        }
+      }
+    }
+
+    collectFiles(srcDir);
+
+    const sourceContent = sourceFiles.map((file) => fs.readFileSync(file, "utf-8")).join("\n");
+    const unreferencedKeys: string[] = [];
+
+    for (const key of enKeys) {
+      // Keys can be referenced as t("key"), t('key'), or dynamically like t(`common.${bird}`)
+      const isDirectlyReferenced = sourceContent.includes(`"${key}"`) || sourceContent.includes(`'${key}'`);
+      const isDynamicCommonKey = key.startsWith("common.") && sourceContent.includes("common.${");
+      if (!isDirectlyReferenced && !isDynamicCommonKey) {
+        unreferencedKeys.push(key);
+      }
+    }
+
+    expect(unreferencedKeys).toEqual([]);
   });
 });
