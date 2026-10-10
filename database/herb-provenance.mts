@@ -9,7 +9,7 @@ export type HerbBirdKey = "pigeon" | "parrot" | "african_grey" | "budgie" | "can
 
 export interface HerbSource {
   authors: string;
-  year: number;
+  year: number | "n.d.";
   title: string;
   publication: string;
   url: string;
@@ -98,6 +98,13 @@ export const HERB_SOURCES = {
     publication: "BfR Health Assessment No. 043/2006, 16 June 2006 (human health; no data for birds)",
     url: "https://www.bfr.bund.de/cm/349/consumers_who_eat_a_lot_of_cinnamon_currently_have_an_overly_high_exposure_to_coumarin.pdf",
   },
+  busecanCinnamon: {
+    authors: "Busecan, D.",
+    year: "n.d.",
+    title: "The use of cinnamon in our pigeons diet - Natural Remedies",
+    publication: "pigeons.biz article (racing-pigeon keeper; keeper experience, not a study, no sources cited)",
+    url: "https://sites.google.com/site/homingpigeonstraining/articles/the-use-of-cinnamon-in-our-pigeons-diet-natural-remedies",
+  },
   wade2004: {
     authors: "Wade and Newman",
     year: 2004,
@@ -138,7 +145,7 @@ export const HERB_EVIDENCE: Record<string, HerbEvidence> = {
   oregano: eligible(["hartady2021", "dardouri2025"], "Poultry research and reviews; preserve ordinary feed use rather than therapeutic claims."),
   thyme: eligible(["hartady2021", "dardouri2025", "elSabrout2023"], "Poultry research and reviews; essential-oil concentrations should not be inferred from dried-herb records."),
   basil: libraryOnly([], "No linked academic avian source has yet been recorded for this individual planner entry."),
-  cinnamon: eligible(["hartady2021", "dardouri2025", "bfrCoumarinFaq2012", "bfrCoumarin2006"], "Poultry evidence exists; concentrated oils are not interchangeable with food-grade spice powder. Cassia cinnamon contains much more coumarin than Ceylon cinnamon (BfR, a human health assessment; no bird data)."),
+  cinnamon: eligible(["hartady2021", "dardouri2025", "bfrCoumarinFaq2012", "bfrCoumarin2006", "busecanCinnamon"], "Poultry evidence exists; concentrated oils are not interchangeable with food-grade spice powder. Cassia cinnamon contains much more coumarin than Ceylon cinnamon (BfR, a human health assessment; no bird data). A pigeon-keeper article (keeper experience, not a study) describes cinnamon powder in pigeon feed."),
   ginger: eligible(["elSabrout2023"], "Poultry review evidence; not a therapeutic protocol."),
   turmeric: eligible(["hartady2021", "elSabrout2023"], "Poultry review evidence; not a therapeutic protocol."),
   garlic_powder: pigeonEligible(["wade2004", "hartady2021"], "The preserved pigeon maintenance formulation includes garlic powder. It remains automatically suggested for pigeons only, including sport-management contexts where the profile is selected. The cited companion-bird case report is a non-pigeon caution and does not establish a general pigeon exclusion."),
