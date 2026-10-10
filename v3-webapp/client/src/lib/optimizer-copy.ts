@@ -15,7 +15,7 @@ export const OPTIMIZER_FALLBACK_COPY = {
   intro: "No mix of your current ingredients meets every target range, so this is the closest one possible with your inventory.",
   missesHeading: "Ranges it cannot meet:",
   macroLabels: { protein: "Protein", carbs: "Carbs", fat: "Fat", fiber: "Fiber" },
-  categoryLabels: { grain: "Grains", legume: "Legumes", seed: "Seeds" },
+  categoryLabels: { grain: "Grains", legume: "Legumes", seed: "Oily seeds" },
   miss: { below: "{label} (below range)", above: "{label} (above range)" },
   reasons: {
     macro: {
