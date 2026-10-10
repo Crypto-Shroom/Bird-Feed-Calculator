@@ -60,7 +60,7 @@ import { useLanguage, LanguageSwitcher } from "@/contexts/LanguageContext";
 const BIRDS_NEEDING_GRIT_REMINDER: ReadonlySet<BirdType> = new Set<BirdType>(["pigeon", "chicken"]);
 
 export default function Home() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [selectedBird, setSelectedBird] = useState<BirdType>("pigeon");
   const [situation, setSituation] = useState("pet");
   const [targetWeight, setTargetWeight] = useState(1000);
@@ -75,7 +75,8 @@ export default function Home() {
   const birdProfile = BIRD_PROFILES[selectedBird];
   const currentProfile = birdProfile.profiles[situation] || birdProfile.profiles[getDefaultSituation(selectedBird)];
   const care = BIRD_CARE[selectedBird];
-  const birdDisplayName = selectedBird === "african_grey" ? birdProfile.name : birdProfile.name.toLowerCase();
+  const localizedBirdName = t(`common.${selectedBird === "african_grey" ? "africanGrey" : selectedBird}`);
+  const birdDisplayName = language === "de" ? localizedBirdName : language === "nl" ? localizedBirdName.toLowerCase() : selectedBird === "african_grey" ? birdProfile.name : birdProfile.name.toLowerCase();
   const gritText = care.gritBySituation?.[situation] ? `${care.grit} ${care.gritBySituation[situation]}` : care.grit;
   const herbRecommendation = useMemo(() => {
     const recommendation = HERB_RECOMMENDATIONS[situation];
@@ -350,7 +351,7 @@ export default function Home() {
             <Card className="border-none shadow-xl">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2"><Bird className="h-6 w-6 text-primary" />{t("profiles.heading", { bird: birdProfile.name })}</CardTitle>
-                <CardDescription>{t("profiles.description", { bird: birdProfile.name.toLowerCase() })}</CardDescription>
+                <CardDescription>{t("profiles.description", { bird: birdDisplayName })}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-2">
