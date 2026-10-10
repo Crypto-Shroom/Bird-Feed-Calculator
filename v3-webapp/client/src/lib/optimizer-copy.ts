@@ -27,14 +27,14 @@ export const OPTIMIZER_FALLBACK_COPY = {
         below: "you don't have enough of the ingredients that are high in {nutrient}",
         above: "you don't have enough of the ingredients that are low in {nutrient}",
       },
-      not_together: "your ingredients can't meet it together with the other ranges",
+      not_together: "with the available ingredients it is not possible to get a perfect distribution",
     },
     category: {
       not_enough_stock: {
         below: "you don't have enough {category} in your inventory",
         above: "you don't have enough of the other ingredient types to balance them",
       },
-      not_together: "your ingredients can't meet it together with the other ranges",
+      not_together: "with the available ingredients it is not possible to get a perfect distribution",
     },
   },
 } as const;
