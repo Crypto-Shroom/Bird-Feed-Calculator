@@ -55,12 +55,13 @@ import { startBrowserLocalOptimizerSolve } from "@/lib/optimizer-runtime";
 import { cn } from "@/lib/utils";
 import { Link } from "wouter";
 import { useLanguage, LanguageSwitcher } from "@/contexts/LanguageContext";
+import { getBirdCare } from "@/locales/care";
 
 // Only pigeons and chickens are advised to receive grit; the other birds' care notes advise against routine grit (#215).
 const BIRDS_NEEDING_GRIT_REMINDER: ReadonlySet<BirdType> = new Set<BirdType>(["pigeon", "chicken"]);
 
 export default function Home() {
-  const { t } = useLanguage();
+  const { language, t } = useLanguage();
   const [selectedBird, setSelectedBird] = useState<BirdType>("pigeon");
   const [situation, setSituation] = useState("pet");
   const [targetWeight, setTargetWeight] = useState(1000);
@@ -74,7 +75,7 @@ export default function Home() {
   const availableSituations = useMemo(() => getAvailableSituations(selectedBird), [selectedBird]);
   const birdProfile = BIRD_PROFILES[selectedBird];
   const currentProfile = birdProfile.profiles[situation] || birdProfile.profiles[getDefaultSituation(selectedBird)];
-  const care = BIRD_CARE[selectedBird];
+  const care = getBirdCare(selectedBird, language);
   const birdDisplayName = selectedBird === "african_grey" ? birdProfile.name : birdProfile.name.toLowerCase();
   const gritText = care.gritBySituation?.[situation] ? `${care.grit} ${care.gritBySituation[situation]}` : care.grit;
   const herbRecommendation = useMemo(() => {
