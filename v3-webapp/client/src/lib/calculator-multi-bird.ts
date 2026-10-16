@@ -18,6 +18,9 @@ export interface MissingIngredient {
   category: string;
   reason: string;
   recommendations: string[];
+  /** Language-neutral keys so the page can show the same hint in German or Dutch. */
+  categoryKey: keyof CategorySummary;
+  recommendationIds: string[];
 }
 
 export interface HerbRecommendation {
@@ -184,6 +187,8 @@ export class MultibirMixCalculator {
             ? "No eligible legumes are available — legumes are essential for protein and amino acids."
             : "No eligible oil seeds are available — oil seeds contribute fat and ingredient diversity.",
         recommendations: CATEGORY_RECOMMENDATIONS[category],
+        categoryKey: category,
+        recommendationIds: CATEGORY_RECOMMENDATIONS[category].map((name) => name.replace(/ /g, "_")),
       }));
   }
 
