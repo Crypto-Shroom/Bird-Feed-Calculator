@@ -44,13 +44,14 @@ import {
   getCategoryTargets,
   type BirdType,
 } from "@/lib/birds";
-import { MultibirMixCalculator, type MixResult } from "@/lib/calculator-multi-bird";
+import { MultibirMixCalculator, type MixResult, type MixWarning } from "@/lib/calculator-multi-bird";
 import { getPreparationExportLines, getPreparationInstructions, getProcessingWarning, isToxicRaw } from "@/lib/safety";
 import { getProfileDefaultIngredients } from "@/lib/inventory-presets";
 import { resolveDisplayedFormula } from "@/lib/formula-display";
 import { selectDiversitySuggestionCandidate } from "@/lib/diversity-suggestion";
 import { bridgeFeasibleWorkerMixToMixResult } from "@/lib/optimizer-mix-result-bridge";
-import { OPTIMIZER_FALLBACK_COPY, formatOptimizerFallbackMiss } from "@/lib/optimizer-copy";
+import { OPTIMIZER_FALLBACK_COPY, formatOptimizerFallbackMiss, formatOptimizerFallbackMissTranslated } from "@/lib/optimizer-copy";
+import type { FallbackRangeMiss } from "@/lib/optimizer-explain";
 import { startBrowserLocalOptimizerSolve } from "@/lib/optimizer-runtime";
 import { cn } from "@/lib/utils";
 import { Link } from "wouter";
@@ -68,7 +69,7 @@ export default function Home() {
   const [targetWeight, setTargetWeight] = useState(1000);
   const [inventory, setInventory] = useState<Record<string, number>>({});
   // `fallbackMisses` is set only for a best-attainable mix: one sentence per missed range.
-  const [workerInventoryResult, setWorkerInventoryResult] = useState<{ key: string; result: MixResult; fallbackMisses: string[] | null } | null>(null);
+  const [workerInventoryResult, setWorkerInventoryResult] = useState<{ key: string; result: MixResult; fallbackMisses: FallbackRangeMiss[] | null } | null>(null);
   const [activeTab, setActiveTab] = useState("calculator");
   const [ingredientSearch, setIngredientSearch] = useState("");
   const [addOpen, setAddOpen] = useState(false);
@@ -146,7 +147,7 @@ export default function Home() {
         key: inventoryCalculationKey,
         result: bridged,
         fallbackMisses: workerResult.status === "best_attainable"
-          ? (workerResult.fallbackExplanation?.misses ?? []).map(formatOptimizerFallbackMiss)
+          ? (workerResult.fallbackExplanation?.misses ?? [])
           : null,
       });
     });
@@ -163,7 +164,11 @@ export default function Home() {
     () => resolveDisplayedFormula(inventory, profileDefaultResult, displayedInventoryResult),
     [displayedInventoryResult, inventory, profileDefaultResult],
   );
-  const fallbackMisses = formulaSource === "profile-default" ? null : currentWorkerResult?.fallbackMisses ?? null;
+  const fallbackMissCodes = formulaSource === "profile-default" ? null : currentWorkerResult?.fallbackMisses ?? null;
+  // One plain sentence per missed range, in the visitor's language.
+  const fallbackMisses = fallbackMissCodes
+    ? fallbackMissCodes.map((miss) => (language === "en" ? formatOptimizerFallbackMiss(miss) : formatOptimizerFallbackMissTranslated(miss, t)))
+    : null;
 
   const diversitySuggestion = useMemo(() => {
     const candidate = selectDiversitySuggestionCandidate({
@@ -175,6 +180,24 @@ export default function Home() {
 
     return candidate ? t("calculator.diversityTip", { ingredient: ingredientName(candidate) }) : null;
   }, [formulaSource, result, selectedBird, language]);
+
+  // English shows the calculator's own sentence. German and Dutch build the same sentence from the warning's code;
+  // a reason that comes from the safety data stays in English until that data is translated.
+  const warningText = (warning: MixWarning): string => {
+    if (language === "en" || !warning.code) return warning.message;
+    const ingredient = warning.params?.ingredient !== undefined ? ingredientName(String(warning.params.ingredient)) : "";
+    const grams = warning.params?.grams ?? 0;
+    const reason = String(warning.params?.reason ?? "");
+    switch (warning.code) {
+      case "situation_unavailable": return t("warnings.situationUnavailable");
+      case "need_ingredient": return t("warnings.needIngredient");
+      case "scaled_to_inventory": return t("warnings.scaledToInventory", { grams });
+      case "share_limited": return t("warnings.shareLimited", { grams });
+      case "excluded": return t("warnings.excluded", { ingredient, reason });
+      case "excluded_incompatible": return t("warnings.excludedIncompatible", { ingredient });
+      default: return warning.message;
+    }
+  };
 
   // English shows the calculator's own sentences; German and Dutch build the same hint from language-neutral keys.
   const missingHint = (item: NonNullable<typeof result.missingIngredients>[number]) => {
@@ -281,24 +304,24 @@ export default function Home() {
     if (!result || !Object.keys(result.mix).length) return;
     const lines = [
       `${birdProfile.name} — ${currentProfile.name}`,
-      formulaSource === "profile-default" ? "Profile standard formula" : "Calculated from your inventory",
-      `Batch estimate: ${Math.round(result.targetWeight)}g`,
+      formulaSource === "profile-default" ? t("recipeExport.standardFormula") : t("recipeExport.calculatedFrom"),
+      t("recipeExport.batchEstimate", { grams: Math.round(result.targetWeight) }),
       "",
-      "FORMULA",
+      t("recipeExport.formula"),
       ...Object.entries(result.mix)
         .sort(([, a], [, b]) => b - a)
         .map(([name, amount]) => `${ingredientName(name)}: ${Math.round(amount)}g`),
       "",
-      "ESTIMATED NUTRITION",
-      `Protein: ${result.nutrition.protein.toFixed(1)}%`,
-      `Carbohydrates: ${result.nutrition.carbs.toFixed(1)}%`,
-      `Fat: ${result.nutrition.fat.toFixed(1)}%`,
-      `Crude fiber: ${result.nutrition.fiber.toFixed(1)}%`,
+      t("recipeExport.estimatedNutrition"),
+      t("recipeExport.protein", { value: result.nutrition.protein.toFixed(1) }),
+      t("recipeExport.carbs", { value: result.nutrition.carbs.toFixed(1) }),
+      t("recipeExport.fat", { value: result.nutrition.fat.toFixed(1) }),
+      t("recipeExport.fiber", { value: result.nutrition.fiber.toFixed(1) }),
       "",
-      "SAFETY SCOPE",
+      t("recipeExport.safetyScope"),
       care.scope,
       care.baseDiet,
-      ...result.warnings.map((warning) => `${warning.level}: ${warning.message}`),
+      ...result.warnings.map((warning) => `${warning.level}: ${warningText(warning)}`),
       ...getPreparationExportLines(Object.keys(result.mix), selectedBird),
     ];
     const file = new Blob([lines.join("\n")], { type: "text/plain;charset=utf-8" });
@@ -537,7 +560,7 @@ export default function Home() {
                     </div>
 
                     {result.warnings.length > 0 && <div className="space-y-2">{result.warnings.map((warning, index) => <Alert key={`${warning.message}-${index}`} variant={warning.level === "CRITICAL" ? "destructive" : "default"} className={cn("border-l-4", warning.level === "CRITICAL" ? "border-l-destructive bg-destructive/5" : "border-l-yellow-500 bg-yellow-500/10 text-yellow-700 dark:text-yellow-400")}>
-                      <AlertTriangle className="h-4 w-4" /><AlertTitle>{warning.level === "CRITICAL" ? t("calculator.criticalIssue") : t("calculator.advisory")}</AlertTitle><AlertDescription>{warning.message}</AlertDescription>
+                      <AlertTriangle className="h-4 w-4" /><AlertTitle>{warning.level === "CRITICAL" ? t("calculator.criticalIssue") : t("calculator.advisory")}</AlertTitle><AlertDescription>{warningText(warning)}</AlertDescription>
                     </Alert>)}</div>}
 
                     {result.missingIngredients?.length ? <div className="mb-6 space-y-3 rounded-lg border border-red-200 bg-red-50 p-4 text-red-900"><div className="flex items-start gap-3"><AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" /><div className="flex-1"><h3 className="mb-2 font-bold">{t("calculator.missingEssentialIngredients")}</h3>{result.missingIngredients.map((item) => { const hint = missingHint(item); return <div key={item.categoryKey} className="mb-3 last:mb-0"><p className="mb-1 text-sm font-medium text-red-800">{hint.title}</p><p className="mb-2 text-sm text-red-700">{hint.reason}</p><div className="flex flex-wrap gap-2">{hint.badges.map((badge) => <Badge key={badge} variant="outline" className="border-red-300 bg-red-100 text-red-900">{badge}</Badge>)}</div></div>; })}</div></div></div> : null}

@@ -9,9 +9,15 @@ import {
 import { checkBirdToxicity, isIngredientCompatible } from "./bird-safety";
 import { getPreparationInstructions, getProcessingWarning, grainNeedsPairing, isToxicRaw, requiresVerifiedProcessing } from "./safety";
 
+export type MixWarningCode = "situation_unavailable" | "need_ingredient" | "scaled_to_inventory" | "share_limited" | "excluded" | "excluded_incompatible";
+
 export interface MixWarning {
   level: "CRITICAL" | "WARNING";
+  /** The English sentence, always present. */
   message: string;
+  /** Language-neutral form of the same sentence so the page can show it in German or Dutch. */
+  code?: MixWarningCode;
+  params?: Record<string, string | number>;
 }
 
 export interface MissingIngredient {
@@ -89,7 +95,7 @@ export class MultibirMixCalculator {
   calculate(targetWeight: number): MixResult {
     const profile = BIRD_PROFILES[this.bird].profiles[this.situation];
     if (!profile) {
-      return this.emptyResult(targetWeight, [{ level: "CRITICAL", message: "The selected bird situation is not available." }]);
+      return this.emptyResult(targetWeight, [{ level: "CRITICAL", message: "The selected bird situation is not available.", code: "situation_unavailable" }]);
     }
 
     const warnings: MixWarning[] = [];
@@ -97,13 +103,13 @@ export class MultibirMixCalculator {
     const missingIngredients = this.detectMissingCategories(eligible);
 
     if (eligible.length === 0) {
-      return this.emptyResult(targetWeight, warnings.length ? warnings : [{ level: "CRITICAL", message: "Add at least one compatible, safely prepared ingredient." }], missingIngredients);
+      return this.emptyResult(targetWeight, warnings.length ? warnings : [{ level: "CRITICAL", message: "Add at least one compatible, safely prepared ingredient.", code: "need_ingredient" }], missingIngredients);
     }
 
     const availableWeight = eligible.reduce((total, ingredient) => total + ingredient.amount, 0);
     const actualTarget = Math.min(Math.max(0, targetWeight), availableWeight);
     if (actualTarget < targetWeight) {
-      warnings.push({ level: "WARNING", message: `Only ${Math.round(availableWeight)}g of eligible inventory is available, so the recipe is scaled to that amount.` });
+      warnings.push({ level: "WARNING", message: `Only ${Math.round(availableWeight)}g of eligible inventory is available, so the recipe is scaled to that amount.`, code: "scaled_to_inventory", params: { grams: Math.round(availableWeight) } });
     }
 
     // Capped treats (nuts) may fill at most their cap of the finished mix.
@@ -114,7 +120,7 @@ export class MultibirMixCalculator {
     const mix = this.optimizeMix(capped, actualTarget, profile.nutrition);
     const mixedWeight = Object.values(mix).reduce((total, amount) => total + amount, 0);
     if (capped.some((ingredient, index) => ingredient.amount < eligible[index].amount) && mixedWeight < actualTarget - 0.5) {
-      warnings.push({ level: "WARNING", message: `Only ${Math.round(mixedWeight)}g could be mixed: some ingredients are limited to a maximum share of the mix for this bird.` });
+      warnings.push({ level: "WARNING", message: `Only ${Math.round(mixedWeight)}g could be mixed: some ingredients are limited to a maximum share of the mix for this bird.`, code: "share_limited", params: { grams: Math.round(mixedWeight) } });
     }
     const nutrition = this.calculateNutrition(mix);
     const categories = this.calculateCategoryRatios(mix);
@@ -164,8 +170,15 @@ export class MultibirMixCalculator {
       const compatible = isIngredientCompatible(name, this.bird);
       if (!compatible || toxicity || rawToxicity || requiresProcessing) {
         const birdGuidance = getPreparationInstructions(name)?.birdGuidance?.[this.bird];
-        const reason = toxicity?.description || rawToxicity?.message || getProcessingWarning(name) || birdGuidance || "it is not compatible with the selected bird";
-        warnings.push({ level: "CRITICAL", message: `${name.replace(/_/g, " ")} was excluded: ${reason}.` });
+        const dataReason = toxicity?.description || rawToxicity?.message || getProcessingWarning(name) || birdGuidance;
+        const reason = dataReason || "it is not compatible with the selected bird";
+        // The reason comes from the safety data (English until that data is translated); only the frame is translated.
+        warnings.push({
+          level: "CRITICAL",
+          message: `${name.replace(/_/g, " ")} was excluded: ${reason}.`,
+          code: dataReason ? "excluded" : "excluded_incompatible",
+          params: dataReason ? { ingredient: name, reason: dataReason } : { ingredient: name },
+        });
         return;
       }
 
