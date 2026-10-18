@@ -2,11 +2,12 @@ import type { SupportedLanguage } from "./index";
 
 // Display names for the ingredient ids in database/ingredient-records.mts. The English ids stay as they are
 // (protected data); this layer only decides what a visitor reads. English keeps the id with spaces.
+// `kaffir_corn` is the same cereal as `sorghum` (identical values), so both read "Sorghum" (owner decision, #313).
 const DE: Record<string, string> = {
   wheat: "Weizen", wheat_hard_red: "Weizen (hart, rot)", wheat_soft_red: "Weizen (weich, rot)",
   corn_yellow: "Gelber Mais", corn_white: "Weißer Mais", corn_red: "Roter Mais", maize: "Mais", popcorn: "Popcorn-Mais",
   barley: "Gerste", barley_pearled: "Perlgerste", oats: "Hafer", oat_groats: "Haferkerne",
-  milo: "Milo", sorghum: "Sorghum", kaffir_corn: "Sorghumhirse",
+  milo: "Milo", sorghum: "Sorghum", kaffir_corn: "Sorghum",
   rice: "Reis", rice_brown: "Naturreis", rice_red: "Roter Reis",
   rye: "Roggen", triticale: "Triticale", spelt: "Dinkel", buckwheat: "Buchweizen",
   peas: "Erbsen", peas_field: "Felderbsen", peas_canada: "Kanadische Erbsen", peas_austrian: "Österreichische Wintererbsen",
@@ -28,7 +29,7 @@ const NL: Record<string, string> = {
   wheat: "Tarwe", wheat_hard_red: "Tarwe (hard, rood)", wheat_soft_red: "Tarwe (zacht, rood)",
   corn_yellow: "Gele maïs", corn_white: "Witte maïs", corn_red: "Rode maïs", maize: "Maïs", popcorn: "Popcornmaïs",
   barley: "Gerst", barley_pearled: "Parelgerst", oats: "Haver", oat_groats: "Haverkernen",
-  milo: "Milo", sorghum: "Sorghum", kaffir_corn: "Sorghumgierst",
+  milo: "Milo", sorghum: "Sorghum", kaffir_corn: "Sorghum",
   rice: "Rijst", rice_brown: "Bruine rijst", rice_red: "Rode rijst",
   rye: "Rogge", triticale: "Triticale", spelt: "Spelt", buckwheat: "Boekweit",
   peas: "Erwten", peas_field: "Voedererwten", peas_canada: "Canadese erwten", peas_austrian: "Oostenrijkse wintererwten",
