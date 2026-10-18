@@ -174,8 +174,10 @@ export class MultibirMixCalculator {
 
   private detectMissingCategories(ingredients: AvailableIngredient[]): MissingIngredient[] {
     const present = new Set(ingredients.map((ingredient) => ingredient.category));
+    const targets = getCategoryTargets(this.bird);
+    // A category the bird's profile does not require (minimum 0, e.g. legumes for budgie and canary) is not "essential".
     return categoryKeys
-      .filter((category) => !present.has(category))
+      .filter((category) => !present.has(category) && targets[category][0] > 0)
       .map((category) => ({
         category: category === "seed" ? "Oil seeds" : `${category[0].toUpperCase()}${category.slice(1)}s`,
         reason: category === "grain"
