@@ -44,18 +44,20 @@ import {
   getCategoryTargets,
   type BirdType,
 } from "@/lib/birds";
-import { MultibirMixCalculator, type MixResult } from "@/lib/calculator-multi-bird";
+import { MultibirMixCalculator, type MixResult, type MixWarning } from "@/lib/calculator-multi-bird";
 import { getPreparationExportLines, getPreparationInstructions, getProcessingWarning, isToxicRaw } from "@/lib/safety";
 import { getProfileDefaultIngredients } from "@/lib/inventory-presets";
 import { resolveDisplayedFormula } from "@/lib/formula-display";
 import { selectDiversitySuggestionCandidate } from "@/lib/diversity-suggestion";
 import { bridgeFeasibleWorkerMixToMixResult } from "@/lib/optimizer-mix-result-bridge";
-import { OPTIMIZER_FALLBACK_COPY, formatOptimizerFallbackMiss } from "@/lib/optimizer-copy";
+import { OPTIMIZER_FALLBACK_COPY, formatOptimizerFallbackMiss, formatOptimizerFallbackMissTranslated } from "@/lib/optimizer-copy";
+import type { FallbackRangeMiss } from "@/lib/optimizer-explain";
 import { startBrowserLocalOptimizerSolve } from "@/lib/optimizer-runtime";
 import { cn } from "@/lib/utils";
 import { Link } from "wouter";
 import { useLanguage, LanguageSwitcher } from "@/contexts/LanguageContext";
 import { getBirdCare } from "@/locales/care";
+import { getIngredientName } from "@/locales/ingredients";
 
 // Only pigeons and chickens are advised to receive grit; the other birds' care notes advise against routine grit (#215).
 const BIRDS_NEEDING_GRIT_REMINDER: ReadonlySet<BirdType> = new Set<BirdType>(["pigeon", "chicken"]);
@@ -67,7 +69,7 @@ export default function Home() {
   const [targetWeight, setTargetWeight] = useState(1000);
   const [inventory, setInventory] = useState<Record<string, number>>({});
   // `fallbackMisses` is set only for a best-attainable mix: one sentence per missed range.
-  const [workerInventoryResult, setWorkerInventoryResult] = useState<{ key: string; result: MixResult; fallbackMisses: string[] | null } | null>(null);
+  const [workerInventoryResult, setWorkerInventoryResult] = useState<{ key: string; result: MixResult; fallbackMisses: FallbackRangeMiss[] | null } | null>(null);
   const [activeTab, setActiveTab] = useState("calculator");
   const [ingredientSearch, setIngredientSearch] = useState("");
   const [addOpen, setAddOpen] = useState(false);
@@ -78,6 +80,9 @@ export default function Home() {
   const care = getBirdCare(selectedBird, language);
   const localizedBirdName = t(`common.${selectedBird === "african_grey" ? "africanGrey" : selectedBird}`);
   const birdDisplayName = language === "de" ? localizedBirdName : language === "nl" ? localizedBirdName.toLowerCase() : selectedBird === "african_grey" ? birdProfile.name : birdProfile.name.toLowerCase();
+  const ingredientName = (id: string) => getIngredientName(id, language);
+  // English names keep the id with spaces and are capitalized by CSS; German and Dutch names arrive correctly cased.
+  const nameCase = language === "en" ? "capitalize" : "";
   const gritText = care.gritBySituation?.[situation] ? `${care.grit} ${care.gritBySituation[situation]}` : care.grit;
   const herbRecommendation = useMemo(() => {
     const recommendation = HERB_RECOMMENDATIONS[situation];
@@ -142,7 +147,7 @@ export default function Home() {
         key: inventoryCalculationKey,
         result: bridged,
         fallbackMisses: workerResult.status === "best_attainable"
-          ? (workerResult.fallbackExplanation?.misses ?? []).map(formatOptimizerFallbackMiss)
+          ? (workerResult.fallbackExplanation?.misses ?? [])
           : null,
       });
     });
@@ -159,7 +164,11 @@ export default function Home() {
     () => resolveDisplayedFormula(inventory, profileDefaultResult, displayedInventoryResult),
     [displayedInventoryResult, inventory, profileDefaultResult],
   );
-  const fallbackMisses = formulaSource === "profile-default" ? null : currentWorkerResult?.fallbackMisses ?? null;
+  const fallbackMissCodes = formulaSource === "profile-default" ? null : currentWorkerResult?.fallbackMisses ?? null;
+  // One plain sentence per missed range, in the visitor's language.
+  const fallbackMisses = fallbackMissCodes
+    ? fallbackMissCodes.map((miss) => (language === "en" ? formatOptimizerFallbackMiss(miss) : formatOptimizerFallbackMissTranslated(miss, t)))
+    : null;
 
   const diversitySuggestion = useMemo(() => {
     const candidate = selectDiversitySuggestionCandidate({
@@ -169,14 +178,44 @@ export default function Home() {
       missingIngredients: result.missingIngredients,
     });
 
-    return candidate ? `Try offering ${candidate.replace(/_/g, " ")} alongside this mix to increase diversity for your bird.` : null;
-  }, [formulaSource, result, selectedBird]);
+    return candidate ? t("calculator.diversityTip", { ingredient: ingredientName(candidate) }) : null;
+  }, [formulaSource, result, selectedBird, language]);
+
+  // English shows the calculator's own sentence. German and Dutch build the same sentence from the warning's code;
+  // a reason that comes from the safety data stays in English until that data is translated.
+  const warningText = (warning: MixWarning): string => {
+    if (language === "en" || !warning.code) return warning.message;
+    const ingredient = warning.params?.ingredient !== undefined ? ingredientName(String(warning.params.ingredient)) : "";
+    const grams = warning.params?.grams ?? 0;
+    const reason = String(warning.params?.reason ?? "");
+    switch (warning.code) {
+      case "situation_unavailable": return t("warnings.situationUnavailable");
+      case "need_ingredient": return t("warnings.needIngredient");
+      case "scaled_to_inventory": return t("warnings.scaledToInventory", { grams });
+      case "share_limited": return t("warnings.shareLimited", { grams });
+      case "excluded": return t("warnings.excluded", { ingredient, reason });
+      case "excluded_incompatible": return t("warnings.excludedIncompatible", { ingredient });
+      default: return warning.message;
+    }
+  };
+
+  // English shows the calculator's own sentences; German and Dutch build the same hint from language-neutral keys.
+  const missingHint = (item: NonNullable<typeof result.missingIngredients>[number]) => {
+    if (language === "en") return { title: item.category, reason: item.reason, badges: item.recommendations };
+    const grain = item.categoryKey === "grain";
+    const legume = item.categoryKey === "legume";
+    return {
+      title: grain ? t("calculator.grains") : legume ? t("calculator.legumes") : t("calculator.seeds"),
+      reason: grain ? t("calculator.missingGrainReason") : legume ? t("calculator.missingLegumeReason") : t("calculator.missingSeedReason"),
+      badges: item.recommendationIds.map(ingredientName),
+    };
+  };
 
   // Capped treats (nuts) show their maximum share and an evidence-basis hint for the selected bird.
   const capHint = (name: string) => {
     const percent = INGREDIENTS[name]?.maxSharePercent?.[selectedBird];
     if (percent === undefined) return null;
-    const text = selectedBird === "pigeon" ? t("inventory.capHintPigeon", { ingredient: name.replace(/_/g, " ") }) : t("inventory.capHintTreat");
+    const text = selectedBird === "pigeon" ? t("inventory.capHintPigeon", { ingredient: ingredientName(name) }) : t("inventory.capHintTreat");
     return { percent, text };
   };
 
@@ -190,7 +229,7 @@ export default function Home() {
         const processingWarning = getProcessingWarning(name);
         const isCompatible = isIngredientCompatible(name, selectedBird);
         const isAvailable = isCompatible && !rawSafety && !speciesToxicity && !processingWarning;
-        const displayName = name.replace(/_/g, " ");
+        const displayName = `${name.replace(/_/g, " ")} ${getIngredientName(name, language)}`.toLowerCase();
 
         return {
           name,
@@ -205,7 +244,7 @@ export default function Home() {
               },
         };
       });
-  }, [birdProfile.name, selectedBird]);
+  }, [birdProfile.name, selectedBird, language]);
 
   const ingredientOptions = useMemo(() => {
     const query = ingredientSearch.trim().toLowerCase();
@@ -265,24 +304,24 @@ export default function Home() {
     if (!result || !Object.keys(result.mix).length) return;
     const lines = [
       `${birdProfile.name} — ${currentProfile.name}`,
-      formulaSource === "profile-default" ? "Profile standard formula" : "Calculated from your inventory",
-      `Batch estimate: ${Math.round(result.targetWeight)}g`,
+      formulaSource === "profile-default" ? t("recipeExport.standardFormula") : t("recipeExport.calculatedFrom"),
+      t("recipeExport.batchEstimate", { grams: Math.round(result.targetWeight) }),
       "",
-      "FORMULA",
+      t("recipeExport.formula"),
       ...Object.entries(result.mix)
         .sort(([, a], [, b]) => b - a)
-        .map(([name, amount]) => `${name.replace(/_/g, " ")}: ${Math.round(amount)}g`),
+        .map(([name, amount]) => `${ingredientName(name)}: ${Math.round(amount)}g`),
       "",
-      "ESTIMATED NUTRITION",
-      `Protein: ${result.nutrition.protein.toFixed(1)}%`,
-      `Carbohydrates: ${result.nutrition.carbs.toFixed(1)}%`,
-      `Fat: ${result.nutrition.fat.toFixed(1)}%`,
-      `Crude fiber: ${result.nutrition.fiber.toFixed(1)}%`,
+      t("recipeExport.estimatedNutrition"),
+      t("recipeExport.protein", { value: result.nutrition.protein.toFixed(1) }),
+      t("recipeExport.carbs", { value: result.nutrition.carbs.toFixed(1) }),
+      t("recipeExport.fat", { value: result.nutrition.fat.toFixed(1) }),
+      t("recipeExport.fiber", { value: result.nutrition.fiber.toFixed(1) }),
       "",
-      "SAFETY SCOPE",
+      t("recipeExport.safetyScope"),
       care.scope,
       care.baseDiet,
-      ...result.warnings.map((warning) => `${warning.level}: ${warning.message}`),
+      ...result.warnings.map((warning) => `${warning.level}: ${warningText(warning)}`),
       ...getPreparationExportLines(Object.keys(result.mix), selectedBird),
     ];
     const file = new Blob([lines.join("\n")], { type: "text/plain;charset=utf-8" });
@@ -445,14 +484,14 @@ export default function Home() {
                       <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-emerald-700">{t("inventory.compatibleChoices")}</p>
                       {ingredientOptions.available.length ? ingredientOptions.available.map((name) => (
                         <button key={name} type="button" onClick={() => addIngredient(name)} className="flex w-full items-center justify-between rounded-md px-2 py-2 text-left text-sm hover:bg-emerald-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
-                          <span><span className="block capitalize">{name.replace(/_/g, " ")}</span>{name === "popcorn" && <span className="block text-xs text-muted-foreground">{t("inventory.popcornNote")}</span>}{selectedBird === "canary" && INGREDIENTS[name]?.category === "legume" && <span className="block text-xs text-muted-foreground">{t("inventory.canaryLegumeNote")}</span>}{capHint(name) && <span className="block text-xs text-muted-foreground">{capHint(name)?.text}</span>}</span><Plus className="h-4 w-4 shrink-0 text-emerald-700" />
+                          <span><span className={cn("block", nameCase)}>{ingredientName(name)}</span>{name === "popcorn" && <span className="block text-xs text-muted-foreground">{t("inventory.popcornNote")}</span>}{selectedBird === "canary" && INGREDIENTS[name]?.category === "legume" && <span className="block text-xs text-muted-foreground">{t("inventory.canaryLegumeNote")}</span>}{capHint(name) && <span className="block text-xs text-muted-foreground">{capHint(name)?.text}</span>}</span><Plus className="h-4 w-4 shrink-0 text-emerald-700" />
                         </button>
                       )) : <div className="px-2 py-3"><p className="text-sm text-muted-foreground">{t("inventory.noMatch")}</p>{ingredientSearch.trim() && <div className="mt-3"><IssueSubmitDialog triggerLabel={<><ExternalLink className="h-3.5 w-3.5" />{t("inventory.suggestAdd")}</>} defaultTitle={ingredientTitle} defaultBody={ingredientBody} helperText={t("inventory.suggestHelpNote")} /></div>}<p className="mt-1 text-xs leading-relaxed text-muted-foreground">{t("inventory.suggestNote")}</p></div>}
                       {ingredientOptions.blocked.length > 0 && <>
                         <Separator className="my-3" />
                         <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">{t("inventory.notOffered")}</p>
                         {ingredientOptions.blocked.map(({ name, reason, severity }) => (
-                          <div key={name} className={cn("mb-1 rounded-md px-2 py-2 text-sm", severity === "critical" ? "border border-red-200 bg-red-50 text-red-950" : "bg-amber-50 text-amber-950")}><p className="capitalize line-through">{name.replace(/_/g, " ")}</p><p className="mt-0.5 text-xs">{reason}</p></div>
+                          <div key={name} className={cn("mb-1 rounded-md px-2 py-2 text-sm", severity === "critical" ? "border border-red-200 bg-red-50 text-red-950" : "bg-amber-50 text-amber-950")}><p className={cn("line-through", nameCase)}>{ingredientName(name)}</p><p className="mt-0.5 text-xs">{reason}</p></div>
                         ))}
                       </>}
                     </ScrollArea>
@@ -473,9 +512,9 @@ export default function Home() {
                       <div key={name} className={cn("group rounded-lg border p-3", hasConcern || adzukiSafety ? "border-red-300 bg-red-50" : "bg-card")}>
                         <div className="mb-2 flex items-start justify-between gap-3">
                           <div>
-                            <label htmlFor={`amount-${name}`} className="text-sm font-medium capitalize">{name.replace(/_/g, " ")}{preparation && <span className="ml-1 text-xs font-normal text-muted-foreground">({t("inventory.preparation")}: {preparation})</span>}</label>
+                            <label htmlFor={`amount-${name}`} className={cn("text-sm font-medium", nameCase)}>{ingredientName(name)}{preparation && <span className="ml-1 text-xs font-normal text-muted-foreground">({t("inventory.preparation")}: {preparation})</span>}</label>
                           </div>
-                          <Button type="button" variant="ghost" size="icon" aria-label={t("inventory.removeIngredient", { name: name.replace(/_/g, " ") })} onClick={() => removeIngredient(name)} className="h-8 w-8 text-muted-foreground hover:text-destructive"><Trash2 className="h-4 w-4" /></Button>
+                          <Button type="button" variant="ghost" size="icon" aria-label={t("inventory.removeIngredient", { name: ingredientName(name) })} onClick={() => removeIngredient(name)} className="h-8 w-8 text-muted-foreground hover:text-destructive"><Trash2 className="h-4 w-4" /></Button>
                         </div>
                         {hasConcern && <p className="mb-2 rounded bg-red-100 p-2 text-xs font-medium text-red-900">{t("inventory.excludedFromFormula")}: {speciesToxicity?.description || rawSafety?.message || processingWarning || `not compatible with ${birdProfile.name}`}.</p>}
                         {adzukiSafety && <p className="mb-2 flex items-start gap-1.5 rounded border border-red-300 bg-red-100 p-2 text-xs font-semibold text-red-950"><AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />{t("inventory.adzukiWarning")}</p>}
@@ -483,7 +522,7 @@ export default function Home() {
                         {capHint(name) && <p className="mb-2 rounded border border-amber-200 bg-amber-50 p-2 text-xs font-medium text-amber-950">{t("inventory.capLimit", { percent: capHint(name)?.percent ?? 0 })}. {capHint(name)?.text}</p>}
                         {peanutGuidance && <p className="mb-2 rounded border border-amber-200 bg-amber-50 p-2 text-xs font-medium text-amber-950">{t("inventory.peanutTreat", { notes: peanutGuidance })}</p>}
                         {popcornGuidance && <p className="mb-2 flex items-start gap-1.5 rounded border border-blue-200 bg-blue-50 p-2 text-xs font-medium text-blue-950"><Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />{popcornGuidance}</p>}
-                        <Input id={`amount-${name}`} type="number" min="0" value={amount} onChange={(event) => updateAmount(name, Number(event.target.value))} aria-label={t("inventory.amountInGrams", { name: name.replace(/_/g, " ") })} />
+                        <Input id={`amount-${name}`} type="number" min="0" value={amount} onChange={(event) => updateAmount(name, Number(event.target.value))} aria-label={t("inventory.amountInGrams", { name: ingredientName(name) })} />
                       </div>
                     );
                   })}
@@ -521,12 +560,12 @@ export default function Home() {
                     </div>
 
                     {result.warnings.length > 0 && <div className="space-y-2">{result.warnings.map((warning, index) => <Alert key={`${warning.message}-${index}`} variant={warning.level === "CRITICAL" ? "destructive" : "default"} className={cn("border-l-4", warning.level === "CRITICAL" ? "border-l-destructive bg-destructive/5" : "border-l-yellow-500 bg-yellow-500/10 text-yellow-700 dark:text-yellow-400")}>
-                      <AlertTriangle className="h-4 w-4" /><AlertTitle>{warning.level === "CRITICAL" ? t("calculator.criticalIssue") : t("calculator.advisory")}</AlertTitle><AlertDescription>{warning.message}</AlertDescription>
+                      <AlertTriangle className="h-4 w-4" /><AlertTitle>{warning.level === "CRITICAL" ? t("calculator.criticalIssue") : t("calculator.advisory")}</AlertTitle><AlertDescription>{warningText(warning)}</AlertDescription>
                     </Alert>)}</div>}
 
-                    {result.missingIngredients?.length ? <div className="mb-6 space-y-3 rounded-lg border border-red-200 bg-red-50 p-4 text-red-900"><div className="flex items-start gap-3"><AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" /><div className="flex-1"><h3 className="mb-2 font-bold">{t("calculator.missingEssentialIngredients")}</h3>{result.missingIngredients.map((item) => <div key={item.category} className="mb-3 last:mb-0"><p className="mb-1 text-sm font-medium text-red-800">{item.category}</p><p className="mb-2 text-sm text-red-700">{item.reason}</p><div className="flex flex-wrap gap-2">{item.recommendations.map((recommendation) => <Badge key={recommendation} variant="outline" className="border-red-300 bg-red-100 text-red-900">{recommendation}</Badge>)}</div></div>)}</div></div></div> : null}
+                    {result.missingIngredients?.length ? <div className="mb-6 space-y-3 rounded-lg border border-red-200 bg-red-50 p-4 text-red-900"><div className="flex items-start gap-3"><AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" /><div className="flex-1"><h3 className="mb-2 font-bold">{t("calculator.missingEssentialIngredients")}</h3>{result.missingIngredients.map((item) => { const hint = missingHint(item); return <div key={item.categoryKey} className="mb-3 last:mb-0"><p className="mb-1 text-sm font-medium text-red-800">{hint.title}</p><p className="mb-2 text-sm text-red-700">{hint.reason}</p><div className="flex flex-wrap gap-2">{hint.badges.map((badge) => <Badge key={badge} variant="outline" className="border-red-300 bg-red-100 text-red-900">{badge}</Badge>)}</div></div>; })}</div></div></div> : null}
 
-                    {Object.keys(result.mix).length ? <>{fallbackMisses && <div role="status" className="flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><Info className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" /><div><p><strong className="font-semibold">{t("calculator.closestMixTitle")}:</strong> {t("calculator.closestMixIntro")}</p>{fallbackMisses.length > 0 && <><p className="mt-2 font-medium">{t("calculator.rangesCannotMeet")}</p><ul className="mt-1 list-disc space-y-1 pl-5">{fallbackMisses.map((line) => <li key={line}>{line}</li>)}</ul></>}</div></div>}{diversitySuggestion && <div className="flex items-start gap-3 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-950"><Leaf className="mt-0.5 h-4 w-4 shrink-0 text-emerald-700" /><p><strong className="font-semibold">{t("calculator.ingredientDiversity")}:</strong> {diversitySuggestion}</p></div>}<div className="rounded-lg border"><div className="overflow-x-auto"><table className="min-w-[560px] w-full text-sm"><thead className="bg-muted/50 text-muted-foreground"><tr><th className="px-4 py-3 text-left">{t("calculator.colIngredient")}</th><th className="px-4 py-3 text-right">{t("calculator.colAmount")}</th><th className="px-4 py-3 text-right">{t("calculator.colBatchShare")}</th><th className="px-4 py-3 text-left">{t("calculator.colCategory")}</th></tr></thead><tbody className="divide-y">{Object.entries(result.mix).sort(([, left], [, right]) => right - left).map(([name, amount]) => <tr key={name}><td className="px-4 py-3 font-medium capitalize">{name.replace(/_/g, " ")}</td><td className="px-4 py-3 text-right font-mono">{Math.round(amount)}g</td><td className="px-4 py-3 text-right">{((amount / result.targetWeight) * 100).toFixed(1)}%</td><td className="px-4 py-3"><Badge variant="secondary" className={cn("capitalize font-normal", INGREDIENTS[name].category === "grain" && "bg-amber-100 text-amber-800 hover:bg-amber-200", INGREDIENTS[name].category === "legume" && "bg-emerald-100 text-emerald-800 hover:bg-emerald-200", INGREDIENTS[name].category === "seed" && "bg-stone-100 text-stone-800 hover:bg-stone-200")}>{INGREDIENTS[name].category === "grain" ? t("calculator.grains") : INGREDIENTS[name].category === "legume" ? t("calculator.legumes") : t("calculator.seeds")}</Badge></td></tr>)}</tbody></table></div></div><p className="text-xs text-muted-foreground sm:hidden">{t("calculator.tableSwipeNote")}</p>{Object.entries(result.mix).some(([name]) => getPreparationInstructions(name)) && <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><h3 className="mb-2 flex items-center gap-2 font-semibold"><Info className="h-4 w-4" />{t("calculator.prepInstructions")}</h3><ul className="space-y-2">{Object.keys(result.mix).filter((name) => getPreparationInstructions(name)).map((name) => { const preparation = getPreparationInstructions(name); const birdGuidance = preparation?.birdGuidance?.[selectedBird]; return <li key={name}><strong className="capitalize">{name.replace(/_/g, " ")}:</strong> {preparation?.preparation}{birdGuidance && <span className="block pl-1 text-amber-900">{birdGuidance}</span>}</li>; })}</ul></div>}</> : <p className="rounded-lg border border-dashed p-10 text-center text-sm text-muted-foreground">{t("calculator.noCombination")}</p>}<ReportIssueLink section="Optimized Mix" bird={birdProfile.name} profile={currentProfile.name} />
+                    {Object.keys(result.mix).length ? <>{fallbackMisses && <div role="status" className="flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><Info className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" /><div><p><strong className="font-semibold">{t("calculator.closestMixTitle")}:</strong> {t("calculator.closestMixIntro")}</p>{fallbackMisses.length > 0 && <><p className="mt-2 font-medium">{t("calculator.rangesCannotMeet")}</p><ul className="mt-1 list-disc space-y-1 pl-5">{fallbackMisses.map((line) => <li key={line}>{line}</li>)}</ul></>}</div></div>}{diversitySuggestion && <div className="flex items-start gap-3 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-950"><Leaf className="mt-0.5 h-4 w-4 shrink-0 text-emerald-700" /><p><strong className="font-semibold">{t("calculator.ingredientDiversity")}:</strong> {diversitySuggestion}</p></div>}<div className="rounded-lg border"><div className="overflow-x-auto"><table className="min-w-[560px] w-full text-sm"><thead className="bg-muted/50 text-muted-foreground"><tr><th className="px-4 py-3 text-left">{t("calculator.colIngredient")}</th><th className="px-4 py-3 text-right">{t("calculator.colAmount")}</th><th className="px-4 py-3 text-right">{t("calculator.colBatchShare")}</th><th className="px-4 py-3 text-left">{t("calculator.colCategory")}</th></tr></thead><tbody className="divide-y">{Object.entries(result.mix).sort(([, left], [, right]) => right - left).map(([name, amount]) => <tr key={name}><td className={cn("px-4 py-3 font-medium", nameCase)}>{ingredientName(name)}</td><td className="px-4 py-3 text-right font-mono">{Math.round(amount)}g</td><td className="px-4 py-3 text-right">{((amount / result.targetWeight) * 100).toFixed(1)}%</td><td className="px-4 py-3"><Badge variant="secondary" className={cn("capitalize font-normal", INGREDIENTS[name].category === "grain" && "bg-amber-100 text-amber-800 hover:bg-amber-200", INGREDIENTS[name].category === "legume" && "bg-emerald-100 text-emerald-800 hover:bg-emerald-200", INGREDIENTS[name].category === "seed" && "bg-stone-100 text-stone-800 hover:bg-stone-200")}>{INGREDIENTS[name].category === "grain" ? t("calculator.grains") : INGREDIENTS[name].category === "legume" ? t("calculator.legumes") : t("calculator.seeds")}</Badge></td></tr>)}</tbody></table></div></div><p className="text-xs text-muted-foreground sm:hidden">{t("calculator.tableSwipeNote")}</p>{Object.entries(result.mix).some(([name]) => getPreparationInstructions(name)) && <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><h3 className="mb-2 flex items-center gap-2 font-semibold"><Info className="h-4 w-4" />{t("calculator.prepInstructions")}</h3><ul className="space-y-2">{Object.keys(result.mix).filter((name) => getPreparationInstructions(name)).map((name) => { const preparation = getPreparationInstructions(name); const birdGuidance = preparation?.birdGuidance?.[selectedBird]; return <li key={name}><strong className={nameCase}>{ingredientName(name)}:</strong> {preparation?.preparation}{birdGuidance && <span className="block pl-1 text-amber-900">{birdGuidance}</span>}</li>; })}</ul></div>}</> : <p className="rounded-lg border border-dashed p-10 text-center text-sm text-muted-foreground">{t("calculator.noCombination")}</p>}<ReportIssueLink section="Optimized Mix" bird={birdProfile.name} profile={currentProfile.name} />
 
                   </div>}
 
