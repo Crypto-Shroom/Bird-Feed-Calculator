@@ -13,27 +13,27 @@ import {
 import type { HerbBirdKey } from "@/lib/herb-evidence";
 import { useLanguage, LanguageSwitcher } from "@/contexts/LanguageContext";
 
-const categoryLabels: Record<Herb["category"], string> = {
-  herb_seed: "Herb seeds",
-  herb_spice: "Herbs & spices",
-  herb_dried: "Dried herbs",
-  liquid_supplement: "Liquid supplements",
-  powder_supplement: "Powder supplements",
-};
 
 const categoryOrder: Herb["category"][] = ["herb_seed", "herb_spice", "herb_dried", "liquid_supplement", "powder_supplement"];
 
-const birdLabels: Record<HerbBirdKey, string> = {
-  pigeon: "Pigeon",
-  parrot: "Parrot",
-  african_grey: "African Grey",
-  budgie: "Budgie",
-  canary: "Canary",
-  chicken: "Chicken",
-};
 
 export default function HerbLibrary() {
   const { t } = useLanguage();
+  const categoryLabels: Record<Herb["category"], string> = {
+    herb_seed: t("herbs.categoryHerbSeed"),
+    herb_spice: t("herbs.categoryHerbSpice"),
+    herb_dried: t("herbs.categoryHerbDried"),
+    liquid_supplement: t("herbs.categoryLiquidSupplement"),
+    powder_supplement: t("herbs.categoryPowderSupplement"),
+  };
+  const birdLabels: Record<HerbBirdKey, string> = {
+    pigeon: t("common.pigeon"),
+    parrot: t("common.parrot"),
+    african_grey: t("common.africanGrey"),
+    budgie: t("common.budgie"),
+    canary: t("common.canary"),
+    chicken: t("common.chicken"),
+  };
   // Product-owner decision: do not surface apple cider vinegar in newly added app copy until its wording is explicitly approved.
   const herbEntries = useMemo(
     () =>

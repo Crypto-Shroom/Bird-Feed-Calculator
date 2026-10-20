@@ -59,6 +59,7 @@ import { useLanguage, LanguageSwitcher } from "@/contexts/LanguageContext";
 import { getBirdCare } from "@/locales/care";
 import { getIngredientName } from "@/locales/ingredients";
 import { translateSafetyText } from "@/locales/safety";
+import { translateHerbText } from "@/locales/herbs";
 
 // Only pigeons and chickens are advised to receive grit; the other birds' care notes advise against routine grit (#215).
 const BIRDS_NEEDING_GRIT_REMINDER: ReadonlySet<BirdType> = new Set<BirdType>(["pigeon", "chicken"]);
@@ -580,7 +581,7 @@ export default function Home() {
                           <div>
                             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-800">{t("herbs.title")}</p>
                             <h2 className="mt-1 text-xl font-bold">{t("herbs.profileSubtitle", { profile: currentProfile.name })}</h2>
-                            <p className="mt-1 text-muted-foreground">{herbRecommendation?.notes || t("herbs.noRecommendations")}</p>
+                            <p className="mt-1 text-muted-foreground">{herbRecommendation?.notes ? translateHerbText(herbRecommendation.notes, language) : t("herbs.noRecommendations")}</p>
                           </div>
                         </div>
                         <Link href="/herbs" className="inline-flex shrink-0 items-center justify-center gap-2 rounded-md border border-emerald-200 bg-white px-3 py-2 text-sm font-medium text-emerald-900 transition-colors hover:bg-emerald-50"><BookOpen className="h-4 w-4" />{t("herbs.browseLibrary")}</Link>
