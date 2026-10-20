@@ -302,7 +302,7 @@ export function getPreparationInstructions(ingredientName: string): IngredientPr
 
 // Lines for the downloaded recipe, so it carries the same preparation guidance the page
 // shows (#213). Ingredients with a safety preparation warning are marked "WARNING".
-export function getPreparationExportLines(ingredientNames: readonly string[], bird: BirdType): string[] {
+export function getPreparationExportLines(ingredientNames: readonly string[], bird: BirdType, translate: (text: string) => string = (text) => text): string[] {
   const lines = ingredientNames
     .filter((name) => getPreparationInstructions(name))
     .flatMap((name) => {
@@ -311,9 +311,9 @@ export function getPreparationExportLines(ingredientNames: readonly string[], bi
       const safety = hasSafetyPreparationWarning(name);
       const guidance = prep.birdGuidance?.[bird];
       return [
-        `${safety ? "WARNING – " : ""}${label}: ${prep.preparation}`,
-        ...(guidance ? [`  ${guidance}`] : []),
-        ...(safety && prep.notes ? [`  ${prep.notes}`] : []),
+        `${safety ? "WARNING – " : ""}${label}: ${translate(prep.preparation)}`,
+        ...(guidance ? [`  ${translate(guidance)}`] : []),
+        ...(safety && prep.notes ? [`  ${translate(prep.notes)}`] : []),
       ];
     });
   return lines.length ? ["", "PREPARATION INSTRUCTIONS AND WARNINGS", ...lines] : [];

@@ -50,6 +50,8 @@ export const en = {
     removeIngredient: "Remove {name}",
     preparation: "Preparation",
     excludedFromFormula: "Excluded from the formula",
+    notCompatible: "Not compatible with {bird}.",
+    notCompatibleInline: "not compatible with {bird}",
     adzukiWarning: "RAW ADZUKI BEANS ARE TOXIC. Soak and boil until completely soft before feeding; never offer raw or undercooked beans.",
     peanutTreat: "Peanut treat: {notes}",
   },

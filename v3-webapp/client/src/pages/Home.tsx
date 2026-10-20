@@ -58,6 +58,7 @@ import { Link } from "wouter";
 import { useLanguage, LanguageSwitcher } from "@/contexts/LanguageContext";
 import { getBirdCare } from "@/locales/care";
 import { getIngredientName } from "@/locales/ingredients";
+import { translateSafetyText } from "@/locales/safety";
 
 // Only pigeons and chickens are advised to receive grit; the other birds' care notes advise against routine grit (#215).
 const BIRDS_NEEDING_GRIT_REMINDER: ReadonlySet<BirdType> = new Set<BirdType>(["pigeon", "chicken"]);
@@ -81,6 +82,8 @@ export default function Home() {
   const localizedBirdName = t(`common.${selectedBird === "african_grey" ? "africanGrey" : selectedBird}`);
   const birdDisplayName = language === "de" ? localizedBirdName : language === "nl" ? localizedBirdName.toLowerCase() : selectedBird === "african_grey" ? birdProfile.name : birdProfile.name.toLowerCase();
   const ingredientName = (id: string) => getIngredientName(id, language);
+  // Safety and preparation sentences come from the safety data in English; German and Dutch look them up.
+  const safetyText = (text: string) => translateSafetyText(text, language);
   // English names keep the id with spaces and are capitalized by CSS; German and Dutch names arrive correctly cased.
   const nameCase = language === "en" ? "capitalize" : "";
   const gritText = care.gritBySituation?.[situation] ? `${care.grit} ${care.gritBySituation[situation]}` : care.grit;
@@ -187,7 +190,7 @@ export default function Home() {
     if (language === "en" || !warning.code) return warning.message;
     const ingredient = warning.params?.ingredient !== undefined ? ingredientName(String(warning.params.ingredient)) : "";
     const grams = warning.params?.grams ?? 0;
-    const reason = String(warning.params?.reason ?? "");
+    const reason = safetyText(String(warning.params?.reason ?? ""));
     switch (warning.code) {
       case "situation_unavailable": return t("warnings.situationUnavailable");
       case "need_ingredient": return t("warnings.needIngredient");
@@ -239,7 +242,7 @@ export default function Home() {
             ? null
             : {
                 name,
-                reason: speciesToxicity?.description || rawSafety?.message || processingWarning || `Not compatible with ${birdProfile.name}.`,
+                reason: safetyText(speciesToxicity?.description || rawSafety?.message || processingWarning || "") || t("inventory.notCompatible", { bird: birdDisplayName }),
                 severity: (rawSafety || speciesToxicity ? "critical" : "review") as "critical" | "review",
               },
         };
@@ -322,7 +325,7 @@ export default function Home() {
       care.scope,
       care.baseDiet,
       ...result.warnings.map((warning) => `${warning.level}: ${warningText(warning)}`),
-      ...getPreparationExportLines(Object.keys(result.mix), selectedBird),
+      ...getPreparationExportLines(Object.keys(result.mix), selectedBird, safetyText),
     ];
     const file = new Blob([lines.join("\n")], { type: "text/plain;charset=utf-8" });
     const link = document.createElement("a");
@@ -504,9 +507,9 @@ export default function Home() {
                     const speciesToxicity = checkBirdToxicity(name, selectedBird);
                     const processingWarning = getProcessingWarning(name);
                     const hasConcern = Boolean(rawSafety || speciesToxicity || processingWarning || !isIngredientCompatible(name, selectedBird));
-                    const preparation = getPreparationInstructions(name)?.preparation;
-                    const peanutGuidance = name === "peanuts" || name === "peanuts_raw" || name === "peanuts_roasted" ? getPreparationInstructions(name)?.notes : null;
-                    const popcornGuidance = name === "popcorn" ? INGREDIENTS[name].notes : null;
+                    const preparation = safetyText(getPreparationInstructions(name)?.preparation ?? "");
+                    const peanutGuidance = name === "peanuts" || name === "peanuts_raw" || name === "peanuts_roasted" ? safetyText(getPreparationInstructions(name)?.notes ?? "") : null;
+                    const popcornGuidance = name === "popcorn" ? t("inventory.popcornNote") : null;
                     const adzukiSafety = name === "adzuki_beans" ? getPreparationInstructions(name)?.notes : null;
                     return (
                       <div key={name} className={cn("group rounded-lg border p-3", hasConcern || adzukiSafety ? "border-red-300 bg-red-50" : "bg-card")}>
@@ -516,7 +519,7 @@ export default function Home() {
                           </div>
                           <Button type="button" variant="ghost" size="icon" aria-label={t("inventory.removeIngredient", { name: ingredientName(name) })} onClick={() => removeIngredient(name)} className="h-8 w-8 text-muted-foreground hover:text-destructive"><Trash2 className="h-4 w-4" /></Button>
                         </div>
-                        {hasConcern && <p className="mb-2 rounded bg-red-100 p-2 text-xs font-medium text-red-900">{t("inventory.excludedFromFormula")}: {speciesToxicity?.description || rawSafety?.message || processingWarning || `not compatible with ${birdProfile.name}`}.</p>}
+                        {hasConcern && <p className="mb-2 rounded bg-red-100 p-2 text-xs font-medium text-red-900">{t("inventory.excludedFromFormula")}: {safetyText(speciesToxicity?.description || rawSafety?.message || processingWarning || "") || t("inventory.notCompatibleInline", { bird: birdDisplayName })}.</p>}
                         {adzukiSafety && <p className="mb-2 flex items-start gap-1.5 rounded border border-red-300 bg-red-100 p-2 text-xs font-semibold text-red-950"><AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />{t("inventory.adzukiWarning")}</p>}
                         {selectedBird === "canary" && INGREDIENTS[name]?.category === "legume" && <p className="mb-2 rounded border border-amber-200 bg-amber-50 p-2 text-xs font-medium text-amber-950">{t("inventory.canaryLegumeNote")}</p>}
                         {capHint(name) && <p className="mb-2 rounded border border-amber-200 bg-amber-50 p-2 text-xs font-medium text-amber-950">{t("inventory.capLimit", { percent: capHint(name)?.percent ?? 0 })}. {capHint(name)?.text}</p>}
@@ -565,7 +568,7 @@ export default function Home() {
 
                     {result.missingIngredients?.length ? <div className="mb-6 space-y-3 rounded-lg border border-red-200 bg-red-50 p-4 text-red-900"><div className="flex items-start gap-3"><AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-red-600" /><div className="flex-1"><h3 className="mb-2 font-bold">{t("calculator.missingEssentialIngredients")}</h3>{result.missingIngredients.map((item) => { const hint = missingHint(item); return <div key={item.categoryKey} className="mb-3 last:mb-0"><p className="mb-1 text-sm font-medium text-red-800">{hint.title}</p><p className="mb-2 text-sm text-red-700">{hint.reason}</p><div className="flex flex-wrap gap-2">{hint.badges.map((badge) => <Badge key={badge} variant="outline" className="border-red-300 bg-red-100 text-red-900">{badge}</Badge>)}</div></div>; })}</div></div></div> : null}
 
-                    {Object.keys(result.mix).length ? <>{fallbackMisses && <div role="status" className="flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><Info className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" /><div><p><strong className="font-semibold">{t("calculator.closestMixTitle")}:</strong> {t("calculator.closestMixIntro")}</p>{fallbackMisses.length > 0 && <><p className="mt-2 font-medium">{t("calculator.rangesCannotMeet")}</p><ul className="mt-1 list-disc space-y-1 pl-5">{fallbackMisses.map((line) => <li key={line}>{line}</li>)}</ul></>}</div></div>}{diversitySuggestion && <div className="flex items-start gap-3 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-950"><Leaf className="mt-0.5 h-4 w-4 shrink-0 text-emerald-700" /><p><strong className="font-semibold">{t("calculator.ingredientDiversity")}:</strong> {diversitySuggestion}</p></div>}<div className="rounded-lg border"><div className="overflow-x-auto"><table className="min-w-[560px] w-full text-sm"><thead className="bg-muted/50 text-muted-foreground"><tr><th className="px-4 py-3 text-left">{t("calculator.colIngredient")}</th><th className="px-4 py-3 text-right">{t("calculator.colAmount")}</th><th className="px-4 py-3 text-right">{t("calculator.colBatchShare")}</th><th className="px-4 py-3 text-left">{t("calculator.colCategory")}</th></tr></thead><tbody className="divide-y">{Object.entries(result.mix).sort(([, left], [, right]) => right - left).map(([name, amount]) => <tr key={name}><td className={cn("px-4 py-3 font-medium", nameCase)}>{ingredientName(name)}</td><td className="px-4 py-3 text-right font-mono">{Math.round(amount)}g</td><td className="px-4 py-3 text-right">{((amount / result.targetWeight) * 100).toFixed(1)}%</td><td className="px-4 py-3"><Badge variant="secondary" className={cn("capitalize font-normal", INGREDIENTS[name].category === "grain" && "bg-amber-100 text-amber-800 hover:bg-amber-200", INGREDIENTS[name].category === "legume" && "bg-emerald-100 text-emerald-800 hover:bg-emerald-200", INGREDIENTS[name].category === "seed" && "bg-stone-100 text-stone-800 hover:bg-stone-200")}>{INGREDIENTS[name].category === "grain" ? t("calculator.grains") : INGREDIENTS[name].category === "legume" ? t("calculator.legumes") : t("calculator.seeds")}</Badge></td></tr>)}</tbody></table></div></div><p className="text-xs text-muted-foreground sm:hidden">{t("calculator.tableSwipeNote")}</p>{Object.entries(result.mix).some(([name]) => getPreparationInstructions(name)) && <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><h3 className="mb-2 flex items-center gap-2 font-semibold"><Info className="h-4 w-4" />{t("calculator.prepInstructions")}</h3><ul className="space-y-2">{Object.keys(result.mix).filter((name) => getPreparationInstructions(name)).map((name) => { const preparation = getPreparationInstructions(name); const birdGuidance = preparation?.birdGuidance?.[selectedBird]; return <li key={name}><strong className={nameCase}>{ingredientName(name)}:</strong> {preparation?.preparation}{birdGuidance && <span className="block pl-1 text-amber-900">{birdGuidance}</span>}</li>; })}</ul></div>}</> : <p className="rounded-lg border border-dashed p-10 text-center text-sm text-muted-foreground">{t("calculator.noCombination")}</p>}<ReportIssueLink section="Optimized Mix" bird={birdProfile.name} profile={currentProfile.name} />
+                    {Object.keys(result.mix).length ? <>{fallbackMisses && <div role="status" className="flex items-start gap-3 rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><Info className="mt-0.5 h-4 w-4 shrink-0 text-amber-700" /><div><p><strong className="font-semibold">{t("calculator.closestMixTitle")}:</strong> {t("calculator.closestMixIntro")}</p>{fallbackMisses.length > 0 && <><p className="mt-2 font-medium">{t("calculator.rangesCannotMeet")}</p><ul className="mt-1 list-disc space-y-1 pl-5">{fallbackMisses.map((line) => <li key={line}>{line}</li>)}</ul></>}</div></div>}{diversitySuggestion && <div className="flex items-start gap-3 rounded-lg border border-emerald-200 bg-emerald-50 p-4 text-sm text-emerald-950"><Leaf className="mt-0.5 h-4 w-4 shrink-0 text-emerald-700" /><p><strong className="font-semibold">{t("calculator.ingredientDiversity")}:</strong> {diversitySuggestion}</p></div>}<div className="rounded-lg border"><div className="overflow-x-auto"><table className="min-w-[560px] w-full text-sm"><thead className="bg-muted/50 text-muted-foreground"><tr><th className="px-4 py-3 text-left">{t("calculator.colIngredient")}</th><th className="px-4 py-3 text-right">{t("calculator.colAmount")}</th><th className="px-4 py-3 text-right">{t("calculator.colBatchShare")}</th><th className="px-4 py-3 text-left">{t("calculator.colCategory")}</th></tr></thead><tbody className="divide-y">{Object.entries(result.mix).sort(([, left], [, right]) => right - left).map(([name, amount]) => <tr key={name}><td className={cn("px-4 py-3 font-medium", nameCase)}>{ingredientName(name)}</td><td className="px-4 py-3 text-right font-mono">{Math.round(amount)}g</td><td className="px-4 py-3 text-right">{((amount / result.targetWeight) * 100).toFixed(1)}%</td><td className="px-4 py-3"><Badge variant="secondary" className={cn("capitalize font-normal", INGREDIENTS[name].category === "grain" && "bg-amber-100 text-amber-800 hover:bg-amber-200", INGREDIENTS[name].category === "legume" && "bg-emerald-100 text-emerald-800 hover:bg-emerald-200", INGREDIENTS[name].category === "seed" && "bg-stone-100 text-stone-800 hover:bg-stone-200")}>{INGREDIENTS[name].category === "grain" ? t("calculator.grains") : INGREDIENTS[name].category === "legume" ? t("calculator.legumes") : t("calculator.seeds")}</Badge></td></tr>)}</tbody></table></div></div><p className="text-xs text-muted-foreground sm:hidden">{t("calculator.tableSwipeNote")}</p>{Object.entries(result.mix).some(([name]) => getPreparationInstructions(name)) && <div className="rounded-lg border border-amber-200 bg-amber-50 p-4 text-sm text-amber-950"><h3 className="mb-2 flex items-center gap-2 font-semibold"><Info className="h-4 w-4" />{t("calculator.prepInstructions")}</h3><ul className="space-y-2">{Object.keys(result.mix).filter((name) => getPreparationInstructions(name)).map((name) => { const preparation = getPreparationInstructions(name); const birdGuidance = preparation?.birdGuidance?.[selectedBird]; return <li key={name}><strong className={nameCase}>{ingredientName(name)}:</strong> {preparation ? safetyText(preparation.preparation) : null}{birdGuidance && <span className="block pl-1 text-amber-900">{safetyText(birdGuidance)}</span>}</li>; })}</ul></div>}</> : <p className="rounded-lg border border-dashed p-10 text-center text-sm text-muted-foreground">{t("calculator.noCombination")}</p>}<ReportIssueLink section="Optimized Mix" bird={birdProfile.name} profile={currentProfile.name} />
 
                   </div>}
 
