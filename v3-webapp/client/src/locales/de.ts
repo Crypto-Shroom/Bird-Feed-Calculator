@@ -52,6 +52,8 @@ export const de: TranslationKeys = {
     removeIngredient: "{name} entfernen",
     preparation: "Zubereitung",
     excludedFromFormula: "Aus der Rezeptur ausgeschlossen",
+    notCompatible: "Nicht verträglich mit {bird}.",
+    notCompatibleInline: "nicht verträglich mit {bird}",
     adzukiWarning: "ROHE ADZUKIBOHNEN SIND GIFTIG. Vor dem Füttern einweichen und kochen, bis sie vollständig weich sind; niemals roh oder unzureichend gekocht anbieten.",
     peanutTreat: "Erdnuss-Leckerli: {notes}",
   },

@@ -52,6 +52,8 @@ export const nl: TranslationKeys = {
     removeIngredient: "Verwijder {name}",
     preparation: "Bereiding",
     excludedFromFormula: "Uitgesloten van de formule",
+    notCompatible: "Niet geschikt voor {bird}.",
+    notCompatibleInline: "niet geschikt voor {bird}",
     adzukiWarning: "RAUWE ADZUKIBONEN ZIJN GIFTIG. Week ze en kook ze tot ze volledig zacht zijn voordat je ze voert; bied ze nooit rauw of halfgaar aan.",
     peanutTreat: "Pindatraktatie: {notes}",
   },
