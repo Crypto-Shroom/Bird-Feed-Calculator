@@ -54,8 +54,8 @@ const DE_BIRD_CARE: Record<BirdType, BirdCareGuidance> = {
     light: "Sorge bei Wohnungsvögeln für sicheres natürliches Tageslicht oder ein artgerechtes vogelspezifisches UVB-System mit einem schattigen Rückzugsort.",
   },
   chicken: {
-    scope: "Eine Ergänzungsmischung aus Körnerfutter, keine vollständige Geflügelration. Halte Körnerfutter und andere Leckerlis auf einem kleinen Anteil der täglichen Futteraufnahme.",
-    baseDiet: "Nutze ein alters- und leistungsgerechtes Fertigfutter für Geflügel als Ernährungsbasis, mit Insekten als gelegentliche Beschäftigung. Legehennen benötigen ein geprüftes Legemehl oder Legefutter.",
+    scope: "Eine Ergänzungsmischung aus Körnerfutter, keine vollständige Futterration für Hühner. Halte Körnerfutter und andere Leckerlis auf einem kleinen Anteil der täglichen Futteraufnahme.",
+    baseDiet: "Nutze ein alters- und leistungsgerechtes Fertigfutter für Hühner als Ernährungsbasis, mit Insekten als gelegentliche Beschäftigung. Legehennen benötigen ein geprüftes Legemehl oder Legefutter.",
     water: "Stelle kontinuierlich sauberes, frisches Wasser bereit; der Wasserzugang beeinflusst die Futteraufnahme und Eierproduktion stark.",
     grit: "Biete unlöslichen Grit nur an, wenn ganze Körner oder Samen gefüttert werden und die Vögel keinen geeigneten Grit vom Boden aufnehmen können. Muschelschalen sind kein Ersatz für Grit.",
     light: "Sorge bei Wohnungsvögeln für sicheres natürliches Tageslicht oder ein artgerechtes vogelspezifisches UVB-System mit einem schattigen Rückzugsort.",
@@ -114,8 +114,8 @@ const NL_BIRD_CARE: Record<BirdType, BirdCareGuidance> = {
     light: "Zorg bij binnenvogels voor veilig natuurlijk daglicht of een soortspecifieke UVB-lamp voor vogels met een schaduwrijke schuilplaats.",
   },
   chicken: {
-    scope: "Een aanvullend graanmengsel (strooivoer), geen complete pluimveeratio. Houd strooivoer en andere traktaties beperkt tot een klein deel van de dagelijkse inname.",
-    baseDiet: "Gebruik een aan de leeftijd en productie aangepaste complete pluimveevoeding als nutritionele basis, met insecten als incidentele verrijking. Legkippen hebben een gevalideerde legkorrel of legmeel nodig.",
+    scope: "Een aanvullend graanmengsel (strooivoer), geen compleet rantsoen voor kippen. Houd strooivoer en andere traktaties beperkt tot een klein deel van de dagelijkse inname.",
+    baseDiet: "Gebruik een aan de leeftijd en productie aangepaste compleet voer voor kippen als nutritionele basis, met insecten als incidentele verrijking. Legkippen hebben een gevalideerde legkorrel of legmeel nodig.",
     water: "Zorg continu voor schoon, vers water; toegang tot water heeft een grote invloed op de voerinname en eierproductie.",
     grit: "Bied alleen onoplosbare grit aan als je hele granen of zaden voert en de vogels geen geschikte grit uit de grond kunnen halen. Oesterschelp is geen vervanging voor grit.",
     light: "Zorg bij binnenvogels voor veilig natuurlijk daglicht of een soortspecifieke UVB-lamp voor vogels met een schaduwrijke schuilplaats.",
