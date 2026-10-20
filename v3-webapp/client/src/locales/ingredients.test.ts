@@ -10,15 +10,14 @@ describe("ingredient display names", () => {
   });
 
   it.each(["de", "nl"] as const)("%s names are not English copies and are unique", (language) => {
-    // The one allowed repeat: kaffir_corn is the same cereal as sorghum (owner decision, #313).
-    const names = ids.filter((id) => id !== "kaffir_corn").map((id) => getIngredientName(id, language));
+    const names = ids.map((id) => getIngredientName(id, language));
     expect(new Set(names.map((name) => name.toLowerCase())).size).toBe(names.length);
-    expect(getIngredientName("kaffir_corn", language)).toBe(getIngredientName("sorghum", language));
     for (const id of ids) expect(getIngredientName(id, language)).not.toBe(id.replace(/_/g, " "));
   });
 
   it("English keeps the id with spaces and unknown ids fall back to it", () => {
     expect(getIngredientName("black_eyed_peas", "en")).toBe("black eyed peas");
     expect(getIngredientName("mystery_seed", "de")).toBe("mystery seed");
+    expect(getIngredientName("sorghum", "en")).toBe("sorghum (kaffir corn)");
   });
 });
