@@ -316,13 +316,13 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
     name: 'Chicken',
     color: 'bg-orange-500',
     icon: '🐔',
-    description: 'Backyard chickens and poultry',
+    description: 'Backyard chickens',
     profiles: {
       pet: {
         name: 'Pet/Companion',
         description: 'Balanced nutrition for backyard chickens',
         feedingNotes: 'Feed 100-150g per bird per day. Provide grit and oyster shell.',
-        contextNote: 'Use an age-appropriate complete poultry ration as the base. This planner estimates a scratch supplement, not a daily feed allowance.',
+        contextNote: 'Use an age-appropriate complete chicken feed as the base. This planner estimates a scratch supplement, not a daily feed allowance.',
         nutrition: {
           protein: [12, 16],
           carbs: [55, 70],
@@ -346,7 +346,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         name: 'Molting Season',
         description: 'High protein for feather regeneration',
         feedingNotes: 'Feed 120-160g per bird per day. Support feather growth.',
-        contextNote: 'Use a complete poultry ration during molt and seek poultry-nutrition guidance before altering protein or supplement levels.',
+        contextNote: 'Use a complete chicken feed during molt and seek guidance from an exotics vet before altering protein or supplement levels.',
         nutrition: {
           protein: [16, 18],
           carbs: [50, 65],
@@ -427,8 +427,8 @@ export const BIRD_CARE: Record<BirdType, BirdCareGuidance> = {
     light: 'For indoor birds, provide safe natural daylight or a species-appropriate avian UVB setup with a shaded retreat.',
   },
   chicken: {
-    scope: 'A scratch-grain supplement mix, not a complete poultry ration. Keep scratch and other treats to a small share of daily intake.',
-    baseDiet: 'Use an age- and production-appropriate complete poultry feed as the nutritional base, with insects as occasional enrichment. Laying hens require a validated layer ration.',
+    scope: 'A scratch-grain supplement mix, not a complete chicken ration. Keep scratch and other treats to a small share of daily intake.',
+    baseDiet: 'Use an age- and production-appropriate complete chicken feed as the nutritional base, with insects as occasional enrichment. Laying hens require a validated layer ration.',
     water: 'Provide clean, fresh water continuously; water access strongly affects feed intake and egg production.',
     grit: 'Offer insoluble grit only when feeding whole grains or seeds and birds cannot obtain suitable grit from the ground. Oyster shell is not a grit substitute.',
     light: 'For indoor birds, provide safe natural daylight or a species-appropriate avian UVB setup with a shaded retreat.',

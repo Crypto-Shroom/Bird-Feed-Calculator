@@ -201,7 +201,7 @@ export const INGREDIENT_PREP: Record<string, IngredientPrep> = {
     notes: "Cooked or properly processed chickpeas only. Their antinutritional factors are reduced by heat treatment.",
     birdGuidance: {
       pigeon: "Offer cooked chickpeas whole or split, mixed with the usual grain/seed formula.",
-      chicken: "Offer cooked chickpeas as a limited part of a balanced poultry ration, not as a sole protein source.",
+      chicken: "Offer cooked chickpeas as a limited part of a balanced chicken ration, not as a sole protein source.",
       parrot: "Offer only cooked, plain, soft chickpeas; never salted or seasoned.",
       african_grey: "Offer only cooked, plain, soft chickpeas; never salted or seasoned.",
       budgie: "Offer cooked chickpeas finely chopped or mashed in a suitable small-bird portion.",
@@ -215,7 +215,7 @@ export const INGREDIENT_PREP: Record<string, IngredientPrep> = {
     notes: "RAW ADZUKI BEANS ARE TOXIC. Soak and boil until completely soft before feeding; never offer raw or undercooked beans.",
     birdGuidance: {
       pigeon: "Offer cooked adzuki beans whole or split, mixed with the usual grain/seed formula.",
-      chicken: "Offer cooked adzuki beans as a limited part of a balanced poultry ration.",
+      chicken: "Offer cooked adzuki beans as a limited part of a balanced chicken ration.",
       parrot: "Offer only cooked, plain, soft adzuki beans; never salted or seasoned.",
       african_grey: "Offer only cooked, plain, soft adzuki beans; never salted or seasoned.",
       budgie: "Offer cooked adzuki beans finely chopped or mashed in a suitable small-bird portion.",
@@ -229,7 +229,7 @@ export const INGREDIENT_PREP: Record<string, IngredientPrep> = {
     notes: "Sweet lupins are the low-alkaloid feed type. Bitter lupins can contain high alkaloid levels and must not be used.",
     birdGuidance: {
       pigeon: "Use only verified feed-grade sweet lupins in the dry mix.",
-      chicken: "Use only verified feed-grade sweet lupins in a balanced poultry ration.",
+      chicken: "Use only verified feed-grade sweet lupins in a balanced chicken ration.",
       parrot: "Offer only a prepared feed-grade sweet-lupin product suitable for companion birds.",
       african_grey: "Offer only a prepared feed-grade sweet-lupin product suitable for companion birds.",
       budgie: "Use only a finely prepared feed-grade sweet-lupin product suitable for small birds.",
@@ -240,10 +240,10 @@ export const INGREDIENT_PREP: Record<string, IngredientPrep> = {
     safetyWarning: true,
     name: "Common Vetch",
     preparation: "Use feed-grade common vetch that has been heat-treated; do not feed raw vetch seed",
-    notes: "Common vetch contains antinutritional factors. Heat treatment improves usable inclusion in poultry diets.",
+    notes: "Common vetch contains antinutritional factors. Heat treatment improves usable inclusion in chicken diets.",
     birdGuidance: {
       pigeon: "Use only feed-grade, heat-treated common vetch as part of a mixed formula.",
-      chicken: "Use only feed-grade, heat-treated common vetch at a limited inclusion within a balanced poultry ration.",
+      chicken: "Use only feed-grade, heat-treated common vetch at a limited inclusion within a balanced chicken ration.",
       parrot: "Do not add common vetch to a companion-parrot seed mix; use an appropriate formulated diet instead.",
       african_grey: "Do not add common vetch to an African-grey seed mix; use an appropriate formulated diet instead.",
       budgie: "Do not add common vetch to a budgie seed mix.",
