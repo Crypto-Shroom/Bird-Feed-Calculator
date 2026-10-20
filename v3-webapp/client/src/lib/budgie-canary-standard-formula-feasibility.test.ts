@@ -1,6 +1,7 @@
 import { createRequire } from "node:module";
 import { describe, expect, it } from "vitest";
 import { BIRD_PROFILES, getCategoryTargets, type BirdType } from "./birds";
+import { MultibirMixCalculator } from "./calculator-multi-bird";
 import { INGREDIENTS } from "./data";
 import { getProfileDefaultIngredients } from "./inventory-presets";
 import { buildExactFeasibilityModel, type OptimizerCandidate } from "./optimizer-model";
@@ -36,5 +37,21 @@ describe("budgie and canary standard formulas can meet their own targets", () =>
 
   it("counts millets as grains", () => {
     for (const id of ["millet", "millet_white", "millet_red", "millet_silver"]) expect(INGREDIENTS[id].category).toBe("grain");
+  });
+});
+
+describe("budgie and canary missing ingredient detection", () => {
+  it.each(["budgie", "canary"] as const)("%s does not report missing legumes when target minimum is 0%", (bird) => {
+    const calc = new MultibirMixCalculator({ wheat: 1000, safflower: 1000 }, bird, "pet");
+    const result = calc.calculate(500);
+    const missingLegumes = result.missingIngredients?.find((item) => item.categoryKey === "legume");
+    expect(missingLegumes).toBeUndefined();
+  });
+
+  it.each(["pigeon", "parrot"] as const)("%s reports missing legumes when target minimum is > 0%", (bird) => {
+    const calc = new MultibirMixCalculator({ wheat: 1000, safflower: 1000 }, bird, "pet");
+    const result = calc.calculate(500);
+    const missingLegumes = result.missingIngredients?.find((item) => item.categoryKey === "legume");
+    expect(missingLegumes).toBeDefined();
   });
 });
