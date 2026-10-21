@@ -90,6 +90,16 @@ if (!("popcorn" in popcornResult.mix)) {
   throw new Error("approved popcorn was not available to the pigeon calculator");
 }
 
+const canaryLegumeCheck = new MultibirMixCalculator({ wheat: 1000, safflower: 1000 }, "canary", "pet").calculate(500);
+if (canaryLegumeCheck.missingIngredients?.some((item) => item.categoryKey === "legume")) {
+  throw new Error("canary calculator reported missing legumes despite a 0% minimum legume target");
+}
+
+const budgieLegumeCheck = new MultibirMixCalculator({ wheat: 1000, safflower: 1000 }, "budgie", "pet").calculate(500);
+if (budgieLegumeCheck.missingIngredients?.some((item) => item.categoryKey === "legume")) {
+  throw new Error("budgie calculator reported missing legumes despite a 0% minimum legume target");
+}
+
 const peanutBalancedResult = new MultibirMixCalculator({ ...baseInventory, peanuts_roasted: 1000 }, "pigeon", "pet").calculate(1000);
 const peanutFreeResult = new MultibirMixCalculator(baseInventory, "pigeon", "pet").calculate(1000);
 const peanutConstrainedResult = new MultibirMixCalculator({ wheat: 1000, peas: 1000, peanuts_roasted: 1000 }, "pigeon", "pet").calculate(1000);
