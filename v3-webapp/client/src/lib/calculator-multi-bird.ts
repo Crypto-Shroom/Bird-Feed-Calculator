@@ -305,14 +305,51 @@ export class MultibirMixCalculator {
     const step = targetWeight <= 500 ? 5 : 10;
     let added = 0;
 
+    // Fast path: pre-computed totals avoid re-scanning mix on every greedy evaluation step.
+    const totals = {
+      weight: 0,
+      protein: 0, carbs: 0, fat: 0, fiber: 0,
+      grain: 0, legume: 0, seed: 0,
+    };
+    for (const [name, amount] of Object.entries(mix)) {
+      totals.weight += amount;
+      const ing = INGREDIENTS[name];
+      if (ing) {
+        totals.protein += (ing.protein || 0) * amount;
+        totals.carbs += (ing.carbs || 0) * amount;
+        totals.fat += (ing.fat || 0) * amount;
+        totals.fiber += (ing.fiber || 0) * amount;
+        if (ing.category && ing.category in totals) {
+          totals[ing.category as keyof CategorySummary] += amount;
+        }
+      }
+    }
+
     while (added < requestedWeight - 0.001) {
       const amountToAdd = Math.min(step, requestedWeight - added);
       const winner = choices
         .filter((ingredient) => (remaining.get(ingredient.name) || 0) > 0)
         .map((ingredient) => {
           const addAmount = Math.min(amountToAdd, remaining.get(ingredient.name) || 0);
-          const candidate = { ...mix, [ingredient.name]: (mix[ingredient.name] || 0) + addAmount };
-          return { ingredient, addAmount, score: this.selectionScore(candidate, target, categoryPlan) };
+          const isNew = !mix[ingredient.name];
+          const newWeight = totals.weight + addAmount;
+          const candidateNutrition: NutritionSummary = {
+            protein: (totals.protein + (ingredient.protein || 0) * addAmount) / newWeight,
+            carbs: (totals.carbs + (ingredient.carbs || 0) * addAmount) / newWeight,
+            fat: (totals.fat + (ingredient.fat || 0) * addAmount) / newWeight,
+            fiber: (totals.fiber + (ingredient.fiber || 0) * addAmount) / newWeight,
+          };
+          const candidateCategories: CategorySummary = {
+            grain: ((totals.grain + (ingredient.category === "grain" ? addAmount : 0)) / newWeight) * 100,
+            legume: ((totals.legume + (ingredient.category === "legume" ? addAmount : 0)) / newWeight) * 100,
+            seed: ((totals.seed + (ingredient.category === "seed" ? addAmount : 0)) / newWeight) * 100,
+          };
+          const ingredientCount = Object.keys(mix).length + (isNew ? 1 : 0);
+          return {
+            ingredient,
+            addAmount,
+            score: this.fastSelectionScore(candidateNutrition, candidateCategories, target, categoryPlan, ingredientCount),
+          };
         })
         .sort((left, right) => left.score - right.score || left.ingredient.name.localeCompare(right.ingredient.name))[0];
 
@@ -320,14 +357,33 @@ export class MultibirMixCalculator {
       mix[winner.ingredient.name] = (mix[winner.ingredient.name] || 0) + winner.addAmount;
       remaining.set(winner.ingredient.name, (remaining.get(winner.ingredient.name) || 0) - winner.addAmount);
       added += winner.addAmount;
+
+      totals.weight += winner.addAmount;
+      totals.protein += (winner.ingredient.protein || 0) * winner.addAmount;
+      totals.carbs += (winner.ingredient.carbs || 0) * winner.addAmount;
+      totals.fat += (winner.ingredient.fat || 0) * winner.addAmount;
+      totals.fiber += (winner.ingredient.fiber || 0) * winner.addAmount;
+      if (winner.ingredient.category && winner.ingredient.category in totals) {
+        totals[winner.ingredient.category as keyof CategorySummary] += winner.addAmount;
+      }
     }
   }
 
-  private selectionScore(mix: Record<string, number>, target: NutritionTarget, categoryPlan: CategorySummary): number {
-    const objective = this.objectiveScore(mix, target);
-    const categories = this.calculateCategoryRatios(mix);
+  private fastSelectionScore(
+    nutrition: NutritionSummary,
+    categories: CategorySummary,
+    target: NutritionTarget,
+    categoryPlan: CategorySummary,
+    ingredientCount: number,
+  ): number {
+    const macroDistance = nutritionKeys.reduce((total, key) => {
+      const [min, max] = target[key];
+      const width = Math.max(0.5, max - min);
+      return total + Math.abs(nutrition[key] - (min + max) / 2) / width;
+    }, 0);
+    const diversityPenalty = 1 - Math.min(1, ingredientCount / Math.min(5, Math.max(1, Object.keys(this.inventory).length)));
     const planDistance = categoryKeys.reduce((total, category) => total + Math.abs(categories[category] - categoryPlan[category]) / 100, 0);
-    return objective.macroDistance * 0.7 + planDistance * 0.25 + objective.diversityPenalty * 0.05;
+    return macroDistance * 0.7 + planDistance * 0.25 + diversityPenalty * 0.05;
   }
 
   private compareCandidates(left: Record<string, number>, right: Record<string, number>, target: NutritionTarget): number {

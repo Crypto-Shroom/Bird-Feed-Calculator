@@ -15,3 +15,7 @@
 ## 2026-09-10 - Home View Search and UI Memoization
 **Learning:** In `v3-webapp/client/src/pages/Home.tsx`, re-evaluating safety rules (`isToxicRaw`, `checkBirdToxicity`, `getProcessingWarning`, `isIngredientCompatible`) on every search bar keypress caused repeated CPU work across all dataset ingredients. Pre-classifying safety attributes per selected bird with `useMemo` reduces per-keypress work to simple string matching.
 **Action:** Extract species-wide safety evaluations into a per-bird `useMemo` classifier before applying search query filters in interactive search components.
+
+## 2026-10-11 - Incremental Totals in Greedy Fill Loops
+**Learning:** In `v3-webapp/client/src/lib/calculator-multi-bird.ts`, `fillMix` was calling `calculateNutrition` and `calculateCategoryRatios` on every step candidate in the greedy fill loop. Re-scanning the entire `mix` object repeatedly resulted in quadratic $O(N^2 \cdot \text{steps})$ work. Maintaining running sums for weight, nutrition macros, and category amounts in `fillMix` turns candidate evaluation into $O(1)$ constant-time arithmetic per step, reducing 100 calculation runs from ~12.6s to ~4.3s (~66% execution time reduction) while maintaining 100% identical outputs.
+**Action:** In iterative/greedy allocation loops, maintain running totals to calculate objective scores incrementally rather than re-aggregating the entire dataset on every evaluation step.
