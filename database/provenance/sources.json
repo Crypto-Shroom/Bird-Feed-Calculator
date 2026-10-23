@@ -3037,6 +3037,22 @@
       "permittedUse": "Clinical overview: low-calcium seizure risk in African Greys seems less apparent when birds eat at least half of their diet as pellets; seeds eaten by companion birds are often below 0.03% calcium.",
       "limitations": "Company site; the date is not shown on the page. Figures not individually re-checked against the page text. No nutrient ranges for a mix.",
       "accessedAt": "2026-10-20"
+    },
+    {
+      "id": "luescher-2006-manual-of-parrot-behavior",
+      "title": "Manual of Parrot Behavior (chapter 6, \"Captive Parrot Nutrition: Interactions with Anatomy, Physiology, and Behavior\", pp. 49-58; diet and foraging remarks in chapters 2, 7, 8, 11, 12, 14, 17, 21, 23, 25, 26 and 27)",
+      "authorsOrOrganization": "Andrew U. Luescher (ed.), Blackwell Publishing; chapter 6 by Kevin David Matson and Elizabeth A. Koutsos",
+      "publishedYear": "2006",
+      "sourceTier": "academic_book",
+      "urlOrDoi": "https://openlibrary.org/isbn/9780813827490",
+      "speciesScopes": [
+        "parrot",
+        "african_grey",
+        "psittacine"
+      ],
+      "permittedUse": "Chapter 6 reports a maintenance protein requirement of 10-15% for African Greys (p. 53, citing Kamphues, Otte and Wolf 1997), 11% crude protein sufficing for adult cockatiels and 20% for cockatiel chicks, 154.6-226.1 kcal/kg^0.75 daily energy for adult psittacines (p. 53), and seeds generally under 0.1% calcium (p. 54); it notes that African Greys are commonly diagnosed with low blood calcium (p. 54). Chapters 17 and 27 give wild Puerto Rican Amazon foraging of four to six hours a day against 30-72 minutes for captive Orange-winged Amazons fed pellets (pp. 197, 304). Page numbers are the printed ones.",
+      "limitations": "The book gives no recommended split of pellets, seed, fruit and vegetables or treats, and no figure for fibre, carbohydrate, a parrot fat requirement, a parrot calcium requirement, moult, or breeding in parrots (laying parrots are only said to need more protein and calcium). Protein, calcium, vitamin A and energy figures do not say whether they are as-fed or dry weight. Several chapter 6 figures are for cockatiels, chickens or one species; the calcium and fat figures quoted are chicken values. Quotes and page numbers not individually re-checked here. Reference labels in chapter 6 (Koutsos et al. 2001b/2001c) look swapped.",
+      "accessedAt": "2026-10-23"
     }
   ]
 }
