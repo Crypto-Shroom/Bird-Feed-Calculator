@@ -128,8 +128,8 @@
     {
       "id": "peron-grosset-2013",
       "title": "The diet of adult psittacids: veterinarian and ethological approaches",
-      "authorsOrOrganization": "F. Péron; C. Grosset",
-      "publishedYear": "2013",
+      "authorsOrOrganization": "F. Péron; C. Grosset (Journal of Animal Physiology and Animal Nutrition 98:403-416; online 2013)",
+      "publishedYear": "2014",
       "sourceTier": "peer_reviewed_review",
       "urlOrDoi": "https://doi.org/10.1111/jpn.12103",
       "speciesScopes": [
@@ -138,8 +138,8 @@
         "budgie",
         "psittacine"
       ],
-      "permittedUse": "Seed-mix limitations, selective feeding, captive-diet context, water-supplement risks, and cited Grey/budgie observations.",
-      "limitations": "Does not provide a six-bird food compatibility catalogue.",
+      "permittedUse": "Review of adult psittacid diets (it excludes nectar-feeding and fruit-eating species). Reports a recommendation of 20% fruit and vegetables and 80% pellets (citing Reid and Perlberg 1998); fledging success 90% on pellets against 66% on seed (citing Ullrey et al. 1991); seed mixes are not a balanced diet (lacking vitamins A, D, K, E and calcium, and too rich in fat); parrots offered mixed diets chose about double the protein, three to four times the fat and half the carbohydrate of the offered seed mixes, African Greys and yellow-shouldered Amazons (citing Kalmar et al. 2008); seeds commonly under 0.1% calcium and millet and corn under 0.03%; Ca:P between 1.5:1 and 2:1; African Greys on a nugget diet had higher ionised calcium than seed-fed birds. Also: cockatiels fed 70% crude protein for 11 months kept their condition; moult 'may not be associated with change in diet formulation'; wild parrots foraging four to six hours a day against 30-72 minutes for captive pellet-fed Amazons.",
+      "limitations": "Does not provide a six-bird food compatibility catalogue. Gives no total-fat, protein or fibre range for any parrot (only the cockatiel vitamin A and lysine figures); the diet-share figure is a recommendation citing one source, not a trial result. Its statement that moult may not change the diet formulation conflicts with Luescher 2006 and Orosz 2014. Quotes not individually re-checked here.",
       "accessedAt": "2026-08-17"
     },
     {
@@ -1356,7 +1356,7 @@
     {
       "id": "vca-small-psittacine-nutrition-1998",
       "title": "Clinical Nutrition of Small Psittacines and Passerines",
-      "authorsOrOrganization": "E. Jean Harper; N. D. Skinner (Veterinary Clinics of North America: Exotic Animal Practice)",
+      "authorsOrOrganization": "E. Jean Harper; N. D. Skinner (Seminars in Avian and Exotic Pet Medicine 7(3):116-127)",
       "publishedYear": "1998",
       "sourceTier": "veterinary_reference",
       "urlOrDoi": "https://doi.org/10.1053/S1055-937X(98)80002-9",
@@ -1366,8 +1366,8 @@
         "canary",
         "passerine"
       ],
-      "permittedUse": "Clinical nutrition reference identifying sunflower and safflower as oilseeds and warning against single-seed diet patterns in small companion birds. Also: diets should provide at least 10-14% protein for adult small psittacines and passerines and 15-20% for growing birds, with 25% or more detrimental in growing cockatiels; dietary fibre has no demonstrated benefit for these birds.",
-      "limitations": "It does not establish a budgie portion, a whole-hemp outcome, a complete ration, or an outcome for a different bird species.",
+      "permittedUse": "Clinical nutrition review of small psittacines (budgerigars, cockatiels, lovebirds) and passerines: sunflower and safflower are oilseeds and single-seed diets risk overweight; at least 10-14% protein for adults and 15-20% for growing birds (basis not stated), with 20% for cockatiel chicks and 25% or more detrimental; African Greys kept normal uric acid values at up to 30% protein (citing Kamphues et al. 1997); breeding birds do not appear to need more protein; dietary fibre has no demonstrated benefit; calcium 0.35% adequate for reproducing cockatiels (the authors warn against using that figure for all species), about 0.8% for budgerigars; Ca:P about 2:1; maintenance energy by species; hypocalcaemia relatively common in African Greys and Timneh parrots. Page numbers not recorded.",
+      "limitations": "It does not establish a budgie portion, a whole-hemp outcome, a complete ration, a fat percentage, or an outcome for a different bird species. Its numbers apply to small psittacines and passerines unless a larger species is named. Its statement that breeding birds need no extra protein conflicts with Luescher 2006 and Orosz 2014. Quotes not individually re-checked here.",
       "accessedAt": "2026-08-21"
     },
     {
