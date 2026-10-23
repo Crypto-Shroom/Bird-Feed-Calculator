@@ -3053,6 +3053,41 @@
       "permittedUse": "Chapter 6 reports a maintenance protein requirement of 10-15% for African Greys (p. 53, citing Kamphues, Otte and Wolf 1997), 11% crude protein sufficing for adult cockatiels and 20% for cockatiel chicks, 154.6-226.1 kcal/kg^0.75 daily energy for adult psittacines (p. 53), and seeds generally under 0.1% calcium (p. 54); it notes that African Greys are commonly diagnosed with low blood calcium (p. 54). Chapters 17 and 27 give wild Puerto Rican Amazon foraging of four to six hours a day against 30-72 minutes for captive Orange-winged Amazons fed pellets (pp. 197, 304). Page numbers are the printed ones.",
       "limitations": "The book gives no recommended split of pellets, seed, fruit and vegetables or treats, and no figure for fibre, carbohydrate, a parrot fat requirement, a parrot calcium requirement, moult, or breeding in parrots (laying parrots are only said to need more protein and calcium). Protein, calcium, vitamin A and energy figures do not say whether they are as-fed or dry weight. Several chapter 6 figures are for cockatiels, chickens or one species; the calcium and fat figures quoted are chicken values. Quotes and page numbers not individually re-checked here. Reference labels in chapter 6 (Koutsos et al. 2001b/2001c) look swapped.",
       "accessedAt": "2026-10-23"
+    },
+    {
+      "id": "orosz-2014-clinical-avian-nutrition",
+      "title": "Clinical Avian Nutrition",
+      "authorsOrOrganization": "Susan E. Orosz (Veterinary Clinics of North America: Exotic Animal Practice 17:397-413; the author consults for Lafeber Company)",
+      "publishedYear": "2014",
+      "sourceTier": "peer_reviewed_review",
+      "urlOrDoi": "https://doi.org/10.1016/j.cvex.2014.05.003",
+      "speciesScopes": [
+        "parrot",
+        "african_grey",
+        "psittacine",
+        "budgie",
+        "companion_bird"
+      ],
+      "permittedUse": "Formulated diets should be the base of a companion psittacine's diet (p. 410); table foods no more than 25-35% of the diet for large birds (p. 411); a nutrient-dilution concern when under 50% of the diet is a balanced diet (p. 410); seed mixes with pellets added are not balanced (pp. 400-401). Table 2 (p. 401, citing Hawley 1996 and Hawley, Ritzman and Edling 2000): psittacine total protein at least 12%, gross energy 3200-4200 kcal/kg, calcium 0.30-1.20%, Ca:P 1:1 to 2:1, vitamin A 8000 IU/kg. Calcium for normal calcification in budgerigars 0.85% and cockatiels 0.35% (p. 408). Obesity presumed on all-seed diets in budgerigars and Amazons (p. 408). Foraging 4-6 hours a day for wild Puerto Rican Amazons and 30-72 minutes for captive pellet-fed Orange-winged Amazons (p. 412). Page numbers are the printed ones.",
+      "limitations": "Gives no total-fat figure, no fibre, no carbohydrate, no breeding or moult intake figure, and no species-specific nutrient figures for African Grey, Amazon, cockatoo or macaw; the percentage figures do not say whether they are as-fed or dry weight (only the vitamin D3 figure does). The diet-share figures carry no reference. Not independent of Burns 2024 (which cites it) or of Luescher 2006 chapter 17 (same author, same foraging sources). The author consults for Lafeber Company. Quotes and page numbers not individually re-checked here.",
+      "accessedAt": "2026-10-23"
+    },
+    {
+      "id": "burns-2024-psittacine-obesity-nutrition",
+      "title": "Key Nutritional Factors and Obesity Prevention in Companion Psittacine Birds",
+      "authorsOrOrganization": "Kevin M. Burns (Veterinary Clinics of North America: Exotic Animal Practice 27:13-29; the author consults for Lafeber Company)",
+      "publishedYear": "2024",
+      "sourceTier": "peer_reviewed_review",
+      "urlOrDoi": "https://doi.org/10.1016/j.cvex.2023.07.001",
+      "speciesScopes": [
+        "parrot",
+        "african_grey",
+        "psittacine",
+        "companion_bird"
+      ],
+      "permittedUse": "A balanced pelleted food is the base diet and seed should be considered a treat (p. 24); a seed-to-pellet transition over 7-14 days ending at 100% pellets (p. 25); daily vegetables, fruit not more than a couple of times a week (p. 24); fat allowance of approximately 4% for granivorous companion birds (p. 19, citing MacWhirter 2009 and Brue 1994); Ca:P 1:1 to 2:1 and calcium supplementation for all birds (p. 21); psittacine basal metabolic rate with K = 175 (p. 17); overweight is 10-19% and obese over 20% above optimal body weight (p. 26). Page numbers are the printed ones.",
+      "limitations": "Gives no pellet/seed/produce percentages beyond the 100% pellet end point, no protein percentage, no fibre figure, no vitamin or mineral requirement and no species-specific figures; the 4% fat figure does not say whether it is as-fed or dry weight. Many sentences have no reference marker. Not independent of Orosz 2014, which it cites and follows closely. The author consults for Lafeber Company and names a Lafeber product as a weight-loss example. It says high protein is linked to renal disease, whereas Orosz 2014 reports cockatiels fed 70% crude protein without that effect. Quotes and page numbers not individually re-checked here.",
+      "accessedAt": "2026-10-23"
     }
   ]
 }
