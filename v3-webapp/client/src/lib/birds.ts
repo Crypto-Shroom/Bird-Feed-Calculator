@@ -151,9 +151,9 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         feedingNotes: 'Feed 30-50g per bird per day. Provide varied diet with fresh foods.',
         contextNote: 'Use a formulated diet as the nutritional base. Treat this mix as limited enrichment rather than a daily complete food.',
         nutrition: {
-          protein: [10, 15],
+          protein: [12, 16],
           carbs: [50, 65],
-          fat: [5, 12],
+          fat: [4, 12],
           fiber: [2, 4],
         },
       },
@@ -165,7 +165,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         nutrition: {
           protein: [12, 16],
           carbs: [48, 62],
-          fat: [6, 12],
+          fat: [4, 12],
           fiber: [2, 4],
         },
       },
@@ -177,7 +177,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         nutrition: {
           protein: [14, 18],
           carbs: [45, 60],
-          fat: [6, 12],
+          fat: [4, 12],
           fiber: [2, 4],
         },
       },
