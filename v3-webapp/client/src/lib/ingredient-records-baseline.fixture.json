@@ -111,14 +111,6 @@
     "fiber": 2.4,
     "notes": "Same as milo"
   },
-  "kaffir_corn": {
-    "category": "grain",
-    "protein": 11,
-    "carbs": 73,
-    "fat": 3,
-    "fiber": 2.4,
-    "notes": "Type of sorghum"
-  },
   "rice": {
     "category": "grain",
     "protein": 7,

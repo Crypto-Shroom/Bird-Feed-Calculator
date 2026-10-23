@@ -108,8 +108,7 @@ export const GRAINS_NEEDING_PAIRING = new Set([
   "maize",
   "popcorn",
   "milo",
-  "sorghum",
-  "kaffir_corn"
+  "sorghum"
 ]);
 
 // Recommended grain pairings
@@ -118,8 +117,7 @@ export const GRAIN_PAIRINGS: Record<string, string[]> = {
   "corn_white": ["wheat", "barley", "oats", "rye"],
   "maize": ["wheat", "barley", "oats", "rye"],
   "milo": ["wheat", "barley", "oats", "rye"],
-  "sorghum": ["wheat", "barley", "oats", "rye"],
-  "kaffir_corn": ["wheat", "barley", "oats", "rye"]
+  "sorghum": ["wheat", "barley", "oats", "rye"]
 };
 
 // Ingredient preparation instructions

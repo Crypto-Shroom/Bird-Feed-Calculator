@@ -44,7 +44,6 @@ export const INGREDIENTS: Record<string, Ingredient> = {
 
   milo: { category: "grain", protein: 11, carbs: 73, fat: 3, fiber: 2.4, notes: "Similar to corn, lacks Vitamin A" },
   sorghum: { category: "grain", protein: 11, carbs: 73, fat: 3, fiber: 2.4, notes: "Same as milo" },
-  kaffir_corn: { category: "grain", protein: 11, carbs: 73, fat: 3, fiber: 2.4, notes: "Type of sorghum" },
 
   rice: { category: "grain", protein: 7, carbs: 80, fat: 0.5, fiber: 0.4, notes: "Low protein, high carbs" },
   rice_brown: { category: "grain", protein: 8, carbs: 77, fat: 2.5, fiber: 1.8, notes: "More fiber than white rice" },
