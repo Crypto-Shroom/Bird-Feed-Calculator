@@ -2868,10 +2868,10 @@
       "accessedAt": "2026-10-23"
     },
     {
-      "id": "bavelaar-beynen-2004-commercial-parrot-feeds",
-      "title": "[Assessment of commercial feeds for parrots]",
-      "authorsOrOrganization": "F. J. Bavelaar; A. C. Beynen",
-      "publishedYear": "2004",
+      "id": "bavelaar-beynen-2003-commercial-parrot-feeds",
+      "title": "Beoordeling van commerciële papegaaienvoeders (Assessment of commercial feeds for parrots)",
+      "authorsOrOrganization": "F. J. Bavelaar; A. C. Beynen (Tijdschrift voor Diergeneeskunde 128(23):726-733)",
+      "publishedYear": "2003",
       "sourceTier": "primary",
       "urlOrDoi": "https://pubmed.ncbi.nlm.nih.gov/14686271/",
       "speciesScopes": [
@@ -2879,8 +2879,8 @@
         "african_grey",
         "psittacine"
       ],
-      "permittedUse": "Analysis of 25 commercial parrot feeds against a nutrient-requirement guideline: protein 10.4-20.6% (18 feeds suited only to adult maintenance); calcium 0.08-2.21 g/100 g, with 7 of 13 seed mixtures below the requirement.",
-      "limitations": "Only the abstract was read (Tijdschrift voor Diergeneeskunde, Dutch). The guideline it used is not stated in the abstract. Product analyses, not a requirement source.",
+      "permittedUse": "Dutch-language analysis of 25 commercial parrot feeds (13 seed mixes, 7 pellet feeds, 5 supplementary feeds) against a guideline for adult maintenance (Table 5, p. 731, energy basis, built on Schoemaker et al., ME 12.4 MJ/kg): crude protein above 9.7 g/MJ (about 12% at 12.4 MJ/kg; 20% suggested for growth), linoleic acid above 0.8 g/MJ, calcium 0.2-1.0 g/MJ, vitamin A 645 IU/MJ. Analysed protein 10.4-20.6% (18 feeds low, suited only to adult maintenance); seed mixes 10.4-15.9% and pellets 14.3-19.0% by declaration; calcium 0.08-2.21 g/100 g, with 7 of 13 seed mixes below the requirement and Ca:P under 1.0; analysed fat 4.4-22.2% (pellets generally lower than seed mixes) and crude fibre in Table 1 (p. 728); high dietary fat can contribute to obesity, breeding problems and diarrhoea, especially in Amazons and some cockatoos (p. 732); supplementary feeds cannot serve as a complete diet; parrots selecting from a seed mix can still end up with an unbalanced intake (pp. 729-730).",
+      "limitations": "Product analyses and an energy-based guideline, not a requirement study: the authors state that parrot nutrient requirements are little known and mostly derived from chickens and recipes, and that species differences are probable. The guideline is per MJ of metabolisable energy, so percentage figures depend on the feed's energy density (seed mixes 15.0-16.9 MJ/kg, pellets 15.1-19.3 MJ/kg in Table 1). No total-fat or fibre requirement, no per-species figure, and no breeding or moult figure. Dutch language; analysed and declared values differ widely (up to ten percentage points for macronutrients). Quotes and page numbers not individually re-checked here.",
       "accessedAt": "2026-10-23"
     },
     {
