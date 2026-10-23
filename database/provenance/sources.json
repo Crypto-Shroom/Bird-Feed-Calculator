@@ -1350,21 +1350,23 @@
         "psittacine"
       ],
       "permittedUse": "Peer-reviewed psittacine nutrition review of commercial seed mixtures, including safflower seed composition and seed-mixture nutritional limits.",
-      "limitations": "A psittacine review does not establish whole-hemp evidence for the generic parrot row, a portion, a complete ration, or any non-psittacine outcome.",
+      "limitations": "A psittacine review does not establish whole-hemp evidence for the generic parrot row, a portion, a complete ration, or any non-psittacine outcome. The abstract does not state the 22% crude protein for breeding and moult that Hirano 2010 attributes to this paper; that figure is second-hand.",
       "accessedAt": "2026-08-21"
     },
     {
       "id": "vca-small-psittacine-nutrition-1998",
       "title": "Clinical Nutrition of Small Psittacines and Passerines",
-      "authorsOrOrganization": "Veterinary Clinics of North America: Exotic Animal Practice",
+      "authorsOrOrganization": "E. Jean Harper; N. D. Skinner (Veterinary Clinics of North America: Exotic Animal Practice)",
       "publishedYear": "1998",
       "sourceTier": "veterinary_reference",
       "urlOrDoi": "https://doi.org/10.1053/S1055-937X(98)80002-9",
       "speciesScopes": [
         "budgie",
-        "small_psittacine"
+        "small_psittacine",
+        "canary",
+        "passerine"
       ],
-      "permittedUse": "Clinical nutrition reference identifying sunflower and safflower as oilseeds and warning against single-seed diet patterns in small companion birds.",
+      "permittedUse": "Clinical nutrition reference identifying sunflower and safflower as oilseeds and warning against single-seed diet patterns in small companion birds. Also: diets should provide at least 10-14% protein for adult small psittacines and passerines and 15-20% for growing birds, with 25% or more detrimental in growing cockatiels; dietary fibre has no demonstrated benefit for these birds.",
       "limitations": "It does not establish a budgie portion, a whole-hemp outcome, a complete ration, or an outcome for a different bird species.",
       "accessedAt": "2026-08-21"
     },
@@ -2818,6 +2820,223 @@
       "permittedUse": "Summary of a broiler trial with hulled hairless yellow and brown canary seed at 0, 15, 30 and 45% of the diet, concluding the seeds have merit and are safe for poultry feeding.",
       "limitations": "Trade-press summary of the paper; the paper itself was not read. Broilers only (no layers), hairless hulled seed.",
       "accessedAt": "2026-10-10"
+    },
+    {
+      "id": "brightsmith-2012-amazon-mixed-diets",
+      "title": "Nutritional levels of diets fed to captive Amazon parrots: does mixing seed, produce, and pellets provide a healthy diet?",
+      "authorsOrOrganization": "Donald J. Brightsmith",
+      "publishedYear": "2012",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1647/2011-025R.1",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Feeding trial with 7 captive Amazon parrots (4 species): nutrient content of seed/produce/pellet mixes against literature recommendations (Table 5, dry weight: protein 12/16/24% low/mean/high; total lipids 4/5/7%). A 75% pellet + 25% produce diet met nearly all recommendations; 60% pellet / 22% produce / 18% seed gave acceptable calcium and other nutrients but more fat than recommended; diets offered 50% produce / 25% pellet / 25% seed were deficient in calcium, sodium and iron.",
+      "limitations": "Amazon parrots only (not African Grey); 7 birds. The recommendations describe a whole diet (dry weight), not a supplement mix. It gives no fibre, carbohydrate, breeding or moult recommendation, only measured fibre (5.9-6.55% total dietary fibre). The paper's text calls the recommended fat 10% while its Table 5 gives 4-7%. Full text read.",
+      "accessedAt": "2026-10-20"
+    },
+    {
+      "id": "hess-2002-pet-bird-diet-nutrients",
+      "title": "Estimated nutrient content of diets commonly fed to pet birds",
+      "authorsOrOrganization": "L. Hess; G. Mauldin; K. Rosenthal",
+      "publishedYear": "2002",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://pubmed.ncbi.nlm.nih.gov/11999276/",
+      "speciesScopes": [
+        "companion_bird",
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Owner-survey estimate of 135 pet birds' diets: birds eating less than about half of the diet as formulated products had inadequate vitamin A, D3 and calcium, and high-seed diets were excessive in fat.",
+      "limitations": "Only the abstract was read. Mixed species, nutrient content estimated from owner reports; no per-species ranges for a seed mix.",
+      "accessedAt": "2026-10-20"
+    },
+    {
+      "id": "hirano-2010-psittacine-feeding-review",
+      "title": "Alimentação de psitacídeos filhotes e adultos em cativeiro: Revisão de Literatura (Feeding parrots in captivity - a review)",
+      "authorsOrOrganization": "Líria Queiroz Luz Hirano; André Luiz Quagliatto Santos; Mariana Batista Andrade",
+      "publishedYear": "2010",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.pubvet.com.br/uploads/100c149abd1bdd3cd806cca490470452.pdf",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Portuguese-language literature review. Reports, as-fed: AAFCO (1998) adult parrot maintenance of at least 12% crude protein; Ullrey et al. (1991) suggesting about 22% crude protein for breeding and moult; warning that excess protein for long periods can overload liver and kidneys (gout).",
+      "limitations": "Secondary citation: the AAFCO and Ullrey figures were not checked at their original sources (the Ullrey abstract on PubMed does not state 22%). As-fed basis, unlike dry-weight tables elsewhere. No fat or fibre ranges. Whether the journal peer-reviews was not confirmed.",
+      "accessedAt": "2026-10-23"
+    },
+    {
+      "id": "bavelaar-beynen-2004-commercial-parrot-feeds",
+      "title": "[Assessment of commercial feeds for parrots]",
+      "authorsOrOrganization": "F. J. Bavelaar; A. C. Beynen",
+      "publishedYear": "2004",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://pubmed.ncbi.nlm.nih.gov/14686271/",
+      "speciesScopes": [
+        "parrot",
+        "african_grey",
+        "psittacine"
+      ],
+      "permittedUse": "Analysis of 25 commercial parrot feeds against a nutrient-requirement guideline: protein 10.4-20.6% (18 feeds suited only to adult maintenance); calcium 0.08-2.21 g/100 g, with 7 of 13 seed mixtures below the requirement.",
+      "limitations": "Only the abstract was read (Tijdschrift voor Diergeneeskunde, Dutch). The guideline it used is not stated in the abstract. Product analyses, not a requirement source.",
+      "accessedAt": "2026-10-23"
+    },
+    {
+      "id": "voltura-2024-parrot-dietary-habits",
+      "title": "Parrot Dietary Habits and Consumption of Alternate Foodstuffs",
+      "authorsOrOrganization": "Voltura et al. (Journal of Avian Medicine and Surgery)",
+      "publishedYear": "2024",
+      "sourceTier": "peer_reviewed_review",
+      "urlOrDoi": "https://doi.org/10.1647/20-00028",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Survey of what wild parrots eat: over 43% of species' diets are poorly resolved; many consume foliage, invertebrates, earth and minerals; such foods are absent from veterinary diet recommendations.",
+      "limitations": "Abstract read only. Wild-bird observations; gives no nutrient ranges, pellet or seed share, or fibre figure, and does not support any captive-diet range.",
+      "accessedAt": "2026-10-23"
+    },
+    {
+      "id": "gilardi-toft-2012-parrots-toxins",
+      "title": "Parrots eat nutritious foods despite toxins",
+      "authorsOrOrganization": "J. D. Gilardi; C. A. Toft",
+      "publishedYear": "2012",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1371/journal.pone.0038293",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Field study of 17 wild parrot species in the Peruvian Amazon: up to 70% of the diet was seeds; seeds were higher in protein and lipid and lower in fibre than other plant parts eaten.",
+      "limitations": "Abstract and results summary read. Wild foods, not captive requirements: it does not justify a seed-heavy captive diet and gives no captive protein, fat or fibre range.",
+      "accessedAt": "2026-10-23"
+    },
+    {
+      "id": "ucdavis-bird-diet-conversion-2019",
+      "title": "Bird Diet Conversion",
+      "authorsOrOrganization": "UC Davis veterinary handout (institution inferred from the host site healthtopics.sf.ucdavis.edu; PDF metadata author John Gardiner)",
+      "publishedYear": "2019",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://healthtopics.sf.ucdavis.edu/sites/g/files/dgvnsk6721/files/inline-files/Bird-Diet-Conversion.pdf",
+      "speciesScopes": [
+        "companion_bird",
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Client handout: approximately 50-75% of a quality pelleted diet and 25-50% fresh vegetables and fruit for most pet birds, converting seed to pellets over 3-4 weeks.",
+      "limitations": "Handout without citations; year from PDF metadata; not African Grey or species specific. Gives no nutrient ranges.",
+      "accessedAt": "2026-10-20"
+    },
+    {
+      "id": "osu-pnw477-laying-hens-2016",
+      "title": "How to Feed Your Laying Hens (PNW 477)",
+      "authorsOrOrganization": "James Hermes; Oregon State University, University of Idaho and Washington State University Extension",
+      "publishedYear": "2016",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://extension.oregonstate.edu/catalog/pnw-477-how-feed-your-laying-hens",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "Extension guidance: scratch is not necessary on a complete diet and dilutes it; offer only what hens finish in about 20 minutes, about 10 to 15 percent of daily intake; layer feed about 16 percent protein with 3-4 percent calcium; provide grit with scratch.",
+      "limitations": "Laying hens; extension guidance, not a requirement table. No fat, fibre or moult protein figure. Full text read.",
+      "accessedAt": "2026-10-20"
+    },
+    {
+      "id": "psu-management-laying-flocks-2016",
+      "title": "Management Requirements for Laying Flocks",
+      "authorsOrOrganization": "Phillip J. Clauer; Penn State Extension",
+      "publishedYear": "2016",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://extension.psu.edu/management-requirements-for-laying-flocks",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "Extension guidance: feed a completely balanced 16-18 percent protein layer ration; table scraps or whole grains can reduce production and cause fat birds and prolapse.",
+      "limitations": "Figures not individually re-checked against the page text; no fat, fibre, scratch share or moult protein figure.",
+      "accessedAt": "2026-10-20"
+    },
+    {
+      "id": "merck-laying-hen-requirements-table",
+      "title": "Nutrient Requirements of Laying Hens at Different Feed Intakes (adapted from NRC, Nutrient Requirements of Poultry, 1994)",
+      "authorsOrOrganization": "Merck Veterinary Manual",
+      "publishedYear": "1994",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.merckvetmanual.com/multimedia/table/nutrient-requirements-of-laying-hens-at-different-feed-intakes",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "NRC-derived protein requirement of laying hens as a percentage of diet, falling as feed intake rises (white-egg layers 18.8% at 80 g/day to 12.5% at 120 g/day; brown-egg layers 22.5% to 15.0%).",
+      "limitations": "Commercial layer data (1994 NRC); the Merck page date is not stated. Figures not individually re-checked against the page text. No fat or fibre rows; not a backyard maintenance or moult requirement.",
+      "accessedAt": "2026-10-20"
+    },
+    {
+      "id": "hoyle-garlich-1987-molted-hens",
+      "title": "Postfasting dietary protein requirements of induced molted hens",
+      "authorsOrOrganization": "C. M. Hoyle; J. D. Garlich",
+      "publishedYear": "1987",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://pubmed.ncbi.nlm.nih.gov/3452217/",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "Forced-moult White Leghorn hens after fasting: 12.4% protein with added methionine sufficed for time to first egg; 17.0, 14.8, 13.5 and 12.4% did not differ significantly.",
+      "limitations": "Abstract only. Commercial forced moult in 97-week-old hens, about restarting egg laying, not natural moult or feather regrowth in backyard hens.",
+      "accessedAt": "2026-10-20"
+    },
+    {
+      "id": "merck-pet-bird-nutritional-disorders-owner-2026",
+      "title": "Nutritional Disorders of Pet Birds (pet owner version)",
+      "authorsOrOrganization": "Laurie Hess, DVM, DABVP; Merck Veterinary Manual",
+      "publishedYear": "2026",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.merckvetmanual.com/veterinary/bird-owners/disorders-and-diseases-of-birds/nutritional-disorders-of-pet-birds",
+      "speciesScopes": [
+        "companion_bird",
+        "parrot",
+        "african_grey",
+        "psittacine"
+      ],
+      "permittedUse": "Goal of a balanced pelleted diet with a smaller amount of fresh vegetables and fruit; seed-based diets low in calcium and vitamin D and high in phosphorus; sunflower seed low in calcium and protein and high in fat; acute low calcium especially in African Grey parrots on all-seed diets.",
+      "limitations": "Figures not individually re-checked against the page text. Gives no percentages for pellet share or nutrient ranges.",
+      "accessedAt": "2026-10-20"
+    },
+    {
+      "id": "seemanthini-jani-2020-exotic-pet-birds",
+      "title": "Feed and Management of Exotic Pet Birds",
+      "authorsOrOrganization": "R. Seemanthini; R. G. Jani (Anand Agricultural University)",
+      "publishedYear": "2020",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://indianjournals.com/api/article-view/ipo-21-2-064",
+      "speciesScopes": [
+        "companion_bird",
+        "psittacine"
+      ],
+      "permittedUse": "Short veterinary mini-review (Intas Polivet 21(2):543-546) of diet classes and feeding of pet birds, including grit and watering.",
+      "limitations": "Descriptive only; contains no percentages or nutrient ranges, so it supports no calculator range.",
+      "accessedAt": "2026-10-23"
+    },
+    {
+      "id": "lafeber-orosz-avian-nutrition-revisited",
+      "title": "Avian Nutrition Revisited: Clinical Perspectives",
+      "authorsOrOrganization": "Susan E. Orosz, PhD, DVM, Dipl ABVP (Avian); Lafeber Company",
+      "publishedYear": "unknown",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.lafeber.com/pet-birds/avian-nutrition/",
+      "speciesScopes": [
+        "companion_bird",
+        "parrot",
+        "african_grey",
+        "psittacine"
+      ],
+      "permittedUse": "Clinical overview: low-calcium seizure risk in African Greys seems less apparent when birds eat at least half of their diet as pellets; seeds eaten by companion birds are often below 0.03% calcium.",
+      "limitations": "Company site; the date is not shown on the page. Figures not individually re-checked against the page text. No nutrient ranges for a mix.",
+      "accessedAt": "2026-10-20"
     }
   ]
 }
