@@ -305,21 +305,94 @@ export class MultibirMixCalculator {
     const step = targetWeight <= 500 ? 5 : 10;
     let added = 0;
 
+    // Optimization (Bolt): Maintain running totals for mix weight, nutrition sums, category weights,
+    // and distinct ingredient counts to evaluate candidate scores in O(1) time without full mix re-iteration.
+    let currentTotalWeight = Object.values(mix).reduce((sum, w) => sum + w, 0);
+    const currentNutrTotals: NutritionSummary = { protein: 0, carbs: 0, fat: 0, fiber: 0 };
+    const currentCatWeights: CategorySummary = { grain: 0, legume: 0, seed: 0 };
+    let currentDistinctCount = 0;
+
+    for (const [name, weight] of Object.entries(mix)) {
+      if (weight > 0) {
+        currentDistinctCount++;
+        const ing = INGREDIENTS[name];
+        if (ing) {
+          nutritionKeys.forEach((k) => { currentNutrTotals[k] += (ing[k] || 0) * weight; });
+          if (ing.category) currentCatWeights[ing.category] += weight;
+        }
+      }
+    }
+
+    const categoryTargets = getCategoryTargets(this.bird);
+    const numInvKeys = Math.min(5, Math.max(1, Object.keys(this.inventory).length));
+
     while (added < requestedWeight - 0.001) {
       const amountToAdd = Math.min(step, requestedWeight - added);
-      const winner = choices
-        .filter((ingredient) => (remaining.get(ingredient.name) || 0) > 0)
-        .map((ingredient) => {
-          const addAmount = Math.min(amountToAdd, remaining.get(ingredient.name) || 0);
-          const candidate = { ...mix, [ingredient.name]: (mix[ingredient.name] || 0) + addAmount };
-          return { ingredient, addAmount, score: this.selectionScore(candidate, target, categoryPlan) };
-        })
-        .sort((left, right) => left.score - right.score || left.ingredient.name.localeCompare(right.ingredient.name))[0];
+      let bestWinner: { ingredient: AvailableIngredient; addAmount: number; score: number } | null = null;
 
-      if (!winner) break;
-      mix[winner.ingredient.name] = (mix[winner.ingredient.name] || 0) + winner.addAmount;
-      remaining.set(winner.ingredient.name, (remaining.get(winner.ingredient.name) || 0) - winner.addAmount);
-      added += winner.addAmount;
+      for (let i = 0; i < choices.length; i++) {
+        const ingredient = choices[i];
+        const rem = remaining.get(ingredient.name) || 0;
+        if (rem <= 0) continue;
+
+        const addAmount = Math.min(amountToAdd, rem);
+        const newTotalWeight = currentTotalWeight + addAmount;
+        if (newTotalWeight <= 0) continue;
+
+        const isNewIngredient = (mix[ingredient.name] || 0) === 0;
+        const newDistinctCount = isNewIngredient ? currentDistinctCount + 1 : currentDistinctCount;
+
+        let macroDistance = 0;
+        let targetMisses = 0;
+        for (let k = 0; k < nutritionKeys.length; k++) {
+          const key = nutritionKeys[k];
+          const val = (currentNutrTotals[key] + (ingredient[key] || 0) * addAmount) / newTotalWeight;
+          const [min, max] = target[key];
+          const mid = (min + max) / 2;
+          const w = Math.max(0.5, max - min);
+          macroDistance += Math.abs(val - mid) / w;
+          if (val < min || val > max) targetMisses++;
+        }
+
+        let categoryDistance = 0;
+        let planDistance = 0;
+        for (let k = 0; k < categoryKeys.length; k++) {
+          const cat = categoryKeys[k];
+          const addedCatWeight = cat === ingredient.category ? addAmount : 0;
+          const catRatio = ((currentCatWeights[cat] + addedCatWeight) / newTotalWeight) * 100;
+          const [min, max] = categoryTargets[cat];
+          const mid = (min + max) / 2;
+          const w = Math.max(1, max - min);
+          categoryDistance += Math.abs(catRatio - mid) / w;
+          if (catRatio < min || catRatio > max) targetMisses++;
+          planDistance += Math.abs(catRatio - categoryPlan[cat]) / 100;
+        }
+
+        const diversityPenalty = 1 - Math.min(1, newDistinctCount / numInvKeys);
+        const score = macroDistance * 0.7 + planDistance * 0.25 + diversityPenalty * 0.05;
+
+        if (
+          !bestWinner ||
+          score < bestWinner.score ||
+          (score === bestWinner.score && ingredient.name.localeCompare(bestWinner.ingredient.name) < 0)
+        ) {
+          bestWinner = { ingredient, addAmount, score };
+        }
+      }
+
+      if (!bestWinner) break;
+
+      const { ingredient, addAmount } = bestWinner;
+      if ((mix[ingredient.name] || 0) === 0) {
+        currentDistinctCount++;
+      }
+      mix[ingredient.name] = (mix[ingredient.name] || 0) + addAmount;
+      remaining.set(ingredient.name, (remaining.get(ingredient.name) || 0) - addAmount);
+      added += addAmount;
+
+      currentTotalWeight += addAmount;
+      nutritionKeys.forEach((k) => { currentNutrTotals[k] += (ingredient[k] || 0) * addAmount; });
+      if (ingredient.category) currentCatWeights[ingredient.category] += addAmount;
     }
   }
 
