@@ -28,6 +28,5 @@ updates:
     schedule:
       interval: monthly
     labels: [dependencies]
-    groups:
-      actions:
-        patterns: ["*"]
+    # No group: each action gets its own PR, so one bad update (or the untestable
+    # deploy action) cannot block the others (see #331).
