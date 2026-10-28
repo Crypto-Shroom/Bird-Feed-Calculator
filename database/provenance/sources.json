@@ -3034,8 +3034,8 @@
         "african_grey",
         "psittacine"
       ],
-      "permittedUse": "Clinical overview: low-calcium seizure risk in African Greys seems less apparent when birds eat at least half of their diet as pellets; seeds eaten by companion birds are often below 0.03% calcium.",
-      "limitations": "Company site; the date is not shown on the page. Figures not individually re-checked against the page text. No nutrient ranges for a mix.",
+      "permittedUse": "Clinical overview. Classifies psittacines as florivores with granivory (primarily seeds and grains, like budgies and cockatiels), frugivory (primarily fruit, like many macaws, for example the green-winged macaw) and nectarivory (lorikeets and lories), noting that many parrots cross these lines (the scarlet macaw is frugivorous-granivorous) and that food eaten varies with nutrient availability, sex and age; its Table 1 (adapted from Koutsos, Matson and Klasing 2001) lists budgerigar and cockatiel (3 hours of feeding a day) as granivores, the hyacinth macaw as a granivore eating palm nuts of about 50% lipid, the sulphur-crested cockatoo as an omnivore and the orange-winged Amazon as a frugivore (85% of fruit from palm fruit). Also: low-calcium seizure risk in African Greys seems less apparent when birds eat at least half of their diet as pellets; seeds eaten by companion birds are often below 0.03% calcium.",
+      "limitations": "Company site; the date is not shown on the page. Classification labels are broad: field studies of wild macaws and Amazons record seeds as the largest plant part even for species labelled frugivores. No nutrient ranges for a mix. Figures not individually re-checked here.",
       "accessedAt": "2026-10-20"
     },
     {
@@ -3088,6 +3088,221 @@
       "permittedUse": "A balanced pelleted food is the base diet and seed should be considered a treat (p. 24); a seed-to-pellet transition over 7-14 days ending at 100% pellets (p. 25); daily vegetables, fruit not more than a couple of times a week (p. 24); fat allowance of approximately 4% for granivorous companion birds (p. 19, citing MacWhirter 2009 and Brue 1994); Ca:P 1:1 to 2:1 and calcium supplementation for all birds (p. 21); psittacine basal metabolic rate with K = 175 (p. 17); overweight is 10-19% and obese over 20% above optimal body weight (p. 26). Page numbers are the printed ones.",
       "limitations": "Gives no pellet/seed/produce percentages beyond the 100% pellet end point, no protein percentage, no fibre figure, no vitamin or mineral requirement and no species-specific figures; the 4% fat figure does not say whether it is as-fed or dry weight. Many sentences have no reference marker. Not independent of Orosz 2014, which it cites and follows closely. The author consults for Lafeber Company and names a Lafeber product as a weight-loss example. It says high protein is linked to renal disease, whereas Orosz 2014 reports cockatiels fed 70% crude protein without that effect. Quotes and page numbers not individually re-checked here.",
       "accessedAt": "2026-10-23"
+    },
+    {
+      "id": "orosz-2007-principles-of-avian-nutrition",
+      "title": "Clinical Perspectives on the Principles of Avian Nutrition",
+      "authorsOrOrganization": "Susan Orosz, DVM, DABVP (Avian), DECZM; LafeberVet (Lafeber Company)",
+      "publishedYear": "2007",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://lafeber.com/vet/clinical-perspectives-on-the-principles-of-avian-nutrition/",
+      "speciesScopes": [
+        "parrot",
+        "african_grey",
+        "budgie",
+        "psittacine",
+        "companion_bird"
+      ],
+      "permittedUse": "Veterinary web article: psittacine subdivisions granivores (budgies, cockatiels), frugivores (many macaws, for example the green-winged macaw) and nectarivores (lorikeets and lories); cockatiels fed up to 70% crude protein for 11 months kept weight; budgerigar and cockatiel calcium as little as 0.85% and 0.35%, while the psittacine requirement is undetermined; daily energy requirements documented only in budgerigars; granivores and omnivores digest more efficiently than nectar feeders.",
+      "limitations": "Company-published web article, dated 5 December 2007. Classification labels are broad and field data conflict with some of them. No fibre or carbohydrate requirement. Figures not individually re-checked here.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "pryor-2001-comparative-protein-requirements",
+      "title": "Comparative protein requirements of three species of parrots with distinct dietary specializations",
+      "authorsOrOrganization": "Gregory S. Pryor (Proceedings of the 4th Conference on Zoo and Wildlife Nutrition, AZA Nutrition Advisory Group, pp. 132-135)",
+      "publishedYear": "2001",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://nagonline.net/?p=1431",
+      "speciesScopes": [
+        "parrot",
+        "psittacine",
+        "budgie"
+      ],
+      "permittedUse": "Nitrogen-balance maintenance protein in adult birds on fruit- or seed-based diets: red lory (nectarivore) 1.0% crude protein, Pesquet's parrot (frugivore) 3.2%, budgerigar (granivore) 8.2%.",
+      "limitations": "Small conference trial on adults; these are minimum maintenance values by nitrogen balance, not feeding targets. Pesquet's parrot is not a pet species. Figures not independently re-checked here.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "earle-clarke-1991-budgerigar-nutrition",
+      "title": "The Nutrition of the Budgerigar (Melopsittacus undulatus)",
+      "authorsOrOrganization": "Kay E. Earle; Nigel R. Clarke (Journal of Nutrition 121:S186-S192)",
+      "publishedYear": "1991",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://pubmed.ncbi.nlm.nih.gov/1941225/",
+      "speciesScopes": [
+        "budgie",
+        "psittacine"
+      ],
+      "permittedUse": "Budgerigar protein estimated at about 10% of the diet (possibly two to three times higher in moult); energy 48-128 kJ per bird per day; seed kernel protein and fat figures (white millet 115 and 35 g/kg, red millet 116 and 38, canary seed 156 and 56, hulled oats 135 and 66); two seed diets fed contained 10.8-11.5% protein and 3.4-4.1% fat.",
+      "limitations": "Budgerigars only. The calcium (0.6-1.0%) and linoleic acid (1%) figures quoted are poultry values, not measured in budgerigars. Figures not independently re-checked here.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "matsufuji-2021-tambopata-psittacine-foraging",
+      "title": "Foraging ecology of psittacines in the Tambopata National Reserve, Peru",
+      "authorsOrOrganization": "D. Matsufuji; M. Williams; C. Reynel; K. Quinteros; P. Martinez; D. J. Brightsmith (Ornitología Neotropical 32:141-149)",
+      "publishedYear": "2021",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://ornneo.journals.publicknowledgeproject.org/index.php/ornneo/article/download/911/PDF/5703",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Field observations of 15 wild psittacine species (469 foraging encounters): seeds 41% of encounters, pulp 15%, whole fruit 13%, flowers 12%; by species seeds 56% for Amazona farinosa, 45% for the green-winged macaw, 41% for the scarlet macaw and 37% for the blue-and-gold macaw.",
+      "limitations": "Wild Peruvian birds; shares are of foraging encounters by plant part, not of intake by weight. Some species have very few observations (Pionus menstruus n=12, Aratinga weddellii n=9). DOI not confirmed.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "tamungang-ajayi-2003-grey-parrot-korup",
+      "title": "Diversity of food of the Grey Parrot Psittacus erithacus in Korup National Park, Cameroon",
+      "authorsOrOrganization": "S. A. Tamungang; S. S. Ajayi (Bulletin of the African Bird Club 10(1):33-36)",
+      "publishedYear": "2003",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://archive.org/download/biostor-262258/biostor-262258.pdf",
+      "speciesScopes": [
+        "african_grey",
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Wild Congo grey parrots in Cameroon ate 14 tree species; fruit was the most frequently taken food and oil palm fruit was available all year.",
+      "limitations": "Congo grey only; no study of Timneh greys was found. Percentages are of food-source species, not diet shares, and do not add up. The year is inferred from the volume. Not independently re-checked here.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "benavidez-2026-yungas-parrot-food-use",
+      "title": "Uso de recursos alimenticios por un ensamble de loros en la Selva Pedemontana de las Yungas argentinas",
+      "authorsOrOrganization": "A. Benavidez; M. Valoy; A. L. Echevarria (Acta Zoológica Lilloana 70(1):125-140)",
+      "publishedYear": "2026",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.30550/j.azl/2318",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Field study of six wild parrot species in Argentina (including Amazona aestiva and A. tucumana): seeds the main item, 75.84% of 531 feeding episodes.",
+      "limitations": "Abstract, results text and Table 1 only. Wild birds; shares of feeding episodes, not of intake. Spanish language.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "hasebe-franklin-2004-rainbow-lorikeet-food",
+      "title": "Food sources of the Rainbow Lorikeet Trichoglossus haematodus during the early wet season on the urban fringe of Darwin, northern Australia",
+      "authorsOrOrganization": "Makitto Hasebe; Donald C. Franklin (Corella 28(3):68-74)",
+      "publishedYear": "2004",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://absa.asn.au/wp-content/uploads/2021/06/Cor-Vol-28-Pg68-74_FoodRainbowLorikeet.pdf",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Wild rainbow lorikeets in the early wet season (a low-nectar period): seeds 41% and nectar or pollen 40% of foraging observations across 37 plant species.",
+      "limitations": "Abstract only. One site and season; the diet shifts with season, so it does not show that lorikeets eat mostly seed.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "schweizer-2014-nectarivory-loriinae",
+      "title": "Parallel adaptations to nectarivory in parrots, key innovations and the diversification of the Loriinae",
+      "authorsOrOrganization": "M. Schweizer; M. Güntert; O. Seehausen; C. Leuenberger; S. T. Hertwig (Ecology and Evolution 4(14):2867-2883)",
+      "publishedYear": "2014",
+      "sourceTier": "peer_reviewed_review",
+      "urlOrDoi": "https://doi.org/10.1002/ece3.1131",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Lories (Loriinae) are specialised on a nectar diet; nectar is almost 100% sugar by dry weight; lories need nitrogen from insects or pollen.",
+      "limitations": "Most of the text was read but not all. Evolutionary study: it gives no nutrient requirement for a captive bird.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "kalmar-2009-rainbow-lorikeet-nectar-dilution",
+      "title": "Effect of dilution degree of commercial nectar and provision of fruit on food, energy and nutrient intake in two rainbow lorikeet subspecies",
+      "authorsOrOrganization": "I. D. Kalmar; M. van Loon; M. Bürkle; M. Reinschmidt; D. Waugh; G. Werquin; G. P. J. Janssens (Zoo Biology 28(2):98-106)",
+      "publishedYear": "2009",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1002/zoo.20240",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Rainbow lorikeets given commercial nectar diluted 1:3, 1:4 and 1:5: more dilution lowered voluntary energy intake; minimal requirements were still covered.",
+      "limitations": "Abstract only; no numeric requirement is stated in the abstract.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "reavill-2011-psittacine-digestive-tract",
+      "title": "Anatomy and diseases of the psittacine digestive tract: it goes in the beak and out the vent",
+      "authorsOrOrganization": "Drury Reavill (Proceedings of the Association of Avian Veterinarians Australasian Committee 2011, p. 11)",
+      "publishedYear": "2011",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.aavac.com.au/files/2011-01.pdf",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Conference paper: psittacine feeding strategies subclassified as granivory (budgerigars and cockatiels), frugivory (many macaws) and nectarivory (lorikeets and lories).",
+      "limitations": "One paragraph read; classification only, no figures.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "pollock-2013-nectarivory-in-birds",
+      "title": "Nutritional Strategy: Nectarivory in Birds - 10 Facts You Should Know",
+      "authorsOrOrganization": "Christal Pollock, DVM; LafeberVet",
+      "publishedYear": "2013",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://lafeber.com/vet/nutritional-strategy-nectarivory-in-birds-10-facts-you-should-know/",
+      "speciesScopes": [
+        "companion_bird",
+        "psittacine"
+      ],
+      "permittedUse": "Nectar meets less than 15% of essential amino acid requirements and is low in methionine, for nectar-feeding birds generally.",
+      "limitations": "Web article, hummingbird-focused and not specific to parrots; no parrot requirement.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "foster-smith-2006-feeding-pet-birds",
+      "title": "Feeding Pet Birds, Parrot Diets, and Bird Nutrition Recommendations",
+      "authorsOrOrganization": "Foster & Smith, Inc. (PetEducation.com)",
+      "publishedYear": "2006",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://cdn.ymaws.com/petsitters.org/resource/resmgr/virtual_library_/feeding_pet_birds_parrot_die.pdf",
+      "speciesScopes": [
+        "companion_bird",
+        "parrot"
+      ],
+      "permittedUse": "Keeper and retailer guide listing example birds by feeding type (granivores including the hyacinth macaw; omnivores including the sulphur-crested cockatoo and the red-tailed Amazon).",
+      "limitations": "Retailer guide: not authoritative. Supports at most a limited outcome with a visible hint, never an allowed one.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "pittman-1993-anodorhynchus-macaw-feeding",
+      "title": "Recent Research on the Anodorhynchus Macaws Feeding Habits",
+      "authorsOrOrganization": "Tony Pittman (AFA Watchbird 20(6))",
+      "publishedYear": "1993",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://watchbird-ojs-tamu.tdl.org/watchbird/article/view/737",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Aviculture magazine article: the hyacinth macaw is a specialist palm-nut feeder (acuri and bocaiuva palms).",
+      "limitations": "Keeper magazine, no quantities; not authoritative.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "birdhealth-eclectus-wild-diet",
+      "title": "Research: the wild diet (Eclectus)",
+      "authorsOrOrganization": "Birdhealth (Dr Rob Marshall, Australian bird veterinary clinic website)",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://birdhealth.com.au/research-wild-diet",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Clinic page citing unpublished data: in the wild Eclectus parrots eat mostly fruit pulp, with seeds a much smaller part.",
+      "limitations": "Clinic web page, undated, no percentages and unpublished data; not authoritative.",
+      "accessedAt": "2026-10-28"
     }
   ]
 }
