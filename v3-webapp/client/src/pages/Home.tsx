@@ -57,6 +57,7 @@ import { cn } from "@/lib/utils";
 import { Link } from "wouter";
 import { useLanguage, LanguageSwitcher } from "@/contexts/LanguageContext";
 import { getBirdCare } from "@/locales/care";
+import { getProfileText } from "@/locales/profiles";
 import { getIngredientName } from "@/locales/ingredients";
 import { translateSafetyText } from "@/locales/safety";
 import { translateHerbText } from "@/locales/herbs";
@@ -79,6 +80,8 @@ export default function Home() {
   const availableSituations = useMemo(() => getAvailableSituations(selectedBird), [selectedBird]);
   const birdProfile = BIRD_PROFILES[selectedBird];
   const currentProfile = birdProfile.profiles[situation] || birdProfile.profiles[getDefaultSituation(selectedBird)];
+  const profileText = (key: string) => getProfileText(selectedBird, key, birdProfile.profiles[key], language);
+  const currentProfileText = profileText(birdProfile.profiles[situation] ? situation : getDefaultSituation(selectedBird));
   const care = getBirdCare(selectedBird, language);
   const localizedBirdName = t(`common.${selectedBird === "african_grey" ? "africanGrey" : selectedBird}`);
   const birdDisplayName = language === "de" ? localizedBirdName : language === "nl" ? localizedBirdName.toLowerCase() : selectedBird === "african_grey" ? birdProfile.name : birdProfile.name.toLowerCase();
@@ -307,7 +310,7 @@ export default function Home() {
   const exportRecipe = () => {
     if (!result || !Object.keys(result.mix).length) return;
     const lines = [
-      `${birdProfile.name} — ${currentProfile.name}`,
+      `${birdProfile.name} — ${currentProfileText.name}`,
       formulaSource === "profile-default" ? t("recipeExport.standardFormula") : t("recipeExport.calculatedFrom"),
       t("recipeExport.batchEstimate", { grams: Math.round(result.targetWeight) }),
       "",
@@ -418,7 +421,7 @@ export default function Home() {
                         <SelectTrigger id="situation" className="h-12 text-base"><SelectValue /></SelectTrigger>
                         <SelectContent>
                           {availableSituations.map((value) => (
-                            <SelectItem key={value} value={value}>{birdProfile.profiles[value].name}</SelectItem>
+                            <SelectItem key={value} value={value}>{profileText(value).name}</SelectItem>
                           ))}
                         </SelectContent>
                       </Select>
@@ -445,8 +448,8 @@ export default function Home() {
                     />
                   </div>
                   <div className="rounded-md border bg-muted/40 p-3">
-                    <p className="text-sm text-muted-foreground">{currentProfile.feedingNotes}</p>
-                    {currentProfile.contextNote && <p className="mt-2 text-xs leading-relaxed text-muted-foreground/80">{currentProfile.contextNote}</p>}
+                    <p className="text-sm text-muted-foreground">{currentProfileText.feedingNotes}</p>
+                    {currentProfileText.contextNote && <p className="mt-2 text-xs leading-relaxed text-muted-foreground/80">{currentProfileText.contextNote}</p>}
                   </div>
                 </div>
 
@@ -559,7 +562,7 @@ export default function Home() {
                 <CardContent className="min-h-[520px] p-6">
                   {activeTab === "calculator" && <div className="space-y-6">
                     <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
-                      <div><h2 className="text-xl font-bold">{t("calculator.recommendedFormula")}</h2><p className="mt-1 text-sm text-muted-foreground">{formulaSource === "profile-default" ? t("calculator.standardFormulaNote", { bird: birdProfile.name, profile: currentProfile.name }) : t("calculator.calculatedFromInventory")}</p></div>
+                      <div><h2 className="text-xl font-bold">{t("calculator.recommendedFormula")}</h2><p className="mt-1 text-sm text-muted-foreground">{formulaSource === "profile-default" ? t("calculator.standardFormulaNote", { bird: birdProfile.name, profile: currentProfileText.name }) : t("calculator.calculatedFromInventory")}</p></div>
                       <Button type="button" variant="outline" size="sm" className="gap-2" onClick={exportRecipe} disabled={!Object.keys(result.mix).length}><Download className="h-4 w-4" />{t("calculator.exportRecipe")}</Button>
                     </div>
 
@@ -580,7 +583,7 @@ export default function Home() {
                           <div className="rounded-full bg-emerald-100 p-3"><Leaf className="h-6 w-6 text-emerald-700" /></div>
                           <div>
                             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-800">{t("herbs.title")}</p>
-                            <h2 className="mt-1 text-xl font-bold">{t("herbs.profileSubtitle", { profile: currentProfile.name })}</h2>
+                            <h2 className="mt-1 text-xl font-bold">{t("herbs.profileSubtitle", { profile: currentProfileText.name })}</h2>
                             <p className="mt-1 text-muted-foreground">{herbRecommendation?.notes ? translateHerbText(herbRecommendation.notes, language) : t("herbs.noRecommendations")}</p>
                           </div>
                         </div>
@@ -592,7 +595,7 @@ export default function Home() {
                     <ReportIssueLink section="Herbs & Supplements" bird={birdProfile.name} profile={currentProfile.name} />
                   </div>}
 
-                  {activeTab === "analysis" && <div className="space-y-8"><div><h2 className="mb-4 text-lg font-bold">{t("analysis.categoryBreakdown")}</h2><div className="space-y-4"><CategoryBar label={t("analysis.grains")} value={result.categories.grain} target={getCategoryTargets(selectedBird).grain} color="bg-amber-400" /><CategoryBar label={t("analysis.legumes")} value={result.categories.legume} target={getCategoryTargets(selectedBird).legume} color="bg-emerald-500" /><CategoryBar label={t("analysis.seeds")} value={result.categories.seed} target={getCategoryTargets(selectedBird).seed} color="bg-stone-500" /></div></div><Separator /><div><h2 className="mb-3 text-lg font-bold">{t("analysis.detailedTitle")}</h2><p className="text-sm text-muted-foreground mb-3">{t("analysis.detailedDesc")}</p><div className="mt-4 grid gap-3 sm:grid-cols-2">{result.suggestions.map((suggestion) => <div key={suggestion} className="rounded-lg border bg-muted/20 p-4 text-sm"><CheckCircle2 className="mb-2 h-4 w-4 text-emerald-700" />{suggestion}</div>)}</div><p className="mt-4 text-xs text-muted-foreground">{t("analysis.optimizerNote")}</p></div><div className="rounded-lg border border-blue-200 bg-blue-50 p-4"><h3 className="font-semibold text-blue-950">Profile: {currentProfile.name}</h3><p className="mt-1 text-sm text-blue-900">{currentProfile.feedingNotes}</p></div><div className="rounded-lg border border-amber-200 bg-amber-50 p-4"><h3 className="flex items-center gap-2 font-semibold text-amber-950"><Sun className="h-4 w-4 text-amber-600" aria-hidden="true" />{t("analysis.environmentalSupport")}</h3><p className="mt-1 text-sm text-amber-900">{t("analysis.uvbNote")}</p></div><ReportIssueLink section="Detailed Analysis" bird={birdProfile.name} profile={currentProfile.name} /></div>}
+                  {activeTab === "analysis" && <div className="space-y-8"><div><h2 className="mb-4 text-lg font-bold">{t("analysis.categoryBreakdown")}</h2><div className="space-y-4"><CategoryBar label={t("analysis.grains")} value={result.categories.grain} target={getCategoryTargets(selectedBird).grain} color="bg-amber-400" /><CategoryBar label={t("analysis.legumes")} value={result.categories.legume} target={getCategoryTargets(selectedBird).legume} color="bg-emerald-500" /><CategoryBar label={t("analysis.seeds")} value={result.categories.seed} target={getCategoryTargets(selectedBird).seed} color="bg-stone-500" /></div></div><Separator /><div><h2 className="mb-3 text-lg font-bold">{t("analysis.detailedTitle")}</h2><p className="text-sm text-muted-foreground mb-3">{t("analysis.detailedDesc")}</p><div className="mt-4 grid gap-3 sm:grid-cols-2">{result.suggestions.map((suggestion) => <div key={suggestion} className="rounded-lg border bg-muted/20 p-4 text-sm"><CheckCircle2 className="mb-2 h-4 w-4 text-emerald-700" />{suggestion}</div>)}</div><p className="mt-4 text-xs text-muted-foreground">{t("analysis.optimizerNote")}</p></div><div className="rounded-lg border border-blue-200 bg-blue-50 p-4"><h3 className="font-semibold text-blue-950">{t("herbs.profileSubtitle", { profile: currentProfileText.name })}</h3><p className="mt-1 text-sm text-blue-900">{currentProfileText.feedingNotes}</p></div><div className="rounded-lg border border-amber-200 bg-amber-50 p-4"><h3 className="flex items-center gap-2 font-semibold text-amber-950"><Sun className="h-4 w-4 text-amber-600" aria-hidden="true" />{t("analysis.environmentalSupport")}</h3><p className="mt-1 text-sm text-amber-900">{t("analysis.uvbNote")}</p></div><ReportIssueLink section="Detailed Analysis" bird={birdProfile.name} profile={currentProfile.name} /></div>}
                 </CardContent>
               </Card>
             </div>}
