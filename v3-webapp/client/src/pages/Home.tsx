@@ -57,6 +57,7 @@ import { cn } from "@/lib/utils";
 import { Link } from "wouter";
 import { useLanguage, LanguageSwitcher } from "@/contexts/LanguageContext";
 import { getBirdCare } from "@/locales/care";
+import { getProfileText } from "@/locales/profiles";
 import { getIngredientName } from "@/locales/ingredients";
 import { translateSafetyText } from "@/locales/safety";
 import { translateHerbText } from "@/locales/herbs";
@@ -79,6 +80,8 @@ export default function Home() {
   const availableSituations = useMemo(() => getAvailableSituations(selectedBird), [selectedBird]);
   const birdProfile = BIRD_PROFILES[selectedBird];
   const currentProfile = birdProfile.profiles[situation] || birdProfile.profiles[getDefaultSituation(selectedBird)];
+  const profileText = (key: string) => getProfileText(selectedBird, key, birdProfile.profiles[key], language);
+  const currentProfileText = profileText(birdProfile.profiles[situation] ? situation : getDefaultSituation(selectedBird));
   const care = getBirdCare(selectedBird, language);
   const localizedBirdName = t(`common.${selectedBird === "african_grey" ? "africanGrey" : selectedBird}`);
   const birdDisplayName = language === "de" ? localizedBirdName : language === "nl" ? localizedBirdName.toLowerCase() : selectedBird === "african_grey" ? birdProfile.name : birdProfile.name.toLowerCase();
@@ -307,7 +310,7 @@ export default function Home() {
   const exportRecipe = () => {
     if (!result || !Object.keys(result.mix).length) return;
     const lines = [
-      `${birdProfile.name} — ${currentProfile.name}`,
+      `${birdProfile.name} — ${currentProfileText.name}`,
       formulaSource === "profile-default" ? t("recipeExport.standardFormula") : t("recipeExport.calculatedFrom"),
       t("recipeExport.batchEstimate", { grams: Math.round(result.targetWeight) }),
       "",
@@ -418,7 +421,7 @@ export default function Home() {
                         <SelectTrigger id="situation" className="h-12 text-base"><SelectValue /></SelectTrigger>
                         <SelectContent>
                           {availableSituations.map((value) => (
-                            <SelectItem key={value} value={value}>{birdProfile.profiles[value].name}</SelectItem>
+                            <SelectItem key={value} value={value}>{profileText(value).name}</SelectItem>
                           ))}
                         </SelectContent>
                       </Select>
@@ -445,8 +448,8 @@ export default function Home() {
                     />
                   </div>
                   <div className="rounded-md border bg-muted/40 p-3">
-                    <p className="text-sm text-muted-foreground">{currentProfile.feedingNotes}</p>
-                    {currentProfile.contextNote && <p className="mt-2 text-xs leading-relaxed text-muted-foreground/80">{currentProfile.contextNote}</p>}
+                    <p className="text-sm text-muted-foreground">{currentProfileText.feedingNotes}</p>
+                    {currentProfileText.contextNote && <p className="mt-2 text-xs leading-relaxed text-muted-foreground/80">{currentProfileText.contextNote}</p>}
                   </div>
                 </div>
 
@@ -580,7 +583,7 @@ export default function Home() {
                           <div className="rounded-full bg-emerald-100 p-3"><Leaf className="h-6 w-6 text-emerald-700" /></div>
                           <div>
                             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-800">{t("herbs.title")}</p>
-                            <h2 className="mt-1 text-xl font-bold">{t("herbs.profileSubtitle", { profile: currentProfile.name })}</h2>
+                            <h2 className="mt-1 text-xl font-bold">{t("herbs.profileSubtitle", { profile: currentProfileText.name })}</h2>
                             <p className="mt-1 text-muted-foreground">{herbRecommendation?.notes ? translateHerbText(herbRecommendation.notes, language) : t("herbs.noRecommendations")}</p>
                           </div>
                         </div>
