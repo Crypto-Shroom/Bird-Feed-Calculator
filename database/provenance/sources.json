@@ -229,8 +229,8 @@
         "chicken",
         "avian"
       ],
-      "permittedUse": "Cross-species chapter-level veterinary reference for nutrition, toxicology, racing pigeons, galliformes, and canaries/finches.",
-      "limitations": "Each future claim must cite its exact relevant chapter/section; the book title cannot act as blanket six-bird approval.",
+      "permittedUse": "Cross-species chapter-level veterinary reference for nutrition, toxicology, racing pigeons, galliformes, and canaries/finches. Chapter 4, section I (McDonald, 'Nutrition and Dietary Supplementation', pp. 86-107), Table 4.1.33, estimated nutritional requirements for psittacines on a dry-matter basis: maintenance crude protein 10-15%, fat 5%, calcium 0.3-0.7%; breeder crude protein 15-22%, lysine 0.8-1.5%, fat 10-15%, calcium 0.7-1.2%, phosphorus 0.5-0.8%. The chapter also says budgerigars can maintain breeding performance on 13.2% protein (citing Angel and Ballam 1995), that heavy moult may be covered by eating more without a higher dietary protein percentage, and that high fibre can raise faecal nitrogen.",
+      "limitations": "Each future claim must cite its exact relevant chapter/section; the book title cannot act as blanket six-bird approval. Table 4.1.33 is labelled 'estimates only' and may not apply to all species; its rows carry no source of their own. The table has no fibre or carbohydrate row. Chapter figures not individually re-checked here.",
       "accessedAt": "2026-08-17"
     },
     {
@@ -3302,6 +3302,447 @@
       ],
       "permittedUse": "Clinic page citing unpublished data: in the wild Eclectus parrots eat mostly fruit pulp, with seeds a much smaller part.",
       "limitations": "Clinic web page, undated, no percentages and unpublished data; not authoritative.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "expert-panel-1998-companion-bird-nutrition",
+      "title": "Expert Panel on Companion Bird Nutrition (summary of the 1998 panel, with its Table 1)",
+      "authorsOrOrganization": "Christal Pollock, LafeberVet (summarising the panel of R. N. Brue, M. Sunde, S. Crissey and M. Hagen, Feed Management 49(2), February 1998)",
+      "publishedYear": "2007",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://lafeber.com/vet/expert-panel-on-companion-bird-nutrition/",
+      "speciesScopes": [
+        "parrot",
+        "psittacine",
+        "passerine",
+        "companion_bird"
+      ],
+      "permittedUse": "Maintenance nutrient guidelines for formulated feeds, extrapolated from NRC poultry requirements: gross energy 3200-4200 kcal/kg, crude protein at least 12% for psittacines (14% for passerines), calcium 0.30-1.20%, phosphorus at least 0.30%, Ca:P 1:1 to 2:1, arginine and lysine at least 0.65%, methionine at least 0.30%, linoleic acid at least 1%, vitamin A 8000 IU/kg, vitamin D3 500-2000.",
+      "limitations": "Not an adopted AAFCO profile: a later account says the panel never reached a final recommendation. Maintenance only; no fat, fibre or carbohydrate row. The protein figure reads 12 or 12-14 or 12-15% depending on the copy, so the original article should be consulted before one figure is relied on. Energy is gross, not metabolisable.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "aafco-2023-model-regulations-pet-food",
+      "title": "Model Regulations for Pet Food and Specialty Pet Food Under the Model Bill (2023)",
+      "authorsOrOrganization": "Association of American Feed Control Officials (AAFCO)",
+      "publishedYear": "2023",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.aafco.org/wp-content/uploads/2023/12/20230731_DraftModRegsPFLM_FINAL.pdf",
+      "speciesScopes": [
+        "companion_bird",
+        "parrot"
+      ],
+      "permittedUse": "AAFCO recognises nutrient profiles only for dog and cat food; for specialty pets it recognises only nutrient recommendations approved by the National Research Council for the specific species. The sections read contain no nutrient profile for birds.",
+      "limitations": "Regulatory model rules, read for the sections on nutrient profiles and specialty pets only. Shows only that no AAFCO psittacine profile exists; says nothing about what parrots need.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "brightsmith-2010-scarlet-macaw-chick-diets",
+      "title": "Nutritional content of the diets of free-living scarlet macaw chicks in southeastern Peru",
+      "authorsOrOrganization": "D. J. Brightsmith; D. McDonald; D. Matsufuji; C. A. Bailey (Journal of Avian Medicine and Surgery 24(1):9-23)",
+      "publishedYear": "2010",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://pubmed.ncbi.nlm.nih.gov/20496602/",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Crop contents of wild scarlet macaw chicks: protein 23.5% and fat 28.6% of dry matter (2005 sampling). Table 6 compares commercial macaw breeder diets (protein 20.4%, fat 12.3%) with maintenance diets (protein 17.3%, fat 8.5%) and the McDonald 2006 breeder estimates. The authors note published parrot dietary fat varies from 5% to more than 20% with no consensus.",
+      "limitations": "Wild nestling intake of one species, not a captive requirement. Commercial-diet averages are product values, not requirements. Figures not independently re-checked here.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "cornejo-2012-scarlet-macaw-crop-contents",
+      "title": "Predicted metabolizable energy density and amino acid profile of the crop contents of free-living scarlet macaw chicks (Ara macao)",
+      "authorsOrOrganization": "J. Cornejo; E. S. Dierenfeld; C. A. Bailey; D. J. Brightsmith (Journal of Animal Physiology and Animal Nutrition 96)",
+      "publishedYear": "2012",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1111/j.1439-0396.2011.01218.x",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Wild scarlet macaw chick crop contents on resampling (2006 and 2008): crude protein 16.3% and crude fat 22.0% of dry matter; soluble carbohydrate 37.7% by difference.",
+      "limitations": "Wild nestling intake of one species; not a captive requirement. Figures not independently re-checked here.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "cornejo-2022-neotropical-nestling-nutrition",
+      "title": "Nutrition of free-living Neotropical psittacine nestlings and implications for hand-feeding formulas",
+      "authorsOrOrganization": "J. Cornejo; E. S. Dierenfeld; K. Renton et al. (Journal of Animal Physiology and Animal Nutrition 106(5):1174-1188)",
+      "publishedYear": "2022",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1111/jpn.13749",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Nutrient content of wild Neotropical parrot nestling diets, for hand-feeding formulas.",
+      "limitations": "Abstract only; wild nestlings, not adult maintenance or breeding requirements.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "olocco-diz-2005-hyacinth-macaw-intake",
+      "title": "Voluntary intake by hyacinth macaws (Anodorhynchus hyacinthinus)",
+      "authorsOrOrganization": "M. J. Olocco Diz (Temaikèn Foundation; Nutrition Advisory Group conference paper)",
+      "publishedYear": "2005",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://nagonline.net/wp-content/uploads/2014/03/OloccoDizMacawsFINAL14Aug.05.pdf",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Two juvenile hyacinth macaws on a maintenance diet of 16.86% protein, 15.39% fat, 3.81% crude fibre and 5.45% ash (dry matter) kept weight over a short trial; it cites Dierenfeld and Graffam (1996) for macaw protein of about 16-22% and at most 10% fat in dry matter.",
+      "limitations": "Two birds, three short periods, with an amino acid supplement also given, so fat is confounded; not breeding birds. The cited zoo figures were not read at their source.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "rachmatika-2020-eclectus-rearing-diet",
+      "title": "Chick growth and nutrient requirement during rearing period on eclectus parrot (Eclectus roratus, Müller 1776)",
+      "authorsOrOrganization": "R. Rachmatika; S. N. Prijono; A. P. Sari; S. Suparno (BIO Web of Conferences 19:00013)",
+      "publishedYear": "2020",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://doi.org/10.1051/bioconf/20201900013",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "One Eclectus pair and chicks: crude fibre of rearing foods (fresh corn 2.40%, guava 24.62%, coconut 11.75%, sunflower seed 5.94%, fruit pellet 3.50%, dry matter) and nutrient intake per family per day.",
+      "limitations": "One pair over five clutches; intake, not a dietary requirement. Any dietary percentage is derived arithmetic from the tables, not printed in the paper.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "veloso-2014-macaw-fibre-digestibility",
+      "title": "Effects of food processing and fibre content on the digestibility, energy intake and biochemical parameters of Blue-and-gold macaws (Ara ararauna L.)",
+      "authorsOrOrganization": "R. R. Veloso Jr; N. K. Sakomura; I. M. Kawauchi; E. B. Malheiros; A. C. Carciofi (Journal of Animal Physiology and Animal Nutrition 98(2):251-261)",
+      "publishedYear": "2014",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://pubmed.ncbi.nlm.nih.gov/23627662/",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "48 blue-and-gold macaws fed diets with 0, 7, 14 or 21% added sugarcane fibre, pelleted or extruded: added fibre lowered protein, fat and energy digestibility; metabolisable energy intake did not change.",
+      "limitations": "Abstract only. The 0-21% is added fibre, not the total fibre of each diet. Blue-and-gold macaw only.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "wolf-2007-lorikeet-intake-digestibility",
+      "title": "Basic data on food intake, nutrient digestibility and energy requirements of lorikeets",
+      "authorsOrOrganization": "P. Wolf; A.-C. Häbich; M. Bürkle; J. Kamphues (Journal of Animal Physiology and Animal Nutrition 91(5-6):282-288)",
+      "publishedYear": "2007",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://pubmed.ncbi.nlm.nih.gov/17516953/",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Food intake, digestibility and energy needs of 12 lorikeets; crude fibre of lorikeet foods (lory soup 1.79%, apple 4.05%, pollen 3.04% of dry matter).",
+      "limitations": "Abstract only; nectar-feeding lorikeets, not seed-eating parrots.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "wolf-2003-small-bird-feathering",
+      "title": "Investigations on feathering, feather growth and potential influences of nutrient supply on feathers' regrowth in small pet birds (canaries, budgerigars and lovebirds)",
+      "authorsOrOrganization": "P. Wolf; N. Rabehl; J. Kamphues (Journal of Animal Physiology and Animal Nutrition 87(3-4):134-141)",
+      "publishedYear": "2003",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://pubmed.ncbi.nlm.nih.gov/14511139/",
+      "speciesScopes": [
+        "budgie",
+        "canary",
+        "small_psittacine",
+        "passerine"
+      ],
+      "permittedUse": "Feather loss outside moult 6.65 (canary), 8.98 (budgerigar) and 8.43 (lovebird) mg per bird per day; supplements did not change the growth rate of feathers; seed mixtures without minerals, sulphur amino acids and vitamins reduced feather replacement.",
+      "limitations": "Abstract only; no moult-diet percentage.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "roudybush-grau-1986-cockatiel-chick-protein",
+      "title": "Food and water interrelations and the protein requirement for growth of an altricial bird, the cockatiel",
+      "authorsOrOrganization": "T. E. Roudybush; C. R. Grau (Journal of Nutrition 116(4):552-559)",
+      "publishedYear": "1986",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://pubmed.ncbi.nlm.nih.gov/3958803/",
+      "speciesScopes": [
+        "psittacine",
+        "small_psittacine"
+      ],
+      "permittedUse": "Hand-fed cockatiel chicks: 20% protein in the dietary solids gave maximal growth.",
+      "limitations": "Abstract only; cockatiel chicks, hand-fed, not adult maintenance or breeding adults.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "koutsos-2001-cockatiel-high-protein",
+      "title": "Adult cockatiels (Nymphicus hollandicus) metabolically adapt to high protein diets",
+      "authorsOrOrganization": "E. A. Koutsos; J. Smith; L. W. Woods; K. C. Klasing (Journal of Nutrition 131(7):2014-2020)",
+      "publishedYear": "2001",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://pubmed.ncbi.nlm.nih.gov/11435523/",
+      "speciesScopes": [
+        "psittacine",
+        "small_psittacine"
+      ],
+      "permittedUse": "Adult cockatiels fed up to 70% crude protein for 11 months kept body weight, with liver changes at 70% but not at 20% or 35%.",
+      "limitations": "Abstract only; cockatiels only.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "werquin-2005-commercial-parrot-diets",
+      "title": "Comparison of the nutrient analysis and caloric density of 30 commercial seed mixtures (in toto and dehulled) with 27 commercial diets for parrots",
+      "authorsOrOrganization": "G. J. Werquin; K. J. De Cock; P. G. Ghysels (Journal of Animal Physiology and Animal Nutrition 89(3-6):215-221)",
+      "publishedYear": "2005",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://pubmed.ncbi.nlm.nih.gov/15787998/",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Dehulled parrot seed mixtures averaged 31.7% crude fat and 22.4 MJ ME/kg against 15.6 MJ ME/kg for commercial pelleted or extruded diets.",
+      "limitations": "Abstract only; the full tables (probably including crude fibre of the 27 diets) were not read; basis not stated in the abstract. Product analyses, not requirements; the author works for a feed manufacturer.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "kalmar-2007-grey-parrot-pellet-digestibility",
+      "title": "Apparent nutrient digestibility and excreta quality in African grey parrots fed two pelleted diets based on coarsely or finely ground ingredients",
+      "authorsOrOrganization": "I. D. Kalmar; G. Werquin; G. P. J. Janssens (Journal of Animal Physiology and Animal Nutrition 91(5-6):210-216)",
+      "publishedYear": "2007",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://pubmed.ncbi.nlm.nih.gov/17516942/",
+      "speciesScopes": [
+        "african_grey",
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Digestibility of two pelleted diets in 8 African grey parrots.",
+      "limitations": "Abstract only; no requirement figure.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "kalmar-2010-amazon-segregation-fruit",
+      "title": "Effects of segregation and impact of specific feeding behaviour and additional fruit on voluntary nutrient and energy intake in yellow-shouldered amazons",
+      "authorsOrOrganization": "I. D. Kalmar et al. (Journal of Animal Physiology and Animal Nutrition 94(6):e383-e392)",
+      "publishedYear": "2010",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://pubmed.ncbi.nlm.nih.gov/20662963/",
+      "speciesScopes": [
+        "parrot",
+        "psittacine"
+      ],
+      "permittedUse": "Providing fruit and segregating food components changed voluntary nutrient and energy intake of yellow-shouldered amazons.",
+      "limitations": "Abstract only; no requirement figure.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "hyline-w36-performance-standards-2020",
+      "title": "Performance Standards Guide, Hy-Line W-36 Commercial Layers",
+      "authorsOrOrganization": "Hy-Line International",
+      "publishedYear": "2020",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.hyline.com/filesimages/Hy-Line-Products/Hy-Line-Product-PDFs/W-36/36%20STD%20ENG.pdf",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "Breeder-company nutrient recommendations for white-egg layers, as-fed percent at stated intakes: linoleic acid 1.20% in the rearing phases and 2.35-1.09% across layer phases; crude protein 13.36-19.65% across phases and intakes of 95-115 g per day.",
+      "limitations": "Manufacturer guide for commercial white layers, not backyard hens. Gives no crude fibre and no crude fat concentration.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "hyline-2019-non-fasting-molt",
+      "title": "Technical Update: Non-Fasting Molt Recommendations",
+      "authorsOrOrganization": "Hy-Line International",
+      "publishedYear": "2019",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.hyline.com/Upload/Resources/TU%20MOLT%20ENG.pdf",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "Induced-moult resting diet for commercial layers: crude protein 8.5% (typical), 9.32-11.72 MJ/kg metabolisable energy, calcium 1.3-2.0%, high in fibre, fed for 6-17 days at 54-64 g per day.",
+      "limitations": "Manufacturer note on a managed rest period to hold body weight, not a natural-moult feed.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "lohmann-brown-classic-nutrient-levels-2021",
+      "title": "Lohmann Management Guide, Cage Housing: Recommended Nutrient Levels, Lohmann Brown-Classic (phases 1-3), with the guide pages on fibre",
+      "authorsOrOrganization": "Lohmann Tierzucht",
+      "publishedYear": "2021",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.lohmann-breeders.com/files/downloads/MG/e-Guides/Cage/English/LB_eMG_Cage_EN_NutrientLevels_LB-Classic_p25.pdf",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "Brown-layer requirements: crude protein 15.4-17.6, 15.0-17.1 and 14.2-16.2% (phases 1-3, 105-120 g per day); linoleic acid 1.08-1.90%; developer (pullet) feed at least 5-6% crude fibre (cage guide) or 6-6.5% crude fibre with NDF of at least 16% (alternative-systems guide).",
+      "limitations": "Manufacturer guide for commercial brown layers; basis of the fibre figures not stated; no crude fat line.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "lfl-bayern-2017-legehennenfuetterung",
+      "title": "Legehennenfütterung: Einsatz heimischer Futtermittel (Fütterung schnabel-unkupierter Legehennen), LfL-Information",
+      "authorsOrOrganization": "Ruben Schreiter; Klaus Damme; Bayerische Landesanstalt für Landwirtschaft (LfL), Kitzingen",
+      "publishedYear": "2017",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.baysg.bayern.de/mam/cms16/zentren/kitzingen/dateien/legehennenfuetterung_lfl-information.pdf",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "State research-institute guide for commercial layers (German): recommended crude fibre 3.5-4.0, 4.0-5.0 and 5.0% in laying phases 1-3, above 5% in pullet feed; ration target of 11.4 MJ ME, 17-18% crude protein and 4-5% crude fibre; as-fed grain composition (maize 7.7% protein, 4.0% fat, 2.2% fibre; wheat 12.6, 1.8, 2.7; barley 10.6, 1.6, 3.7; oats 11.1, 5.1, 7.9); oats typical in moult programmes up to 20%; about 40% of poultry protein comes from grain.",
+      "limitations": "Commercial laying hens with untrimmed beaks, not hobby flocks. Sections 1.3.2, 3.1, 4.1, 4.3 and 5 read; the rest searched. Figures not individually re-checked here.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "cvb-2016-tabellenboek-veevoeding-pluimvee",
+      "title": "Tabellenboek Veevoeding 2016: voedernormen Pluimvee en voederwaarden voedermiddelen voor Pluimvee (CVB-reeks nr. 54)",
+      "authorsOrOrganization": "G. van Duinkerken; J. W. Spek (Wageningen Livestock Research); Federatie Nederlandse Diervoederketen",
+      "publishedYear": "2016",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://edepot.wur.nl/397416",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "Dutch national feed table, as-fed percent: maize 7.6 protein, 3.6 fat, 2.0 fibre; wheat 11.2, 1.4, 2.3; barley 10.0, 1.8, 4.3; hulled oats 10.2, 4.0, 10.6; sunflower seed with husk 14.0, 29.1, 28.5; starch plus sugar about 63% for maize, 62% for wheat, 55% for barley and 39% for hulled oats. Feed need of a non-laying white layer 54-70 g per day at 1400-2000 g body weight; protein level 130-140 g/kg for maximum production in white layers.",
+      "limitations": "Commercial layer standards; Dutch language. It gives no carbohydrate figure other than starch plus sugar.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "feedipedia-grain-datasheets",
+      "title": "Feedipedia datasheets: maize grain, wheat grain, barley grain, oats and sunflower seeds",
+      "authorsOrOrganization": "Feedipedia (INRAE, CIRAD, AFZ and FAO)",
+      "publishedYear": "unknown",
+      "sourceTier": "veterinary_reference",
+      "urlOrDoi": "https://www.feedipedia.org",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen",
+        "poultry"
+      ],
+      "permittedUse": "Composition in percent of dry matter: maize 10.5 protein, 2.4 fibre, 4.4 fat; wheat 12.6, 2.6, 1.7; barley 11.8, 5.2, 2.0; hulled oats 11.0, 13.9, 5.4; sunflower seeds 16.0, 17.1, 48.0; wheat up to about 60% of laying-hen diets.",
+      "limitations": "Feed database; values are percent of dry matter and the as-fed dry-matter content is needed to convert; page dates not confirmed.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "ukentucky-2015-scratch-grain-labeling",
+      "title": "Labeling Poultry Grain Scratch Products",
+      "authorsOrOrganization": "University of Kentucky Division of Regulatory Services, Feed Program (original by Meagan Davis, 2006)",
+      "publishedYear": "2015",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://rs.uky.edu/regulatory/feed/regulatory_articles/Labeling%20Poultry%20Grain%20Scratch%20Products.pdf",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "Chickens normally require 15 to 20% crude protein while grain scratches generally provide 7 to 10% crude protein.",
+      "limitations": "Two-page state feed-regulatory note; the example label in it is illustrative and not data.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "brainer-2015-free-range-hen-protein",
+      "title": "Crude protein requirements of free-range laying hens",
+      "authorsOrOrganization": "Brainer; Rabello; Batista dos Santos; Ludke; Lopes; Leite de Medeiros; Costa (Animal Production Science)",
+      "publishedYear": "2015",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1071/AN14890",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "Maintenance crude protein of free-range laying hens 4.7 g per kg^0.75 per day, with an efficiency of 56% and 0.18 g per g of egg mass.",
+      "limitations": "Abstract only. Expressed per metabolic body weight, not as a percentage of the diet; breed and country not in the abstract.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "mendonca-lima-1999-forced-molt-protein",
+      "title": "Effect of dietary protein and methionine levels on forced molt performance of laying hens",
+      "authorsOrOrganization": "C. X. de Mendonça Jr; F. R. de Lima (Brazilian Journal of Veterinary Research and Animal Science 36(6):332-338)",
+      "publishedYear": "1999",
+      "sourceTier": "primary",
+      "urlOrDoi": "https://doi.org/10.1590/S1413-95961999000600010",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "Forced-moult laying hens: 16.5% crude protein gave better weight, intake, feed conversion, return to lay and egg production than 14.5%.",
+      "limitations": "Abstract only. Induced moult in commercial hens; 18 and 20% were not tested; not a natural moult.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "hiller-2014-lw-geflugel-kleine-bestaende",
+      "title": "Auf die richtige Mischung kommt es an (Fütterung von Geflügel in kleinen Beständen), Landwirtschaftliches Wochenblatt LW 32/2014",
+      "authorsOrOrganization": "Peter Hiller, Landwirtschaftskammer Niedersachsen",
+      "publishedYear": "2014",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.lw-heute.de/mediaarchiv/grab_pic.php?id=24993",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "Chamber adviser's guidance for small flocks (German): about 17% crude protein layer recipe, maize 30-40%, wheat 20-30%, barley up to 15%.",
+      "limitations": "Trade-press article; semi-authoritative; recipe composition only.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "fibl-2019-fuetterung-biolegehennen",
+      "title": "Fütterung der Biolegehennen",
+      "authorsOrOrganization": "Maurice Clerc; Nathaniel Schmid (FiBL), with quotes from Ruedi Zweifel (Aviforum) and Andrea Koller-Bähler (Anitech)",
+      "publishedYear": "2019",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://orgprints.org/id/eprint/36926/3/20191204_Fuetterung_der_Biolegehennen.pdf",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "Swiss organic layer leaflet: grain mix about 50% wheat and 50% cracked maize; grain up to 20-25 g per hen per day, otherwise hens eat too little of the main feed; a hen eats about 125 g of feed per day.",
+      "limitations": "Organic commercial layers in Switzerland; year taken from the file date. The grain share (about 16-20% by weight) is derived arithmetic, not printed.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "bregendahl-2010-hyline-energy-nutrient-recommendations",
+      "title": "Determination of Energy and Nutrient Recommendations for Hy-Line Laying Hens",
+      "authorsOrOrganization": "Kristjan Bregendahl, Hy-Line International (published on ThePoultrySite)",
+      "publishedYear": "2010",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.thepoultrysite.com/articles/determination-of-energy-and-nutrient-recommendations-for-hyline-laying-hens",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "Minimum linoleic acid of about 1 g per day, with commercial diets often 2-3 g per day.",
+      "limitations": "Manufacturer article; no fat or fibre percentages.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "nutrena-poultry-feed-for-molting",
+      "title": "Poultry Feed for Molting",
+      "authorsOrOrganization": "Nutrena (Cargill)",
+      "publishedYear": "unknown",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.nutrenaworld.com/education/poultry/poultry-feed-for-molting/",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "Feed-company statement that moulting hens need about 16-18% protein and scratch should be no more than 10% of the diet.",
+      "limitations": "Manufacturer page, undated, with no cited study: not authoritative.",
+      "accessedAt": "2026-10-28"
+    },
+    {
+      "id": "kalmbach-protein-for-chickens",
+      "title": "Protein - Can You Have Too Much of a Good Thing?",
+      "authorsOrOrganization": "Nancy Jefferson, Kalmbach Feeds",
+      "publishedYear": "2023",
+      "sourceTier": "owner_guidance_with_citations",
+      "urlOrDoi": "https://www.kalmbachfeeds.com/blogs/chickens/protein-can-you-have-too-much-of-a-good-thing",
+      "speciesScopes": [
+        "chicken",
+        "laying_hen"
+      ],
+      "permittedUse": "Feed-company blog: adult chickens 16-20% protein, moult 'may be slightly higher', and most adults do not need more than 20% even during a moult.",
+      "limitations": "Manufacturer blog with no cited study: not authoritative.",
       "accessedAt": "2026-10-28"
     }
   ]
