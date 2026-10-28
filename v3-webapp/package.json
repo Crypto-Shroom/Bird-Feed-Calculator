@@ -80,7 +80,7 @@
     "autoprefixer": "^10.6.1",
     "esbuild": "^0.28.1",
     "highs": "1.15.3",
-    "pnpm": "^11.25.0",
+    "pnpm": "^12.11.2",
     "postcss": "^8.5.29",
     "prettier": "^3.9.9",
     "tailwindcss": "^4.3.3",
