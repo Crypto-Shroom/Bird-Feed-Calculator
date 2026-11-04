@@ -55,7 +55,7 @@
     "express-rate-limit": "^8.7.1",
     "firebase": "^12.19.0",
     "firebase-admin": "^14.5.0",
-    "framer-motion": "^12.23.22",
+    "framer-motion": "^14.6.0",
     "jsonwebtoken": "^9.0.3",
     "lucide-react": "^1.52.0",
     "nanoid": "^6.0.1",
