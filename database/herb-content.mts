@@ -105,7 +105,7 @@ export const HERBS_SUPPLEMENTS: Record<string, Herb> = {
     benefits: ["Antimicrobial", "Immunity", "Circulation"],
     dosage_per_kg: "1-2g",
     frequency: "Once a week",
-    notes: "Natural antibiotic, use fresh garlic oil if available",
+    notes: "Natural antibiotic. Garlic oil is used for the same purposes but at a different dose (see garlic oil); oil is preferred if available.",
   },
   clove: {
     category: "herb_spice",
@@ -156,7 +156,7 @@ export const HERBS_SUPPLEMENTS: Record<string, Herb> = {
     benefits: ["Antimicrobial", "Immunity", "Circulation"],
     dosage_per_kg: "Few drops per kg feed",
     frequency: "Once a week",
-    notes: "Natural antibiotic, very effective",
+    notes: "Natural antibiotic, very effective. Garlic powder is used for the same purposes but at a different dose (see garlic powder).",
   },
   hemp_oil: {
     category: "liquid_supplement",
