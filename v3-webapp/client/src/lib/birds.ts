@@ -163,9 +163,9 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         feedingNotes: 'Feed 40-60g per bird per day. Increase calcium and protein during breeding.',
         contextNote: 'Do not use this planner to set calcium or breeding supplementation. Seek guidance from an exotics vet for breeding birds.',
         nutrition: {
-          protein: [12, 16],
+          protein: [15, 22],
           carbs: [48, 62],
-          fat: [4, 12],
+          fat: [5, 15],
           fiber: [2, 4],
         },
       },
@@ -175,7 +175,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         feedingNotes: 'Feed 40-60g per bird per day. Support feather growth with protein.',
         contextNote: 'Maintain a species-appropriate complete diet during molt; this mix cannot validate amino acids, minerals, or vitamins.',
         nutrition: {
-          protein: [14, 18],
+          protein: [12, 16],
           carbs: [45, 60],
           fat: [4, 12],
           fiber: [2, 4],
@@ -205,9 +205,9 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         description: 'Seed and grain enrichment during breeding',
         feedingNotes: 'Breeding diets require professional mineral and nutrient assessment; do not rely on this seed/grain estimate as a breeding ration.',
         nutrition: {
-          protein: [12, 15],
+          protein: [15, 22],
           carbs: [48, 62],
-          fat: [5, 12],
+          fat: [5, 15],
           fiber: [2, 4],
         },
       },
@@ -216,7 +216,7 @@ export const BIRD_PROFILES: Record<BirdType, BirdProfile> = {
         description: 'Seed and grain enrichment during molt',
         feedingNotes: 'Maintain a formulated base diet through molt and consult an exotics vet for feather or health concerns.',
         nutrition: {
-          protein: [13, 16],
+          protein: [10, 15],
           carbs: [45, 60],
           fat: [5, 12],
           fiber: [2, 4],
