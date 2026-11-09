@@ -261,8 +261,8 @@ describe("serial staged optimizer with real HiGHS", () => {
     expect(Object.values(accepted.quantities).every((grams) => grams === 0 || grams >= meaningful)).toBe(true);
     expect(accepted.stages.some(({ pass }) => pass === "small_inclusion_resolve")).toBe(true);
 
-    // Parrot/Pet defaults need a few grams of wheat to reach the smallest macro deviation, so the primary mix is kept.
-    const rejected = await solve(profileModel("parrot", "pet", getProfileDefaultIngredients("parrot", "pet"), 1_000));
+    // African Grey/Pet defaults need a few grams of a minor ingredient to reach the smallest macro deviation, so the primary mix is kept.
+    const rejected = await solve(profileModel("african_grey", "pet", getProfileDefaultIngredients("african_grey", "pet"), 1_000));
     expect(rejected.status).toBe("best_attainable");
     expect(rejected.smallInclusion).toMatchObject({ accepted: false });
     expect(rejected.smallInclusion?.reason).toContain("macro deviation");
