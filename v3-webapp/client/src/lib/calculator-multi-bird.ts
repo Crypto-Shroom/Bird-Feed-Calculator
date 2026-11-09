@@ -3,6 +3,8 @@ import { INGREDIENTS, type Ingredient } from "./data";
 import {
   BIRD_PROFILES,
   getCategoryTargets,
+  getSituationNutrition,
+  type ParrotType,
   type BirdType,
   type NutritionTarget,
 } from "./birds";
@@ -90,7 +92,12 @@ export class MultibirMixCalculator {
     private readonly inventory: Record<string, number>,
     private readonly bird: BirdType,
     private readonly situation: string,
+    private readonly parrotType: ParrotType = "general",
   ) {}
+
+  private targetNutrition(profile: { nutrition: NutritionTarget }): NutritionTarget {
+    return getSituationNutrition(this.bird, this.situation, this.parrotType) ?? profile.nutrition;
+  }
 
   calculate(targetWeight: number): MixResult {
     const profile = BIRD_PROFILES[this.bird].profiles[this.situation];
@@ -117,15 +124,15 @@ export class MultibirMixCalculator {
       const cap = ingredient.maxSharePercent?.[this.bird];
       return cap === undefined ? ingredient : { ...ingredient, amount: Math.min(ingredient.amount, (cap / 100) * actualTarget) };
     });
-    const mix = this.optimizeMix(capped, actualTarget, profile.nutrition);
+    const mix = this.optimizeMix(capped, actualTarget, this.targetNutrition(profile));
     const mixedWeight = Object.values(mix).reduce((total, amount) => total + amount, 0);
     if (capped.some((ingredient, index) => ingredient.amount < eligible[index].amount) && mixedWeight < actualTarget - 0.5) {
       warnings.push({ level: "WARNING", message: `Only ${Math.round(mixedWeight)}g could be mixed: some ingredients are limited to a maximum share of the mix for this bird.`, code: "share_limited", params: { grams: Math.round(mixedWeight) } });
     }
     const nutrition = this.calculateNutrition(mix);
     const categories = this.calculateCategoryRatios(mix);
-    const optimization = this.objectiveScore(mix, profile.nutrition);
-    const suggestions = this.buildSuggestions(mix, nutrition, categories, profile.nutrition);
+    const optimization = this.objectiveScore(mix, this.targetNutrition(profile));
+    const suggestions = this.buildSuggestions(mix, nutrition, categories, this.targetNutrition(profile));
 
     return {
       mix,
@@ -474,8 +481,8 @@ export class MultibirMixCalculator {
     return {
       nutrition,
       categories,
-      optimization: this.objectiveScore(mix, profile.nutrition),
-      suggestions: this.buildSuggestions(mix, nutrition, categories, profile.nutrition),
+      optimization: this.objectiveScore(mix, this.targetNutrition(profile)),
+      suggestions: this.buildSuggestions(mix, nutrition, categories, this.targetNutrition(profile)),
     };
   }
 
