@@ -66,6 +66,10 @@ export const nl: TranslationKeys = {
     belowTarget: "onder het doelbereik",
     aboveTarget: "boven het doelbereik",
     target: "Doel:",
+    wholeDietTarget: "Doel voor het hele rantsoen:",
+    restNeeds: "De overige {share}% van het rantsoen heeft ongeveer {min}–{max}% nodig.",
+    restUpTo: "De overige {share}% van het rantsoen mag hoogstens {max}% bevatten.",
+    restExceeded: "Dit mengsel zit alleen al boven het doel voor het hele rantsoen; de rest van het rantsoen kan dat niet compenseren.",
   },
   calculator: {
     tabOptimizedMix: "Geoptimaliseerd mengsel",
