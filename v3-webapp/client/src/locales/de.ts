@@ -66,6 +66,10 @@ export const de: TranslationKeys = {
     belowTarget: "unter dem Zielbereich",
     aboveTarget: "über dem Zielbereich",
     target: "Ziel:",
+    wholeDietTarget: "Ziel für die gesamte Ernährung:",
+    restNeeds: "Die übrigen {share} % der Ernährung brauchen etwa {min}–{max} %.",
+    restUpTo: "Die übrigen {share} % der Ernährung dürfen höchstens {max} % enthalten.",
+    restExceeded: "Diese Mischung allein liegt schon über dem Ziel für die gesamte Ernährung; die übrige Ernährung kann das nicht ausgleichen.",
   },
   calculator: {
     tabOptimizedMix: "Optimierte Mischung",

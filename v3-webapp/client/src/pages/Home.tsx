@@ -53,6 +53,7 @@ import { bridgeFeasibleWorkerMixToMixResult } from "@/lib/optimizer-mix-result-b
 import { OPTIMIZER_FALLBACK_COPY, formatOptimizerFallbackMiss, formatOptimizerFallbackMissTranslated } from "@/lib/optimizer-copy";
 import type { FallbackRangeMiss } from "@/lib/optimizer-explain";
 import { startBrowserLocalOptimizerSolve } from "@/lib/optimizer-runtime";
+import { MIX_SHARE_OF_DIET_PERCENT, restOfDietNeed } from "@/lib/whole-diet";
 import { cn } from "@/lib/utils";
 import { Link } from "wouter";
 import { useLanguage, LanguageSwitcher } from "@/contexts/LanguageContext";
@@ -539,10 +540,10 @@ export default function Home() {
           <section className="lg:col-span-7" aria-live="polite">
             {result && <div className="space-y-6">
               <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-                <NutritionCard label={t("nutrition.protein")} value={result.nutrition.protein} target={currentProfile.nutrition.protein} color="bg-[var(--chart-1)]" />
-                <NutritionCard label={t("nutrition.carbs")} value={result.nutrition.carbs} target={currentProfile.nutrition.carbs} color="bg-[var(--chart-2)]" />
-                <NutritionCard label={t("nutrition.fat")} value={result.nutrition.fat} target={currentProfile.nutrition.fat} color="bg-[var(--chart-3)]" />
-                <NutritionCard label={t("nutrition.fiber")} value={result.nutrition.fiber} target={currentProfile.nutrition.fiber} color="bg-[var(--chart-4)]" />
+                <NutritionCard label={t("nutrition.protein")} value={result.nutrition.protein} target={currentProfile.nutrition.protein} mixSharePercent={MIX_SHARE_OF_DIET_PERCENT[selectedBird]} color="bg-[var(--chart-1)]" />
+                <NutritionCard label={t("nutrition.carbs")} value={result.nutrition.carbs} target={currentProfile.nutrition.carbs} mixSharePercent={MIX_SHARE_OF_DIET_PERCENT[selectedBird]} color="bg-[var(--chart-2)]" />
+                <NutritionCard label={t("nutrition.fat")} value={result.nutrition.fat} target={currentProfile.nutrition.fat} mixSharePercent={MIX_SHARE_OF_DIET_PERCENT[selectedBird]} color="bg-[var(--chart-3)]" />
+                <NutritionCard label={t("nutrition.fiber")} value={result.nutrition.fiber} target={currentProfile.nutrition.fiber} mixSharePercent={MIX_SHARE_OF_DIET_PERCENT[selectedBird]} color="bg-[var(--chart-4)]" />
               </div>
 
               <Card className="border-none shadow-xl">
@@ -707,7 +708,7 @@ function buildGitHubIssueUrl(template: string, title: string, body: string) {
   return `https://github.com/Crypto-Shroom/Bird-Feed-Calculator/issues/new?${query.toString()}`;
 }
 
-const NutritionCard = memo(function NutritionCard({ label, value, target, color }: { label: string; value: number; target: [number, number]; color: string }) {
+const NutritionCard = memo(function NutritionCard({ label, value, target, color, mixSharePercent }: { label: string; value: number; target: [number, number]; color: string; mixSharePercent?: number }) {
   const { t } = useLanguage();
   const [min, max] = target;
   const isGood = value >= min && value <= max;
@@ -720,9 +721,20 @@ const NutritionCard = memo(function NutritionCard({ label, value, target, color 
       ? 40 + ((value - min) / targetRange) * 20
       : 60 + ((value - max) / Math.max(upperDisplayLimit - max, 0.5)) * 40;
   const markerPosition = Math.max(0, Math.min(100, position));
-  const status = isGood ? t("nutrition.withinTarget") : isLow ? t("nutrition.belowTarget") : t("nutrition.aboveTarget");
+  // Birds whose ranges describe the whole diet: the mix is only part of what they eat, so show what the rest must supply.
+  const need = mixSharePercent === undefined ? null : restOfDietNeed(target, value, mixSharePercent);
+  const restShare = mixSharePercent === undefined ? 0 : Math.round(100 - mixSharePercent);
+  const fmt = (n: number) => n.toFixed(1);
+  const status = need
+    ? need.kind === "range"
+      ? t("nutrition.restNeeds", { share: restShare, min: fmt(need.min), max: fmt(need.max) })
+      : need.kind === "upTo"
+        ? t("nutrition.restUpTo", { share: restShare, max: fmt(need.max) })
+        : t("nutrition.restExceeded")
+    : isGood ? t("nutrition.withinTarget") : isLow ? t("nutrition.belowTarget") : t("nutrition.aboveTarget");
+  const neutral = need !== null;
 
-  return <Card className="border-none bg-card shadow-md"><CardContent className="p-4"><div className="mb-1 text-sm text-muted-foreground">{label}</div><div className="mb-2 flex items-baseline gap-1"><span className={cn("font-mono text-2xl font-bold", !isGood && (isLow ? "text-blue-600" : "text-orange-600"))}>{value.toFixed(1)}</span><span className="text-xs font-medium text-muted-foreground">%</span></div><div className="relative h-3 overflow-hidden rounded-full bg-muted" role="img" aria-label={`${label}: ${value.toFixed(1)}%, ${status}; target range ${min} to ${max} percent.`}><div aria-hidden="true" className="absolute inset-y-0 border-x border-emerald-600/70 bg-emerald-100/80" style={{ left: "40%", width: "20%" }} /><div aria-hidden="true" className={cn("absolute left-0 top-0 h-full opacity-65 transition-[width] duration-300 motion-reduce:transition-none", color)} style={{ width: `${markerPosition}%` }} /><div aria-hidden="true" className={cn("absolute top-0 h-full w-1 rounded-full shadow-sm transition-[left] duration-300 motion-reduce:transition-none", isGood ? "bg-emerald-800" : isLow ? "bg-blue-700" : "bg-orange-700")} style={{ left: `calc(${markerPosition}% - 2px)` }} /></div><div className="mt-2 flex justify-between text-[10px] text-muted-foreground"><span className={cn("font-medium", isGood ? "text-emerald-700" : isLow ? "text-blue-700" : "text-orange-700")}>{status}</span><span>{t("nutrition.target")} <span className="font-medium">{min}-{max}%</span></span></div></CardContent></Card>;
+  return <Card className="border-none bg-card shadow-md"><CardContent className="p-4"><div className="mb-1 text-sm text-muted-foreground">{label}</div><div className="mb-2 flex items-baseline gap-1"><span className={cn("font-mono text-2xl font-bold", !neutral && !isGood && (isLow ? "text-blue-600" : "text-orange-600"))}>{value.toFixed(1)}</span><span className="text-xs font-medium text-muted-foreground">%</span></div><div className="relative h-3 overflow-hidden rounded-full bg-muted" role="img" aria-label={`${label}: ${value.toFixed(1)}%, ${status}; ${neutral ? "whole-diet " : ""}target range ${min} to ${max} percent.`}><div aria-hidden="true" className="absolute inset-y-0 border-x border-emerald-600/70 bg-emerald-100/80" style={{ left: "40%", width: "20%" }} /><div aria-hidden="true" className={cn("absolute left-0 top-0 h-full opacity-65 transition-[width] duration-300 motion-reduce:transition-none", color)} style={{ width: `${markerPosition}%` }} /><div aria-hidden="true" className={cn("absolute top-0 h-full w-1 rounded-full shadow-sm transition-[left] duration-300 motion-reduce:transition-none", neutral ? "bg-slate-700" : isGood ? "bg-emerald-800" : isLow ? "bg-blue-700" : "bg-orange-700")} style={{ left: `calc(${markerPosition}% - 2px)` }} /></div><div className={cn("mt-2 text-[10px] text-muted-foreground", neutral ? "flex flex-col gap-0.5" : "flex justify-between")}><span className={cn("font-medium", neutral ? "text-muted-foreground" : isGood ? "text-emerald-700" : isLow ? "text-blue-700" : "text-orange-700")}>{status}</span><span>{t(neutral ? "nutrition.wholeDietTarget" : "nutrition.target")} <span className="font-medium">{min}-{max}%</span></span></div></CardContent></Card>;
 });
 
 const CategoryBar = memo(function CategoryBar({ label, value, target, color }: { label: string; value: number; target: [number, number]; color: string }) {

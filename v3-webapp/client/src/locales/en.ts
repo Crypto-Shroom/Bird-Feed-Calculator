@@ -64,6 +64,10 @@ export const en = {
     belowTarget: "below the target range",
     aboveTarget: "above the target range",
     target: "Target:",
+    wholeDietTarget: "Whole-diet target:",
+    restNeeds: "The other {share}% of the diet needs about {min}-{max}%.",
+    restUpTo: "The other {share}% of the diet needs no more than {max}%.",
+    restExceeded: "This mix alone is already above the whole-diet target; the rest of the diet cannot offset it.",
   },
   calculator: {
     tabOptimizedMix: "Optimized Mix",
