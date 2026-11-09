@@ -1,4 +1,4 @@
-import type { BirdType } from "./birds";
+import type { BirdType, ParrotType } from "./birds";
 import { MultibirMixCalculator, type MixResult } from "./calculator-multi-bird";
 
 const weightTolerance = 1e-9;
@@ -27,12 +27,13 @@ export function bridgeFeasibleWorkerMixToMixResult(
   inventory: Readonly<Record<string, number>>,
   bird: BirdType,
   situation: string,
+  parrotType: ParrotType = "general",
 ): MixResult {
   const mix = Object.fromEntries(Object.entries(workerMix).filter(([, grams]) => Number.isFinite(grams) && grams > 0));
   const targetWeight = Object.values(mix).reduce((total, grams) => total + grams, 0);
   if (!targetWeight || Math.abs(targetWeight - fallback.targetWeight) > weightTolerance) return fallback;
 
-  const summary = new MultibirMixCalculator({ ...inventory }, bird, situation).summarizeMix(mix);
+  const summary = new MultibirMixCalculator({ ...inventory }, bird, situation, parrotType).summarizeMix(mix);
   if (!summary) return fallback;
   return {
     ...fallback,

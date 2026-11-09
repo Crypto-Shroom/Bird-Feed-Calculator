@@ -42,7 +42,10 @@ import {
   getAvailableSituations,
   getDefaultSituation,
   getCategoryTargets,
+  getSituationNutrition,
+  PARROT_TYPES,
   type BirdType,
+  type ParrotType,
 } from "@/lib/birds";
 import { MultibirMixCalculator, type MixResult, type MixWarning } from "@/lib/calculator-multi-bird";
 import { getPreparationExportLines, getPreparationInstructions, getProcessingWarning, isToxicRaw } from "@/lib/safety";
@@ -69,6 +72,21 @@ export default function Home() {
   const { t, language } = useLanguage();
   const [selectedBird, setSelectedBird] = useState<BirdType>("pigeon");
   const [situation, setSituation] = useState("pet");
+  // How a Parrot mostly eats; it only changes anything while the Parrot is selected.
+  const [parrotTypeChoice, setParrotTypeChoice] = useState<ParrotType>("general");
+  const parrotType: ParrotType = selectedBird === "parrot" ? parrotTypeChoice : "general";
+  const parrotTypeLabels: Record<ParrotType, string> = {
+    general: t("parrotType.general"),
+    granivore: t("parrotType.granivore"),
+    frugivore: t("parrotType.frugivore"),
+    nectarivore: t("parrotType.nectarivore"),
+  };
+  const parrotTypeNotes: Record<ParrotType, string> = {
+    general: t("parrotType.generalNote"),
+    granivore: t("parrotType.granivoreNote"),
+    frugivore: t("parrotType.frugivoreNote"),
+    nectarivore: t("parrotType.nectarivoreNote"),
+  };
   const [targetWeight, setTargetWeight] = useState(1000);
   const [inventory, setInventory] = useState<Record<string, number>>({});
   // `fallbackMisses` is set only for a best-attainable mix: one sentence per missed range.
@@ -79,7 +97,13 @@ export default function Home() {
 
   const availableSituations = useMemo(() => getAvailableSituations(selectedBird), [selectedBird]);
   const birdProfile = BIRD_PROFILES[selectedBird];
-  const currentProfile = birdProfile.profiles[situation] || birdProfile.profiles[getDefaultSituation(selectedBird)];
+  const baseProfile = birdProfile.profiles[situation] || birdProfile.profiles[getDefaultSituation(selectedBird)];
+  const currentProfile = useMemo(
+    () => ({ ...baseProfile, nutrition: getSituationNutrition(selectedBird, situation, parrotType) ?? baseProfile.nutrition }),
+    [baseProfile, selectedBird, situation, parrotType],
+  );
+  // Granivores can live mainly on a seed mix, and nectar feeders get no mix at all, so neither gets the rest-of-diet line.
+  const mixSharePercent = parrotType === "granivore" || parrotType === "nectarivore" ? undefined : MIX_SHARE_OF_DIET_PERCENT[selectedBird];
   const care = getBirdCare(selectedBird, language);
   const localizedBirdName = t(`common.${selectedBird === "african_grey" ? "africanGrey" : selectedBird}`);
   const birdDisplayName = language === "de" ? localizedBirdName : language === "nl" ? localizedBirdName.toLowerCase() : selectedBird === "african_grey" ? birdProfile.name : birdProfile.name.toLowerCase();
@@ -105,23 +129,24 @@ export default function Home() {
   }, [availableSituations, selectedBird, situation]);
 
   const profileDefaultResult = useMemo(
-    () => new MultibirMixCalculator(getProfileDefaultIngredients(selectedBird, situation), selectedBird, situation).calculate(targetWeight),
-    [selectedBird, situation, targetWeight],
+    () => new MultibirMixCalculator(getProfileDefaultIngredients(selectedBird, situation), selectedBird, situation, parrotType).calculate(targetWeight),
+    [selectedBird, situation, targetWeight, parrotType],
   );
 
   const inventoryResult = useMemo(
-    () => Object.keys(inventory).length ? new MultibirMixCalculator(inventory, selectedBird, situation).calculate(targetWeight) : null,
-    [inventory, selectedBird, situation, targetWeight],
+    () => Object.keys(inventory).length ? new MultibirMixCalculator(inventory, selectedBird, situation, parrotType).calculate(targetWeight) : null,
+    [inventory, selectedBird, situation, targetWeight, parrotType],
   );
 
   const inventoryCalculationKey = useMemo(
     () => JSON.stringify({
       bird: selectedBird,
       situation,
+      parrotType,
       targetWeight,
       inventory: Object.entries(inventory).sort(([left], [right]) => left.localeCompare(right)),
     }),
-    [inventory, selectedBird, situation, targetWeight],
+    [inventory, selectedBird, situation, targetWeight, parrotType],
   );
 
   useEffect(() => {
@@ -146,7 +171,7 @@ export default function Home() {
       // first, then category deviation; spec §5.2) replaces it too and is shown
       // with the fallback notice. Timeout, cancellation, and errors keep greedy.
       if (!active || (workerResult.status !== "feasible" && workerResult.status !== "best_attainable")) return;
-      const bridged = bridgeFeasibleWorkerMixToMixResult(inventoryResult, workerResult.mix, inventory, selectedBird, situation);
+      const bridged = bridgeFeasibleWorkerMixToMixResult(inventoryResult, workerResult.mix, inventory, selectedBird, situation, parrotType);
       if (bridged === inventoryResult) return;
       setWorkerInventoryResult({
         key: inventoryCalculationKey,
@@ -160,7 +185,7 @@ export default function Home() {
       active = false;
       handle.cancel();
     };
-  }, [currentProfile.nutrition, inventory, inventoryCalculationKey, inventoryResult, selectedBird, situation, targetWeight]);
+  }, [currentProfile.nutrition, inventory, inventoryCalculationKey, inventoryResult, parrotType, selectedBird, situation, targetWeight]);
 
   const currentWorkerResult = workerInventoryResult?.key === inventoryCalculationKey ? workerInventoryResult : null;
   const displayedInventoryResult = currentWorkerResult ? currentWorkerResult.result : inventoryResult;
@@ -445,6 +470,20 @@ export default function Home() {
                       helperText={t("reportDialog.footerNote")}
                     />
                   </div>
+                  {selectedBird === "parrot" && (
+                    <div className="space-y-2">
+                      <label htmlFor="parrot-type" className="text-sm font-medium text-muted-foreground">{t("parrotType.label")}</label>
+                      <Select value={parrotType} onValueChange={(value) => setParrotTypeChoice(value as ParrotType)}>
+                        <SelectTrigger id="parrot-type" className="h-12 text-base"><SelectValue /></SelectTrigger>
+                        <SelectContent>
+                          {PARROT_TYPES.map((value) => (
+                            <SelectItem key={value} value={value}>{parrotTypeLabels[value]}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                      <p className="text-xs leading-relaxed text-muted-foreground/80">{parrotTypeNotes[parrotType]}</p>
+                    </div>
+                  )}
                   <div className="rounded-md border bg-muted/40 p-3">
                     <p className="text-sm text-muted-foreground">{currentProfile.feedingNotes}</p>
                     {currentProfile.contextNote && <p className="mt-2 text-xs leading-relaxed text-muted-foreground/80">{currentProfile.contextNote}</p>}
@@ -538,12 +577,17 @@ export default function Home() {
           </aside>
 
           <section className="lg:col-span-7" aria-live="polite">
-            {result && <div className="space-y-6">
+            {parrotType === "nectarivore" ? (
+              <Alert>
+                <AlertTitle>{t("parrotType.nectarivoreNoticeTitle")}</AlertTitle>
+                <AlertDescription>{t("parrotType.nectarivoreNotice")}</AlertDescription>
+              </Alert>
+            ) : result && <div className="space-y-6">
               <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-                <NutritionCard label={t("nutrition.protein")} value={result.nutrition.protein} target={currentProfile.nutrition.protein} mixSharePercent={MIX_SHARE_OF_DIET_PERCENT[selectedBird]} color="bg-[var(--chart-1)]" />
-                <NutritionCard label={t("nutrition.carbs")} value={result.nutrition.carbs} target={currentProfile.nutrition.carbs} mixSharePercent={MIX_SHARE_OF_DIET_PERCENT[selectedBird]} color="bg-[var(--chart-2)]" />
-                <NutritionCard label={t("nutrition.fat")} value={result.nutrition.fat} target={currentProfile.nutrition.fat} mixSharePercent={MIX_SHARE_OF_DIET_PERCENT[selectedBird]} color="bg-[var(--chart-3)]" />
-                <NutritionCard label={t("nutrition.fiber")} value={result.nutrition.fiber} target={currentProfile.nutrition.fiber} mixSharePercent={MIX_SHARE_OF_DIET_PERCENT[selectedBird]} color="bg-[var(--chart-4)]" />
+                <NutritionCard label={t("nutrition.protein")} value={result.nutrition.protein} target={currentProfile.nutrition.protein} mixSharePercent={mixSharePercent} color="bg-[var(--chart-1)]" />
+                <NutritionCard label={t("nutrition.carbs")} value={result.nutrition.carbs} target={currentProfile.nutrition.carbs} mixSharePercent={mixSharePercent} color="bg-[var(--chart-2)]" />
+                <NutritionCard label={t("nutrition.fat")} value={result.nutrition.fat} target={currentProfile.nutrition.fat} mixSharePercent={mixSharePercent} color="bg-[var(--chart-3)]" />
+                <NutritionCard label={t("nutrition.fiber")} value={result.nutrition.fiber} target={currentProfile.nutrition.fiber} mixSharePercent={mixSharePercent} color="bg-[var(--chart-4)]" />
               </div>
 
               <Card className="border-none shadow-xl">
