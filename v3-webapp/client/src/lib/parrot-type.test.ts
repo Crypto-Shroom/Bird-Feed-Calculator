@@ -8,12 +8,13 @@ describe("parrot feeding type", () => {
     expect(PARROT_TYPES).toEqual(["general", "granivore", "frugivore", "nectarivore"]);
   });
 
-  it("changes only the granivore parrot's protein range", () => {
+  it("changes only the granivore parrot's protein range, and not for breeding", () => {
     for (const situation of Object.keys(BIRD_PROFILES.parrot.profiles)) {
       const general = BIRD_PROFILES.parrot.profiles[situation].nutrition;
       expect(getSituationNutrition("parrot", situation, "general")).toEqual(general);
       expect(getSituationNutrition("parrot", situation, "frugivore")).toEqual(general);
-      expect(getSituationNutrition("parrot", situation, "granivore")).toEqual({ ...general, protein: [10, 14] });
+      // Breeding keeps the general protein range; the other situations get the granivore 10-14.
+      expect(getSituationNutrition("parrot", situation, "granivore")).toEqual(situation === "breeding" ? general : { ...general, protein: [10, 14] });
     }
   });
 

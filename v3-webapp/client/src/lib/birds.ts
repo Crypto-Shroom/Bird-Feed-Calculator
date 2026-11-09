@@ -457,15 +457,16 @@ export function getDefaultSituation(bird: BirdType): string {
 export type ParrotType = 'general' | 'granivore' | 'frugivore' | 'nectarivore';
 export const PARROT_TYPES: ParrotType[] = ['general', 'granivore', 'frugivore', 'nectarivore'];
 
-// Granivore (seed-eating, for example cockatiels) adults: at least 10-14% protein, and breeding birds do not appear to need
-// more (Harper & Skinner 1998). Every other range is the general parrot's.
+// Granivore (seed-eating, for example cockatiels) adults: at least 10-14% protein (Harper & Skinner 1998). It replaces the
+// general parrot's protein range for the pet and molting situations only; breeding keeps the general range, because the
+// sources disagree on breeding protein (McDonald 2006 breeder estimates against Harper & Skinner). Other ranges are the general parrot's.
 const GRANIVORE_PARROT_PROTEIN: [number, number] = [10, 14];
 
 /** The nutrition ranges for a bird and situation; only the Parrot's feeding type changes them (granivore protein). */
 export function getSituationNutrition(bird: BirdType, situation: string, parrotType: ParrotType = 'general'): NutritionTarget | null {
   const profile = BIRD_PROFILES[bird]?.profiles[situation];
   if (!profile) return null;
-  if (bird === 'parrot' && parrotType === 'granivore') return { ...profile.nutrition, protein: GRANIVORE_PARROT_PROTEIN };
+  if (bird === 'parrot' && parrotType === 'granivore' && situation !== 'breeding') return { ...profile.nutrition, protein: GRANIVORE_PARROT_PROTEIN };
   return profile.nutrition;
 }
 
